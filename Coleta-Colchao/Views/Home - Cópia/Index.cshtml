@@ -1,0 +1,102 @@
+﻿@{
+    ViewData["Title"] = "Pagina Inicial";
+}
+
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+
+        .body{
+            background-color: #AD2C1E;
+        }
+
+        .full-height {
+            min-height: 100vh;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content:center;
+            padding-top: 80px;
+            padding-bottom: 80px;
+            border-bottom: 2px solid rgba(255,255,255, 0.1);
+        }
+        .hidden {
+            opacity: 0;
+            filter: blur(15px);
+            transform: translateX(-100%);
+            transition: all 0.3s;
+        }
+   
+        .show{
+            opacity:1;
+            filter: blur(0);
+            transform: translateX(0);
+            transition: all 0.5s;
+        }
+
+    </style>
+</head>
+<body class="body">
+
+    <div id="content-wrapper">
+
+    <section id="home" class="full-height hidden">
+
+            <div class="container hidden">
+                <div class="row hidden">
+                    <div class="col-lg-8 hidden">
+                        <h1 class="display-4 fw-bold hidden" style="color: white">COLETA COLCHÃO</h1>
+                        <p class="lead mt-2 mb-4 hidden" style="color:white"> Começar a coleta : </p>
+
+                        <div class="input-group mb-3 hidden">
+                   
+                            <input type="text" class="form-control hidden" placeholder=" Escreva a OS" aria-label="Recipient's username" aria-describedby="basic-addon2">
+                            <div class="input-group-append hidden">
+                                <button class="btn btn-outline-secondary hidden" type="button"> Pesquisar </button>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+    </section>
+
+    </div>
+
+
+
+
+</body>
+</html>
+
+@if (TempData.ContainsKey("Mensagem"))
+{
+    <script>
+        alert('@Html.Raw(TempData["Mensagem"])');
+
+    </script>
+
+    <script>
+
+        const myObserver = new IntersectionObserver((entries) => {
+            entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('show')
+                }else{
+                    entry.target.classList.remove('show')
+                }
+
+            })    
+
+        })
+
+        const elements = document.querySelectorAll('.hidden')
+        elements.forEach((element) => myObserver.observe(element))
+
+    </script>
+}
