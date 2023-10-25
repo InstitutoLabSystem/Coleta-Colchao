@@ -4,21 +4,1004 @@
 @{
     ViewData["Title"] = "Login";
 }
-
-
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="~/css/coleta.css" asp-append-version="true" />
+    <style>
+
+    </style>
 </head>
 <body>
-    
+    <table class="tables table-bordered border-secondary  table-sm">
+        <thead>
+            <tr>
+                <td><img src="https://www.labsystem-nuvem.com.br/imagens_arq/imagens/img/LabSystem.png" class="imagem" /></td>
+                <td colspan="3">Coleta De Dados</td>
+                <td>N Os</td>
+            </tr>
+            <tr>
+                <td colspan="4">Colchão De Molas (Portaria Inmetro 75)</td>
+                <td rowspan="2"> os aqui</td>
+            </tr>
+            <tr>
+                <td>Inicio:</td>
+                <td><input class="form-control" type="date" /></td>
+                <td>Termino:</td>
+                <td><input class="form-control" type="date" /></td>
+            </tr>
+        </thead>
+    </table>
+
+    <table class="tables table-bordered border-secondary  table-sm">
+        <tr>
+            <td>Temperatura Inicial:</td>
+            <td><input class="form-control" type="date" /></td>
+            <td>Temperatura Final:</td>
+            <td><input class="form-control" type="date" /></td>
+        </tr>
+    </table>
+    <br />
+    <table class="tables table-bordered border-secondary  table-sm">
+        <tr>
+            <td>Item</td>
+            <td>Descrição</td>
+            <td>Resultado</td>
+        </tr>
+        <tr>
+            <td rowspan="4">---</td>
+            <td>
+                <b>Pré - Rolagem:</b> Antes de serem efetuadas as inspeções e medições iniciais, deve ser realizada uma pré-rolagem com o rolo nas duas faces do colchão por uma frequência de 50 ciclos (cada face utilizável).
+            </td>
+            <td rowspan="4">---</td>
+        </tr>
+        <tr>
+            <td>
+                Quantidade De faces utilizadas:
+                <select name="Escolha">
+                    <option>1</option>
+                    <option>2</option>
+                </select>
+            </td>
+
+        </tr>
+        <tr>
+            <td>
+                1º Face:
+                Velocidade do ciclos : <input class="form-control" type="text" />
+                Quantidade de ciclos : <input class="form-control" type="text" />
+
+            </td>
+        </tr>
+        <tr>
+            <td>
+                2º Face:
+                Velocidade do ciclos : <input class="form-control" type="text" />
+                Quantidade de ciclos : <input class="form-control" type="text" />
+
+            </td>
+        </tr>
+    </table>
+    <table class="tables table-bordered border-secondary  table-sm">
+        <tr>
+            <td>Item</td>
+            <td>Descrição</td>
+            <td>Resultado</td>
+        </tr>
+        <tr>
+            <td rowspan="5">---</td>
+            <td>
+                <b>Comprimento:</b> Medir o comprimento do colchão ou colchonete em 3 pontos equidistantes, considerando como a comprimento total o valor médio encontrado em centímetros.
+            </td>
+            <td rowspan="5">Resultado aqui</td>
+        </tr>
+        <tr>
+            <td>
+                <table class="tables table-bordered border-secondary  table-sm">
+                    <tr>
+                        <td>Pontos De Medição</td>
+                        <td>Comprimento (cm)</td>
+                        <td>
+                            Comprimento especificado (cm)
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            1°
+                        </td>
+                        <td>
+                            <input class="form-control" type="text" />
+                        </td>
+                        <td rowspan="4"><input class="form-control" type="text" /></td>
+                    </tr>
+                    <tr>
+                        <td>
+                            2°
+                        </td>
+                        <td>
+                            <input class="form-control" type="text" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            3°
+                        </td>
+                        <td>
+                            <input class="form-control" type="text" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Media:</td>
+                        <td colspan="3"><input class="form-control" readonly /></td>
+                    </tr>
+                </table>
+                <p> Nota:NOTA: São adimitadas tolerâncias de ± 1,5 cm.</p>
+            </td>
+        </tr>
+
+    </table>
+    <table class="tables table-bordered border-secondary  table-sm">
+        <tr>
+            <td>Item</td>
+            <td>Descrição</td>
+            <td>Resultado</td>
+        </tr>
+        <tr>
+            <td rowspan="5">---</td>
+            <td>
+                <b>Largura:</b> Medir a largura do colchão ou colchonete em 3 pontos equidistantes, considerando como a largura total o valor médio encontrado em centímetros.
+            </td>
+            <td rowspan="5">Resultado aqui</td>
+        </tr>
+        <tr>
+            <td>
+                <table class="tables table-bordered border-secondary  table-sm">
+                    <tr>
+                        <td>Pontos De Medição</td>
+                        <td>Comprimento (cm)</td>
+                        <td>
+                            Comprimento especificado (cm)
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            1°
+                        </td>
+                        <td>
+                            <input class="form-control" type="text" />
+                        </td>
+                        <td rowspan="4"><input class="form-control" type="text" /></td>
+                    </tr>
+                    <tr>
+                        <td>
+                            2°
+                        </td>
+                        <td>
+                            <input class="form-control" type="text" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            3°
+                        </td>
+                        <td>
+                            <input class="form-control" type="text" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Media:</td>
+                        <td colspan="3"><input class="form-control" readonly /></td>
+                    </tr>
+                </table>
+                <p> Nota:NOTA: São adimitadas tolerâncias de ± 1,5 cm.</p>
+            </td>
+        </tr>
+    </table>
+    <table class="tables table-bordered border-secondary  table-sm">
+        <tr>
+            <td rowspan="9">---</td>
+            <td>
+                <b>
+                    Determinação da Indentação - Antes do ensaio de Rolagem
+                </b>
+            </td>
+
+            <td rowspan="9">---</td>
+        </tr>
+
+        <tr>
+            <td>
+                Antes do ensaio de Rolagem
+            </td>
+
+        </tr>
+        <tr>
+            <td>
+                Se for identificado na etiqueta que as duas faces do colchão possuem durezas diferentes, a avaliação deve ser efetuada em ambas as faces.
+            </td>
+        </tr>
+        <tr>
+            <td>
+                As faces do colchão possui dureza diferente. <input class="form-control" type="text" />
+                <p>
+                    Posicionar o colchão em uma superfície plana e rígida maior que a área do colchão.
+                </p>
+                <p>
+                    Deixar o Indentador cair por gravidade sobre a superfície do colchão a ser avaliada, de uma altura sempre a partir da espessura inicial do colchão.
+                </p>
+            </td>
+        </tr>
+        <tr>
+            <td>Alterar Queda: <input class="form-control" type="text" /></td>
+        </tr>
+        <tr>
+            <td>
+                Medir a distância Y', entre o ponto de partida do indentador e o ponto do indentador que mais penetrou colchão.
+            </td>
+        </tr>
+        <tr>
+            <td> <img src="" />Imaquem aqui pegando a td toda</td>
+        </tr>
+        <tr>
+            <td>
+                <table>
+                    <tr>
+                        <td>
+                            Repetições
+                        </td>
+                        <td>
+                            Distancia Y
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            1º
+                        </td>
+                        <td><input class="form-control" type="text" /></td>
+                    </tr>
+                    <tr>
+                        <td>
+                            2º
+                        </td>
+                        <td><input class="form-control" type="text" /></td>
+                    </tr>
+                    <tr>
+                        <td>
+                            3º
+                        </td>
+                        <td><input class="form-control" type="text" /></td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+    </table>
+    <br />
+    <table class="tables table-bordered border-secondary  table-sm">
+        <tr>
+            <td rowspan="12">7.3/7.4</td>
+            <td>
+                <b> Ensaio de Rolagem</b>
+            </td>
+            <td rowspan="12"></td>
+        </tr>
+        <tr>
+            <td>Posicionar o colchão no equipamento de Rolagem, de forma a não permitir o movimento horizontal durante o ensaio.</td>
+        </tr>
+        <tr>
+            <td>Após posicionado o colchão ajustar o equipamento de modo que o percurso do rolo chegue até 10 cm das bordas. </td>
+        </tr>
+        <tr>
+            <td>Distância das bordas: <input class="form-control" type="text" />  </td>
+        </tr>
+        <tr>
+            <td> Logo após, submeter o colchão a 50000 ciclos a uma frequência de (47 ± 5) m/min. </td>
+        </tr>
+        <tr>
+            <td><b>Nota:</b> Caso o colchão possua duas faces utilizáveis, realizar 25000 ciclos em cada face.</td>
+        </tr>
+        <tr>
+            <td>
+                Quantidade De faces utilizadas:
+                <select name="Escolha">
+                    <option>1</option>
+                    <option>2</option>
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                1º Face:
+                Velocidade do ciclos : <input class="form-control" type="text" />
+                Quantidade de ciclos : <input class="form-control" type="text" />
+
+            </td>
+        </tr>
+        <tr>
+            <td>
+                2º Face:
+                Velocidade do ciclos : <input class="form-control" type="text" />
+                Quantidade de ciclos : <input class="form-control" type="text" />
+
+            </td>
+        </tr>
+        <tr>
+            <td>Após o término do ensaio de rolagem, verificar visualmente as seguintes características: </td>
+        </tr>
+        <tr>
+            <td> Houve rasgos ou engarçamentos no revestimento? <input class="form-control" type="text" /></td>
+        </tr>
+        <tr>
+            <td>Houve quebra de molas no molejo? <input class="form-control" type="text" /> </td>
+        </tr>
+    </table>
+
+    <table class="tables table-bordered border-secondary  table-sm">
+        <tr>
+            <td rowspan="14">---</td>
+            <td>
+                <b>
+                    Determinação da Deformação.
+                </b>
+            </td>
+            <td rowspan="12"></td>
+        </tr>
+        <tr>
+            <td> Este ensaio deve ser realizado somente após o ensaio de rolagem.</td>
+        </tr>
+        <tr>
+            <td> A execução da medição da deformação deve ser efetuado entre 30 minutos e 90 minutos após o término do ensaio de rolagem.</td>
+        </tr>
+        <tr>
+            <td>Tempo de término do ensaio de Rolagem: <input class="form-control" type="text" /></td>
+        </tr>
+        <tr>
+            <td>   Se for identificado na etiqueta que as duas faces do colchão possuem durezas diferentes, a avaliação deve ser efetuada em ambas as faces. </td>
+        </tr>
+        <tr>
+            <td>As faces do colchão possui dureza diferente: <input class="form-control" type="text" /></td>
+        </tr>
+        <tr>
+            <td>
+                Posicionar o colchão em uma superfície plana e rígida maior que a área do colchão. Apoiar uma régua longitudinalmente no centro do colchão de modo a ultrapassar as extremidades.
+                <p>Realizar a medição da acomodação a partir da face superior do colchão e a superfície inferior da régua.</p>
+                <p>A medida da acomodação na região central em relação as extremidades.</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <p><b>Tabela - acomodação maxima da altura</b></p>
+                <table class="tables table-bordered border-secondary  table-sm">
+                    <tr>
+                        <td>Espessura Minima</td>
+                        <td>Espessura Maxima</td>
+                        <td>Espessura Acomodação</td>
+                    </tr>
+                    <tr>
+                        <td>12cm</td>
+                        <td>22cm</td>
+                        <td>6%</td>
+                    </tr>
+                    <tr>
+                        <td>23cm</td>
+                        <td>30cm</td>
+                        <td>8%</td>
+                    </tr>
+                    <tr>
+                        <td>>30cm</td>
+                        <td>---</td>
+                        <td>10%</td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <table>
+                    <tr>
+                        <td>1º Face</td>
+                        <td>2º Face</td>
+                    </tr>
+
+                    <tr>
+                        <td>Espessura inicial: <input class="form-control" type="text" /></td>
+                        <td>Espessura inicial: <input class="form-control" type="text" /></td>
+                    </tr>
+                    <tr>
+                        <td>Medição da deformação:<input class="form-control" type="text" /> </td>
+                        <td>Medição da deformação:<input class="form-control" type="text" /> </td>
+                    </tr>
+                    <tr>
+                        <td>Acomodação especificada:<input class="form-control" type="text" /> </td>
+                        <td>Acomodação especificada:<input class="form-control" type="text" /> </td>
+                    </tr>
+                    <tr>
+                        <td>Acomodação encontrada:<input class="form-control" readonly type="text" /></td>
+                        <td>Acomodação encontrada:<input class="form-control" readonly type="text" /></td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+    </table>
+
+    <table class="tables table-bordered border-secondary  table-sm">
+        <tr>
+            <td rowspan="12"></td>
+            <td>
+                <b>
+                    Determinação da Indentação - Após do ensaio de Rolagem
+                </b>
+            </td>
+            <td rowspan="12"></td>
+        </tr>
+        <tr>
+            <td>
+                Deixar o Indentador cair por gravidade sobre a superfície do colchão a ser avaliada, de uma altura sempre a partir da espessura inicial do colchão.
+            </td>
+        </tr>
+        <tr>
+            <td>Altura da queda: <input class="form-control" type="text" /></td>
+        </tr>
+        <tr>
+            <td>
+                Medir a distância Y", entre o ponto de partida do indentador e o ponto do indentador que mais penetrou colchão.
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <table class="tables table-bordered border-secondary  table-sm">
+                    <p>Repetir este procedimento por 3 vezes</p>
+                    <tr>
+                        <td>Repetições</td>
+                        <td>Distância Y</td>
+                    </tr>
+                    <tr>
+                        <td>1º </td>
+                        <td><input class="form-control" type="text" /></td>
+                    </tr>
+                    <tr>
+                        <td>2º </td>
+                        <td><input class="form-control" type="text" /></td>
+                    </tr>
+                    <tr>
+                        <td>3º </td>
+                        <td><input class="form-control" type="text" /></td>
+                    </tr>
+                    <tr>
+                        <td>Mediaº </td>
+                        <td><input class="form-control" type="text" /></td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                O ensaio deve ser realizado após 30 minutos o término do ensaio de rolagem.
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Tempo de término do ensaio de Rolagem: <input class="form-control" type="text" />
+                <p>Perda Percentual: <input class="form-control" type="text" readonly /></p>
+            </td>
+        </tr>
+    </table>
+
+    <table class="tables table-bordered border-secondary  table-sm">
+        <tr>
+            <td rowspan="25">---</td>
+            <td>
+                <b>
+                    Matelassê e estofamento
+
+                </b>
+            </td>
+            <td rowspan="25"></td>
+        </tr>
+        <tr>
+            <td>
+                <table class="tables table-bordered border-secondary  table-sm">
+                    <p>Tabela - Matelassê e tipos de estofamento </p>
+                    <tr>
+                        <td colspan="2">Tipos de espuma </td>
+                        <td>Espressura minima especificada </td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">Espuma do Matalassê</td>
+                        <td>10,0 mm</td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">Espuma de acabamento (face sup)</td>
+                        <td>20,0 mm</td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">Espuma de acabamento (face inf)</td>
+                        <td>20,0 mm</td>
+                    </tr>
+                    <tr><td rowspan="7">Estofamento</td> </tr>
+
+                    <tr>
+                        <td>Convencional</td>
+                        <td>20,00 mm</td>
+                    </tr>
+                    <tr>
+                        <td>Hipermacia</td>
+                        <td>20,00 mm</td>
+                    </tr>
+                    <tr>
+                        <td>Macia</td>
+                        <td>20,00 mm</td>
+                    </tr>
+                    <tr>
+                        <td>HR</td>
+                        <td>20,00 mm</td>
+                    </tr>
+                    <tr>
+                        <td>Viscoelástica</td>
+                        <td>30,00 mm</td>
+                    </tr>
+                    <tr>
+                        <td>Aglomerado</td>
+                        <td>20,00 mm</td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <table class="tables table-bordered border-secondary  table-sm">
+                    <tr>
+                        <td>Tipos de espuma</td>
+                        <td>Espessura minima Encontrada</td>
+                    </tr>
+                    <tr>
+                        <td><input class="form-control" type="text" /></td>
+                        <td><input class="form-control" type="text" /></td>
+                    </tr>
+                    <tr>
+                        <td><input class="form-control" type="text" /></td>
+                        <td><input class="form-control" type="text" /></td>
+                    </tr>
+                    <tr>
+                        <td><input class="form-control" type="text" /></td>
+                        <td><input class="form-control" type="text" /></td>
+                    </tr>
+                    <tr>
+                        <td><input class="form-control" type="text" /></td>
+                        <td><input class="form-control" type="text" /></td>
+                    </tr>
+                    <tr>
+                        <td><input class="form-control" type="text" /></td>
+                        <td><input class="form-control" type="text" /></td>
+                    </tr>
+                    <tr>
+                        <td><input class="form-control" type="text" /></td>
+                        <td><input class="form-control" type="text" /></td>
+                    </tr>
+                    <tr>
+                        <td><input class="form-control" type="text" /></td>
+                        <td><input class="form-control" type="text" /></td>
+                    </tr>
+                    <tr>
+                        <td><input class="form-control" type="text" /></td>
+                        <td><input class="form-control" type="text" /></td>
+                    </tr>
+                    <tr>
+                        <td><input class="form-control" type="text" /></td>
+                        <td><input class="form-control" type="text" /></td>
+                    </tr>
+                    <tr>
+                        <td><input class="form-control" type="text" /></td>
+                        <td><input class="form-control" type="text" /></td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <table class="tables table-bordered border-secondary  table-sm">
+                    <p>
+                        A borda perimetral de aço e/ou espuma deve manter seu paralelismo e perpendicularidade antes e após o ensaio de rolagem. Além de atender as especificações abaixo.
+                    </p>
+                    <tr>
+                        <td>Borda</td>
+                        <td>Especificado</td>
+                        <td>Encontrado</td>
+                        <td>Manteve seu paralelismo e perpendicularidade</td>
+                    </tr>
+                    <tr>
+                        <td><input class="form-control" type="text" /></td>
+                        <td>Aço</td>
+                        <td>≥  Ø 3,8 mm</td>
+                        <td><input class="form-control" type="text" /></td>
+
+                    </tr>
+                    <tr>
+                        <td><input class="form-control" type="text" /></td>
+                        <td>Espuma</td>
+                        <td>≤ 120 mm</td>
+                        <td><input class="form-control" type="text" /></td>
+
+                    </tr>
+                </table>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Quando se for utilizado não tecido de fibras sintéticas, naturais e/ou artificiais, ela deve ter gramatura mínima de 100 g/m².
+            </td>
+        </tr>
+        <tr><td>Tipo Do Material : <input class="form-control" type="text" /></td></tr>
+        <tr>
+            <td>
+                <table class="tables table-bordered border-secondary  table-sm">
+                    <tr>
+                        <td>Copos de prova</td>
+                        <td>Massa (g)</td>
+                    </tr>
+                    <tr>
+                        <td>1</td>
+                        <td><input class="form-control" /></td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td><input class="form-control" /></td>
+                    </tr>
+                    <tr>
+                        <td>3</td>
+                        <td><input class="form-control" /></td>
+                    </tr>
+                    <tr>
+                        <td>4</td>
+                        <td><input class="form-control" /></td>
+                    </tr>
+                    <tr>
+                        <td>5</td>
+                        <td><input class="form-control" /></td>
+                    </tr>
+                    <tr>
+                        <td>6</td>
+                        <td><input class="form-control" /></td>
+                    </tr>
+                    <tr>
+                        <td>7</td>
+                        <td><input class="form-control" /></td>
+                    </tr>
+                    <tr>
+                        <td>8</td>
+                        <td><input class="form-control" /></td>
+                    <tr>
+                        <td>9</td>
+                        <td><input class="form-control" /></td>
+                    </tr>
+                    <tr>
+                        <td>10</td>
+                        <td><input class="form-control" /></td>
+                    </tr>
+                    <tr>
+                        <td>Media</td>
+                        <td><input class="form-control" readonly type="text" /></td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <table class="tables table-bordered border-secondary  table-sm">
+                    <tr>
+                        Area do corpo de prova
+                    </tr>
+                    <tr>
+                        <td><input class="form-control" type="text" /> x  <input class="form-control" type="text" /></td>
+                    </tr>
+                    <tr>
+                        <td>Gramatura <input class="form-control" readonly type="text" /></td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+    </table>
+    <table class="tables table-bordered border-secondary  table-sm">
+        <tr>
+            <td rowspan="14">---</td>
+            <td>
+                <b>
+                    Avaliação Do Molejo.
+                </b>
+            </td>
+            <td rowspan="14"></td>
+        </tr>
+        <tr>
+            <td>
+                Esta avaliação deve ser realizada no molejo do colchão.
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Retirar o revestimento da face do colchão e verificar as informações conforme tabela abaixo.
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <table class="tables table-bordered border-secondary  table-sm">
+                    <tr><td colspan="4">Tabela - Quantidade minima de molas para cada tipo de molejo</td></tr>
+                    <tr>
+                        <td>Tipo</td>
+                        <td>
+                            Ø minimo da Bitola (mm)
+                        </td>
+                        <td>
+                            Nº mínimo de molas por m²
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Bonell</td>
+                        <td>
+                            (2,20 ± 0,05)
+                        </td>
+                        <td>
+                            105
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Bonell</td>
+                        <td>
+                            (2,20 ± 0,05)
+                        </td>
+                        <td>
+                            115
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Mola ensacada</td>
+                        <td>
+                            ---
+                        </td>
+                        <td>
+                            152
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>LFK</td>
+                        <td>
+                            ---
+                        </td>
+                        <td>
+                            152
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Verticoil</td>
+                        <td>
+                            ---
+                        </td>
+                        <td>
+                            110
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Fio Continuo | </td>
+                        <td>
+                            ---
+                        </td>
+                        <td>
+                            170
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Fio Continuo || </td>
+                        <td>
+                            ---
+                        </td>
+                        <td>
+                            198
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Offset </td>
+                        <td>
+                            ---
+                        </td>
+                        <td>
+                            105
+                        </td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <table class="tables table-bordered border-secondary  table-sm">
+                    <tr><td colspan="4">Tabela - Quantidade minima de molas para cada tipo de molejo</td></tr>
+                    <tr>
+                        <td>X</td>
+                        <td>Tipo</td>
+                        <td>
+                            Ø minimo da Bitola (mm)
+                        </td>
+                        <td>
+                            Nº mínimo de molas por m²
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><input class="form-control" type="text" /></td>
+                        <td>Bonell</td>
+                        <td><input class="form-control" type="text" /></td>
+                        <td><input class="form-control" type="text" /></td>
+                    </tr>
+                    <tr>
+                        <td><input class="form-control" type="text" /></td>
+                        <td>Bonell</td>
+                        <td><input class="form-control" type="text" /></td>
+                        <td><input class="form-control" type="text" /></td>
+                    </tr>
+                    <tr>
+                        <td><input class="form-control" type="text" /></td>
+                        <td>Mola ensacada</td>
+                        <td>
+                            ---
+                        </td>
+                        <td><input class="form-control" type="text" /></td>
+                    </tr>
+                    <tr>
+                        <td><input class="form-control" type="text" /></td>
+                        <td>LKF</td>
+                        <td>
+                            ---
+                        </td>
+                        <td><input class="form-control" type="text" /></td>
+                    </tr>
+                    <tr>
+                        <td><input class="form-control" type="text" /></td>
+                        <td>Verticoil</td>
+                        <td>
+                            ---
+                        </td>
+                        <td><input class="form-control" type="text" /></td>
+                    </tr>
+                    <tr>
+                        <td><input class="form-control" type="text" /></td>
+                        <td>Fio Continuo | </td>
+                        <td>
+                            ---
+                        </td>
+                        <td><input class="form-control" type="text" /></td>
+                    </tr>
+                    <tr>
+                        <td><input class="form-control" type="text" /></td>
+                        <td>Fio continuo ||</td>
+                        <td>
+                            ---
+                        </td>
+                        <td><input class="form-control" type="text" /></td>
+                    </tr>
+                    <tr>
+                        <td><input class="form-control" type="text" /></td>
+                        <td>Offset</td>
+                        <td>
+                            ---
+                        </td>
+                        <td><input class="form-control" type="text" /></td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+    </table>
+    <table class="tables table-bordered border-secondary  table-sm">
+        <tr>
+            <td rowspan="14">---</td>
+            <td>
+                <b>
+                    Cálculo de número de molas por m²
+                </b>
+            </td>
+            <td rowspan="14"></td>
+        </tr>
+        <tr>
+            <td>
+                n° de molas por m² = Quantidade de molas ÷ Largura X Comprimento
+            </td>
+        </tr>
+        <tr>
+            <td>
+                n° de molas por m² = <input class="form-control" type="text" /> ÷ <input class="form-control" type="text" /> X <input class="form-control" type="text" />
+                <p>Resultado: <input class="form-control" type="text" readonly /></p>
+            </td>
+
+        </tr>
+    </table>
+    <table class="tables table-bordered border-secondary  table-sm">
+        <tr>
+            <td rowspan="14">---</td>
+            <td>
+                <b>
+                    Ensaio de Flexibilidade de material isolante
+                </b>
+            </td>
+            <td rowspan="14"></td>
+        </tr>
+        <tr>
+            <td>
+                Retirar um corpo de prova de tamanho A4 (297 x 210) mm.
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Dimensões do corpo: <input class="form-control" type="text" /> X <input class="form-control" type="text" />
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Após retirar o corpo de prova, dobrá-lo até a união das duas extremidades no sentido do comprimento, sem que haja trincas ou rompimento.
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Apresentou trincas:  <input class="form-control" type="text" />
+                Apresentou rompimentos: <input class="form-control" type="text" />
+
+            </td>
+        </tr>
+    </table>
+    <table class="tables table-bordered border-secondary  table-sm">
+        <tr>
+            <td colspan=" 4">
+                Instrumento(s)/Dispositivo(s)/Equipamento(s) Utilizado(s) que Requer(em) Calibração
+            </td>
+        </tr>
+        <tr>
+            <td>Código(s)</td>
+            <td>Descrição(ões)</td>
+            <td>Certificado(s)</td>
+            <td>validade(s)</td>
+        </tr>
+    </table>
+    <table class="tables table-bordered border-secondary  table-sm">
+        <tr>
+            <td colspan=" 4">
+                Dispositivo(s)/Equipamento(s) Utilizado(s) que Não Requer(em) Calibração
+            </td>
+        </tr>
+        <tr>
+            <td>Código(s)</td>
+            <td>Descrição(ões)</td>
+            <td>Certificado(s)</td>
+            <td>validade(s)</td>
+        </tr>
+    </table>
+    <table class="tables table-bordered border-secondary  table-sm">
+        <tr>
+            <td colspan=" 4">
+                Matéria(s)-Prima(s) Utilizada(s)
+            </td>
+        </tr>
+        <tr>
+            <td>Código(s)</td>
+            <td>Descrição(ões)</td>
+            <td>Certificado(s)</td>
+            <td>validade(s)</td>
+        </tr>
+    </table>
+    <table class="tables table-bordered border-secondary  table-sm">
+        <tr>
+            <td colspan=" 4">
+                Observações
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <textarea>
+
+                </textarea>
+            </td>
+
+        </tr>
+    </table>
     @if (TempData.ContainsKey("Mensagem"))
     {
         <script>
             alert('@Html.Raw(TempData["Mensagem"])');
-
         </script>
     }
 </body>
