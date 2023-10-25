@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "p9YPXMzGxWULEcCAr3gwia78/AIao6fxalvlInOJsIs=",
+  "Hash": "tOXrqJVzjhaelU5lkIorUDaZiXlc9rm59Wt8lt9pFtY=",
   "Source": "Coleta-Colchao",
   "BasePath": "_content/Coleta-Colchao",
   "Mode": "Default",
@@ -51,7 +51,24 @@
       "OriginalItemSpec": "C:\\xampp\\htdocs\\Coleta-Colchao\\Coleta-Colchao\\obj\\Debug\\net7.0\\scopedcss\\projectbundle\\Coleta-Colchao.bundle.scp.css"
     },
     {
-      "Identity": "C:\\xampp\\htdocs\\Coleta-Colchao\\Coleta-Colchao\\wwwroot\\css\\site.css",
+      "Identity": "C:\\Users\\Molina\\source\\repos\\InstitutoLabSystem\\Coleta-Colchao\\Coleta-Colchao\\wwwroot\\css\\coleta.css",
+      "SourceId": "Coleta-Colchao",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\Molina\\source\\repos\\InstitutoLabSystem\\Coleta-Colchao\\Coleta-Colchao\\wwwroot\\",
+      "BasePath": "_content/Coleta-Colchao",
+      "RelativePath": "css/coleta.css",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\css\\coleta.css"
+    },
+    {
+      "Identity": "C:\\Users\\Molina\\source\\repos\\InstitutoLabSystem\\Coleta-Colchao\\Coleta-Colchao\\wwwroot\\css\\site.css",
       "SourceId": "Coleta-Colchao",
       "SourceType": "Discovered",
       "ContentRoot": "C:\\xampp\\htdocs\\Coleta-Colchao\\Coleta-Colchao\\wwwroot\\",
