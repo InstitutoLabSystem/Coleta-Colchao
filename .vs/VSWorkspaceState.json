@@ -1,8 +1,10 @@
 {
   "ExpandedNodes": [
     "",
-    "\\Coleta-Colchao"
+    "\\Coleta-Colchao",
+    "\\Coleta-Colchao\\Views",
+    "\\Coleta-Colchao\\Views\\Coleta"
   ],
-  "SelectedNode": "\\Coleta-Colchao.sln",
+  "SelectedNode": "\\Coleta-Colchao\\Views\\Coleta\\EnsaioColchaoEspuma.cshtml",
   "PreviewInSolutionExplorer": false
 }
