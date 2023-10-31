@@ -1,7 +1,9 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 
 namespace Coleta_Colchao.Controllers
 {
+    [Authorize]
     public class ColetaController : Controller
     {
         public IActionResult Index()
@@ -10,6 +12,15 @@ namespace Coleta_Colchao.Controllers
         }
 
         public IActionResult EnsaioColchaoEspuma()
+        {
+            return View();
+        }
+
+        public IActionResult EnsaioBaseCargaEstetica()
+        {
+            return View();
+        }
+        public IActionResult EnsaioBaseEstruturaDurabi()
         {
             return View();
         }

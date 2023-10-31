@@ -1,0 +1,188 @@
+﻿@{
+    Layout = null;
+}
+@{
+    ViewData["Title"] = "Ensaio Em Base Durabilidade";
+}
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="~/css/coleta.css" asp-append-version="true" />
+
+    <title>Document</title>
+</head>
+<body>
+    <table class="tables table-bordered border-secondary  table-sm">
+        <thead>
+            <tr>
+                <td><img src="https://www.labsystem-nuvem.com.br/imagens_arq/imagens/img/LabSystem.png" class="imagem" /></td>
+                <td colspan="3" class="fundo-tabela">Coleta De Dados</td>
+                <td class="fundo-tabela">N Os:</td>
+            </tr>
+            <tr>
+                <td colspan="4">Ensaio Em Bases</td>
+                <td rowspan="2"> os aqui</td>
+            </tr>
+            <tr>
+                <td class="fundo-tabela">Inicio:</td>
+                <td><input class="form-control" type="date" /></td>
+                <td class="fundo-tabela">Termino:</td>
+                <td><input class="form-control" type="date" /></td>
+            </tr>
+        </thead>
+    </table>
+
+    <table class="tables table-bordered border-secondary  ">
+        <tr>
+            <td rowspan="17">Item</td>
+            <td class="fundo-tabela">Descrição</td>
+            <td rowspan="17">Resultado</td>
+        </tr>
+        <tr class="fundo-tabela">
+            <td>
+                Ensaio a ser realizado: DIN EN 747-2:2015 - Furniture - Bunk beds and high beds - Part 2: Test methods (includes Amendment A1:2015)
+            </td>
+        </tr>
+        <tr>
+            <td>Carga Estática Vertical</td>
+        </tr>
+        <tr>
+            <td>
+                <p>
+                    O ensaio deve ser realizado sobcondições climáticas com temperatura de ( 20 ± 5 ) °C
+                </p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <table class="tables table-bordered border-secondary ">
+                    <tr>
+                        <td class="fundo-tabela">Data De Inicio:</td>
+                        <td><input class="form-control" type="date" /></td>
+
+                        <td class="fundo-tabela">Hora De Inicio: </td>
+                        <td><input class="form-control" type="time" /></td>
+
+                        <td class="fundo-tabela">Temperatura Mínima:</td>
+                        <td><input class="form-control" type="text" /></td>
+
+                    </tr>
+                    <tr>
+                        <td class="fundo-tabela">Data De Término:</td>
+                        <td><input class="form-control" type="date" /></td>
+
+                        <td class="fundo-tabela">Hora De Término: </td>
+                        <td><input class="form-control" type="time" /></td>
+
+                        <td class="fundo-tabela">Temperatura Máxima:</td>
+                        <td><input class="form-control" type="text" /></td>
+                    </tr>
+
+                </table>
+            </td>
+        </tr>
+        <tr class="fundo-tabela">
+            <td>
+                Posicionar a base em uma superfície plana e rígida e aplicar uma força vertical para baixo de 1400 N e mantê-la por (10 ± 1) s no(s) ponto(s) que apresentem sinais de fragilidade.
+            </td>
+        </tr>
+        <tr class="fundo-tabela">
+            <td>
+                Posicionar uma massa de 75 kg no centro da estrutura e aplicar uma força lateral de 300 N durante 10000 ciclos.
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Massa Aplicada: <input type="text" class="form-control" />
+            </td>
+        </tr>
+        <tr>
+            <td> Força Aplicada: <input type="text" class="form-control" /></td>
+        </tr>
+        <tr>
+            <td> Velocidade Do Ciclo: <input class="form-control" type="text" />  </td>
+        </tr>
+        <tr>
+            <td>Quantidade De Ciclos: <input class="form-control" type="text" /></td>
+
+        </tr>
+        <tr>
+            <td>A amostra suportou o  número do ciclos  : <input class="form-control" type="text" /></td>
+        </tr>
+        <tr class="fundo-tabela">
+            <td>
+                Caso a amostra não suporte o número de ciclos,  verificar se apresenta algum defeito conforme citado abaixo:
+            </td>
+        </tr>
+        <tr>
+            <td> Houve Ruptura Da Estrutura : <input class="form-control" type="text" />  </td>
+        </tr>
+        <tr>
+            <td>Houve Quebra Nas Fixações: <input class="form-control" type="text" /></td>
+
+        </tr>
+        <tr>
+            <td>
+                Apresentou algo que prejudique o seu comprometimento de uso : <input class="form-control" type="text" />
+            </td>
+        </tr>
+
+    </table>
+    <table class="tables table-bordered border-secondary  table-sm">
+        <tr class="fundo-tabela">
+            <td colspan=" 4">
+                Instrumento(s)/Dispositivo(s)/Equipamento(s) Utilizado(s) que Requer(em) Calibração
+            </td>
+        </tr>
+        <tr>
+            <td>Código(s)</td>
+            <td>Descrição(ões)</td>
+            <td>Certificado(s)</td>
+            <td>validade(s)</td>
+        </tr>
+    </table>
+    <table class="tables table-bordered border-secondary  table-sm">
+        <tr class="fundo-tabela">
+            <td colspan=" 4">
+                Dispositivo(s)/Equipamento(s) Utilizado(s) que Não Requer(em) Calibração
+            </td>
+        </tr>
+        <tr>
+            <td>Código(s)</td>
+            <td>Descrição(ões)</td>
+            <td>Certificado(s)</td>
+            <td>validade(s)</td>
+        </tr>
+    </table>
+    <table class="tables table-bordered border-secondary  table-sm">
+        <tr class="fundo-tabela">
+            <td colspan=" 4">
+                Matéria(s)-Prima(s) Utilizada(s)
+            </td>
+        </tr>
+        <tr>
+            <td>Código(s)</td>
+            <td>Descrição(ões)</td>
+            <td>Certificado(s)</td>
+            <td>validade(s)</td>
+        </tr>
+    </table>
+    <table class="tables table-bordered border-secondary  table-sm">
+        <tr class="fundo-tabela">
+            <td colspan="4">
+                Observações
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <textarea class="form-control w-100 mr-2 input">
+
+                </textarea>
+            </td>
+        </tr>
+    </table>
+</body>
+</html>
+
