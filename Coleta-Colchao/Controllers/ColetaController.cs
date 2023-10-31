@@ -8,5 +8,10 @@ namespace Coleta_Colchao.Controllers
         {
             return View();
         }
+
+        public IActionResult EnsaioColchaoEspuma()
+        {
+            return View();
+        }
     }
 }

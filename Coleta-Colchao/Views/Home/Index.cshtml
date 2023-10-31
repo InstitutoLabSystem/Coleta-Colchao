@@ -9,20 +9,157 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <style>
+
+        .body{
+            background-color: #901F14;
+        }
+
+        .full-height {
+            min-height: 80vh;
+            height: 80%;
+            display: flex;
+            flex-direction: column;
+            justify-content:center;
+            padding-top: 80px;
+            padding-bottom: 80px;
+            border-bottom: 2px solid rgba(255,255,255, 0.1);
+        }
+        .hidden {
+            opacity: 0;
+            filter: blur(15px);
+            transform: translateX(-100%);
+            transition: all 0.2s;
+        }
+   
+        .show{
+            opacity:1;
+            filter: blur(0);
+            transform: translateX(0);
+            transition: all 0.5s;
+        }
+
+        .sessaodois{
+            display: none;
+        }
+
     </style>
 </head>
-<body>
+<body class="body">
+
+    <div id="content-wrapper">
+
+    <section id="home" class="full-height hidden">
+
+            <div class="container hidden">
+                <div class="row hidden">
+                    <div class="col-lg-8 hidden">
+                        <h1 class="display-4 fw-bold hidden" style="color: white">COLETA COLCHÃO</h1>
+                        <p class="lead mt-2 mb-4 hidden" style="color:white"> Começar a coleta : </p>
+
+                        <div class="input-group mb-3 hidden">
+                            <input type="text" class="form-control hidden" placeholder=" Escreva a OS" aria-label="Recipient's username" aria-describedby="basic-addon2">
+                            <div class="input-group-append hidden">
+                                <button class="btn btn-outline-secondary hidden" type="submit" onclick="pesquisa()"> Pesquisar </button>
+                            </div>
+
+                
+                                <form class="form-inline hidden sessaodois" id="sessao2" asp-controller="Home" asp-action="BuscarOrcamento" method="post">
+                                    <div class="container mt-4">
+                                        <div class="row">
+                                            <div class="col-md-3">
+                                                <label style="color:white">Os</label>
+                                                <input type="text" class="form-control" id="" placeholder="Os">
+                                            </div>
+                                            <div class="col-md-3">
+                                                <label style="color:white">Orçamento</label>
+                                                <input type="text" class="form-control" id="" placeholder="Orc">
+                                            </div>
+                                            <div class="form-group">
+                                                <label style="color:white">Descrição</label>
+                                                <textarea class="form-control" placeholder="Descrição" id="" rows="2"></textarea>
+                                            </div>
+                                            <br />
+
+                                            <div class="row">
+                                                <br />
+                                                <div class="col-sm-6">
+                                                    <br />
+                                                    <div class="card">
+                                                        <div class="card-body">
+                                                            <h5 class="card-title">Ensaio</h5>
+                                                            <p class="card-text">texto</p>
+                                                            <a href="#" class="btn btn-primary">Abrir Coleta</a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-sm-6">
+                                                    <br />
+                                                    <div class="card">
+                                                        <div class="card-body">
+                                                            <h5 class="card-title">Ensaio</h5>
+                                                            <p class="card-text">texto</p>
+                                                            <a href="#" class="btn btn-primary">Abrir Coleta</a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </form>
+                 
+                        </div>
+                    </div>
+                </div>
+            </div>
+            </section>
+            </div>
 
 
-    @section Scripts {
-        @if (TempData.ContainsKey("Mensagem"))
-        {
-            <script>
-                alert('@Html.Raw(TempData["Mensagem"])');
-            </script>
-        }
-    }
+            
+   
+
+
+
 
 </body>
 </html>
 
+@if (TempData.ContainsKey("Mensagem"))
+{
+    <script>
+        alert('@Html.Raw(TempData["Mensagem"])');
+
+    </script>
+
+    <script>
+
+        const myObserver = new IntersectionObserver((entries) => {
+            entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('show')
+                }else{
+                    entry.target.classList.remove('show')
+                }
+
+            })    
+
+        })
+
+        const elements = document.querySelectorAll('.hidden')
+        elements.forEach((element) => myObserver.observe(element))
+
+    </script>
+    <script>
+        function pesquisa() {
+      
+            var sessao2 = document.getElementById("sessao2");
+
+            // Verifique se a seção está oculta
+            if (sessao2.classList.contains("sessaodois")) {
+                // Se estiver oculta, remova a classe "hidden" para exibi-la
+                sessao2.classList.remove("sessaodois");
+            }
+        }
+    </script>
+
+}
