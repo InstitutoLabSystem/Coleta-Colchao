@@ -17,6 +17,14 @@
       "PackagePath": "staticwebassets\\favicon.ico"
     },
     {
+      "Id": "C:\\xampp\\htdocs\\Coleta-Colchao\\Coleta-Colchao\\wwwroot\\img\\calculo_n_de_molas.png",
+      "PackagePath": "staticwebassets\\img\\calculo_n_de_molas.png"
+    },
+    {
+      "Id": "C:\\xampp\\htdocs\\Coleta-Colchao\\Coleta-Colchao\\wwwroot\\img\\img.png",
+      "PackagePath": "staticwebassets\\img\\img.png"
+    },
+    {
       "Id": "C:\\xampp\\htdocs\\Coleta-Colchao\\Coleta-Colchao\\wwwroot\\js\\site.js",
       "PackagePath": "staticwebassets\\js\\site.js"
     },
