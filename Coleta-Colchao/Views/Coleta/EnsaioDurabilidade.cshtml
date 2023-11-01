@@ -1,0 +1,275 @@
+﻿@{
+    Layout = null;
+}
+@{
+    ViewData["Title"] = "Login";
+}
+
+
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="~/css/coleta.css" asp-append-version="true" />
+    <title>Coleta</title>
+</head>
+<body>
+    <br />
+
+<table class="tables table-bordered border-secondary  table-sm">
+    <thead>
+        <tr>
+            <td><img src="https://www.labsystem-nuvem.com.br/imagens_arq/imagens/img/LabSystem.png" class="imagem" /></td>
+            <td colspan="3" class="fundo-tabela">Coleta De Dados</td>
+            <td class="fundo-tabela">N Os:</td>
+        </tr>
+        <tr>
+                <td colspan="4"> Ensaio em Bases</td>
+                <td rowspan="2"> os aqui</td>
+        </tr>
+        <tr>
+            <td>Inicio:</td>
+            <td><input class="form-control" type="date" /></td>
+            <td>Termino:</td>
+            <td><input class="form-control" type="date" /></td>
+        </tr>
+    </thead>
+</table>
+<br/>
+
+    <table class="tables table-bordered border-secondary  table-sm">
+        <tr>
+            <td rowspan="2" class="fundo-tabela"> <strong> Item </strong></td>
+            <td class="fundo-tabela" rowspan="1">
+                <strong>Descrição</strong>
+            </td>
+            <td rowspan="2" class="fundo-tabela"> <strong>Resultado</strong></td>
+        </tr>
+        <tr>
+            <td class="fundo-tabela"> <strong>Ensaio a ser realizado: DIN EN 1725:1998 - Domestic furniture – Beds and mattresses – Safety requirements and test methods</strong> </td>
+        </tr>
+        <tr>
+            <td rowspan="12"> <strong>4.7.1 / 7.3 </strong></td>
+            <td> 
+                    <strong> Durabilidade </strong> <br /><br />
+                O ensaio deve ser realizado sobcondições climáticas com temperatura de ( 20 ± 5 ) °C
+
+                <table class="tables table-bordered border-secondary  table-sm">
+                    <tr>
+                        <td class="fundo-tabela"> Data de início </td>
+                        <td> 00/01/1900 </td>
+                        <td class="fundo-tabela"> Hora de início: </td>
+                        <td>   <input class="form-control" type="text" /> </td>
+                        <td class="fundo-tabela"> Temperatura mínima: </td>
+                        <td> <input class="form-control" type="text" /> </td>
+                    </tr>
+                    <tr>
+                        <td class="fundo-tabela"> Data de término: </td>
+                        <td> 00/01/1900 </td>
+                        <td class="fundo-tabela"> Hora do término: </td>
+                        <td>   <input class="form-control" type="text" /> </td>
+                        <td class="fundo-tabela"> Temperatura máxima: </td>
+                        <td> <input class="form-control" type="text" /> </td>
+                    </tr>
+                </table>
+                <br />
+                Posicionar a base em uma superfície plana e rígida e aplicar uma força vertical para baixo de 1000 N e mantê-la por (3 ± 1) s nos pontos A, B e C.
+                <br /> <br />
+                Aplicar a carga 10000 vezes em cada ponto.
+                <br /> <br />
+                <strong> Nota: </strong> Caso a base da cama seja ajustável, o ensaio deve ser realizado com as peças ajustáveis na posição o mais próximo possivel de 7° acima da horizontal.
+                <br /> <br />
+                A base da cama é ajustável <input class="form-control" type="text" /> <br />
+                Ângulo encontrado: <input class="form-control" type="text" /> <br />
+            </td>
+        </tr>
+        <tr>
+            <td class="fundo-tabela">
+                <strong>Ponto A</strong>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <br />
+                Ângulo encontrado: <input class="form-control" type="text" /> X <input class="form-control" type="text" /> <br /><br />
+                Força aplicada <input class="form-control" type="text" /> Tempo de aplicação da carga <input class="form-control" type="text" /> <br /><br />
+                Quantidade de ciclos <input class="form-control" type="text" /> <br /><br />
+
+                Verificar se após o término do ensaio a amostra apresente algum defeito conforme citado abaixo:
+                <br /><br />
+                <table class="tables table-bordered border-secondary  table-sm">
+
+                    <tr>
+                        <td class="fundo-tabela"> Houve ruptura da estrutura </td>
+                    <td> <input class="form-control" type="text" /> </td>
+                    </tr>
+                    <tr>
+                        <td class="fundo-tabela"> Houve afundamento da espuma </td>
+                        <td> <input class="form-control" type="text" /> </td>
+                    </tr>
+                    <tr>
+                        <td class="fundo-tabela"> Houve rasgo no revestimento </td>
+                        <td> <input class="form-control" type="text" /> </td>
+                    </tr>
+                    <tr>
+                        <td class="fundo-tabela"> Houve rompimento nos pés </td>
+                        <td> <input class="form-control" type="text" /> </td>
+                    </tr>
+                    <tr>
+                        <td class="fundo-tabela"> Apresentou algo que prejudique o seu comprometimento de uso </td>
+                        <td> <input class="form-control" type="text" /> </td>
+                    </tr>
+                </table>
+            
+            </td>
+        </tr>
+        <tr>
+            <td class="fundo-tabela"> <strong>Ponto B</strong></td>
+        </tr>
+        <tr>
+            <td>
+                <br />
+                Ângulo encontrado: <input class="form-control" type="text" /> X <input class="form-control" type="text" /> <br /><br />
+                Força aplicada <input class="form-control" type="text" /> Tempo de aplicação da carga <input class="form-control" type="text" /> <br /><br />
+                Quantidade de ciclos <input class="form-control" type="text" /> <br /><br />
+
+                Verificar se após o término do ensaio a amostra apresente algum defeito conforme citado abaixo:
+                <br /><br />
+                <table class="tables table-bordered border-secondary  table-sm">
+
+                    <tr>
+                        <td class="fundo-tabela"> Houve ruptura da estrutura </td>
+                        <td> <input class="form-control" type="text" /> </td>
+                    </tr>
+                    <tr>
+                        <td class="fundo-tabela"> Houve afundamento da espuma </td>
+                        <td> <input class="form-control" type="text" /> </td>
+                    </tr>
+                    <tr>
+                        <td class="fundo-tabela"> Houve rasgo no revestimento </td>
+                        <td> <input class="form-control" type="text" /> </td>
+                    </tr>
+                    <tr>
+                        <td class="fundo-tabela"> Houve rompimento nos pés </td>
+                        <td> <input class="form-control" type="text" /> </td>
+                    </tr>
+                    <tr>
+                        <td class="fundo-tabela"> Apresentou algo que prejudique o seu comprometimento de uso </td>
+                        <td> <input class="form-control" type="text" /> </td>
+                    </tr>
+                </table>
+
+            </td>
+        </tr>
+        <tr>
+            <td class="fundo-tabela"> <strong>Ponto C</strong></td>
+        </tr>
+        <tr>
+            <td>
+                <br />
+                Ângulo encontrado: <input class="form-control" type="text" /> X <input class="form-control" type="text" /> <br /><br />
+                Força aplicada <input class="form-control" type="text" /> Tempo de aplicação da carga <input class="form-control" type="text" /> <br /><br />
+                Quantidade de ciclos <input class="form-control" type="text" /> <br /><br />
+
+                Verificar se após o término do ensaio a amostra apresente algum defeito conforme citado abaixo:
+                <br /><br />
+                <table class="tables table-bordered border-secondary  table-sm">
+
+                    <tr>
+                        <td class="fundo-tabela"> Houve ruptura da estrutura </td>
+                        <td> <input class="form-control" type="text" /> </td>
+                    </tr>
+                    <tr>
+                        <td class="fundo-tabela"> Houve afundamento da espuma </td>
+                        <td> <input class="form-control" type="text" /> </td>
+                    </tr>
+                    <tr>
+                        <td class="fundo-tabela"> Houve rasgo no revestimento </td>
+                        <td> <input class="form-control" type="text" /> </td>
+                    </tr>
+                    <tr>
+                        <td class="fundo-tabela"> Houve rompimento nos pés </td>
+                        <td> <input class="form-control" type="text" /> </td>
+                    </tr>
+                    <tr>
+                        <td class="fundo-tabela"> Apresentou algo que prejudique o seu comprometimento de uso </td>
+                        <td> <input class="form-control" type="text" /> </td>
+                    </tr>
+                </table>
+
+            </td>
+        </tr>
+
+    </table>
+    <br /> <br />
+                <table class="tables table-bordered border-secondary  table-sm">
+                    <tr class="fundo-tabela">
+                        <td colspan=" 4">
+                            Instrumento(s)/Dispositivo(s)/Equipamento(s) Utilizado(s) que Requer(em) Calibração
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Código(s)</td>
+                        <td>Descrição(ões)</td>
+                        <td>Certificado(s)</td>
+                        <td>validade(s)</td>
+                    </tr>
+                </table>
+                <table class="tables table-bordered border-secondary  table-sm">
+                    <tr class="fundo-tabela">
+                        <td colspan=" 4">
+                            Dispositivo(s)/Equipamento(s) Utilizado(s) que Não Requer(em) Calibração
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Código(s)</td>
+                        <td>Descrição(ões)</td>
+                        <td>Certificado(s)</td>
+                        <td>validade(s)</td>
+                    </tr>
+                </table>
+                <table class="tables table-bordered border-secondary  table-sm">
+                    <tr class="fundo-tabela">
+                        <td colspan=" 4">
+                            Matéria(s)-Prima(s) Utilizada(s)
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Código(s)</td>
+                        <td>Descrição(ões)</td>
+                        <td>Certificado(s)</td>
+                        <td>validade(s)</td>
+                    </tr>
+                </table>
+                <table class="tables table-bordered border-secondary  table-sm">
+                    <tr class="fundo-tabela">
+                        <td colspan="4">
+                            Observações
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <textarea class="form-control w-100 mr-2 input">
+
+                            </textarea>
+                        </td>
+                    </tr>
+                </table>
+                <br />
+                <table class="tables table-bordered border-secondary  table-sm">
+                    <tr class="fundo-tabela">
+                        <td colspan=" 4">
+                            Nome(s) do(s) Executor(es)
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><input class="form-control" type="text" /></td>
+                        <td><input class="form-control" type="text" /></td>
+                        <td><input class="form-control" type="text" /></td>
+                        <td><input class="form-control" type="text" /></td>
+                    </tr>
+                </table>
+
+        </body>
+        </html>
