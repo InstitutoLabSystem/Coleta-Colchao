@@ -15,12 +15,16 @@ namespace Coleta_Colchao.Controllers
         {
             return View();
         }
+<<<<<<< Updated upstream
 
         public IActionResult EnsaioBaseCargaEstetica()
         {
             return View();
         }
         public IActionResult EnsaioBaseEstruturaDurabi()
+=======
+        public IActionResult durabilidade()
+>>>>>>> Stashed changes
         {
             return View();
         }
