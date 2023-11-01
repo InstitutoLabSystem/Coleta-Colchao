@@ -6,7 +6,7 @@ namespace Coleta_Colchao.Controllers
     [Authorize]
     public class ColetaController : Controller
     {
-        public IActionResult Index()
+        public IActionResult EnsaioMolas()
         {
             return View();
         }
