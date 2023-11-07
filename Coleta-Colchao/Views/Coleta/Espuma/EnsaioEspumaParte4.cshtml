@@ -1,0 +1,204 @@
+﻿@{
+    Layout = null;
+}
+@{
+    ViewData["Title"] = "Login";
+}
+
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="~/css/coleta.css" asp-append-version="true" />
+    <title>Coleta</title>
+</head>
+<body>
+    <br/>
+        <table class="tables table-bordered border-secondary  table-sm">
+        <thead>
+            <tr>
+                <td><img src="https://www.labsystem-nuvem.com.br/imagens_arq/imagens/img/LabSystem.png" class="imagem" /></td>
+                <td colspan="3" class="fundo-tabela">Coleta De Dados</td>
+                <td class="fundo-tabela">N Os:</td>
+            </tr>
+            <tr>
+                <td colspan="4">Ensaios de Colchão de Espuma (Portaria Inmetro 35)</td>
+                <td rowspan="2"> os aqui</td>
+            </tr>
+            <tr>
+                <td>Inicio:</td>
+                <td><input class="form-control" type="date" /></td>
+                <td>Termino:</td>
+                <td><input class="form-control" type="date" /></td>
+                    </tr>
+                </thead>
+            </table>
+
+            <table class="tables table-bordered border-secondary  table-sm">
+                <tr>
+                    <td>Temperatura Inicial:</td>
+                    <td><input class="form-control" type="date" /></td>
+                    <td>Temperatura Final:</td>
+                    <td><input class="form-control" type="date" /></td>
+                </tr>
+            </table>
+             <br />
+
+    <table class="tables table-bordered border-secondary  table-sm">
+        <tr class="fundo-tabela">
+            <td>Item</td>
+            <td>Descrição</td>
+            <td>Resultado</td>
+        </tr>
+        <tr>
+            <td rowspan="12"> 2 </td>
+            <td class="fundo-tabela"> Identificação </td>
+            <td rowspan="12"> NA </td>
+        </tr>
+        <tr>
+            <td>
+                2.12  Para  os  colchões  e  colchonetes  que  apresentem  resíduos  das  matérias  primas  ou  adesivos, não  nocivos,  entretanto  com  odor  característico  
+                persistente,  a  embalagem  deve  apresentar  o seguinte aviso:  “ATENÇÃO: ESTE PRODUTO PERMANECEU EM LOCAL AREJADO PARA DISSIPAÇÃO DOS VAPORES VOLÁTEIS,
+                ANTES DE SER EMBALADO. AINDA ASSIM, RECOMENDA-SE QUE DESEMBALE O PRODUTO E DEIXE-O POR (X HORAS) EM LOCAL AREJADO, ANTES DO USO". <br /> <br />
+                <select class="form-control" name="Escolha">
+                    <option selected> --- </option>
+                    <option> Sim </option>
+                    <option> Não </option>
+                </select> <br /> <br />
+
+                2.12.1  O  aviso  na  embalagem  deve  ser  apresentado  em  letras  não  inferiores  a  20  mm  de  altura,
+                em negrito, caixa alta e em coloração que se destaque da cor de fundo da embalagem <br /> <br />
+                <select class="form-control"  name="Escolha">
+                    <option selected>---</option>
+                    <option> Sim </option>
+                    <option> Não </option>
+                </select> <br /> <br />
+
+                <table class="tables table-bordered border-secondary  table-sm">
+                    <tr>
+                        <td class="fundo-tabela"> Altura da letra </td>
+                        <td> <input class="form-control" type="text" style="width:100%" /> </td>
+                    </tr>
+                    <tr>
+                        <td class="fundo-tabela"> Está em negrito </td>
+                        <td>
+                            <select class="form-control" name="Escolha" style="width:100%">
+                                <option selected> --- </option>
+                                <option> Sim </option>
+                                <option> Não </option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="fundo-tabela"> Está em caixa alta </td>
+                        <td>
+                            <select class="form-control" name="Escolha" style="width:100%">
+                                <option selected> --- </option>
+                                <option> Sim </option>
+                                <option> Não </option>
+                            </select>
+                        </td>
+                    </tr>
+                </table> <br /> <br />
+                Está em coloração que se destaque da cor do fundo da etiqueta <br /> <br />
+                <input class="form-control" type="text" /> <br /> <br />
+
+                2.13  No  caso  de  declaração  voluntária  do fornecedor  sobre  funcionalidades  dos  colchões  mistos, 
+                as instruções de uso ou de informações ao usuário (manual do produto) devem incluir o seguinte texto: 
+                “As  características  sobre  as  funcionalidades  descritas  a  seguir  não  foram  avaliadas  pelo processo de certificação do produto.”<br /> <br />
+                <select class="form-control" name="Escolha">
+                    <option selected> --- </option>
+                    <option> Sim </option>
+                    <option> Não </option>
+                </select> <br /> <br />
+
+                2.13.1 O texto deve ser em negrito, com o mesmo formato e tamanho de letra da utilizada ndescrição 
+                e em todos os locais onde se descrevam tais funcionalidades. <br /> <br />
+                <select class="form-control" name="Escolha">
+                    <option selected> --- </option>
+                    <option> Sim </option>
+                    <option> Não </option>
+                </select> <br /> <br />
+
+                2.14 Não  é  permitida  a  identificação  de  qualquer  família,  marca,  modelo  ou  nome  de  colchão ou colchonete, 
+                da utilização de quaisquer termos e características diferentes dos de sua constituição real. <br /> <br />
+                <select class="form-control" name="Escolha">
+                    <option selected> --- </option>
+                    <option> Sim </option>
+                    <option> Não </option>
+                </select> <br /> <br />
+
+                2.14.1 É proibido identificar qualquer família, marca, modelo ou nome de colchão ou colchonete  com  numeral  cardinal  e/ou  ordinal,  
+                acompanhado  ou  não  da  letra  “D”,  divergente da(s)  densidade(s)  nominal(is)  apresentada(s)  pela(s)  lâmina(s)  de  espuma(s)  
+                que  constitui(em)  o colchão  ou  colchonete,  exceto  quando  o  numeral  apresentar  mais  que  4  (dígitos), 
+                evitando qualquer  confusão  quanto  à  densidade  do  colchão,  ou  ao  atendimento  a  normas  de  gestão consagradas.  <br /> <br />
+                <select class="form-control" name="Escolha">
+                    <option selected> --- </option>
+                    <option> Sim </option>
+                    <option> Não </option>
+                </select> <br /> <br />
+
+                2.14.2 O requisito estabelecido no subitem anterior aplica-se, também, aos colchões compostos  e/ou  mistos, 
+                cujo  conjunto  de  lâminas  e  estrutura  podem  apresentar  características equivalentes  a  um  colchão  simples  com  densidade  nominal  superior.
+                Nestes  casos,  todas  as lâminas  de  espuma  devem  ter  suas  densidades  nominais  e  espessuras  devidamente  descritas, individualmente,  
+                na  etiqueta  do  colchão,  não  sendo  possível,  na  designação  do  produto,  dar destaque à densidade específica de uma determinada lâmina.<br /> <br />
+                <select class="form-control" name="Escolha">
+                    <option selected> --- </option>
+                    <option> Sim </option>
+                    <option> Não </option>
+                </select> <br /> <br />
+
+                2.14.3 É  proibido  utilizar  de  nomenclatura  com  o  termo  “látex”  para  identificar  qualquer família, marca,
+                modelo ou nome de colchão ou colchonete quando o produto não for constituído integralmente de látex ou sua composição for inferior a 70% de látex.<br /> <br />
+                <select class="form-control" name="Escolha">
+                    <option selected> --- </option>
+                    <option> Sim </option>
+                    <option> Não </option>
+                </select> <br /> <br />
+            </td>
+        </tr>
+    </table>
+    <br />
+
+    <table class="tables table-bordered border-secondary  table-sm">
+        <tr>
+            <td rowspan="12"> 6.2 </td>
+            <td class="fundo-tabela"> Embalagem</td>
+            <td rowspan="12"> NA </td>
+        </tr>
+        <tr>
+            <td>
+                A embalagem deve ser unitária e  garantir a proteçao do produto. <br /> <br />
+                A embalagem é unitária.<br /> <br />
+                <select class="form-control" name="Escolha">
+                    <option selected> --- </option>
+                    <option> Sim </option>
+                    <option> Não </option>
+                </select> <br /> <br />
+
+                A embalagem garante a proteção do produto<br /> <br />
+                <select class="form-control" name="Escolha">
+                    <option selected> --- </option>
+                    <option> Sim </option>
+                    <option> Não </option>
+                </select> <br /> <br />
+
+
+            </td>
+        </tr>
+    </table>
+
+  </body>
+  </html>
+
+
+@if (TempData.ContainsKey("Mensagem"))
+{
+    <script>
+        alert('@Html.Raw(TempData["Mensagem"])');
+
+    </script>
+}
+
+

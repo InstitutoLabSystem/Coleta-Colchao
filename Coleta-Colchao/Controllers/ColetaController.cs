@@ -10,12 +10,26 @@ namespace Coleta_Colchao.Controllers
         {
             return View();
         }
-
-        public IActionResult EnsaioColchaoEspuma()
+        public IActionResult IndexEspuma()
         {
             return View();
         }
-
+        public IActionResult EnsaioEspumaParte1()
+        {
+            return View("Espuma/EnsaioEspumaParte1");
+        }
+        public IActionResult EnsaioEspumaParte2()
+        {
+            return View("Espuma/EnsaioEspumaParte2");
+        }
+        public IActionResult EnsaioEspumaParte3()
+        {
+            return View("Espuma/EnsaioEspumaParte3");
+        }
+        public IActionResult EnsaioEspumaParte4()
+        {
+            return View("Espuma/EnsaioEspumaParte4");
+        }
         public IActionResult EnsaioBaseCargaEstetica()
         {
             return View();
