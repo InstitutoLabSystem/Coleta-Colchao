@@ -42,6 +42,12 @@
         .sessaodois {
             display: none;
         }
+        .estilo-select {
+            background-color: #F0F0F0;
+            border: 1px solid #CCCCCC;
+            padding: 5px;
+            border-radius: 5px;
+        }
     </style>
 </head>
 <body>
@@ -54,11 +60,24 @@
                 </h1>
             </td>
         </tr>
-        <tr class="fundo-tabela">
+        <tr>
+            <td>
+                Tipo De Ensaio:
+            </td>
+            <td >
+                <select id="select" class="estilo-select form-select form-select-lg mb-3 w-100 mb-3" aria-label=".form-select-lg example">
+                    <option selected value="Escolha">Escolha</option>
+                    <option value="Conjugado">Conjugado</option>
+                    <option value="Auxiliar">Auxiliar</option>
+                    <option value="Simples">Simples</option>
+                </select>
+            </td>
+        </tr>
+        <tr class="fundo-tabela descricao-ensaio">
             <td>Descrição</td>
             <td>Abrir</td>
         </tr>
-        <tr>
+        <tr class="simples">
             <td>
                 Coleta Molas (Pré Rolagem)
             </td>
@@ -66,7 +85,7 @@
                 <a href="EnsaioMolasParte1" target="_blank" class="btn btn-success">Abrir Coleta</a>
             </td>
         </tr>
-        <tr>
+        <tr class="simples">
             <td>
                 Coleta Molas Parte 2
             </td>
@@ -75,7 +94,7 @@
             </td>
         </tr>
 
-        <tr>
+        <tr class="simples">
             <td>
                 Coleta Molas Parte 3
             </td>
@@ -83,8 +102,52 @@
                 <a href="EnsaioMolasParte3" target="_blank" class="btn btn-success">Abrir Coleta</a>
             </td>
         </tr>
-        <tr class="fundo-tabela">
+        <tr class="completa">
+            <td>
+                Base Ensaio de Durabilidade 
+            </td>
+            <td>
+                <a href="EnsaioDurabilidade" target="_blank" class="btn btn-success">Abrir Coleta</a>
+            </td>
+        </tr>
+        <tr class="completa">
+            <td>
+                Base Ensaio Impacto Vertical
+            </td>
+            <td>
+                <a href="EnsaioImpacto" target="_blank" class="btn btn-success">Abrir Coleta</a>
+            </td>
+        </tr>
+        <tr class="completa">
+            <td>
+                Base Ensaio Estrutura Durabilidade
+            </td>
+            <td>
+                <a href="EnsaioBaseEstruturaDurabi" target="_blank" class="btn btn-success">Abrir Coleta</a>
+            </td>
+        </tr>
+        <tr class="fundo-tabela descricaoEnsaio">
             <td colspan="2">Identificação de embalagem</td>
+        </tr>
+        <tr class="fundo-tabela descricaoEnsaio">
+            <td>Descrição</td>
+            <td>Abrir</td>
+        </tr>
+        <tr class="embalagem">
+            <td>
+                Identificação e Embalagem parte 1
+            </td>
+            <td>
+                <a href="IdentificacaoEmbalagem1" target="_blank" class="btn btn-success">Abrir Coleta</a>
+            </td>
+        </tr>
+        <tr class="embalagem">
+            <td>
+                Identificação e Embalagem parte 2
+            </td>
+            <td>
+                <a href="IdentificacaoEmbalagem2" target="_blank" class="btn btn-success">Abrir Coleta</a>
+            </td>
         </tr>
     </table>
     @if (TempData.ContainsKey("Mensagem"))
@@ -93,6 +156,73 @@
             alert('@Html.Raw(TempData["Mensagem"])');
         </script>
     }
+    <script>
+        // toda logica para sumir as opções de ensaio na hora que ele escolher, entre as opções.
+        var select = document.getElementById("select");
+        var elementosSimples = document.getElementsByClassName("simples");
+        var elementosCompleto = document.getElementsByClassName("completa");
+        var elementosEmbalagem = document.getElementsByClassName("embalagem");
+        var descricaoEnsaio = document.getElementsByClassName("descricaoEnsaio");
+
+        var select1 = select.value
+
+        for (var i = 0; i < elementosSimples.length; i++) {
+            elementosSimples[i].style.display = 'none';
+        }
+        for (var i = 0; i < elementosCompleto.length; i++) {
+            elementosCompleto[i].style.display = 'none';
+        }
+        for (var i = 0; i < elementosEmbalagem.length; i++) {
+            elementosEmbalagem[i].style.display = 'none';
+        }
+        for (var i = 0; i < descricaoEnsaio.length; i++) {
+            descricaoEnsaio[i].style.display = 'none';
+        }
+       
+    
+        select.addEventListener("change", function () {
+            var select1 = select.value
+        
+            if (select1 == "Simples") {
+ 
+                for (var i = 0; i < elementosCompleto.length; i++) {
+                    elementosCompleto[i].style.display = 'none';
+                }
+            }else{
+                for (var i = 0; i < elementosCompleto.length; i++) {
+                    elementosCompleto[i].style.display = 'table-row';
+                }
+                for (var i = 0; i < descricaoEnsaio.length; i++) {
+                    descricaoEnsaio[i].style.display = 'table-row';
+                }
+                for (var i = 0; i < elementosEmbalagem.length; i++) {
+                    elementosEmbalagem[i].style.display = 'table-row';
+                }
+            } 
+
+            if (select1 == "Conjugado" || select1 == "Auxiliar") {
+                for (var i = 0; i < elementosSimples.length; i++) {
+                    elementosSimples[i].style.display = 'table-row';
+                }
+            }
+            if (select1 == "Escolha") {
+                for (var i = 0; i < elementosSimples.length; i++) {
+                    elementosSimples[i].style.display = 'none';
+                }
+                for (var i = 0; i < elementosCompleto.length; i++) {
+                    elementosCompleto[i].style.display = 'none';
+                }
+                for (var i = 0; i < elementosEmbalagem.length; i++) {
+                    elementosEmbalagem[i].style.display = 'none';
+                }
+                for (var i = 0; i < descricaoEnsaio.length; i++) {
+                    descricaoEnsaio[i].style.display = 'none';
+                }
+            }
+
+        });
+       
+    </script>
 </body>
 </html>
 
