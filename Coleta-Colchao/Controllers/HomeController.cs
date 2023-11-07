@@ -4,9 +4,11 @@ using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
 using Coleta_Colchao.Data;
+using Microsoft.AspNetCore.Authorization;
 
 namespace Coleta_Colchao.Controllers
 {
+    [Authorize]
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;

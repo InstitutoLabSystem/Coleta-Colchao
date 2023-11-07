@@ -1,0 +1,100 @@
+﻿@{
+    Layout = null;
+}
+@{
+    ViewData["Title"] = "Login";
+}
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="~/css/coleta.css" asp-append-version="true" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+
+    <style>
+        .full-height {
+            min-height: 80vh;
+            height: 80%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding-top: 80px;
+            padding-bottom: 80px;
+            border-bottom: 2px solid rgba(255,255,255, 0.1);
+        }
+
+        .hidden {
+            opacity: 0;
+            filter: blur(15px);
+            transform: translateX(-100%);
+            transition: all 0.2s;
+        }
+
+        .show {
+            opacity: 1;
+            filter: blur(0);
+            transform: translateX(0);
+            transition: all 0.5s;
+        }
+
+        .sessaodois {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+
+    <table class="tables table-bordered border-secondary  table-sm">
+        <tr class="fundo-tabela">
+            <td colspan="3">
+                <h1>
+                    Coletas De Molas
+                </h1>
+            </td>
+        </tr>
+        <tr class="fundo-tabela">
+            <td>Descrição</td>
+            <td>Abrir</td>
+        </tr>
+        <tr>
+            <td>
+                Coleta Molas (Pré Rolagem)
+            </td>
+            <td>
+                <a href="EnsaioMolasParte1" target="_blank" class="btn btn-success">Abrir Coleta</a>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Coleta Molas Parte 2
+            </td>
+            <td>
+                <a href="EnsaioMolasParte2" target="_blank" class="btn btn-success">Abrir Coleta</a>
+            </td>
+        </tr>
+
+        <tr>
+            <td>
+                Coleta Molas Parte 3
+            </td>
+            <td>
+                <a href="EnsaioMolasParte3" target="_blank" class="btn btn-success">Abrir Coleta</a>
+            </td>
+        </tr>
+        <tr class="fundo-tabela">
+            <td colspan="2">Identificação de embalagem</td>
+        </tr>
+    </table>
+    @if (TempData.ContainsKey("Mensagem"))
+    {
+        <script>
+            alert('@Html.Raw(TempData["Mensagem"])');
+        </script>
+    }
+</body>
+</html>
+
+
+

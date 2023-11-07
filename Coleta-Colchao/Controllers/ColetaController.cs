@@ -6,7 +6,7 @@ namespace Coleta_Colchao.Controllers
     [Authorize]
     public class ColetaController : Controller
     {
-        public IActionResult EnsaioMolas()
+        public IActionResult IndexMolas()
         {
             return View();
         }
@@ -33,6 +33,30 @@ namespace Coleta_Colchao.Controllers
         public IActionResult EnsaioImpacto()
         {
             return View();
+        }
+
+        public IActionResult EnsaioMolasParte1()
+        {
+            return View("Molas/EnsaioMolasParte1");
+        }
+
+        public IActionResult EnsaioMolasParte2()
+        {
+            return View("Molas/EnsaioMolasParte2");
+        }
+
+        public IActionResult EnsaioMolasParte3()
+        {
+            return View("Molas/EnsaioMolasParte3");
+
+        }
+
+        //INICIO DAS FUNÇÕES PARA SALVAR OS DADOS,
+        [HttpPost]
+        public async Task<IActionResult> SalvarColetaMolas1()
+        {
+           TempData["Mensagem"] = "Entrou";
+            return RedirectToAction("EnsaioMolasParte1");
         }
     }
 }
