@@ -1,0 +1,366 @@
+﻿@{
+    Layout = null;
+}
+@{
+    ViewData["Title"] = "Molas Parte 2";
+}
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="~/css/coleta.css" asp-append-version="true" />
+    <style>
+
+    </style>
+</head>
+<body>
+    <table class="tables table-bordered border-secondary  table-sm">
+        <thead>
+            <tr>
+                <td><img src="https://www.labsystem-nuvem.com.br/imagens_arq/imagens/img/LabSystem.png" class="imagem" /></td>
+                <td colspan="3" class="fundo-tabela">Coleta De Dados</td>
+                <td class="fundo-tabela">N Os:</td>
+            </tr>
+            <tr>
+                <td colspan="4">Colchão De Molas (Portaria Inmetro 75)</td>
+                <td rowspan="2"> os aqui</td>
+            </tr>
+            <tr>
+                <td>Inicio:</td>
+                <td><input class="form-control" type="date" /></td>
+                <td>Termino:</td>
+                <td><input class="form-control" type="date" /></td>
+            </tr>
+        </thead>
+    </table>
+    <table class="tables table-bordered border-secondary  table-sm">
+        <tr>
+            <td rowspan="12">7.3/7.4</td>
+            <td class="fundo-tabela">
+                <b> Ensaio de Rolagem</b>
+            </td>
+            <td rowspan="12"></td>
+        </tr>
+        <tr>
+            <td>Posicionar o colchão no equipamento de Rolagem, de forma a não permitir o movimento horizontal durante o ensaio.</td>
+        </tr>
+        <tr>
+            <td>Após posicionado o colchão ajustar o equipamento de modo que o percurso do rolo chegue até 10 cm das bordas. </td>
+        </tr>
+        <tr>
+            <td>Distância das bordas: <input class="form-control" type="text" />  </td>
+        </tr>
+        <tr>
+            <td> Logo após, submeter o colchão a 50000 ciclos a uma frequência de (47 ± 5) m/min. </td>
+        </tr>
+        <tr>
+            <td><b>Nota:</b> Caso o colchão possua duas faces utilizáveis, realizar 25000 ciclos em cada face.</td>
+        </tr>
+        <tr>
+            <td>
+                Quantidade De faces utilizadas:
+                <select name="Escolha">
+                    <option>1</option>
+                    <option>2</option>
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                1º Face:
+                Velocidade do ciclos : <input class="form-control" type="text" />
+                Quantidade de ciclos : <input class="form-control" type="text" />
+
+            </td>
+        </tr>
+        <tr>
+            <td>
+                2º Face:
+                Velocidade do ciclos : <input class="form-control" type="text" />
+                Quantidade de ciclos : <input class="form-control" type="text" />
+
+            </td>
+        </tr>
+        <tr>
+            <td>Após o término do ensaio de rolagem, verificar visualmente as seguintes características: </td>
+        </tr>
+        <tr>
+            <td> Houve rasgos ou engarçamentos no revestimento? <input class="form-control" type="text" /></td>
+        </tr>
+        <tr>
+            <td>Houve quebra de molas no molejo? <input class="form-control" type="text" /> </td>
+        </tr>
+    </table>
+
+    <table class="tables table-bordered border-secondary  table-sm">
+        <tr>
+            <td rowspan="14">---</td>
+            <td class="fundo-tabela">
+                <b>
+                    Determinação da Deformação.
+                </b>
+            </td>
+            <td rowspan="12"></td>
+        </tr>
+        <tr>
+            <td> Este ensaio deve ser realizado somente após o ensaio de rolagem.</td>
+        </tr>
+        <tr>
+            <td> A execução da medição da deformação deve ser efetuado entre 30 minutos e 90 minutos após o término do ensaio de rolagem.</td>
+        </tr>
+        <tr>
+            <td>Tempo de término do ensaio de Rolagem: <input class="form-control" type="text" /></td>
+        </tr>
+        <tr>
+            <td>   Se for identificado na etiqueta que as duas faces do colchão possuem durezas diferentes, a avaliação deve ser efetuada em ambas as faces. </td>
+        </tr>
+        <tr>
+            <td>As faces do colchão possui dureza diferente: <input class="form-control" type="text" /></td>
+        </tr>
+        <tr>
+            <td>
+                Posicionar o colchão em uma superfície plana e rígida maior que a área do colchão. Apoiar uma régua longitudinalmente no centro do colchão de modo a ultrapassar as extremidades.
+                <p>Realizar a medição da acomodação a partir da face superior do colchão e a superfície inferior da régua.</p>
+                <p>A medida da acomodação na região central em relação as extremidades.</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <p><b>Tabela - acomodação maxima da altura</b></p>
+                <table class="tables table-bordered border-secondary  table-sm">
+                    <tr class="fundo-tabela">
+                        <td>Espessura Minima</td>
+                        <td>Espessura Maxima</td>
+                        <td>Espessura Acomodação</td>
+                    </tr>
+                    <tr>
+                        <td>12cm</td>
+                        <td>22cm</td>
+                        <td>6%</td>
+                    </tr>
+                    <tr>
+                        <td>23cm</td>
+                        <td>30cm</td>
+                        <td>8%</td>
+                    </tr>
+                    <tr>
+                        <td>>30cm</td>
+                        <td>---</td>
+                        <td>10%</td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <table>
+                    <tr class="fundo-tabela">
+                        <td>1º Face</td>
+                        <td>2º Face</td>
+                    </tr>
+
+                    <tr>
+                        <td>Espessura inicial: <input class="form-control" type="text" /></td>
+                        <td>Espessura inicial: <input class="form-control" type="text" /></td>
+                    </tr>
+                    <tr>
+                        <td>Medição da deformação:<input class="form-control" type="text" /> </td>
+                        <td>Medição da deformação:<input class="form-control" type="text" /> </td>
+                    </tr>
+                    <tr>
+                        <td>Acomodação especificada:<input class="form-control" type="text" /> </td>
+                        <td>Acomodação especificada:<input class="form-control" type="text" /> </td>
+                    </tr>
+                    <tr>
+                        <td>Acomodação encontrada:<input class="form-control" readonly type="text" /></td>
+                        <td>Acomodação encontrada:<input class="form-control" readonly type="text" /></td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+    </table>
+
+    <table class="tables table-bordered border-secondary  table-sm">
+        <tr>
+            <td rowspan="12"></td>
+            <td class="fundo-tabela">
+                <b>
+                    Determinação da Indentação - Após do ensaio de Rolagem
+                </b>
+            </td>
+            <td rowspan="12"></td>
+        </tr>
+        <tr>
+            <td>
+                Deixar o Indentador cair por gravidade sobre a superfície do colchão a ser avaliada, de uma altura sempre a partir da espessura inicial do colchão.
+            </td>
+        </tr>
+        <tr>
+            <td>Altura da queda: <input class="form-control" type="text" /></td>
+        </tr>
+        <tr>
+            <td>
+                Medir a distância Y", entre o ponto de partida do indentador e o ponto do indentador que mais penetrou colchão.
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <table class="tables table-bordered border-secondary  table-sm">
+                    <p>Repetir este procedimento por 3 vezes</p>
+                    <tr class="fundo-tabela">
+                        <td>Repetições</td>
+                        <td>Distância Y</td>
+                    </tr>
+                    <tr>
+                        <td>1º </td>
+                        <td><input class="form-control" type="text" /></td>
+                    </tr>
+                    <tr>
+                        <td>2º </td>
+                        <td><input class="form-control" type="text" /></td>
+                    </tr>
+                    <tr>
+                        <td>3º </td>
+                        <td><input class="form-control" type="text" /></td>
+                    </tr>
+                    <tr>
+                        <td>Media </td>
+                        <td><input class="form-control" type="text" readonly /></td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                O ensaio deve ser realizado após 30 minutos o término do ensaio de rolagem.
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Tempo de término do ensaio de Rolagem: <input class="form-control" type="text" />
+                <p>Perda Percentual: <input class="form-control" type="text" readonly /></p>
+            </td>
+        </tr>
+    </table>
+
+    <table class="tables table-bordered border-secondary  table-sm">
+        <tr>
+            <td rowspan="25">---</td>
+            <td class="fundo-tabela">
+                <b>
+                    Matelassê e estofamento
+
+                </b>
+            </td>
+            <td rowspan="25"></td>
+        </tr>
+        <tr>
+            <td>
+                <table class="tables table-bordered border-secondary  table-sm">
+                    <p>Tabela - Matelassê e tipos de estofamento </p>
+                    <tr class="fundo-tabela">
+                        <td colspan="2">Tipos de espuma </td>
+                        <td>Espressura minima especificada </td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">Espuma do Matalassê</td>
+                        <td>10,0 mm</td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">Espuma de acabamento (face sup)</td>
+                        <td>20,0 mm</td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">Espuma de acabamento (face inf)</td>
+                        <td>20,0 mm</td>
+                    </tr>
+                    <tr><td rowspan="7">Estofamento</td> </tr>
+
+                    <tr>
+                        <td>Convencional</td>
+                        <td>20,00 mm</td>
+                    </tr>
+                    <tr>
+                        <td>Hipermacia</td>
+                        <td>20,00 mm</td>
+                    </tr>
+                    <tr>
+                        <td>Macia</td>
+                        <td>20,00 mm</td>
+                    </tr>
+                    <tr>
+                        <td>HR</td>
+                        <td>20,00 mm</td>
+                    </tr>
+                    <tr>
+                        <td>Viscoelástica</td>
+                        <td>30,00 mm</td>
+                    </tr>
+                    <tr>
+                        <td>Aglomerado</td>
+                        <td>20,00 mm</td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <table class="tables table-bordered border-secondary  table-sm">
+                    <tr class="fundo-tabela">
+                        <td>Tipos de espuma</td>
+                        <td>Espessura minima Encontrada</td>
+                    </tr>
+                    <tr>
+                        <td><input class="form-control" type="text" /></td>
+                        <td><input class="form-control" type="text" /></td>
+                    </tr>
+                    <tr>
+                        <td><input class="form-control" type="text" /></td>
+                        <td><input class="form-control" type="text" /></td>
+                    </tr>
+                    <tr>
+                        <td><input class="form-control" type="text" /></td>
+                        <td><input class="form-control" type="text" /></td>
+                    </tr>
+                    <tr>
+                        <td><input class="form-control" type="text" /></td>
+                        <td><input class="form-control" type="text" /></td>
+                    </tr>
+                    <tr>
+                        <td><input class="form-control" type="text" /></td>
+                        <td><input class="form-control" type="text" /></td>
+                    </tr>
+                    <tr>
+                        <td><input class="form-control" type="text" /></td>
+                        <td><input class="form-control" type="text" /></td>
+                    </tr>
+                    <tr>
+                        <td><input class="form-control" type="text" /></td>
+                        <td><input class="form-control" type="text" /></td>
+                    </tr>
+                    <tr>
+                        <td><input class="form-control" type="text" /></td>
+                        <td><input class="form-control" type="text" /></td>
+                    </tr>
+                    <tr>
+                        <td><input class="form-control" type="text" /></td>
+                        <td><input class="form-control" type="text" /></td>
+                    </tr>
+                    <tr>
+                        <td><input class="form-control" type="text" /></td>
+                        <td><input class="form-control" type="text" /></td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+    </table>
+
+    @if (TempData.ContainsKey("Mensagem"))
+    {
+        <script>
+            alert('@Html.Raw(TempData["Mensagem"])');
+        </script>
+    }
+</body>
+</html>
