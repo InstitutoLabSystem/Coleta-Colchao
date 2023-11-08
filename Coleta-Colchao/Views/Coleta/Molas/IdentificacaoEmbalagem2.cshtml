@@ -1,0 +1,277 @@
+﻿@{
+    Layout = null;
+}
+@{
+    ViewData["Title"] = "Identificação e Embalagem parte 2";
+}
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="~/css/coleta.css" asp-append-version="true" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+</head>
+<body>
+
+    <table class="tables table-bordered border-secondary  table-sm">
+        <thead>
+            <tr>
+                <td><img src="https://www.labsystem-nuvem.com.br/imagens_arq/imagens/img/LabSystem.png" class="imagem" /></td>
+                <td colspan="3" class="fundo-tabela">Coleta De Dados</td>
+                <td class="fundo-tabela">N Os:</td>
+            </tr>
+            <tr>
+                <td colspan="4">Colchão De Molas (Portaria Inmetro 75)</td>
+                <td rowspan="2"> os aqui</td>
+            </tr>
+            <tr>
+                <td>Inicio:</td>
+                <td><input class="form-control" type="date" /></td>
+                <td>Termino:</td>
+                <td><input class="form-control" type="date" /></td>
+            </tr>
+        </thead>
+    </table>
+
+    <table class="tables table-bordered border-secondary  table-sm">
+        <tr>
+            <td rowspan="30">Item</td>
+            <td class="fundo-tabela">Descrição</td>
+            <td rowspan="30">Resultado</td>
+        </tr>
+        <tr>
+            <td class="fundo-tabela">OBS: ESSE ENSAIO É PARTE 2 DE IDENTIFICAÇÃO E EMBALAGEM.</td>
+        </tr>
+        <tr>
+            <td>
+                h) Se borda de aço e/ou borda de espuma e/ou outro material: <input type="text" />
+            </td>
+        </tr>
+        <tr>
+            <td>
+                i) Tipo (s) de espuma (s), densidade(s), em kg/m³, e espessura da (s) lâmina (s) de espuma, em cm: <input type="text" />
+            </td>
+        </tr>
+        <tr>
+            <td>
+                j) Composição do revestimento: tecido (composição percentual e gramatura); espuma (densidade) e outros materiais : <input type="text" />
+            </td>
+        </tr>
+        <tr>
+            <td>
+                k) Data de fabricação (dia, mês e ano, nesta ordem):  <input type="text" />
+            </td>
+        </tr>
+        <tr>
+            <td>
+                i) Tipo (s) de espuma (s), densidade(s), em kg/m³, e espessura da (s) lâmina (s) de espuma, em cm:<input type="text" />
+            </td>
+        </tr>
+        <tr>
+            <td>
+                j) Composição do revestimento: tecido (composição percentual e gramatura); espuma (densidade) e outros materiais : <input type="text" />
+            </td>
+        </tr>
+        <tr>
+            <td>
+                k) Data de fabricação (dia, mês e ano, nesta ordem) : <input type="text" />
+            </td>
+        </tr>
+        <tr>
+            <td>
+                l) Identificação do lote ou outra identificação que permita a rastreabilidade do produto : <input type="text" />
+            </td>
+        </tr>
+        <tr>
+            <td>
+                m) País  de origem, não  sendo aceitas  designações através de blocos econômicos, nem indicações por bandeiras de países, somente na embalagem: <input type="text" />
+            </td>
+        </tr>
+        <tr>
+            <td>
+                n) Código  de  barras  comercial,  para  identificação  da  marca,  modelo  e  versões  do  produto, quando existente, no produtos : <input type="text" />
+            </td>
+        </tr>
+        <tr>
+            <td>
+                o) Cuidados mínimos para conservação do produto  : <input type="text" />
+            </td>
+        </tr>
+        <tr>
+            <td>
+                p)  Para  os  colchões  de  molas  combinados,  aviso  de  esclarecimento,  em  negrito,  em  letras com o mesmo formato e tamanho da utilizada na descrição das lâminas, da seguinte forma: <b>“OUTROS MATERIAIS ESTÃO PRESENTES NA MESMA CAMADA DO MOLEJO”.</b> : <input type="text" />
+            </td>
+        </tr>
+        <tr>
+            <td>
+                q) Para os colchões de molas que possuam uma ou mais lâminas constituídas por látex, aviso de  esclarecimento,  em  negrito,  em  letras  com  o  mesmo  formato  e  tamanho  da  utilizada  na descrição  das  lâminas,  da  seguinte  forma:  <b>“A  LÂMINA  DE  LÁTEX  NÃO  FOI  AVALIADA  PELO PROCESSO DE CERTIFICAÇÃO DO PRODUTO”.</b> : <input type="text" />
+            </td>
+        </tr>
+        <tr>
+            <td>
+                r)  Para  os  colchões de  molas  que  possuam  revestimentos  do tipo napa,  courvin,  plásticos e emborrachados,  aviso  de  esclarecimento,  em  letras  não  inferiores  a  2,5  mm    de  altura,  em negrito, caixa alta e em coloração que se destaque da cor de fundo da etiqueta, da seguinte forma:  <b>“O  REVESTIMENTO  NÃO  FOI  AVALIADO  PELO  PROCESSO  DE  CRTIFICAÇÃO  DO PRODUTO.”</b>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <p>Contém a advertência : <input type="text" /></p>
+                <p> Altura da letra: <input type="text" /></p>
+                <p>Está em negrito : <input type="text" /></p>
+                <p>Esta em caixa alta : <input type="text" /></p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                s)  Caso o colchão seja embalado com material plástico, a embalagem deve ser visivelmente marcada,  em  letras  não  inferiores  a  5  mm  de  altura  e  com  destaque  em  negrito,  com  o seguinte  aviso: <b>“PARA  EVITAR  O  PERIGO  DE  ASFIXIA,  MANTER  ESTA  EMBALAGEM  PLÁSTICA FORA DO ALCANCE DE CRIANÇAS”</b> .
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <p>Contém a advertência : <input type="text" /></p>
+                <p> Altura da letra: <input type="text" /></p>
+                <p>Está em negrito : <input type="text" /></p>
+                <p>Esta em caixa alta : <input type="text" /></p>
+            </td>
+        </tr>
+        <tr class="fundo-tabela">
+            <td>
+                6.1 - Instruções de uso
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Os colchões de molas devem ser providos de manual de instruções contendo as seguintes informações:
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Contém instruções de uso: <input type="text" />
+            </td>
+        </tr>
+        <tr>
+            <td>
+                a) Orientações sobre o uso e manutenção do produto: <input type="text" />
+            </td>
+        </tr>
+        <tr>
+            <td>
+                b) Alerta  ao  consumidor,  em  caso  de  colchões  que  utilizem  revestimentos  do  tipo  napa, courvin,  plásticos  e  emborrachados,  que  não  deve  ser  utilizado  álcool  ou  qualquer  tipo  de solvente  orgânico  para limpeza  desses  tipos  de  revestimento,  uma  vez  que  estes  podem danificá-los: <input type="text" />
+            </td>
+        </tr>
+        <tr>
+            <td>
+                c) Desenho  esquemático  do  colchão,  identificando  os  componentes  do  produto  (camadas de conforto, lâminas de espuma existentes, molejos, borda perimetral, revestimento) e seus respectivos  materiais  de  construção  e  especificações  (tipos de  espuma, densidades, tecidos, tipo de molejos, etc.): <input type="text" />
+            </td>
+        </tr>
+        <tr class="fundo-tabela">
+            <td>
+                6.2 - As instruções de uso devem conter o seguinte texto: “IMPORTANTE LER COM ATENÇÃO E GUARDAR PARA EVENTUAIS CONSULTAS”, em letras não inferiores a 5 mm de altura e com destaque em negrito.
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <p>Contém a advertência : <input type="text" /></p>
+                <p> Altura da letra: <input type="text" /></p>
+                <p>Está em negrito : <input type="text" /></p>
+                <p>Esta em caixa alta : <input type="text" /></p>
+            </td>
+        </tr>
+        <tr class="fundo-tabela">
+            <td>
+                Embalagem
+               
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <p>Contém a advertência : <input type="text" /></p>
+                <p> Altura da letra: <input type="text" /></p>
+                <p>Está em negrito : <input type="text" /></p>
+                <p>Esta em caixa alta : <input type="text" /></p>
+            </td>
+        </tr>
+       
+    </table>
+    <div class="d-grid gap-2 d-flex justify-content-center">
+        <button type="submit" class="btn btn-success btn btn-primary btn-md">Salvar</button>
+    </div>
+    @* inicio de outras tabelas *@
+    <table class="tables table-bordered border-secondary  table-sm">
+        <tr class="fundo-tabela">
+            <td colspan=" 4">
+                Instrumento(s)/Dispositivo(s)/Equipamento(s) Utilizado(s) que Requer(em) Calibração
+            </td>
+        </tr>
+        <tr>
+            <td>Código(s)</td>
+            <td>Descrição(ões)</td>
+            <td>Certificado(s)</td>
+            <td>validade(s)</td>
+        </tr>
+    </table>
+    <table class="tables table-bordered border-secondary  table-sm">
+        <tr class="fundo-tabela">
+            <td colspan=" 4">
+                Dispositivo(s)/Equipamento(s) Utilizado(s) que Não Requer(em) Calibração
+            </td>
+        </tr>
+        <tr>
+            <td>Código(s)</td>
+            <td>Descrição(ões)</td>
+            <td>Certificado(s)</td>
+            <td>validade(s)</td>
+        </tr>
+    </table>
+    <table class="tables table-bordered border-secondary  table-sm">
+        <tr class="fundo-tabela">
+            <td colspan=" 4">
+                Matéria(s)-Prima(s) Utilizada(s)
+            </td>
+        </tr>
+        <tr>
+            <td>Código(s)</td>
+            <td>Descrição(ões)</td>
+            <td>Certificado(s)</td>
+            <td>validade(s)</td>
+        </tr>
+    </table>
+    <table class="tables table-bordered border-secondary  table-sm">
+        <tr class="fundo-tabela">
+            <td colspan=" 4">
+                Observações
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <textarea class="form-control w-100 mr-2 input">
+
+                </textarea>
+            </td>
+        </tr>
+    </table>
+    <table class="tables table-bordered border-secondary  table-sm">
+        <tr class="fundo-tabela">
+            <td colspan="4">
+                Nome(s) do(s) Executador(es)
+            </td>
+        </tr>
+        <tr>
+            <td><input type="text" class="form-control" /></td>
+            <td><input type="text" class="form-control" /></td>
+            <td><input type="text" class="form-control" /></td>
+            <td><input type="text" class="form-control" /></td>
+        </tr>
+    </table>
+    
+
+
+    @if (TempData.ContainsKey("Mensagem"))
+    {
+        <script>
+            alert('@Html.Raw(TempData["Mensagem"])');
+        </script>
+    }
+</body>
+</html>

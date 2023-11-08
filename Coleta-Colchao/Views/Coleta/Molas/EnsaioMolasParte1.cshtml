@@ -10,9 +10,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="~/css/coleta.css" asp-append-version="true" />
-    <style>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 
-    </style>
 </head>
 <body>
     <form method="post" asp-controller="Coleta" asp-action="SalvarColetaMolas1">
@@ -278,7 +277,9 @@
                 </td>
             </tr>
         </table>
-        <button type="submit">TESTE</button>
+        <div class="d-grid gap-2 d-flex justify-content-center">
+            <button type="submit" class="btn btn-success btn btn-primary btn-md">Salvar</button>
+        </div>
     </form>
     @if (TempData.ContainsKey("Mensagem"))
     {
