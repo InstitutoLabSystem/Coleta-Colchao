@@ -17,8 +17,10 @@ namespace Coleta_Colchao.Controllers
             _context = colchaoContex;
         }
 
-        public IActionResult IndexMolas()
+        public IActionResult IndexMolas(string os,string orcamento)
         {
+            ViewBag.os = os;
+            ViewBag.orcamento = orcamento;
             return View();
         }
 
@@ -46,18 +48,24 @@ namespace Coleta_Colchao.Controllers
             return View();
         }
 
-        public IActionResult EnsaioMolasParte1()
+        public IActionResult EnsaioMolasParte1(string os, string orcamento)
         {
+            ViewBag.os = os;
+            ViewBag.orcamento = orcamento;
             return View("Molas/EnsaioMolasParte1");
         }
 
-        public IActionResult EnsaioMolasParte2()
+        public IActionResult EnsaioMolasParte2(string os, string orcamento)
         {
+            ViewBag.os = os;
+            ViewBag.orcamento = orcamento;
             return View("Molas/EnsaioMolasParte2");
         }
 
-        public IActionResult EnsaioMolasParte3()
+        public IActionResult EnsaioMolasParte3(string os, string orcamento)
         {
+            ViewBag.os = os;
+            ViewBag.orcamento = orcamento;
             return View("Molas/EnsaioMolasParte3");
 
         }
