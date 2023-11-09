@@ -1,0 +1,143 @@
+﻿@{
+    Layout = null;
+}
+@{
+    ViewData["Title"] = "Login";
+}
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="~/css/coleta.css" asp-append-version="true" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+
+    <style>
+        .full-height {
+            min-height: 80vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding-top: 80px;
+            padding-bottom: 80px;
+            border-bottom: 2px solid rgba(255,255,255, 0.1);
+            align-items: center;
+        }
+
+        .hidden {
+            opacity: 0;
+            filter: blur(15px);
+            transform: translateX(-100%);
+            transition: all 0.2s;
+        }
+
+        .show {
+            opacity: 1;
+            filter: blur(0);
+            transform: translateX(0);
+            transition: all 0.5s;
+        }
+
+        .sessaodois {
+            display: none;
+        }
+
+        .estilo-select {
+            background-color: #F0F0F0;
+            border: 1px solid #CCCCCC;
+            padding: 5px;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <form asp-controller="Coleta" asp-action="SalvarRegistro" method="post" asp-route-os="@ViewData["os"]" asp-route-orcamento="@ViewData["orcamento"]" asp-route-rev="@ViewData["Rev"]">
+    <div class="full-height text-center">
+      
+      <table class="tables table-bordered border-secondary  table-sm">
+          <tr>
+            <td colspan="5" class="fundo-tabela">
+                <h1>
+                    Coletas 
+                </h1>
+            </td>
+
+          </tr>
+          <tr>
+              <td> Orçamento : </td>
+                    <td colspan="4"> <input class="form-control" type="text" value="@ViewBag.orcamento" /> </td>
+          </tr>
+        <tr>
+            <td> Ordem de serviço : </td>
+                    <td colspan="4"> <input class="form-control" type="text" value="@ViewBag.os" /> </td>
+        </tr>
+        <tr>
+            <td > Contém Lacre : </td>
+            <td> <input class="form-control" type="text" name="lacre"/> </td>
+            <td> Local da realizaçãp dos ensaios : </td>
+            <td colspan="2"> <input class="form-control" type="text"  name="realizacao_ensaios"/> </td>
+        </tr>
+        <tr>
+            <td> Quantidade recebida : </td>
+                    <td> <input class="form-control" type="text" name="quant_recebida" /> </td>
+            <td> Quantidade Ensaiada :  </td>
+                    <td colspan="2"> <input class="form-control" type="text" name="quant_ensaiada" /> </td>
+        </tr>
+        <tr>
+            <td> Data de realização dos ensaios: </td>
+            <td> Ínicio: </td>
+                    <td> <input class="form-control" type="text" name="data_realizacao_ini" /> </td>
+            <td> Término :  </td>
+                    <td> <input class="form-control" type="text" name="data_realizacao_term" /> </td>
+        </tr>
+       </table>
+ 
+
+    <table class="tables table-bordered border-secondary  table-sm">
+        <tr>
+            <td>
+                Tipo De Ensaio:
+            </td>
+            <td>
+                <select name="tipo_ensaio" class="estilo-select form-select form-select-lg mb-3 w-100 mb-3" aria-label=".form-select-lg example">
+                    <option value="Escolha">Escolha</option>
+                    <option value="Conjugado">Conjugado</option>
+                    <option value="Auxiliar">Auxiliar</option>
+                    <option value="Simples">Simples</option>
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                 Ensaio :
+            </td>
+            <td>
+                <select name="ensaio" class="estilo-select form-select form-select-lg mb-3 w-100 mb-3" aria-label=".form-select-lg example">
+                    <option value="Escolha">Escolha</option>
+                    <option value="Molas"> Colchão de Molas</option>
+                    <option value="Espuma">Colchão de Espuma</option>
+                    <option value="LAamina"> Lâmina </option>
+                </select>
+            </td>
+        </tr>
+        <tr>
+        <td colspan="5">
+            <button type="submit" class="btn btn-success"> Salvar Informações</button>
+        </td>
+        </tr>
+    </table>
+    </div>
+    </form>
+    @if (TempData.ContainsKey("Mensagem"))
+    {
+        <script>
+            alert('@Html.Raw(TempData["Mensagem"])');
+        </script>
+    }
+    
+</body>
+</html>
+
+
+

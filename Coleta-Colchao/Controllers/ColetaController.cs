@@ -1,4 +1,5 @@
 ﻿using Coleta_Colchao.Data;
+using Coleta_Colchao.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
@@ -17,14 +18,16 @@ namespace Coleta_Colchao.Controllers
             _context = colchaoContex;
         }
 
-        public IActionResult IndexMolas(string os,string orcamento)
+        public IActionResult Index(string os, string orcamento)
         {
             ViewBag.os = os;
             ViewBag.orcamento = orcamento;
             return View();
         }
-        public IActionResult IndexEspuma()
+        public IActionResult IndexEspuma(string os, string orcamento)
         {
+            ViewBag.os = os;
+            ViewBag.orcamento = orcamento;
             return View();
         }
         public IActionResult EnsaioEspumaParte1()
@@ -94,6 +97,46 @@ namespace Coleta_Colchao.Controllers
         }
 
         //INICIO DAS FUNÇÕES PARA SALVAR OS DADOS,
+
+        [HttpPost]
+        public async Task<IActionResult> SalvarRegistro(string os, string orcamento, [Bind("lacre,realizacao_ensaios,quant_recebida,quant_ensaiada,data_realizacao_ini,data_realizacao_term,tipo_ensaio,ensaio")] ColetaModel.Registro registro)
+        {
+
+
+            string lacre = registro.lacre;
+            string realizacao_ensaios = registro.realizacao_ensaios;
+            string quant_recebida = registro.quant_recebida;
+            string quant_ensaiada = registro.quant_ensaiada;
+            DateOnly data_realizacao_ini = registro.data_realizacao_ini;
+            DateOnly data_realizacao_term = registro.data_realizacao_term;
+            string tipo_ensaio = registro.tipo_ensaio;
+            string ensaio = registro.ensaio;
+
+
+            var salvarRegistro = new ColetaModel.Registro
+            {
+                orcamento = orcamento,
+                os = os,
+                lacre = lacre,
+                realizacao_ensaios = realizacao_ensaios,
+                quant_recebida = quant_recebida,
+                quant_ensaiada = quant_ensaiada,
+                data_realizacao_ini = data_realizacao_ini,
+                data_realizacao_term = data_realizacao_term,
+                tipo_ensaio = tipo_ensaio,
+                ensaio = ensaio,
+            };
+
+            _context.Add(salvarRegistro);
+            await _context.SaveChangesAsync();
+
+            return RedirectToAction(nameof(IndexEspuma), new { os, orcamento });
+
+
+
+
+        }
+
         [HttpPost]
         public async Task<IActionResult> SalvarColetaMolas1()
         {
