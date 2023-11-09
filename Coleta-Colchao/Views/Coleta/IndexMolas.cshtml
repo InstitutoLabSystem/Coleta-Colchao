@@ -42,6 +42,7 @@
         .sessaodois {
             display: none;
         }
+
         .estilo-select {
             background-color: #F0F0F0;
             border: 1px solid #CCCCCC;
@@ -51,7 +52,6 @@
     </style>
 </head>
 <body>
-
     <table class="tables table-bordered border-secondary  table-sm">
         <tr class="fundo-tabela">
             <td colspan="3">
@@ -64,9 +64,9 @@
             <td>
                 Tipo De Ensaio:
             </td>
-            <td >
+            <td>
                 <select id="select" class="estilo-select form-select form-select-lg mb-3 w-100 mb-3" aria-label=".form-select-lg example">
-                    <option selected value="Escolha">Escolha</option>
+                    <option value="Escolha">Escolha</option>
                     <option value="Conjugado">Conjugado</option>
                     <option value="Auxiliar">Auxiliar</option>
                     <option value="Simples">Simples</option>
@@ -82,7 +82,7 @@
                 Coleta Molas (Pré Rolagem)
             </td>
             <td>
-                <a href="EnsaioMolasParte1" target="_blank" class="btn btn-success">Abrir Coleta</a>
+                <a role="button" target="_blank" class="btn btn-success" asp-controller="Coleta" asp-action="EnsaioMolasParte1" asp-route-os="@ViewBag.os" asp-route-orcamento="@ViewBag.orcamento">Abrir Coleta</a>
             </td>
         </tr>
         <tr class="simples">
@@ -90,7 +90,7 @@
                 Coleta Molas Parte 2
             </td>
             <td>
-                <a href="EnsaioMolasParte2" target="_blank" class="btn btn-success">Abrir Coleta</a>
+                <a role="button" target="_blank" class="btn btn-success" asp-controller="Coleta" asp-action="EnsaioMolasParte2" asp-route-os="@ViewBag.os" asp-route-orcamento="@ViewBag.orcamento">Abrir Coleta</a>
             </td>
         </tr>
 
@@ -99,17 +99,17 @@
                 Coleta Molas Parte 3
             </td>
             <td>
-                <a href="EnsaioMolasParte3" target="_blank" class="btn btn-success">Abrir Coleta</a>
+                <a role="button" target="_blank" class="btn btn-success" asp-controller="Coleta" asp-action="EnsaioMolasParte3" asp-route-os="@ViewBag.os" asp-route-orcamento="@ViewBag.orcamento">Abrir Coleta</a>
             </td>
         </tr>
 
 
         <tr class="completa">
             <td>
-                Base Ensaio de Durabilidade 
+                Base Ensaio de Durabilidade
             </td>
             <td>
-                <a href="EnsaioDurabilidade" target="_blank" class="btn btn-success">Abrir Coleta</a>
+                <a  role="button" target="_blank" class="btn btn-success" asp-controller="Coleta" asp-action="EnsaioDurabilidade" asp-route-os="@ViewBag.os" asp-route-orcamento="@ViewBag.orcamento">Abrir Coleta</a>
             </td>
         </tr>
         <tr class="completa">
@@ -117,7 +117,7 @@
                 Base Ensaio Impacto Vertical
             </td>
             <td>
-                <a href="EnsaioImpacto" target="_blank" class="btn btn-success">Abrir Coleta</a>
+                <a role="button" target="_blank" class="btn btn-success" asp-controller="Coleta" asp-action="EnsaioImpacto" asp-route-os="@ViewBag.os" asp-route-orcamento="@ViewBag.orcamento">Abrir Coleta</a>
             </td>
         </tr>
         <tr class="completa">
@@ -125,11 +125,11 @@
                 Base Ensaio Estrutura Durabilidade
             </td>
             <td>
-                <a href="EnsaioBaseEstruturaDurabi" target="_blank" class="btn btn-success">Abrir Coleta</a>
+                <a  target="_blank" class="btn btn-success" asp-controller="Coleta" asp-action="EnsaioBaseEstruturaDurabi" asp-route-os="@ViewBag.os" asp-route-orcamento="@ViewBag.orcamento">Abrir Coleta</a>
             </td>
         </tr>
         <tr class="fundo-tabela descricaoEnsaio">
-            <td colspan="2">Identificação de embalagem</td>
+            <td colspan="2">Identificação e Embalagem</td>
         </tr>
         <tr class="fundo-tabela descricaoEnsaio">
             <td>Descrição</td>
@@ -140,7 +140,7 @@
                 Identificação e Embalagem parte 1
             </td>
             <td>
-                <a href="IdentificacaoEmbalagem1" target="_blank" class="btn btn-success">Abrir Coleta</a>
+                <a role="button" target="_blank" class="btn btn-success" asp-controller="Coleta" asp-action="IdentificacaoEmbalagem1" asp-route-os="@ViewBag.os" asp-route-orcamento="@ViewBag.orcamento">Abrir Coleta</a>
             </td>
         </tr>
         <tr class="embalagem">
@@ -148,7 +148,7 @@
                 Identificação e Embalagem parte 2
             </td>
             <td>
-                <a href="IdentificacaoEmbalagem2" target="_blank" class="btn btn-success">Abrir Coleta</a>
+                <a role="button" target="_blank" class="btn btn-success" asp-controller="Coleta" asp-action="IdentificacaoEmbalagem2" asp-route-os="@ViewBag.os" asp-route-orcamento="@ViewBag.orcamento">Abrir Coleta</a>
             </td>
         </tr>
     </table>
@@ -180,17 +180,17 @@
         for (var i = 0; i < descricaoEnsaio.length; i++) {
             descricaoEnsaio[i].style.display = 'none';
         }
-       
-    
+
+
         select.addEventListener("change", function () {
             var select1 = select.value
-        
+
             if (select1 == "Simples") {
- 
+
                 for (var i = 0; i < elementosCompleto.length; i++) {
                     elementosCompleto[i].style.display = 'none';
                 }
-            }else{
+            } else {
                 for (var i = 0; i < elementosCompleto.length; i++) {
                     elementosCompleto[i].style.display = 'table-row';
                 }
@@ -200,7 +200,7 @@
                 for (var i = 0; i < elementosEmbalagem.length; i++) {
                     elementosEmbalagem[i].style.display = 'table-row';
                 }
-            } 
+            }
 
             if (select1 == "Conjugado" || select1 == "Auxiliar") {
                 for (var i = 0; i < elementosSimples.length; i++) {
@@ -223,7 +223,7 @@
             }
 
         });
-       
+
     </script>
 </body>
 </html>

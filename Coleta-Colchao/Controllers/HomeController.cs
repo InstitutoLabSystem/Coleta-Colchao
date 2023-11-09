@@ -12,8 +12,8 @@ namespace Coleta_Colchao.Controllers
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
-        private readonly BancoContext  _bancoContext;
-        
+        private readonly BancoContext _bancoContext;
+
         public HomeController(ILogger<HomeController> logger, BancoContext bancoContext)
         {
             _logger = logger;
@@ -28,6 +28,39 @@ namespace Coleta_Colchao.Controllers
         public IActionResult Index()
         {
             return View();
+        }
+
+        public async Task<IActionResult> BuscarOrcamento(string orcamento)
+        {
+            try
+            {
+                var dados = (from p in _bancoContext.ordemservico_laboratorio
+                             join c in _bancoContext.ordemservicocotacao_hc_copylab
+                             on (p.orcamento) equals (c.codigo + c.mes + c.ano)
+                             where p.orcamento == orcamento & p.Laboratorio == "Colchão"
+                             orderby p.OS
+                             select new HomeModel.Resposta
+                             {
+                                 orcamento = p.orcamento,
+                                 OS = p.OS,
+                                 Solicitante = c.Solicitante
+                             }).ToList();
+
+                if (dados.Count != 0)
+                {
+                    return View("Index", dados);
+                }
+                else
+                {
+                    TempData["Mensagem"] = "Orçamento Não Encontrado.";
+                    return View("Index");
+                }
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "Error", ex.Message);
+                throw;
+            }
         }
     }
 }

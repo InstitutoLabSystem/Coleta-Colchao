@@ -1,4 +1,5 @@
-﻿@{
+﻿@model List<HomeModel.Resposta>
+@{
     ViewData["Title"] = "Pagina Inicial";
 }
 
@@ -7,129 +8,76 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
     <title>Document</title>
     <style>
 
-        .body {
-            background-color: #901F14;
-        }
 
-        .full-height {
-            min-height: 80vh;
-            height: 80%;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            padding-top: 80px;
-            padding-bottom: 80px;
-            border-bottom: 2px solid rgba(255,255,255, 0.1);
-        }
-
-        .hidden {
-            opacity: 0;
-            filter: blur(15px);
-            transform: translateX(-100%);
-            transition: all 0.2s;
-        }
-
-        .show {
-            opacity: 1;
-            filter: blur(0);
-            transform: translateX(0);
-            transition: all 0.5s;
-        }
-
-        .sessaodois {
-            display: none;
-        }
 
     </style>
 </head>
 <body class="body">
 
-    <div id="content-wrapper">
 
-        <section id="home" class="full-height hidden">
-
-            <div class="container hidden">
-                <div class="row hidden">
-                    <div class="col-lg-8 hidden">
-                        <h1 class="display-4 fw-bold hidden" style="color: white">COLETA COLCHÃO</h1>
-                        <p class="lead mt-2 mb-4 hidden" style="color:white"> Começar a coleta : </p>
-
-                        <div class="input-group mb-3 hidden">
-                            <input type="text" class="form-control hidden" placeholder=" Escreva a OS" aria-label="Recipient's username" aria-describedby="basic-addon2">
-                            <div class="input-group-append hidden">
-                                <button class="btn btn-outline-secondary hidden" type="submit" onclick="pesquisa()"> Pesquisar </button>
-                            </div>
-
-
-                            <form class="form-inline hidden sessaodois" id="sessao2" asp-controller="Home" asp-action="BuscarOrcamento" method="post">
-                                <div class="container mt-4">
-                                    <div class="row">
-                                        <div class="col-md-3">
-                                            <label style="color:white">Os</label>
-                                            <input type="text" class="form-control" id="" placeholder="Os">
-                                        </div>
-                                        <div class="col-md-3">
-                                            <label style="color:white">Orçamento</label>
-                                            <input type="text" class="form-control" id="" placeholder="Orc">
-                                        </div>
-                                        <div class="form-group">
-                                            <label style="color:white">Descrição</label>
-                                            <textarea class="form-control" placeholder="Descrição" id="" rows="2"></textarea>
-                                        </div>
-                                        <br />
-
-                                        <div class="row">
-                                            <br />
-                                            <div class="col-sm-6">
-                                                <br />
-                                                <div class="card">
-                                                    <div class="card-body">
-                                                        <h5 class="card-title">Ensaio De Molas</h5>
-                                                        <p class="card-text">Coleta</p>
-                                                        <a href="~/Coleta/IndexMolas" target="_blank" class="btn btn-primary">Abrir Coleta</a>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="col-sm-6">
-                                                <br />
-                                                <div class="card">
-                                                    <div class="card-body">
-                                                        <h5 class="card-title">Ensaio de Espuma</h5>
-                                                        <p class="card-text">Coleta</p>
-                                                        <a href="~/Coleta/IndexEspuma" target="_blank" class="btn btn-primary">Abrir Coleta</a>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-sm-6">
-                                            <br />
-                                            <div class="card">
-                                                <div class="card-body">
-                                                    <h5 class="card-title">Ensaio</h5>
-                                                    <p class="card-text">Coleta</p>
-                                                    <a href="#" class="btn btn-primary">Abrir Coleta</a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </form>
+    <form class="form-inline " id="sessao2" asp-controller="Home" asp-action="BuscarOrcamento" method="post">
+        <div class="container ">
+            <div class="row ">
+                <div class="col-lg-8 ">
+                    <h1 class="display-4 fw-bold " style="color: white">COLETA COLCHÃO</h1>
+                    <p class="lead mt-2 mb-4 " style="color:white"> Começar a coleta : </p>
+                    <div class="input-group mb-3 ">
+                        <input type="text" class="form-control " placeholder="Digite o Orçamento" aria-label="Recipient's username" aria-describedby="basic-addon2" name="orcamento">
+                        <div class="input-group-append ">
+                            <button class="btn btn-outline-secondary" type="submit" onclick="pesquisa()"> Pesquisar </button>
                         </div>
                     </div>
                 </div>
             </div>
-        </section>
-    </div>
+        </div>
+    </form>
 
+    @if (Model != null)
+    {
+        <table class="tables table-bordered border-secondary  table-sm">
 
-
-
-
-
-
+            <tr>
+                <td colspan="6">DADOS DA COLETA</td>
+            </tr>
+            <tr>
+                <td>OS:</td>
+                <td>ORCAMENTO</td>
+                <td>Ensaio De Molas</td>
+                <td>Ensaio De Espuma</td>
+                <td>Ensaio De Laminas</td>
+                <td>STATUS</td>
+            </tr>
+            @for (var i = 0; i < Model.Count; i++)
+            {
+                <tr>
+                    <td>
+                        @Model[i].OS
+                    </td>
+                    <td>
+                        @Model[i].orcamento
+                    </td>
+                    <td>
+                        <a role="button" target="_blank" class="btn btn-success" asp-controller="Coleta" asp-action="IndexMolas" asp-route-os="@Model[i].OS" asp-route-orcamento="@Model[i].orcamento">Abrir</a>
+                    </td>
+                    <td>
+                        <a role="button" target="_blank" class="btn btn-success" asp-controller="Coleta" asp-action="IndexMolas">Abrir</a>
+                    </td>
+                    <td>
+                        <a role="button" target="_blank" class="btn btn-success" asp-controller="Coleta" asp-action="IndexMolas">Abrir</a>
+                    </td>
+                    <td>
+                        teste
+                    </td>
+                </tr>
+            }
+        </table>
+    }
 
 </body>
 </html>
@@ -141,7 +89,7 @@
 
     </script>
 
-    <script>
+    @* <script>
 
         const myObserver = new IntersectionObserver((entries) => {
             entries.forEach((entry) => {
@@ -170,6 +118,6 @@
                 sessao2.classList.remove("sessaodois");
             }
         }
-    </script>
+    </script> *@
 
 }
