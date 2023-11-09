@@ -8,76 +8,95 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="~/css/coleta.css" asp-append-version="true" />
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-
     <title>Document</title>
     <style>
 
+        body {
+            font-family: Arial;
+        }
+        .custom-container {
+            text-align: center;
+        }
 
-
+        .tables {
+          
+            width: 98%;
+           
+        }
+        .fundo-tabela {
+            background: #800000;
+            color: white;
+        }
     </style>
+
 </head>
 <body class="body">
 
-
-    <form class="form-inline " id="sessao2" asp-controller="Home" asp-action="BuscarOrcamento" method="post">
-        <div class="container ">
-            <div class="row ">
-                <div class="col-lg-8 ">
-                    <h1 class="display-4 fw-bold " style="color: white">COLETA COLCHÃO</h1>
-                    <p class="lead mt-2 mb-4 " style="color:white"> Começar a coleta : </p>
-                    <div class="input-group mb-3 ">
-                        <input type="text" class="form-control " placeholder="Digite o Orçamento" aria-label="Recipient's username" aria-describedby="basic-addon2" name="orcamento">
-                        <div class="input-group-append ">
-                            <button class="btn btn-outline-secondary" type="submit" onclick="pesquisa()"> Pesquisar </button>
+    <div class="custom-container">
+        <form class="form-inline " asp-controller="Home" asp-action="BuscarOrcamento" method="post">
+            <div class="container mt-4" style="text-align:center; align-items:center;">
+                <div class="row ">
+                    <div>
+                        <h1 class="display-4 fw-bold ">COLETA COLCHÃO</h1>
+                        <div class="input-group ">
+                            <input type="text" class="form-control col-md-12 " placeholder="Digite o Orçamento" aria-label="Recipient's username" aria-describedby="basic-addon2" name="orcamento">
+                            <div class="input-group-append  col-md-1">
+                                <button class="btn btn-primary " type="submit"> Pesquisar </button>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
+        </form>
+
+
+        @if (Model != null)
+        {
+
+            <div class="custom-container-wrapper mb-3">
+                <div class="form-row mt-4">
+                    <table class="tables table-bordered table-striped  table-sm">
+                        <tr>
+                            <td class="fundo-tabela" colspan="6">DADOS DA COLETA</td>
+                        </tr>
+                        <tr class="fundo-tabela">
+                            <td>OS</td>
+                            <td>ORCAMENTO</td>
+                            <td>ENSAIO DE MOLAS</td>
+                            <td>ENSAIO DE ESPUMA</td>
+                            <td>ENSAIO DE LAMINAS</td>
+                            <td>STATUS</td>
+                        </tr>
+                        @for (var i = 0; i < Model.Count; i++)
+                        {
+                            <tr>
+                                <td>
+                                    @Model[i].OS
+                                </td>
+                                <td>
+                                    @Model[i].orcamento
+                                </td>
+                                <td>
+                                    <a role="button" target="_blank" class="btn btn-success" asp-controller="Coleta" asp-action="IndexMolas" asp-route-os="@Model[i].OS" asp-route-orcamento="@Model[i].orcamento">Abrir</a>
+                                </td>
+                                <td>
+                                    <a role="button" target="_blank" class="btn btn-success" asp-controller="Coleta" asp-action="IndexMolas">Abrir</a>
+                                </td>
+                                <td>
+                                    <a role="button" target="_blank" class="btn btn-success" asp-controller="Coleta" asp-action="IndexMolas">Abrir</a>
+                                </td>
+                                <td>
+                                    teste
+                                </td>
+                            </tr>
+                        }
+                    </table>
+                </div>
+            </div>
+        }
         </div>
-    </form>
-
-    @if (Model != null)
-    {
-        <table class="tables table-bordered border-secondary  table-sm">
-
-            <tr>
-                <td colspan="6">DADOS DA COLETA</td>
-            </tr>
-            <tr>
-                <td>OS:</td>
-                <td>ORCAMENTO</td>
-                <td>Ensaio De Molas</td>
-                <td>Ensaio De Espuma</td>
-                <td>Ensaio De Laminas</td>
-                <td>STATUS</td>
-            </tr>
-            @for (var i = 0; i < Model.Count; i++)
-            {
-                <tr>
-                    <td>
-                        @Model[i].OS
-                    </td>
-                    <td>
-                        @Model[i].orcamento
-                    </td>
-                    <td>
-                        <a role="button" target="_blank" class="btn btn-success" asp-controller="Coleta" asp-action="IndexMolas" asp-route-os="@Model[i].OS" asp-route-orcamento="@Model[i].orcamento">Abrir</a>
-                    </td>
-                    <td>
-                        <a role="button" target="_blank" class="btn btn-success" asp-controller="Coleta" asp-action="IndexMolas">Abrir</a>
-                    </td>
-                    <td>
-                        <a role="button" target="_blank" class="btn btn-success" asp-controller="Coleta" asp-action="IndexMolas">Abrir</a>
-                    </td>
-                    <td>
-                        teste
-                    </td>
-                </tr>
-            }
-        </table>
-    }
 
 </body>
 </html>
@@ -88,36 +107,5 @@
         alert('@Html.Raw(TempData["Mensagem"])');
 
     </script>
-
-    @* <script>
-
-        const myObserver = new IntersectionObserver((entries) => {
-            entries.forEach((entry) => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('show')
-                } else {
-                    entry.target.classList.remove('show')
-                }
-
-            })
-
-        })
-
-        const elements = document.querySelectorAll('.hidden')
-        elements.forEach((element) => myObserver.observe(element))
-
-    </script>
-    <script>
-        function pesquisa() {
-
-            var sessao2 = document.getElementById("sessao2");
-
-            // Verifique se a seção está oculta
-            if (sessao2.classList.contains("sessaodois")) {
-                // Se estiver oculta, remova a classe "hidden" para exibi-la
-                sessao2.classList.remove("sessaodois");
-            }
-        }
-    </script> *@
 
 }
