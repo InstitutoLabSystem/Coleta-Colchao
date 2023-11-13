@@ -2,11 +2,12 @@
   "ExpandedNodes": [
     "",
     "\\Coleta-Colchao",
+    "\\Coleta-Colchao\\Controllers",
     "\\Coleta-Colchao\\Views",
     "\\Coleta-Colchao\\Views\\Coleta",
     "\\Coleta-Colchao\\wwwroot",
     "\\Coleta-Colchao\\wwwroot\\css"
   ],
-  "SelectedNode": "\\Coleta-Colchao\\Views\\Coleta\\IndexEspuma.cshtml",
+  "SelectedNode": "\\Coleta-Colchao\\Controllers\\HomeController.cs",
   "PreviewInSolutionExplorer": false
 }

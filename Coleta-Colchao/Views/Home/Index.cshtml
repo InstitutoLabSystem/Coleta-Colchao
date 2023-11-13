@@ -16,15 +16,15 @@
         body {
             font-family: Arial;
         }
+
         .custom-container {
             text-align: center;
         }
 
         .tables {
-          
             width: 98%;
-           
         }
+
         .fundo-tabela {
             background: #800000;
             color: white;
@@ -41,7 +41,7 @@
                     <div>
                         <h1 class="display-4 fw-bold ">COLETA COLCHÃO</h1>
                         <div class="input-group ">
-                            <input type="text" class="form-control col-md-12 " placeholder="Digite o Orçamento" aria-label="Recipient's username" aria-describedby="basic-addon2" name="orcamento">
+                            <input type="text" class="form-control col-md-12 " placeholder="Digite a Ordem De Serviço" aria-label="Recipient's username" aria-describedby="basic-addon2" name="os">
                             <div class="input-group-append  col-md-1">
                                 <button class="btn btn-primary " type="submit"> Pesquisar </button>
                             </div>
@@ -64,10 +64,9 @@
                         <tr class="fundo-tabela">
                             <td>OS</td>
                             <td>ORCAMENTO</td>
-                            <td>ENSAIO DE MOLAS</td>
-                            <td>ENSAIO DE ESPUMA</td>
-                            <td>ENSAIO DE LAMINAS</td>
+                            <td>DESCRIÇÃO</td>
                             <td>STATUS</td>
+                            <td>ENSAIO</td>
                         </tr>
                         @for (var i = 0; i < Model.Count; i++)
                         {
@@ -79,16 +78,13 @@
                                     @Model[i].orcamento
                                 </td>
                                 <td>
-                                    <a role="button" target="_blank" class="btn btn-success" asp-controller="Coleta" asp-action="Index" asp-route-os="@Model[i].OS" asp-route-orcamento="@Model[i].orcamento">Abrir</a>
-                                </td>
-                                <td>
-                                    <a role="button" target="_blank" class="btn btn-success" asp-controller="Coleta" asp-action="IndexMolas">Abrir</a>
-                                </td>
-                                <td>
-                                    <a role="button" target="_blank" class="btn btn-success" asp-controller="Coleta" asp-action="IndexMolas">Abrir</a>
+                                    @Model[i].descricao
                                 </td>
                                 <td>
                                     teste
+                                </td>
+                                <td>
+                                    <a role="button" target="_blank" class="btn btn-success" asp-controller="Coleta" asp-action="Index" asp-route-os="@Model[i].OS" asp-route-orcamento="@Model[i].orcamento">Abrir</a>
                                 </td>
                             </tr>
                         }
@@ -96,7 +92,7 @@
                 </div>
             </div>
         }
-        </div>
+    </div>
 
 </body>
 </html>

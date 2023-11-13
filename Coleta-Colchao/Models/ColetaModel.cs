@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using Microsoft.CodeAnalysis.Classification;
+using System.ComponentModel.DataAnnotations;
 
 namespace Coleta_Colchao.Models
 {

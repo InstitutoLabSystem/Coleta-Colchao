@@ -1,0 +1,98 @@
+﻿@{
+    Layout = null;
+}
+@{
+    ViewData["Title"] = "Molas Parte ";
+}
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="~/css/coleta.css" asp-append-version="true" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+</head>
+<body>
+    <table class="tables table-bordered border-secondary  table-sm">
+        <thead>
+            <tr>
+                <td><img src="https://www.labsystem-nuvem.com.br/imagens_arq/imagens/img/LabSystem.png" class="imagem" /></td>
+                <td colspan="3" class="fundo-tabela">Coleta De Dados</td>
+                <td class="fundo-tabela">N Os:</td>
+            </tr>
+            <tr>
+                <td colspan="4">Colchão De Molas (Portaria Inmetro 75)</td>
+                <td rowspan="2"> @ViewBag.os</td>
+            </tr>
+            <tr>
+                <td>Inicio:</td>
+                <td><input class="form-control" type="date" /></td>
+                <td>Termino:</td>
+                <td><input class="form-control" type="date" /></td>
+            </tr>
+        </thead>
+    </table>
+
+    <table class="tables table-bordered border-secondary  table-sm">
+        <tr>
+            <td>Temperatura Inicial:</td>
+            <td><input class="form-control" type="date" /></td>
+            <td>Temperatura Final:</td>
+            <td><input class="form-control" type="date" /></td>
+        </tr>
+    </table>
+    <br />
+    <table class="tables table-bordered border-secondary  table-sm">
+        <tr class="fundo-tabela">
+            <td>Item</td>
+            <td>Descrição</td>
+            <td>Resultado</td>
+        </tr>
+        <tr>
+            <td rowspan="4">7.1</td>
+            <td>
+                <b>Pré - Rolagem:</b> Antes de serem efetuadas as inspeções e medições iniciais, deve ser realizada uma pré-rolagem com o rolo nas duas faces do colchão por uma frequência de 50 ciclos (cada face utilizável).
+            </td>
+            <td rowspan="4"></td>
+        </tr>
+        <tr>
+            <td>
+                Quantidade De faces utilizadas:
+                <select name="Escolha">
+                    <option>1</option>
+                    <option>2</option>
+                </select>
+            </td>
+
+        </tr>
+        <tr>
+            <td>
+                1º Face:
+                Velocidade do ciclos : <input class="form-control" type="text" />
+                Quantidade de ciclos : <input class="form-control" type="text" />
+
+            </td>
+        </tr>
+        <tr>
+            <td>
+                2º Face:
+                Velocidade do ciclos : <input class="form-control" type="text" />
+                Quantidade de ciclos : <input class="form-control" type="text" />
+
+            </td>
+        </tr>
+    </table>
+    <br />
+    <div class="d-grid gap-2 d-flex justify-content-center">
+        <button type="submit" class="btn btn-success btn btn-primary btn-md">Salvar</button>
+    </div>
+   
+    @if (TempData.ContainsKey("Mensagem"))
+    {
+        <script>
+            alert('@Html.Raw(TempData["Mensagem"])');
+        </script>
+    }
+</body>
+</html>

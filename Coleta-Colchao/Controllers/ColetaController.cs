@@ -65,27 +65,57 @@ namespace Coleta_Colchao.Controllers
             return View();
         }
 
-        public IActionResult EnsaioMolasParte1(string os, string orcamento)
+        public IActionResult EnsaioMolas7_1(string os, string orcamento)
         {
             ViewBag.os = os;
             ViewBag.orcamento = orcamento;
-            return View("Molas/EnsaioMolasParte1");
+            return View("Molas/EnsaioMolas7_1");
         }
-
-        public IActionResult EnsaioMolasParte2(string os, string orcamento)
+        public IActionResult EnsaioMolas7_2(string os, string orcamento)
         {
             ViewBag.os = os;
             ViewBag.orcamento = orcamento;
-            return View("Molas/EnsaioMolasParte2");
+            return View("Molas/EnsaioMolas7_2");
         }
-
-        public IActionResult EnsaioMolasParte3(string os, string orcamento)
+        public IActionResult EnsaioMolas7_6(string os, string orcamento)
         {
             ViewBag.os = os;
             ViewBag.orcamento = orcamento;
-            return View("Molas/EnsaioMolasParte3");
-
+            return View("Molas/EnsaioMolas7_6");
         }
+
+        public IActionResult EnsaioMolas7_3(string os, string orcamento)
+        {
+            ViewBag.os = os;
+            ViewBag.orcamento = orcamento;
+            return View("Molas/EnsaioMolas7_3");
+        }
+        public IActionResult EnsaioMolas7_7(string os, string orcamento)
+        {
+            ViewBag.os = os;
+            ViewBag.orcamento = orcamento;
+            return View("Molas/EnsaioMolas7_7");
+        }
+        public IActionResult EnsaioMolas7_5(string os, string orcamento)
+        {
+            ViewBag.os = os;
+            ViewBag.orcamento = orcamento;
+            return View("Molas/EnsaioMolas7_5");
+        }
+        public IActionResult EnsaioMolas7_8(string os, string orcamento)
+        {
+            ViewBag.os = os;
+            ViewBag.orcamento = orcamento;
+            return View("Molas/EnsaioMolas7_8");
+        }
+        public IActionResult EnsaioMolas4_3(string os, string orcamento)
+        {
+            ViewBag.os = os;
+            ViewBag.orcamento = orcamento;
+            return View("Molas/EnsaioMolas4_3");
+        }
+
+
 
         public IActionResult IdentificacaoEmbalagem1()
         {
