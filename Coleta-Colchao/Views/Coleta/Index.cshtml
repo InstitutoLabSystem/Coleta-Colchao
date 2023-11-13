@@ -1,4 +1,4 @@
-﻿@{
+﻿﻿@{
     Layout = null;
 }
 @{
@@ -11,10 +11,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="~/css/coleta.css" asp-append-version="true" />
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-
-
     <style>
-
         .full-height {
             min-height: 80vh;
             display: flex;
@@ -50,10 +47,13 @@
             padding: 5px;
             border-radius: 5px;
         }
+
+        .fornecedor, .molejo, .bitola, .quant_molas {
+            display:none;
+        }
     </style>
 </head>
 <body>
-
     <form asp-controller="Coleta" asp-action="SalvarRegistro" method="post" asp-route-os="@ViewData["os"]" asp-route-orcamento="@ViewData["orcamento"]" asp-route-rev="@ViewData["Rev"]">
         <div class="full-height text-center">
 
@@ -64,28 +64,19 @@
                             Coletas
                         </h1>
                     </td>
-
                 </tr>
                 <tr>
                     <td> Orçamento : </td>
-                    <td colspan="4"> <input class="form-control" type="text" value="@ViewBag.orcamento" readonly /> </td>
+                    <td colspan="4"> <input class="form-control" type="text" value="@ViewBag.orcamento" /> </td>
                 </tr>
                 <tr>
                     <td> Ordem de serviço : </td>
-                    <td colspan="4"> <input class="form-control" type="text" value="@ViewBag.os" readonly /> </td>
+                    <td colspan="4"> <input class="form-control" type="text" value="@ViewBag.os" /> </td>
                 </tr>
                 <tr>
                     <td> Contém Lacre : </td>
-                    <td colspan="2" >
-                        <div class="ls-custom-select">
-                            <select name="lacre" class="estilo-select" style="width:100%; height:40px;">
-                                <option value="Sim">Sim</option>
-                                <option value="Não">Não</option>
-                            </select>
-                        </div>
-                    </td>
-
-                    <td> Local da realizaçãp dos ensaios: </td>
+                    <td> <input class="form-control" type="text" name="lacre" /> </td>
+                    <td> Local da realizaçãp dos ensaios : </td>
                     <td colspan="2"> <input class="form-control" type="text" name="realizacao_ensaios" /> </td>
                 </tr>
                 <tr>
@@ -97,46 +88,113 @@
                 <tr>
                     <td> Data de realização dos ensaios: </td>
                     <td> Ínicio: </td>
-                    <td> <input class="form-control" type="date" name="data_realizacao_ini" /> </td>
+                    <td> <input class="form-control" type="text" name="data_realizacao_ini" /> </td>
                     <td> Término :  </td>
-                    <td> <input class="form-control" type="date" name="data_realizacao_term" /> </td>
+                    <td> <input class="form-control" type="text" name="data_realizacao_term" /> </td>
                 </tr>
             </table>
 
-
             <table class="tables table-bordered border-secondary  table-sm">
                 <tr>
-                    <td>
-                        Tipo De Ensaio:
-                    </td>
-                    <td>
-                        <select  name="tipo_ensaio" class="estilo-select form-select form-select-lg mb-3 w-100 mb-3" aria-label=".form-select-lg example">
-                            <option value="Escolha">Escolha</option>
-                            <option value="Conjugado">Conjugado</option>
-                            <option value="Auxiliar">Auxiliar</option>
-                            <option value="Simples">Simples</option>
+                    <td> Número de processo </td>
+                    <td> <input class="form-control" type="text" name="num_proc" /> </td>
+                    <td> Código de referência </td>
+                    <td> <input class="form-control" type="text" name="cod_ref" /> </td>
+                </tr>
+                <tr>
+                    <td> Tipo de certificação </td>
+                    <td colspan="2"> Modelo de certificação </td>
+                    <td> Tipo de processo: </td>
+                </tr>
+                <tr>
+                    <td> <input class="form-control" type="text" name="tipo_cert" /> </td>
+                    <td colspan="2"> <input class="form-control" type="text" name="modelo_cert" /> </td>
+                    <td> <input class="form-control" type="text" name="tipo_proc" /> </td>
+                </tr>
+                <tr>
+                    <td> Produto </td>
+                    <td colspan="3"> <input class="form-control" type="text" name="produto" /> </td>
+                </tr>
+                <tr>
+                    <td> Estrutura </td>
+                    <td colspan="3"> <input class="form-control" type="text" name="estruturs" /> </td>
+                </tr>
+                <tr>
+                    <td> Tipo de Molejo </td>
+                    <td colspan="3"> <input class="form-control" type="text" name="tipo_molejo" /> </td>
+                </tr>
+                <tr>
+                    <td> Quantidade de Molejo </td>
+                    <td colspan="3">
+                        <select class="form-control" name="quant_molejo">
+                            <option selected> --- </option>
+                            <option value="1"> 1 </option>
+                            <option value="2"> 2 </option>
                         </select>
                     </td>
                 </tr>
                 <tr>
-                    <td>
-                        Ensaio :
-                    </td>
-                    <td>
-                        <select   name="ensaio" class="estilo-select form-select form-select-lg mb-3 w-100 mb-3" aria-label=".form-select-lg example">
-                            <option value="Escolha">Escolha</option>
-                            <option value="Molas"> Colchão de Molas</option>
-                            <option value="Espuma">Colchão de Espuma</option>
-                            <option value="LAamina"> Lâmina </option>
-                        </select>
-                    </td>
+                    <td rowspan="8"> Tipo de mola do molejo </td>
+                    <td> Fornecedor </td>
+                    <td colspan="2"> <input class="form-control" type="text" name="fornecedor_um" /> </td>
+                </tr>
+                <tr class="fornecedor">
+                    <td> Fornecedor </td>
+                    <td colspan="2"> <input class="form-control" type="text" name="fornecedor_dois" /> </td>
+                </tr>
+                <tr class="molejo">
+                    <td> Nome do Molejo </td>
+                    <td colspan="2"> <input class="form-control" type="text" name="nome_molejo_um" /> </td>
+                </tr>
+                <tr>
+                    <td> Nome do Molejo </td>
+                    <td colspan="2"> <input class="form-control" type="text" name="nome_molejo_dois" /> </td>
+                </tr>
+                <tr class="quant_molas">
+                    <td> Quantidade média de molas/m² </td>
+                    <td colspan="2"> <input class="form-control" type="text" name="quant_media_um" /> </td>
+                </tr>
+                <tr>
+                    <td> Quantidade média de molas/m² </td>
+                    <td colspan="2"> <input class="form-control" type="text" name="quant_media_dois" /> </td>
+                </tr>
+                <tr class="bitola">
+                    <td> Bitola do Arame </td>
+                    <td colspan="2"> <input class="form-control" type="text" name="bitola_arame_um" /> </td>
+                </tr>
+                <tr>
+                    <td> Bitola do Arame </td>
+                    <td colspan="2"> <input class="form-control" type="text" name="bitola_arame_dois" /> </td>
+                </tr>
+                <tr>
+                    <td colspan="2">  Borda Pimental </td>
+                    <td colspan="3"> <input class="form-control" type="text" name="borda_peri" /> </td>
+                </tr>
+                <tr>
+                    <td colspan="2">  Isolante </td>
+                    <td colspan="3"> <input class="form-control" type="text" name="isolante" /> </td>
+                </tr>
+                <tr>
+                    <td colspan="2">  Latex </td>
+                    <td colspan="3"> <input class="form-control" type="text" name="latex" /> </td>
+                </tr>
+                <tr>
+                    <td colspan="2">  Napa, Courvin, Plásticos </td>
+                    <td colspan="3"> <input class="form-control" type="text" name="napa_cou_plas" /> </td>
+                </tr>
+                <tr>
+                    <td colspan="2">  Manual de Uso </td>
+                    <td colspan="3"> <input class="form-control" type="text" name="manual" /> </td>
                 </tr>
                 <tr>
                     <td colspan="5">
                         <button type="submit" class="btn btn-success"> Salvar Informações</button>
                     </td>
                 </tr>
+
             </table>
+
+           
         </div>
     </form>
     @if (TempData.ContainsKey("Mensagem"))
@@ -146,8 +204,34 @@
         </script>
     }
 
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            var selectQuantMolas = document.querySelector('select[name="quant_molejo"]');
+
+            selectQuantMolas.addEventListener('change', function () {
+                var selectedValue = selectQuantMolas.value;
+
+                var trFornecedor = document.querySelector('.fornecedor');
+                var trMolejo = document.querySelector('.molejo');
+                var trQuantMolas = document.querySelector('.quant_molas');
+                var trBitola = document.querySelector('.bitola');
+
+                trFornecedor.style.display = 'none';
+                trMolejo.style.display = 'none';
+                trQuantMolas.style.display = 'none';
+                trBitola.style.display = 'none';
+
+                // Mostrar as trs com base no valor selecionado
+                if (selectedValue === '2') {
+                    trFornecedor.style.display = 'table-row';
+                    trMolejo.style.display = 'table-row';
+                    trQuantMolas.style.display = 'table-row';
+                    trBitola.style.display = 'table-row';
+                }
+            });
+        });
+    </script>
+
+   
 </body>
 </html>
-
-
-
