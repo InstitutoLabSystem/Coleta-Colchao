@@ -30,13 +30,17 @@ namespace Coleta_Colchao.Controllers
             ViewBag.orcamento = orcamento;
             return View();
         }
-        public IActionResult EnsaioEspumaParte1()
+        public IActionResult EnsaioEspuma4_1()
         {
-            return View("Espuma/EnsaioEspumaParte1");
+            return View("Espuma/EnsaioEspuma4_1");
         }
-        public IActionResult EnsaioEspumaParte2()
+        public IActionResult EnsaioEspuma4_3()
         {
-            return View("Espuma/EnsaioEspumaParte2");
+            return View("Espuma/EnsaioEspuma4_3");
+        }
+        public IActionResult EnsaioEspuma4_4()
+        {
+            return View("Espuma/EnsaioEspuma4_4");
         }
         public IActionResult EnsaioIdentificacao()
         {
