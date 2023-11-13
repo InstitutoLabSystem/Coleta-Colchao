@@ -1,0 +1,106 @@
+﻿@{
+    Layout = null;
+}
+@{
+    ViewData["Title"] = "Molas Parte ";
+}
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="~/css/coleta.css" asp-append-version="true" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+</head>
+<body>
+    <table class="tables table-bordered border-secondary  table-sm">
+        <thead>
+            <tr>
+                <td><img src="https://www.labsystem-nuvem.com.br/imagens_arq/imagens/img/LabSystem.png" class="imagem" /></td>
+                <td colspan="3" class="fundo-tabela">Coleta De Dados</td>
+                <td class="fundo-tabela">N Os:</td>
+            </tr>
+            <tr>
+                <td colspan="4">Colchão De Molas (Portaria Inmetro 75)</td>
+                <td rowspan="2"> @ViewBag.os</td>
+            </tr>
+            <tr>
+                <td>Inicio:</td>
+                <td><input class="form-control" type="date" /></td>
+                <td>Termino:</td>
+                <td><input class="form-control" type="date" /></td>
+            </tr>
+        </thead>
+    </table>
+
+    <table class="tables table-bordered border-secondary  table-sm">
+        <tr>
+            <td rowspan="12">7.3</td>
+            <td class="fundo-tabela">
+                <b> Ensaio de Rolagem</b>
+            </td>
+            <td rowspan="12">
+                <select class="form-control" name="Escolha" style="height:700px">
+                    <option selected> --- </option>
+                    <option> C </option>
+                    <option> NA </option>
+                    <option> NC </option>
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <td>Posicionar o colchão no equipamento de Rolagem, de forma a não permitir o movimento horizontal durante o ensaio.</td>
+        </tr>
+        <tr>
+            <td>Após posicionado o colchão ajustar o equipamento de modo que o percurso do rolo chegue até 10 cm das bordas. </td>
+        </tr>
+        <tr>
+            <td>Distância das bordas: <input class="form-control" type="text" />  </td>
+        </tr>
+        <tr>
+            <td> Logo após, submeter o colchão a 50000 ciclos a uma frequência de (47 ± 5) m/min. </td>
+        </tr>
+        <tr>
+            <td><b>Nota:</b> Caso o colchão possua duas faces utilizáveis, realizar 25000 ciclos em cada face.</td>
+        </tr>
+        <tr>
+            <td>
+                Quantidade De faces utilizadas:
+                <select name="Escolha">
+                    <option>1</option>
+                    <option>2</option>
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                1º Face:
+                Velocidade do ciclos : <input class="form-control" type="text" />
+                Quantidade de ciclos : <input class="form-control" type="text" />
+
+            </td>
+        </tr>
+        <tr>
+            <td>
+                2º Face:
+                Velocidade do ciclos : <input class="form-control" type="text" />
+                Quantidade de ciclos : <input class="form-control" type="text" />
+
+            </td>
+        </tr>
+    </table>
+    <br />
+    <div class="d-grid gap-2 d-flex justify-content-center">
+        <button type="submit" class="btn btn-success btn btn-primary btn-md">Salvar</button>
+    </div>
+
+
+    @if (TempData.ContainsKey("Mensagem"))
+    {
+        <script>
+            alert('@Html.Raw(TempData["Mensagem"])');
+        </script>
+    }
+</body>
+</html>

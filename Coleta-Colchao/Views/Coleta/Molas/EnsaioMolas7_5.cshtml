@@ -1,0 +1,153 @@
+﻿@{
+    Layout = null;
+}
+@{
+    ViewData["Title"] = "Molas Parte ";
+}
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="~/css/coleta.css" asp-append-version="true" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+</head>
+<body>
+    <table class="tables table-bordered border-secondary  table-sm">
+        <thead>
+            <tr>
+                <td><img src="https://www.labsystem-nuvem.com.br/imagens_arq/imagens/img/LabSystem.png" class="imagem" /></td>
+                <td colspan="3" class="fundo-tabela">Coleta De Dados</td>
+                <td class="fundo-tabela">N Os:</td>
+            </tr>
+            <tr>
+                <td colspan="4">Colchão De Molas (Portaria Inmetro 75)</td>
+                <td rowspan="2"> @ViewBag.os</td>
+            </tr>
+            <tr>
+                <td>Inicio:</td>
+                <td><input class="form-control" type="date" /></td>
+                <td>Termino:</td>
+                <td><input class="form-control" type="date" /></td>
+            </tr>
+        </thead>
+    </table>
+    <table class="tables table-bordered border-secondary  table-sm">
+        <tr>
+            <td rowspan="14">7.5</td>
+            <td class="fundo-tabela">
+                <b>
+                    Determinação da Deformação.
+                </b>
+            </td>
+            <td rowspan="12">
+                <select class="form-control" name="Escolha" style="height:900px; text-align:center">
+                    <option selected> --- </option>
+                    <option> C </option>
+                    <option> NA </option>
+                    <option> NC </option>
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <td> Este ensaio deve ser realizado somente após o ensaio de rolagem.</td>
+        </tr>
+        <tr>
+            <td> A execução da medição da deformação deve ser efetuado entre 30 minutos e 90 minutos após o término do ensaio de rolagem.</td>
+        </tr>
+        <tr>
+            <td>Tempo de término do ensaio de Rolagem: <input class="form-control" type="text" /></td>
+        </tr>
+        <tr>
+            <td>   Se for identificado na etiqueta que as duas faces do colchão possuem durezas diferentes, a avaliação deve ser efetuada em ambas as faces. </td>
+        </tr>
+        <tr>
+            <td>
+                As faces do colchão possui dureza diferente:
+                <select class="form-control" name="Escolha">
+                    <option selected> --- </option>
+                    <option> Sim </option>
+                    <option> Não </option>
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Posicionar o colchão em uma superfície plana e rígida maior que a área do colchão. Apoiar uma régua longitudinalmente no centro do colchão de modo a ultrapassar as extremidades.
+                <p>Realizar a medição da acomodação a partir da face superior do colchão e a superfície inferior da régua.</p>
+                <p>A medida da acomodação na região central em relação as extremidades.</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <p><b>Tabela - acomodação maxima da altura</b></p>
+                <table class="tables table-bordered border-secondary  table-sm">
+                    <tr class="fundo-tabela">
+                        <td>Espessura Minima</td>
+                        <td>Espessura Maxima</td>
+                        <td>Espessura Acomodação</td>
+                    </tr>
+                    <tr>
+                        <td>12cm</td>
+                        <td>22cm</td>
+                        <td>6%</td>
+                    </tr>
+                    <tr>
+                        <td>23cm</td>
+                        <td>30cm</td>
+                        <td>8%</td>
+                    </tr>
+                    <tr>
+                        <td>>30cm</td>
+                        <td>---</td>
+                        <td>10%</td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <table class="tables table-bordered border-secondary  table-sm">
+                    <tr class="fundo-tabela">
+                        <td>1º Face</td>
+                        <td>2º Face</td>
+                    </tr>
+
+                    <tr>
+                        <td>Espessura inicial: <input class="form-control" type="text" /></td>
+                        <td>Espessura inicial: <input class="form-control" type="text" /></td>
+                    </tr>
+                    <tr>
+                        <td>Medição da deformação:<input class="form-control" type="text" /> </td>
+                        <td>Medição da deformação:<input class="form-control" type="text" /> </td>
+                    </tr>
+                    <tr>
+                        <td>Acomodação especificada:<input class="form-control" type="text" /> </td>
+                        <td>Acomodação especificada:<input class="form-control" type="text" /> </td>
+                    </tr>
+                    <tr>
+                        <td>Acomodação encontrada:<input class="form-control" readonly type="text" /></td>
+                        <td>Acomodação encontrada:<input class="form-control" readonly type="text" /></td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+    </table>
+
+
+
+    <br />
+    <div class="d-grid gap-2 d-flex justify-content-center">
+        <button type="submit" class="btn btn-success btn btn-primary btn-md">Salvar</button>
+    </div>
+
+
+    @if (TempData.ContainsKey("Mensagem"))
+    {
+        <script>
+            alert('@Html.Raw(TempData["Mensagem"])');
+        </script>
+    }
+</body>
+</html>

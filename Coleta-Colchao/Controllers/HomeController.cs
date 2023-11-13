@@ -30,25 +30,29 @@ namespace Coleta_Colchao.Controllers
             return View();
         }
 
-        public async Task<IActionResult> BuscarOrcamento(string orcamento)
+        public async Task<IActionResult> BuscarOrcamento(string os)
         {
             try
             {
-                var dados = (from p in _bancoContext.ordemservico_laboratorio
-                             join c in _bancoContext.ordemservicocotacao_hc_copylab
-                             on (p.orcamento) equals (c.codigo + c.mes + c.ano)
-                             where p.orcamento == orcamento & p.Laboratorio == "Colchão"
-                             orderby p.OS
+                var dados = (from p in _bancoContext.programacao_lab_ensaios
+                             join c in _bancoContext.ordemservicocotacaoitem_hc_copylab
+                             on new { Orcamento = p.Orcamento, Item = p.Item }  equals new { Orcamento = c.orcamento, Item = c.Item.ToString()}
+                             join hc in _bancoContext.Wmoddetprod
+                             on c.CodigoEnsaio equals hc.codmaster
+                             where p.OS == os
+                             orderby hc.codigo
                              select new HomeModel.Resposta
                              {
-                                 orcamento = p.orcamento,
+                                 orcamento = p.Orcamento,
                                  OS = p.OS,
-                                 Solicitante = c.Solicitante
+                                 codmaster = hc.codmaster,
+                                 codigo = hc.codigo,
+                                 descricao = hc.descricao,
                              }).ToList();
 
-                if (dados.Count != 0)
+                if (dados != null)
                 {
-                    return View("Index", dados);
+                    return View("Index",dados);
                 }
                 else
                 {
