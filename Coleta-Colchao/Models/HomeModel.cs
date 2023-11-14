@@ -23,6 +23,7 @@ namespace Coleta_Colchao.Models
             public string orcamento { get; set; }
             public string CodigoEnsaio { get; set; }
             public int Item { get; set; }
+            public string ProdEnsaiado { get; set; }
         }
         public class Wmoddetprod
         {
@@ -33,6 +34,16 @@ namespace Coleta_Colchao.Models
             public string descricao { get; set; }
         }
 
+        public class OrdemServico
+        {
+            [Key]
+            public int codigo { get; set; }
+            public string mes { get; set; }
+            public string ano { get; set; }
+            public int Rev { get; set; }
+            public string Solicitante { get; set; }
+        }
+
         public class Resposta
         {
             public string OS { get; set; }
@@ -40,6 +51,7 @@ namespace Coleta_Colchao.Models
             public string codigo { get; set; }
             public string descricao { get; set; }
             public string codmaster { get; set; }
+            public string ProdEnsaiado { get; set; } 
         }
     }
 }

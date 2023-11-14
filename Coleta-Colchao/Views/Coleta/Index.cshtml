@@ -1,6 +1,9 @@
-﻿﻿@{
+﻿@{
     Layout = null;
 }
+@model List<HomeModel.Resposta>
+﻿
+
 @{
     ViewData["Title"] = "Login";
 }
@@ -49,29 +52,30 @@
         }
 
         .fornecedor, .molejo, .bitola, .quant_molas {
-            display:none;
+            display: none;
         }
     </style>
 </head>
 <body>
-    <form asp-controller="Coleta" asp-action="SalvarRegistro" method="post" asp-route-os="@ViewData["os"]" asp-route-orcamento="@ViewData["orcamento"]" asp-route-rev="@ViewData["Rev"]">
+
+    <form asp-controller="Coleta" asp-action="SalvarRegistro" method="post">
         <div class="full-height text-center">
 
             <table class="tables table-bordered border-secondary  table-sm">
                 <tr>
                     <td colspan="5" class="fundo-tabela">
                         <h1>
-                            Coletas
+                            Informações Iniciais
                         </h1>
                     </td>
                 </tr>
                 <tr>
                     <td> Orçamento : </td>
-                    <td colspan="4"> <input class="form-control" type="text" value="@ViewBag.orcamento" /> </td>
+                    <td colspan="4"> <input class="form-control" type="text" value="@ViewBag.orcamento" readonly name="orcamento" /> </td>
                 </tr>
                 <tr>
                     <td> Ordem de serviço : </td>
-                    <td colspan="4"> <input class="form-control" type="text" value="@ViewBag.os" /> </td>
+                    <td colspan="4"> <input class="form-control" type="text" value="@ViewBag.os" readonly  name="os"/> </td>
                 </tr>
                 <tr>
                     <td> Contém Lacre : </td>
@@ -88,9 +92,9 @@
                 <tr>
                     <td> Data de realização dos ensaios: </td>
                     <td> Ínicio: </td>
-                    <td> <input class="form-control" type="text" name="data_realizacao_ini" /> </td>
+                    <td> <input class="form-control" type="date" name="data_realizacao_ini" /> </td>
                     <td> Término :  </td>
-                    <td> <input class="form-control" type="text" name="data_realizacao_term" /> </td>
+                    <td> <input class="form-control" type="date" name="data_realizacao_term" /> </td>
                 </tr>
             </table>
 
@@ -194,9 +198,14 @@
 
             </table>
 
-           
+
         </div>
+
+
     </form>
+    }
+
+
     @if (TempData.ContainsKey("Mensagem"))
     {
         <script>
@@ -232,6 +241,6 @@
         });
     </script>
 
-   
+
 </body>
 </html>
