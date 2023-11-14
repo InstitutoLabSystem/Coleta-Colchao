@@ -6,6 +6,7 @@ using System.Diagnostics;
 using Coleta_Colchao.Data;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.Build.Framework;
+using System.Security.Claims;
 
 namespace Coleta_Colchao.Controllers
 {
@@ -29,8 +30,10 @@ namespace Coleta_Colchao.Controllers
         }
         public IActionResult Index(string os, string orcamento)
         {
+      
             if (os != null)
             {
+              
                 var dados = (from p in _bancoContext.programacao_lab_ensaios
                              join c in _bancoContext.ordemservicocotacaoitem_hc_copylab
                              on new { Orcamento = p.Orcamento, Item = p.Item } equals new { Orcamento = c.orcamento, Item = c.Item.ToString() }

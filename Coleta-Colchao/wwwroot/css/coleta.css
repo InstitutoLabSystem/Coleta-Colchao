@@ -78,3 +78,8 @@ input {
     align-items: center;
 }
 
+.itens{
+    width:40px;
+    font-weight:bold;
+}
+

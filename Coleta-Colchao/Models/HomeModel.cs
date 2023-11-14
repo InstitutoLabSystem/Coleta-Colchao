@@ -23,6 +23,8 @@ namespace Coleta_Colchao.Models
             public string orcamento { get; set; }
             public string CodigoEnsaio { get; set; }
             public int Item { get; set; }
+
+            [MaxLength(60)]
             public string ProdEnsaiado { get; set; }
         }
         public class Wmoddetprod

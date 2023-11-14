@@ -44,5 +44,23 @@ namespace Coleta_Colchao.Models
 
         }
 
+        public class Ensaio4_3
+        {
+            [Key]
+            public int Id { get; set; }
+            public string os { get; set; }
+            public string orcamento { get; set; }
+
+            public string? borda { get; set; }
+            public string? borda1 { get; set; }
+            public DateOnly data_ini { get; set; }
+            public DateOnly data_term { get; set; }
+            public float valor_enc_1 { get; set; }
+            public float valor_enc_2 { get;  set; }
+            public string? man_parale_1 { get; set; }
+            public string? man_parale_2 { get; set; }
+            public string? executor { get; set; }
+        }
+
     }
 }

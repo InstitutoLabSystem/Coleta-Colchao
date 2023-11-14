@@ -3,6 +3,7 @@ using Coleta_Colchao.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Data.Entity;
+using System.Security.Claims;
 
 namespace Coleta_Colchao.Controllers
 {
@@ -22,6 +23,7 @@ namespace Coleta_Colchao.Controllers
 
         public IActionResult Index(string os, string orcamento)
         {
+
             ViewBag.os = os;
             ViewBag.orcamento = orcamento;
             return View();
@@ -29,7 +31,7 @@ namespace Coleta_Colchao.Controllers
         public IActionResult EditarRegistro(string os, string orcamento)
         {
             var dados = _context.regtro_colchao.Where(x => x.os == os && x.orcamento == orcamento).ToList();
-            if(dados != null)
+            if (dados != null)
             {
                 ViewBag.os = os;
                 ViewBag.orcamento = orcamento;
@@ -41,7 +43,7 @@ namespace Coleta_Colchao.Controllers
                 ViewBag.orcamento = orcamento;
                 return View();
             }
-           
+
         }
         public IActionResult EnsaioEspumaParte1()
         {
@@ -123,9 +125,20 @@ namespace Coleta_Colchao.Controllers
         }
         public IActionResult EnsaioMolas4_3(string os, string orcamento)
         {
-            ViewBag.os = os;
-            ViewBag.orcamento = orcamento;
-            return View("Molas/EnsaioMolas4_3");
+            var dados = _context.ensaio_molas_item4_3.Where(x => x.os == os && x.orcamento == orcamento).FirstOrDefault();
+            if(dados == null)
+            {
+                ViewBag.os = os;
+                ViewBag.orcamento = orcamento;
+                return View("Molas/EnsaioMolas4_3");
+            }
+            else
+            {
+                ViewBag.os = os;
+                ViewBag.orcamento = orcamento;
+                return View("Molas/EnsaioMolas4_3",dados);
+            }
+            
         }
 
 
@@ -214,7 +227,7 @@ namespace Coleta_Colchao.Controllers
                 _context.Add(salvarRegistro);
                 await _context.SaveChangesAsync();
                 TempData["Mensagem"] = "Dados Iniciais gravados com Sucesso";
-                return RedirectToAction(nameof(Index),"Home", new {os , orcamento});
+                return RedirectToAction(nameof(Index), "Home", new { os, orcamento });
             }
             catch (Exception ex)
             {
@@ -229,7 +242,7 @@ namespace Coleta_Colchao.Controllers
             var editarValores = _context.regtro_colchao.Where(x => x.os == os && x.orcamento == orcamento).FirstOrDefault();
             try
             {
-                if(editarValores != null)
+                if (editarValores != null)
                 {
                     editarValores.lacre = EditarRegistros.lacre;
                     editarValores.realizacao_ensaios = EditarRegistros.realizacao_ensaios;
@@ -262,7 +275,7 @@ namespace Coleta_Colchao.Controllers
 
                     await _context.SaveChangesAsync();
                     TempData["Mensagem"] = "Dados Editado Com Sucesso";
-                    return RedirectToAction(nameof(EditarRegistro), "Coleta", new {os,orcamento});
+                    return RedirectToAction(nameof(EditarRegistro), "Coleta", new { os, orcamento });
                 }
                 else
                 {
@@ -276,7 +289,55 @@ namespace Coleta_Colchao.Controllers
                 _logger.LogError(ex, "Error", ex.Message);
                 throw;
             }
-           
+        }
+        public async Task<IActionResult> SalvarEnsaio4_3(string os, string orcamento, [Bind("borda,borda1,data_ini,data_term,valor_enc_1,valor_enc_2,man_parale_1,man_parale_2")] ColetaModel.Ensaio4_3 salvarDados)
+        {
+            try
+            {
+                var dados = _context.ensaio_molas_item4_3.Where(x => x.os == os && x.orcamento == orcamento).FirstOrDefault();
+
+                if (dados == null)
+                {
+                    string borda = salvarDados.borda;
+                    string borda1 = salvarDados.borda1;
+                    DateOnly data_ini = salvarDados.data_ini;
+                    DateOnly data_term = salvarDados.data_term;
+                    float valor_enc_1 = salvarDados.valor_enc_1;
+                    float valor_enc_2 = salvarDados.valor_enc_2;
+                    string man_parale_1 = salvarDados.man_parale_1;
+                    string man_parale_2 = salvarDados.man_parale_2;
+
+                    var registro = new ColetaModel.Ensaio4_3
+                    {
+                        os = os,
+                        orcamento = orcamento,
+                        borda = borda,
+                        borda1 = borda1,
+                        data_ini = data_ini,
+                        data_term = data_term,
+                        valor_enc_1 = valor_enc_1,
+                        valor_enc_2 = valor_enc_2,
+                        man_parale_1 = man_parale_1,
+                        man_parale_2 = man_parale_2,
+                    };
+
+                    _context.Add(registro);
+                    await _context.SaveChangesAsync();
+                    TempData["Mensagem"] = "Dados Salvo Com Sucesso";
+                    return View("Molas/EnsaioMolas4_3");
+                }
+                else
+                {
+                    TempData["Mensagem"] = "Dados existente";
+                    return View("Molas/EnsaioMolas4_3");
+                }
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "Error", ex.Message);
+                throw;
+            }
+
         }
     }
 }

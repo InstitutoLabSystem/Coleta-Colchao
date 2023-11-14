@@ -9,6 +9,7 @@ namespace Coleta_Colchao.Data
         {
         }
         public DbSet <ColetaModel.Registro> regtro_colchao { get; set; }  
+        public DbSet<ColetaModel.Ensaio4_3> ensaio_molas_item4_3 { get; set; }
     }
 
 }
