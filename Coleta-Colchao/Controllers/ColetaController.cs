@@ -2,7 +2,7 @@
 using Coleta_Colchao.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-
+using System.Data.Entity;
 
 namespace Coleta_Colchao.Controllers
 {
@@ -12,10 +12,12 @@ namespace Coleta_Colchao.Controllers
         //conexao..
         private readonly ILogger<ColetaController> _logger;
         private readonly ColchaoContext _context;
-        public ColetaController(ILogger<ColetaController> logger, ColchaoContext colchaoContex)
+        private readonly BancoContext _bancoContext;
+        public ColetaController(ILogger<ColetaController> logger, ColchaoContext colchaoContex, BancoContext bancoContext)
         {
             _logger = logger;
             _context = colchaoContex;
+            _bancoContext = bancoContext;
         }
 
         public IActionResult Index(string os, string orcamento)
@@ -24,11 +26,22 @@ namespace Coleta_Colchao.Controllers
             ViewBag.orcamento = orcamento;
             return View();
         }
-        public IActionResult IndexEspuma(string os, string orcamento)
+        public IActionResult EditarRegistro(string os, string orcamento)
         {
-            ViewBag.os = os;
-            ViewBag.orcamento = orcamento;
-            return View();
+            var dados = _context.regtro_colchao.Where(x => x.os == os && x.orcamento == orcamento).ToList();
+            if(dados != null)
+            {
+                ViewBag.os = os;
+                ViewBag.orcamento = orcamento;
+                return View("EditarRegistro", dados);
+            }
+            else
+            {
+                ViewBag.os = os;
+                ViewBag.orcamento = orcamento;
+                return View();
+            }
+           
         }
         public IActionResult EnsaioEspuma4_1()
         {
@@ -133,9 +146,8 @@ namespace Coleta_Colchao.Controllers
         //INICIO DAS FUNÇÕES PARA SALVAR OS DADOS,
 
         [HttpPost]
-        public async Task<IActionResult> SalvarRegistro(string os, string orcamento, [Bind("lacre,realizacao_ensaios,quant_recebida,quant_ensaiada,data_realizacao_ini,data_realizacao_term,tipo_ensaio,ensaio")] ColetaModel.Registro registro)
+        public async Task<IActionResult> SalvarRegistro(string os, string orcamento, [Bind("lacre,realizacao_ensaios,quant_recebida,quant_ensaiada,data_realizacao_ini,data_realizacao_term,num_proc,cod_ref,tipo_cert,modelo_cert,tipo_proc,produto,estrutura,tipo_molejo,quant_molejo,fornecedor_um,fornecedor_dois,nome_molejo_um,nome_molejo_dois,quant_media_um,quant_media_dois,bitola_arame_um,bitola_arame_dois,borda_peri,isolante,latex,napa_cou_plas,manual")] ColetaModel.Registro registro)
         {
-
             try
             {
                 string lacre = registro.lacre;
@@ -144,36 +156,69 @@ namespace Coleta_Colchao.Controllers
                 string quant_ensaiada = registro.quant_ensaiada;
                 DateOnly data_realizacao_ini = registro.data_realizacao_ini;
                 DateOnly data_realizacao_term = registro.data_realizacao_term;
-                string tipo_ensaio = registro.tipo_ensaio;
-                string ensaio = registro.ensaio;
+                string num_proc = registro.num_proc;
+                string cod_ref = registro.cod_ref;
+                string tipo_cert = registro.tipo_cert;
+                string modelo_cert = registro.modelo_cert;
+                string tipo_proc = registro.tipo_proc;
+                string produto = registro.produto;
+                string estrutura = registro.estrutura;
+                string tipo_molejo = registro.tipo_molejo;
+                string quant_molejo = registro.quant_molejo;
+                string fornecedor_um = registro.fornecedor_um;
+                string fornecedor_dois = registro.fornecedor_dois;
+                string nome_molejo_um = registro.nome_molejo_um;
+                string nome_molejo_dois = registro.nome_molejo_dois;
+                string quant_media_um = registro.quant_media_um;
+                string quant_media_dois = registro.quant_media_dois;
+                string bitola_arame_um = registro.bitola_arame_um;
+                string bitola_arame_dois = registro.bitola_arame_dois;
+                string borda_peri = registro.borda_peri;
+                string isolante = registro.isolante;
+                string latex = registro.latex;
+                string napa_cou_plas = registro.napa_cou_plas;
+                string manual = registro.manual;
 
 
-                if (tipo_ensaio != "Escolha" || ensaio != "Escolha")
+                var salvarRegistro = new ColetaModel.Registro
                 {
-                    var salvarRegistro = new ColetaModel.Registro
-                    {
-                        orcamento = orcamento,
-                        os = os,
-                        lacre = lacre,
-                        realizacao_ensaios = realizacao_ensaios,
-                        quant_recebida = quant_recebida,
-                        quant_ensaiada = quant_ensaiada,
-                        data_realizacao_ini = data_realizacao_ini,
-                        data_realizacao_term = data_realizacao_term,
-                        tipo_ensaio = tipo_ensaio,
-                        ensaio = ensaio,
-                    };
+                    orcamento = orcamento,
+                    os = os,
+                    lacre = lacre,
+                    realizacao_ensaios = realizacao_ensaios,
+                    quant_recebida = quant_recebida,
+                    quant_ensaiada = quant_ensaiada,
+                    data_realizacao_ini = data_realizacao_ini,
+                    data_realizacao_term = data_realizacao_term,
+                    num_proc = num_proc,
+                    cod_ref = cod_ref,
+                    tipo_cert = tipo_cert,
+                    modelo_cert = modelo_cert,
+                    tipo_proc = tipo_proc,
+                    produto = produto,
+                    estrutura = estrutura,
+                    tipo_molejo = tipo_molejo,
+                    quant_molejo = quant_molejo,
+                    fornecedor_um = fornecedor_um,
+                    fornecedor_dois = fornecedor_dois,
+                    nome_molejo_um = nome_molejo_um,
+                    nome_molejo_dois = nome_molejo_dois,
+                    quant_media_um = quant_media_um,
+                    quant_media_dois = quant_media_dois,
+                    bitola_arame_um = bitola_arame_um,
+                    bitola_arame_dois = bitola_arame_dois,
+                    borda_peri = borda_peri,
+                    isolante = isolante,
+                    latex = latex,
+                    napa_cou_plas = napa_cou_plas,
+                    manual = manual,
 
-                    _context.Add(salvarRegistro);
-                    await _context.SaveChangesAsync();
-                    TempData["Mensagem"] = "Dados Iniciais gravados com Sucesso";
-                    return RedirectToAction(nameof(Index), new { os, orcamento });
-                }
-                else
-                {
-                    TempData["Mensagem"] = "Você precisar passar o campo tipo de ensaio ou ensaio para salvar.";
-                    return RedirectToAction(nameof(Index), new { os, orcamento });
-                }
+                };
+
+                _context.Add(salvarRegistro);
+                await _context.SaveChangesAsync();
+                TempData["Mensagem"] = "Dados Iniciais gravados com Sucesso";
+                return RedirectToAction(nameof(Index),"Home", new {os , orcamento});
             }
             catch (Exception ex)
             {
@@ -183,10 +228,59 @@ namespace Coleta_Colchao.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> SalvarColetaMolas1()
+        public async Task<IActionResult> EditarRegistro(string os, string orcamento, [Bind("lacre,realizacao_ensaios,quant_recebida,quant_ensaiada,data_realizacao_ini,data_realizacao_term,num_proc,cod_ref,tipo_cert,modelo_cert,tipo_proc,produto,estrutura,tipo_molejo,quant_molejo,fornecedor_um,fornecedor_dois,nome_molejo_um,nome_molejo_dois,quant_media_um,quant_media_dois,bitola_arame_um,bitola_arame_dois,borda_peri,isolante,latex,napa_cou_plas,manual")] ColetaModel.Registro EditarRegistros)
         {
-            TempData["Mensagem"] = "Entrou";
-            return RedirectToAction("EnsaioMolasParte1");
+            var editarValores = _context.regtro_colchao.Where(x => x.os == os && x.orcamento == orcamento).FirstOrDefault();
+            try
+            {
+                if(editarValores != null)
+                {
+                    editarValores.lacre = EditarRegistros.lacre;
+                    editarValores.realizacao_ensaios = EditarRegistros.realizacao_ensaios;
+                    editarValores.quant_recebida = EditarRegistros.quant_recebida;
+                    editarValores.quant_ensaiada = EditarRegistros.quant_ensaiada;
+                    editarValores.data_realizacao_ini = EditarRegistros.data_realizacao_ini;
+                    editarValores.data_realizacao_term = EditarRegistros.data_realizacao_term;
+                    editarValores.num_proc = EditarRegistros.num_proc;
+                    editarValores.cod_ref = EditarRegistros.cod_ref;
+                    editarValores.tipo_cert = EditarRegistros.tipo_cert;
+                    editarValores.modelo_cert = EditarRegistros.modelo_cert;
+                    editarValores.tipo_proc = EditarRegistros.tipo_proc;
+                    editarValores.produto = EditarRegistros.produto;
+                    editarValores.estrutura = EditarRegistros.estrutura;
+                    editarValores.tipo_molejo = EditarRegistros.tipo_molejo;
+                    editarValores.quant_molejo = EditarRegistros.quant_molejo;
+                    editarValores.fornecedor_um = EditarRegistros.fornecedor_um;
+                    editarValores.fornecedor_dois = EditarRegistros.fornecedor_dois;
+                    editarValores.nome_molejo_um = EditarRegistros.nome_molejo_um;
+                    editarValores.quant_media_um = EditarRegistros.quant_media_um;
+                    editarValores.quant_media_dois = EditarRegistros.quant_media_dois;
+                    editarValores.bitola_arame_um = EditarRegistros.bitola_arame_um;
+                    editarValores.bitola_arame_dois = EditarRegistros.bitola_arame_dois;
+                    editarValores.borda_peri = EditarRegistros.borda_peri;
+                    editarValores.isolante = EditarRegistros.isolante;
+                    editarValores.latex = EditarRegistros.latex;
+                    editarValores.napa_cou_plas = EditarRegistros.napa_cou_plas;
+                    editarValores.manual = EditarRegistros.manual;
+
+
+                    await _context.SaveChangesAsync();
+                    TempData["Mensagem"] = "Dados Editado Com Sucesso";
+                    return RedirectToAction(nameof(EditarRegistro), "Coleta", new {os,orcamento});
+                }
+                else
+                {
+                    TempData["Mensagem"] = "Não Foi possivel Editar os dados";
+                    return View("EditarRegistro");
+
+                }
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "Error", ex.Message);
+                throw;
+            }
+           
         }
     }
 }
