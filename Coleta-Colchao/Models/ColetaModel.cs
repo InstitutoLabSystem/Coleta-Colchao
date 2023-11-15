@@ -34,10 +34,10 @@ namespace Coleta_Colchao.Models
             public string? quant_media_um { get; set; }
             public string? quant_media_dois { get; set; }
             public string? bitola_arame_um { get; set; }
-            public string? bitola_arame_dois { get; set; } 
-            public string? borda_peri {  get; set; }
+            public string? bitola_arame_dois { get; set; }
+            public string? borda_peri { get; set; }
             public string? isolante { get; set; }
-            public string? latex { get; set; } 
+            public string? latex { get; set; }
             public string? napa_cou_plas { get; set; }
             public string? manual { get; set; }
             public string? status { get; set; }
@@ -56,10 +56,32 @@ namespace Coleta_Colchao.Models
             public DateOnly data_ini { get; set; }
             public DateOnly data_term { get; set; }
             public float valor_enc_1 { get; set; }
-            public float valor_enc_2 { get;  set; }
+            public float valor_enc_2 { get; set; }
             public string? man_parale_1 { get; set; }
             public string? man_parale_2 { get; set; }
             public string? executor { get; set; }
+        }
+
+        public class Ensaio7_5
+        {
+            [Key]
+            public int Id { get; set; }
+            public string os { get; set; }
+            public string orcamento { get; set; }
+            public DateOnly data_ini { get; set; }
+            public DateOnly data_term { get; set; }
+            public TimeOnly temp_ensaio { get; set; }
+            public string? faces { get; set; }
+            public float esp_face_1 { get; set; }
+            public float med_face_1 { get; set; }
+            public float acom_esp_face_1 { get; set; }
+            public float acom_enc_face_1 { get; set; }
+            public float esp_face_2 { get; set; }
+            public float med_face_2 { get; set; }
+            public float acom_esp_face_2 { get; set; }
+            public float acom_enc_face_2 { get; set; }
+            public string? executor { get; set; }
+            public string? auxiliar { get; set; }
         }
 
     }

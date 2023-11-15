@@ -117,9 +117,19 @@ namespace Coleta_Colchao.Controllers
         }
         public IActionResult EnsaioMolas7_5(string os, string orcamento)
         {
-            ViewBag.os = os;
-            ViewBag.orcamento = orcamento;
-            return View("Molas/EnsaioMolas7_5");
+            var dados = _context.ensaio_molas_item7_5.Where(x => x.os == os && x.orcamento == orcamento).FirstOrDefault();
+            if (dados == null)
+            {
+                ViewBag.os = os;
+                ViewBag.orcamento = orcamento;
+                return View("Molas/EnsaioMolas7_5");
+            }
+            else
+            {
+                ViewBag.os = os;
+                ViewBag.orcamento = orcamento;
+                return View("Molas/EnsaioMolas7_5", dados);
+            }
         }
         public IActionResult EnsaioMolas7_8(string os, string orcamento)
         {
@@ -130,7 +140,7 @@ namespace Coleta_Colchao.Controllers
         public IActionResult EnsaioMolas4_3(string os, string orcamento)
         {
             var dados = _context.ensaio_molas_item4_3.Where(x => x.os == os && x.orcamento == orcamento).FirstOrDefault();
-            if(dados == null)
+            if (dados == null)
             {
                 ViewBag.os = os;
                 ViewBag.orcamento = orcamento;
@@ -140,9 +150,9 @@ namespace Coleta_Colchao.Controllers
             {
                 ViewBag.os = os;
                 ViewBag.orcamento = orcamento;
-                return View("Molas/EnsaioMolas4_3",dados);
+                return View("Molas/EnsaioMolas4_3", dados);
             }
-            
+
         }
 
 
@@ -332,8 +342,19 @@ namespace Coleta_Colchao.Controllers
                 }
                 else
                 {
-                    TempData["Mensagem"] = "Dados existente";
-                    return View("Molas/EnsaioMolas4_3");
+                    dados.borda = salvarDados.borda;
+                    dados.borda1 = salvarDados.borda1;
+                    dados.data_ini = salvarDados.data_ini;
+                    dados.data_term = salvarDados.data_term;
+                    dados.valor_enc_1 = salvarDados.valor_enc_1;
+                    dados.valor_enc_2 = salvarDados.valor_enc_2;
+                    dados.man_parale_1 = salvarDados.man_parale_1;
+                    dados.man_parale_2 = salvarDados.man_parale_2;
+
+                    await _context.SaveChangesAsync();
+                    TempData["Mensagem"] = "Dados Editado Com Sucesso";
+                    return RedirectToAction(nameof(EnsaioMolas4_3), "coleta", new { os, orcamento });
+
                 }
             }
             catch (Exception ex)
@@ -342,6 +363,96 @@ namespace Coleta_Colchao.Controllers
                 throw;
             }
 
+        }
+        public async Task<IActionResult> SalvarEnsaio7_5(string os, string orcamento, [Bind("data_ini,data_term,temp_ensaio,faces,esp_face_1,med_face_1,acom_esp_face_1,acom_enc_face_1,esp_face_2,med_face_2,acom_esp_face_2,acom_enc_face_2,executor,auxiliar")] ColetaModel.Ensaio7_5 salvarDados)
+        {
+            try
+            {
+                var editarDados = _context.ensaio_molas_item7_5.Where(x => x.os == os && x.orcamento == orcamento).FirstOrDefault();
+                if (editarDados == null)
+                {
+                    DateOnly data_ini = salvarDados.data_ini;
+                    DateOnly data_term = salvarDados.data_term;
+                    TimeOnly temp_ensaio = salvarDados.temp_ensaio;
+                    string faces = salvarDados.faces;
+                    float esp_face_1 = salvarDados.esp_face_1;
+                    float med_face_1 = salvarDados.med_face_1;
+                    float acom_esp_face_1 = salvarDados.acom_esp_face_1;
+                    float esp_face_2 = salvarDados.esp_face_2;
+                    float med_face_2 = salvarDados.med_face_2;
+                    float acom_esp_face_2 = salvarDados.acom_esp_face_2;
+
+                    //realizando calculo para pegar porcetagem, convertendo para pegar 2 numeros depois da virgula.
+                    float acom_enc_face_1 = ((esp_face_1 * 100) / (esp_face_1 - med_face_1) - 100);
+                    string conv_acom_enc_face_1 = acom_enc_face_1.ToString("N2");
+                    float valor_final_conv_acom_enc_face_1 = float.Parse(conv_acom_enc_face_1);
+
+                    float acom_enc_face_2 = ((esp_face_2 * 100) / (esp_face_2 - med_face_2) - 100);
+                    string conv_acom_enc_face_2 = acom_enc_face_2.ToString("N2");
+                    float valor_final_conv_acom_enc_face_2 = float.Parse(conv_acom_enc_face_2);
+
+                    var registro = new ColetaModel.Ensaio7_5
+                    {
+                        os = os,
+                        orcamento = orcamento,
+                        data_ini = data_ini,
+                        data_term = data_term,
+                        temp_ensaio = temp_ensaio,
+                        esp_face_1 = esp_face_1,
+                        med_face_1 = med_face_1,
+                        acom_esp_face_1 = acom_esp_face_1,
+                        acom_enc_face_1 = valor_final_conv_acom_enc_face_1,
+                        esp_face_2 = esp_face_2,
+                        med_face_2 = med_face_2,
+                        acom_esp_face_2 = acom_esp_face_2,
+                        acom_enc_face_2 = valor_final_conv_acom_enc_face_2,
+                    };
+
+                    _context.Add(registro);
+                    await _context.SaveChangesAsync();
+                    TempData["Mensagem"] = "Dados Salvo Com Sucesso";
+                    return RedirectToAction(nameof(EnsaioMolas7_5), "Coleta", new { os, orcamento });
+                }
+                else
+                {
+                    //editando os dados, primeiro criando as variaveis que precisa.
+                    float esp_face_1 = salvarDados.esp_face_1;
+                    float med_face_1 = salvarDados.med_face_1;
+                    float esp_face_2 = salvarDados.esp_face_2;
+                    float med_face_2 = salvarDados.med_face_2;
+
+                    float acom_enc_face_1 = ((esp_face_1 * 100) / (esp_face_1 - med_face_1) - 100);
+                    string conv_acom_enc_face_1 = acom_enc_face_1.ToString("N2");
+                    float valor_final_conv_acom_enc_face_1 = float.Parse(conv_acom_enc_face_1);
+
+                    float acom_enc_face_2 = ((esp_face_2 * 100) / (esp_face_2 - med_face_2) - 100);
+                    string conv_acom_enc_face_2 = acom_enc_face_2.ToString("N2");
+                    float valor_final_conv_acom_enc_face_2 = float.Parse(conv_acom_enc_face_2);
+
+                    editarDados.data_ini = salvarDados.data_ini;
+                    editarDados.data_term = salvarDados.data_term;
+                    editarDados.temp_ensaio = salvarDados.temp_ensaio;
+                    editarDados.faces = salvarDados.faces;
+                    editarDados.acom_esp_face_1 = salvarDados.acom_esp_face_1;
+                    editarDados.acom_esp_face_2 = salvarDados.acom_esp_face_2;
+                    editarDados.esp_face_1 = esp_face_1;
+                    editarDados.med_face_1 = med_face_1;
+                    editarDados.esp_face_2 = esp_face_2;
+                    editarDados.med_face_2 = med_face_2;
+                    editarDados.acom_enc_face_2 = valor_final_conv_acom_enc_face_2;
+                    editarDados.acom_enc_face_1 = valor_final_conv_acom_enc_face_1;
+
+                    await _context.SaveChangesAsync();
+                    TempData["Mensagem"] = "Dados Editado Com Sucesso";
+                    return RedirectToAction(nameof(EnsaioMolas7_5), "Coleta", new { os, orcamento });
+                }
+
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "Error", ex.Message);
+                throw;
+            }
         }
     }
 }

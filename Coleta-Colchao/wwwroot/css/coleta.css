@@ -33,15 +33,23 @@
     box-sizing: border-box;
     height: 40px;
 }
+.controlador{
+    padding: 5px;
+    border-color: gray;
+    border-radius: 5px;
+    box-sizing: border-box;
+    height: 40px;
+    width:50%;
+}
 
 .tables th td {
     background-color: #800000;
     color: white;
 }
 
-/*  .tables tr:last-child td {
+  .tables tr:last-child td {
         border-bottom: 2px solid #800000;
-    }*/
+    }
 
 .imagem {
     max-width: 100px;

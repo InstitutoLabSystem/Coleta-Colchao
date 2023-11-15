@@ -9,6 +9,6 @@
     "\\Coleta-Colchao\\wwwroot",
     "\\Coleta-Colchao\\wwwroot\\css"
   ],
-  "SelectedNode": "\\Coleta-Colchao\\Views\\Home\\Index.cshtml",
+  "SelectedNode": "\\Coleta-Colchao\\Controllers\\ColetaController.cs",
   "PreviewInSolutionExplorer": false
 }
