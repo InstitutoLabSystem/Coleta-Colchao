@@ -1,4 +1,6 @@
-﻿@{
+﻿@model ColetaModel.EspumaUm
+
+@{
     Layout = null;
 }
 @{
@@ -11,26 +13,31 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="~/css/coleta.css" asp-append-version="true" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <title>Coleta</title>
 </head>
 <body>
     <br/>
-        <table class="tables table-bordered border-secondary  table-sm">
-        <thead>
-            <tr>
-                <td><img src="https://www.labsystem-nuvem.com.br/imagens_arq/imagens/img/LabSystem.png" class="imagem" /></td>
-                <td colspan="3" class="fundo-tabela">Coleta De Dados</td>
-                <td class="fundo-tabela">N Os:</td>
-            </tr>
-            <tr>
-                <td colspan="4">Ensaios de Colchão de Espuma (Portaria Inmetro 35)</td>
-                <td rowspan="2"> os aqui</td>
-            </tr>
-            <tr>
-                <td>Inicio:</td>
-                <td><input class="form-control" type="date" /></td>
-                <td>Termino:</td>
-                <td><input class="form-control" type="date" /></td>
+
+         <form asp-controller="Coleta" class="meuFormulario" id="form1" asp-action="SalvarEspumaUm" method="post" asp-route-os="@ViewData["os"]" asp-route-orcamento="@ViewData["orcamento"]">
+        @if (Model == null)
+        {
+            <table class="tables table-bordered border-secondary  table-sm">
+                <thead>
+                    <tr>
+                        <td><img src="https://www.labsystem-nuvem.com.br/imagens_arq/imagens/img/LabSystem.png" class="imagem" /></td>
+                        <td colspan="3" class="fundo-tabela">Coleta De Dados</td>
+                        <td class="fundo-tabela">N Os:</td>
+                    </tr>
+                    <tr>
+                        <td colspan="4">Ensaios de Colchão de Espuma (Portaria Inmetro 35)</td>
+                        <td rowspan="2"> @ViewBag.os </td>
+                    </tr>
+                    <tr>
+                        <td>Inicio:</td>
+                        <td><input class="form-control" type="date" name="data_ini" /></td>
+                        <td>Termino:</td>
+                        <td><input class="form-control" type="date" name="data_term" /></td>
                     </tr>
                 </thead>
             </table>
@@ -38,173 +45,173 @@
             <table class="tables table-bordered border-secondary  table-sm">
                 <tr>
                     <td>Temperatura Inicial:</td>
-                    <td><input class="form-control" type="date" /></td>
+                    <td><input class="form-control" type="text" name="temp_ini" /></td>
                     <td>Temperatura Final:</td>
-                    <td><input class="form-control" type="date" /></td>
+                    <td><input class="form-control" type="text" name="temp_fim"/></td>
                 </tr>
             </table>
-             <br />
+            <br />
 
-    <table class="tables table-bordered border-secondary  table-sm">
-        <tr class="fundo-tabela">
-            <td>Item</td>
-            <td>Descrição</td>
-            <td>Resultado</td>
-        </tr>
-        <tr>
-            <td rowspan="1">4.1</td>
-            <td>
-                <b>Dimensões</b> <br /><br />
-                Posicionar o colchão ou colchonete em um superfície plana e rígida e mante-lo 
-                em repouso por uma período não inferior a 30 minutos antes da realização das medições.
-                <br /> <br />
-                Tempo de repouso da amostra <input class="form-control" type="text" />
-            </td>
-            <td rowspan="1">---</td>
-        </tr>
-       <tr>
-           <td rowspan="3"> 4.1 </td>
-            <td class="fundo-tabela">
-                <strong>Comprimento</strong>
-            </td>
-            <td rowspan="3">
-                <br /> <br />
-                <select class="form-control" name="Escolha" style="height:400px; width:200px">
-                    <option selected> --- </option>
-                    <option> Sim </option>
-                    <option> Não </option>
-                </select> <br /> <br />
-            </td>
-            </tr>
-            <tr>
-                <td>
-                Medir o comprimento do colchão ou colchoneteem 3 pontos equidistantes,
-                considerando como a comprimento total o valor médio encontrado em centímetros. <br /> <br />
-                <table class="tables table-bordered border-secondary  table-sm">
-                    <tr>
-                        <td class="fundo-tabela">Pontos de medição</td>
-                        <td class="fundo-tabela">Comprimento (cm)</td>
-                        <td class="fundo-tabela">Comprimento especificado</td>
-                    </tr>
-                    <tr>
-                        <td>1º </td>
-                        <td><input class="form-control" type="text" /></td>
-                        <td rowspan="3"><input class="form-control" type="text" style="width:100%;height:200px;" /> </td>
-                    </tr>
-                    <tr>
-                        <td>2º </td>
-                        <td><input class="form-control" type="text" /></td>
-                    </tr>
-                    <tr>
-                        <td>3º </td>
-                        <td><input class="form-control" type="text" /></td>
-                    </tr>
-                    <tr>
-                        <td>Mediaº </td>
-                        <td colspan="2"><input class="form-control" type="text" style="width:100%" /></td>
-                    </tr>
-                </table>
-                </td>
-            </tr>
-        <tr>
-            <td><strong>NOTA: </strong> São adimitadas tolerâncias de ± 1,5 cm.</td>
-        </tr>
-        <tr>
-            <td rowspan="3"> 4.1 </td>
-            <td class="fundo-tabela">
-                <strong>Largura</strong>
-            </td>
-            <td rowspan="3">
-                <select class="form-control" name="Escolha" style="height:400px; width:200px">
-                    <option selected> --- </option>
-                    <option> Sim </option>
-                    <option> Não </option>
-                </select> <br /> <br />
-            </td>
-        </tr>
-        <tr>
-            <td>
-                Medir a largura do colchão ou colchonete em 3 pontos equidistantes, considerando como a largura total o valor médio encontrado em centímetros. <br /><br />
-                <table class="tables table-bordered border-secondary  table-sm">
-                    <tr>
-                        <td class="fundo-tabela">Pontos de medição</td>
-                        <td class="fundo-tabela">Comprimento (cm)</td>
-                        <td class="fundo-tabela">Comprimento especificado</td>
-                    </tr>
-                    <tr>
-                        <td>1º </td>
-                        <td><input class="form-control" type="text" /></td>
-                        <td rowspan="3"><input class="form-control" type="text" style="width:100%;height:200px;" /> </td>
-                    </tr>
-                    <tr>
-                        <td>2º </td>
-                        <td><input class="form-control" type="text" /></td>
-                    </tr>
-                    <tr>
-                        <td>3º </td>
-                        <td><input class="form-control" type="text" /></td>
-                    </tr>
-                    <tr>
-                        <td>Mediaº </td>
-                        <td colspan="2"><input class="form-control" type="text" style="width:100%" /></td>
-                    </tr>
-                </table>
-            </td>
-        </tr>
-        <tr>
-            <td><strong>NOTA: </strong> São adimitadas tolerâncias de ± 1,5 cm.</td>
-        </tr>
-        <tr>
-            <td rowspan="3"> 4.1 </td>
-            <td class="fundo-tabela">
-                <strong>Altura</strong>
-            </td>
-            <td rowspan="3">
-                <select class="form-control" name="Escolha" style="height:400px; width:200px">
-                    <option selected> --- </option>
-                    <option> Sim </option>
-                    <option> Não </option>
-                </select> <br /> <br />
-            </td>
-        </tr>
-        <tr>
-            <td>
-                Medir a altura do colchão ou colchonete em 3 pontos equidistantes, considerando como a altura total o valor médio encontrado em centímetros.  <br /><br />
-                <table class="tables table-bordered border-secondary  table-sm">
-                    <tr>
-                        <td class="fundo-tabela">Pontos de medição</td>
-                        <td class="fundo-tabela">Comprimento (cm)</td>
-                        <td class="fundo-tabela">Comprimento especificado</td>
-                    </tr>
-                    <tr>
-                        <td>1º </td>
-                        <td><input class="form-control" type="text" /></td>
-                        <td rowspan="3"><input class="form-control" type="text" style="width:100%;height:200px;" /> </td>
-                    </tr>
-                    <tr>
-                        <td>2º </td>
-                        <td><input class="form-control" type="text" /></td>
-                    </tr>
-                    <tr>
-                        <td>3º </td>
-                        <td><input class="form-control" type="text" /></td>
-                    </tr>
-                    <tr>
-                        <td>Mediaº </td>
-                        <td colspan="2"><input class="form-control" type="text" style="width:100%" /></td>
-                    </tr>
-                </table>
-            </td>
-        </tr>
-        <tr>
-            <td><strong>NOTA: </strong> São adimitadas tolerâncias de ± 1,5 cm.</td>
-        </tr>
+            <table class="tables table-bordered border-secondary  table-sm">
+                <tr class="fundo-tabela">
+                    <td>Item</td>
+                    <td>Descrição</td>
+                    <td>Resultado</td>
+                </tr>
+                <tr>
+                    <td rowspan="1">4.1</td>
+                    <td>
+                        <b>Dimensões</b> <br /><br />
+                        Posicionar o colchão ou colchonete em um superfície plana e rígida e mante-lo 
+                        em repouso por uma período não inferior a 30 minutos antes da realização das medições.
+                        <br /> <br />
+                        Tempo de repouso da amostra <input class="form-control" type="text" name="dimensao_temp"/>
+                    </td>
+                    <td rowspan="1">---</td>
+                </tr>
+                <tr>
+                    <td rowspan="3"> 4.1 </td>
+                    <td class="fundo-tabela">
+                        <strong>Comprimento</strong>
+                    </td>
+                    <td rowspan="3">
+                        <br /> <br />
+                        <select class="form-control" style="height:400px; width:200px" name="comprimento_result">
+                            <option selected> --- </option>
+                            <option> Sim </option>
+                            <option> Não </option>
+                        </select> <br /> <br />
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Medir o comprimento do colchão ou colchoneteem 3 pontos equidistantes,
+                        considerando como a comprimento total o valor médio encontrado em centímetros. <br /> <br />
+                        <table class="tables table-bordered border-secondary  table-sm">
+                            <tr>
+                                <td class="fundo-tabela">Pontos de medição</td>
+                                <td class="fundo-tabela">Comprimento (cm)</td>
+                                <td class="fundo-tabela">Comprimento especificado</td>
+                            </tr>
+                            <tr>
+                                <td>1º </td>
+                                <td><input class="form-control" type="text" name="comprimento_um" /></td>
+                                <td rowspan="3"><input class="form-control" type="text" style="width:100%;height:200px;" name="comprimento_esp"/> </td>
+                            </tr>
+                            <tr>
+                                <td>2º </td>
+                                <td><input class="form-control" type="text" name="comprimento_dois" /></td>
+                            </tr>
+                            <tr>
+                                <td>3º </td>
+                                <td><input class="form-control" type="text" name="comprimento_tres" /></td>
+                            </tr>
+                            <tr>
+                                <td>Mediaº </td>
+                                <td colspan="2"><input class="form-control" type="text" style="width:100%" name="comprimento_media" readonly /></td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+                <tr>
+                    <td><strong>NOTA: </strong> São adimitadas tolerâncias de ± 1,5 cm.</td>
+                </tr>
+                <tr>
+                    <td rowspan="3"> 4.1 </td>
+                    <td class="fundo-tabela">
+                        <strong>Largura</strong>
+                    </td>
+                    <td rowspan="3">
+                        <select class="form-control" name="largura_result" style="height:400px; width:200px">
+                            <option selected> --- </option>
+                            <option> Sim </option>
+                            <option> Não </option>
+                        </select> <br /> <br />
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Medir a largura do colchão ou colchonete em 3 pontos equidistantes, considerando como a largura total o valor médio encontrado em centímetros. <br /><br />
+                        <table class="tables table-bordered border-secondary  table-sm">
+                            <tr>
+                                <td class="fundo-tabela">Pontos de medição</td>
+                                <td class="fundo-tabela">Comprimento (cm)</td>
+                                <td class="fundo-tabela">Comprimento especificado</td>
+                            </tr>
+                            <tr>
+                                <td>1º </td>
+                                <td><input class="form-control" type="text" name="largura_um"/></td>
+                                <td rowspan="3"><input class="form-control" type="text" style="width:100%;height:200px;" name="largura_esp"/> </td>
+                            </tr>
+                            <tr>
+                                <td>2º </td>
+                                <td><input class="form-control" type="text" name="largura_dois" /></td>
+                            </tr>
+                            <tr>
+                                <td>3º </td>
+                                <td><input class="form-control" type="text" name="largura_tres" /></td>
+                            </tr>
+                            <tr>
+                                <td>Mediaº </td>
+                                <td colspan="2"><input class="form-control" type="text" style="width:100%" name="largura_media" readonly/></td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+                <tr>
+                    <td><strong>NOTA: </strong> São adimitadas tolerâncias de ± 1,5 cm.</td>
+                </tr>
+                <tr>
+                    <td rowspan="3"> 4.1 </td>
+                    <td class="fundo-tabela">
+                        <strong>Altura</strong>
+                    </td>
+                    <td rowspan="3">
+                        <select class="form-control" name="altura_result" style="height:400px; width:200px">
+                            <option selected> --- </option>
+                            <option> Sim </option>
+                            <option> Não </option>
+                        </select> <br /> <br />
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Medir a altura do colchão ou colchonete em 3 pontos equidistantes, considerando como a altura total o valor médio encontrado em centímetros.  <br /><br />
+                        <table class="tables table-bordered border-secondary  table-sm">
+                            <tr>
+                                <td class="fundo-tabela">Pontos de medição</td>
+                                <td class="fundo-tabela">Comprimento (cm)</td>
+                                <td class="fundo-tabela">Comprimento especificado</td>
+                            </tr>
+                            <tr>
+                                <td>1º </td>
+                                <td><input class="form-control" type="text" name="altura_um"/></td>
+                                <td rowspan="3"><input class="form-control" type="text" style="width:100%;height:200px;" name="altura_esp" /> </td>
+                            </tr>
+                            <tr>
+                                <td>2º </td>
+                                <td><input class="form-control" type="text" name="altura_dois" /></td>
+                            </tr>
+                            <tr>
+                                <td>3º </td>
+                                <td><input class="form-control" type="text" name="altura_tres" /></td>
+                            </tr>
+                            <tr>
+                                <td>Mediaº </td>
+                                <td colspan="2"><input class="form-control" type="text" style="width:100%" name="altura_media" readonly /></td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+                <tr>
+                    <td><strong>NOTA: </strong> São adimitadas tolerâncias de ± 1,5 cm.</td>
+                </tr>
 
-    </table>
-        <br/>
+            </table>
+            <br/>
 
-        <table class="tables table-bordered border-secondary  table-sm">
-        <tr>
+            <table class="tables table-bordered border-secondary  table-sm">
+                <tr>
             <td rowspan="12" >4.1</td>
             <td class="fundo-tabela">
                 <b>Espessura da lâmina de espuma do colchão ou colchonete Espessura da lâmina de espuma do colchão ou colchonete</b> <br /><br />
@@ -214,13 +221,13 @@
         <tr>
             <td> Retirar o revestimento do colchão ou colchonete e estender as lâminas de espuma sobre uma superfície
                 plana e rígida maior que a área do colchão ou colchonete e mantê-lo em repouso por um período não inferior a 10 minutos. <br /> <br />
-                Tempo de repouso da amostra  <input class="form-control" type="text" /> <br /> <br />
+                Tempo de repouso da amostra  <input class="form-control" type="text" name="temp_repouso" /> <br /> <br />
                 Após o período de repouso realizar as medições conforme especificações a seguir: <br /> <br />
 
                 <table class="tables table-bordered border-secondary  table-sm">
                     <tr>
                         <td colspan="3">
-                            <select class="form-control" name="Escolha" style="width:100%">
+                            <select class="form-control" style="width:100%" name="lamina_um">
                                 <option selected> --- </option>
                                 <option> Colchonete </option>
                                 <option> Colchão infantil </option>
@@ -239,20 +246,20 @@
                     </tr>
                     <tr>
                         <td>1º </td>
-                        <td><input class="form-control" type="text" /></td>
-                        <td rowspan="3"><input class="form-control" type="text" style="width:100%;height:200px;" /> </td>
+                        <td><input class="form-control" type="text" name="lamina_comp_um" /></td>
+                        <td rowspan="3"><input class="form-control" type="text" style="width:100%;height:200px;" name="lamina_esp_um"/> </td>
                     </tr>
                     <tr>
                         <td>2º </td>
-                        <td><input class="form-control" type="text" /></td>
+                        <td><input class="form-control" type="text" name="lamina_comp_dois" /></td>
                     </tr>
                     <tr>
                         <td>3º </td>
-                        <td><input class="form-control" type="text" /></td>
+                        <td><input class="form-control" type="text" name="lamina_comp_tres"/></td>
                     </tr>
                     <tr>
                         <td>Mediaº </td>
-                        <td colspan="2"><input class="form-control" type="text" style="width:100%" /></td>
+                        <td colspan="2"><input class="form-control" type="text" style="width:100%" name="lamina_media_um" readonly/></td>
                     </tr>
                 </table>
                 <br />
@@ -269,7 +276,7 @@
                     </tr>
                     <tr>
                         <td>
-                            <select class="form-control" name="Escolha" style="width:100%">
+                            <select class="form-control" name="lamina_tipo_um" style="width:100%">
                                 <option selected> --- </option>
                                 <option> Colchonete </option>
                                 <option> Colchão infantil </option>
@@ -280,10 +287,10 @@
                                 <option> Composto </option>
                             </select> 
                         </td>
-                        <td><input class="form-control" type="text" /></td>
-                        <td><input class="form-control" type="text" /></td>
+                        <td><input class="form-control" type="text" name="lamina_min_um"/></td>
+                        <td><input class="form-control" type="text" name="lamina_max_um" /></td>
                         <td>
-                            <select class="form-control" name="Escolha" style="width:100%">
+                            <select class="form-control" name="lamina_resul_um" style="width:100%">
                                 <option selected> --- </option>
                                 <option> C </option>
                                 <option> NA </option>
@@ -300,7 +307,7 @@
             <table class="tables table-bordered border-secondary  table-sm">
                 <tr>
                     <td colspan="3">
-                            <select class="form-control" name="Escolha" style="width:100%">
+                            <select class="form-control" style="width:100%" name="lamina_dois">
                                 <option selected> --- </option>
                                 <option> Colchonete </option>
                                 <option> Colchão infantil </option>
@@ -319,20 +326,20 @@
                 </tr>
                 <tr>
                     <td>1º </td>
-                    <td><input class="form-control" type="text" /></td>
-                    <td rowspan="3"><input class="form-control" type="text" style="width:100%;height:200px;" /> </td>
+                    <td><input class="form-control" type="text" name="lamina_comp_quat" /></td>
+                    <td rowspan="3"><input class="form-control" type="text" style="width:100%;height:200px;"name="lamina_esp_dois" /> </td>
                 </tr>
                 <tr>
                     <td>2º </td>
-                    <td><input class="form-control" type="text" /></td>
+                    <td><input class="form-control" type="text" name="lamina_comp_cinco" /></td>
                 </tr>
                 <tr>
                     <td>3º </td>
-                    <td><input class="form-control" type="text" /></td>
+                    <td><input class="form-control" type="text" name="lamina_comp_seis" /></td>
                 </tr>
                 <tr>
                     <td>Mediaº </td>
-                    <td colspan="2"><input class="form-control" type="text" style="width:100%" /></td>
+                    <td colspan="2"><input class="form-control" type="text" style="width:100%" name="lamina_media_dois" readonly/></td>
                 </tr>
             </table>
             <br />
@@ -349,7 +356,7 @@
                 </tr>
                 <tr>
                     <td>
-                            <select class="form-control" name="Escolha" style="width:100%">
+                            <select class="form-control" name="lamina_tipo_dois" style="width:100%">
                                 <option selected> --- </option>
                                 <option> Colchonete </option>
                                 <option> Colchão infantil </option>
@@ -360,10 +367,10 @@
                                 <option> Composto </option>
                             </select>
                         </td>
-                    <td><input class="form-control" type="text" /></td>
-                    <td><input class="form-control" type="text" /></td>
+                    <td><input class="form-control" type="text" name="lamina_min_dois" /></td>
+                    <td><input class="form-control" type="text" name="lamina_max_dois"/></td>
                         <td>
-                            <select class="form-control" name="Escolha" style="width:100%">
+                            <select class="form-control" style="width:100%" name="lamina_resul_dois">
                                 <option selected> --- </option>
                                 <option> C </option>
                                 <option> NA </option>
@@ -379,7 +386,7 @@
                 <table class="tables table-bordered border-secondary  table-sm">
                     <tr>
                         <td colspan="3">
-                            <select class="form-control" name="Escolha" style="width:100%">
+                            <select class="form-control" name="lamina_tres" style="width:100%">
                                 <option selected> --- </option>
                                 <option> Colchonete </option>
                                 <option> Colchão infantil </option>
@@ -398,20 +405,20 @@
                     </tr>
                     <tr>
                         <td>1º </td>
-                        <td><input class="form-control" type="text" /></td>
-                        <td rowspan="3"><input class="form-control" type="text" style="width:100%;height:200px;" /> </td>
+                        <td><input class="form-control" type="text" name="lamina_comp_sete"/></td>
+                        <td rowspan="3"><input class="form-control" type="text" style="width:100%;height:200px;" name="lamina_esp_tres" /> </td>
                     </tr>
                     <tr>
                         <td>2º </td>
-                        <td><input class="form-control" type="text" /></td>
+                        <td><input class="form-control" type="text" name="lamina_comp_oito" /></td>
                     </tr>
                     <tr>
                         <td>3º </td>
-                        <td><input class="form-control" type="text" /></td>
+                        <td><input class="form-control" type="text" name="lamina_comp_nove" /></td>
                     </tr>
                     <tr>
                         <td>Mediaº </td>
-                        <td colspan="2"><input class="form-control" type="text" style="width:100%" /></td>
+                        <td colspan="2"><input class="form-control" type="text" style="width:100%" name="lamina_media_tres" readonly/></td>
                     </tr>
                 </table>
                 <br />
@@ -428,7 +435,7 @@
                     </tr>
                     <tr>
                         <td>
-                            <select class="form-control" name="Escolha" style="width:100%">
+                            <select class="form-control" name="lamina_tipo_tres" style="width:100%">
                                 <option selected> --- </option>
                                 <option> Colchonete </option>
                                 <option> Colchão infantil </option>
@@ -439,10 +446,10 @@
                                 <option> Composto </option>
                             </select>
                         </td>
-                        <td><input class="form-control" type="text" /></td>
-                        <td><input class="form-control" type="text" /></td>
+                        <td><input class="form-control" type="text" name="lamina_min_tres" /></td>
+                        <td><input class="form-control" type="text" name="lamina_max_tres"/></td>
                         <td>
-                            <select class="form-control" name="Escolha" style="width:100%">
+                            <select class="form-control" name="lamina_resul_tres" style="width:100%">
                                 <option selected> --- </option>
                                 <option> C </option>
                                 <option> NA </option>
@@ -458,7 +465,7 @@
                 <table class="tables table-bordered border-secondary  table-sm">
                     <tr>
                         <td colspan="3">
-                            <select class="form-control" name="Escolha" style="width:100%">
+                            <select class="form-control" name="lamina_quat" style="width:100%">
                                 <option selected> --- </option>
                                 <option> Colchonete </option>
                                 <option> Colchão infantil </option>
@@ -477,20 +484,20 @@
                     </tr>
                     <tr>
                         <td>1º </td>
-                        <td><input class="form-control" type="text" /></td>
-                        <td rowspan="3"><input class="form-control" type="text" style="width:100%;height:200px;" /> </td>
+                        <td><input class="form-control" type="text" name="lamina_comp_dez" /></td>
+                        <td rowspan="3"><input class="form-control" type="text" style="width:100%;height:200px;" name="lamina_esp_quat"/> </td>
                     </tr>
                     <tr>
                         <td>2º </td>
-                        <td><input class="form-control" type="text" /></td>
+                        <td><input class="form-control" type="text" name="lamina_comp_onze" /></td>
                     </tr>
                     <tr>
                         <td>3º </td>
-                        <td><input class="form-control" type="text" /></td>
+                        <td><input class="form-control" type="text" name="lamina_comp_doze" /></td>
                     </tr>
                     <tr>
                         <td>Mediaº </td>
-                        <td colspan="2"><input class="form-control" type="text" style="width:100%" /></td>
+                        <td colspan="2"><input class="form-control" type="text" style="width:100%" name="lamina_media_quat" readonly /></td>
                     </tr>
                 </table>
                 <br />
@@ -507,7 +514,7 @@
                     </tr>
                     <tr>
                         <td>
-                            <select class="form-control" name="Escolha" style="width:100%">
+                            <select class="form-control" style="width:100%" name="lamina_tipo_quat">
                                 <option selected> --- </option>
                                 <option> Colchonete </option>
                                 <option> Colchão infantil </option>
@@ -518,10 +525,10 @@
                                 <option> Composto </option>
                             </select>
                         </td>
-                        <td><input class="form-control" type="text" /></td>
-                        <td><input class="form-control" type="text" /></td>
+                        <td><input class="form-control" type="text" name="lamina_min_quat" /></td>
+                        <td><input class="form-control" type="text" name="lamina_max_quat"/></td>
                         <td>
-                            <select class="form-control" name="Escolha" style="width:100%">
+                            <select class="form-control" name="lamina_resul_quat" style="width:100%">
                                 <option selected> --- </option>
                                 <option> C </option>
                                 <option> NA </option>
@@ -537,7 +544,7 @@
                 <table class="tables table-bordered border-secondary  table-sm">
                     <tr>
                         <td colspan="3">
-                            <select class="form-control" name="Escolha" style="width:100%">
+                            <select class="form-control" name="lamina_cinco" style="width:100%">
                                 <option selected> --- </option>
                                 <option> Colchonete </option>
                                 <option> Colchão infantil </option>
@@ -556,20 +563,20 @@
                     </tr>
                     <tr>
                         <td>1º </td>
-                        <td><input class="form-control" type="text" /></td>
-                        <td rowspan="3"><input class="form-control" type="text" style="width:100%;height:200px;" /> </td>
+                        <td><input class="form-control" type="text" name="lamina_comp_treze"/></td>
+                        <td rowspan="3"><input class="form-control" type="text" style="width:100%;height:200px;" name="lamina_esp_cinco"/> </td>
                     </tr>
                     <tr>
                         <td>2º </td>
-                        <td><input class="form-control" type="text" /></td>
+                        <td><input class="form-control" type="text" name="lamina_comp_quatorze" /></td>
                     </tr>
                     <tr>
                         <td>3º </td>
-                        <td><input class="form-control" type="text" /></td>
+                        <td><input class="form-control" type="text" name="lamina_comp_quinze"/></td>
                     </tr>
                     <tr>
                         <td>Mediaº </td>
-                        <td colspan="2"><input class="form-control" type="text" style="width:100%" /></td>
+                        <td colspan="2"><input class="form-control" type="text" style="width:100%" name="lamina_media_cinco" readonly/></td>
                     </tr>
                 </table>
                 <br />
@@ -586,7 +593,7 @@
                     </tr>
                     <tr>
                         <td>
-                            <select class="form-control" name="Escolha" style="width:100%">
+                            <select class="form-control" name="lamina_tipo_cinco" style="width:100%">
                                 <option selected> --- </option>
                                 <option> Colchonete </option>
                                 <option> Colchão infantil </option>
@@ -597,10 +604,10 @@
                                 <option> Composto </option>
                             </select>
                         </td>
-                        <td><input class="form-control" type="text" /></td>
-                        <td><input class="form-control" type="text" /></td>
+                        <td><input class="form-control" type="text" name="lamina_min_cinco" /></td>
+                        <td><input class="form-control" type="text" name="lamina_max_cinco" /></td>
                         <td>
-                            <select class="form-control" name="Escolha" style="width:100%">
+                            <select class="form-control" style="width:100%" name="lamina_resul_cinco">
                                 <option selected> --- </option>
                                 <option> C </option>
                                 <option> NA </option>
@@ -629,7 +636,7 @@
                    </tr>
                     <tr>
                         <td>
-                            <select class="form-control" name="Escolha" style="width:100%">
+                            <select class="form-control" name="esp_tipo_um" style="width:100%">
                                 <option selected> --- </option>
                                 <option> Colchão infantil </option>
                                 <option> Colchão geral </option>
@@ -637,13 +644,16 @@
                                 <option> Composto </option>
                             </select>
                         </td>
-                        <td><input class="form-control" type="text" /></td>
-                        <td><input class="form-control" type="text" /></td>
-                        <td><input class="form-control" type="text" /></td>
-                        <td><input class="form-control" type="text" /></td>
+                        <td><input class="form-control" type="text" name="esp_lamina_um" /></td>
+                        <td><input class="form-control" type="text" name="esp_especificado_um" /></td>
+                        <td><input class="form-control" type="text" name="esp_mm_um" /></td>
+                        <td><input class="form-control" type="text" name="esp_cm_um" readonly/></td>
                     </tr>
                 </table>
                 <br /> <br />
+
+
+
                 <table class="tables table-bordered border-secondary  table-sm">
                     <tr>
                         <td rowspan="2" class="fundo-tabela"> Tipos </td>
@@ -658,23 +668,25 @@
                     </tr>
                     <tr>
                         <td>
-                            <select class="form-control" name="Escolha" style="width:100%">
+                            <select class="form-control" name="esp_tipo_dois" style="width:100%">
                                 <option selected> --- </option>
                                 <option> Colchão infantil </option>
                                 <option> Colchão geral </option>
                                 <option> Colchão misto </option>
                             </select>
                         </td>
-                        <td><input class="form-control" type="text" /></td>
-                        <td><input class="form-control" type="text" /></td>
-                        <td><input class="form-control" type="text" /></td>
-                        <td><input class="form-control" type="text" /></td>
+                        <td><input class="form-control" type="text" name="esp_lamina_dois" /></td>
+                        <td><input class="form-control" type="text" name="esp_especificado_dois" /></td>
+                        <td><input class="form-control" type="text" name="esp_mm_dois" /></td>
+                        <td><input class="form-control" type="text" name="esp_cm_dois" readonly/></td>
                     </tr>
                 </table>
             </td>
         </tr>
         <tr>
             <td>
+
+
                 Colchonete: A altura total não pode exceder 8 cm, inclusive com o revestimento.
                 <br /> <br />
                 <table class="tables table-bordered border-secondary  table-sm">
@@ -690,15 +702,15 @@
                     </tr>
                     <tr>
                         <td>
-                            <select class="form-control" name="Escolha" style="width:100%">
+                            <select class="form-control" name="col_tipo_um" style="width:100%">
                                 <option selected> --- </option>
                                 <option> Colchonete </option>
                             </select>
                         </td>
-                        <td><input class="form-control" type="text" /></td>
-                        <td><input class="form-control" type="text" /></td>
+                        <td><input class="form-control" type="text" name="col_especificado_um" /></td>
+                        <td><input class="form-control" type="text" name="col_encontrado_um"/></td>
                         <td>
-                            <select class="form-control" name="Escolha" style="width:100%">
+                            <select class="form-control" name="col_resul_um" style="width:100%">
                                 <option selected> --- </option>
                                 <option> C </option>
                                 <option> NA </option>
@@ -721,15 +733,15 @@
                     </tr>
                     <tr>
                         <td>
-                            <select class="form-control" name="Escolha" style="width:100%">
+                            <select class="form-control" name="col_tipo_dois" style="width:100%">
                                 <option selected> --- </option>
                                 <option> Colchonete </option>
                             </select>
                         </td>
-                        <td><input class="form-control" type="text" /></td>
-                        <td><input class="form-control" type="text" /></td>
+                        <td><input class="form-control" type="text" name="col_lamina_dois"/></td>
+                        <td><input class="form-control" type="text" name="col_especificado_dois" /></td>
                         <td>
-                            <select class="form-control" name="Escolha" style="width:100%">
+                            <select class="form-control" name="col_resul_dois" style="width:100%">
                                 <option selected> --- </option>
                                 <option> C </option>
                                 <option> NA </option>
@@ -760,16 +772,16 @@
                     </tr>
                     <tr>
                         <td>
-                            <select class="form-control" name="Escolha" style="width:100%">
+                            <select class="form-control" name="reves_tipo_um" style="width:100%">
                                 <option selected> --- </option>
                                 <option> Colchonete </option>
                                 <option> Auxiliar </option>
                             </select>
                         </td>
-                        <td><input class="form-control" type="text" /></td>
-                        <td><input class="form-control" type="text" /></td>
-                        <td><input class="form-control" type="text" /></td>
-                        <td><input class="form-control" type="text" /></td>
+                        <td><input class="form-control" type="text" name="reves_lamina_um" /></td>
+                        <td><input class="form-control" type="text" name="reves_especificado_um"/></td>
+                        <td><input class="form-control" type="text" name="reves_mm_um"/></td>
+                        <td><input class="form-control" type="text" name="reves_cm_um" readonly /></td>
                     </tr>
                 </table>
                 <br /> <br />
@@ -787,25 +799,33 @@
                     </tr>
                     <tr>
                         <td>
-                            <select class="form-control" name="Escolha" style="width:100%">
+                            <select class="form-control" name="reves_tipo_dois" style="width:100%">
                                 <option selected> --- </option>
                                 <option> Colchonete </option>
                                 <option> Auxiliar </option>
                             </select>
                         </td>
-                        <td><input class="form-control" type="text" /></td>
-                        <td><input class="form-control" type="text" /></td>
-                        <td><input class="form-control" type="text" /></td>
-                        <td><input class="form-control" type="text" /></td>
+                        <td><input class="form-control" type="text" name="reves_lamina_dois"/></td>
+                        <td><input class="form-control" type="text" name="reves_especificado_dois"/></td>
+                        <td><input class="form-control" type="text" name="reves_mm_dois" /></td>
+                        <td><input class="form-control" type="text" name="reves_cm_dois" readonly/></td>
                     </tr>
                 </table>
             </td>
         </tr>
-        <div class="d-grid gap-2 d-flex justify-content-center">
-            <button type="submit" class="btn btn-success btn btn-primary btn-md">Salvar</button>
-        </div>
+        <tr>
+            <td>
+                        <button type="submit" value="SalvarEspumaUm" class="btn btn-danger">Salvar Coleta </button>
+            </td>
+        </tr>
+            </table>
+        }
+        else
+        {
+            <button type="submit" value="SalvarEspumaUm" class="btn btn-danger">Salvar Coleta </button>
 
-         </table>
+        }
+    </form>
   </body>
   </html>
 
