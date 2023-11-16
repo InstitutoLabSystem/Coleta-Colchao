@@ -30,10 +30,10 @@ namespace Coleta_Colchao.Controllers
         }
         public IActionResult Index(string os, string orcamento)
         {
-      
+
             if (os != null)
             {
-              
+
                 var dados = (from p in _bancoContext.programacao_lab_ensaios
                              join c in _bancoContext.ordemservicocotacaoitem_hc_copylab
                              on new { Orcamento = p.Orcamento, Item = p.Item } equals new { Orcamento = c.orcamento, Item = c.Item.ToString() }
@@ -93,7 +93,7 @@ namespace Coleta_Colchao.Controllers
 
                              }).ToList();
 
-                var buscarOs = _context.regtro_colchao.Where(x => x.os == os).FirstOrDefault();
+                var buscarOs = _context.regtro_colchao.Where(x => x.os == os && x.orcamento == dados.First().orcamento).FirstOrDefault();
                 if (buscarOs == null)
                 {
                     if (dados.Count != 0)

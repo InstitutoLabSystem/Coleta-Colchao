@@ -1,4 +1,5 @@
 ﻿using Microsoft.CodeAnalysis.Classification;
+using NuGet.Versioning;
 using System.ComponentModel.DataAnnotations;
 
 namespace Coleta_Colchao.Models
@@ -84,5 +85,53 @@ namespace Coleta_Colchao.Models
             public string? auxiliar { get; set; }
         }
 
+        public class Ensaio7_1
+        {
+            [Key]
+            public int Id { get; set; }
+            public string os { get; set; }
+            public string orcamento { get; set; }
+            public DateOnly data_ini { get;  set; }
+            public DateOnly data_term { get; set; }
+            public float  temp_ini { get; set; }
+            public float temp_term { get; set; }
+            public int quant_face { get; set; }
+            public int velo_face_1 { get; set; }
+            public int quant_face_1 { get; set; }
+            public int velo_face_2 { get; set; }
+            public int quant_face_2 { get; set; }
+            public string? executor { get; set; }
+            public string? auxiliar { get; set; }
+
+        }
+
+        public class Ensaio7_2
+        {
+            [Key]
+            public int Id { get; set; }
+            public string os { get; set; }
+            public string orcamento { get; set; }
+            public DateOnly data_ini  { get; set; }
+            public DateOnly data_term { get; set; }
+            public float temp_ini { get; set; }
+            public float temp_term { get; set;}
+            public float comp_med_1 { get; set; }
+            public float comp_med_2 { get; set; }
+            public float comp_med_3 { get; set; }
+            public float comp_espe { get; set; }
+            public float com_media { get; set; }
+            public float larg_med_1 { get; set; }
+            public float larg_med_2 { get; set; }
+            public float larg_med_3 { get; set; }
+            public float larg_espe { get; set; }
+            public float larg_media { get; set; }
+            public float alt_med_1 { get; set; }
+            public float alt_med_2 { get; set; }
+            public float alt_med_3 { get; set; }
+            public float alt_espe { get; set; }
+            public float alt_media { get; set; }
+            public string? executor { get; set; }
+            public string? auxiliar { get; set; }
+        }
     }
 }

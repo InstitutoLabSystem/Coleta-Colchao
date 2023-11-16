@@ -86,15 +86,38 @@ namespace Coleta_Colchao.Controllers
 
         public IActionResult EnsaioMolas7_1(string os, string orcamento)
         {
-            ViewBag.os = os;
-            ViewBag.orcamento = orcamento;
-            return View("Molas/EnsaioMolas7_1");
+            var dados = _context.ensaio_molas_item7_1.Where(x => x.os == os && x.orcamento == orcamento).FirstOrDefault();
+            if (dados == null)
+            {
+                ViewBag.os = os;
+                ViewBag.orcamento = orcamento;
+                return View("Molas/EnsaioMolas7_1");
+            }
+            else
+            {
+                ViewBag.os = os;
+                ViewBag.orcamento = orcamento;
+                return View("Molas/EnsaioMolas7_1", dados);
+            }
+
+
         }
         public IActionResult EnsaioMolas7_2(string os, string orcamento)
         {
-            ViewBag.os = os;
-            ViewBag.orcamento = orcamento;
-            return View("Molas/EnsaioMolas7_2");
+            var dados = _context.ensaio_molas_item7_2.Where(x => x.os == os && x.orcamento == orcamento).FirstOrDefault();
+            if (dados == null)
+            {
+                ViewBag.os = os;
+                ViewBag.orcamento = orcamento;
+                return View("Molas/EnsaioMolas7_2");
+            }
+            else
+            {
+                ViewBag.os = os;
+                ViewBag.orcamento = orcamento;
+                return View("Molas/EnsaioMolas7_2", dados);
+            }
+
         }
         public IActionResult EnsaioMolas7_6(string os, string orcamento)
         {
@@ -304,6 +327,8 @@ namespace Coleta_Colchao.Controllers
                 throw;
             }
         }
+
+        [HttpPost]
         public async Task<IActionResult> SalvarEnsaio4_3(string os, string orcamento, [Bind("borda,borda1,data_ini,data_term,valor_enc_1,valor_enc_2,man_parale_1,man_parale_2")] ColetaModel.Ensaio4_3 salvarDados)
         {
             try
@@ -364,6 +389,8 @@ namespace Coleta_Colchao.Controllers
             }
 
         }
+
+        [HttpPost]
         public async Task<IActionResult> SalvarEnsaio7_5(string os, string orcamento, [Bind("data_ini,data_term,temp_ensaio,faces,esp_face_1,med_face_1,acom_esp_face_1,acom_enc_face_1,esp_face_2,med_face_2,acom_esp_face_2,acom_enc_face_2,executor,auxiliar")] ColetaModel.Ensaio7_5 salvarDados)
         {
             try
@@ -416,29 +443,26 @@ namespace Coleta_Colchao.Controllers
                 else
                 {
                     //editando os dados, primeiro criando as variaveis que precisa.
-                    float esp_face_1 = salvarDados.esp_face_1;
-                    float med_face_1 = salvarDados.med_face_1;
-                    float esp_face_2 = salvarDados.esp_face_2;
-                    float med_face_2 = salvarDados.med_face_2;
-
-                    float acom_enc_face_1 = ((esp_face_1 * 100) / (esp_face_1 - med_face_1) - 100);
-                    string conv_acom_enc_face_1 = acom_enc_face_1.ToString("N2");
-                    float valor_final_conv_acom_enc_face_1 = float.Parse(conv_acom_enc_face_1);
-
-                    float acom_enc_face_2 = ((esp_face_2 * 100) / (esp_face_2 - med_face_2) - 100);
-                    string conv_acom_enc_face_2 = acom_enc_face_2.ToString("N2");
-                    float valor_final_conv_acom_enc_face_2 = float.Parse(conv_acom_enc_face_2);
-
                     editarDados.data_ini = salvarDados.data_ini;
                     editarDados.data_term = salvarDados.data_term;
                     editarDados.temp_ensaio = salvarDados.temp_ensaio;
                     editarDados.faces = salvarDados.faces;
                     editarDados.acom_esp_face_1 = salvarDados.acom_esp_face_1;
                     editarDados.acom_esp_face_2 = salvarDados.acom_esp_face_2;
-                    editarDados.esp_face_1 = esp_face_1;
-                    editarDados.med_face_1 = med_face_1;
-                    editarDados.esp_face_2 = esp_face_2;
-                    editarDados.med_face_2 = med_face_2;
+                    editarDados.esp_face_1 = salvarDados.esp_face_1;
+                    editarDados.med_face_1 = salvarDados.med_face_1;
+                    editarDados.esp_face_2 = salvarDados.esp_face_2;
+                    editarDados.med_face_2 = salvarDados.med_face_2;
+
+                    //realizando as contas necessarias.
+                    float acom_enc_face_1 = ((editarDados.esp_face_1 * 100) / (editarDados.esp_face_1 - editarDados.med_face_1) - 100);
+                    string conv_acom_enc_face_1 = acom_enc_face_1.ToString("N2");
+                    float valor_final_conv_acom_enc_face_1 = float.Parse(conv_acom_enc_face_1);
+
+                    float acom_enc_face_2 = ((editarDados.esp_face_2 * 100) / (editarDados.esp_face_2 - editarDados.med_face_2) - 100);
+                    string conv_acom_enc_face_2 = acom_enc_face_2.ToString("N2");
+                    float valor_final_conv_acom_enc_face_2 = float.Parse(conv_acom_enc_face_2);
+
                     editarDados.acom_enc_face_2 = valor_final_conv_acom_enc_face_2;
                     editarDados.acom_enc_face_1 = valor_final_conv_acom_enc_face_1;
 
@@ -447,6 +471,190 @@ namespace Coleta_Colchao.Controllers
                     return RedirectToAction(nameof(EnsaioMolas7_5), "Coleta", new { os, orcamento });
                 }
 
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "Error", ex.Message);
+                throw;
+            }
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> SalvarEnsaio7_1(string os, string orcamento, [Bind("data_ini,data_term,temp_ini,temp_term,quant_face,velo_face_1,quant_face_1,velo_face_2,quant_face_2,executor,auxiliar")] ColetaModel.Ensaio7_1 salvarDados)
+        {
+            try
+            {
+                var editarDados = _context.ensaio_molas_item7_1.Where(x => x.os == os && x.orcamento == orcamento).FirstOrDefault();
+
+                if (editarDados == null)
+                {
+                    DateOnly data_ini = salvarDados.data_ini;
+                    DateOnly data_term = salvarDados.data_term;
+                    float temp_ini = salvarDados.temp_ini;
+                    float temp_term = salvarDados.temp_term;
+                    int quant_face = salvarDados.quant_face;
+                    int velo_face_1 = salvarDados.velo_face_1;
+                    int quant_face_1 = salvarDados.quant_face_1;
+                    int velo_face_2 = salvarDados.velo_face_2;
+                    int quant_face_2 = salvarDados.quant_face_2;
+                    string executor = salvarDados.executor;
+                    string auxiliar = salvarDados.auxiliar;
+
+                    var registro = new ColetaModel.Ensaio7_1
+                    {
+                        os = os,
+                        orcamento = orcamento,
+                        data_ini = data_ini,
+                        data_term = data_term,
+                        temp_ini = temp_ini,
+                        temp_term = temp_term,
+                        quant_face = quant_face,
+                        velo_face_1 = velo_face_1,
+                        quant_face_1 = quant_face_1,
+                        velo_face_2 = velo_face_2,
+                        quant_face_2 = quant_face_2,
+                        executor = executor,
+                        auxiliar = auxiliar,
+                    };
+                    _context.Add(registro);
+                    await _context.SaveChangesAsync();
+                    TempData["Mensagem"] = "Dados Salvo Com Sucesso";
+                    return RedirectToAction(nameof(EnsaioMolas7_1), "Coleta", new { os, orcamento });
+                }
+                else
+                {
+                    editarDados.data_ini = salvarDados.data_ini;
+                    editarDados.data_term = salvarDados.data_term;
+                    editarDados.temp_ini = salvarDados.temp_ini;
+                    editarDados.temp_term = salvarDados.temp_term;
+                    editarDados.quant_face = salvarDados.quant_face;
+                    editarDados.velo_face_1 = salvarDados.velo_face_1;
+                    editarDados.quant_face_1 = salvarDados.quant_face_1;
+                    editarDados.velo_face_2 = salvarDados.velo_face_2;
+                    editarDados.quant_face_2 = salvarDados.quant_face_2;
+                    editarDados.executor = salvarDados.executor;
+                    editarDados.auxiliar = salvarDados.auxiliar;
+
+                    await _context.SaveChangesAsync();
+                    TempData["Mensagem"] = "Dados Editado Com Sucesso";
+                    return RedirectToAction(nameof(EnsaioMolas7_1), "Coleta", new { os, orcamento });
+                }
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "Error", ex.Message);
+                throw;
+            }
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> SalvarEnsaio7_2(string os, string orcamento, [Bind("data_ini,data_term,temp_ini,temp_term,comp_med_1,comp_med_2,comp_med_3,comp_espe,larg_med_1,larg_med_2,larg_med_3,larg_espe,alt_med_1,alt_med_2,alt_med_3,alt_espe,executor,auxiliar")] ColetaModel.Ensaio7_2 salvarDados)
+        {
+            try
+            {
+                var editarDados = _context.ensaio_molas_item7_2.Where(x => x.os == os && x.orcamento == orcamento).FirstOrDefault();
+                if (editarDados == null)
+                {
+                    //recebendo os valores e armazenando nas variaveis.
+                    DateOnly data_ini = salvarDados.data_ini;
+                    DateOnly data_term = salvarDados.data_term;
+                    float temp_ini = salvarDados.temp_ini;
+                    float temp_term = salvarDados.temp_term;
+                    float comp_med_1 = salvarDados.comp_med_1;
+                    float comp_med_2 = salvarDados.comp_med_2;
+                    float comp_med_3 = salvarDados.comp_med_3;
+                    float comp_espe = salvarDados.comp_espe;
+                    float larg_med_1 = salvarDados.larg_med_1;
+                    float larg_med_2 = salvarDados.larg_med_2;
+                    float larg_med_3 = salvarDados.larg_med_3;
+                    float larg_espe = salvarDados.larg_espe;
+                    float alt_med_1 = salvarDados.alt_med_1;
+                    float alt_med_2 = salvarDados.alt_med_2;
+                    float alt_med_3 = salvarDados.alt_med_3;
+                    float alt_espe = salvarDados.alt_espe;
+
+                    //calculando a media dos resultados.
+                    float media_comprimeto = (comp_med_1 + comp_med_2 + comp_med_3) / 3;
+                    string conv_media_comprimeto = media_comprimeto.ToString("N1");
+                    media_comprimeto = float.Parse(conv_media_comprimeto);
+
+                    float media_largura = (larg_med_1 + larg_med_2 + larg_med_3) / 3;
+                    string conv_media_largura = media_largura.ToString("N1");
+                    media_largura = float.Parse(conv_media_largura);
+
+                    float media_altura = (alt_med_1 + alt_med_2 + alt_med_3) / 3;
+                    string conv_media_altura = media_altura.ToString("N1");
+                    media_altura = float.Parse(conv_media_altura);
+
+                    //armazenando no banco.
+                    var registro = new ColetaModel.Ensaio7_2
+                    {
+                        os = os,
+                        orcamento = orcamento,
+                        data_ini = data_ini,
+                        data_term = data_term,
+                        temp_ini = temp_ini,
+                        temp_term = temp_term,
+                        comp_med_1 = comp_med_1,
+                        comp_med_2 = comp_med_2,
+                        comp_med_3 = comp_med_3,
+                        comp_espe = comp_espe,
+                        com_media = media_comprimeto,
+                        larg_med_1 = larg_med_1,
+                        larg_med_2 = larg_med_2,
+                        larg_med_3 = larg_med_3,
+                        larg_espe = larg_espe,
+                        larg_media = media_largura,
+                        alt_med_1 = alt_med_1,
+                        alt_med_2 = alt_med_2,
+                        alt_med_3 = alt_med_3,
+                        alt_espe = alt_espe,
+                        alt_media = media_altura,
+                    };
+
+                    _context.Add(registro);
+                    await _context.SaveChangesAsync();
+                    TempData["Mensagem"] = "Dados Salvo Com Sucesso";
+                    return RedirectToAction(nameof(EnsaioMolas7_2), "Coleta", new { os, orcamento });
+
+                }
+                else
+                {
+                    //editando os valores.
+                    editarDados.data_ini = salvarDados.data_ini;
+                    editarDados.data_term = salvarDados.data_term;
+                    editarDados.temp_ini = salvarDados.temp_ini;
+                    editarDados.temp_term = salvarDados.temp_term;
+                    editarDados.comp_med_1 = salvarDados.comp_med_1;
+                    editarDados.comp_med_2 = salvarDados.comp_med_2;
+                    editarDados.comp_med_3 = salvarDados.comp_med_3;
+                    editarDados.comp_espe = salvarDados.comp_espe;
+                    editarDados.larg_med_1 = salvarDados.larg_med_1;
+                    editarDados.larg_med_2 = salvarDados.larg_med_2;
+                    editarDados.larg_med_3 = salvarDados.larg_med_3;
+                    editarDados.larg_espe = salvarDados.larg_espe;
+                    editarDados.alt_med_1 = salvarDados.alt_med_1;
+                    editarDados.alt_med_2 = salvarDados.alt_med_2;
+                    editarDados.alt_med_3 = salvarDados.alt_med_3;
+                    editarDados.alt_espe = salvarDados.alt_espe;
+
+                    float media_comprimeto = (editarDados.comp_med_1 + editarDados.comp_med_2 + editarDados.comp_med_3) / 3;
+                    string conv_media_comprimeto = media_comprimeto.ToString("N1");
+                    media_comprimeto = float.Parse(conv_media_comprimeto);
+
+                    float media_largura = (editarDados.larg_med_1 + editarDados.larg_med_2 + editarDados.larg_med_3) / 3;
+                    string conv_media_largura = media_largura.ToString("N1");
+                    media_largura = float.Parse(conv_media_largura);
+
+                    float media_altura = (editarDados.alt_med_1 + editarDados.alt_med_2 + editarDados.alt_med_3) / 3;
+                    string conv_media_altura = media_altura.ToString("N1");
+                    media_altura = float.Parse(conv_media_altura);
+
+
+                    await _context.SaveChangesAsync();
+                    TempData["Mensagem"] = "Dados Editado Com Sucesso";
+                    return RedirectToAction(nameof(EnsaioMolas7_2), "Coleta", new { os, orcamento });
+                }
             }
             catch (Exception ex)
             {
