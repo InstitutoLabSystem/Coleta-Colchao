@@ -24,8 +24,8 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ29sZXRhXEVkaXRhclJlZ2lzdHJvLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/xampp/htdocs/Coleta-Colchao/Coleta-Colchao/Views/Coleta/EnsaioBaseCargaEstetica.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ29sZXRhXEVuc2Fpb0Jhc2VDYXJnYUVzdGV0aWNhLmNzaHRtbA==
+[C:/xampp/htdocs/Coleta-Colchao/Coleta-Colchao/Views/Coleta/EnsaioBaseCargaEstatica.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ29sZXRhXEVuc2Fpb0Jhc2VDYXJnYUVzdGF0aWNhLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/xampp/htdocs/Coleta-Colchao/Coleta-Colchao/Views/Coleta/EnsaioBaseEstruturaDurabi.cshtml]
@@ -50,10 +50,6 @@ build_metadata.AdditionalFiles.CssScope =
 
 [C:/xampp/htdocs/Coleta-Colchao/Coleta-Colchao/Views/Coleta/Espuma/EnsaioEspuma4_4.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ29sZXRhXEVzcHVtYVxFbnNhaW9Fc3B1bWE0XzQuY3NodG1s
-build_metadata.AdditionalFiles.CssScope = 
-
-[C:/xampp/htdocs/Coleta-Colchao/Coleta-Colchao/Views/Coleta/Espuma/EnsaioIdentificacao.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ29sZXRhXEVzcHVtYVxFbnNhaW9JZGVudGlmaWNhY2FvLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/xampp/htdocs/Coleta-Colchao/Coleta-Colchao/Views/Coleta/Espuma/IdentificacaoEmbalagem.cshtml]
