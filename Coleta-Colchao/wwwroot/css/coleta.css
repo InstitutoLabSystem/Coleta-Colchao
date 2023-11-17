@@ -47,9 +47,7 @@
     color: white;
 }
 
-  .tables tr:last-child td {
-        border-bottom: 2px solid #800000;
-    }
+  
 
 .imagem {
     max-width: 100px;
