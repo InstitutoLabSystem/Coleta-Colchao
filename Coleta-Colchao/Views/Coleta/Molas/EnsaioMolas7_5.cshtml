@@ -1,8 +1,9 @@
-﻿@{
+﻿@model ColetaModel.Ensaio7_5;
+@{
     Layout = null;
 }
 @{
-    ViewData["Title"] = "Molas Parte ";
+    ViewData["Title"] = "DETERMINAÇÃO DA DEFORMAÇÃO";
 }
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -14,133 +15,264 @@
 
 </head>
 <body>
-    <table class="tables table-bordered border-secondary  table-sm">
-        <thead>
-            <tr>
-                <td><img src="https://www.labsystem-nuvem.com.br/imagens_arq/imagens/img/LabSystem.png" class="imagem" /></td>
-                <td colspan="3" class="fundo-tabela">Coleta De Dados</td>
-                <td class="fundo-tabela">N Os:</td>
-            </tr>
-            <tr>
-                <td colspan="4">Colchão De Molas (Portaria Inmetro 75)</td>
-                <td rowspan="2"> @ViewBag.os</td>
-            </tr>
-            <tr>
-                <td>Inicio:</td>
-                <td><input class="form-control" type="date" /></td>
-                <td>Termino:</td>
-                <td><input class="form-control" type="date" /></td>
-            </tr>
-        </thead>
-    </table>
-    <table class="tables table-bordered border-secondary  table-sm">
-        <tr>
-            <td rowspan="14">7.5</td>
-            <td class="fundo-tabela">
-                <b>
-                    Determinação da Deformação.
-                </b>
-            </td>
-            <td rowspan="12">
-                <select class="form-control" name="Escolha" style="height:900px; text-align:center">
-                    <option selected> --- </option>
-                    <option> C </option>
-                    <option> NA </option>
-                    <option> NC </option>
-                </select>
-            </td>
-        </tr>
-        <tr>
-            <td> Este ensaio deve ser realizado somente após o ensaio de rolagem.</td>
-        </tr>
-        <tr>
-            <td> A execução da medição da deformação deve ser efetuado entre 30 minutos e 90 minutos após o término do ensaio de rolagem.</td>
-        </tr>
-        <tr>
-            <td>Tempo de término do ensaio de Rolagem: <input class="form-control" type="text" /></td>
-        </tr>
-        <tr>
-            <td>   Se for identificado na etiqueta que as duas faces do colchão possuem durezas diferentes, a avaliação deve ser efetuada em ambas as faces. </td>
-        </tr>
-        <tr>
-            <td>
-                As faces do colchão possui dureza diferente:
-                <select class="form-control" name="Escolha">
-                    <option selected> --- </option>
-                    <option> Sim </option>
-                    <option> Não </option>
-                </select>
-            </td>
-        </tr>
-        <tr>
-            <td>
-                Posicionar o colchão em uma superfície plana e rígida maior que a área do colchão. Apoiar uma régua longitudinalmente no centro do colchão de modo a ultrapassar as extremidades.
-                <p>Realizar a medição da acomodação a partir da face superior do colchão e a superfície inferior da régua.</p>
-                <p>A medida da acomodação na região central em relação as extremidades.</p>
-            </td>
-        </tr>
-        <tr>
-            <td>
-                <p><b>Tabela - acomodação maxima da altura</b></p>
-                <table class="tables table-bordered border-secondary  table-sm">
-                    <tr class="fundo-tabela">
-                        <td>Espessura Minima</td>
-                        <td>Espessura Maxima</td>
-                        <td>Espessura Acomodação</td>
+    <form method="post" asp-controller="Coleta" asp-action="SalvarEnsaio7_5" asp-route-os="@ViewBag.os" asp-route-orcamento="@ViewBag.orcamento">
+        @if (Model == null)
+        {
+            <table class="tables table-bordered border-secondary  table-sm">
+                <thead>
+                    <tr>
+                        <td><img src="https://www.labsystem-nuvem.com.br/imagens_arq/imagens/img/LabSystem.png" class="imagem" /></td>
+                        <td colspan="3" class="fundo-tabela">Coleta De Dados</td>
+                        <td class="fundo-tabela">N Os:</td>
                     </tr>
                     <tr>
-                        <td>12cm</td>
-                        <td>22cm</td>
-                        <td>6%</td>
+                        <td colspan="4">Colchão De Molas (Portaria Inmetro 75)</td>
+                        <td rowspan="2"> @ViewBag.os</td>
                     </tr>
                     <tr>
-                        <td>23cm</td>
-                        <td>30cm</td>
-                        <td>8%</td>
+                        <td>Inicio:</td>
+                        <td><input class="form-control" type="date" name="data_ini" /></td>
+                        <td>Termino:</td>
+                        <td><input class="form-control" type="date" name="data_term" /></td>
                     </tr>
-                    <tr>
-                        <td>>30cm</td>
-                        <td>---</td>
-                        <td>10%</td>
-                    </tr>
-                </table>
-            </td>
-        </tr>
-        <tr>
-            <td>
-                <table class="tables table-bordered border-secondary  table-sm">
-                    <tr class="fundo-tabela">
-                        <td>1º Face</td>
-                        <td>2º Face</td>
-                    </tr>
+                </thead>
+            </table>
+            <table class="tables table-bordered border-secondary  table-sm">
+                <tr>
+                    <td rowspan="14" style="width:70px;">7.5</td>
+                    <td class="fundo-tabela">
+                        <b>
+                            Determinação da Deformação.
+                        </b>
+                    </td>
+                    <td rowspan="12">
+                        <select class="form-control" name="Escolha" style="height:900px; width:70px ; text-align:center">
+                            <option selected> --- </option>
+                            <option> C </option>
+                            <option> NA </option>
+                            <option> NC </option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td> Este ensaio deve ser realizado somente após o ensaio de rolagem.</td>
+                </tr>
+                <tr>
+                    <td> A execução da medição da deformação deve ser efetuado entre 30 minutos e 90 minutos após o término do ensaio de rolagem.</td>
+                </tr>
+                <tr>
+                    <td>Tempo de término do ensaio de Rolagem: <input class="controlador" type="time" name="temp_ensaio" /></td>
+                </tr>
+                <tr>
+                    <td>   Se for identificado na etiqueta que as duas faces do colchão possuem durezas diferentes, a avaliação deve ser efetuada em ambas as faces. </td>
+                </tr>
+                <tr>
+                    <td>
+                        As faces do colchão possui dureza diferente:
+                        <select class="controlador" name="faces">
+                            <option selected> --- </option>
+                            <option> Sim </option>
+                            <option> Não </option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Posicionar o colchão em uma superfície plana e rígida maior que a área do colchão. Apoiar uma régua longitudinalmente no centro do colchão de modo a ultrapassar as extremidades.
+                        <p>Realizar a medição da acomodação a partir da face superior do colchão e a superfície inferior da régua.</p>
+                        <p>A medida da acomodação na região central em relação as extremidades.</p>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <p><b>Tabela - acomodação maxima da altura</b></p>
+                        <table class="tables table-bordered border-secondary  table-sm">
+                            <tr class="fundo-tabela">
+                                <td>Espessura Minima</td>
+                                <td>Espessura Maxima</td>
+                                <td>Espessura Acomodação</td>
+                            </tr>
+                            <tr>
+                                <td>12cm</td>
+                                <td>22cm</td>
+                                <td>6%</td>
+                            </tr>
+                            <tr>
+                                <td>23cm</td>
+                                <td>30cm</td>
+                                <td>8%</td>
+                            </tr>
+                            <tr>
+                                <td>>30cm</td>
+                                <td>---</td>
+                                <td>10%</td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <table class="tables table-bordered border-secondary  table-sm">
+                            <tr class="fundo-tabela">
+                                <td>1º Face (cm)</td>
+                                <td>2º Face (cm)</td>
+                            </tr>
 
-                    <tr>
-                        <td>Espessura inicial: <input class="form-control" type="text" /></td>
-                        <td>Espessura inicial: <input class="form-control" type="text" /></td>
-                    </tr>
-                    <tr>
-                        <td>Medição da deformação:<input class="form-control" type="text" /> </td>
-                        <td>Medição da deformação:<input class="form-control" type="text" /> </td>
-                    </tr>
-                    <tr>
-                        <td>Acomodação especificada:<input class="form-control" type="text" /> </td>
-                        <td>Acomodação especificada:<input class="form-control" type="text" /> </td>
-                    </tr>
-                    <tr>
-                        <td>Acomodação encontrada:<input class="form-control" readonly type="text" /></td>
-                        <td>Acomodação encontrada:<input class="form-control" readonly type="text" /></td>
-                    </tr>
-                </table>
-            </td>
-        </tr>
-    </table>
+                            <tr>
+                                <td>Espessura inicial: <input class="form-control" type="text" name="esp_face_1" /></td>
+                                <td>Espessura inicial: <input class="form-control" type="text" name="esp_face_2" /></td>
+                            </tr>
+                            <tr>
+                                <td>Medição da deformação:<input class="form-control" type="text" name="med_face_1" /> </td>
+                                <td>Medição da deformação:<input class="form-control" type="text" name="med_face_2" /> </td>
+                            </tr>
+                            <tr>
+                                <td>Acomodação especificada:<input class="form-control" type="text" name="acom_esp_face_1" /> </td>
+                                <td>Acomodação especificada:<input class="form-control" type="text" name="acom_esp_face_2" /> </td>
+                            </tr>
+                            <tr>
+                                <td>Acomodação encontrada:<input class="form-control" readonly /></td>
+                                <td>Acomodação encontrada:<input class="form-control" readonly /></td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+            </table>
 
+            <br />
+            <div class="d-grid gap-2 d-flex justify-content-center">
+                <button type="submit" class="btn btn-success btn btn-primary btn-md">Salvar</button>
+            </div>
+        }
+        else
+        {
+            <table class="tables table-bordered border-secondary  table-sm">
+                <thead>
+                    <tr>
+                        <td><img src="https://www.labsystem-nuvem.com.br/imagens_arq/imagens/img/LabSystem.png" class="imagem" /></td>
+                        <td colspan="3" class="fundo-tabela">Coleta De Dados</td>
+                        <td class="fundo-tabela">N Os:</td>
+                    </tr>
+                    <tr>
+                        <td colspan="4">Colchão De Molas (Portaria Inmetro 75)</td>
+                        <td rowspan="2"> @ViewBag.os</td>
+                    </tr>
+                    <tr>
+                        <td>Inicio:</td>
+                        <td><input class="form-control" type="text" name="data_ini" value="@Model.data_ini" /></td>
+                        <td>Termino:</td>
+                        <td><input class="form-control" type="text" name="data_term" value="@Model.data_term" /></td>
+                    </tr>
+                </thead>
+            </table>
+            <table class="tables table-bordered border-secondary  table-sm">
+                <tr>
+                    <td rowspan="14" style="width:70px;">7.5</td>
+                    <td class="fundo-tabela">
+                        <b>
+                            Determinação da Deformação.
+                        </b>
+                    </td>
+                    <td rowspan="12">
+                        <select class="form-control" name="Escolha" style="height:900px; width:70px ; text-align:center">
+                            <option selected> --- </option>
+                            <option> C </option>
+                            <option> NA </option>
+                            <option> NC </option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td> Este ensaio deve ser realizado somente após o ensaio de rolagem.</td>
+                </tr>
+                <tr>
+                    <td> A execução da medição da deformação deve ser efetuado entre 30 minutos e 90 minutos após o término do ensaio de rolagem.</td>
+                </tr>
+                <tr>
+                    <td>Tempo de término do ensaio de Rolagem: <input class="controlador" type="time" name="temp_ensaio" value="@Model.temp_ensaio" /></td>
+                </tr>
+                <tr>
+                    <td>   Se for identificado na etiqueta que as duas faces do colchão possuem durezas diferentes, a avaliação deve ser efetuada em ambas as faces. </td>
+                </tr>
+                <tr>
+                    <td>
+                        As faces do colchão possui dureza diferente:
+                        <select class="controlador" name="faces">
+                            <option>@Model.faces</option>
+                            <option value="Sim"> Sim </option>
+                            <option value="Não"> Não </option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Posicionar o colchão em uma superfície plana e rígida maior que a área do colchão. Apoiar uma régua longitudinalmente no centro do colchão de modo a ultrapassar as extremidades.
+                        <p>Realizar a medição da acomodação a partir da face superior do colchão e a superfície inferior da régua.</p>
+                        <p>A medida da acomodação na região central em relação as extremidades.</p>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <p><b>Tabela - acomodação maxima da altura</b></p>
+                        <table class="tables table-bordered border-secondary  table-sm">
+                            <tr class="fundo-tabela">
+                                <td>Espessura Minima</td>
+                                <td>Espessura Maxima</td>
+                                <td>Espessura Acomodação</td>
+                            </tr>
+                            <tr>
+                                <td>12cm</td>
+                                <td>22cm</td>
+                                <td>6%</td>
+                            </tr>
+                            <tr>
+                                <td>23cm</td>
+                                <td>30cm</td>
+                                <td>8%</td>
+                            </tr>
+                            <tr>
+                                <td>>30cm</td>
+                                <td>---</td>
+                                <td>10%</td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <table class="tables table-bordered border-secondary  table-sm">
+                            <tr class="fundo-tabela">
+                                <td>1º Face (cm)</td>
+                                <td>2º Face (cm)</td>
+                            </tr>
 
+                            <tr>
+                                <td>Espessura inicial: <input class="form-control" type="text" name="esp_face_1" value="@Model.esp_face_1" /></td>
+                                <td>Espessura inicial: <input class="form-control" type="text" name="esp_face_2" value="@Model.esp_face_2" /></td>
+                            </tr>
+                            <tr>
+                                <td>Medição da deformação:<input class="form-control" type="text" name="med_face_1" value="@Model.med_face_1" /> </td>
+                                <td>Medição da deformação:<input class="form-control" type="text" name="med_face_2" value="@Model.med_face_2" /> </td>
+                            </tr>
+                            <tr>
+                                <td>Acomodação especificada:<input class="form-control" type="text" name="acom_esp_face_1" value="@Model.acom_esp_face_1" /> </td>
+                                <td>Acomodação especificada:<input class="form-control" type="text" name="acom_esp_face_2" value="@Model.acom_esp_face_2" /> </td>
+                            </tr>
+                            <tr>
+                                <td>Acomodação encontrada:<input class="form-control" readonly value="@Model.acom_enc_face_1" /></td>
+                                <td>Acomodação encontrada:<input class="form-control" readonly value="@Model.acom_enc_face_2" /></td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+            </table>
+        }
 
-    <br />
-    <div class="d-grid gap-2 d-flex justify-content-center">
-        <button type="submit" class="btn btn-success btn btn-primary btn-md">Salvar</button>
-    </div>
+        <br />
+        <div class="d-grid gap-2 d-flex justify-content-center">
+            <button type="submit" class="btn btn-success btn btn-primary btn-md">Editar Dados</button>
+        </div>
+    </form>
 
 
     @if (TempData.ContainsKey("Mensagem"))

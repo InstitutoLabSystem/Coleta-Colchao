@@ -1,8 +1,9 @@
-﻿@{
+﻿@model ColetaModel.Ensaio4_3;
+@{
     Layout = null;
 }
 @{
-    ViewData["Title"] = "Molas Parte ";
+    ViewData["Title"] = "BORDA PERIMETRAL ";
 }
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -14,95 +15,233 @@
 
 </head>
 <body>
-    <table class="tables table-bordered border-secondary  table-sm">
-        <thead>
-            <tr>
-                <td><img src="https://www.labsystem-nuvem.com.br/imagens_arq/imagens/img/LabSystem.png" class="imagem" /></td>
-                <td colspan="3" class="fundo-tabela">Coleta De Dados</td>
-                <td class="fundo-tabela">N Os:</td>
-            </tr>
-            <tr>
-                <td colspan="4">Colchão De Molas (Portaria Inmetro 75)</td>
-                <td rowspan="2"> @ViewBag.os</td>
-            </tr>
-            <tr>
-                <td>Inicio:</td>
-                <td><input class="form-control" type="date" /></td>
-                <td>Termino:</td>
-                <td><input class="form-control" type="date" /></td>
-            </tr>
-        </thead>
-    </table>
 
-    <table class="tables table-bordered border-secondary  table-sm">
-        <tr>
-            <td rowspan="14">4.3</td>
-            <td class="fundo-tabela">
-                <b>
-                    Determinação da Deformação.
-                </b>
-            </td>
-            <td rowspan="14">
-                <select class="form-control" name="Escolha" style="height:320px; width:80px;">
-                    <option selected> --- </option>
-                    <option> C </option>
-                    <option> NA </option>
-                    <option> NC </option>
-                </select>
-            </td>
-        </tr>
-        <tr>
-            <td colspan="1">
-                A borda perimetral de aço e/ou espuma deve manter seu paralelismo e perpendicularidade antes e após o ensaio de rolagem. Além de atender as especificações abaixo.
-            </td>
-        </tr>
-        <tr>
-            <td>
-                <table class="tables table-bordered border-secondary  table-sm">
-                    <tr class="fundo-tabela">
-                        <td>Borda</td>
-                        <td>Especificado</td>
-                        <td>Encontrado</td>
-                        <td>Manteve seu paralelismo e perpendicularidade</td>
+
+    <form method="post" asp-controller="Coleta" asp-action="SalvarEnsaio4_3" asp-route-os="@ViewBag.os" asp-route-orcamento="@ViewBag.orcamento">
+        @if (Model == null)
+        {
+
+            <table class="tables table-bordered border-secondary  table-sm">
+                <thead>
+                    <tr>
+                        <td><img src="https://www.labsystem-nuvem.com.br/imagens_arq/imagens/img/LabSystem.png" class="imagem" /></td>
+                        <td colspan="3" class="fundo-tabela">Coleta De Dados</td>
+                        <td class="fundo-tabela">N Os:</td>
                     </tr>
                     <tr>
-                        <td>
-                            <select class="form-control" name="Escolha">
-                                <option selected> --- </option>
-                                <option> X </option>
-                            </select>
-                        </td>
-                        <td>Aço</td>
-                        <td>> 3,8 mm</td>
-                        <td><input class="form-control" type="text" /></td>
-                        <td><input class="form-control" type="text" /></td>
+                        <td colspan="4">Colchão De Molas (Portaria Inmetro 75)</td>
+                        <td rowspan="2"> @ViewBag.os</td>
                     </tr>
                     <tr>
-                        <td>
-                            <select class="form-control" name="Escolha">
-                                <option selected> --- </option>
-                                <option> X </option>
-                            </select>
-                        </td>
-                        <td>Aço</td>
-                        <td> < 120 mm</td>
-                        <td><input class="form-control" type="text" /></td>
-                        <td><input class="form-control" type="text" /></td>
+                        <td>Inicio:</td>
+                        <td><input class="form-control" type="date" name="data_ini" /></td>
+                        <td>Termino:</td>
+                        <td><input class="form-control" type="date" name="data_term"  /></td>
                     </tr>
-                </table>
-            </td>
-        </tr>
-        <tr>
-            <td>
-                Quando se for utilizado não tecido de fibras sintéticas, naturais e/ou artificiais, ela deve ter gramatura mínima de 100 g/m².
-            </td>
-        </tr>
-    </table>
-    <br />
-    <div class="d-grid gap-2 d-flex justify-content-center">
-        <button type="submit" class="btn btn-success btn btn-primary btn-md">Salvar</button>
-    </div>
+                </thead>
+            </table>
 
+            <table class="tables table-bordered border-secondary  table-sm">
+                <tr>
+                    <td rowspan="14" class="itens">4.3</td>
+                    <td class="fundo-tabela">
+                        <b>
+                            Determinação da Deformação.
+                        </b>
+                    </td>
+                    <td rowspan="14">
+                        <select class="form-control" name="Escolha" style="height:320px; width:80px;">
+                            <option selected> --- </option>
+                            <option> C </option>
+                            <option> NA </option>
+                            <option> NC </option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="1">
+                        A borda perimetral de aço e/ou espuma deve manter seu paralelismo e perpendicularidade antes e após o ensaio de rolagem. Além de atender as especificações abaixo.
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <table class="tables table-bordered border-secondary  table-sm">
+                            <tr class="fundo-tabela">
+                                <td>Borda</td>
+                                <td>Especificado</td>
+                                <td colspan="2">Encontrado</td>
+                                <td>Manteve seu paralelismo e perpendicularidade</td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <select class="form-control" name="borda" style="width:100px;">
+                                        <option selected> --- </option>
+                                        <option> X </option>
+                                    </select>
+                                </td>
+                                <td>Aço</td>
+                                <td style="width:50px;">
+                                    ≥  Ø 3,8 mm
+                                </td>
+                                <td><input class="form-control" type="text" name="valor_enc_1" /></td>
+                                <td>
+                                    <select name="man_parale_1" class="form-control">
+                                        <option value="Sim">Sim</option>
+                                        <option value="Não">Não</option>
+
+                                    </select>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <select class="form-control" name="borda1">
+                                        <option selected> --- </option>
+                                        <option> X </option>
+                                    </select>
+                                </td>
+                                <td>Aço</td>
+                                <td>
+                                    ≤ 120 mm
+                                </td>
+                                <td><input class="form-control" type="text" name="valor_enc_2" /></td>
+                                <td>
+                                    <select name="man_parale_2" class="form-control">
+                                        <option value="Sim">Sim</option>
+                                        <option value="Não">Não</option>
+
+                                    </select>
+                                </td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Quando se for utilizado não tecido de fibras sintéticas, naturais e/ou artificiais, ela deve ter gramatura mínima de 100 g/m².
+                    </td>
+                </tr>
+
+            </table>
+
+            <br />
+            <div class="d-grid gap-2 d-flex justify-content-center">
+                <button type="submit" class="btn btn-success btn btn-primary btn-md">Salvar</button>
+            </div>
+        }
+        else
+        {
+            <table class="tables table-bordered border-secondary  table-sm">
+                <thead>
+                    <tr>
+                        <td><img src="https://www.labsystem-nuvem.com.br/imagens_arq/imagens/img/LabSystem.png" class="imagem" /></td>
+                        <td colspan="3" class="fundo-tabela">Coleta De Dados</td>
+                        <td class="fundo-tabela">N Os:</td>
+                    </tr>
+                    <tr>
+                        <td colspan="4">Colchão De Molas (Portaria Inmetro 75)</td>
+                        <td rowspan="2"> @ViewBag.os</td>
+                    </tr>
+                    <tr>
+                        <td>Inicio:</td>
+                        <td><input class="form-control" type="text" name="data_ini" value="@Model.data_ini" /></td>
+                        <td>Termino:</td>
+                        <td><input class="form-control" type="text" name="data_term" value="@Model.data_term" /></td>
+                    </tr>
+                </thead>
+            </table>
+
+            <table class="tables table-bordered border-secondary  table-sm">
+                <tr>
+                    <td rowspan="14" class="itens">4.3</td>
+                    <td class="fundo-tabela">
+                        <b>
+                            Determinação da Deformação.
+                        </b>
+                    </td>
+                    <td rowspan="14">
+                        <select class="form-control" name="Escolha" style="height:320px; width:80px;">
+                            <option selected> --- </option>
+                            <option> C </option>
+                            <option> NA </option>
+                            <option> NC </option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="1">
+                        A borda perimetral de aço e/ou espuma deve manter seu paralelismo e perpendicularidade antes e após o ensaio de rolagem. Além de atender as especificações abaixo.
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <table class="tables table-bordered border-secondary  table-sm">
+                            <tr class="fundo-tabela">
+                                <td>Borda</td>
+                                <td>Especificado</td>
+                                <td colspan="2">Encontrado</td>
+                                <td>Manteve seu paralelismo e perpendicularidade</td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <select class="form-control" name="borda" style="width:100px;">
+                                        <option> @Model.borda</option>
+                                        <option > --- </option>
+                                        <option> X </option>
+                                    </select>
+                                </td>
+                                <td>Aço</td>
+                                <td>
+                                    ≥  Ø 3,8 mm
+                                </td>
+                                <td><input class="form-control" type="text" name="valor_enc_1" value="@Model.valor_enc_1" /></td>
+                                <td>
+                                    <select name="man_parale_1" class="form-control">
+                                        <option> @Model.man_parale_1</option>
+                                        <option value="Sim">Sim</option>
+                                        <option value="Não">Não</option>
+
+                                    </select>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <select class="form-control" name="borda1">
+                                        <option selected> @Model.borda1</option>
+                                        <option > --- </option>
+                                        <option> X </option>
+                                    </select>
+                                </td>
+                                <td>Aço</td>
+                                <td>
+                                    ≤ 120 mm
+                                </td>
+                                <td><input class="form-control" type="text" name="valor_enc_2" value="@Model.valor_enc_2" /></td>
+                                <td>
+                                    <select name="man_parale_2" class="form-control">
+                                        <option selected> @Model.man_parale_2</option>
+                                        <option value="Sim">Sim</option>
+                                        <option value="Não">Não</option>
+
+                                    </select>
+                                </td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Quando se for utilizado não tecido de fibras sintéticas, naturais e/ou artificiais, ela deve ter gramatura mínima de 100 g/m².
+                    </td>
+                </tr>
+
+            </table>
+
+            <br />
+            <div class="d-grid gap-2 d-flex justify-content-center">
+                <button type="submit" class="btn btn-success btn btn-primary btn-md">Editar Dados</button>
+            </div>
+        }
+    </form>
 
     @if (TempData.ContainsKey("Mensagem"))
     {

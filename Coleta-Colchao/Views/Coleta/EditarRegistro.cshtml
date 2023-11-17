@@ -80,7 +80,13 @@
                         </tr>
                         <tr>
                             <td> Contém Lacre : </td>
-                            <td> <input class="form-control" type="text" name="lacre" value="@Model[i].lacre" /> </td>
+                            <td>
+                                <select class="form-control" name="lacre">
+                                    <option>@Model[i].lacre</option>
+                                    <option value="Sim"> Sim </option>
+                                    <option value="Não"> Não </option>
+                                </select>
+                            </td>
                             <td> Local da realizaçãp dos ensaios : </td>
                             <td colspan="2"> <input class="form-control" type="text" name="realizacao_ensaios" value="@Model[i].realizacao_ensaios" /> </td>
                         </tr>
