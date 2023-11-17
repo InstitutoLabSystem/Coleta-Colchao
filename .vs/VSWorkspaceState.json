@@ -10,6 +10,6 @@
     "\\Coleta-Colchao\\wwwroot",
     "\\Coleta-Colchao\\wwwroot\\css"
   ],
-  "SelectedNode": "\\Coleta-Colchao\\Views\\Coleta\\Molas\\EnsaioMolas7_2.cshtml",
+  "SelectedNode": "\\Coleta-Colchao\\Controllers\\ColetaController.cs",
   "PreviewInSolutionExplorer": false
 }
