@@ -2,7 +2,10 @@
 using Coleta_Colchao.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using System.Data.Entity;
+using System.Data.Entity.Core.Mapping;
+using System.Data.Entity.Core.Objects.DataClasses;
 using System.Security.Claims;
 
 namespace Coleta_Colchao.Controllers
@@ -123,22 +126,52 @@ namespace Coleta_Colchao.Controllers
         }
         public IActionResult EnsaioMolas7_6(string os, string orcamento)
         {
-            ViewBag.os = os;
-            ViewBag.orcamento = orcamento;
-            return View("Molas/EnsaioMolas7_6");
+            var dados = _context.ensaio_molas_item7_6.Where(x => x.os == os && x.orcamento == orcamento).FirstOrDefault();
+            if (dados == null)
+            {
+                ViewBag.os = os;
+                ViewBag.orcamento = orcamento;
+                return View("Molas/EnsaioMolas7_6");
+            }
+            else
+            {
+                ViewBag.os = os;
+                ViewBag.orcamento = orcamento;
+                return View("Molas/EnsaioMolas7_6", dados);
+            }
         }
 
         public IActionResult EnsaioMolas7_3(string os, string orcamento)
         {
-            ViewBag.os = os;
-            ViewBag.orcamento = orcamento;
-            return View("Molas/EnsaioMolas7_3");
+            var dados = _context.ensaio_molas_item7_3.Where(x => x.os == os && x.orcamento == orcamento).FirstOrDefault();
+            if (dados == null)
+            {
+                ViewBag.os = os;
+                ViewBag.orcamento = orcamento;
+                return View("Molas/EnsaioMolas7_3");
+            }
+            else
+            {
+                ViewBag.os = os;
+                ViewBag.orcamento = orcamento;
+                return View("Molas/EnsaioMolas7_3", dados);
+            }
         }
         public IActionResult EnsaioMolas7_7(string os, string orcamento)
         {
-            ViewBag.os = os;
-            ViewBag.orcamento = orcamento;
-            return View("Molas/EnsaioMolas7_7");
+            var dados = _context.ensaio_molas_item7_7.Where(x => x.os == os && x.orcamento == orcamento).FirstOrDefault();
+            if (dados == null)
+            {
+                ViewBag.os = os;
+                ViewBag.orcamento = orcamento;
+                return View("Molas/EnsaioMolas7_7");
+            }
+            else
+            {
+                ViewBag.os = os;
+                ViewBag.orcamento = orcamento;
+                return View("Molas/EnsaioMolas7_7", dados);
+            }
         }
         public IActionResult EnsaioMolas7_5(string os, string orcamento)
         {
@@ -158,9 +191,19 @@ namespace Coleta_Colchao.Controllers
         }
         public IActionResult EnsaioMolas7_8(string os, string orcamento)
         {
-            ViewBag.os = os;
-            ViewBag.orcamento = orcamento;
-            return View("Molas/EnsaioMolas7_8");
+            var dados = _context.ensaio_molas_item7_8.Where(x => x.os == os && x.orcamento == orcamento).FirstOrDefault();
+            if (dados == null)
+            {
+                ViewBag.os = os;
+                ViewBag.orcamento = orcamento;
+                return View("Molas/EnsaioMolas7_8");
+            }
+            else
+            {
+                ViewBag.os = os;
+                ViewBag.orcamento = orcamento;
+                return View("Molas/EnsaioMolas7_8", dados);
+            }
         }
         public IActionResult EnsaioMolas4_3(string os, string orcamento)
         {
@@ -665,311 +708,709 @@ namespace Coleta_Colchao.Controllers
             }
         }
 
-     [HttpPost]
-      public async Task<IActionResult> SalvarEspumaUm(string os, string orcamento, [Bind("data_ini,data_term,temp_ini,temp_fim,dimensao_temp,comprimento_result,comprimento_um,comprimento_esp,comprimento_dois," +
+        [HttpPost]
+        public async Task<IActionResult> SalvarEspumaUm(string os, string orcamento, [Bind("data_ini,data_term,temp_ini,temp_fim,dimensao_temp,comprimento_result,comprimento_um,comprimento_esp,comprimento_dois," +
           "comprimento_tres,comprimento_media,largura_result,largura_um,largura_esp,largura_dois,largura_tres,largura_media,altura_result,altura_um,altura_esp,altura_dois,altura_tres,altura_media,lamina_um,lamina_comp_um," +
           "lamina_esp_um,lamina_comp_dois,lamina_comp_tres,lamina_media_um,lamina_tipo_um,lamina_min_um,lamina_max_um,lamina_resul_um,lamina_dois,lamina_comp_quat,lamina_esp_dois, lamina_comp_cinco,lamina_comp_seis,lamina_media_dois,lamina_tipo_dois," +
           "lamina_min_dois,lamina_max_dois,lamina_resul_dois,lamina_tres,lamina_comp_sete,lamina_esp_tres,lamina_comp_oito,lamina_comp_nove,lamina_media_tres,lamina_tipo_tres,lamina_min_tres,lamina_max_tres,lamina_resul_tres,lamina_quat,lamina_comp_dez,lamina_esp_quat," +
           "lamina_comp_onze,lamina_comp_doze,lamina_media_quat,lamina_tipo_quat,lamina_min_quat,lamina_max_quat,lamina_resul_quat,lamina_cinco,lamina_comp_treze,lamina_esp_cinco,lamina_comp_quatorze,lamina_comp_quinze,lamina_media_cinco,lamina_tipo_cinco," +
           "lamina_min_cinco,lamina_max_cinco,lamina_resul_cinco,esp_tipo_um,esp_lamina_um,esp_especificado_um,esp_mm_um,esp_cm_um,esp_tipo_dois,esp_lamina_dois,esp_especificado_dois,esp_mm_dois,esp_cm_dois,col_tipo_um,col_especificado_um,col_encontrado_um,col_resul_um," +
           "col_tipo_dois,col_lamina_dois,col_especificado_dois,col_resul_dois,reves_tipo_um,reves_lamina_um,reves_especificado_um,reves_mm_um,reves_cm_um,reves_tipo_dois,reves_lamina_dois,reves_especificado_dois,reves_mm_dois,reves_cm_dois,temp_repouso,lamina_media_um")] ColetaModel.EspumaUm salvar)
-      {
-          try
-          {
-              
+        {
+            try
+            {
 
 
-                  var data_ini = salvar.data_ini;
-                  var data_term = salvar.data_term;
-                  var temp_ini = salvar.temp_ini;
-                  var temp_fim = salvar.temp_fim;
-                  var dimensao_temp = salvar.dimensao_temp;
-                  var comprimento_result = salvar.comprimento_result;
-                  var comprimento_um = salvar.comprimento_um;
-                  var comprimento_esp = salvar.comprimento_esp;
-                  var comprimento_dois = salvar.comprimento_dois;
-                  var comprimento_tres = salvar.comprimento_tres;
-                  var temp_repouso = salvar.temp_repouso;
 
-                  double comprimentoum = double.Parse(comprimento_um);
-                  double comprimentodois = double.Parse(comprimento_dois);
-                  double comprimentotres = double.Parse(comprimento_tres);
-                  var comprimento_media = ((comprimentoum + comprimentodois + comprimentotres) / 3);
+                var data_ini = salvar.data_ini;
+                var data_term = salvar.data_term;
+                var temp_ini = salvar.temp_ini;
+                var temp_fim = salvar.temp_fim;
+                var dimensao_temp = salvar.dimensao_temp;
+                var comprimento_result = salvar.comprimento_result;
+                var comprimento_um = salvar.comprimento_um;
+                var comprimento_esp = salvar.comprimento_esp;
+                var comprimento_dois = salvar.comprimento_dois;
+                var comprimento_tres = salvar.comprimento_tres;
+                var temp_repouso = salvar.temp_repouso;
 
-
-                  var largura_result = salvar.largura_result;
-                  var largura_um = salvar.largura_um;
-                  var largura_esp = salvar.largura_esp;
-                  var largura_dois = salvar.largura_dois;
-                  var largura_tres = salvar.largura_tres;
+                double comprimentoum = double.Parse(comprimento_um);
+                double comprimentodois = double.Parse(comprimento_dois);
+                double comprimentotres = double.Parse(comprimento_tres);
+                var comprimento_media = ((comprimentoum + comprimentodois + comprimentotres) / 3);
 
 
-                  double larguraum = double.Parse(largura_um);
-                  double larguradois = double.Parse(largura_dois);
-                  double larguratres = double.Parse(largura_tres);
-                  var largura_media = ((larguraum + larguradois + larguratres) / 3);
+                var largura_result = salvar.largura_result;
+                var largura_um = salvar.largura_um;
+                var largura_esp = salvar.largura_esp;
+                var largura_dois = salvar.largura_dois;
+                var largura_tres = salvar.largura_tres;
 
 
-                  var altura_result = salvar.altura_result;
-                  var altura_um = salvar.altura_um;
-                  var altura_esp = salvar.altura_esp;
-                  var altura_dois = salvar.altura_dois;
-                  var altura_tres = salvar.altura_tres;
-
-                  double alturaum = double.Parse(altura_um);
-                  double alturadois = double.Parse(altura_dois);
-                  double alturatres = double.Parse(altura_tres);
-                  var altura_media = ((alturaum + alturadois + alturatres) / 3);
-
-                  var lamina_um = salvar.lamina_um;
-                  var lamina_comp_um = salvar.lamina_comp_um;
-                  var lamina_esp_um = salvar.lamina_esp_um;
-                  var lamina_comp_dois = salvar.lamina_comp_dois;
-                  var lamina_comp_tres = salvar.lamina_comp_tres;
-          
-
-                  double laminacompum = double.Parse(lamina_comp_um);
-                  double laminacompdois = double.Parse(lamina_comp_dois);
-                  double laminacomptres = double.Parse(lamina_comp_tres);
-                  var lamina_media_um = ((laminacompum + laminacompdois + laminacomptres) / 3);
+                double larguraum = double.Parse(largura_um);
+                double larguradois = double.Parse(largura_dois);
+                double larguratres = double.Parse(largura_tres);
+                var largura_media = ((larguraum + larguradois + larguratres) / 3);
 
 
-                  var lamina_tipo_um = salvar.lamina_tipo_um;
-                  var lamina_min_um = salvar.lamina_min_um;
-                  var lamina_max_um = salvar.lamina_max_um;
-                  var lamina_resul_um = salvar.lamina_resul_um;
-                  var lamina_dois = salvar.lamina_dois;
-                  var lamina_comp_quat = salvar.lamina_comp_quat;
-                  var lamina_esp_dois = salvar.lamina_esp_dois;
-                  var lamina_comp_cinco = salvar.lamina_comp_cinco;
-                  var lamina_comp_seis = salvar.lamina_comp_seis;
+                var altura_result = salvar.altura_result;
+                var altura_um = salvar.altura_um;
+                var altura_esp = salvar.altura_esp;
+                var altura_dois = salvar.altura_dois;
+                var altura_tres = salvar.altura_tres;
 
-                  double laminacompquat = double.Parse(lamina_comp_quat);
-                  double laminacompcinco = double.Parse(lamina_comp_cinco);
-                  double laminacompseis = double.Parse(lamina_comp_seis);
-                  var lamina_media_dois = ((laminacompquat + laminacompcinco + laminacompseis) / 3);
+                double alturaum = double.Parse(altura_um);
+                double alturadois = double.Parse(altura_dois);
+                double alturatres = double.Parse(altura_tres);
+                var altura_media = ((alturaum + alturadois + alturatres) / 3);
 
-                  var lamina_tipo_dois = salvar.lamina_tipo_dois;
-                  var lamina_min_dois = salvar.lamina_min_dois;
-                  var lamina_max_dois = salvar.lamina_max_dois;
-                  var lamina_resul_dois = salvar.lamina_resul_dois;
-                  var lamina_tres = salvar.lamina_tres;
-                  var lamina_comp_sete = salvar.lamina_comp_sete;
-                  var lamina_esp_tres = salvar.lamina_esp_tres;
-                  var lamina_comp_oito = salvar.lamina_comp_oito;
-                  var lamina_comp_nove = salvar.lamina_comp_nove;
-
-                  double laminacompsete = double.Parse(lamina_comp_sete);
-                  double laminacompoito = double.Parse(lamina_comp_oito);
-                  double laminacompnove = double.Parse(lamina_comp_nove);
-                  var lamina_media_tres = ((laminacompsete + laminacompoito + laminacompnove) / 3);
-
-                  var lamina_tipo_tres = salvar.lamina_tipo_tres;
-                  var lamina_min_tres = salvar.lamina_min_tres;
-                  var lamina_max_tres = salvar.lamina_max_tres;
-                  var lamina_resul_tres = salvar.lamina_resul_tres;
-                  var lamina_quat = salvar.lamina_quat;
-                  var lamina_comp_dez = salvar.lamina_comp_dez;
-                  var lamina_esp_quat = salvar.lamina_esp_quat;
-                  var lamina_comp_onze = salvar.lamina_comp_onze;
-                  var lamina_comp_doze = salvar.lamina_comp_doze;
-    
-
-                  double laminacompdez = double.Parse(lamina_comp_dez);
-                  double laminacomponze = double.Parse(lamina_comp_onze);
-                  double laminacompdoze = double.Parse(lamina_comp_doze);
-                  var lamina_media_quat = ((laminacompdez + laminacomponze + laminacompdoze) / 3);
-
-                  var lamina_tipo_quat = salvar.lamina_tipo_quat;
-                  var lamina_min_quat = salvar.lamina_min_quat;
-                  var lamina_max_quat = salvar.lamina_max_quat;
-                  var lamina_resul_quat = salvar.lamina_resul_quat;
-                  var lamina_cinco = salvar.lamina_cinco;
-                  var lamina_comp_treze = salvar.lamina_comp_treze;
-                  var lamina_esp_cinco = salvar.lamina_esp_cinco;
-                  var lamina_comp_quatorze = salvar.lamina_comp_quatorze;
-                  var lamina_comp_quinze = salvar.lamina_comp_quinze;
+                var lamina_um = salvar.lamina_um;
+                var lamina_comp_um = salvar.lamina_comp_um;
+                var lamina_esp_um = salvar.lamina_esp_um;
+                var lamina_comp_dois = salvar.lamina_comp_dois;
+                var lamina_comp_tres = salvar.lamina_comp_tres;
 
 
-                  double laminacomptreze = double.Parse(lamina_comp_treze);
-                  double laminacompquatorze = double.Parse(lamina_comp_quatorze);
-                  double laminacompquinze = double.Parse(lamina_comp_quinze);
-                  var lamina_media_cinco = ((laminacomptreze + laminacompquatorze + laminacompquinze) / 3);
+                double laminacompum = double.Parse(lamina_comp_um);
+                double laminacompdois = double.Parse(lamina_comp_dois);
+                double laminacomptres = double.Parse(lamina_comp_tres);
+                var lamina_media_um = ((laminacompum + laminacompdois + laminacomptres) / 3);
 
-                  var lamina_tipo_cinco = salvar.lamina_tipo_cinco;
-                  var lamina_min_cinco = salvar.lamina_min_cinco;
-                  var lamina_max_cinco = salvar.lamina_max_cinco;
-                  var lamina_resul_cinco = salvar.lamina_resul_cinco;
-                  var esp_tipo_um = salvar.esp_tipo_um;
-                  var esp_lamina_um = salvar.esp_lamina_um;
-                  var esp_especificado_um = salvar.esp_especificado_um;
-                  var esp_mm_um = salvar.esp_mm_um;
 
-                  double mm_um = double.Parse(esp_mm_um);
-                  var esp_cm_um = mm_um/10;
+                var lamina_tipo_um = salvar.lamina_tipo_um;
+                var lamina_min_um = salvar.lamina_min_um;
+                var lamina_max_um = salvar.lamina_max_um;
+                var lamina_resul_um = salvar.lamina_resul_um;
+                var lamina_dois = salvar.lamina_dois;
+                var lamina_comp_quat = salvar.lamina_comp_quat;
+                var lamina_esp_dois = salvar.lamina_esp_dois;
+                var lamina_comp_cinco = salvar.lamina_comp_cinco;
+                var lamina_comp_seis = salvar.lamina_comp_seis;
 
-                  var esp_tipo_dois = salvar.esp_tipo_dois;
-                  var esp_lamina_dois = salvar.esp_lamina_dois;
-                  var esp_especificado_dois = salvar.esp_especificado_dois;
-                  var esp_mm_dois = salvar.esp_mm_dois;
+                double laminacompquat = double.Parse(lamina_comp_quat);
+                double laminacompcinco = double.Parse(lamina_comp_cinco);
+                double laminacompseis = double.Parse(lamina_comp_seis);
+                var lamina_media_dois = ((laminacompquat + laminacompcinco + laminacompseis) / 3);
 
-                  double mm_dois = double.Parse(esp_mm_dois);
-                  var esp_cm_dois = mm_dois/10;
+                var lamina_tipo_dois = salvar.lamina_tipo_dois;
+                var lamina_min_dois = salvar.lamina_min_dois;
+                var lamina_max_dois = salvar.lamina_max_dois;
+                var lamina_resul_dois = salvar.lamina_resul_dois;
+                var lamina_tres = salvar.lamina_tres;
+                var lamina_comp_sete = salvar.lamina_comp_sete;
+                var lamina_esp_tres = salvar.lamina_esp_tres;
+                var lamina_comp_oito = salvar.lamina_comp_oito;
+                var lamina_comp_nove = salvar.lamina_comp_nove;
 
-                  var col_tipo_um = salvar.col_tipo_um;
-                  var col_especificado_um = salvar.col_especificado_um;
-                  var col_encontrado_um = salvar.col_encontrado_um;
-                  var col_resul_um = salvar.col_resul_um;
-                  var col_tipo_dois = salvar.col_tipo_dois;
-                  var col_lamina_dois = salvar.col_lamina_dois;
-                  var col_especificado_dois = salvar.col_especificado_dois;
-                  var col_resul_dois = salvar.col_resul_dois;
-                  var reves_tipo_um = salvar.reves_tipo_um;
-                  var reves_lamina_um = salvar.reves_lamina_um;
-                  var reves_especificado_um = salvar.reves_especificado_um;
-                  var reves_mm_um = salvar.reves_mm_um;
+                double laminacompsete = double.Parse(lamina_comp_sete);
+                double laminacompoito = double.Parse(lamina_comp_oito);
+                double laminacompnove = double.Parse(lamina_comp_nove);
+                var lamina_media_tres = ((laminacompsete + laminacompoito + laminacompnove) / 3);
 
-                  double reves_mm = double.Parse(reves_mm_um);
-                  var reves_cm_um = reves_mm / 10; 
+                var lamina_tipo_tres = salvar.lamina_tipo_tres;
+                var lamina_min_tres = salvar.lamina_min_tres;
+                var lamina_max_tres = salvar.lamina_max_tres;
+                var lamina_resul_tres = salvar.lamina_resul_tres;
+                var lamina_quat = salvar.lamina_quat;
+                var lamina_comp_dez = salvar.lamina_comp_dez;
+                var lamina_esp_quat = salvar.lamina_esp_quat;
+                var lamina_comp_onze = salvar.lamina_comp_onze;
+                var lamina_comp_doze = salvar.lamina_comp_doze;
 
-                  var reves_tipo_dois = salvar.reves_tipo_dois;
-                  var reves_lamina_dois = salvar.reves_lamina_dois;
-                  var reves_especificado_dois = salvar.reves_especificado_dois;
-                  var reves_mm_dois = salvar.reves_mm_dois;
 
-                  double reves_mm_ = double.Parse(reves_mm_dois);
-                  var reves_cm_dois = reves_mm_/10;
+                double laminacompdez = double.Parse(lamina_comp_dez);
+                double laminacomponze = double.Parse(lamina_comp_onze);
+                double laminacompdoze = double.Parse(lamina_comp_doze);
+                var lamina_media_quat = ((laminacompdez + laminacomponze + laminacompdoze) / 3);
 
-                  //salvando os valores
+                var lamina_tipo_quat = salvar.lamina_tipo_quat;
+                var lamina_min_quat = salvar.lamina_min_quat;
+                var lamina_max_quat = salvar.lamina_max_quat;
+                var lamina_resul_quat = salvar.lamina_resul_quat;
+                var lamina_cinco = salvar.lamina_cinco;
+                var lamina_comp_treze = salvar.lamina_comp_treze;
+                var lamina_esp_cinco = salvar.lamina_esp_cinco;
+                var lamina_comp_quatorze = salvar.lamina_comp_quatorze;
+                var lamina_comp_quinze = salvar.lamina_comp_quinze;
 
-                  var salvarEspuma = new ColetaModel.EspumaUm
-                  {
-                      os = os,
-                      orcamento = orcamento,
-                      data_ini = data_ini,
-                      data_term = data_term,
-                      temp_ini = temp_ini,
-                      temp_fim = temp_fim,
-                      dimensao_temp = dimensao_temp,
-                      comprimento_um = comprimento_um,
-                      comprimento_dois = comprimento_um,
-                      comprimento_tres = comprimento_tres,
-                      comprimento_esp = comprimento_esp,
-                      comprimento_media = comprimento_media.ToString(),
-                      comprimento_result = comprimento_result,
-                      largura_um = largura_um,
-                      largura_dois = largura_dois,
-                      largura_tres = largura_tres,
-                      largura_esp = largura_esp,
-                      largura_media = largura_media.ToString(),
-                      largura_result = largura_result,
-                      altura_um = altura_um,
-                      altura_dois = altura_dois,
-                      altura_tres = altura_tres,
-                      altura_esp = altura_esp,
-                      altura_media = altura_media.ToString(),
-                      altura_result = altura_result,
-                      temp_repouso = temp_repouso,
-                      //lamina_tempo = lamina_tempo,
-                      lamina_um = lamina_um,
-                      lamina_comp_um = lamina_comp_um,
-                      lamina_comp_dois = lamina_comp_dois,
-                      lamina_comp_tres = lamina_comp_tres,
-                      lamina_esp_um = lamina_esp_um,
-                      lamina_media_um = lamina_media_um.ToString(),
-                     lamina_tipo_um = lamina_tipo_um,
-                     lamina_min_um = lamina_min_um,
+
+                double laminacomptreze = double.Parse(lamina_comp_treze);
+                double laminacompquatorze = double.Parse(lamina_comp_quatorze);
+                double laminacompquinze = double.Parse(lamina_comp_quinze);
+                var lamina_media_cinco = ((laminacomptreze + laminacompquatorze + laminacompquinze) / 3);
+
+                var lamina_tipo_cinco = salvar.lamina_tipo_cinco;
+                var lamina_min_cinco = salvar.lamina_min_cinco;
+                var lamina_max_cinco = salvar.lamina_max_cinco;
+                var lamina_resul_cinco = salvar.lamina_resul_cinco;
+                var esp_tipo_um = salvar.esp_tipo_um;
+                var esp_lamina_um = salvar.esp_lamina_um;
+                var esp_especificado_um = salvar.esp_especificado_um;
+                var esp_mm_um = salvar.esp_mm_um;
+
+                double mm_um = double.Parse(esp_mm_um);
+                var esp_cm_um = mm_um / 10;
+
+                var esp_tipo_dois = salvar.esp_tipo_dois;
+                var esp_lamina_dois = salvar.esp_lamina_dois;
+                var esp_especificado_dois = salvar.esp_especificado_dois;
+                var esp_mm_dois = salvar.esp_mm_dois;
+
+                double mm_dois = double.Parse(esp_mm_dois);
+                var esp_cm_dois = mm_dois / 10;
+
+                var col_tipo_um = salvar.col_tipo_um;
+                var col_especificado_um = salvar.col_especificado_um;
+                var col_encontrado_um = salvar.col_encontrado_um;
+                var col_resul_um = salvar.col_resul_um;
+                var col_tipo_dois = salvar.col_tipo_dois;
+                var col_lamina_dois = salvar.col_lamina_dois;
+                var col_especificado_dois = salvar.col_especificado_dois;
+                var col_resul_dois = salvar.col_resul_dois;
+                var reves_tipo_um = salvar.reves_tipo_um;
+                var reves_lamina_um = salvar.reves_lamina_um;
+                var reves_especificado_um = salvar.reves_especificado_um;
+                var reves_mm_um = salvar.reves_mm_um;
+
+                double reves_mm = double.Parse(reves_mm_um);
+                var reves_cm_um = reves_mm / 10;
+
+                var reves_tipo_dois = salvar.reves_tipo_dois;
+                var reves_lamina_dois = salvar.reves_lamina_dois;
+                var reves_especificado_dois = salvar.reves_especificado_dois;
+                var reves_mm_dois = salvar.reves_mm_dois;
+
+                double reves_mm_ = double.Parse(reves_mm_dois);
+                var reves_cm_dois = reves_mm_ / 10;
+
+                //salvando os valores
+
+                var salvarEspuma = new ColetaModel.EspumaUm
+                {
+                    os = os,
+                    orcamento = orcamento,
+                    data_ini = data_ini,
+                    data_term = data_term,
+                    temp_ini = temp_ini,
+                    temp_fim = temp_fim,
+                    dimensao_temp = dimensao_temp,
+                    comprimento_um = comprimento_um,
+                    comprimento_dois = comprimento_um,
+                    comprimento_tres = comprimento_tres,
+                    comprimento_esp = comprimento_esp,
+                    comprimento_media = comprimento_media.ToString(),
+                    comprimento_result = comprimento_result,
+                    largura_um = largura_um,
+                    largura_dois = largura_dois,
+                    largura_tres = largura_tres,
+                    largura_esp = largura_esp,
+                    largura_media = largura_media.ToString(),
+                    largura_result = largura_result,
+                    altura_um = altura_um,
+                    altura_dois = altura_dois,
+                    altura_tres = altura_tres,
+                    altura_esp = altura_esp,
+                    altura_media = altura_media.ToString(),
+                    altura_result = altura_result,
+                    temp_repouso = temp_repouso,
+                    //lamina_tempo = lamina_tempo,
+                    lamina_um = lamina_um,
+                    lamina_comp_um = lamina_comp_um,
+                    lamina_comp_dois = lamina_comp_dois,
+                    lamina_comp_tres = lamina_comp_tres,
+                    lamina_esp_um = lamina_esp_um,
+                    lamina_media_um = lamina_media_um.ToString(),
+                    lamina_tipo_um = lamina_tipo_um,
+                    lamina_min_um = lamina_min_um,
                     lamina_max_um = lamina_max_um,
-                     lamina_resul_um = lamina_resul_um,
-                     lamina_dois = lamina_dois,
-                     lamina_comp_quat = lamina_comp_quat,
-                     lamina_comp_cinco = lamina_comp_cinco,
-                     lamina_comp_seis = lamina_comp_seis,
-                     lamina_esp_dois = lamina_esp_dois,
+                    lamina_resul_um = lamina_resul_um,
+                    lamina_dois = lamina_dois,
+                    lamina_comp_quat = lamina_comp_quat,
+                    lamina_comp_cinco = lamina_comp_cinco,
+                    lamina_comp_seis = lamina_comp_seis,
+                    lamina_esp_dois = lamina_esp_dois,
                     lamina_media_dois = lamina_media_dois.ToString(),
-                     lamina_tipo_dois = lamina_tipo_dois,
-                     lamina_min_dois = lamina_min_dois,
-                     lamina_max_dois = lamina_max_dois,
-                     lamina_resul_dois = lamina_resul_dois,
-                     lamina_tres = lamina_tres,
-                     lamina_comp_sete = lamina_comp_sete,
-                     lamina_comp_oito = lamina_comp_oito,
-                     lamina_comp_nove = lamina_comp_nove,
-                     lamina_esp_tres = lamina_esp_tres,
-                     lamina_media_tres = lamina_media_tres.ToString(),
-                     lamina_tipo_tres = lamina_tipo_tres,
-                     lamina_min_tres = lamina_min_tres,
-                     lamina_max_tres = lamina_max_tres,
-                     lamina_resul_tres = lamina_resul_tres,
-                     lamina_quat = lamina_quat,
-                     lamina_comp_dez = lamina_comp_dez,
-                     lamina_comp_onze = lamina_comp_onze,
-                     lamina_comp_doze = lamina_comp_doze,
-                     lamina_esp_quat = lamina_esp_quat,
-                     lamina_media_quat = lamina_media_quat.ToString(),
-                     lamina_tipo_quat = lamina_tipo_quat,
-                     lamina_min_quat = lamina_min_quat,
-                     lamina_max_quat = lamina_max_quat,
-                     lamina_resul_quat = lamina_resul_quat,
-                     lamina_cinco = lamina_cinco,
-                     lamina_comp_treze = lamina_comp_treze,
-                     lamina_comp_quatorze = lamina_comp_quatorze,
-                     lamina_comp_quinze = lamina_comp_quinze,
-                     lamina_esp_cinco = lamina_esp_cinco,
-                     lamina_media_cinco = lamina_media_cinco.ToString(),
-                     lamina_tipo_cinco = lamina_tipo_cinco,
-                     lamina_min_cinco = lamina_min_cinco,
-                     lamina_max_cinco = lamina_max_cinco,
-                     lamina_resul_cinco = lamina_resul_cinco,
-                     esp_tipo_um = esp_tipo_um,
-                     esp_lamina_um = esp_lamina_um,
-                     esp_especificado_um = esp_especificado_um,
-                     esp_mm_um = esp_mm_um,
-                     esp_cm_um = esp_cm_um.ToString(),
-                     esp_tipo_dois = esp_tipo_dois,
-                     esp_lamina_dois = esp_lamina_dois,
-                     esp_especificado_dois = esp_especificado_dois,
-                     esp_mm_dois = esp_mm_dois,
-                     esp_cm_dois = esp_cm_dois.ToString(), 
-                     col_tipo_um = col_tipo_um,
-                     col_especificado_um = col_especificado_um,
-                     col_encontrado_um = col_encontrado_um,
-                     col_resul_um = col_resul_um, 
-                     col_tipo_dois = col_tipo_dois,
-                     col_lamina_dois = col_lamina_dois,
-                     col_especificado_dois = col_especificado_dois,
-                     col_resul_dois = col_resul_dois,
-                     reves_tipo_um = reves_tipo_um,
-                     reves_lamina_um = reves_lamina_um,
-                     reves_especificado_um = reves_especificado_um,
-                     reves_mm_um = reves_mm_um,
-                     reves_cm_um = reves_cm_um.ToString(),
-                     reves_tipo_dois=reves_tipo_dois, 
-                     reves_lamina_dois = reves_lamina_dois,
-                     reves_especificado_dois = reves_especificado_dois,
-                     reves_mm_dois = reves_mm_dois,
-                     reves_cm_dois = reves_cm_dois.ToString(),
+                    lamina_tipo_dois = lamina_tipo_dois,
+                    lamina_min_dois = lamina_min_dois,
+                    lamina_max_dois = lamina_max_dois,
+                    lamina_resul_dois = lamina_resul_dois,
+                    lamina_tres = lamina_tres,
+                    lamina_comp_sete = lamina_comp_sete,
+                    lamina_comp_oito = lamina_comp_oito,
+                    lamina_comp_nove = lamina_comp_nove,
+                    lamina_esp_tres = lamina_esp_tres,
+                    lamina_media_tres = lamina_media_tres.ToString(),
+                    lamina_tipo_tres = lamina_tipo_tres,
+                    lamina_min_tres = lamina_min_tres,
+                    lamina_max_tres = lamina_max_tres,
+                    lamina_resul_tres = lamina_resul_tres,
+                    lamina_quat = lamina_quat,
+                    lamina_comp_dez = lamina_comp_dez,
+                    lamina_comp_onze = lamina_comp_onze,
+                    lamina_comp_doze = lamina_comp_doze,
+                    lamina_esp_quat = lamina_esp_quat,
+                    lamina_media_quat = lamina_media_quat.ToString(),
+                    lamina_tipo_quat = lamina_tipo_quat,
+                    lamina_min_quat = lamina_min_quat,
+                    lamina_max_quat = lamina_max_quat,
+                    lamina_resul_quat = lamina_resul_quat,
+                    lamina_cinco = lamina_cinco,
+                    lamina_comp_treze = lamina_comp_treze,
+                    lamina_comp_quatorze = lamina_comp_quatorze,
+                    lamina_comp_quinze = lamina_comp_quinze,
+                    lamina_esp_cinco = lamina_esp_cinco,
+                    lamina_media_cinco = lamina_media_cinco.ToString(),
+                    lamina_tipo_cinco = lamina_tipo_cinco,
+                    lamina_min_cinco = lamina_min_cinco,
+                    lamina_max_cinco = lamina_max_cinco,
+                    lamina_resul_cinco = lamina_resul_cinco,
+                    esp_tipo_um = esp_tipo_um,
+                    esp_lamina_um = esp_lamina_um,
+                    esp_especificado_um = esp_especificado_um,
+                    esp_mm_um = esp_mm_um,
+                    esp_cm_um = esp_cm_um.ToString(),
+                    esp_tipo_dois = esp_tipo_dois,
+                    esp_lamina_dois = esp_lamina_dois,
+                    esp_especificado_dois = esp_especificado_dois,
+                    esp_mm_dois = esp_mm_dois,
+                    esp_cm_dois = esp_cm_dois.ToString(),
+                    col_tipo_um = col_tipo_um,
+                    col_especificado_um = col_especificado_um,
+                    col_encontrado_um = col_encontrado_um,
+                    col_resul_um = col_resul_um,
+                    col_tipo_dois = col_tipo_dois,
+                    col_lamina_dois = col_lamina_dois,
+                    col_especificado_dois = col_especificado_dois,
+                    col_resul_dois = col_resul_dois,
+                    reves_tipo_um = reves_tipo_um,
+                    reves_lamina_um = reves_lamina_um,
+                    reves_especificado_um = reves_especificado_um,
+                    reves_mm_um = reves_mm_um,
+                    reves_cm_um = reves_cm_um.ToString(),
+                    reves_tipo_dois = reves_tipo_dois,
+                    reves_lamina_dois = reves_lamina_dois,
+                    reves_especificado_dois = reves_especificado_dois,
+                    reves_mm_dois = reves_mm_dois,
+                    reves_cm_dois = reves_cm_dois.ToString(),
 
-                  };
+                };
 
-                  _context.Add(salvarEspuma);
-                  await _context.SaveChangesAsync();
-                  TempData["Mensagem"] = "Dados salvos com sucesso!!";
-                  return RedirectToAction(nameof(EnsaioEspuma4_1), new { os, orcamento});
+                _context.Add(salvarEspuma);
+                await _context.SaveChangesAsync();
+                TempData["Mensagem"] = "Dados salvos com sucesso!!";
+                return RedirectToAction(nameof(EnsaioEspuma4_1), new { os, orcamento });
 
-           
-
-          }
-          catch (Exception ex)
-          {
-              _logger.LogError(ex, "Error", ex.Message);
-              throw;
-          }
-      }
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "Error", ex.Message);
+                throw;
+            }
+        }
 
 
+        [HttpPost]
+        public async Task<IActionResult> SalvarEnsaio7_8(string os, string orcamento, [Bind("tipo_material,data_ini,data_term,copos_prov_1,copos_prov_2,copos_prov_3,copos_prov_4,copos_prov_5,copos_prov_6,copos_prov_7,copos_prov_8,copos_prov_9,copos_prov_10,area_corpo_1,area_corpo_2,dim_corpo_1,dim_corpo_2,trincas,rompimentos")] ColetaModel.Ensaio7_8 salvarDados)
+        {
+            try
+            {
+                var editarDados = _context.ensaio_molas_item7_8.Where(x => x.os == os && x.orcamento == orcamento).FirstOrDefault();
 
+                if (editarDados == null)
+                {
+                    //recebendo os valores do html..
+                    string tipo_material = salvarDados.tipo_material;
+                    DateOnly data_ini = salvarDados.data_ini;
+                    DateOnly data_term = salvarDados.data_term;
+                    float copos_prov_1 = salvarDados.copos_prov_1;
+                    float copos_prov_2 = salvarDados.copos_prov_2;
+                    float copos_prov_3 = salvarDados.copos_prov_3;
+                    float copos_prov_4 = salvarDados.copos_prov_4;
+                    float copos_prov_5 = salvarDados.copos_prov_5;
+                    float copos_prov_6 = salvarDados.copos_prov_6;
+                    float copos_prov_7 = salvarDados.copos_prov_7;
+                    float copos_prov_8 = salvarDados.copos_prov_8;
+                    float copos_prov_9 = salvarDados.copos_prov_9;
+                    float copos_prov_10 = salvarDados.copos_prov_10;
+                    int area_corpo_1 = salvarDados.area_corpo_1;
+                    int area_corpo_2 = salvarDados.area_corpo_2;
+                    float dim_corpo_1 = salvarDados.dim_corpo_1;
+                    float dim_corpo_2 = salvarDados.dim_corpo_2;
+                    string trincas = salvarDados.trincas;
+                    string rompimentos = salvarDados.rompimentos;
 
+                    //realizando calculos.
+                    float media_copos = (copos_prov_1 + copos_prov_2 + copos_prov_3 + copos_prov_4 + copos_prov_5 + copos_prov_6 + copos_prov_7 + copos_prov_8 + copos_prov_9 + copos_prov_10) / 10;
+                    string conv_media_copos = media_copos.ToString("N4");
+                    media_copos = float.Parse(conv_media_copos);
 
+                    float gramatura = (media_copos / (area_corpo_1 * area_corpo_2 / 100) * 10000);
+
+                    var registro = new ColetaModel.Ensaio7_8
+                    {
+                        os = os,
+                        orcamento = orcamento,
+                        tipo_material = tipo_material,
+                        data_ini = data_ini,
+                        data_term = data_term,
+                        copos_prov_1 = copos_prov_1,
+                        copos_prov_2 = copos_prov_2,
+                        copos_prov_3 = copos_prov_3,
+                        copos_prov_4 = copos_prov_4,
+                        copos_prov_5 = copos_prov_5,
+                        copos_prov_6 = copos_prov_6,
+                        copos_prov_7 = copos_prov_7,
+                        copos_prov_8 = copos_prov_8,
+                        copos_prov_9 = copos_prov_9,
+                        copos_prov_10 = copos_prov_10,
+                        copos_media = media_copos,
+                        area_corpo_1 = area_corpo_1,
+                        area_corpo_2 = area_corpo_2,
+                        gramatura = gramatura,
+                        dim_corpo_1 = dim_corpo_1,
+                        dim_corpo_2 = dim_corpo_2,
+                        trincas = trincas,
+                        rompimentos = rompimentos,
+                    };
+
+                    _context.Add(registro);
+                    await _context.SaveChangesAsync();
+                    TempData["Mensagem"] = "Dados Salvo Com Sucesso";
+                    return RedirectToAction(nameof(EnsaioMolas7_8), "Coleta", new { os, orcamento });
+                }
+                else
+                {
+                    //editando os valores do html..
+                    editarDados.tipo_material = salvarDados.tipo_material;
+                    editarDados.data_ini = salvarDados.data_ini;
+                    editarDados.data_term = salvarDados.data_term;
+                    editarDados.copos_prov_1 = salvarDados.copos_prov_1;
+                    editarDados.copos_prov_2 = salvarDados.copos_prov_2;
+                    editarDados.copos_prov_3 = salvarDados.copos_prov_3;
+                    editarDados.copos_prov_4 = salvarDados.copos_prov_4;
+                    editarDados.copos_prov_5 = salvarDados.copos_prov_5;
+                    editarDados.copos_prov_6 = salvarDados.copos_prov_6;
+                    editarDados.copos_prov_7 = salvarDados.copos_prov_7;
+                    editarDados.copos_prov_8 = salvarDados.copos_prov_8;
+                    editarDados.copos_prov_9 = salvarDados.copos_prov_9;
+                    editarDados.copos_prov_10 = salvarDados.copos_prov_10;
+                    editarDados.area_corpo_1 = salvarDados.area_corpo_1;
+                    editarDados.area_corpo_2 = salvarDados.area_corpo_2;
+                    editarDados.dim_corpo_1 = salvarDados.dim_corpo_1;
+                    editarDados.dim_corpo_2 = salvarDados.dim_corpo_2;
+                    editarDados.trincas = salvarDados.trincas;
+                    editarDados.rompimentos = salvarDados.rompimentos;
+
+                    //realizando contas.
+                    float media_copos = (editarDados.copos_prov_1 + editarDados.copos_prov_2 + editarDados.copos_prov_3 + editarDados.copos_prov_4 + editarDados.copos_prov_5 + editarDados.copos_prov_6 + editarDados.copos_prov_7 + editarDados.copos_prov_8 + editarDados.copos_prov_9 + editarDados.copos_prov_10) / 10;
+                    string conv_media_copos = media_copos.ToString("N4");
+                    media_copos = float.Parse(conv_media_copos);
+
+                    float gramatura = (media_copos / (editarDados.area_corpo_1 * editarDados.area_corpo_2 / 100) * 10000);
+
+                    //editando os valores das contas, caso precise.
+                    editarDados.copos_media = media_copos;
+                    editarDados.gramatura = gramatura;
+
+                    await _context.SaveChangesAsync();
+                    TempData["Mensagem"] = "Dados Editado Com Sucesso";
+                    return RedirectToAction(nameof(EnsaioMolas7_8), "Coleta", new { os, orcamento });
+                }
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "Error", ex.Message);
+                throw;
+            }
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> SalvarEnsaio7_6(string os, string orcamento, [Bind("data_ini,data_term,faces,alterar_queda,rep_1,rep_2,rep_3,alt_queda_det,rep_det_1,rep_det_2,rep_det_3,temp_ens_rolagem")] ColetaModel.Ensaio7_6 salvarDados)
+        {
+            try
+            {
+                var editarDados = _context.ensaio_molas_item7_6.Where(x => x.os == os && x.orcamento == orcamento).FirstOrDefault();
+                if (editarDados == null)
+                {
+                    //recebendo valores do html.
+                    DateOnly data_ini = salvarDados.data_ini;
+                    DateOnly data_term = salvarDados.data_term;
+                    string faces = salvarDados.faces;
+                    float alterar_queda = salvarDados.alterar_queda;
+                    float rep_1 = salvarDados.rep_1;
+                    float rep_2 = salvarDados.rep_2;
+                    float rep_3 = salvarDados.rep_3;
+                    float alt_queda_det = salvarDados.alt_queda_det;
+                    float rep_det_1 = salvarDados.rep_det_1;
+                    float rep_det_2 = salvarDados.rep_det_2;
+                    float rep_det_3 = salvarDados.rep_det_3;
+                    int temp_ens_rolagem = salvarDados.temp_ens_rolagem;
+
+                    //realizando calculos necessarios.
+                    float media_3 = (rep_1 + rep_2 + rep_3) / 3;
+                    float media_det = (rep_det_1 + rep_det_2 + rep_det_3) / 3;
+
+                    //calculando porcentual e passando para possitivo.
+                    float perda_porcentual = ((((media_det - media_3) / media_3) * 100) * -1);
+                    string conv_perda_porcentual = perda_porcentual.ToString("N2");
+                    perda_porcentual = float.Parse(conv_perda_porcentual);
+
+                    var registro = new ColetaModel.Ensaio7_6
+                    {
+                        os = os,
+                        orcamento = orcamento,
+                        data_ini = data_ini,
+                        data_term = data_term,
+                        faces = faces,
+                        alterar_queda = alterar_queda,
+                        rep_1 = rep_1,
+                        rep_2 = rep_2,
+                        rep_3 = rep_3,
+                        media_rep = media_3,
+                        alt_queda_det = alt_queda_det,
+                        rep_det_1 = rep_det_1,
+                        rep_det_2 = rep_det_2,
+                        rep_det_3 = rep_det_3,
+                        media_det = media_det,
+                        temp_ens_rolagem = temp_ens_rolagem,
+                        perda_porc = perda_porcentual,
+                    };
+
+                    _context.Add(registro);
+                    await _context.SaveChangesAsync();
+                    TempData["Mensagem"] = "Dados Salvo Com Sucesso";
+                    return RedirectToAction(nameof(EnsaioMolas7_6), "Coleta", new { os, orcamento });
+                }
+                else
+                {
+                    //editando os valores que esta no html.
+                    editarDados.data_ini = salvarDados.data_ini;
+                    editarDados.data_term = salvarDados.data_term;
+                    editarDados.faces = salvarDados.faces;
+                    editarDados.alterar_queda = salvarDados.alterar_queda;
+                    editarDados.rep_1 = salvarDados.rep_1;
+                    editarDados.rep_2 = salvarDados.rep_2;
+                    editarDados.rep_3 = salvarDados.rep_3;
+                    editarDados.alt_queda_det = salvarDados.alt_queda_det;
+                    editarDados.rep_det_1 = salvarDados.rep_det_1;
+                    editarDados.rep_det_2 = salvarDados.rep_det_2;
+                    editarDados.rep_det_3 = salvarDados.rep_det_3;
+                    editarDados.temp_ens_rolagem = salvarDados.temp_ens_rolagem;
+
+                    float media_3 = (editarDados.rep_1 + editarDados.rep_2 + editarDados.rep_3) / 3;
+                    float media_det = (editarDados.rep_det_1 + editarDados.rep_det_2 + editarDados.rep_det_3) / 3;
+
+                    //calculando porcentual e passando para possitivo.
+                    float perda_porcentual = ((((media_det - media_3) / media_3) * 100) * -1);
+                    string conv_perda_porcentual = perda_porcentual.ToString("N2");
+                    perda_porcentual = float.Parse(conv_perda_porcentual);
+                    //realizando calculos necessarios.
+
+                    editarDados.media_rep = media_3;
+                    editarDados.media_det = media_det;
+                    editarDados.perda_porc = perda_porcentual;
+
+                    await _context.SaveChangesAsync();
+                    TempData["Mensagem"] = "Dados Edita Com Sucesso";
+                    return RedirectToAction(nameof(EnsaioMolas7_6), "Coleta", new { os, orcamento });
+                }
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "Error", ex.Message);
+                throw;
+            }
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> SalvarEnsaio7_7(string os, string orcamento, [Bind("data_ini,data_term,rasgo,quebra,contem_tipo_1,contem_tipo_2,contem_tipo_3,contem_tipo_4,contem_tipo_5,contem_tipo_6,contem_tipo_7,contem_tipo_8,minim_bitola_1,minim_bitola_2,mini_molas_1,mini_molas_2,mini_molas_3,mini_molas_4,mini_molas_5,mini_molas_6,mini_molas_7,mini_molas_8,calc_molas_1,calc_molas_2,calc_molas_3")] ColetaModel.Ensaio7_7 salvarDados)
+        {
+            try
+            {
+                var editarDados = _context.ensaio_molas_item7_7.Where(x => x.os == os && x.orcamento == orcamento).FirstOrDefault();
+                if (editarDados == null)
+                {
+                    //recebendo os valores de html.
+                    DateOnly data_ini = salvarDados.data_ini;
+                    DateOnly data_term = salvarDados.data_term;
+                    string rasgo = salvarDados.rasgo;
+                    string quebra = salvarDados.quebra;
+                    string contem_tipo_1 = salvarDados.contem_tipo_1;
+                    string contem_tipo_2 = salvarDados.contem_tipo_2;
+                    string contem_tipo_3 = salvarDados.contem_tipo_3;
+                    string contem_tipo_4 = salvarDados.contem_tipo_4;
+                    string contem_tipo_5 = salvarDados.contem_tipo_5;
+                    string contem_tipo_6 = salvarDados.contem_tipo_6;
+                    string contem_tipo_7 = salvarDados.contem_tipo_7;
+                    string contem_tipo_8 = salvarDados.contem_tipo_8;
+                    string minim_bitola_1 = salvarDados.minim_bitola_1;
+                    string minim_bitola_2 = salvarDados.minim_bitola_2;
+                    float mini_molas_1 = salvarDados.mini_molas_1;
+                    float mini_molas_2 = salvarDados.mini_molas_2;
+                    float mini_molas_3 = salvarDados.mini_molas_3;
+                    float mini_molas_4 = salvarDados.mini_molas_4;
+                    float mini_molas_5 = salvarDados.mini_molas_5;
+                    float mini_molas_6 = salvarDados.mini_molas_6;
+                    float mini_molas_7 = salvarDados.mini_molas_7;
+                    float mini_molas_8 = salvarDados.mini_molas_8;
+                    float calc_molas_1 = salvarDados.calc_molas_1;
+                    float calc_molas_2 = salvarDados.calc_molas_2;
+                    float calc_molas_3 = salvarDados.calc_molas_3;
+
+                    //calculando resultado necassario.
+                    float resultado_calc = (calc_molas_1 / (calc_molas_2 * calc_molas_3) * 10000);
+                    string conv_resultado_calc = resultado_calc.ToString("N2");
+                    resultado_calc = float.Parse(conv_resultado_calc);
+
+                    var registro = new ColetaModel.Ensaio7_7
+                    {
+                        os = os,
+                        orcamento = orcamento,
+                        data_ini = data_ini,
+                        data_term = data_term,
+                        rasgo = rasgo,
+                        quebra = quebra,
+                        contem_tipo_1 = contem_tipo_1,
+                        contem_tipo_2 = contem_tipo_2,
+                        contem_tipo_3 = contem_tipo_3,
+                        contem_tipo_4 = contem_tipo_4,
+                        contem_tipo_5 = contem_tipo_5,
+                        contem_tipo_6 = contem_tipo_6,
+                        contem_tipo_7 = contem_tipo_7,
+                        contem_tipo_8 = contem_tipo_8,
+                        minim_bitola_1 = minim_bitola_1,
+                        minim_bitola_2 = minim_bitola_2,
+                        mini_molas_1 = mini_molas_1,
+                        mini_molas_2 = mini_molas_2,
+                        mini_molas_3 = mini_molas_3,
+                        mini_molas_4 = mini_molas_4,
+                        mini_molas_5 = mini_molas_5,
+                        mini_molas_6 = mini_molas_6,
+                        mini_molas_7 = mini_molas_7,
+                        mini_molas_8 = mini_molas_8,
+                        calc_molas_1 = calc_molas_1,
+                        calc_molas_2 = calc_molas_2,
+                        calc_molas_3 = calc_molas_3,
+                        resultado_calc = resultado_calc,
+                    };
+
+                    _context.Add(registro);
+                    await _context.SaveChangesAsync();
+                    TempData["Mensagem"] = "Dados Salvo Com Sucesso";
+                    return RedirectToAction(nameof(EnsaioMolas7_7), "Coleta", new { os, orcamento });
+                }
+                else
+                {
+                    //editando os valores recebido do html..
+                    editarDados.data_ini = salvarDados.data_ini;
+                    editarDados.data_term = salvarDados.data_term;
+                    editarDados.rasgo = salvarDados.rasgo;
+                    editarDados.quebra = salvarDados.quebra;
+                    editarDados.contem_tipo_1 = salvarDados.contem_tipo_1;
+                    editarDados.contem_tipo_2 = salvarDados.contem_tipo_2;
+                    editarDados.contem_tipo_3 = salvarDados.contem_tipo_3;
+                    editarDados.contem_tipo_4 = salvarDados.contem_tipo_4;
+                    editarDados.contem_tipo_5 = salvarDados.contem_tipo_5;
+                    editarDados.contem_tipo_6 = salvarDados.contem_tipo_6;
+                    editarDados.contem_tipo_7 = salvarDados.contem_tipo_7;
+                    editarDados.contem_tipo_8 = salvarDados.contem_tipo_8;
+                    editarDados.minim_bitola_1 = salvarDados.minim_bitola_1;
+                    editarDados.minim_bitola_2 = salvarDados.minim_bitola_2;
+                    editarDados.mini_molas_1 = salvarDados.mini_molas_1;
+                    editarDados.mini_molas_2 = salvarDados.mini_molas_2;
+                    editarDados.mini_molas_3 = salvarDados.mini_molas_3;
+                    editarDados.mini_molas_4 = salvarDados.mini_molas_4;
+                    editarDados.mini_molas_5 = salvarDados.mini_molas_5;
+                    editarDados.mini_molas_6 = salvarDados.mini_molas_6;
+                    editarDados.mini_molas_7 = salvarDados.mini_molas_7;
+                    editarDados.mini_molas_8 = salvarDados.mini_molas_8;
+                    editarDados.calc_molas_1 = salvarDados.calc_molas_1;
+                    editarDados.calc_molas_2 = salvarDados.calc_molas_2;
+                    editarDados.calc_molas_3 = salvarDados.calc_molas_3;
+
+                    //calculando resultado necassario.
+                    editarDados.resultado_calc = (editarDados.calc_molas_1 / (editarDados.calc_molas_2 * editarDados.calc_molas_3) * 10000);
+                    string conv_resultado_calc = editarDados.resultado_calc.ToString("N2");
+                    editarDados.resultado_calc = float.Parse(conv_resultado_calc);
+
+                    await _context.SaveChangesAsync();
+                    TempData["Mensagem"] = "Dados Editado Com Sucesso";
+                    return RedirectToAction(nameof(EnsaioMolas7_7), "Coleta", new { os, orcamento });
+                }
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "Error", ex.Message);
+                throw;
+            }
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> SalvarEnsaio7_3(string os, string orcamento, [Bind("data_ini,data_term,bordas,faces_utilizadas,velocidade_face_1,quant_face_1,velocidade_face_2,quant_face_2,rasgo,quebra")] ColetaModel.Ensaio7_3 salvarDados)
+        {
+            try
+            {
+                var editarDados = _context.ensaio_molas_item7_3.Where(x => x.os == os && x.orcamento == orcamento).FirstOrDefault();
+                if (editarDados == null)
+                {
+                    //recebendo os valores recebidos do html..
+                    DateOnly data_ini = salvarDados.data_ini;
+                    DateOnly data_term = salvarDados.data_term;
+                    float bordas = salvarDados.bordas;
+                    string faces_utilizadas = salvarDados.faces_utilizadas;
+                    int velocidade_face_1 = salvarDados.velocidade_face_1;
+                    int quant_face_1 = salvarDados.quant_face_1;
+                    int velocidade_face_2 = salvarDados.velocidade_face_2;
+                    int quant_face_2 = salvarDados.quant_face_2;
+                    string rasgo = salvarDados.rasgo;
+                    string quebra = salvarDados.quebra;
+
+                    var registro = new ColetaModel.Ensaio7_3
+                    {
+                        os = os,
+                        orcamento = orcamento,
+                        data_ini = data_ini,
+                        data_term = data_term,
+                        bordas = bordas,
+                        faces_utilizadas = faces_utilizadas,
+                        velocidade_face_1 = velocidade_face_1,
+                        quant_face_1 = quant_face_1,
+                        velocidade_face_2 = velocidade_face_2,
+                        quant_face_2 = quant_face_2,
+                        rasgo = rasgo,
+                        quebra = quebra,
+                    };
+
+                    _context.Add(registro);
+                    await _context.SaveChangesAsync();
+                    TempData["Mensagem"] = "Dados Salvo Com Sucesso";
+                    return RedirectToAction(nameof(EnsaioMolas7_3), "Coleta", new { os, orcamento });
+                }
+                else
+                {
+                    //editando os valores recebidos do html
+                    editarDados.data_ini = salvarDados.data_ini;
+                    editarDados.data_term = salvarDados.data_term;
+                    editarDados.bordas = salvarDados.bordas;
+                    editarDados.faces_utilizadas = salvarDados.faces_utilizadas;
+                    editarDados.velocidade_face_1 = salvarDados.velocidade_face_1;
+                    editarDados.quant_face_1 = salvarDados.quant_face_1;
+                    editarDados.velocidade_face_2 = salvarDados.velocidade_face_2;
+                    editarDados.quant_face_2 = salvarDados.quant_face_2;
+                    editarDados.rasgo = salvarDados.rasgo;
+                    editarDados.quebra = salvarDados.quebra;
+
+                    _context.Update(editarDados);
+                    await _context.SaveChangesAsync();
+                    TempData["Mensagem"] = "Dados Editado Com Sucesso";
+                    return RedirectToAction(nameof(EnsaioMolas7_3), "Coleta", new { os, orcamento });
+                }
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "Error", ex.Message);
+                throw;
+            }
+        }
     }
 }

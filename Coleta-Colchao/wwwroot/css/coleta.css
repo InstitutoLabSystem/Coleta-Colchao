@@ -42,6 +42,16 @@
     width:50%;
 }
 
+.areaProva {
+    padding: 5px;
+    border-color: gray;
+    border-radius: 5px;
+    box-sizing: border-box;
+    height: 40px;
+    width: 200px;
+    
+}
+
 .tables th td {
     background-color: #800000;
     color: white;

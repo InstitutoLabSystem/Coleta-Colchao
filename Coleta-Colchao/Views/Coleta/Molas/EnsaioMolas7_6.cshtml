@@ -1,8 +1,9 @@
-﻿@{
+﻿@model ColetaModel.Ensaio7_6;
+@{
     Layout = null;
 }
 @{
-    ViewData["Title"] = "Molas Parte ";
+    ViewData["Title"] = "DETERMINAÇÃO DE INDENTAÇÃO";
 }
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -11,194 +12,404 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="~/css/coleta.css" asp-append-version="true" />
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        input{
+            text-align:center;
+        }
+    </style>
 
 </head>
 <body>
-    <table class="tables table-bordered border-secondary  table-sm">
-        <thead>
-            <tr>
-                <td><img src="https://www.labsystem-nuvem.com.br/imagens_arq/imagens/img/LabSystem.png" class="imagem" /></td>
-                <td colspan="3" class="fundo-tabela">Coleta De Dados</td>
-                <td class="fundo-tabela">N Os:</td>
-            </tr>
-            <tr>
-                <td colspan="4">Colchão De Molas (Portaria Inmetro 75)</td>
-                <td rowspan="2"> @ViewBag.os</td>
-            </tr>
-            <tr>
-                <td>Inicio:</td>
-                <td><input class="form-control" type="date" /></td>
-                <td>Termino:</td>
-                <td><input class="form-control" type="date" /></td>
-            </tr>
-        </thead>
-    </table>
+    <form method="post" asp-controller="Coleta" asp-action="SalvarEnsaio7_6" asp-route-os="@ViewBag.os" asp-route-orcamento="@ViewBag.orcamento">
+        @if (Model == null)
+        {
+            <table class="tables table-bordered border-secondary  table-sm">
+                <thead>
+                    <tr>
+                        <td><img src="https://www.labsystem-nuvem.com.br/imagens_arq/imagens/img/LabSystem.png" class="imagem" /></td>
+                        <td colspan="3" class="fundo-tabela">Coleta De Dados</td>
+                        <td class="fundo-tabela">N Os:</td>
+                    </tr>
+                    <tr>
+                        <td colspan="4">Colchão De Molas (Portaria Inmetro 75)</td>
+                        <td rowspan="2"> @ViewBag.os</td>
+                    </tr>
+                    <tr>
+                        <td>Inicio:</td>
+                        <td><input class="form-control" type="date" name="data_ini" /></td>
+                        <td>Termino:</td>
+                        <td><input class="form-control" type="date" name="data_term" /></td>
+                    </tr>
+                </thead>
+            </table>
 
-    <table class="tables table-bordered border-secondary  table-sm">
-        <tr>
-            <td class="fundo-tabela">Temperatura Inicial:</td>
-            <td><input class="form-control" type="date" /></td>
-            <td class="fundo-tabela">Temperatura Final:</td>
-            <td><input class="form-control" type="date" /></td>
-        </tr>
-    </table>
-    <br />
-    <table class="tables table-bordered border-secondary  table-sm">
-        <tr>
-            <td rowspan="9">7.6</td>
-            <td class="fundo-tabela">
-                <b>
-                    Determinação da Indentação - Antes do ensaio de Rolagem
-                </b>
-            </td>
+            <table class="tables table-bordered border-secondary  table-sm">
+                <tr>
+                    <td class="fundo-tabela">Temperatura Inicial:</td>
+                    <td><input class="form-control" type="tex" /></td>
+                    <td class="fundo-tabela">Temperatura Final:</td>
+                    <td><input class="form-control" type="text" /></td>
+                </tr>
+            </table>
+            <br />
+            <table class="tables table-bordered border-secondary  table-sm">
+                <tr>
+                    <td rowspan="9">7.6</td>
+                    <td class="fundo-tabela">
+                        <b>
+                            Determinação da Indentação - Antes do ensaio de Rolagem
+                        </b>
+                    </td>
 
-            <td rowspan="9"></td>
-        </tr>
+                    <td rowspan="9"></td>
+                </tr>
 
-        <tr>
-            <td>
-                Antes do ensaio de Rolagem
-            </td>
+                <tr>
+                    <td>
+                        Antes do ensaio de Rolagem
+                    </td>
 
-        </tr>
-        <tr>
-            <td>
-                Se for identificado na etiqueta que as duas faces do colchão possuem durezas diferentes, a avaliação deve ser efetuada em ambas as faces.
-            </td>
-        </tr>
-        <tr>
-            <td>
-                As faces do colchão possui dureza diferente.
-                <select class="form-control" name="Escolha">
-                    <option selected> --- </option>
-                    <option> Sim </option>
-                    <option> Não </option>
-                </select>
-                <p>
-                    Posicionar o colchão em uma superfície plana e rígida maior que a área do colchão.
-                </p>
-                <p>
-                    Deixar o Indentador cair por gravidade sobre a superfície do colchão a ser avaliada, de uma altura sempre a partir da espessura inicial do colchão.
-                </p>
-            </td>
-        </tr>
-        <tr>
-            <td>Alterar Queda: <input class="form-control" type="text" /></td>
-        </tr>
-        <tr>
-            <td>
-                Medir a distância Y', entre o ponto de partida do indentador e o ponto do indentador que mais penetrou colchão.
-            </td>
-        </tr>
-        <tr>
-            <td> <img src="~/img/img.png" /></td>
-        </tr>
-        <tr>
-            <td>
-                <table class="tables table-bordered border-secondary  table-sm">
-                    <tr class="fundo-tabela">
-                        <td>
-                            Repetições
-                        </td>
-                        <td>
-                            Distancia Y
-                        </td>
+                </tr>
+                <tr>
+                    <td>
+                        Se for identificado na etiqueta que as duas faces do colchão possuem durezas diferentes, a avaliação deve ser efetuada em ambas as faces.
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        As faces do colchão possui dureza diferente.
+                        <select class="controlador" name="faces">
+                            <option selected> --- </option>
+                            <option> Sim </option>
+                            <option> Não </option>
+                        </select>
+                        <p>
+                            Posicionar o colchão em uma superfície plana e rígida maior que a área do colchão.
+                        </p>
+                        <p>
+                            Deixar o Indentador cair por gravidade sobre a superfície do colchão a ser avaliada, de uma altura sempre a partir da espessura inicial do colchão.
+                        </p>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Alterar Queda (Cm): <input class="controlador" type="text" name="alterar_queda" /></td>
+                </tr>
+                <tr>
+                    <td>
+                        Medir a distância Y', entre o ponto de partida do indentador e o ponto do indentador que mais penetrou colchão.
+                    </td>
+                </tr>
+                <tr>
+                    <td> <img src="~/img/img.png" /></td>
+                </tr>
+                <tr>
+                    <td>
+                        <table class="tables table-bordered border-secondary  table-sm">
+                            <tr class="fundo-tabela">
+                                <td>
+                                    Repetições
+                                </td>
+                                <td>
+                                    Distancia Y
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    1º
+                                </td>
+                                <td><input class="form-control" type="text" name="rep_1" /></td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    2º
+                                </td>
+                                <td><input class="form-control" type="text" name="rep_2" /></td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    3º
+                                </td>
+                                <td><input class="form-control" type="text" name="rep_3" /></td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+            </table>
+            <table class="tables table-bordered border-secondary  table-sm">
+                <tr>
+                    <td rowspan="12">7.6</td>
+                    <td class="fundo-tabela">
+                        <b>
+                            Determinação da Indentação - Após do ensaio de Rolagem
+                        </b>
+                    </td>
+                    <td rowspan="12">
+                        <select class="form-control" name="Escolha" style="height:1000px">
+                            <option selected> --- </option>
+                            <option> C </option>
+                            <option> NA </option>
+                            <option> NC </option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Deixar o Indentador cair por gravidade sobre a superfície do colchão a ser avaliada, de uma altura sempre a partir da espessura inicial do colchão.
+                    </td>
+                </tr>
+                <tr>
+                    <td>Altura da queda (Cm): <input class="controlador" type="text" name="alt_queda_det" /></td>
+                </tr>
+                <tr>
+                    <td>
+                        Medir a distância Y", entre o ponto de partida do indentador e o ponto do indentador que mais penetrou colchão.
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <table class="tables table-bordered border-secondary  table-sm">
+                            <p>Repetir este procedimento por 3 vezes</p>
+                            <tr class="fundo-tabela">
+                                <td>Repetições</td>
+                                <td>Distância Y</td>
+                            </tr>
+                            <tr>
+                                <td>1º </td>
+                                <td><input class="form-control" type="text" name="rep_det_1" /></td>
+                            </tr>
+                            <tr>
+                                <td>2º </td>
+                                <td><input class="form-control" type="text" name="rep_det_2" /></td>
+                            </tr>
+                            <tr>
+                                <td>3º </td>
+                                <td><input class="form-control" type="text" name="rep_det_3" /></td>
+                            </tr>
+                            <tr>
+                                <td>Media </td>
+                                <td><input class="form-control" type="text" readonly /></td>
+                            </tr>
+
+                        </table>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        O ensaio deve ser realizado após 30 minutos o término do ensaio de rolagem.
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Tempo de término do ensaio de Rolagem (Minutos): <input  class="controlador" type="text" name="temp_ens_rolagem" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Perda Percentual: <input style="background-color: #e9ecef"  class="controlador" type="text" readonly />
+                    </td>
+                </tr>
+
+            </table>
+            <br />
+            <div class="d-grid gap-2 d-flex justify-content-center">
+                <button type="submit" class="btn btn-success btn btn-primary btn-md">Salvar</button>
+            </div>
+        }
+        else
+        {
+            <table class="tables table-bordered border-secondary  table-sm">
+                <thead>
+                    <tr>
+                        <td><img src="https://www.labsystem-nuvem.com.br/imagens_arq/imagens/img/LabSystem.png" class="imagem" /></td>
+                        <td colspan="3" class="fundo-tabela">Coleta De Dados</td>
+                        <td class="fundo-tabela">N Os:</td>
                     </tr>
                     <tr>
-                        <td>
-                            1º
-                        </td>
-                        <td><input class="form-control" type="text" /></td>
+                        <td colspan="4">Colchão De Molas (Portaria Inmetro 75)</td>
+                        <td rowspan="2"> @ViewBag.os</td>
                     </tr>
                     <tr>
-                        <td>
-                            2º
-                        </td>
-                        <td><input class="form-control" type="text" /></td>
+                        <td>Inicio:</td>
+                        <td><input class="form-control" type="text" name="data_ini" value="@Model.data_ini" /></td>
+                        <td>Termino:</td>
+                        <td><input class="form-control" type="text" name="data_term" value="@Model.data_term" /></td>
                     </tr>
-                    <tr>
-                        <td>
-                            3º
-                        </td>
-                        <td><input class="form-control" type="text" /></td>
-                    </tr>
-                </table>
-            </td>
-        </tr>
-    </table>
-    <table class="tables table-bordered border-secondary  table-sm">
-        <tr>
-            <td rowspan="12">7.6</td>
-            <td class="fundo-tabela">
-                <b>
-                    Determinação da Indentação - Após do ensaio de Rolagem
-                </b>
-            </td>
-            <td rowspan="12">
-                <select class="form-control" name="Escolha" style="height:1000px">
-                    <option selected> --- </option>
-                    <option> C </option>
-                    <option> NA </option>
-                    <option> NC </option>
-                </select>
-            </td>
-        </tr>
-        <tr>
-            <td>
-                Deixar o Indentador cair por gravidade sobre a superfície do colchão a ser avaliada, de uma altura sempre a partir da espessura inicial do colchão.
-            </td>
-        </tr>
-        <tr>
-            <td>Altura da queda: <input class="form-control" type="text" /></td>
-        </tr>
-        <tr>
-            <td>
-                Medir a distância Y", entre o ponto de partida do indentador e o ponto do indentador que mais penetrou colchão.
-            </td>
-        </tr>
-        <tr>
-            <td>
-                <table class="tables table-bordered border-secondary  table-sm">
-                    <p>Repetir este procedimento por 3 vezes</p>
-                    <tr class="fundo-tabela">
-                        <td>Repetições</td>
-                        <td>Distância Y</td>
-                    </tr>
-                    <tr>
-                        <td>1º </td>
-                        <td><input class="form-control" type="text" /></td>
-                    </tr>
-                    <tr>
-                        <td>2º </td>
-                        <td><input class="form-control" type="text" /></td>
-                    </tr>
-                    <tr>
-                        <td>3º </td>
-                        <td><input class="form-control" type="text" /></td>
-                    </tr>
-                    <tr>
-                        <td>Media </td>
-                        <td><input class="form-control" type="text" readonly /></td>
-                    </tr>
-                </table>
-            </td>
-        </tr>
-        <tr>
-            <td>
-                O ensaio deve ser realizado após 30 minutos o término do ensaio de rolagem.
-            </td>
-        </tr>
-        <tr>
-            <td>
-                Tempo de término do ensaio de Rolagem: <input class="form-control" type="text" />
-                <p>Perda Percentual: <input class="form-control" type="text" readonly /></p>
-            </td>
-        </tr>
-    </table>
-    <br />
-    <div class="d-grid gap-2 d-flex justify-content-center">
-        <button type="submit" class="btn btn-success btn btn-primary btn-md">Salvar</button>
-    </div>
+                </thead>
+            </table>
+
+            <table class="tables table-bordered border-secondary  table-sm">
+                <tr>
+                    <td class="fundo-tabela">Temperatura Inicial:</td>
+                    <td><input class="form-control" type="text" /></td>
+                    <td class="fundo-tabela">Temperatura Final:</td>
+                    <td><input class="form-control" type="text" /></td>
+                </tr>
+            </table>
+            <br />
+            <table class="tables table-bordered border-secondary  table-sm">
+                <tr>
+                    <td rowspan="9">7.6</td>
+                    <td class="fundo-tabela">
+                        <b>
+                            Determinação da Indentação - Antes do ensaio de Rolagem
+                        </b>
+                    </td>
+
+                    <td rowspan="9"></td>
+                </tr>
+
+                <tr>
+                    <td>
+                        Antes do ensaio de Rolagem
+                    </td>
+
+                </tr>
+                <tr>
+                    <td>
+                        Se for identificado na etiqueta que as duas faces do colchão possuem durezas diferentes, a avaliação deve ser efetuada em ambas as faces.
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        As faces do colchão possui dureza diferente.
+                        <select class="controlador" name="faces">
+                            <option selected> @Model.faces </option>
+                            <option> Sim </option>
+                            <option> Não </option>
+                        </select>
+                        <p>
+                            Posicionar o colchão em uma superfície plana e rígida maior que a área do colchão.
+                        </p>
+                        <p>
+                            Deixar o Indentador cair por gravidade sobre a superfície do colchão a ser avaliada, de uma altura sempre a partir da espessura inicial do colchão.
+                        </p>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Alterar Queda (Cm): <input class="controlador" type="text" name="alterar_queda" value="@Model.alterar_queda" /></td>
+                </tr>
+                <tr>
+                    <td>
+                        Medir a distância Y', entre o ponto de partida do indentador e o ponto do indentador que mais penetrou colchão.
+                    </td>
+                </tr>
+                <tr>
+                    <td> <img src="~/img/img.png" /></td>
+                </tr>
+                <tr>
+                    <td>
+                        <table class="tables table-bordered border-secondary  table-sm">
+                            <tr class="fundo-tabela">
+                                <td>
+                                    Repetições
+                                </td>
+                                <td>
+                                    Distancia Y
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    1º
+                                </td>
+                                <td><input class="form-control" type="text" name="rep_1" value="@Model.rep_1" /></td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    2º
+                                </td>
+                                <td><input class="form-control" type="text" name="rep_2" value="@Model.rep_2" /></td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    3º
+                                </td>
+                                <td><input class="form-control" type="text" name="rep_3" value="@Model.rep_3" /></td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+            </table>
+            <table class="tables table-bordered border-secondary  table-sm">
+                <tr>
+                    <td rowspan="12">7.6</td>
+                    <td class="fundo-tabela">
+                        <b>
+                            Determinação da Indentação - Após do ensaio de Rolagem
+                        </b>
+                    </td>
+                    <td rowspan="12">
+                        <select class="form-control" name="Escolha" style="height:1000px">
+                            <option selected> --- </option>
+                            <option> C </option>
+                            <option> NA </option>
+                            <option> NC </option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Deixar o Indentador cair por gravidade sobre a superfície do colchão a ser avaliada, de uma altura sempre a partir da espessura inicial do colchão.
+                    </td>
+                </tr>
+                <tr>
+                    <td>Altura da queda (Cm): <input class="controlador" type="text" name="alt_queda_det" value="@Model.alt_queda_det" /></td>
+                </tr>
+                <tr>
+                    <td>
+                        Medir a distância Y", entre o ponto de partida do indentador e o ponto do indentador que mais penetrou colchão.
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <table class="tables table-bordered border-secondary  table-sm">
+                            <p>Repetir este procedimento por 3 vezes</p>
+                            <tr class="fundo-tabela">
+                                <td>Repetições</td>
+                                <td>Distância Y</td>
+                            </tr>
+                            <tr>
+                                <td>1º </td>
+                                <td><input class="form-control" type="text" name="rep_det_1" value="@Model.rep_det_1" /></td>
+                            </tr>
+                            <tr>
+                                <td>2º </td>
+                                <td><input class="form-control" type="text" name="rep_det_2" value="@Model.rep_det_2" /></td>
+                            </tr>
+                            <tr>
+                                <td>3º </td>
+                                <td><input class="form-control" type="text" name="rep_det_3" value="@Model.rep_det_3" /></td>
+                            </tr>
+                            <tr>
+                                <td>Media </td>
+                                <td><input class="form-control" type="text" readonly value="@Model.media_det" /></td>
+                            </tr>
+
+                        </table>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        O ensaio deve ser realizado após 30 minutos o término do ensaio de rolagem.
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Tempo de término do ensaio de Rolagem (Minutos): <input class="controlador" type="text" name="temp_ens_rolagem" value="@Model.temp_ens_rolagem" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Perda Percentual: <input style="background-color: #e9ecef" class="controlador" type="text" readonly value="@Model.perda_porc" />
+                    </td>
+                </tr>
+
+            </table>
+            <br />
+            <div class="d-grid gap-2 d-flex justify-content-center">
+                <button type="submit" class="btn btn-success btn btn-primary btn-md">Editar Dados</button>
+            </div>
+        }
+    </form>
 
 
     @if (TempData.ContainsKey("Mensagem"))
