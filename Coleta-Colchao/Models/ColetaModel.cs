@@ -59,9 +59,9 @@ namespace Coleta_Colchao.Models
             public string? dimensao_temp { get; set; }
             public string? comprimento_um { get; set; }
             public string? comprimento_dois { get; set; }
-            public string?  comprimento_tres { get; set; }
+            public string? comprimento_tres { get; set; }
             public string? comprimento_esp { get; set; }
-            public string?   comprimento_media { get; set; }
+            public string? comprimento_media { get; set; }
             public string? comprimento_result { get; set; }
             public string? largura_um { get; set; }
             public string? largura_esp { get; set; }
@@ -69,7 +69,7 @@ namespace Coleta_Colchao.Models
             public string? largura_tres { get; set; }
             public string? largura_media { get; set; }
             public string? largura_result { get; set; }
-            public string?    altura_um { get; set; }
+            public string? altura_um { get; set; }
             public string? altura_dois { get; set; }
             public string? altura_tres { get; set; }
             public string? altura_esp { get; set; }
@@ -83,7 +83,7 @@ namespace Coleta_Colchao.Models
             public string? lamina_esp_um { get; set; }
             public string? lamina_tipo_um { get; set; }
             public string? lamina_min_um { get; set; }
-            public  string? lamina_max_um { get; set; }
+            public string? lamina_max_um { get; set; }
             public string? lamina_resul_um { get; set; }
             public string? lamina_dois { get; set; }
             public string? lamina_comp_quat { get; set; }
@@ -95,7 +95,7 @@ namespace Coleta_Colchao.Models
             public string? lamina_min_dois { get; set; }
             public string? lamina_max_dois { get; set; }
             public string? lamina_resul_dois { get; set; }
-            public string?    lamina_tres { get; set; }
+            public string? lamina_tres { get; set; }
             public string? lamina_comp_sete { get; set; }
             public string? lamina_comp_oito { get; set; }
             public string? lamina_comp_nove { get; set; }
@@ -141,29 +141,23 @@ namespace Coleta_Colchao.Models
             public string? col_encontrado_um { get; set; }
             public string? col_resul_um { get; set; }
             public string? col_tipo_dois { get; set; }
-            public string? col_lamina_dois { get;set; }
+            public string? col_lamina_dois { get; set; }
             public string? col_especificado_dois { get; set; }
             public string? col_resul_dois { get; set; }
-            public string? reves_tipo_um { get;set; }
+            public string? reves_tipo_um { get; set; }
             public string? reves_lamina_um { get; set; }
             public string? reves_especificado_um { get; set; }
             public string? reves_mm_um { get; set; }
             public string? reves_cm_um { get; set; }
-            public string?    reves_tipo_dois { get; set; }
+            public string? reves_tipo_dois { get; set; }
             public string? reves_lamina_dois { get; set; }
             public string? reves_especificado_dois { get; set; }
-            public string?    reves_mm_dois { get; set; }
-            public string?   reves_cm_dois { get; set; }
+            public string? reves_mm_dois { get; set; }
+            public string? reves_cm_dois { get; set; }
             public string? lamina_media_um { get; set; }
-
-
-
         }
 
 
-
-
-        
         public class Ensaio4_3
         {
             [Key]
@@ -210,9 +204,9 @@ namespace Coleta_Colchao.Models
             public int Id { get; set; }
             public string os { get; set; }
             public string orcamento { get; set; }
-            public DateOnly data_ini { get;  set; }
+            public DateOnly data_ini { get; set; }
             public DateOnly data_term { get; set; }
-            public float  temp_ini { get; set; }
+            public float temp_ini { get; set; }
             public float temp_term { get; set; }
             public int quant_face { get; set; }
             public int velo_face_1 { get; set; }
@@ -230,10 +224,10 @@ namespace Coleta_Colchao.Models
             public int Id { get; set; }
             public string os { get; set; }
             public string orcamento { get; set; }
-            public DateOnly data_ini  { get; set; }
+            public DateOnly data_ini { get; set; }
             public DateOnly data_term { get; set; }
             public float temp_ini { get; set; }
-            public float temp_term { get; set;}
+            public float temp_term { get; set; }
             public float comp_med_1 { get; set; }
             public float comp_med_2 { get; set; }
             public float comp_med_3 { get; set; }
@@ -250,6 +244,118 @@ namespace Coleta_Colchao.Models
             public float alt_espe { get; set; }
             public float alt_media { get; set; }
             public string? executor { get; set; }
+            public string? auxiliar { get; set; }
+        }
+
+        public class Ensaio7_8
+        {
+            [Key]
+            public int Id { get; set; }
+            public string os { get; set; }
+            public string orcamento { get; set; }
+            public string tipo_material { get; set; }
+            public DateOnly data_ini { get; set; }
+            public DateOnly data_term { get; set; }
+            public float copos_prov_1 { get; set; }
+            public float copos_prov_2 { get; set; }
+            public float copos_prov_3 { get; set; }
+            public float copos_prov_4 { get; set; }
+            public float copos_prov_5 { get; set; }
+            public float copos_prov_6 { get; set; }
+            public float copos_prov_7 { get; set; }
+            public float copos_prov_8 { get; set; }
+            public float copos_prov_9 { get; set; }
+            public float copos_prov_10 { get; set; }
+            public float copos_media { get; set; }
+            public int area_corpo_1 { get; set; }
+            public int area_corpo_2 { get; set; }
+            public float gramatura { get; set; }
+            public float dim_corpo_1 { get; set; }
+            public float dim_corpo_2 { get; set; }
+            public string? trincas { get; set; }
+            public string? rompimentos { get; set; }
+            public string? executor { get; set; }
+            public string? auxiliar { get; set; }
+        }
+
+        public class Ensaio7_6
+        {
+            [Key]
+            public int Id { get; set; }
+            public string os { get; set; }
+            public string orcamento { get; set; }
+            public DateOnly data_ini { get; set; }
+            public DateOnly data_term { get; set; }
+            public string faces { get; set; }
+            public float alterar_queda { get; set; }
+            public float rep_1 { get; set; }
+            public float rep_2 { get; set; }
+            public float rep_3 { get; set; }
+            public float media_rep { get; set; }
+            public float alt_queda_det { get; set; }
+            public float rep_det_1 { get; set; }
+            public float rep_det_2 { get; set; }
+            public float rep_det_3 { get; set; }
+            public float media_det { get; set; }
+            public int temp_ens_rolagem { get; set; }
+            public float perda_porc { get; set; }
+            public string? executor { get; set; }
+            public string? auxiliar { get; set; }
+        }
+
+        public class Ensaio7_7
+        {
+            [Key]
+            public int Id { get; set; }
+            public string os { get; set; }
+            public string orcamento { get; set; }
+            public DateOnly data_ini { get; set; }
+            public DateOnly data_term { get; set; }
+            public string? rasgo { get; set; }
+            public string? quebra { get; set; }
+            public string? contem_tipo_1 { get; set; }
+            public string? contem_tipo_2 { get; set; }
+            public string? contem_tipo_3 { get; set; }
+            public string? contem_tipo_4 { get; set; }
+            public string? contem_tipo_5 { get; set; }
+            public string? contem_tipo_6 { get; set; }
+            public string? contem_tipo_7 { get; set; }
+            public string? contem_tipo_8 { get; set; }
+            public string? minim_bitola_1 { get; set; }
+            public string? minim_bitola_2 { get; set; }
+            public float mini_molas_1 { get; set; }
+            public float mini_molas_2 { get; set; }
+            public float mini_molas_3 { get; set; }
+            public float mini_molas_4 { get; set; }
+            public float mini_molas_5 { get; set; }
+            public float mini_molas_6 { get; set; }
+            public float mini_molas_7 { get; set; }
+            public float mini_molas_8 { get; set; }
+            public float calc_molas_1 { get; set; }
+            public float calc_molas_2 { get; set; }
+            public float calc_molas_3 { get; set; }
+            public float resultado_calc { get; set; }
+            public string? executador { get; set; }
+            public string? auxiliar { get; set; }
+        }
+
+        public class Ensaio7_3
+        {
+            [Key]
+            public int Id { get; set; }
+            public string os { get; set; }
+            public string orcamento { get; set; }
+            public DateOnly data_ini { get; set; }
+            public DateOnly data_term { get; set; }
+            public float bordas { get; set; }
+            public string faces_utilizadas { get; set; }
+            public int velocidade_face_1 { get; set; }
+            public int quant_face_1 { get; set; }
+            public int velocidade_face_2 { get; set; }
+            public int quant_face_2 { get; set; }
+            public string? rasgo { get; set; }
+            public string? quebra { get; set; }
+            public string? executador { get; set; }
             public string? auxiliar { get; set; }
         }
     }
