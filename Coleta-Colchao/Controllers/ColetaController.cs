@@ -7,6 +7,7 @@ using System.Data.Entity;
 using System.Data.Entity.Core.Mapping;
 using System.Data.Entity.Core.Objects.DataClasses;
 using System.Security.Claims;
+using static Coleta_Colchao.Models.ColetaModel;
 
 namespace Coleta_Colchao.Controllers
 {
@@ -69,9 +70,19 @@ namespace Coleta_Colchao.Controllers
         }
         public IActionResult EnsaioEspuma4_3(string os, string orcamento)
         {
-            ViewBag.os = os;
-            ViewBag.orcamento = orcamento;
-            return View("Espuma/EnsaioEspuma4_3");
+            var dados = _context.ensaio_espuma4_3.Where(x => x.os == os && x.orcamento == orcamento).FirstOrDefault();
+            if (dados != null)
+            {
+                ViewBag.os = os;
+                ViewBag.orcamento = orcamento;
+                return View("Espuma/EnsaioEspuma4_3", dados);
+            }
+            else
+            {
+                ViewBag.os = os;
+                ViewBag.orcamento = orcamento;
+                return View("Espuma/EnsaioEspuma4_3");
+            }
         }
         public IActionResult EnsaioEspuma4_4()
         {
@@ -1599,6 +1610,183 @@ namespace Coleta_Colchao.Controllers
                 _logger.LogError(ex, "Error", ex.Message);
                 throw;
             }
+            }
+
+
+
+        [HttpPost]
+        public async Task<IActionResult> SalvarEspuma4_3(string os, string orcamento, [Bind("data_ini,data_term,temp_ini,temp_fim,lamina_central,quant_colagens,colagens_densidade,espessura_nominal,espessura_central,porcentagem_enc,lamina_menor_esp,quant_colagens_dois," +
+            "distancia_um,distancia_dois,colagens_comp,espuma,esp_lamina_um,esp_lamina_dois,esp_lamina_tres,esp_lamina_quat,esp_lamina_cinco,esp_lamina_seis,esp_lamina_sete,esp_lamina_oito,quant_colagens_tres,distancia_tres,distancia_quat,colchao_casal,colagem_comp,espuma_conv,espuma_densidade," +
+            "colagem_largura,quant_colagens_quat,localidade,quant_colagens_cinco,espessura_lamina,adesivo,cascas_superiores,cascas_inferiores,observacoes,executador_um,executador_dois,executador_tres,executador_quat")] ColetaModel.Espuma4_3 salvar)
+        {
+            try
+            {
+                var editarDados = _context.ensaio_espuma4_3.Where(x => x.os == os && x.orcamento == orcamento).FirstOrDefault();
+                if (editarDados == null)
+                {
+
+                    //recebendo os valores recebidos do html..
+                    DateOnly data_ini = salvar.data_ini;
+                    DateOnly data_term = salvar.data_term;
+                    var temp_ini = salvar.temp_ini;
+                    var temp_fim = salvar.temp_fim;
+                    var lamina_central = salvar.lamina_central;
+                    var quant_colagens = salvar.quant_colagens;
+                    var colagens_densidade = salvar.colagens_densidade;
+                    var espessura_nominal = salvar.espessura_nominal;
+                    var espessura_central = salvar.espessura_central;
+                    var porcentagem_enc = salvar.porcentagem_enc;
+                    var lamina_menor_esp = salvar.lamina_menor_esp;
+                    var quant_colagens_dois = salvar.quant_colagens_dois;
+                    var distancia_um = salvar.distancia_um;
+                    var distancia_dois = salvar.distancia_dois;
+                    var colagens_comp = salvar.colagens_comp;
+                    var espuma = salvar.espuma;
+                    var esp_lamina_um = salvar.esp_lamina_um;
+                    var esp_lamina_dois = salvar.esp_lamina_dois;
+                    var esp_lamina_tres = salvar.esp_lamina_tres;
+                    var esp_lamina_quat = salvar.esp_lamina_quat;
+                    var esp_lamina_cinco = salvar.esp_lamina_cinco;
+                    var esp_lamina_seis = salvar.esp_lamina_seis;
+                    var esp_lamina_sete = salvar.esp_lamina_sete;
+                    var esp_lamina_oito = salvar.esp_lamina_oito;
+                    var quant_colagens_tres = salvar.quant_colagens_tres;
+                    var distancia_tres = salvar.distancia_tres;
+                    var distancia_quat = salvar.distancia_quat;
+                    var colchao_casal = salvar.colchao_casal;
+                    var colagem_comp = salvar.colagem_comp;
+                    var espuma_conv = salvar.espuma_conv;
+                    var espuma_densidade = salvar.espuma_densidade;
+                    var colagem_largura = salvar.colagem_largura;
+                    var quant_colagens_quat = salvar.quant_colagens_quat;
+                    var localidade = salvar.localidade;
+                    var quant_colagens_cinco = salvar.quant_colagens_cinco;
+                    var espessura_lamina = salvar.espessura_lamina;
+                    var adesivo = salvar.adesivo;
+                    var cascas_superiores = salvar.cascas_superiores;
+                    var cascas_inferiores = salvar.cascas_inferiores;
+                    var observacoes = salvar.observacoes;
+                    var executador_um = salvar.executador_um;
+                    var executador_dois = salvar.executador_dois;
+                    var executador_tres = salvar.executador_tres;
+                    var executador_quat = salvar.executador_quat;
+
+                    var salvardados = new ColetaModel.Espuma4_3
+                    {
+                        os = os,
+                        orcamento = orcamento,
+                        data_ini = data_ini,
+                        data_term = data_term,
+                        temp_ini = temp_ini,
+                        temp_fim = temp_fim,
+                        lamina_central = lamina_central,
+                        quant_colagens = quant_colagens,
+                        colagens_densidade = colagens_densidade,
+                        espessura_nominal = espessura_nominal,
+                        espessura_central = espessura_central,
+                        porcentagem_enc = porcentagem_enc,
+                        lamina_menor_esp = lamina_menor_esp,
+                        quant_colagens_dois = quant_colagens_dois,
+                        distancia_um = distancia_um,
+                        distancia_dois = distancia_dois,
+                        colagens_comp = colagens_comp,
+                        espuma = espuma,
+                        esp_lamina_um = esp_lamina_um,
+                        esp_lamina_dois = esp_lamina_dois,
+                        esp_lamina_tres = esp_lamina_tres,
+                        esp_lamina_quat = esp_lamina_quat,
+                        esp_lamina_cinco = esp_lamina_cinco,
+                        esp_lamina_seis = esp_lamina_seis,
+                        esp_lamina_sete = esp_lamina_sete,
+                        esp_lamina_oito = esp_lamina_oito,
+                        quant_colagens_tres = quant_colagens_tres,
+                        distancia_tres = distancia_tres,
+                        distancia_quat = distancia_quat,
+                        colchao_casal = colchao_casal,
+                        colagem_comp = colagem_comp,
+                        espuma_conv = espuma_conv,
+                        espuma_densidade = espuma_densidade,
+                        colagem_largura = colagem_largura,
+                        quant_colagens_quat = quant_colagens_quat,
+                        localidade = localidade,
+                        quant_colagens_cinco = quant_colagens_cinco,
+                        espessura_lamina = espessura_lamina,
+                        adesivo = adesivo,
+                        cascas_superiores = cascas_superiores,
+                        cascas_inferiores = cascas_inferiores,
+                        observacoes = observacoes,
+                        executador_um = executador_um,
+                        executador_dois = executador_dois,
+                        executador_tres = executador_tres,
+                        executador_quat = executador_quat,
+
+                    };
+                    _context.Add(salvardados);
+                    await _context.SaveChangesAsync();
+                    TempData["Mensagem"] = "Dados Salvo Com Sucesso";
+                    return RedirectToAction(nameof(EnsaioEspuma4_3), "Coleta", new { os, orcamento });
+                }
+                else
+                {
+                    editarDados.data_ini = salvar.data_ini;
+                    editarDados.data_term = salvar.data_term;
+                    editarDados.temp_ini = salvar.temp_ini;
+                    editarDados.temp_fim = salvar.temp_fim;
+                    editarDados.lamina_central = salvar.lamina_central;
+                    editarDados.quant_colagens = salvar.quant_colagens;
+                    editarDados.colagens_densidade = salvar.colagens_densidade;
+                    editarDados.espessura_nominal = salvar.espessura_nominal;
+                    editarDados.espessura_central = salvar.espessura_central;
+                    editarDados.porcentagem_enc = salvar.porcentagem_enc;
+                    editarDados.lamina_menor_esp = salvar.lamina_menor_esp;
+                    editarDados.quant_colagens_dois = salvar.quant_colagens_dois;
+                    editarDados.distancia_um = salvar.distancia_um;
+                    editarDados.distancia_dois = salvar.distancia_dois;
+                    editarDados.colagens_comp = salvar.colagens_comp;
+                    editarDados.espuma = salvar.espuma;
+                    editarDados.esp_lamina_um = salvar.esp_lamina_um;
+                    editarDados.esp_lamina_dois = salvar.esp_lamina_dois;
+                    editarDados.esp_lamina_tres = salvar.esp_lamina_tres;
+                    editarDados.esp_lamina_quat = salvar.esp_lamina_quat;
+                    editarDados.esp_lamina_cinco = salvar.esp_lamina_cinco;
+                    editarDados.esp_lamina_seis = salvar.esp_lamina_seis;
+                    editarDados.esp_lamina_sete = salvar.esp_lamina_sete;
+                    editarDados.esp_lamina_oito = salvar.esp_lamina_oito;
+                    editarDados.quant_colagens_tres = salvar.quant_colagens_tres;
+                    editarDados.distancia_tres = salvar.distancia_tres;
+                    editarDados.distancia_quat = salvar.distancia_quat;
+                    editarDados.colchao_casal = salvar.colchao_casal;
+                    editarDados.colagem_comp = salvar.colagem_comp;
+                    editarDados.espuma_conv = salvar.espuma_conv;
+                    editarDados.espuma_densidade = salvar.espuma_densidade;
+                    editarDados.colagem_largura = salvar.colagem_largura;
+                    editarDados.quant_colagens_quat = salvar.quant_colagens_quat;
+                    editarDados.localidade = salvar.localidade;
+                    editarDados.quant_colagens_cinco = salvar.quant_colagens_cinco;
+                    editarDados.espessura_lamina = salvar.espessura_lamina;
+                    editarDados.adesivo = salvar.adesivo;
+                    editarDados.cascas_superiores = salvar.cascas_superiores;
+                    editarDados.cascas_inferiores = salvar.cascas_inferiores;
+                    editarDados.observacoes = salvar.observacoes;
+                    editarDados.executador_um = salvar.executador_um;
+                    editarDados.executador_dois = salvar.executador_dois;
+                    editarDados.executador_tres = salvar.executador_tres;
+                    editarDados.executador_quat = salvar.executador_quat;
+
+                    _context.Update(editarDados);
+                    await _context.SaveChangesAsync();
+                    TempData["Mensagem"] = "Dados Editado Com Sucesso";
+                    return RedirectToAction(nameof(EnsaioEspuma4_3), "Coleta", new { os, orcamento });
+                }
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "Error", ex.Message);
+                throw;
+            }
+        }
+
+
+
         }
     }
-}

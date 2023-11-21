@@ -358,5 +358,61 @@ namespace Coleta_Colchao.Models
             public string? executador { get; set; }
             public string? auxiliar { get; set; }
         }
+
+        public class Espuma4_3
+        {
+            [Key]
+            public string os { get; set; }
+            public string orcamento { get; set; }
+            public DateOnly data_ini { get; set; }
+            public DateOnly data_term { get; set; }
+            public string temp_ini { get; set; }
+            public string temp_fim { get; set; }
+            public string lamina_central { get; set; }
+            public string quant_colagens { get; set; }
+            public string colagens_densidade { get; set; }
+            public string espessura_nominal { get; set; }
+            public string espessura_central { get; set; }
+            public string porcentagem_enc { get; set; }
+            public string lamina_menor_esp { get; set; }
+            public string quant_colagens_dois { get; set; }
+            public string distancia_um { get; set; }
+            public string distancia_dois { get; set; }
+            public string colagens_comp { get; set; }
+            public string espuma { get; set; }
+            public string esp_lamina_um { get; set; }
+            public string esp_lamina_dois { get; set; }
+            public string esp_lamina_tres { get; set; }
+            public string esp_lamina_quat { get; set; }
+            public string  esp_lamina_cinco { get; set; }
+            public string esp_lamina_seis { get; set; }
+            public string esp_lamina_sete { get; set; }
+            public string esp_lamina_oito { get; set; }
+            public string quant_colagens_tres { get; set; }
+            public string distancia_tres { get; set; }
+            public string distancia_quat { get; set; }
+            public string colchao_casal { get; set; }
+            public string colagem_comp { get; set; }
+            public string espuma_conv { get; set; }
+            public string espuma_densidade { get; set; }
+            public string colagem_largura { get; set; }
+            public string quant_colagens_quat { get; set; }
+            public string localidade { get; set; }
+            public string quant_colagens_cinco { get; set; }
+            public string espessura_lamina { get; set; }
+            public string adesivo { get; set; }
+            public string cascas_superiores { get; set; }
+            public string cascas_inferiores { get; set; }
+            public string observacoes { get; set; }
+            public string executador_um { get; set; }
+            public string executador_dois { get; set; }
+            public string executador_tres { get; set; }
+            public string executador_quat { get; set;}
+
+        }
+
+
+
+
     }
 }
