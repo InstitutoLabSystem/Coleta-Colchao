@@ -359,9 +359,11 @@ namespace Coleta_Colchao.Models
             public string? auxiliar { get; set; }
         }
 
-        public class Espuma4_3
+       
+        public class EnsaioIdentificacaoEmbalagem
         {
             [Key]
+            public int Id { get; set; }
             public string os { get; set; }
             public string orcamento { get; set; }
             public DateOnly data_ini { get; set; }
@@ -413,6 +415,55 @@ namespace Coleta_Colchao.Models
 
 
 
+ public class Espuma4_3
+        {
+            [Key]
+            public string? etiqueta_ident {  get; set; }
+            public string? revest_permanente { get; set; }
+            public string? etiqueta_duravel_indele { get; set; }
+            public string? face_superior { get; set; } 
+            public string? visualizacao { get; set; }
+            public string? lingua_portuguesa { get; set; }
 
+            public float area_etiqueta_1  {get; set; }
+            public float area_etiqueta_2 { get; set; }
+            public float area_etiqueta_media { get; set; }
+            public string? cnpj_cpf { get; set; }
+            public string? marca_modelo { get; set; }
+            public string? dimensoes_prod { get; set; }
+            public string? informada_altura { get; set; }
+            public string? composicoes { get; set; }
+            public string? tipo_molejo { get; set; }
+            public string? contem_borda { get; set; }
+            public string? densidade_espuma { get; set; }
+            public string? composi_revestimento { get; set; }
+            public string? data_fabricacao { get; set; }
+            public string? ident_lote { get; set; } 
+            public string? pais_origem { get; set; }
+            public string? codigo_barras { get; set; }
+            public string? cuidado_minimos { get; set; }
+            public string? aviso_esclarecimento { get; set; }
+            public string? possui_mais_laminas { get; set; }
+            public string? contem_advertencia { get; set; }
+            public string? altura_letra { get; set; }
+            public string? negrito { get; set; }
+            public string? caixa_alta { get; set; }
+            public string? contem_advertencia_mat { get; set; } 
+            public string? altura_letra_mat { get; set; }
+            public string? negrito_mat { get; set; }
+            public string? caixa_alta_mat { get; set; }
+            public string? contem_instru_uso { get; set; }
+            public string? orientacoes { get; set; }
+            public string? alerta_consumidor { get; set; }
+            public string? desenho_esquematico { get; set; }
+            public string? contem_advertencia_6_2 { get; set; }
+            public string? altura_letra_6_2 { get; set; }
+            public string? negrito6_2 { get; set; }
+            public string? caixa_alta_6_2 { get; set; }
+            public string? embalagem_unitaria { get; set; }
+            public string? embalagem_garante { get; set; } 
+            public string? executador { get; set; }
+            public string? auxiliar { get; set; }
+        }
     }
 }

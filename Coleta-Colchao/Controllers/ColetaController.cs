@@ -6,6 +6,7 @@ using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using System.Data.Entity;
 using System.Data.Entity.Core.Mapping;
 using System.Data.Entity.Core.Objects.DataClasses;
+using System.Drawing;
 using System.Security.Claims;
 using static Coleta_Colchao.Models.ColetaModel;
 
@@ -251,9 +252,21 @@ namespace Coleta_Colchao.Controllers
 
 
 
-        public IActionResult IdentificacaoEmbalagem1()
+        public IActionResult IdentificacaoEmbalagemMolas(string os, string orcamento)
         {
-            return View("Molas/IdentificacaoEmbalagem1");
+            var dados = _context.ensaio_identificacao_embalagem.Where(x => x.os == os && x.orcamento == orcamento).FirstOrDefault();
+            if (dados == null)
+            {
+                ViewBag.os = os;
+                ViewBag.orcamento = orcamento;
+                return View("Molas/IdentificacaoEmbalagemMolas");
+            }
+            else
+            {
+                ViewBag.os = os;
+                ViewBag.orcamento = orcamento;
+                return View("Molas/IdentificacaoEmbalagemMolas", dados);
+            }
         }
         public IActionResult IdentificacaoEmbalagem2()
         {
@@ -1786,7 +1799,185 @@ namespace Coleta_Colchao.Controllers
             }
         }
 
+        [HttpPost]
+        public async Task<IActionResult> SalvarEmbalagensMolas(string os, string orcamento, [Bind("data_ini,data_term,etiqueta_ident,revest_permanente,etiqueta_duravel_indele,face_superior,visualizacao,lingua_portuguesa,area_etiqueta_1,area_etiqueta_2,cnpj_cpf,marca_modelo,dimensoes_prod,informada_altura,composicoes,tipo_molejo,contem_borda,densidade_espuma,composi_revestimento,data_fabricacao,ident_lote,pais_origem,codigo_barras,cuidado_minimos,aviso_esclarecimento,possui_mais_laminas,contem_advertencia,altura_letra,negrito,caixa_alta,contem_advertencia_mat,altura_letra_mat,negrito_mat,caixa_alta_mat,contem_instru_uso,orientacoes,alerta_consumidor,desenho_esquematico,contem_advertencia_6_2,altura_letra_6_2,negrito6_2,caixa_alta_6_2,embalagem_unitaria,embalagem_garante")] ColetaModel.EnsaioIdentificacaoEmbalagem salvarDados)
+        {
+            try
+            {
+                var editarDados = _context.ensaio_identificacao_embalagem.Where(x => x.os == os && x.orcamento == orcamento).FirstOrDefault();
+                if (editarDados == null)
+                {
+                    //recebendo os valores do html
+                    DateOnly data_ini = salvarDados.data_ini;
+                    DateOnly data_term = salvarDados.data_term;
+                    string etiqueta_ident = salvarDados.etiqueta_ident;
+                    string revest_permanente = salvarDados.revest_permanente;
+                    string etiqueta_duravel_indele = salvarDados.etiqueta_duravel_indele;
+                    string face_superior = salvarDados.face_superior;
+                    string visualizacao = salvarDados.visualizacao;
+                    string lingua_portuguesa = salvarDados.lingua_portuguesa;
+                    float area_etiqueta_1 = salvarDados.area_etiqueta_1;
+                    float area_etiqueta_2 = salvarDados.area_etiqueta_2;
+                    string cnpj_cpf = salvarDados.cnpj_cpf;
+                    string marca_modelo = salvarDados.marca_modelo;
+                    string dimensoes_prod = salvarDados.dimensoes_prod;
+                    string informada_altura = salvarDados.informada_altura;
+                    string composicoes = salvarDados.composicoes;
+                    string tipo_molejo = salvarDados.tipo_molejo;
+                    string contem_borda = salvarDados.contem_borda;
+                    string densidade_espuma = salvarDados.densidade_espuma;
+                    string composi_revestimento = salvarDados.composi_revestimento;
+                    string data_fabricacao = salvarDados.data_fabricacao;
+                    string ident_lote = salvarDados.ident_lote;
+                    string pais_origem = salvarDados.pais_origem;
+                    string codigo_barras = salvarDados.codigo_barras;
+                    string cuidado_minimos = salvarDados.cuidado_minimos;
+                    string aviso_esclarecimento = salvarDados.aviso_esclarecimento;
+                    string possui_mais_laminas = salvarDados.possui_mais_laminas;
+                    string contem_advertencia = salvarDados.contem_advertencia;
+                    string altura_letra = salvarDados.altura_letra;
+                    string negrito = salvarDados.negrito;
+                    string caixa_alta = salvarDados.caixa_alta;
+                    string contem_advertencia_mat = salvarDados.contem_advertencia_mat;
+                    string altura_letra_mat = salvarDados.altura_letra_mat;
+                    string negrito_mat = salvarDados.negrito_mat;
+                    string caixa_alta_mat = salvarDados.caixa_alta_mat;
+                    string contem_instru_uso = salvarDados.contem_instru_uso;
+                    string orientacoes = salvarDados.orientacoes;
+                    string alerta_consumidor = salvarDados.alerta_consumidor;
+                    string desenho_esquematico = salvarDados.desenho_esquematico;
+                    string contem_advertencia_6_2 = salvarDados.contem_advertencia_6_2;
+                    string altura_letra_6_2 = salvarDados.altura_letra_6_2;
+                    string negrito6_2 = salvarDados.negrito6_2;
+                    string caixa_alta_6_2 = salvarDados.caixa_alta_6_2;
+                    string embalagem_unitaria = salvarDados.embalagem_unitaria;
+                    string embalagem_garante = salvarDados.embalagem_garante;
 
+                    // realizando calculo necessario.
+                    float calc_media = area_etiqueta_1 * area_etiqueta_2;
 
+                    var registro = new ColetaModel.EnsaioIdentificacaoEmbalagem
+                    {
+                        os = os,
+                        orcamento = orcamento,
+                        data_ini = data_ini,
+                        data_term = data_term,
+                        etiqueta_ident = etiqueta_ident,
+                        revest_permanente = revest_permanente,
+                        etiqueta_duravel_indele = etiqueta_duravel_indele,
+                        face_superior = face_superior,
+                        visualizacao = visualizacao,
+                        lingua_portuguesa = lingua_portuguesa,
+                        area_etiqueta_1 = area_etiqueta_1,
+                        area_etiqueta_2 = area_etiqueta_2,
+                        area_etiqueta_media = calc_media,
+                        cnpj_cpf = cnpj_cpf,
+                        marca_modelo = marca_modelo,
+                        dimensoes_prod = salvarDados.dimensoes_prod,
+                        informada_altura = informada_altura,
+                        composicoes = composicoes,
+                        tipo_molejo = tipo_molejo,
+                        contem_borda = contem_borda,
+                        densidade_espuma = densidade_espuma,
+                        composi_revestimento = composi_revestimento,
+                        data_fabricacao = data_fabricacao,
+                        ident_lote = ident_lote,
+                        pais_origem = pais_origem,
+                        codigo_barras = codigo_barras,
+                        cuidado_minimos = cuidado_minimos,
+                        aviso_esclarecimento = aviso_esclarecimento,
+                        possui_mais_laminas = possui_mais_laminas,
+                        contem_advertencia = contem_advertencia,
+                        altura_letra = altura_letra,
+                        negrito = negrito,
+                        caixa_alta = caixa_alta,
+                        contem_advertencia_mat = contem_advertencia_mat,
+                        altura_letra_mat = altura_letra_mat,
+                        negrito_mat = negrito_mat,
+                        caixa_alta_mat = caixa_alta_mat,
+                        contem_instru_uso = contem_instru_uso,
+                        orientacoes = orientacoes,
+                        alerta_consumidor = alerta_consumidor,
+                        desenho_esquematico = desenho_esquematico,
+                        contem_advertencia_6_2 = contem_advertencia_6_2,
+                        altura_letra_6_2 = altura_letra_6_2,
+                        negrito6_2 = negrito6_2,
+                        caixa_alta_6_2 = caixa_alta_6_2,
+                        embalagem_unitaria = embalagem_unitaria,
+                        embalagem_garante = embalagem_garante,
+                    };
+
+                    //salvando no banco
+                    _context.Add(registro);
+                    await _context.SaveChangesAsync();
+                    TempData["Mensagem"] = "Dados Salvo Com Sucesso";
+                    return RedirectToAction(nameof(IdentificacaoEmbalagemMolas), "Coleta", new { os, orcamento });
+                }
+                else
+                {
+                    //editando os valores no html..
+                    editarDados.data_ini = salvarDados.data_ini;
+                    editarDados.data_term = salvarDados.data_term;
+                    editarDados.etiqueta_ident = salvarDados.etiqueta_ident;
+                    editarDados.revest_permanente = salvarDados.revest_permanente;
+                    editarDados.etiqueta_duravel_indele = salvarDados.etiqueta_duravel_indele;
+                    editarDados.face_superior = salvarDados.face_superior;
+                    editarDados.visualizacao = salvarDados.visualizacao;
+                    editarDados.lingua_portuguesa = salvarDados.lingua_portuguesa;
+                    editarDados.area_etiqueta_1 = salvarDados.area_etiqueta_1;
+                    editarDados.area_etiqueta_2 = salvarDados.area_etiqueta_2;
+                    editarDados.cnpj_cpf = salvarDados.cnpj_cpf;
+                    editarDados.marca_modelo = salvarDados.marca_modelo;
+                    editarDados.dimensoes_prod = salvarDados.dimensoes_prod;
+                    editarDados.informada_altura = salvarDados.informada_altura;
+                    editarDados.composicoes = salvarDados.composicoes;
+                    editarDados.tipo_molejo = salvarDados.tipo_molejo;
+                    editarDados.contem_borda = salvarDados.contem_borda;
+                    editarDados.densidade_espuma = salvarDados.densidade_espuma;
+                    editarDados.composi_revestimento = salvarDados.composi_revestimento;
+                    editarDados.data_fabricacao = salvarDados.data_fabricacao;
+                    editarDados.ident_lote = salvarDados.ident_lote;
+                    editarDados.pais_origem = salvarDados.pais_origem;
+                    editarDados.codigo_barras = salvarDados.codigo_barras;
+                    editarDados.cuidado_minimos = salvarDados.cuidado_minimos;
+                    editarDados.aviso_esclarecimento = salvarDados.aviso_esclarecimento;
+                    editarDados.possui_mais_laminas = salvarDados.possui_mais_laminas;
+                    editarDados.contem_advertencia = salvarDados.contem_advertencia;
+                    editarDados.altura_letra = salvarDados.altura_letra;
+                    editarDados.negrito = salvarDados.negrito;
+                    editarDados.caixa_alta = salvarDados.caixa_alta;
+                    editarDados.contem_advertencia_mat = salvarDados.contem_advertencia_mat;
+                    editarDados.altura_letra_mat = salvarDados.altura_letra_mat;
+                    editarDados.negrito_mat = salvarDados.negrito_mat;
+                    editarDados.caixa_alta_mat = salvarDados.caixa_alta_mat;
+                    editarDados.contem_instru_uso = salvarDados.contem_instru_uso;
+                    editarDados.orientacoes = salvarDados.orientacoes;
+                    editarDados.alerta_consumidor = salvarDados.alerta_consumidor;
+                    editarDados.desenho_esquematico = salvarDados.desenho_esquematico;
+                    editarDados.contem_advertencia_6_2 = salvarDados.contem_advertencia_6_2;
+                    editarDados.altura_letra_6_2 = salvarDados.altura_letra_6_2;
+                    editarDados.negrito6_2 = salvarDados.negrito6_2;
+                    editarDados.caixa_alta_6_2 = salvarDados.caixa_alta_6_2;
+                    editarDados.embalagem_unitaria = salvarDados.embalagem_unitaria;
+                    editarDados.embalagem_garante = salvarDados.embalagem_garante;
+
+                    //realizando contas necessarias.
+                    float calc_media = editarDados.area_etiqueta_1 * editarDados.area_etiqueta_2;
+
+                    //recebendo valor depois do calculo.
+                    editarDados.area_etiqueta_media = calc_media;
+
+                    _context.Update(editarDados);
+                    await _context.SaveChangesAsync();
+                    TempData["Mensagem"] = "Dados Editado Com Sucesso";
+                    return RedirectToAction(nameof(IdentificacaoEmbalagemMolas), "Coleta", new { os, orcamento });
+                }
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "Error", ex.Message);
+                throw;
+            }
         }
     }
+}
