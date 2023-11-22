@@ -85,17 +85,21 @@ namespace Coleta_Colchao.Controllers
                 return View("Espuma/EnsaioEspuma4_3");
             }
         }
-        public IActionResult EnsaioEspuma4_4()
+        public IActionResult IdentificacaoEmbalagem(string os, string orcamento)
         {
-            return View("Espuma/EnsaioEspuma4_4");
-        }
-        public IActionResult EnsaioIdentificacao()
-        {
-            return View("Espuma/EnsaioIdentificacao");
-        }
-        public IActionResult IdentificacaoEmbalagem()
-        {
-            return View("Espuma/IdentificacaoEmbalagem");
+            var dados = _context.espuma_identificacao_embalagem.Where(x => x.os == os && x.orcamento == orcamento).FirstOrDefault();
+            if (dados != null)
+            {
+                ViewBag.os = os;
+                ViewBag.orcamento = orcamento;
+                return View("Espuma/IdentificacaoEmbalagem", dados);
+            }
+            else
+            {
+                ViewBag.os = os;
+                ViewBag.orcamento = orcamento;
+                return View("Espuma/IdentificacaoEmbalagem");
+            }
         }
         public IActionResult EnsaioBaseCargaEstatica()
         {
@@ -1979,5 +1983,293 @@ namespace Coleta_Colchao.Controllers
                 throw;
             }
         }
-    }
+
+
+
+        [HttpPost]
+        public async Task<IActionResult> EspumaIdentificacaoEmbalagem(string os, string orcamento, [Bind("data_ini,data_term,temp_ini,temp_fim,etiquieta_um,etiquieta_um,fixacao,material,area_um,area_dois,area_result,etiquieta_dois,marca,dimensoes,info_altura,medidas,colchoes,tipo_colchao," +
+            "letras,altura_letra_um,negrito_um,caixa_alta_um,coloracao_um,classificacao,uso,composicao,tipo_espuma,densidade_nominal,espessura_mad,comp_revestimento,data_fabricacao,pais_fabricacao,cuidados,aviso_um,altura_letra_dois,negrito_dois,caixa_alta_dois,coloracao_dois,esclarecimento_um," +
+            "altura_letra_tres,negrito_tres,caixa_alta_tres,coloracao_eti,esclarecimento_dois,altura_letra_quat,negrito_quat,caixa_alta_quat,coloracao_quat,colchao_infantil,embalagem_colchao,aviso_embalagem_um,altura_letra_cinco,negrito_cinco,caixa_alta_cinco,coloracao_cinco,aviso_odor,aviso_embalagem_dois,altura_letra_seis,negrito_seis," +
+            "caixa_alta_seis,coloracao_seis,dec_voluntaria,texto_negrito,identificacao,identificacao_dois,desc_lamina,latex,embalagem_uni,embalagem_protecao,observacao,executador_um,executador_dois,executador_tres,executador_quat")] ColetaModel.Espuma_identificacao_embalagem salvar)
+        {
+
+            try
+            {
+                var editarDados = _context.espuma_identificacao_embalagem.Where(x => x.os == os && x.orcamento == orcamento).FirstOrDefault();
+                if (editarDados == null)
+                {
+
+                    //recebendo os valores do html
+                    DateOnly data_ini = salvar.data_ini;
+                    DateOnly data_term = salvar.data_term;
+                    var temp_ini = salvar.temp_ini;
+                    var temp_fim = salvar.temp_fim;
+                    var etiquieta_um = salvar.etiquieta_um;
+                    var fixacao = salvar.fixacao;
+                    var material = salvar.material;
+                    var area_um = salvar.area_um;
+                    var area_dois = salvar.area_dois;
+
+                    double areaum = double.Parse(area_um);
+                    double areadois = double.Parse(area_dois);
+                    var area_result = areaum * areadois;
+
+                    var etiquieta_dois = salvar.etiquieta_dois;
+                    var marca = salvar.marca;
+                    var dimensoes = salvar.dimensoes;
+                    var info_altura = salvar.info_altura;
+                    var medidas = salvar.medidas;
+                    var colchoes = salvar.colchoes;
+                    var tipo_colchao = salvar.tipo_colchao;
+                    var letras = salvar.letras;
+                    var altura_letra_um = salvar.altura_letra_um;
+                    var negrito_um = salvar.negrito_um;
+                    var caixa_alta_um = salvar.caixa_alta_um;
+                    var coloracao_um = salvar.coloracao_um;
+                    var classificacao = salvar.classificacao;
+                    var uso = salvar.uso;
+                    var composicao = salvar.composicao;
+                    var tipo_espuma = salvar.tipo_espuma;
+                    var densidade_nominal = salvar.densidade_nominal;
+                    var espessura_mad = salvar.espessura_mad;
+                    var comp_revestimento = salvar.comp_revestimento;
+                    var data_fabricacao = salvar.data_fabricacao;
+                    var pais_fabricacao = salvar.pais_fabricacao;
+                    var cuidados = salvar.cuidados;
+                    var aviso_um = salvar.aviso_um;
+                    var altura_letra_dois = salvar.altura_letra_dois;
+                    var negrito_dois = salvar.negrito_dois;
+                    var caixa_alta_dois = salvar.caixa_alta_dois;
+                    var coloracao_dois = salvar.coloracao_dois;
+                    var esclarecimento_um = salvar.esclarecimento_um;
+                    var altura_letra_tres = salvar.altura_letra_tres;
+                    var negrito_tres = salvar.negrito_tres;
+                    var caixa_alta_tres = salvar.caixa_alta_tres;
+                    var coloracao_eti = salvar.coloracao_eti;
+                    var esclarecimento_dois = salvar.esclarecimento_dois;
+                    var altura_letra_quat = salvar.altura_letra_quat;
+                    var negrito_quat = salvar.negrito_quat;
+                    var caixa_alta_quat = salvar.caixa_alta_quat;
+                    var coloracao_quat = salvar.coloracao_quat;
+                    var colchao_infantil = salvar.colchao_infantil;
+                    var embalagem_colchao = salvar.embalagem_colchao;
+                    var aviso_embalagem_um = salvar.aviso_embalagem_um;
+                    var altura_letra_cinco = salvar.altura_letra_cinco;
+                    var negrito_cinco = salvar.negrito_cinco;
+                    var caixa_alta_cinco = salvar.caixa_alta_cinco;
+                    var coloracao_cinco = salvar.coloracao_cinco;
+                    var aviso_odor = salvar.aviso_odor;
+                    var aviso_embalagem_dois = salvar.aviso_embalagem_dois;
+                    var altura_letra_seis = salvar.altura_letra_seis;
+                    var negrito_seis = salvar.negrito_seis;
+                    var caixa_alta_seis = salvar.caixa_alta_seis;
+                    var coloracao_seis = salvar.coloracao_seis;
+                    var dec_voluntaria = salvar.dec_voluntaria;
+                    var texto_negrito = salvar.texto_negrito;
+                    var identificacao = salvar.identificacao;
+                    var identificacao_dois = salvar.identificacao_dois;
+                    var desc_lamina = salvar.desc_lamina;
+                    var latex = salvar.latex;
+                    var embalagem_uni = salvar.embalagem_uni;
+                    var embalagem_protecao = salvar.embalagem_protecao;
+                    var observacao = salvar.observacao;
+                    var executador_um = salvar.executador_um;
+                    var executador_dois = salvar.executador_dois;
+                    var executador_tres = salvar.executador_tres;
+                    var executador_quat = salvar.executador_quat;
+
+
+                    var registro = new ColetaModel.Espuma_identificacao_embalagem
+                    {
+                        os = os,
+                        orcamento = orcamento,
+                        data_ini =data_ini,
+                        data_term = data_term,
+                        temp_ini = temp_ini,
+                        temp_fim = temp_fim,
+                         etiquieta_um = etiquieta_um,
+                         fixacao = fixacao,
+                         material = material,
+                         area_um = area_um,
+                         area_dois = area_dois,
+                         area_result = area_result.ToString(),
+                         etiquieta_dois = etiquieta_dois,
+                         marca = marca,
+                         dimensoes = dimensoes,
+                         info_altura = info_altura,
+                         medidas = medidas,
+                         colchoes = colchoes,
+                         tipo_colchao = tipo_colchao,
+                         letras = letras,
+                         altura_letra_um = altura_letra_um,
+                         negrito_um = negrito_um,
+                         caixa_alta_um = caixa_alta_um,
+                         coloracao_um = coloracao_um,
+                         classificacao = classificacao,
+                         uso = uso,
+                         composicao = composicao,
+                         tipo_espuma = tipo_espuma,
+                         densidade_nominal = densidade_nominal,
+                         espessura_mad = espessura_mad,
+                         comp_revestimento = comp_revestimento,
+                         data_fabricacao = data_fabricacao,
+                         pais_fabricacao = pais_fabricacao,
+                         cuidados = cuidados,
+                         aviso_um = aviso_um,
+                         altura_letra_dois = altura_letra_dois,
+                         negrito_dois = negrito_dois,
+                         caixa_alta_dois = caixa_alta_dois,
+                         coloracao_dois = coloracao_dois,
+                         esclarecimento_um = esclarecimento_um,
+                         altura_letra_tres = altura_letra_tres,
+                         negrito_tres = negrito_tres,
+                         caixa_alta_tres = caixa_alta_tres,
+                         coloracao_eti = coloracao_eti,
+                         esclarecimento_dois = esclarecimento_dois,
+                         altura_letra_quat = altura_letra_quat,
+                         negrito_quat = negrito_quat,
+                         caixa_alta_quat = caixa_alta_quat,
+                        coloracao_quat = coloracao_quat,
+                        colchao_infantil = colchao_infantil,
+                         embalagem_colchao = embalagem_colchao,
+                         aviso_embalagem_um = aviso_embalagem_um,
+                         altura_letra_cinco = altura_letra_cinco,
+                         negrito_cinco = negrito_cinco,
+                         caixa_alta_cinco = caixa_alta_cinco,
+                         coloracao_cinco = coloracao_cinco,
+                         aviso_odor = aviso_odor,
+                         aviso_embalagem_dois = aviso_embalagem_dois,
+                         altura_letra_seis = altura_letra_seis,
+                         negrito_seis = negrito_seis,
+                         caixa_alta_seis = caixa_alta_seis,
+                         coloracao_seis = coloracao_seis,
+                         dec_voluntaria = dec_voluntaria,
+                         texto_negrito = texto_negrito,
+                         identificacao = identificacao,
+                         identificacao_dois = identificacao_dois,
+                         desc_lamina = desc_lamina,
+                         latex = latex,
+                         embalagem_uni = embalagem_uni,
+                         embalagem_protecao = embalagem_protecao,
+                         observacao = observacao,
+                         executador_um = executador_um,
+                         executador_dois = executador_dois,
+                         executador_tres = executador_tres,
+                         executador_quat = executador_quat,
+                };
+
+                    //salvando no banco
+                    _context.Add(registro);
+                    await _context.SaveChangesAsync();
+                    TempData["Mensagem"] = "Dados Salvo Com Sucesso";
+                    return RedirectToAction(nameof(IdentificacaoEmbalagem), "Coleta", new { os, orcamento });
+
+                }
+                else
+                {
+
+                    editarDados.data_ini = salvar.data_ini;
+                    editarDados.data_term = salvar.data_term;
+                    editarDados.temp_ini = salvar.temp_ini;
+                    editarDados.temp_fim = salvar.temp_fim;
+                    editarDados.etiquieta_um = salvar.etiquieta_um;
+                    editarDados.fixacao = salvar.fixacao;
+                    editarDados.material = salvar.material;
+                    editarDados.area_um = salvar.area_um;
+                    editarDados.area_dois = salvar.area_dois;
+
+                    double areaum = double.Parse(editarDados.area_um);
+                    double areadois = double.Parse(editarDados.area_dois);
+                    editarDados.area_result = (areaum * areadois).ToString();
+
+                    editarDados.etiquieta_dois = salvar.etiquieta_dois;
+                    editarDados.marca = salvar.marca;
+                    editarDados.dimensoes = salvar.dimensoes;
+                    editarDados.info_altura = salvar.info_altura;
+                    editarDados.medidas = salvar.medidas;
+                    editarDados.colchoes = salvar.colchoes;
+                    editarDados.tipo_colchao = salvar.tipo_colchao;
+                    editarDados.letras = salvar.letras;
+                    editarDados.altura_letra_um = salvar.altura_letra_um;
+                    editarDados.negrito_um = salvar.negrito_um;
+                    editarDados.caixa_alta_um = salvar.caixa_alta_um;
+                    editarDados.coloracao_um = salvar.coloracao_um;
+                    editarDados.classificacao = salvar.classificacao;
+                    editarDados.uso = salvar.uso;
+                    editarDados.composicao = salvar.composicao;
+                    editarDados.tipo_espuma = salvar.tipo_espuma;
+                    editarDados.densidade_nominal = salvar.densidade_nominal;
+                    editarDados.espessura_mad = salvar.espessura_mad;
+                    editarDados.comp_revestimento = salvar.comp_revestimento;
+                    editarDados.data_fabricacao = salvar.data_fabricacao;
+                    editarDados.pais_fabricacao = salvar.pais_fabricacao;
+                    editarDados.cuidados = salvar.cuidados;
+                    editarDados.aviso_um = salvar.aviso_um;
+                    editarDados.altura_letra_dois = salvar.altura_letra_dois;
+                    editarDados.negrito_dois = salvar.negrito_dois;
+                    editarDados.caixa_alta_dois = salvar.caixa_alta_dois;
+                    editarDados.coloracao_dois = salvar.coloracao_dois;
+                    editarDados.esclarecimento_um = salvar.esclarecimento_um;
+                    editarDados.altura_letra_tres = salvar.altura_letra_tres;
+                    editarDados.negrito_tres = salvar.negrito_tres;
+                    editarDados.caixa_alta_tres = salvar.caixa_alta_tres;
+                    editarDados.coloracao_eti = salvar.coloracao_eti;
+                    editarDados.esclarecimento_dois = salvar.esclarecimento_dois;
+                    editarDados.altura_letra_quat = salvar.altura_letra_quat;
+                    editarDados.negrito_quat = salvar.negrito_quat;
+                    editarDados.caixa_alta_quat = salvar.caixa_alta_quat;
+                    editarDados.coloracao_quat = salvar.coloracao_quat;
+                    editarDados.colchao_infantil = salvar.colchao_infantil;
+                    editarDados.embalagem_colchao = salvar.embalagem_colchao;
+                    editarDados.aviso_embalagem_um = salvar.aviso_embalagem_um;
+                    editarDados.altura_letra_cinco = salvar.altura_letra_cinco;
+                    editarDados.negrito_cinco = salvar.negrito_cinco;
+                    editarDados.caixa_alta_cinco = salvar.caixa_alta_cinco;
+                    editarDados.coloracao_cinco = salvar.coloracao_cinco;
+                    editarDados.aviso_odor = salvar.aviso_odor;
+                    editarDados.aviso_embalagem_dois = salvar.aviso_embalagem_dois;
+                    editarDados.altura_letra_seis = salvar.altura_letra_seis;
+                    editarDados.negrito_seis = salvar.negrito_seis;
+                    editarDados.caixa_alta_seis = salvar.caixa_alta_seis;
+                    editarDados.coloracao_seis = salvar.coloracao_seis;
+                    editarDados.dec_voluntaria = salvar.dec_voluntaria;
+                    editarDados.texto_negrito = salvar.texto_negrito;
+                    editarDados.identificacao = salvar.identificacao;
+                    editarDados.identificacao_dois = salvar.identificacao_dois;
+                    editarDados.desc_lamina = salvar.desc_lamina;
+                    editarDados.latex = salvar.latex;
+                    editarDados.embalagem_uni = salvar.embalagem_uni;
+                    editarDados.embalagem_protecao = salvar.embalagem_protecao;
+                    editarDados.observacao = salvar.observacao;
+                    editarDados.executador_um = salvar.executador_um;
+                    editarDados.executador_dois = salvar.executador_dois;
+                    editarDados.executador_tres = salvar.executador_tres;
+                    editarDados.executador_quat = salvar.executador_quat;
+
+                    _context.Update(editarDados);
+                    await _context.SaveChangesAsync();
+                    TempData["Mensagem"] = "Dados Editado Com Sucesso";
+                    return RedirectToAction(nameof(IdentificacaoEmbalagem), "Coleta", new { os, orcamento });
+
+                }
+
+
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "Error", ex.Message);
+                throw;
+            }
+        }
+
+
+
+
+
+
+
+
+
+
+        }
 }

@@ -1123,3 +1123,4 @@ C:\xampp\htdocs\Coleta-Colchao\Coleta-Colchao\obj\Debug\net7.0\Coleta-Colchao.pd
 C:\xampp\htdocs\Coleta-Colchao\Coleta-Colchao\obj\Debug\net7.0\Coleta-Colchao.genruntimeconfig.cache
 C:\xampp\htdocs\Coleta-Colchao\Coleta-Colchao\obj\Debug\net7.0\ref\Coleta-Colchao.dll
 C:\Users\Molina\source\repos\InstitutoLabSystem\Coleta-Colchao\Coleta-Colchao\obj\Debug\net7.0\Coleta-Colchao.sourcelink.json
+C:\xampp\htdocs\Coleta-Colchao\Coleta-Colchao\obj\Debug\net7.0\Coleta-Colchao.sourcelink.json
