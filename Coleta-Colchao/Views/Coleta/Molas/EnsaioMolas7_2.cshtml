@@ -13,12 +13,21 @@
     <link rel="stylesheet" href="~/css/coleta.css" asp-append-version="true" />
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <style>
-        input{
-            text-align:center;
+        input {
+            text-align: center;
         }
 
         .altura-inputs {
-            height:150px;
+            height: 150px;
+        }
+
+        .controlador-conforme {
+            padding: 5px;
+            border-color: gray;
+            border-radius: 5px;
+            box-sizing: border-box;
+            height: 500px;
+            width: 100px;
         }
     </style>
 
@@ -68,11 +77,7 @@
                         <b>Comprimento:</b> Medir o comprimento do colchão ou colchonete em 3 pontos equidistantes, considerando como a comprimento total o valor médio encontrado em centímetros.
                     </td>
                     <td rowspan="5">
-                        <select class="form-control" name="Escolha" style="height:400px">
-                            <option selected> --- </option>
-                            <option> Sim </option>
-                            <option> Não </option>
-                        </select>
+                        <input readonly class="controlador-conforme" />
                     </td>
                 </tr>
                 <tr>
@@ -92,7 +97,7 @@
                                 <td>
                                     <input class="form-control" type="text" name="comp_med_1" />
                                 </td>
-                                <td class="altura-input-centralizar" rowspan="4"><input style="margin-top:20px;" class="form-control altura-input altura-inputs" type="text" name="comp_espe"  /></td>
+                                <td class="altura-input-centralizar" rowspan="4"><input style="margin-top:20px;" class="form-control altura-input altura-inputs" type="text" name="comp_espe" /></td>
                             </tr>
                             <tr>
                                 <td>
@@ -132,11 +137,7 @@
                         <b>Largura:</b> Medir a largura do colchão ou colchonete em 3 pontos equidistantes, considerando como a largura total o valor médio encontrado em centímetros.
                     </td>
                     <td rowspan="5">
-                        <select class="form-control" name="Escolha" style="height:400px">
-                            <option selected> --- </option>
-                            <option> Sim </option>
-                            <option> Não </option>
-                        </select>
+                        <input readonly class="controlador-conforme" />
                     </td>
                 </tr>
                 <tr>
@@ -184,17 +185,18 @@
                 </tr>
             </table>
             <table class="tables table-bordered border-secondary  table-sm">
+                <tr class="fundo-tabela">
+                    <td>Item</td>
+                    <td>Descrição</td>
+                    <td>Resultado</td>
+                </tr>
                 <tr>
                     <td rowspan="5">7.2</td>
                     <td>
                         <b>Altura:</b> Medir a largura do colchão ou colchonete em 3 pontos equidistantes, considerando como a largura total o valor médio encontrado em centímetros.
                     </td>
                     <td rowspan="5">
-                        <select class="form-control" name="Escolha" style="height:400px; width:75px;">
-                            <option selected> --- </option>
-                            <option> Sim </option>
-                            <option> Não </option>
-                        </select>
+                        <input readonly class="controlador-conforme" />
                     </td>
                 </tr>
                 <tr>
@@ -214,7 +216,7 @@
                                 <td>
                                     <input class="form-control" type="text" name="alt_med_1" />
                                 </td>
-                                <td class="altura-input-centralizar" rowspan="4"><input style="margin-top:20px;"  class="form-control altura-input altura-inputs" type="text" name="alt_espe" /></td>
+                                <td class="altura-input-centralizar" rowspan="4"><input style="margin-top:20px;" class="form-control altura-input altura-inputs" type="text" name="alt_espe" /></td>
                             </tr>
                             <tr>
                                 <td>
@@ -293,11 +295,7 @@
                         <b>Comprimento:</b> Medir o comprimento do colchão ou colchonete em 3 pontos equidistantes, considerando como a comprimento total o valor médio encontrado em centímetros.
                     </td>
                     <td rowspan="5">
-                        <select class="form-control" name="Escolha" style="height:400px">
-                            <option selected> --- </option>
-                            <option> Sim </option>
-                            <option> Não </option>
-                        </select>
+                        <input readonly class="controlador-conforme" value="@Model.conforme_comprimento" />
                     </td>
                 </tr>
                 <tr>
@@ -357,11 +355,7 @@
                         <b>Largura:</b> Medir a largura do colchão ou colchonete em 3 pontos equidistantes, considerando como a largura total o valor médio encontrado em centímetros.
                     </td>
                     <td rowspan="5">
-                        <select class="form-control" name="Escolha" style="height:400px">
-                            <option selected> --- </option>
-                            <option> Sim </option>
-                            <option> Não </option>
-                        </select>
+                        <input readonly class="controlador-conforme" value="@Model.conforme_largura" />
                     </td>
                 </tr>
                 <tr>
@@ -381,7 +375,7 @@
                                 <td>
                                     <input class="form-control" type="text" name="larg_med_1" value="@Model.larg_med_1" />
                                 </td>
-                                <td class="altura-input-centralizar" rowspan="4"><input style="margin-top:20px;"  class="form-control altura-input altura-inputs" type="text" name="larg_espe" value="@Model.larg_espe" /></td>
+                                <td class="altura-input-centralizar" rowspan="4"><input style="margin-top:20px;" class="form-control altura-input altura-inputs" type="text" name="larg_espe" value="@Model.larg_espe" /></td>
                             </tr>
                             <tr>
                                 <td>
@@ -409,17 +403,18 @@
                 </tr>
             </table>
             <table class="tables table-bordered border-secondary  table-sm">
+                <tr class="fundo-tabela">
+                    <td>Item</td>
+                    <td>Descrição</td>
+                    <td>Resultado</td>
+                </tr>
                 <tr>
                     <td rowspan="5">7.2</td>
                     <td>
                         <b>Altura:</b> Medir a largura do colchão ou colchonete em 3 pontos equidistantes, considerando como a largura total o valor médio encontrado em centímetros.
                     </td>
                     <td rowspan="5">
-                        <select class="form-control" name="Escolha" style="height:400px; width:75px;">
-                            <option selected> --- </option>
-                            <option> Sim </option>
-                            <option> Não </option>
-                        </select>
+                        <input readonly class="controlador-conforme" value="@Model.conforme_comprimento" value="@Model.conforme_altura" />
                     </td>
                 </tr>
                 <tr>

@@ -413,7 +413,7 @@ namespace Coleta_Colchao.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> SalvarEnsaio4_3(string os, string orcamento, [Bind("borda,borda1,data_ini,data_term,valor_enc_1,valor_enc_2,man_parale_1,man_parale_2")] ColetaModel.Ensaio4_3 salvarDados)
+        public async Task<IActionResult> SalvarEnsaio4_3(string os, string orcamento, [Bind("borda_aco,borda_espuma,data_ini,data_term,valor_enc_aco,valor_enc_espuma,man_parale_aco,man_parale_espuma")] ColetaModel.Ensaio4_3 salvarDados)
         {
             try
             {
@@ -421,27 +421,27 @@ namespace Coleta_Colchao.Controllers
 
                 if (dados == null)
                 {
-                    string borda = salvarDados.borda;
-                    string borda1 = salvarDados.borda1;
+                    string borda_aco = salvarDados.borda_aco;
+                    string borda_espuma = salvarDados.borda_espuma;
                     DateOnly data_ini = salvarDados.data_ini;
                     DateOnly data_term = salvarDados.data_term;
-                    float valor_enc_1 = salvarDados.valor_enc_1;
-                    float valor_enc_2 = salvarDados.valor_enc_2;
-                    string man_parale_1 = salvarDados.man_parale_1;
-                    string man_parale_2 = salvarDados.man_parale_2;
+                    float valor_enc_aco = salvarDados.valor_enc_aco;
+                    float valor_enc_espuma = salvarDados.valor_enc_espuma;
+                    string man_parale_aco = salvarDados.man_parale_aco;
+                    string man_parale_espuma = salvarDados.man_parale_espuma;
 
                     var registro = new ColetaModel.Ensaio4_3
                     {
                         os = os,
                         orcamento = orcamento,
-                        borda = borda,
-                        borda1 = borda1,
+                        borda_aco = borda_aco,
+                        borda_espuma = borda_espuma,
                         data_ini = data_ini,
                         data_term = data_term,
-                        valor_enc_1 = valor_enc_1,
-                        valor_enc_2 = valor_enc_2,
-                        man_parale_1 = man_parale_1,
-                        man_parale_2 = man_parale_2,
+                        valor_enc_aco = valor_enc_aco,
+                        valor_enc_espuma = valor_enc_espuma,
+                        man_parale_aco = man_parale_aco,
+                        man_parale_espuma = man_parale_espuma,
                     };
 
                     _context.Add(registro);
@@ -451,14 +451,14 @@ namespace Coleta_Colchao.Controllers
                 }
                 else
                 {
-                    dados.borda = salvarDados.borda;
-                    dados.borda1 = salvarDados.borda1;
+                    dados.borda_aco = salvarDados.borda_aco;
+                    dados.borda_espuma = salvarDados.borda_espuma;
                     dados.data_ini = salvarDados.data_ini;
                     dados.data_term = salvarDados.data_term;
-                    dados.valor_enc_1 = salvarDados.valor_enc_1;
-                    dados.valor_enc_2 = salvarDados.valor_enc_2;
-                    dados.man_parale_1 = salvarDados.man_parale_1;
-                    dados.man_parale_2 = salvarDados.man_parale_2;
+                    dados.valor_enc_aco = salvarDados.valor_enc_aco;
+                    dados.valor_enc_espuma = salvarDados.valor_enc_espuma;
+                    dados.man_parale_aco = salvarDados.man_parale_aco;
+                    dados.man_parale_espuma = salvarDados.man_parale_espuma;
 
                     await _context.SaveChangesAsync();
                     TempData["Mensagem"] = "Dados Editado Com Sucesso";
@@ -656,6 +656,9 @@ namespace Coleta_Colchao.Controllers
                     float alt_med_2 = salvarDados.alt_med_2;
                     float alt_med_3 = salvarDados.alt_med_3;
                     float alt_espe = salvarDados.alt_espe;
+                    string conforme_comprimento = string.Empty;
+                    string conform_largura = string.Empty;
+                    string conform_altura = string.Empty;
 
                     //calculando a media dos resultados.
                     float media_comprimeto = (comp_med_1 + comp_med_2 + comp_med_3) / 3;
@@ -669,6 +672,46 @@ namespace Coleta_Colchao.Controllers
                     float media_altura = (alt_med_1 + alt_med_2 + alt_med_3) / 3;
                     string conv_media_altura = media_altura.ToString("N1");
                     media_altura = float.Parse(conv_media_altura);
+
+                    //REALIZANDO CALCULO DE CONFORME OU NAO CONFORME comprimento.
+                    float valor_min_comprimento = comp_espe - 1.5f;
+                    float valor_max_comprimento = comp_espe + 1.5f;
+
+
+                    if (media_comprimeto >= valor_min_comprimento && media_comprimeto <= valor_max_comprimento)
+                    {
+                        conforme_comprimento = "C";
+                    }
+                    else
+                    {
+                        conforme_comprimento = "NC";
+                    }
+
+                    //calculo de incerteza de largura.
+                    float valor_min_largura = larg_espe - 1.5f;
+                    float valor_max_largura = larg_espe + 1.5f;
+
+                    if (media_largura >= valor_min_largura && media_largura <= valor_max_largura)
+                    {
+                        conform_largura = "C";
+                    }
+                    else
+                    {
+                        conform_largura = "NC";
+                    }
+
+                    //calculo de incerteza de altura.
+                    float valor_min_altura = alt_espe - 1.5f;
+                    float valor_max_altura = alt_espe + 1.5f;
+
+                    if (media_altura >= valor_min_altura && media_altura <= valor_max_altura)
+                    {
+                        conform_altura = "C";
+                    }
+                    else
+                    {
+                        conform_altura = "NC";
+                    }
 
                     //armazenando no banco.
                     var registro = new ColetaModel.Ensaio7_2
@@ -694,6 +737,9 @@ namespace Coleta_Colchao.Controllers
                         alt_med_3 = alt_med_3,
                         alt_espe = alt_espe,
                         alt_media = media_altura,
+                        conforme_comprimento = conforme_comprimento,
+                        conforme_largura = conform_largura,
+                        conforme_altura = conform_altura,
                     };
 
                     _context.Add(registro);
@@ -722,6 +768,9 @@ namespace Coleta_Colchao.Controllers
                     editarDados.alt_med_3 = salvarDados.alt_med_3;
                     editarDados.alt_espe = salvarDados.alt_espe;
 
+
+
+                    //pegando a media dos valores
                     float media_comprimeto = (editarDados.comp_med_1 + editarDados.comp_med_2 + editarDados.comp_med_3) / 3;
                     string conv_media_comprimeto = media_comprimeto.ToString("N1");
                     media_comprimeto = float.Parse(conv_media_comprimeto);
@@ -734,7 +783,54 @@ namespace Coleta_Colchao.Controllers
                     string conv_media_altura = media_altura.ToString("N1");
                     media_altura = float.Parse(conv_media_altura);
 
+                    //realizando calculos para editar conforme ou nao conforme
+                    string conforme_comprimento = string.Empty;
+                    string conform_largura = string.Empty;
+                    string conform_altura = string.Empty;
+                    float valor_min_comprimento = editarDados.comp_espe - 1.5f;
+                    float valor_max_comprimento = editarDados.comp_espe + 1.5f;
 
+
+                    if (media_comprimeto >= valor_min_comprimento && media_comprimeto <= valor_max_comprimento)
+                    {
+                        conforme_comprimento = "C";
+                    }
+                    else
+                    {
+                        conforme_comprimento = "NC";
+                    }
+
+                    //calculo de incerteza de largura.
+                    float valor_min_largura = editarDados.larg_espe - 1.5f;
+                    float valor_max_largura = editarDados.larg_espe + 1.5f;
+
+                    if (media_largura >= valor_min_largura && media_largura <= valor_max_largura)
+                    {
+                        conform_largura = "C";
+                    }
+                    else
+                    {
+                        conform_largura = "NC";
+                    }
+
+                    //calculo de incerteza de altura.
+                    float valor_min_altura = editarDados.alt_espe - 1.5f;
+                    float valor_max_altura = editarDados.alt_espe + 1.5f;
+
+                    if (media_altura >= valor_min_altura && media_altura <= valor_max_altura)
+                    {
+                        conform_altura = "C";
+                    }
+                    else
+                    {
+                        conform_altura = "NC";
+                    }
+
+                    editarDados.conforme_comprimento = conforme_comprimento;
+                    editarDados.conforme_largura = conform_largura;
+                    editarDados.conforme_altura = conform_altura;
+
+                    _context.Update(editarDados);
                     await _context.SaveChangesAsync();
                     TempData["Mensagem"] = "Dados Editado Com Sucesso";
                     return RedirectToAction(nameof(EnsaioMolas7_2), "Coleta", new { os, orcamento });
