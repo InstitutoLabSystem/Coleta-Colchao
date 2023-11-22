@@ -102,12 +102,12 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ29sZXRhXE1vbGFzXEVuc2Fpb01vbGFzUGFydGUzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Molina/source/repos/InstitutoLabSystem/Coleta-Colchao/Coleta-Colchao/Views/Coleta/Molas/IdentificacaoEmbalagem1.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ29sZXRhXE1vbGFzXElkZW50aWZpY2FjYW9FbWJhbGFnZW0xLmNzaHRtbA==
-build_metadata.AdditionalFiles.CssScope = 
-
 [C:/Users/Molina/source/repos/InstitutoLabSystem/Coleta-Colchao/Coleta-Colchao/Views/Coleta/Molas/IdentificacaoEmbalagem2.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ29sZXRhXE1vbGFzXElkZW50aWZpY2FjYW9FbWJhbGFnZW0yLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Molina/source/repos/InstitutoLabSystem/Coleta-Colchao/Coleta-Colchao/Views/Coleta/Molas/IdentificacaoEmbalagemMolas.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ29sZXRhXE1vbGFzXElkZW50aWZpY2FjYW9FbWJhbGFnZW1Nb2xhcy5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/Molina/source/repos/InstitutoLabSystem/Coleta-Colchao/Coleta-Colchao/Views/Home/Index.cshtml]

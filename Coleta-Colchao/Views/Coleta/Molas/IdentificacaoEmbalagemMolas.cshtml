@@ -1,0 +1,1004 @@
+﻿@model ColetaModel.EnsaioIdentificacaoEmbalagem;
+@{
+    Layout = null;
+}
+@{
+    ViewData["Title"] = "Identificação e Embalagem";
+}
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="~/css/coleta.css" asp-append-version="true" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        input,select{
+            text-align:center;
+        }
+    </style>
+
+</head>
+<body>
+    <form method="post" asp-controller="Coleta" asp-action="SalvarEmbalagensMolas" asp-route-os="@ViewBag.os" asp-route-orcamento="@ViewBag.orcamento">
+        @if (Model == null)
+        {
+            <table class="tables table-bordered border-secondary  table-sm">
+                <thead>
+                    <tr>
+                        <td><img src="https://www.labsystem-nuvem.com.br/imagens_arq/imagens/img/LabSystem.png" class="imagem" /></td>
+                        <td colspan="3" class="fundo-tabela">Coleta De Dados</td>
+                        <td class="fundo-tabela">N Os:</td>
+                    </tr>
+                    <tr>
+                        <td colspan="4">Colchão De Molas (Portaria Inmetro 75)</td>
+                        <td rowspan="2"> @ViewBag.os</td>
+                    </tr>
+                    <tr>
+                        <td>Inicio:</td>
+                        <td><input class="form-control" type="date" name="data_ini" /></td>
+                        <td>Termino:</td>
+                        <td><input class="form-control" type="date" name="data_term" /></td>
+                    </tr>
+                </thead>
+            </table>
+
+            <table class="tables table-bordered border-secondary  table-sm">
+                <tr>
+                    <td rowspan="50">Item</td>
+                    <td class="fundo-tabela">Descrição</td>
+                    <td rowspan="40">Resultado</td>
+                </tr>
+                <tr>
+                    <td>
+                        5 - REQUISITOS DE MARCAÇÕES E INFORMAÇÕES OBRIGATÓRIAS NO PRODUTO E NA EMBALAGEM
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        O colchão de mola devem apresentar, para sua perfeita identificação, uma etiqueta de pelo menos 150 cm², em material durável e indelével, fixada de forma permanente em seu revestimento, em local destinto da face inferior do produto, que permita sua completa visualização, ainda quando embalado:
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Possuí etiqueta de identificação:
+                        <select class="controlador" name="etiqueta_ident">
+                            <option selected value="---"> --- </option>
+                            <option value="Sim"> Sim </option>
+                            <option value="Não"> Não </option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Está permenentemente fixada em seu revestimento de forma permanente:
+                        <select class="controlador" name="revest_permanente">
+                            <option selected value="---"> --- </option>
+                            <option value="Sim"> Sim </option>
+                            <option value="Não"> Não </option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        A etiqueta é confeccionada de material durável e indelével:
+                        <select class="controlador" name="etiqueta_duravel_indele">
+                            <option selected value="---"> --- </option>
+                            <option value="Sim"> Sim </option>
+                            <option value="Não"> Não </option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Está em um local destinto da face superior do produto:
+                        <select class="controlador" name="face_superior">
+                            <option selected> --- </option>
+                            <option> Sim </option>
+                            <option> Não </option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Permite sua completa visualização:
+                        <select class="controlador" name="visualizacao">
+                            <option selected value="---"> --- </option>
+                            <option value="Sim"> Sim </option>
+                            <option value="Não"> Não </option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        A etiqueta está com suas informações em lingua portuguesa:
+                        <select class="controlador" name="lingua_portuguesa">
+                            <option selected value="---"> --- </option>
+                            <option value="Sim"> Sim </option>
+                            <option value="Não"> Não </option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Área da etiqueta <input style="width:200px;" class="controlador" type="text" name="area_etiqueta_1" /> X <input style="width:200px;" class="controlador" type="text" name="area_etiqueta_2" /> = <input style="width:200px;" class="controlador" type="text" readonly /></td>
+                </tr>
+                <tr class="fundo-tabela">
+                    <td>
+                        Além disso o colchão deve conter em sua etiqueta as seguintes informações:
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        a) Nome, razão social  e identificação fiscal (CNPJ ou CPF) do fabricante nacional ou do importado:
+                        <select class="controlador" name="cnpj_cpf">
+                            <option selected value="---"> --- </option>
+                            <option value="Sim"> Sim </option>
+                            <option value="Não"> Não </option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        b) Nome, razão social e identificação fiscal (CNPJ ou CPF) do fornecedor:
+                        <select class="controlador" name="Escolha">
+                            <option selected value="---"> --- </option>
+                            <option value="Sim"> Sim </option>
+                            <option value="Não"> Não </option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        c) Designação comercial do produto (marca e modelo) :
+                        <select class="controlador" name="marca_modelo">
+                            <option selected value="---"> --- </option>
+                            <option value="Sim"> Sim </option>
+                            <option value="Não"> Não </option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        d) Dimensões do produto (altura x comprimento x largura, nessa ordem):
+                        <select class="controlador" name="dimensoes_prod">
+                            <option selected value="---"> --- </option>
+                            <option value="Sim"> Sim </option>
+                            <option value="Não"> Não </option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <b>Observação:  Deve utilizar as unidades centímetro (cm) ou milímetro (mm) quando a medida tiver até 100 cm. Quando a medida for maior que 100 cm, ela deve ser expressa  em metros (m).</b>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        e) Para colchões de molas conjugados, deve ser informada a altura do produto sem os pés e a altura dos pés isoladamente.
+                        <select class="controlador" name="informada_altura">
+                            <option selected value="---"> --- </option>
+                            <option value="Sim"> Sim </option>
+                            <option value="Não"> Não </option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        f) Composição qualitativa dos componentes internos do produto :
+                        <select class="controlador" name="composicoes">
+                            <option selected value="---"> --- </option>
+                            <option value="Sim"> Sim </option>
+                            <option value="Não"> Não </option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        g) Tipo do molejo, incluindo nome, nº de molas médio/m², bitola do arame:
+                        <select class="controlador" name="tipo_molejo">
+                            <option selected value="---"> --- </option>
+                            <option value="Sim"> Sim </option>
+                            <option value="Não"> Não </option>
+                        </select>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        h) Se borda de aço e/ou borda de espuma e/ou outro material: 
+                        <select class="controlador" name="contem_borda">
+                            <option selected value="---"> --- </option>
+                            <option value="Sim"> Sim </option>
+                            <option value="Não"> Não </option>on>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        i) Tipo (s) de espuma (s), densidade(s), em kg/m³, e espessura da (s) lâmina (s) de espuma, em cm:
+                        <select class="controlador" name="densidade_espuma">
+                            <option selected value="---"> --- </option>
+                            <option value="Sim"> Sim </option>
+                            <option value="Não"> Não </option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        j) Composição do revestimento: tecido (composição percentual e gramatura); espuma (densidade) e outros materiais :
+                        <select class="controlador" name="composi_revestimento">
+                            <option selected value="---"> --- </option>
+                            <option value="Sim"> Sim </option>
+                            <option value="Não"> Não </option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        k) Data de fabricação (dia, mês e ano, nesta ordem):
+                        <select class="controlador" name="data_fabricacao">
+                            <option selected value="---"> --- </option>
+                            <option value="Sim"> Sim </option>
+                            <option value="Não"> Não </option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        l) Identificação do lote ou outra identificação que permita a rastreabilidade do produto :
+                        <select class="controlador" name="ident_lote">
+                            <option selected value="---"> --- </option>
+                            <option value="Sim"> Sim </option>
+                            <option value="Não"> Não </option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        m) País  de origem, não  sendo aceitas  designações através de blocos econômicos, nem indicações por bandeiras de países, somente na embalagem:
+                        <select class="controlador" name="pais_origem">
+                            <option selected value="---"> --- </option>
+                            <option value="Sim"> Sim </option>
+                            <option value="Não"> Não </option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        n) Código  de  barras  comercial,  para  identificação  da  marca,  modelo  e  versões  do  produto, quando existente, no produtos :
+                        <select class="controlador" name="codigo_barras">
+                            <option selected value="---"> --- </option>
+                            <option value="Sim"> Sim </option>
+                            <option value="Não"> Não </option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        o) Cuidados mínimos para conservação do produto  :
+                        <select class="controlador" name="cuidado_minimos">
+                            <option selected value="---"> --- </option>
+                            <option value="Sim"> Sim </option>
+                            <option value="Não"> Não </option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        p)  Para  os  colchões  de  molas  combinados,  aviso  de  esclarecimento,  em  negrito,  em  letras com o mesmo formato e tamanho da utilizada na descrição das lâminas, da seguinte forma: <b>“OUTROS MATERIAIS ESTÃO PRESENTES NA MESMA CAMADA DO MOLEJO”.</b> :
+                        <select class="controlador" name="aviso_esclarecimento">
+                            <option selected value="---"> --- </option>
+                            <option value="Sim"> Sim </option>
+                            <option value="Não"> Não </option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        q) Para os colchões de molas que possuam uma ou mais lâminas constituídas por látex, aviso de  esclarecimento,  em  negrito,  em  letras  com  o  mesmo  formato  e  tamanho  da  utilizada  na descrição  das  lâminas,  da  seguinte  forma:  <b>“A  LÂMINA  DE  LÁTEX  NÃO  FOI  AVALIADA  PELO PROCESSO DE CERTIFICAÇÃO DO PRODUTO”.</b> :
+                        <select class="controlador" name="possui_mais_laminas">
+                            <option selected value="---"> --- </option>
+                            <option value="Sim"> Sim </option>
+                            <option value="Não"> Não </option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        r)  Para  os  colchões de  molas  que  possuam  revestimentos  do tipo napa,  courvin,  plásticos e emborrachados,  aviso  de  esclarecimento,  em  letras  não  inferiores  a  2,5  mm    de  altura,  em negrito, caixa alta e em coloração que se destaque da cor de fundo da etiqueta, da seguinte forma:  <b>“O  REVESTIMENTO  NÃO  FOI  AVALIADO  PELO  PROCESSO  DE  CRTIFICAÇÃO  DO PRODUTO.”</b>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <p>
+                            Contém a advertência :
+                            <select class="controlador" name="contem_advertencia">
+                                <option selected value="---"> --- </option>
+                                <option value="Sim"> Sim </option>
+                                <option value="Não"> Não </option>
+                            </select>
+                        </p>
+                        <p> Altura da letra: <input class="controlador" type="text" name="altura_letra" /></p>
+                        <p>
+                            Está em negrito :
+                            <select class="controlador" name="negrito">
+                                <option selected value="---"> --- </option>
+                                <option value="Sim"> Sim </option>
+                                <option value="Não"> Não </option>
+                            </select>
+                        </p>
+                        <p>
+                            Esta em caixa alta :
+                            <select class="controlador" name="caixa_alta">
+                                <option selected value="---"> --- </option>
+                                <option value="Sim"> Sim </option>
+                                <option value="Não"> Não </option>
+                            </select>
+                        </p>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        s)  Caso o colchão seja embalado com material plástico, a embalagem deve ser visivelmente marcada,  em  letras  não  inferiores  a  5  mm  de  altura  e  com  destaque  em  negrito,  com  o seguinte  aviso: <b>“PARA  EVITAR  O  PERIGO  DE  ASFIXIA,  MANTER  ESTA  EMBALAGEM  PLÁSTICA FORA DO ALCANCE DE CRIANÇAS”</b> .
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <p>
+                            Contém a advertência :
+                            <select class="controlador" name="contem_advertencia_mat">
+                                <option selected value="---"> --- </option>
+                                <option value="Sim"> Sim </option>
+                                <option value="Não"> Não </option>
+                            </select>
+                        </p>
+                        <p> Altura da letra: <input class="controlador" type="text" name="altura_letra_mat" /></p>
+                        <p>
+                            Está em negrito :
+                            <select class="controlador" name="negrito_mat">
+                                <option selected value="---"> --- </option>
+                                <option value="Sim"> Sim </option>
+                                <option value="Não"> Não </option>
+                            </select>
+                        </p>
+                        <p>
+                            Esta em caixa alta :
+                            <select class="controlador" name="caixa_alta_mat">
+                                <option selected value="---"> --- </option>
+                                <option value="Sim"> Sim </option>
+                                <option value="Não"> Não </option>
+                            </select>
+                        </p>
+                    </td>
+                </tr>
+                <tr class="fundo-tabela">
+                    <td>
+                        6.1 - Instruções de uso
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Os colchões de molas devem ser providos de manual de instruções contendo as seguintes informações:
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Contém instruções de uso:
+                        <select class="controlador" name="contem_instru_uso">
+                            <option selected value="---"> --- </option>
+                            <option value="Sim"> Sim </option>
+                            <option value="Não"> Não </option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        a) Orientações sobre o uso e manutenção do produto:
+                        <select class="controlador" name="orientacoes">
+                            <option selected value="---"> --- </option>
+                            <option value="Sim"> Sim </option>
+                            <option value="Não"> Não </option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        b) Alerta  ao  consumidor,  em  caso  de  colchões  que  utilizem  revestimentos  do  tipo  napa, courvin,  plásticos  e  emborrachados,  que  não  deve  ser  utilizado  álcool  ou  qualquer  tipo  de solvente  orgânico  para limpeza  desses  tipos  de  revestimento,  uma  vez  que  estes  podem danificá-los:
+                        <select class="controlador" name="alerta_consumidor">
+                            <option selected value="---"> --- </option>
+                            <option value="Sim"> Sim </option>
+                            <option value="Não"> Não </option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        c) Desenho  esquemático  do  colchão,  identificando  os  componentes  do  produto  (camadas de conforto, lâminas de espuma existentes, molejos, borda perimetral, revestimento) e seus respectivos  materiais  de  construção  e  especificações  (tipos de  espuma, densidades, tecidos, tipo de molejos, etc.):
+                        <select class="controlador" name="desenho_esquematico">
+                            <option selected value="---"> --- </option>
+                            <option value="Sim"> Sim </option>
+                            <option value="Não"> Não </option>
+                        </select>
+                    </td>
+                </tr>
+                <tr class="fundo-tabela">
+                    <td>
+                        6.2 - As instruções de uso devem conter o seguinte texto: “IMPORTANTE LER COM ATENÇÃO E GUARDAR PARA EVENTUAIS CONSULTAS”, em letras não inferiores a 5 mm de altura e com destaque em negrito.
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <p>
+                            Contém a advertência :
+                            <select class="controlador" name="contem_advertencia_6_2">
+                                <option selected value="---"> --- </option>
+                                <option value="Sim"> Sim </option>
+                                <option value="Não"> Não </option>
+                            </select>
+                        </p>
+                        <p> Altura da letra: <input class="controlador" type="text" name="altura_letra_6_2" /></p>
+                        <p>
+                            Está em negrito :
+                            <select class="controlador" name="negrito6_2">
+                                <option selected value="---"> --- </option>
+                                <option value="Sim"> Sim </option>
+                                <option value="Não"> Não </option>
+                            </select>
+                        </p>
+                        <p>
+                            Esta em caixa alta :
+                            <select class="controlador" name="caixa_alta_6_2">
+                                <option selected value="---"> --- </option>
+                                <option value="Sim"> Sim </option>
+                                <option value="Não"> Não </option>
+                            </select>
+                        </p>
+                    </td>
+                </tr>
+                <tr class="fundo-tabela">
+                    <td>
+                        Embalagem
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <p>
+                            A embalagem deve ser unitária e  garantir a proteçao do produto.
+                        </p>
+                        <p>
+                            A embalagem é unitária
+                            <select class="controlador" name="embalagem_unitaria">
+                                <option selected value="---"> --- </option>
+                                <option value="Sim"> Sim </option>
+                                <option value="Não"> Não </option>
+                            </select>
+                        </p>
+                        <p>
+                            A embalagem garante a proteção do produto
+                            <select class="controlador" name="embalagem_garante">
+                                <option selected value="---"> --- </option>
+                                <option value="Sim"> Sim </option>
+                                <option value="Não"> Não </option>
+                            </select>
+                        </p>
+                    </td>
+                </tr>
+            </table>
+            <div class="d-grid gap-2 d-flex justify-content-center">
+                <button type="submit" class="btn btn-success btn btn-primary btn-md">Salvar</button>
+            </div>
+        }
+        else
+        {
+            <table class="tables table-bordered border-secondary  table-sm">
+                <thead>
+                    <tr>
+                        <td><img src="https://www.labsystem-nuvem.com.br/imagens_arq/imagens/img/LabSystem.png" class="imagem" /></td>
+                        <td colspan="3" class="fundo-tabela">Coleta De Dados</td>
+                        <td class="fundo-tabela">N Os:</td>
+                    </tr>
+                    <tr>
+                        <td colspan="4">Colchão De Molas (Portaria Inmetro 75)</td>
+                        <td rowspan="2"> @ViewBag.os</td>
+                    </tr>
+                    <tr>
+                        <td>Inicio:</td>
+                        <td><input class="form-control" type="text" name="data_ini" value="@Model.data_ini" /></td>
+                        <td>Termino:</td>
+                        <td><input class="form-control" type="text" name="data_term" value="@Model.data_term" /></td>
+                    </tr>
+                </thead>
+            </table>
+
+            <table class="tables table-bordered border-secondary  table-sm">
+                <tr>
+                    <td rowspan="50">Item</td>
+                    <td class="fundo-tabela">Descrição</td>
+                    <td rowspan="40">Resultado</td>
+                </tr>
+                <tr>
+                    <td>
+                        5 - REQUISITOS DE MARCAÇÕES E INFORMAÇÕES OBRIGATÓRIAS NO PRODUTO E NA EMBALAGEM
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        O colchão de mola devem apresentar, para sua perfeita identificação, uma etiqueta de pelo menos 150 cm², em material durável e indelével, fixada de forma permanente em seu revestimento, em local destinto da face inferior do produto, que permita sua completa visualização, ainda quando embalado:
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Possuí etiqueta de identificação:
+                        <select class="controlador" name="etiqueta_ident">
+                            <option selected> @Model.etiqueta_ident</option>
+                            <option value="---"> --- </option>
+                            <option value="Sim"> Sim </option>
+                            <option value="Não"> Não </option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Está permenentemente fixada em seu revestimento de forma permanente:
+                        <select class="controlador" name="revest_permanente">
+                            <option selected> @Model.revest_permanente</option>
+                            <option value="---"> --- </option>
+                            <option value="Sim"> Sim </option>
+                            <option value="Não"> Não </option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        A etiqueta é confeccionada de material durável e indelével:
+                        <select class="controlador" name="etiqueta_duravel_indele">
+                            <option selected> @Model.etiqueta_duravel_indele</option>
+                            <option value="---"> --- </option>
+                            <option value="Sim"> Sim </option>
+                            <option value="Não"> Não </option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Está em um local destinto da face superior do produto:
+                        <select class="controlador" name="face_superior">
+                            <option selected> @Model.face_superior</option>
+                            <option value="---"> --- </option>
+                            <option value="Sim"> Sim </option>
+                            <option value="Não"> Não </option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Permite sua completa visualização:
+                        <select class="controlador" name="visualizacao">
+                            <option selected> @Model.visualizacao</option>
+                            <option value="---"> --- </option>
+                            <option value="Sim"> Sim </option>
+                            <option value="Não"> Não </option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        A etiqueta está com suas informações em lingua portuguesa:
+                        <select class="controlador" name="lingua_portuguesa">
+                            <option selected> @Model.lingua_portuguesa</option>
+                            <option value="---"> --- </option>
+                            <option value="Sim"> Sim </option>
+                            <option value="Não"> Não </option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Área da etiqueta <input style="width:200px;" class="controlador" type="text" name="area_etiqueta_1" value="@Model.area_etiqueta_1" /> X <input style="width:200px;" class="controlador" type="text" name="area_etiqueta_2" value="@Model.area_etiqueta_2" /> = <input style="width:200px;" class="controlador" type="text" readonly value="@Model.area_etiqueta_media" /></td>
+                </tr>
+                <tr class="fundo-tabela">
+                    <td>
+                        Além disso o colchão deve conter em sua etiqueta as seguintes informações:
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        a) Nome, razão social  e identificação fiscal (CNPJ ou CPF) do fabricante nacional ou do importado:
+                        <select class="controlador" name="cnpj_cpf">
+                            <option selected> @Model.cnpj_cpf</option>
+                            <option value="---"> --- </option>
+                            <option value="Sim"> Sim </option>
+                            <option value="Não"> Não </option>
+                        </select>
+                    </td>
+                </tr>
+             @*    <tr>
+                    <td>
+                        b) Nome, razão social e identificação fiscal (CNPJ ou CPF) do fornecedor:
+                        <select class="controlador" name="Escolha">
+                            <option selected> @Model.cnpj_cpf</option>
+                            <option value="---"> --- </option>
+                            <option value="Sim"> Sim </option>
+                            <option value="Não"> Não </option>
+                        </select>
+                    </td>
+                </tr> *@
+                <tr>
+                    <td>
+                        c) Designação comercial do produto (marca e modelo) :
+                        <select class="controlador" name="marca_modelo">
+                            <option selected> @Model.marca_modelo</option>
+                            <option value="---"> --- </option>
+                            <option value="Sim"> Sim </option>
+                            <option value="Não"> Não </option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        d) Dimensões do produto (altura x comprimento x largura, nessa ordem):
+                        <select class="controlador" name="dimensoes_prod">
+                            <option selected> @Model.dimensoes_prod</option>
+                            <option value="---"> --- </option>
+                            <option value="Sim"> Sim </option>
+                            <option value="Não"> Não </option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <b>Observação:  Deve utilizar as unidades centímetro (cm) ou milímetro (mm) quando a medida tiver até 100 cm. Quando a medida for maior que 100 cm, ela deve ser expressa  em metros (m).</b>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        e) Para colchões de molas conjugados, deve ser informada a altura do produto sem os pés e a altura dos pés isoladamente.
+                        <select class="controlador" name="informada_altura">
+                            <option selected> @Model.informada_altura</option>
+                            <option value="---"> --- </option>
+                            <option value="Sim"> Sim </option>
+                            <option value="Não"> Não </option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        f) Composição qualitativa dos componentes internos do produto :
+                        <select class="controlador" name="composicoes">
+                            <option selected> @Model.composicoes</option>
+                            <option value="---"> --- </option>
+                            <option value="Sim"> Sim </option>
+                            <option value="Não"> Não </option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        g) Tipo do molejo, incluindo nome, nº de molas médio/m², bitola do arame:
+                        <select class="controlador" name="tipo_molejo">
+                            <option selected> @Model.tipo_molejo</option>
+                            <option value="---"> --- </option>
+                            <option value="Sim"> Sim </option>
+                            <option value="Não"> Não </option>
+                        </select>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        h) Se borda de aço e/ou borda de espuma e/ou outro material: 
+                        <select class="controlador" name="contem_borda">
+                            <option selected> @Model.contem_borda</option>
+                            <option value="---"> --- </option>
+                            <option value="Sim"> Sim </option>
+                            <option value="Não"> Não </option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        i) Tipo (s) de espuma (s), densidade(s), em kg/m³, e espessura da (s) lâmina (s) de espuma, em cm:
+                        <select class="controlador" name="densidade_espuma">
+                            <option selected> @Model.densidade_espuma</option>
+                            <option value="---"> --- </option>
+                            <option value="Sim"> Sim </option>
+                            <option value="Não"> Não </option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        j) Composição do revestimento: tecido (composição percentual e gramatura); espuma (densidade) e outros materiais :
+                        <select class="controlador" name="composi_revestimento">
+                            <option selected> @Model.composi_revestimento</option>
+                            <option value="---"> --- </option>
+                            <option value="Sim"> Sim </option>
+                            <option value="Não"> Não </option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        k) Data de fabricação (dia, mês e ano, nesta ordem):
+                        <select class="controlador" name="data_fabricacao">
+                            <option selected> @Model.data_fabricacao</option>
+                            <option value="---"> --- </option>
+                            <option value="Sim"> Sim </option>
+                            <option value="Não"> Não </option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        l) Identificação do lote ou outra identificação que permita a rastreabilidade do produto :
+                        <select class="controlador" name="ident_lote">
+                            <option selected> @Model.ident_lote</option>
+                            <option value="---"> --- </option>
+                            <option value="Sim"> Sim </option>
+                            <option value="Não"> Não </option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        m) País  de origem, não  sendo aceitas  designações através de blocos econômicos, nem indicações por bandeiras de países, somente na embalagem:
+                        <select class="controlador" name="pais_origem">
+                            <option selected> @Model.pais_origem</option>
+                            <option value="---"> --- </option>
+                            <option value="Sim"> Sim </option>
+                            <option value="Não"> Não </option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        n) Código  de  barras  comercial,  para  identificação  da  marca,  modelo  e  versões  do  produto, quando existente, no produtos :
+                        <select class="controlador" name="codigo_barras">
+                            <option selected> @Model.codigo_barras</option>
+                            <option value="---"> --- </option>
+                            <option value="Sim"> Sim </option>
+                            <option value="Não"> Não </option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        o) Cuidados mínimos para conservação do produto  :
+                        <select class="controlador" name="cuidado_minimos">
+                            <option selected> @Model.cuidado_minimos</option>
+                            <option value="---"> --- </option>
+                            <option value="Sim"> Sim </option>
+                            <option value="Não"> Não </option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        p)  Para  os  colchões  de  molas  combinados,  aviso  de  esclarecimento,  em  negrito,  em  letras com o mesmo formato e tamanho da utilizada na descrição das lâminas, da seguinte forma: <b>“OUTROS MATERIAIS ESTÃO PRESENTES NA MESMA CAMADA DO MOLEJO”.</b> :
+                        <select class="controlador" name="aviso_esclarecimento">
+                            <option selected> @Model.aviso_esclarecimento</option>
+                            <option value="---"> --- </option>
+                            <option value="Sim"> Sim </option>
+                            <option value="Não"> Não </option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        q) Para os colchões de molas que possuam uma ou mais lâminas constituídas por látex, aviso de  esclarecimento,  em  negrito,  em  letras  com  o  mesmo  formato  e  tamanho  da  utilizada  na descrição  das  lâminas,  da  seguinte  forma:  <b>“A  LÂMINA  DE  LÁTEX  NÃO  FOI  AVALIADA  PELO PROCESSO DE CERTIFICAÇÃO DO PRODUTO”.</b> :
+                        <select class="controlador" name="possui_mais_laminas">
+                            <option selected> @Model.possui_mais_laminas</option>
+                            <option value="---"> --- </option>
+                            <option value="Sim"> Sim </option>
+                            <option value="Não"> Não </option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        r)  Para  os  colchões de  molas  que  possuam  revestimentos  do tipo napa,  courvin,  plásticos e emborrachados,  aviso  de  esclarecimento,  em  letras  não  inferiores  a  2,5  mm    de  altura,  em negrito, caixa alta e em coloração que se destaque da cor de fundo da etiqueta, da seguinte forma:  <b>“O  REVESTIMENTO  NÃO  FOI  AVALIADO  PELO  PROCESSO  DE  CRTIFICAÇÃO  DO PRODUTO.”</b>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <p>
+                            Contém a advertência :
+                            <select class="controlador" name="contem_advertencia">
+                                <option selected> @Model.contem_advertencia</option>
+                                <option value="---"> --- </option>
+                                <option value="Sim"> Sim </option>
+                                <option value="Não"> Não </option>
+                            </select>
+                        </p>
+                        <p> Altura da letra: <input class="controlador" type="text" name="altura_letra" value="@Model.altura_letra" /></p>
+                        <p>
+                            Está em negrito :
+                            <select class="controlador" name="negrito">
+                                <option selected> @Model.negrito</option>
+                                <option value="---"> --- </option>
+                                <option value="Sim"> Sim </option>
+                                <option value="Não"> Não </option>
+                            </select>
+                        </p>
+                        <p>
+                            Esta em caixa alta :
+                            <select class="controlador" name="caixa_alta">
+                                <option selected> @Model.caixa_alta</option>
+                                <option value="---"> --- </option>
+                                <option value="Sim"> Sim </option>
+                                <option value="Não"> Não </option>
+                            </select>
+                        </p>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        s)  Caso o colchão seja embalado com material plástico, a embalagem deve ser visivelmente marcada,  em  letras  não  inferiores  a  5  mm  de  altura  e  com  destaque  em  negrito,  com  o seguinte  aviso: <b>“PARA  EVITAR  O  PERIGO  DE  ASFIXIA,  MANTER  ESTA  EMBALAGEM  PLÁSTICA FORA DO ALCANCE DE CRIANÇAS”</b> .
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <p>
+                            Contém a advertência :
+                            <select class="controlador" name="contem_advertencia_mat">
+                                <option selected> @Model.contem_advertencia_mat</option>
+                                <option value="---"> --- </option>
+                                <option value="Sim"> Sim </option>
+                                <option value="Não"> Não </option>
+                            </select>
+                        </p>
+                        <p> Altura da letra: <input class="controlador" type="text" name="altura_letra_mat" value="@Model.altura_letra_mat" /></p>
+                        <p>
+                            Está em negrito :
+                            <select class="controlador" name="negrito_mat">
+                                <option selected> @Model.negrito_mat</option>
+                                <option value="---"> --- </option>
+                                <option value="Sim"> Sim </option>
+                                <option value="Não"> Não </option>
+                            </select>
+                        </p>
+                        <p>
+                            Esta em caixa alta :
+                            <select class="controlador" name="caixa_alta_mat">
+                                <option selected> @Model.caixa_alta_mat</option>
+                                <option value="---"> --- </option>
+                                <option value="Sim"> Sim </option>
+                                <option value="Não"> Não </option>
+                            </select>
+                        </p>
+                    </td>
+                </tr>
+                <tr class="fundo-tabela">
+                    <td>
+                        6.1 - Instruções de uso
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Os colchões de molas devem ser providos de manual de instruções contendo as seguintes informações:
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Contém instruções de uso:
+                        <select class="controlador" name="contem_instru_uso">
+                            <option selected> @Model.contem_instru_uso</option>
+                            <option value="---"> --- </option>
+                            <option value="Sim"> Sim </option>
+                            <option value="Não"> Não </option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        a) Orientações sobre o uso e manutenção do produto:
+                        <select class="controlador" name="orientacoes">
+                            <option selected> @Model.orientacoes</option>
+                            <option value="---"> --- </option>
+                            <option value="Sim"> Sim </option>
+                            <option value="Não"> Não </option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        b) Alerta  ao  consumidor,  em  caso  de  colchões  que  utilizem  revestimentos  do  tipo  napa, courvin,  plásticos  e  emborrachados,  que  não  deve  ser  utilizado  álcool  ou  qualquer  tipo  de solvente  orgânico  para limpeza  desses  tipos  de  revestimento,  uma  vez  que  estes  podem danificá-los:
+                        <select class="controlador" name="alerta_consumidor">
+                            <option selected> @Model.alerta_consumidor</option>
+                            <option value="---"> --- </option>
+                            <option value="Sim"> Sim </option>
+                            <option value="Não"> Não </option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        c) Desenho  esquemático  do  colchão,  identificando  os  componentes  do  produto  (camadas de conforto, lâminas de espuma existentes, molejos, borda perimetral, revestimento) e seus respectivos  materiais  de  construção  e  especificações  (tipos de  espuma, densidades, tecidos, tipo de molejos, etc.):
+                        <select class="controlador" name="desenho_esquematico">
+                            <option selected> @Model.desenho_esquematico</option>
+                            <option value="---"> --- </option>
+                            <option value="Sim"> Sim </option>
+                            <option value="Não"> Não </option>
+                        </select>
+                    </td>
+                </tr>
+                <tr class="fundo-tabela">
+                    <td>
+                        6.2 - As instruções de uso devem conter o seguinte texto: “IMPORTANTE LER COM ATENÇÃO E GUARDAR PARA EVENTUAIS CONSULTAS”, em letras não inferiores a 5 mm de altura e com destaque em negrito.
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <p>
+                            Contém a advertência :
+                            <select class="controlador" name="contem_advertencia_6_2">
+                                <option selected> @Model.contem_advertencia_6_2</option>
+                                <option value="---"> --- </option>
+                                <option value="Sim"> Sim </option>
+                                <option value="Não"> Não </option>
+                            </select>
+                        </p>
+                        <p> Altura da letra: <input class="controlador" type="text" name="altura_letra_6_2" value="@Model.altura_letra_6_2" /></p>
+                        <p>
+                            Está em negrito :
+                            <select class="controlador" name="negrito6_2">
+                                <option selected> @Model.negrito6_2</option>
+                                <option value="---"> --- </option>
+                                <option value="Sim"> Sim </option>
+                                <option value="Não"> Não </option>
+                            </select>
+                        </p>
+                        <p>
+                            Esta em caixa alta :
+                            <select class="controlador" name="caixa_alta_6_2">
+                                <option selected> @Model.caixa_alta_6_2</option>
+                                <option value="---"> --- </option>
+                                <option value="Sim"> Sim </option>
+                                <option value="Não"> Não </option>
+                            </select>
+                        </p>
+                    </td>
+                </tr>
+                <tr class="fundo-tabela">
+                    <td>
+                        Embalagem
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <p>
+                            A embalagem deve ser unitária e  garantir a proteçao do produto.
+                        </p>
+                        <p>
+                            A embalagem é unitária
+                            <select class="controlador" name="embalagem_unitaria">
+                                <option selected> @Model.embalagem_unitaria</option>
+                                <option value="---"> --- </option>
+                                <option value="Sim"> Sim </option>
+                                <option value="Não"> Não </option>
+                            </select>
+                        </p>
+                        <p>
+                            A embalagem garante a proteção do produto
+                            <select class="controlador" name="embalagem_garante">
+                                <option selected> @Model.embalagem_garante</option>
+                                <option value="---"> --- </option>
+                                <option value="Sim"> Sim </option>
+                                <option value="Não"> Não </option>
+                            </select>
+                        </p>
+                    </td>
+                </tr>
+            </table>
+            <div class="d-grid gap-2 d-flex justify-content-center">
+                <button type="submit" class="btn btn-success btn btn-primary btn-md">Editar</button>
+            </div>
+        }
+    </form>
+    @if (TempData.ContainsKey("Mensagem"))
+    {
+        <script>
+            alert('@Html.Raw(TempData["Mensagem"])');
+        </script>
+    }
+</body>
+</html>
