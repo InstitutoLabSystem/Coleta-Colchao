@@ -142,35 +142,35 @@
                         <table class="tables table-bordered border-secondary  table-sm">
                             <tr>
                                 <td class="fundo-tabela"> Espessura da lâmina </td>
-                                <td> <input class="form-control" type="text" style="width:100%" name="esp_lamina_um"/> </td>
+                                <td> <input class="form-control" type="text"  name="esp_lamina_um"/> </td>
                             </tr>
                             <tr>
                                 <td class="fundo-tabela"> Espessura da lâmina </td>
-                                <td> <input class="form-control" type="text" style="width:100%" name="esp_lamina_dois" /> </td>
+                                <td> <input class="form-control" type="text"  name="esp_lamina_dois" /> </td>
                             </tr>
                             <tr>
                                 <td class="fundo-tabela"> Espessura da lâmina </td>
-                                <td> <input class="form-control" type="text" style="width:100%" name="esp_lamina_tres" /> </td>
+                                <td> <input class="form-control" type="text"  name="esp_lamina_tres" /> </td>
                             </tr>
                             <tr>
                                 <td class="fundo-tabela"> Espessura da lâmina </td>
-                                <td> <input class="form-control" type="text" style="width:100%" name="esp_lamina_quat" /> </td>
+                                <td> <input class="form-control" type="text"  name="esp_lamina_quat" /> </td>
                             </tr>
                             <tr>
                                 <td class="fundo-tabela"> Espessura da lâmina </td>
-                                <td> <input class="form-control" type="text" style="width:100%" name="esp_lamina_cinco" /> </td>
+                                <td> <input class="form-control" type="text"  name="esp_lamina_cinco" /> </td>
                             </tr>
                             <tr>
                                 <td class="fundo-tabela"> Espessura da lâmina </td>
-                                <td> <input class="form-control" type="text" style="width:100%" name="esp_lamina_seis" /> </td>
+                                <td> <input class="form-control" type="text"  name="esp_lamina_seis" /> </td>
                             </tr>
                             <tr>
                                 <td class="fundo-tabela"> Espessura da lâmina </td>
-                                <td> <input class="form-control" type="text" style="width:100%" name="esp_lamina_sete" /> </td>
+                                <td> <input class="form-control" type="text"  name="esp_lamina_sete" /> </td>
                             </tr>
                             <tr>
                                 <td class="fundo-tabela"> Espessura da lâmina </td>
-                                <td> <input class="form-control" type="text" style="width:100%" name="esp_lamina_oito" /> </td>
+                                <td> <input class="form-control" type="text"  name="esp_lamina_oito" /> </td>
                             </tr>
                         </table>
                     </td>
@@ -412,8 +412,8 @@
                         <strong> Colchão tipo simples </strong> <br /> <br />
                         A lâmina colada sobre a lâmina central deve ser composta de uma única peça. <br />
                         A lâmina central é composta por um uúnica peça?
-                        <select class="form-control" name="lamina_central" value="@Model.lamina_central">
-                            <option selected> --- </option>
+                        <select class="form-control" name="lamina_central" >
+                            <option selected> @Model.lamina_central </option>
                             <option> Sim </option>
                             <option> Não </option>
                         </select> <br /> <br />
@@ -427,8 +427,8 @@
                         Pode haver no máximo duas colagens na horizontal, de mesma densidade. <br /> <br />
                         Quantidades de colagens   <input class="form-control" type="text" name="quant_colagens" value="@Model.quant_colagens" /> <br /> <br />
                         As colagens são de mesmas densidades
-                        <select class="form-control" name="colagens_densidade" value="@Model.colagens_densidade">
-                            <option selected> --- </option>
+                        <select class="form-control" name="colagens_densidade">
+                            <option selected> @Model.colagens_densidade </option>
                             <option> Sim </option>
                             <option> Não </option>
                         </select> <br /> <br />
@@ -461,8 +461,8 @@
                         <input class="form-control" type="text" name="distancia_dois" value="@Model.distancia_dois"  /> <br /> <br />
                         Não é permitido utilizar colagens no sentido do comprimento. <br /> <br />
                         Possui colagens do sentido do comprimento?
-                        <select class="form-control" name="colagens_comp" value="@Model.colagens_comp">
-                            <option selected> --- </option>
+                        <select class="form-control" name="colagens_comp">
+                            <option selected> @Model.colagens_comp </option>
                             <option> Sim </option>
                             <option> Não </option>
                         </select> <br /> <br />
@@ -481,8 +481,8 @@
                         <strong> Colagem horizontal </strong> <br /> <br />
                         As colagens horizontais devem ocorrer entre as espumas de características diferentes, porém com espessura mínima de 3 cm.<br /> <br />
                         Ocorrem entre as espumas de características diferente?
-                        <select class="form-control" name="espuma" value="@Model.espuma">
-                            <option selected> --- </option>
+                        <select class="form-control" name="espuma" >
+                            <option selected> @Model.espuma </option>
                             <option> Sim </option>
                             <option> Não </option>
                         </select> <br /> <br />
@@ -490,35 +490,35 @@
                         <table class="tables table-bordered border-secondary  table-sm">
                             <tr>
                                 <td class="fundo-tabela"> Espessura da lâmina </td>
-                                <td> <input class="form-control" type="text" style="width:100%" name="esp_lamina_um" value="@Model.esp_lamina_um" /> </td>
+                                <td> <input class="form-control" type="text"  name="esp_lamina_um" value="@Model.esp_lamina_um" /> </td>
                             </tr>
                             <tr>
                                 <td class="fundo-tabela"> Espessura da lâmina </td>
-                                <td> <input class="form-control" type="text" style="width:100%" name="esp_lamina_dois" value="@Model.esp_lamina_dois"/> </td>
+                                <td> <input class="form-control" type="text"  name="esp_lamina_dois" value="@Model.esp_lamina_dois"/> </td>
                             </tr>
                             <tr>
                                 <td class="fundo-tabela"> Espessura da lâmina </td>
-                                <td> <input class="form-control" type="text" style="width:100%" name="esp_lamina_tres" value="@Model.esp_lamina_tres"/> </td>
+                                <td> <input class="form-control" type="text"  name="esp_lamina_tres" value="@Model.esp_lamina_tres"/> </td>
                             </tr>
                             <tr>
                                 <td class="fundo-tabela"> Espessura da lâmina </td>
-                                <td> <input class="form-control" type="text" style="width:100%" name="esp_lamina_quat" value="@Model.esp_lamina_quat" /> </td>
+                                <td> <input class="form-control" type="text"  name="esp_lamina_quat" value="@Model.esp_lamina_quat" /> </td>
                             </tr>
                             <tr>
                                 <td class="fundo-tabela"> Espessura da lâmina </td>
-                                <td> <input class="form-control" type="text" style="width:100%" name="esp_lamina_cinco" value="@Model.esp_lamina_cinco"/> </td>
+                                <td> <input class="form-control" type="text"  name="esp_lamina_cinco" value="@Model.esp_lamina_cinco"/> </td>
                             </tr>
                             <tr>
                                 <td class="fundo-tabela"> Espessura da lâmina </td>
-                                <td> <input class="form-control" type="text" style="width:100%" name="esp_lamina_seis" value="@Model.esp_lamina_seis" /> </td>
+                                <td> <input class="form-control" type="text"  name="esp_lamina_seis" value="@Model.esp_lamina_seis" /> </td>
                             </tr>
                             <tr>
                                 <td class="fundo-tabela"> Espessura da lâmina </td>
-                                <td> <input class="form-control" type="text" style="width:100%" name="esp_lamina_sete" value="@Model.esp_lamina_sete"/> </td>
+                                <td> <input class="form-control" type="text"  name="esp_lamina_sete" value="@Model.esp_lamina_sete"/> </td>
                             </tr>
                             <tr>
                                 <td class="fundo-tabela"> Espessura da lâmina </td>
-                                <td> <input class="form-control" type="text" style="width:100%" name="esp_lamina_oito" value="@Model.esp_lamina_oito"/> </td>
+                                <td> <input class="form-control" type="text"  name="esp_lamina_oito" value="@Model.esp_lamina_oito"/> </td>
                             </tr>
                         </table>
                     </td>
@@ -547,39 +547,39 @@
                         utilizando-se espumas convecionais de densidades distintas, desde que não haja colagem na largura.
                         Esta colagem deve ser localizada no centro do colchão. <br /> <br />
                         O colchão é de casal
-                        <select class="form-control" name="colchao_casal" value="@Model.colchao_casal">
-                            <option selected> --- </option>
+                        <select class="form-control" name="colchao_casal" >
+                            <option selected> @Model.colchao_casal </option>
                             <option> Sim </option>
                             <option> Não </option>
                         </select> <br /> <br />
                         Possuí colagem no sentido do comprimento?
-                        <select class="form-control" name="colagem_comp" value="@Model.colagem_comp">
-                            <option selected> --- </option>
+                        <select class="form-control" name="colagem_comp" >
+                            <option selected> @Model.colagem_comp </option>
                             <option> Sim </option>
                             <option> Não </option>
                         </select> <br /> <br />
                         A espuma é convencional
-                        <select class="form-control" name="espuma_conv" value="@Model.espuma_conv">
-                            <option selected> --- </option>
+                        <select class="form-control" name="espuma_conv">
+                            <option selected> @Model.espuma_conv </option>
                             <option> Sim </option>
                             <option> Não </option>
                         </select> <br /> <br />
                         As espumas possuem densidades distintas
-                        <select class="form-control" name="espuma_densidade" value="@Model.espuma_densidade">
-                            <option selected> --- </option>
+                        <select class="form-control" name="espuma_densidade">
+                            <option selected> @Model.espuma_densidade </option>
                             <option> Sim </option>
                             <option> Não </option>
                         </select> <br /> <br />
                         Possui colagem na largura
-                        <select class="form-control" name="colagem_largura" value="@Model.colagem_largura">
-                            <option selected> --- </option>
+                        <select class="form-control" name="colagem_largura" >
+                            <option selected> @Model.colagem_largura </option>
                             <option> Sim </option>
                             <option> Não </option>
                         </select> <br /> <br />
                         Quantidades de colagens <input class="form-control" type="text" name="quant_colagens_quat" value="@Model.quant_colagens_quat" /> <br /> <br />
                         A colagem está localizada no centro do colchão?
                         <select class="form-control" name="localidade">
-                            <option selected> --- </option>
+                            <option selected> @Model.localidade </option>
                             <option> Sim </option>
                             <option> Não </option>
                         </select> <br /> <br />
@@ -603,7 +603,7 @@
                         Não é permitido o uso de adesviso à base de solventes aromáticos em colchão infantil. <br /> <br />
                         Possui adesivos à base de solventes aromáticos?
                         <select class="form-control" name="adesivo" value="@Model.adesivo">
-                            <option selected> --- </option>
+                            <option selected> @Model.adesivo </option>
                             <option> Sim </option>
                             <option> Não </option>
                         </select> <br /> <br />
@@ -623,14 +623,14 @@
                     <td>
                         Não é permitido utilizar cascas superiores e/ou inferiores no sentido horizontal do colchão. <br /> <br />
                         Utilizam cascas superiores no sentido da horizontal do colchão?
-                        <select class="form-control" name="cascas_superiores" value="@Model.cascas_superiores">
-                            <option selected> --- </option>
+                        <select class="form-control" name="cascas_superiores">
+                            <option selected> @Model.cascas_superiores </option>
                             <option> Sim </option>
                             <option> Não </option>
                         </select> <br /> <br />
                         Utilizam cascas inferiores no sentido da horizontal do colchão?
-                        <select class="form-control" name="cascas_inferiores" value="@Model.cascas_inferiores">
-                            <option selected> --- </option>
+                        <select class="form-control" name="cascas_inferiores">
+                            <option selected> @Model.cascas_inferiores </option>
                             <option> Sim </option>
                             <option> Não </option>
                         </select> <br /> <br />
