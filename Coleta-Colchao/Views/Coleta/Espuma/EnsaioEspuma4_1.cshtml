@@ -77,10 +77,11 @@
                     </td>
                     <td rowspan="3">
                         <br /> <br />
-                        <select class="form-control" style="height:400px; width:200px" name="comprimento_result">
+                        <select class="form-control" style="height:400px; width:200px" name="comprimento_result" readonly>
                             <option selected> --- </option>
-                            <option> Sim </option>
-                            <option> Não </option>
+                            <option> C </option>
+                            <option> NA </option>
+                            <option> NC </option>
                         </select> <br /> <br />
                     </td>
                 </tr>
@@ -123,10 +124,11 @@
                         <strong>Largura</strong>
                     </td>
                     <td rowspan="3">
-                        <select class="form-control" name="largura_result" style="height:400px; width:200px">
+                        <select class="form-control" name="largura_result" style="height:400px; width:200px" readonly>
                             <option selected> --- </option>
-                            <option> Sim </option>
-                            <option> Não </option>
+                            <option> C </option>
+                            <option> NA </option>
+                            <option> NC </option>
                         </select> <br /> <br />
                     </td>
                 </tr>
@@ -168,10 +170,11 @@
                         <strong>Altura</strong>
                     </td>
                     <td rowspan="3">
-                        <select class="form-control" name="altura_result" style="height:400px; width:200px">
+                        <select class="form-control" name="altura_result" style="height:400px; width:200px" readonly>
                             <option selected> --- </option>
-                            <option> Sim </option>
-                            <option> Não </option>
+                            <option> C </option>
+                            <option> NA </option>
+                            <option> NC </option>
                         </select> <br /> <br />
                     </td>
                 </tr>
@@ -646,7 +649,7 @@
                             </select>
                         </td>
                         <td><input class="form-control" type="text" name="esp_lamina_um" /></td>
-                        <td><input class="form-control" type="text" name="esp_especificado_um" /></td>
+                        <td><input class="form-control" type="text" name="esp_especificado_um" readonly /></td>
                         <td><input class="form-control" type="text" name="esp_mm_um" /></td>
                         <td><input class="form-control" type="text" name="esp_cm_um" readonly/></td>
                     </tr>
@@ -677,7 +680,7 @@
                             </select>
                         </td>
                         <td><input class="form-control" type="text" name="esp_lamina_dois" /></td>
-                        <td><input class="form-control" type="text" name="esp_especificado_dois" /></td>
+                        <td><input class="form-control" type="text" name="esp_especificado_dois" readonly /></td>
                         <td><input class="form-control" type="text" name="esp_mm_dois" /></td>
                         <td><input class="form-control" type="text" name="esp_cm_dois" readonly/></td>
                     </tr>
@@ -780,7 +783,7 @@
                             </select>
                         </td>
                         <td><input class="form-control" type="text" name="reves_lamina_um" /></td>
-                        <td><input class="form-control" type="text" name="reves_especificado_um"/></td>
+                        <td><input class="form-control" type="text" name="reves_especificado_um" readonly/></td>
                         <td><input class="form-control" type="text" name="reves_mm_um"/></td>
                         <td><input class="form-control" type="text" name="reves_cm_um" readonly /></td>
                     </tr>
@@ -807,7 +810,7 @@
                             </select>
                         </td>
                         <td><input class="form-control" type="text" name="reves_lamina_dois"/></td>
-                        <td><input class="form-control" type="text" name="reves_especificado_dois"/></td>
+                        <td><input class="form-control" type="text" name="reves_especificado_dois" readonly/></td>
                         <td><input class="form-control" type="text" name="reves_mm_dois" /></td>
                         <td><input class="form-control" type="text" name="reves_cm_dois" readonly/></td>
                     </tr>
@@ -878,10 +881,11 @@
                         </td>
                         <td rowspan="3">
                             <br /> <br />
-                            <select class="form-control" style="height:400px; width:200px" name="comprimento_result">
-                            <option selected> @Model.comprimento_result </option>
-                                <option> Sim </option>
-                                <option> Não </option>
+                            <select class="form-control" style="height:400px; width:200px" name="comprimento_result" readonly>
+                            <option selected>  @Model.comprimento_result </option>
+                            <option> C </option>
+                            <option> NA </option>
+                            <option> NC </option>
                             </select> <br /> <br />
                         </td>
                     </tr>
@@ -924,10 +928,11 @@
                             <strong>Largura</strong>
                         </td>
                         <td rowspan="3">
-                            <select class="form-control" name="largura_result" style="height:400px; width:200px">
-                            <option selected> @Model.largura_result </option>
-                                <option> Sim </option>
-                                <option> Não </option>
+                            <select class="form-control" name="largura_result" style="height:400px; width:200px" readonly>
+                            <option selected>  @Model.largura_result </option>
+                            <option> C </option>
+                            <option> NA </option>
+                            <option> NC </option>
                             </select> <br /> <br />
                         </td>
                     </tr>
@@ -969,10 +974,11 @@
                             <strong>Altura</strong>
                         </td>
                         <td rowspan="3">
-                            <select class="form-control" name="altura_result" style="height:400px; width:200px">
-                                <option selected> @Model.altura_result </option>
-                                <option> Sim </option>
-                                <option> Não </option>
+                            <select class="form-control" name="altura_result" style="height:400px; width:200px" readonly>
+                            <option selected>  @Model.altura_result </option> 
+                            <option> C </option>
+                            <option> NA </option>
+                            <option> NC </option>
                             </select> <br /> <br />
                         </td>
                     </tr>
@@ -1448,7 +1454,7 @@
                                     </select>
                                 </td>
                                 <td><input class="form-control" type="text" name="esp_lamina_um" value="@Model.esp_lamina_um"/></td>
-                                <td><input class="form-control" type="text" name="esp_especificado_um" value="@Model.esp_especificado_um"/></td>
+                                <td><input class="form-control" type="text" name="esp_especificado_um" value="@Model.esp_especificado_um" readonly/></td>
                                 <td><input class="form-control" type="text" name="esp_mm_um" value="@Model.esp_mm_um" /></td>
                                 <td><input class="form-control" type="text" name="esp_cm_um" readonly value="@Model.esp_cm_um"/></td>
                             </tr>
@@ -1479,7 +1485,7 @@
                                     </select>
                                 </td>
                                 <td><input class="form-control" type="text" name="esp_lamina_dois" value="@Model.esp_lamina_dois"/></td>
-                                <td><input class="form-control" type="text" name="esp_especificado_dois" value="@Model.esp_especificado_dois"/></td>
+                                <td><input class="form-control" type="text" name="esp_especificado_dois" value="@Model.esp_especificado_dois" readonly/></td>
                                 <td><input class="form-control" type="text" name="esp_mm_dois" value="@Model.esp_mm_dois"/></td>
                                 <td><input class="form-control" type="text" name="esp_cm_dois" readonly value="@Model.esp_cm_dois"/></td>
                             </tr>
@@ -1582,7 +1588,7 @@
                                     </select>
                                 </td>
                                 <td><input class="form-control" type="text" name="reves_lamina_um" value="@Model.reves_lamina_um" /></td>
-                                <td><input class="form-control" type="text" name="reves_especificado_um" value="@Model.reves_especificado_um" /></td>
+                                <td><input class="form-control" type="text" name="reves_especificado_um" value="@Model.reves_especificado_um" readonly /></td>
                                 <td><input class="form-control" type="text" name="reves_mm_um" value="@Model.reves_mm_um"/></td>
                                 <td><input class="form-control" type="text" name="reves_cm_um" readonly value="@Model.reves_cm_um"/></td>
                             </tr>
@@ -1609,7 +1615,7 @@
                                     </select>
                                 </td>
                                 <td><input class="form-control" type="text" name="reves_lamina_dois" value="@Model.reves_lamina_dois"/></td>
-                                <td><input class="form-control" type="text" name="reves_especificado_dois" value="@Model.reves_especificado_dois" /></td>
+                                <td><input class="form-control" type="text" name="reves_especificado_dois" value="@Model.reves_especificado_dois" readonly /></td>
                                 <td><input class="form-control" type="text" name="reves_mm_dois" value="@Model.reves_mm_dois" /></td>
                                 <td><input class="form-control" type="text" name="reves_cm_dois" readonly value="@Model.reves_cm_dois"/></td>
                             </tr>

@@ -752,7 +752,7 @@ namespace Coleta_Colchao.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> SalvarEspumaUm(string os, string orcamento, [Bind("data_ini,data_term,temp_ini,temp_fim,dimensao_temp,comprimento_result,comprimento_um,comprimento_esp,comprimento_dois," +
+        public async Task<IActionResult> SalvarEspumaUm(string os, string orcamento, string comprimento_result, string largura_result, string altura_result, [Bind("data_ini,data_term,temp_ini,temp_fim,dimensao_temp,comprimento_result,comprimento_um,comprimento_esp,comprimento_dois," +
           "comprimento_tres,comprimento_media,largura_result,largura_um,largura_esp,largura_dois,largura_tres,largura_media,altura_result,altura_um,altura_esp,altura_dois,altura_tres,altura_media,lamina_um,lamina_comp_um," +
           "lamina_esp_um,lamina_comp_dois,lamina_comp_tres,lamina_media_um,lamina_tipo_um,lamina_min_um,lamina_max_um,lamina_resul_um,lamina_dois,lamina_comp_quat,lamina_esp_dois, lamina_comp_cinco,lamina_comp_seis,lamina_media_dois,lamina_tipo_dois," +
           "lamina_min_dois,lamina_max_dois,lamina_resul_dois,lamina_tres,lamina_comp_sete,lamina_esp_tres,lamina_comp_oito,lamina_comp_nove,lamina_media_tres,lamina_tipo_tres,lamina_min_tres,lamina_max_tres,lamina_resul_tres,lamina_quat,lamina_comp_dez,lamina_esp_quat," +
@@ -773,7 +773,6 @@ namespace Coleta_Colchao.Controllers
                     var temp_ini = salvar.temp_ini;
                     var temp_fim = salvar.temp_fim;
                     var dimensao_temp = salvar.dimensao_temp;
-                    var comprimento_result = salvar.comprimento_result;
                     var comprimento_um = salvar.comprimento_um;
                     var comprimento_esp = salvar.comprimento_esp;
                     var comprimento_dois = salvar.comprimento_dois;
@@ -785,8 +784,17 @@ namespace Coleta_Colchao.Controllers
                     double comprimentotres = double.Parse(comprimento_tres);
                     var comprimento_media = ((comprimentoum + comprimentodois + comprimentotres) / 3);
 
+                    double comprimentoesp = double.Parse(comprimento_esp);
 
-                    var largura_result = salvar.largura_result;
+                    if(comprimento_media < (comprimentoesp - 1.5))
+                    {
+                        comprimento_result = "NC";
+                    }
+                    if (comprimento_media > (comprimentoesp + 1.5))
+                    {
+                        comprimento_result = "C";
+                    }
+
                     var largura_um = salvar.largura_um;
                     var largura_esp = salvar.largura_esp;
                     var largura_dois = salvar.largura_dois;
@@ -798,8 +806,16 @@ namespace Coleta_Colchao.Controllers
                     double larguratres = double.Parse(largura_tres);
                     var largura_media = ((larguraum + larguradois + larguratres) / 3);
 
+                    double larguraesp = double.Parse(largura_esp);
+                    if (largura_media < (larguraesp - 1.5))
+                    {
+                        largura_result = "NC";
+                    }
+                    if (largura_media > (larguraesp + 1.5))
+                    {
+                        largura_result = "C";
+                    }   
 
-                    var altura_result = salvar.altura_result;
                     var altura_um = salvar.altura_um;
                     var altura_esp = salvar.altura_esp;
                     var altura_dois = salvar.altura_dois;
@@ -810,12 +826,24 @@ namespace Coleta_Colchao.Controllers
                     double alturatres = double.Parse(altura_tres);
                     var altura_media = ((alturaum + alturadois + alturatres) / 3);
 
+                    double alturaesp = double.Parse(altura_esp);
+                    if (altura_media < (alturaesp - 1.5))
+                    {
+                        altura_result = "NC";
+                    }
+                    if (altura_media > (alturaesp + 1.5))
+                    {
+                        altura_result = "C";
+                    }
+
                     var lamina_um = salvar.lamina_um;
                     var lamina_comp_um = salvar.lamina_comp_um;
                     var lamina_esp_um = salvar.lamina_esp_um;
                     var lamina_comp_dois = salvar.lamina_comp_dois;
                     var lamina_comp_tres = salvar.lamina_comp_tres;
 
+
+                    // CONTAS LAMINA
 
                     double laminacompum = double.Parse(lamina_comp_um);
                     double laminacompdois = double.Parse(lamina_comp_dois);
@@ -827,6 +855,9 @@ namespace Coleta_Colchao.Controllers
                     var lamina_min_um = salvar.lamina_min_um;
                     var lamina_max_um = salvar.lamina_max_um;
                     var lamina_resul_um = salvar.lamina_resul_um;
+
+             
+
                     var lamina_dois = salvar.lamina_dois;
                     var lamina_comp_quat = salvar.lamina_comp_quat;
                     var lamina_esp_dois = salvar.lamina_esp_dois;
@@ -891,7 +922,9 @@ namespace Coleta_Colchao.Controllers
                     var lamina_resul_cinco = salvar.lamina_resul_cinco;
                     var esp_tipo_um = salvar.esp_tipo_um;
                     var esp_lamina_um = salvar.esp_lamina_um;
-                    var esp_especificado_um = salvar.esp_especificado_um;
+
+                    double esplamina_um = double.Parse(esp_lamina_um);
+                    var esp_especificado_um = esplamina_um / 3;
                     var esp_mm_um = salvar.esp_mm_um;
 
                     double mm_um = double.Parse(esp_mm_um);
@@ -899,8 +932,10 @@ namespace Coleta_Colchao.Controllers
 
                     var esp_tipo_dois = salvar.esp_tipo_dois;
                     var esp_lamina_dois = salvar.esp_lamina_dois;
-                    var esp_especificado_dois = salvar.esp_especificado_dois;
                     var esp_mm_dois = salvar.esp_mm_dois;
+
+                    double esplamina_dois = double.Parse(esp_lamina_dois);
+                    var esp_especificado_dois = esplamina_dois / 3;
 
                     double mm_dois = double.Parse(esp_mm_dois);
                     var esp_cm_dois = mm_dois / 10;
@@ -915,16 +950,20 @@ namespace Coleta_Colchao.Controllers
                     var col_resul_dois = salvar.col_resul_dois;
                     var reves_tipo_um = salvar.reves_tipo_um;
                     var reves_lamina_um = salvar.reves_lamina_um;
-                    var reves_especificado_um = salvar.reves_especificado_um;
                     var reves_mm_um = salvar.reves_mm_um;
+
+                    double reveslamina_um = double.Parse(reves_lamina_um);
+                    var reves_especificado_um = reveslamina_um / 3;
 
                     double reves_mm = double.Parse(reves_mm_um);
                     var reves_cm_um = reves_mm / 10;
 
                     var reves_tipo_dois = salvar.reves_tipo_dois;
                     var reves_lamina_dois = salvar.reves_lamina_dois;
-                    var reves_especificado_dois = salvar.reves_especificado_dois;
                     var reves_mm_dois = salvar.reves_mm_dois;
+
+                    double reveslamina_dois = double.Parse(reves_lamina_dois);
+                    var reves_especificado_dois = reveslamina_dois / 3;
 
                     double reves_mm_ = double.Parse(reves_mm_dois);
                     var reves_cm_dois = reves_mm_ / 10;
@@ -959,7 +998,6 @@ namespace Coleta_Colchao.Controllers
                         altura_media = altura_media.ToString(),
                         altura_result = altura_result,
                         temp_repouso = temp_repouso,
-                        //lamina_tempo = lamina_tempo,
                         lamina_um = lamina_um,
                         lamina_comp_um = lamina_comp_um,
                         lamina_comp_dois = lamina_comp_dois,
@@ -1012,12 +1050,12 @@ namespace Coleta_Colchao.Controllers
                         lamina_resul_cinco = lamina_resul_cinco,
                         esp_tipo_um = esp_tipo_um,
                         esp_lamina_um = esp_lamina_um,
-                        esp_especificado_um = esp_especificado_um,
+                        esp_especificado_um = esp_especificado_um.ToString(),
                         esp_mm_um = esp_mm_um,
                         esp_cm_um = esp_cm_um.ToString(),
                         esp_tipo_dois = esp_tipo_dois,
                         esp_lamina_dois = esp_lamina_dois,
-                        esp_especificado_dois = esp_especificado_dois,
+                        esp_especificado_dois = esp_especificado_dois.ToString(),
                         esp_mm_dois = esp_mm_dois,
                         esp_cm_dois = esp_cm_dois.ToString(),
                         col_tipo_um = col_tipo_um,
@@ -1030,12 +1068,12 @@ namespace Coleta_Colchao.Controllers
                         col_resul_dois = col_resul_dois,
                         reves_tipo_um = reves_tipo_um,
                         reves_lamina_um = reves_lamina_um,
-                        reves_especificado_um = reves_especificado_um,
+                        reves_especificado_um = reves_especificado_um.ToString(),
                         reves_mm_um = reves_mm_um,
                         reves_cm_um = reves_cm_um.ToString(),
                         reves_tipo_dois = reves_tipo_dois,
                         reves_lamina_dois = reves_lamina_dois,
-                        reves_especificado_dois = reves_especificado_dois,
+                        reves_especificado_dois = reves_especificado_dois.ToString(),
                         reves_mm_dois = reves_mm_dois,
                         reves_cm_dois = reves_cm_dois.ToString(),
 
