@@ -417,7 +417,7 @@ namespace Coleta_Colchao.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> SalvarEnsaio4_3(string os, string orcamento, [Bind("borda,borda1,data_ini,data_term,valor_enc_1,valor_enc_2,man_parale_1,man_parale_2")] ColetaModel.Ensaio4_3 salvarDados)
+        public async Task<IActionResult> SalvarEnsaio4_3(string os, string orcamento, [Bind("borda_aco,borda_espuma,borda_aco_molejo,borda_espuma_molejo,data_ini,data_term,valor_enc_aco,valor_enc_espuma,valor_enc_aco_molejo,valor_enc_espuma_molejo,man_parale_aco,man_parale_espuma,man_parale_aco_molejo,man_parale_espuma_molejo")] ColetaModel.Ensaio4_3 salvarDados)
         {
             try
             {
@@ -425,27 +425,49 @@ namespace Coleta_Colchao.Controllers
 
                 if (dados == null)
                 {
-                    string borda = salvarDados.borda;
-                    string borda1 = salvarDados.borda1;
+                    string borda_aco = salvarDados.borda_aco;
+                    string borda_aco_molejo = salvarDados.borda_aco_molejo;
+                    string borda_espuma = salvarDados.borda_espuma;
+                    string borda_espuma_molejo = salvarDados.borda_espuma_molejo;
                     DateOnly data_ini = salvarDados.data_ini;
                     DateOnly data_term = salvarDados.data_term;
-                    float valor_enc_1 = salvarDados.valor_enc_1;
-                    float valor_enc_2 = salvarDados.valor_enc_2;
-                    string man_parale_1 = salvarDados.man_parale_1;
-                    string man_parale_2 = salvarDados.man_parale_2;
+                    float valor_enc_aco = salvarDados.valor_enc_aco;
+                    float valor_enc_aco_molejo = salvarDados.valor_enc_aco_molejo;
+                    float valor_enc_espuma = salvarDados.valor_enc_espuma;
+                    float valor_enc_espuma_molejo = salvarDados.valor_enc_espuma_molejo;
+                    string man_parale_aco = salvarDados.man_parale_aco;
+                    string man_parale_aco_molejo = salvarDados.man_parale_aco_molejo;
+                    string man_parale_espuma_molejo = salvarDados.man_parale_espuma_molejo;
+                    string man_parale_espuma = salvarDados.man_parale_espuma;
+                    int contem_molejo;
 
+                    if (borda_aco_molejo == "X" || borda_espuma_molejo == "X")
+                    {
+                        contem_molejo = 1;
+                    }
+                    else
+                    {
+                        contem_molejo = 0;
+                    }
                     var registro = new ColetaModel.Ensaio4_3
                     {
                         os = os,
                         orcamento = orcamento,
-                        borda = borda,
-                        borda1 = borda1,
+                        borda_aco = borda_aco,
+                        borda_aco_molejo = borda_aco_molejo,
+                        borda_espuma = borda_espuma,
+                        borda_espuma_molejo = borda_espuma_molejo,
                         data_ini = data_ini,
                         data_term = data_term,
-                        valor_enc_1 = valor_enc_1,
-                        valor_enc_2 = valor_enc_2,
-                        man_parale_1 = man_parale_1,
-                        man_parale_2 = man_parale_2,
+                        valor_enc_aco = valor_enc_aco,
+                        valor_enc_aco_molejo = valor_enc_aco_molejo,
+                        valor_enc_espuma = valor_enc_espuma,
+                        valor_enc_espuma_molejo = valor_enc_espuma_molejo,
+                        man_parale_aco = man_parale_aco,
+                        man_parale_aco_molejo = man_parale_aco_molejo,
+                        man_parale_espuma_molejo = man_parale_espuma_molejo,
+                        man_parale_espuma = man_parale_espuma,
+                        contem_molejo = contem_molejo
                     };
 
                     _context.Add(registro);
@@ -455,15 +477,32 @@ namespace Coleta_Colchao.Controllers
                 }
                 else
                 {
-                    dados.borda = salvarDados.borda;
-                    dados.borda1 = salvarDados.borda1;
+                    dados.borda_aco = salvarDados.borda_aco;
+                    dados.borda_aco_molejo = salvarDados.borda_aco_molejo;
+                    dados.borda_espuma = salvarDados.borda_espuma;
+                    dados.borda_espuma_molejo = salvarDados.borda_espuma_molejo;
                     dados.data_ini = salvarDados.data_ini;
                     dados.data_term = salvarDados.data_term;
-                    dados.valor_enc_1 = salvarDados.valor_enc_1;
-                    dados.valor_enc_2 = salvarDados.valor_enc_2;
-                    dados.man_parale_1 = salvarDados.man_parale_1;
-                    dados.man_parale_2 = salvarDados.man_parale_2;
+                    dados.valor_enc_aco = salvarDados.valor_enc_aco;
+                    dados.valor_enc_aco_molejo = salvarDados.valor_enc_aco_molejo;
+                    dados.valor_enc_espuma = salvarDados.valor_enc_espuma;
+                    dados.valor_enc_espuma_molejo = salvarDados.valor_enc_espuma_molejo;
+                    dados.man_parale_aco = salvarDados.man_parale_aco;
+                    dados.man_parale_aco_molejo = salvarDados.man_parale_aco_molejo;
+                    dados.man_parale_espuma_molejo = salvarDados.man_parale_espuma_molejo;
+                    dados.man_parale_espuma = salvarDados.man_parale_espuma;
+                    int contem_molejo;
 
+                    if (dados.borda_aco_molejo == "X" || dados.borda_espuma_molejo == "X")
+                    {
+                        contem_molejo = 1;
+                    }
+                    else
+                    {
+                        contem_molejo = 0;
+                    }
+
+                    _context.Update(dados);
                     await _context.SaveChangesAsync();
                     TempData["Mensagem"] = "Dados Editado Com Sucesso";
                     return RedirectToAction(nameof(EnsaioMolas4_3), "coleta", new { os, orcamento });
@@ -475,36 +514,108 @@ namespace Coleta_Colchao.Controllers
                 _logger.LogError(ex, "Error", ex.Message);
                 throw;
             }
-
         }
 
         [HttpPost]
-        public async Task<IActionResult> SalvarEnsaio7_5(string os, string orcamento, [Bind("data_ini,data_term,temp_ensaio,faces,esp_face_1,med_face_1,acom_esp_face_1,acom_enc_face_1,esp_face_2,med_face_2,acom_esp_face_2,acom_enc_face_2,executor,auxiliar")] ColetaModel.Ensaio7_5 salvarDados)
+        public async Task<IActionResult> SalvarEnsaio7_5(string os, string orcamento, [Bind("data_ini,data_term,temp_ensaio,faces,qtd_face,med_face_1,med_face_2,executor,auxiliar")] ColetaModel.Ensaio7_5 salvarDados)
         {
             try
             {
                 var editarDados = _context.ensaio_molas_item7_5.Where(x => x.os == os && x.orcamento == orcamento).FirstOrDefault();
+
+                //verificando se foi realizado o ensaio 7.2
+                var ensaio7_2 = _context.ensaio_molas_item7_2.Where(x => x.os == os && x.orcamento == orcamento).FirstOrDefault();
+                if (ensaio7_2 == null)
+                {
+                    TempData["Mensagem"] = "Para realizar esse ensaio é necessario realizar o ensaio 7.2 de molas primeiro.";
+                    return RedirectToAction(nameof(EnsaioMolas7_5), "Coleta", new { os, orcamento });
+                }
+
                 if (editarDados == null)
                 {
+                    // declarando as variaveis vazias para poder manipular elas.
                     DateOnly data_ini = salvarDados.data_ini;
                     DateOnly data_term = salvarDados.data_term;
                     TimeOnly temp_ensaio = salvarDados.temp_ensaio;
+                    int qtd_face = salvarDados.qtd_face;
                     string faces = salvarDados.faces;
-                    float esp_face_1 = salvarDados.esp_face_1;
+                    float esp_face_1 = ensaio7_2.alt_media;
                     float med_face_1 = salvarDados.med_face_1;
-                    float acom_esp_face_1 = salvarDados.acom_esp_face_1;
-                    float esp_face_2 = salvarDados.esp_face_2;
+                    float acom_esp_face_1 = 0f;
+                    float esp_face_2 = ensaio7_2.alt_media;
                     float med_face_2 = salvarDados.med_face_2;
-                    float acom_esp_face_2 = salvarDados.acom_esp_face_2;
+                    float acom_esp_face_2 = 0f;
+                    float acomodacao_encontrada_1 = 0f;
+                    float acomodacao_encontrada_2 = 0f;
+                    string conforme = string.Empty;
 
-                    //realizando calculo para pegar porcetagem, convertendo para pegar 2 numeros depois da virgula.
-                    float acom_enc_face_1 = ((esp_face_1 * 100) / (esp_face_1 - med_face_1) - 100);
-                    string conv_acom_enc_face_1 = acom_enc_face_1.ToString("N2");
-                    float valor_final_conv_acom_enc_face_1 = float.Parse(conv_acom_enc_face_1);
+                    //realizando logica para 1 face.
+                    if (qtd_face == 1)
+                    {
+                        if (ensaio7_2.alt_media >= 12 && ensaio7_2.alt_media <= 22)
+                        {
+                            acom_esp_face_1 = 6;
+                        }
+                        else if (ensaio7_2.alt_media >= 23 && ensaio7_2.alt_media <= 30)
+                        {
+                            acom_esp_face_1 = 8;
+                        }
+                        else
+                        {
+                            acom_esp_face_1 = 10;
+                        }
+                        acomodacao_encontrada_1 = (med_face_1 / esp_face_1) * 100;
+                        string conv_acomodacao_encontrada_1 = acomodacao_encontrada_1.ToString("N1");
+                        acomodacao_encontrada_1 = float.Parse(conv_acomodacao_encontrada_1);
 
-                    float acom_enc_face_2 = ((esp_face_2 * 100) / (esp_face_2 - med_face_2) - 100);
-                    string conv_acom_enc_face_2 = acom_enc_face_2.ToString("N2");
-                    float valor_final_conv_acom_enc_face_2 = float.Parse(conv_acom_enc_face_2);
+                        if (acomodacao_encontrada_1 <= acom_esp_face_1)
+                        {
+                            conforme = "C";
+                        }
+                        else
+                        {
+                            conforme = "NC";
+                        }
+                    }
+                    else
+                    {
+                        if (ensaio7_2.alt_media >= 12 && ensaio7_2.alt_media <= 22)
+                        {
+                            acom_esp_face_1 = 6;
+                            acom_esp_face_2 = 6;
+                        }
+                        else if (ensaio7_2.alt_media >= 23 && ensaio7_2.alt_media <= 30)
+                        {
+                            acom_esp_face_1 = 8;
+                            acom_esp_face_2 = 8;
+                        }
+                        else
+                        {
+                            acom_esp_face_1 = 10;
+                            acom_esp_face_2 = 10;
+                        }
+
+
+                        acomodacao_encontrada_1 = (med_face_1 / esp_face_1) * 100;
+                        string conv_acomodacao_encontrada_1 = acomodacao_encontrada_1.ToString("N1");
+                        acomodacao_encontrada_1 = float.Parse(conv_acomodacao_encontrada_1);
+
+                        acomodacao_encontrada_2 = (med_face_2 / esp_face_2) * 100;
+                        string conv_acomodacao_encontrada_2 = acomodacao_encontrada_1.ToString("N1");
+                        acomodacao_encontrada_2 = float.Parse(conv_acomodacao_encontrada_2);
+
+                        float media = (acomodacao_encontrada_1 + acomodacao_encontrada_2) / 2;
+
+                        if (media <= acom_esp_face_2)
+                        {
+                            conforme = "C";
+                        }
+                        else
+                        {
+                            conforme = "NC";
+
+                        }
+                    }
 
                     var registro = new ColetaModel.Ensaio7_5
                     {
@@ -514,13 +625,16 @@ namespace Coleta_Colchao.Controllers
                         data_term = data_term,
                         temp_ensaio = temp_ensaio,
                         esp_face_1 = esp_face_1,
+                        faces = faces,
+                        qtd_face = qtd_face,
                         med_face_1 = med_face_1,
                         acom_esp_face_1 = acom_esp_face_1,
-                        acom_enc_face_1 = valor_final_conv_acom_enc_face_1,
+                        acom_enc_face_1 = acomodacao_encontrada_1,
                         esp_face_2 = esp_face_2,
                         med_face_2 = med_face_2,
                         acom_esp_face_2 = acom_esp_face_2,
-                        acom_enc_face_2 = valor_final_conv_acom_enc_face_2,
+                        acom_enc_face_2 = acomodacao_encontrada_2,
+                        conforme = conforme,
                     };
 
                     _context.Add(registro);
@@ -531,29 +645,94 @@ namespace Coleta_Colchao.Controllers
                 else
                 {
                     //editando os dados, primeiro criando as variaveis que precisa.
+                  
                     editarDados.data_ini = salvarDados.data_ini;
                     editarDados.data_term = salvarDados.data_term;
                     editarDados.temp_ensaio = salvarDados.temp_ensaio;
+                    editarDados.qtd_face = salvarDados.qtd_face;
                     editarDados.faces = salvarDados.faces;
-                    editarDados.acom_esp_face_1 = salvarDados.acom_esp_face_1;
-                    editarDados.acom_esp_face_2 = salvarDados.acom_esp_face_2;
-                    editarDados.esp_face_1 = salvarDados.esp_face_1;
+                    editarDados.esp_face_1 = ensaio7_2.alt_media;
                     editarDados.med_face_1 = salvarDados.med_face_1;
-                    editarDados.esp_face_2 = salvarDados.esp_face_2;
+                    editarDados.acom_esp_face_1 = 0f;
+                    editarDados.esp_face_2 = ensaio7_2.alt_media;
                     editarDados.med_face_2 = salvarDados.med_face_2;
+                    editarDados.acom_esp_face_2 = 0f;
+                    float acomodacao_encontrada_1 = 0f;
+                    float acomodacao_encontrada_2 = 0f;
 
-                    //realizando as contas necessarias.
-                    float acom_enc_face_1 = ((editarDados.esp_face_1 * 100) / (editarDados.esp_face_1 - editarDados.med_face_1) - 100);
-                    string conv_acom_enc_face_1 = acom_enc_face_1.ToString("N2");
-                    float valor_final_conv_acom_enc_face_1 = float.Parse(conv_acom_enc_face_1);
 
-                    float acom_enc_face_2 = ((editarDados.esp_face_2 * 100) / (editarDados.esp_face_2 - editarDados.med_face_2) - 100);
-                    string conv_acom_enc_face_2 = acom_enc_face_2.ToString("N2");
-                    float valor_final_conv_acom_enc_face_2 = float.Parse(conv_acom_enc_face_2);
+                    if (editarDados.qtd_face == 1)
+                    {
+                        if (ensaio7_2.alt_media >= 12 && ensaio7_2.alt_media <= 22)
+                        {
+                            editarDados.acom_esp_face_1 = 6;
+                        }
+                        else if (ensaio7_2.alt_media >= 23 && ensaio7_2.alt_media <= 30)
+                        {
+                            editarDados.acom_esp_face_1 = 8;
+                        }
+                        else
+                        {
+                            editarDados.acom_esp_face_1 = 10;
+                        }
+                        acomodacao_encontrada_1 = (editarDados.med_face_1 / editarDados.esp_face_1) * 100;
+                        string conv_acomodacao_encontrada_1 = acomodacao_encontrada_1.ToString("N1");
+                        acomodacao_encontrada_1 = float.Parse(conv_acomodacao_encontrada_1);
 
-                    editarDados.acom_enc_face_2 = valor_final_conv_acom_enc_face_2;
-                    editarDados.acom_enc_face_1 = valor_final_conv_acom_enc_face_1;
+                        if (acomodacao_encontrada_1 <= editarDados.acom_esp_face_1)
+                        {
+                            editarDados.conforme = "C";
+                        }
+                        else
+                        {
+                            editarDados.conforme = "NC";
+                        }
+                        
+                    }
+                    else
+                    {
+                        if (ensaio7_2.alt_media >= 12 && ensaio7_2.alt_media <= 22)
+                        {
+                            editarDados.acom_esp_face_1 = 6;
+                            editarDados.acom_esp_face_2 = 6;
+                        }
+                        else if (ensaio7_2.alt_media >= 23 && ensaio7_2.alt_media <= 30)
+                        {
+                            editarDados.acom_esp_face_1 = 8;
+                            editarDados.acom_esp_face_2 = 8;
+                        }
+                        else
+                        {
+                            editarDados.acom_esp_face_1 = 10;
+                            editarDados.acom_esp_face_2 = 10;
+                        }
 
+
+                        acomodacao_encontrada_1 = (editarDados.med_face_1 / editarDados.esp_face_1) * 100;
+                        string conv_acomodacao_encontrada_1 = acomodacao_encontrada_1.ToString("N1");
+                        acomodacao_encontrada_1 = float.Parse(conv_acomodacao_encontrada_1);
+
+                        acomodacao_encontrada_2 = (editarDados.med_face_2 / editarDados.esp_face_2) * 100;
+                        string conv_acomodacao_encontrada_2 = acomodacao_encontrada_1.ToString("N1");
+                        acomodacao_encontrada_2 = float.Parse(conv_acomodacao_encontrada_2);
+
+                        float media = (acomodacao_encontrada_1 + acomodacao_encontrada_2) / 2;
+
+                        if (media <= editarDados.acom_esp_face_2)
+                        {
+                            editarDados.conforme = "C";
+                        }
+                        else
+                        {
+                            editarDados.conforme = "NC";
+                        }
+                    }
+
+                    editarDados.acom_enc_face_1 = acomodacao_encontrada_1;
+                    editarDados.acom_enc_face_2 = acomodacao_encontrada_2;
+
+
+                    _context.Update(editarDados);
                     await _context.SaveChangesAsync();
                     TempData["Mensagem"] = "Dados Editado Com Sucesso";
                     return RedirectToAction(nameof(EnsaioMolas7_5), "Coleta", new { os, orcamento });
@@ -660,6 +839,9 @@ namespace Coleta_Colchao.Controllers
                     float alt_med_2 = salvarDados.alt_med_2;
                     float alt_med_3 = salvarDados.alt_med_3;
                     float alt_espe = salvarDados.alt_espe;
+                    string conforme_comprimento = string.Empty;
+                    string conform_largura = string.Empty;
+                    string conform_altura = string.Empty;
 
                     //calculando a media dos resultados.
                     float media_comprimeto = (comp_med_1 + comp_med_2 + comp_med_3) / 3;
@@ -673,6 +855,46 @@ namespace Coleta_Colchao.Controllers
                     float media_altura = (alt_med_1 + alt_med_2 + alt_med_3) / 3;
                     string conv_media_altura = media_altura.ToString("N1");
                     media_altura = float.Parse(conv_media_altura);
+
+                    //REALIZANDO CALCULO DE CONFORME OU NAO CONFORME comprimento.
+                    float valor_min_comprimento = comp_espe - 1.5f;
+                    float valor_max_comprimento = comp_espe + 1.5f;
+
+
+                    if (media_comprimeto >= valor_min_comprimento && media_comprimeto <= valor_max_comprimento)
+                    {
+                        conforme_comprimento = "C";
+                    }
+                    else
+                    {
+                        conforme_comprimento = "NC";
+                    }
+
+                    //calculo de incerteza de largura.
+                    float valor_min_largura = larg_espe - 1.5f;
+                    float valor_max_largura = larg_espe + 1.5f;
+
+                    if (media_largura >= valor_min_largura && media_largura <= valor_max_largura)
+                    {
+                        conform_largura = "C";
+                    }
+                    else
+                    {
+                        conform_largura = "NC";
+                    }
+
+                    //calculo de incerteza de altura.
+                    float valor_min_altura = alt_espe - 1.5f;
+                    float valor_max_altura = alt_espe + 1.5f;
+
+                    if (media_altura >= valor_min_altura && media_altura <= valor_max_altura)
+                    {
+                        conform_altura = "C";
+                    }
+                    else
+                    {
+                        conform_altura = "NC";
+                    }
 
                     //armazenando no banco.
                     var registro = new ColetaModel.Ensaio7_2
@@ -698,6 +920,9 @@ namespace Coleta_Colchao.Controllers
                         alt_med_3 = alt_med_3,
                         alt_espe = alt_espe,
                         alt_media = media_altura,
+                        conforme_comprimento = conforme_comprimento,
+                        conforme_largura = conform_largura,
+                        conforme_altura = conform_altura,
                     };
 
                     _context.Add(registro);
@@ -726,6 +951,9 @@ namespace Coleta_Colchao.Controllers
                     editarDados.alt_med_3 = salvarDados.alt_med_3;
                     editarDados.alt_espe = salvarDados.alt_espe;
 
+
+
+                    //pegando a media dos valores
                     float media_comprimeto = (editarDados.comp_med_1 + editarDados.comp_med_2 + editarDados.comp_med_3) / 3;
                     string conv_media_comprimeto = media_comprimeto.ToString("N1");
                     media_comprimeto = float.Parse(conv_media_comprimeto);
@@ -738,7 +966,54 @@ namespace Coleta_Colchao.Controllers
                     string conv_media_altura = media_altura.ToString("N1");
                     media_altura = float.Parse(conv_media_altura);
 
+                    //realizando calculos para editar conforme ou nao conforme
+                    string conforme_comprimento = string.Empty;
+                    string conform_largura = string.Empty;
+                    string conform_altura = string.Empty;
+                    float valor_min_comprimento = editarDados.comp_espe - 1.5f;
+                    float valor_max_comprimento = editarDados.comp_espe + 1.5f;
 
+
+                    if (media_comprimeto >= valor_min_comprimento && media_comprimeto <= valor_max_comprimento)
+                    {
+                        conforme_comprimento = "C";
+                    }
+                    else
+                    {
+                        conforme_comprimento = "NC";
+                    }
+
+                    //calculo de incerteza de largura.
+                    float valor_min_largura = editarDados.larg_espe - 1.5f;
+                    float valor_max_largura = editarDados.larg_espe + 1.5f;
+
+                    if (media_largura >= valor_min_largura && media_largura <= valor_max_largura)
+                    {
+                        conform_largura = "C";
+                    }
+                    else
+                    {
+                        conform_largura = "NC";
+                    }
+
+                    //calculo de incerteza de altura.
+                    float valor_min_altura = editarDados.alt_espe - 1.5f;
+                    float valor_max_altura = editarDados.alt_espe + 1.5f;
+
+                    if (media_altura >= valor_min_altura && media_altura <= valor_max_altura)
+                    {
+                        conform_altura = "C";
+                    }
+                    else
+                    {
+                        conform_altura = "NC";
+                    }
+
+                    editarDados.conforme_comprimento = conforme_comprimento;
+                    editarDados.conforme_largura = conform_largura;
+                    editarDados.conforme_altura = conform_altura;
+
+                    _context.Update(editarDados);
                     await _context.SaveChangesAsync();
                     TempData["Mensagem"] = "Dados Editado Com Sucesso";
                     return RedirectToAction(nameof(EnsaioMolas7_2), "Coleta", new { os, orcamento });
@@ -759,7 +1034,7 @@ namespace Coleta_Colchao.Controllers
           "lamina_comp_onze,lamina_comp_doze,lamina_media_quat,lamina_tipo_quat,lamina_min_quat,lamina_max_quat,lamina_resul_quat,lamina_cinco,lamina_comp_treze,lamina_esp_cinco,lamina_comp_quatorze,lamina_comp_quinze,lamina_media_cinco,lamina_tipo_cinco," +
           "lamina_min_cinco,lamina_max_cinco,lamina_resul_cinco,esp_tipo_um,esp_lamina_um,esp_especificado_um,esp_mm_um,esp_cm_um,esp_tipo_dois,esp_lamina_dois,esp_especificado_dois,esp_mm_dois,esp_cm_dois,col_tipo_um,col_especificado_um,col_encontrado_um,col_resul_um," +
           "col_tipo_dois,col_lamina_dois,col_especificado_dois,col_resul_dois,reves_tipo_um,reves_lamina_um,reves_especificado_um,reves_mm_um,reves_cm_um,reves_tipo_dois,reves_lamina_dois,reves_especificado_dois,reves_mm_dois,reves_cm_dois,temp_repouso,lamina_media_um")] ColetaModel.EspumaUm salvar)
-     {
+        {
             try
             {
 
@@ -1222,7 +1497,7 @@ namespace Coleta_Colchao.Controllers
                 _logger.LogError(ex, "Error", ex.Message);
                 throw;
             }
-      }
+        }
 
 
         [HttpPost]
@@ -1627,7 +1902,7 @@ namespace Coleta_Colchao.Controllers
                 _logger.LogError(ex, "Error", ex.Message);
                 throw;
             }
-            }
+        }
 
 
 

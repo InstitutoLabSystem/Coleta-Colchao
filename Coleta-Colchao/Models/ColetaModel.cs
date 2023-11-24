@@ -165,15 +165,22 @@ namespace Coleta_Colchao.Models
             public string os { get; set; }
             public string orcamento { get; set; }
 
-            public string? borda { get; set; }
-            public string? borda1 { get; set; }
+            public string? borda_aco { get; set; }
+            public string? borda_espuma { get; set; }
+            public string? borda_aco_molejo { get; set; }
+            public string? borda_espuma_molejo { get; set; }
             public DateOnly data_ini { get; set; }
             public DateOnly data_term { get; set; }
-            public float valor_enc_1 { get; set; }
-            public float valor_enc_2 { get; set; }
-            public string? man_parale_1 { get; set; }
-            public string? man_parale_2 { get; set; }
+            public float valor_enc_aco { get; set; }
+            public float valor_enc_espuma { get; set; }
+            public float valor_enc_aco_molejo { get; set; }
+            public float valor_enc_espuma_molejo { get; set; }
+            public string? man_parale_aco { get; set; }
+            public string? man_parale_aco_molejo { get; set; }
+            public string? man_parale_espuma { get; set; }
+            public string? man_parale_espuma_molejo { get; set; }
             public string? executor { get; set; }
+            public int contem_molejo { get; set; }
         }
 
         public class Ensaio7_5
@@ -185,6 +192,7 @@ namespace Coleta_Colchao.Models
             public DateOnly data_ini { get; set; }
             public DateOnly data_term { get; set; }
             public TimeOnly temp_ensaio { get; set; }
+            public int qtd_face { get; set; }
             public string? faces { get; set; }
             public float esp_face_1 { get; set; }
             public float med_face_1 { get; set; }
@@ -194,6 +202,7 @@ namespace Coleta_Colchao.Models
             public float med_face_2 { get; set; }
             public float acom_esp_face_2 { get; set; }
             public float acom_enc_face_2 { get; set; }
+            public string? conforme { get; set; }
             public string? executor { get; set; }
             public string? auxiliar { get; set; }
         }
@@ -243,6 +252,9 @@ namespace Coleta_Colchao.Models
             public float alt_med_3 { get; set; }
             public float alt_espe { get; set; }
             public float alt_media { get; set; }
+            public string? conforme_comprimento { get; set; }
+            public string? conforme_largura { get; set; }
+            public string? conforme_altura { get; set; }
             public string? executor { get; set; }
             public string? auxiliar { get; set; }
         }

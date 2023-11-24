@@ -1,4 +1,4 @@
-﻿@model ColetaModel.Ensaio4_3;
+﻿ @model ColetaModel.Ensaio4_3;
 @{
     Layout = null;
 }
@@ -12,9 +12,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="~/css/coleta.css" asp-append-version="true" />
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-
+    <style>
+        .controlador-conforme {
+            padding: 5px;
+            border-color: gray;
+            border-radius: 5px;
+            box-sizing: border-box;
+            height: 500px;
+            width: 100px;
+        }
+    </style>
 </head>
-<body>
+<body onload="mostrarTabelas()">
 
 
     <form method="post" asp-controller="Coleta" asp-action="SalvarEnsaio4_3" asp-route-os="@ViewBag.os" asp-route-orcamento="@ViewBag.orcamento">
@@ -36,7 +45,7 @@
                         <td>Inicio:</td>
                         <td><input class="form-control" type="date" name="data_ini" /></td>
                         <td>Termino:</td>
-                        <td><input class="form-control" type="date" name="data_term"  /></td>
+                        <td><input class="form-control" type="date" name="data_term" /></td>
                     </tr>
                 </thead>
             </table>
@@ -50,12 +59,7 @@
                         </b>
                     </td>
                     <td rowspan="14">
-                        <select class="form-control" name="Escolha" style="height:320px; width:80px;">
-                            <option selected> --- </option>
-                            <option> C </option>
-                            <option> NA </option>
-                            <option> NC </option>
-                        </select>
+                        teste  <inpupt class="controlador-conforme" />
                     </td>
                 </tr>
                 <tr>
@@ -65,16 +69,25 @@
                 </tr>
                 <tr>
                     <td>
+                        <button type="button" class="btn btn-info" id="btn-aco" onclick="mostrarLinhaAco()">Aço</button>
+                        <button type="button" class="btn btn-info" id="btn-espuma" onclick="mostrarLinhaEspuma()">Espuma</button>
+                        <button type="button" class="btn btn-info" id="btn-espuma" onclick="mostrarTabelaMolejo()">Mais De Um Molejo</button>
+
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>
                         <table class="tables table-bordered border-secondary  table-sm">
-                            <tr class="fundo-tabela">
+                            <tr class="fundo-tabela borda" style="display:none;">
                                 <td>Borda</td>
                                 <td>Especificado</td>
                                 <td colspan="2">Encontrado</td>
                                 <td>Manteve seu paralelismo e perpendicularidade</td>
                             </tr>
-                            <tr>
+                            <tr class="linha-aco" style="display:none;">
                                 <td>
-                                    <select class="form-control" name="borda" style="width:100px;">
+                                    <select class="form-control" name="borda_aco" style="width:100px;">
                                         <option selected> --- </option>
                                         <option> X </option>
                                     </select>
@@ -83,18 +96,18 @@
                                 <td style="width:50px;">
                                     ≥  Ø 3,8 mm
                                 </td>
-                                <td><input class="form-control" type="text" name="valor_enc_1" /></td>
+                                <td><input class="form-control" type="text" name="valor_enc_aco" /></td>
                                 <td>
-                                    <select name="man_parale_1" class="form-control">
+                                    <select name="man_parale_aco" class="form-control">
                                         <option value="Sim">Sim</option>
                                         <option value="Não">Não</option>
 
                                     </select>
                                 </td>
                             </tr>
-                            <tr>
+                            <tr class="linha-espuma" style="display:none;">
                                 <td>
-                                    <select class="form-control" name="borda1">
+                                    <select class="form-control" name="borda_espuma">
                                         <option selected> --- </option>
                                         <option> X </option>
                                     </select>
@@ -103,18 +116,109 @@
                                 <td>
                                     ≤ 120 mm
                                 </td>
-                                <td><input class="form-control" type="text" name="valor_enc_2" /></td>
+                                <td><input class="form-control" type="text" name="valor_enc_espuma" /></td>
                                 <td>
-                                    <select name="man_parale_2" class="form-control">
+                                    <select name="man_parale_espuma" class="form-control">
                                         <option value="Sim">Sim</option>
                                         <option value="Não">Não</option>
-
                                     </select>
                                 </td>
                             </tr>
                         </table>
                     </td>
                 </tr>
+                @* duplicando tabela caso seja mais de um molejo *@
+                <tr>
+                    <td>
+                        <table class="tables table-bordered border-secondary table-sm" style="display:none;" id="molejo" name="molejo" value="1">
+                            <tr class="fundo-tabela">
+                                <td>Borda</td>
+                                <td>Especificado</td>
+                                <td colspan="2">Encontrado</td>
+                                <td>Manteve seu paralelismo e perpendicularidade</td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <select class="form-control" name="borda_aco" style="width:100px;">
+                                        <option selected> --- </option>
+                                        <option> X </option>
+                                    </select>
+                                </td>
+                                <td>Aço</td>
+                                <td style="width:50px;">
+                                    ≥  Ø 3,8 mm
+                                </td>
+                                <td><input class="form-control" type="text" name="valor_enc_aco" /></td>
+                                <td>
+                                    <select name="man_parale_aco" class="form-control">
+                                        <option value="Sim">Sim</option>
+                                        <option value="Não">Não</option>
+
+                                    </select>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <select class="form-control" name="borda_espuma">
+                                        <option selected> --- </option>
+                                        <option> X </option>
+                                    </select>
+                                </td>
+                                <td>Espuma</td>
+                                <td>
+                                    ≤ 120 mm
+                                </td>
+                                <td><input class="form-control" type="text" name="valor_enc_espuma" /></td>
+                                <td>
+                                    <select name="man_parale_espuma" class="form-control">
+                                        <option value="Sim">Sim</option>
+                                        <option value="Não">Não</option>
+                                    </select>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <select class="form-control" name="borda_aco_molejo" style="width:100px;">
+                                        <option value="---" selected> --- </option>
+                                        <option value="X"> X </option>
+                                    </select>
+                                </td>
+                                <td>Aço</td>
+                                <td style="width:50px;">
+                                    ≥  Ø 3,8 mm
+                                </td>
+                                <td><input class="form-control" type="text" name="valor_enc_aco_molejo" /></td>
+                                <td>
+                                    <select name="man_parale_aco_molejo" class="form-control">
+                                        <option value="Sim">Sim</option>
+                                        <option value="Não">Não</option>
+
+                                    </select>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <select class="form-control" name="borda_espuma_molejo">
+                                        <option value="---" selected> --- </option>
+                                        <option value="X"> X </option>
+                                    </select>
+                                </td>
+                                <td>Espuma</td>
+                                <td>
+                                    ≤ 120 mm
+                                </td>
+                                <td><input class="form-control" type="text" name="valor_enc_espuma_molejo" /></td>
+                                <td>
+                                    <select name="man_parale_espuma_molejo" class="form-control">
+                                        <option value="Sim">Sim</option>
+                                        <option value="Não">Não</option>
+                                    </select>
+                                </td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+                @* final da tabela molejo *@
                 <tr>
                     <td>
                         Quando se for utilizado não tecido de fibras sintéticas, naturais e/ou artificiais, ela deve ter gramatura mínima de 100 g/m².
@@ -130,6 +234,7 @@
         }
         else
         {
+            <input type="hidden" id="condicaoEspecifica" value="else" />
             <table class="tables table-bordered border-secondary  table-sm">
                 <thead>
                     <tr>
@@ -150,7 +255,7 @@
                 </thead>
             </table>
 
-            <table class="tables table-bordered border-secondary  table-sm">
+            <table class="tables table-bordered border-secondary  table-sm ">
                 <tr>
                     <td rowspan="14" class="itens">4.3</td>
                     <td class="fundo-tabela">
@@ -159,12 +264,7 @@
                         </b>
                     </td>
                     <td rowspan="14">
-                        <select class="form-control" name="Escolha" style="height:320px; width:80px;">
-                            <option selected> --- </option>
-                            <option> C </option>
-                            <option> NA </option>
-                            <option> NC </option>
-                        </select>
+                        <inpupt class="controlador-conforme" />
                     </td>
                 </tr>
                 <tr>
@@ -175,59 +275,184 @@
                 <tr>
                     <td>
                         <table class="tables table-bordered border-secondary  table-sm">
-                            <tr class="fundo-tabela">
+                            <tr class="fundo-tabela borda" style="display:none;">
                                 <td>Borda</td>
                                 <td>Especificado</td>
                                 <td colspan="2">Encontrado</td>
                                 <td>Manteve seu paralelismo e perpendicularidade</td>
                             </tr>
-                            <tr>
-                                <td>
-                                    <select class="form-control" name="borda" style="width:100px;">
-                                        <option> @Model.borda</option>
-                                        <option > --- </option>
-                                        <option> X </option>
-                                    </select>
-                                </td>
-                                <td>Aço</td>
-                                <td>
-                                    ≥  Ø 3,8 mm
-                                </td>
-                                <td><input class="form-control" type="text" name="valor_enc_1" value="@Model.valor_enc_1" /></td>
-                                <td>
-                                    <select name="man_parale_1" class="form-control">
-                                        <option> @Model.man_parale_1</option>
-                                        <option value="Sim">Sim</option>
-                                        <option value="Não">Não</option>
+                            @if (Model.contem_molejo == 0)
+                            {
+                                @if (Model.borda_aco == "X")
+                                {
+                                   
+                                    <tr class="linha-aco" style="display:none;">
+                                        <td>
+                                            <select class="form-control" name="borda_aco" style="width:100px;">
+                                                <option selected>@Model.borda_aco</option>
+                                                <option> --- </option>
+                                                <option> X </option>
+                                            </select>
+                                        </td>
+                                        <td>Aço</td>
+                                        <td style="width:50px;">
+                                            ≥  Ø 3,8 mm
+                                        </td>
+                                        <td><input class="form-control" type="text" name="valor_enc_aco" value="@Model.valor_enc_aco" /></td>
+                                        <td>
+                                            <select name="man_parale_aco" class="form-control">
+                                                <option selected>@Model.valor_enc_aco</option>
+                                                <option value="Sim">Sim</option>
+                                                <option value="Não">Não</option>
+                                            </select>
+                                        </td>
+                                    </tr>
+                                }
 
-                                    </select>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <select class="form-control" name="borda1">
-                                        <option selected> @Model.borda1</option>
-                                        <option > --- </option>
-                                        <option> X </option>
-                                    </select>
-                                </td>
-                                <td>Espuma</td>
-                                <td>
-                                    ≤ 120 mm
-                                </td>
-                                <td><input class="form-control" type="text" name="valor_enc_2" value="@Model.valor_enc_2" /></td>
-                                <td>
-                                    <select name="man_parale_2" class="form-control">
-                                        <option selected> @Model.man_parale_2</option>
-                                        <option value="Sim">Sim</option>
-                                        <option value="Não">Não</option>
-
-                                    </select>
-                                </td>
-                            </tr>
+                                @if (Model.borda_espuma == "X")
+                                {
+                                    <tr class="linha-espuma" style="display:none;">
+                                        <td>
+                                            <select class="form-control" name="borda_espuma">
+                                                <option> @Model.borda_espuma</option>
+                                                <option value="---"> --- </option>
+                                                <option value="X"> X </option>
+                                            </select>
+                                        </td>
+                                        <td>Espuma</td>
+                                        <td>
+                                            ≤ 120 mm
+                                        </td>
+                                        <td><input class="form-control" type="text" name="valor_enc_espuma" value="@Model.valor_enc_espuma" /></td>
+                                        <td>
+                                            <select name="man_parale_espuma" class="form-control">
+                                                <option>@Model.man_parale_espuma</option>
+                                                <option value="Sim">Sim</option>
+                                                <option value="Não">Não</option>
+                                            </select>
+                                        </td>
+                                    </tr>
+                                }
+                            }
                         </table>
+
                     </td>
                 </tr>
+                @*    @* duplicando tabela caso seja mais de um molejo *@
+                @if (Model.contem_molejo == 1)
+                {
+                    <tr>
+                        <td>
+                            <table class="tables table-bordered border-secondary table-sm" style="display:none;" id="molejo" name="molejo" value="1">
+                                <tr class="fundo-tabela">
+                                    <td>Borda</td>
+                                    <td>Especificado</td>
+                                    <td colspan="2">Encontrado</td>
+                                    <td>Manteve seu paralelismo e perpendicularidade</td>
+                                </tr>
+                                @if (Model.borda_aco == "X")
+                                {
+                                    <tr>
+                                        <td>
+                                            <select class="form-control" name="borda_aco" style="width:100px;">
+                                                <option>@Model.borda_aco</option>
+                                                <option>---</option>
+                                                <option> X </option>
+                                            </select>
+                                        </td>
+                                        <td>Aço</td>
+                                        <td style="width:50px;">
+                                            ≥  Ø 3,8 mm
+                                        </td>
+                                        <td><input class="form-control" type="text" name="valor_enc_aco" value="@Model.valor_enc_aco" /></td>
+                                        <td>
+                                            <select name="man_parale_aco" class="form-control">
+                                                <option selected>@Model.man_parale_aco </option>
+                                                <option value="Sim">Sim</option>
+                                                <option value="Não">Não</option>
+
+                                            </select>
+                                        </td>
+                                    </tr>
+                                }
+                                @if (Model.borda_espuma == "X")
+                                {
+                                    <tr>
+                                        <td>
+                                            <select class="form-control" name="borda_espuma">
+                                                <option selected>@Model.borda_espuma</option>
+                                                <option> --- </option>
+                                                <option> X </option>
+                                            </select>
+                                        </td>
+                                        <td>Espuma</td>
+                                        <td>
+                                            ≤ 120 mm
+                                        </td>
+                                        <td><input class="form-control" type="text" name="valor_enc_espuma" value="@Model.valor_enc_espuma" /></td>
+                                        <td>
+                                            <select name="man_parale_espuma" class="form-control">
+                                                <option selected> @Model.man_parale_espuma </option>
+                                                <option value="Sim">Sim</option>
+                                                <option value="Não">Não</option>
+                                            </select>
+                                        </td>
+                                    </tr>
+                                }
+                                @if (Model.borda_aco_molejo == "X")
+                                {
+                                    <tr>
+                                        <td>
+                                            <select class="form-control" name="borda_aco_molejo" style="width:100px;">
+                                                <option selected>@Model.borda_aco_molejo</option>
+                                                <option value="---"> --- </option>
+                                                <option value="X"> X </option>
+                                            </select>
+                                        </td>
+                                        <td>Aço</td>
+                                        <td style="width:50px;">
+                                            ≥  Ø 3,8 mm
+                                        </td>
+                                        <td><input class="form-control" type="text" name="valor_enc_aco_molejo" value="@Model.valor_enc_aco_molejo" /></td>
+                                        <td>
+                                            <select name="man_parale_aco_molejo" class="form-control">
+                                                <option selected>@Model.man_parale_aco_molejo</option>
+                                                <option value="Sim">Sim</option>
+                                                <option value="Não">Não</option>
+
+                                            </select>
+                                        </td>
+                                    </tr>
+                                }
+                                @if (Model.borda_espuma_molejo == "X")
+                                {
+                                    <tr>
+                                        <td>
+                                            <select class="form-control" name="borda_espuma_molejo">
+                                                <option selected>@Model.borda_espuma_molejo</option>
+                                                <option value="---">---</option>
+                                                <option value="X">X</option>
+                                            </select>
+                                        </td>
+                                        <td>Espuma</td>
+                                        <td>
+                                            ≤ 120 mm
+                                        </td>
+                                        <td><input class="form-control" type="text" name="valor_enc_espuma_molejo" value="@Model.valor_enc_espuma_molejo" /></td>
+                                        <td>
+                                            <select name="man_parale_espuma_molejo" class="form-control">
+                                                <option selected>@Model.man_parale_espuma_molejo</option>
+                                                <option value="Sim">Sim</option>
+                                                <option value="Não">Não</option>
+                                            </select>
+                                        </td>
+                                    </tr>
+                                }
+                            </table>
+                        </td>
+                    </tr>
+                }
+                @* final da tabela molejo *@
                 <tr>
                     <td>
                         Quando se for utilizado não tecido de fibras sintéticas, naturais e/ou artificiais, ela deve ter gramatura mínima de 100 g/m².
@@ -235,7 +460,6 @@
                 </tr>
 
             </table>
-
             <br />
             <div class="d-grid gap-2 d-flex justify-content-center">
                 <button type="submit" class="btn btn-success btn btn-primary btn-md">Editar Dados</button>
@@ -249,5 +473,103 @@
             alert('@Html.Raw(TempData["Mensagem"])');
         </script>
     }
+    <script>
+        window.onload = function () {
+            // Verificar se estamos no 'else' antes de chamar a função
+            var condicaoEspecifica = document.getElementById("condicaoEspecifica").value;
+            console.log(condicaoEspecifica);
+            if (condicaoEspecifica === "else") {
+                mostrarTabelas();
+
+            }
+
+            // Outras inicializações ou lógicas podem ser adicionadas aqui
+        };
+        function mostrarLinhaAco() {
+            var linhasAco = document.getElementsByClassName("linha-aco");
+
+            var linhaEspuma = document.getElementsByClassName("linha-espuma");
+            var tabelaBorda = document.getElementsByClassName("borda");
+            var tabelaToda = document.getElementById("molejo");
+
+
+
+            for (var i = 0; i < linhasAco.length; i++) {
+                linhasAco[i].style.display = "table-row";
+            }
+            for (var i = 0; i < tabelaBorda.length; i++) {
+                tabelaBorda[i].style.display = "table-row";
+            }
+
+            if (linhaEspuma.length > 0 && tabelaToda) {
+                for (var i = 0; i < linhaEspuma.length; i++) {
+                    linhaEspuma[i].style.display = "none";
+                }
+                tabelaToda.style.display = "none";
+
+            }
+
+
+        }
+        function mostrarLinhaEspuma() {
+            var linhaEspuma = document.getElementsByClassName("linha-espuma");
+            var linhasAco = document.getElementsByClassName("linha-aco");
+            var tabelaBorda = document.getElementsByClassName("borda");
+            var tabelaToda = document.getElementById("molejo");
+
+
+            for (var i = 0; i < linhaEspuma.length; i++) {
+                linhaEspuma[i].style.display = "table-row";
+            }
+            for (var i = 0; i < tabelaBorda.length; i++) {
+                tabelaBorda[i].style.display = "table-row";
+            }
+
+            if (linhasAco.length > 0 && tabelaToda) {
+                for (var i = 0; i < linhasAco.length; i++) {
+                    linhasAco[i].style.display = "none";
+                }
+                tabelaToda.style.display = "none";
+
+            }
+        }
+
+        function mostrarTabelaMolejo() {
+            var tabelaToda = document.getElementById("molejo");
+            var linhaEspuma = document.getElementsByClassName("linha-espuma");
+            var linhasAco = document.getElementsByClassName("linha-aco");
+            var tabelaBorda = document.getElementsByClassName("borda");
+
+
+            if (linhasAco.length > 0 && linhaEspuma.length > 0) {
+                linhasAco[0].style.display = "none";
+                linhaEspuma[0].style.display = "none";
+                tabelaBorda[0].style.display = "none";
+                tabelaToda.style.display = "table";
+            }
+        }
+        function mostrarTabelas() {
+            var linhasAco = document.getElementsByClassName("linha-aco");
+            var linhaEspuma = document.getElementsByClassName("linha-espuma");
+            var tabelaBorda = document.getElementsByClassName("borda");
+            var tabelaToda = document.getElementById("molejo");
+
+            toggleElementDisplay(linhasAco, "table-row");
+            toggleElementDisplay(linhaEspuma, "table-row");
+            toggleElementDisplay(tabelaBorda, "table-row");
+
+            // Mostrar a tabelaToda sempre que a função for chamada
+            if (tabelaToda) {
+                tabelaToda.style.display = "table";
+            }
+        }
+        function toggleElementDisplay(elements, displayValue) {
+            for (var i = 0; i < elements.length; i++) {
+                elements[i].style.display = displayValue;
+            }
+        }
+
+
+    </script>
 </body>
 </html>
