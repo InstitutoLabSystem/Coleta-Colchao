@@ -12,7 +12,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="~/css/coleta.css" asp-append-version="true" />
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        input{
+            text-align:center;
+        }
 
+        .controlador-conforme {
+            padding: 5px;
+            border-color: gray;
+            border-radius: 5px;
+            box-sizing: border-box;
+            height: 950px;
+            width: 100px;
+        }
+    </style>
 </head>
 <body>
     <form method="post" asp-controller="Coleta" asp-action="SalvarEnsaio7_5" asp-route-os="@ViewBag.os" asp-route-orcamento="@ViewBag.orcamento">
@@ -46,12 +59,8 @@
                         </b>
                     </td>
                     <td rowspan="12">
-                        <select class="form-control" name="Escolha" style="height:900px; width:70px ; text-align:center">
-                            <option selected> --- </option>
-                            <option> C </option>
-                            <option> NA </option>
-                            <option> NC </option>
-                        </select>
+                        <input readonly class="controlador-conforme"/>
+
                     </td>
                 </tr>
                 <tr>
@@ -70,9 +79,17 @@
                     <td>
                         As faces do colchão possui dureza diferente:
                         <select class="controlador" name="faces">
-                            <option selected> --- </option>
-                            <option> Sim </option>
-                            <option> Não </option>
+                            <option value="Sim"> Sim </option>
+                            <option value="Não"> Não </option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Quantidade De face:
+                        <select class="controlador" name="qtd_face">
+                            <option value="1"> 1 </option>
+                            <option value="2"> 2 </option>
                         </select>
                     </td>
                 </tr>
@@ -112,6 +129,7 @@
                 </tr>
                 <tr>
                     <td>
+                      
                         <table class="tables table-bordered border-secondary  table-sm">
                             <tr class="fundo-tabela">
                                 <td>1º Face (cm)</td>
@@ -119,16 +137,16 @@
                             </tr>
 
                             <tr>
-                                <td>Espessura inicial: <input class="form-control" type="text" name="esp_face_1" /></td>
-                                <td>Espessura inicial: <input class="form-control" type="text" name="esp_face_2" /></td>
+                                <td>Espessura inicial: <input class="form-control" type="text" name="esp_face_1" readonly/></td>
+                                <td>Espessura inicial: <input class="form-control" type="text" name="esp_face_2" readonly /></td>
                             </tr>
                             <tr>
                                 <td>Medição da deformação:<input class="form-control" type="text" name="med_face_1" /> </td>
                                 <td>Medição da deformação:<input class="form-control" type="text" name="med_face_2" /> </td>
                             </tr>
                             <tr>
-                                <td>Acomodação especificada:<input class="form-control" type="text" name="acom_esp_face_1" /> </td>
-                                <td>Acomodação especificada:<input class="form-control" type="text" name="acom_esp_face_2" /> </td>
+                                <td>Acomodação especificada (%):<input class="form-control" type="text" name="acom_esp_face_1" readonly /> </td>
+                                <td>Acomodação especificada (%):<input class="form-control" type="text" name="acom_esp_face_2" readonly /> </td>
                             </tr>
                             <tr>
                                 <td>Acomodação encontrada:<input class="form-control" readonly /></td>
@@ -174,12 +192,7 @@
                         </b>
                     </td>
                     <td rowspan="12">
-                        <select class="form-control" name="Escolha" style="height:900px; width:70px ; text-align:center">
-                            <option selected> --- </option>
-                            <option> C </option>
-                            <option> NA </option>
-                            <option> NC </option>
-                        </select>
+                        <input readonly class="controlador-conforme" value="@Model.conforme" />
                     </td>
                 </tr>
                 <tr>
@@ -201,6 +214,16 @@
                             <option>@Model.faces</option>
                             <option value="Sim"> Sim </option>
                             <option value="Não"> Não </option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Quantidade De face:
+                        <select class="controlador" name="qtd_face">
+                            <option value="1"> @Model.qtd_face </option>
+                            <option value="1"> 1 </option>
+                            <option value="2"> 2 </option>
                         </select>
                     </td>
                 </tr>
@@ -239,40 +262,68 @@
                     </td>
                 </tr>
                 <tr>
-                    <td>
-                        <table class="tables table-bordered border-secondary  table-sm">
-                            <tr class="fundo-tabela">
-                                <td>1º Face (cm)</td>
-                                <td>2º Face (cm)</td>
-                            </tr>
+                    @if (Model.qtd_face == 2)
+                    {
+                        <td>
+                            <table class="tables table-bordered border-secondary  table-sm">
+                                <tr class="fundo-tabela">
+                                    <td>1º Face (cm)</td>
+                                    <td>2º Face (cm)</td>
+                                </tr>
 
-                            <tr>
-                                <td>Espessura inicial: <input class="form-control" type="text" name="esp_face_1" value="@Model.esp_face_1" /></td>
-                                <td>Espessura inicial: <input class="form-control" type="text" name="esp_face_2" value="@Model.esp_face_2" /></td>
-                            </tr>
-                            <tr>
-                                <td>Medição da deformação:<input class="form-control" type="text" name="med_face_1" value="@Model.med_face_1" /> </td>
-                                <td>Medição da deformação:<input class="form-control" type="text" name="med_face_2" value="@Model.med_face_2" /> </td>
-                            </tr>
-                            <tr>
-                                <td>Acomodação especificada:<input class="form-control" type="text" name="acom_esp_face_1" value="@Model.acom_esp_face_1" /> </td>
-                                <td>Acomodação especificada:<input class="form-control" type="text" name="acom_esp_face_2" value="@Model.acom_esp_face_2" /> </td>
-                            </tr>
-                            <tr>
-                                <td>Acomodação encontrada:<input class="form-control" readonly value="@Model.acom_enc_face_1" /></td>
-                                <td>Acomodação encontrada:<input class="form-control" readonly value="@Model.acom_enc_face_2" /></td>
-                            </tr>
-                        </table>
-                    </td>
+                                <tr>
+                                    <td>Espessura inicial: <input class="form-control" type="text" name="esp_face_1" readonly value="@Model.esp_face_1" /></td>
+                                    <td>Espessura inicial: <input class="form-control" type="text" name="esp_face_2" readonly value="@Model.esp_face_2" /></td>
+                                </tr>
+                                <tr>
+                                    <td>Medição da deformação:<input class="form-control" type="text" name="med_face_1" value="@Model.med_face_1" /> </td>
+                                    <td>Medição da deformação:<input class="form-control" type="text" name="med_face_2" value="@Model.med_face_2" /> </td>
+                                </tr>
+                                <tr>
+                                    <td>Acomodação especificada (%):<input class="form-control" type="text" name="acom_esp_face_1" readonly value="@Model.acom_esp_face_1" /> </td>
+                                    <td>Acomodação especificada (%):<input class="form-control" type="text" name="acom_esp_face_2" readonly value="@Model.acom_esp_face_2" /> </td>
+                                </tr>
+                                <tr>
+                                    <td>Acomodação encontrada:<input class="form-control" readonly value="@Model.acom_enc_face_1" /></td>
+                                    <td>Acomodação encontrada:<input class="form-control" readonly value="@Model.acom_enc_face_2" /></td>
+                                </tr>
+                            </table>
+                        </td>
+                    }
+                    else
+                    {
+                        <td>
+
+                            <table class="tables table-bordered border-secondary  table-sm">
+                                <tr class="fundo-tabela">
+                                    <td>1º Face (cm)</td>
+                                </tr>
+
+                                <tr>
+                                    <td>Espessura inicial: <input class="form-control" type="text" name="esp_face_1" readonly value="@Model.esp_face_1" /></td>
+                                </tr>
+                                <tr>
+                                    <td>Medição da deformação:<input class="form-control" type="text" name="med_face_1" value="@Model.med_face_1" /> </td>
+                                </tr>
+                                <tr>
+                                    <td>Acomodação especificada (%):<input class="form-control" type="text" name="acom_esp_face_1" readonly value="@Model.acom_esp_face_1" /> </td>
+                                </tr>
+                                <tr>
+                                    <td>Acomodação encontrada:<input class="form-control" readonly value="@Model.acom_enc_face_1" /></td>
+                                </tr>
+                            </table>
+                        </td>
+                    }
                 </tr>
             </table>
+            <br />
+            <div class="d-grid gap-2 d-flex justify-content-center">
+                <button type="submit" class="btn btn-success btn btn-primary btn-md">Editar Dados</button>
+            </div>
         }
-
-        <br />
-        <div class="d-grid gap-2 d-flex justify-content-center">
-            <button type="submit" class="btn btn-success btn btn-primary btn-md">Editar Dados</button>
-        </div>
     </form>
+
+
 
 
     @if (TempData.ContainsKey("Mensagem"))
