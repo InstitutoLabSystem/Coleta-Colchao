@@ -286,6 +286,8 @@ namespace Coleta_Colchao.Models
             public float dim_corpo_2 { get; set; }
             public string? trincas { get; set; }
             public string? rompimentos { get; set; }
+            public string? conforme { get; set; }
+            public string? conforme_gramas { get; set; }
             public string? executor { get; set; }
             public string? auxiliar { get; set; }
         }
@@ -311,6 +313,7 @@ namespace Coleta_Colchao.Models
             public float media_det { get; set; }
             public int temp_ens_rolagem { get; set; }
             public float perda_porc { get; set; }
+            public string ?conforme { get; set; }
             public string? executor { get; set; }
             public string? auxiliar { get; set; }
         }
@@ -325,14 +328,14 @@ namespace Coleta_Colchao.Models
             public DateOnly data_term { get; set; }
             public string? rasgo { get; set; }
             public string? quebra { get; set; }
-            public string? contem_tipo_1 { get; set; }
-            public string? contem_tipo_2 { get; set; }
-            public string? contem_tipo_3 { get; set; }
-            public string? contem_tipo_4 { get; set; }
-            public string? contem_tipo_5 { get; set; }
-            public string? contem_tipo_6 { get; set; }
-            public string? contem_tipo_7 { get; set; }
-            public string? contem_tipo_8 { get; set; }
+            public string? contem_bonell { get; set; }
+            public string? contem_mola { get; set; }
+            public string? contem_lkf { get; set; }
+            public string? contem_vericoil { get; set; }
+            public string? contem_fio_continuo_1 { get; set; }
+            public string? contem_fio_continuo_2 { get; set; }
+            public string? contem_offset { get; set; }
+            public string? contem_bonel_2 { get; set; }
             public string? minim_bitola_1 { get; set; }
             public string? minim_bitola_2 { get; set; }
             public float mini_molas_1 { get; set; }
@@ -349,6 +352,7 @@ namespace Coleta_Colchao.Models
             public float resultado_calc { get; set; }
             public string? executador { get; set; }
             public string? auxiliar { get; set; }
+            public string? molejo { get; set; }
         }
 
         public class Ensaio7_3

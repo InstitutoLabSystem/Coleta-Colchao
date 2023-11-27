@@ -193,12 +193,22 @@ namespace Coleta_Colchao.Controllers
             var dados = _context.ensaio_molas_item7_7.Where(x => x.os == os && x.orcamento == orcamento).FirstOrDefault();
             if (dados == null)
             {
+                //pegando o valor que o usuario  colocou no ensaio, para manipular da tela do usuario.
+                var trazerEnsaio = _context.regtro_colchao.Where(x => x.os == os && x.orcamento == orcamento).FirstOrDefault();
+                ViewBag.tipo = trazerEnsaio.nome_molejo_dois;
+                ViewBag.tipo2 = trazerEnsaio.nome_molejo_um;
+
                 ViewBag.os = os;
                 ViewBag.orcamento = orcamento;
                 return View("Molas/EnsaioMolas7_7");
             }
             else
             {
+                //pegando o valor que o usuario  colocou no ensaio, para manipular da tela do usuario.
+                var trazerEnsaio = _context.regtro_colchao.Where(x => x.os == os && x.orcamento == orcamento).FirstOrDefault();
+                ViewBag.tipo = trazerEnsaio.nome_molejo_dois;
+                ViewBag.tipo2 = trazerEnsaio.nome_molejo_um;
+
                 ViewBag.os = os;
                 ViewBag.orcamento = orcamento;
                 return View("Molas/EnsaioMolas7_7", dados);
@@ -645,7 +655,7 @@ namespace Coleta_Colchao.Controllers
                 else
                 {
                     //editando os dados, primeiro criando as variaveis que precisa.
-                  
+
                     editarDados.data_ini = salvarDados.data_ini;
                     editarDados.data_term = salvarDados.data_term;
                     editarDados.temp_ensaio = salvarDados.temp_ensaio;
@@ -687,7 +697,7 @@ namespace Coleta_Colchao.Controllers
                         {
                             editarDados.conforme = "NC";
                         }
-                        
+
                     }
                     else
                     {
@@ -1529,6 +1539,8 @@ namespace Coleta_Colchao.Controllers
                     float dim_corpo_2 = salvarDados.dim_corpo_2;
                     string trincas = salvarDados.trincas;
                     string rompimentos = salvarDados.rompimentos;
+                    string conforme_gramas = string.Empty;
+                    string conforme = string.Empty;
 
                     //realizando calculos.
                     float media_copos = (copos_prov_1 + copos_prov_2 + copos_prov_3 + copos_prov_4 + copos_prov_5 + copos_prov_6 + copos_prov_7 + copos_prov_8 + copos_prov_9 + copos_prov_10) / 10;
@@ -1536,6 +1548,25 @@ namespace Coleta_Colchao.Controllers
                     media_copos = float.Parse(conv_media_copos);
 
                     float gramatura = (media_copos / (area_corpo_1 * area_corpo_2 / 100) * 10000);
+
+                    //verificando conformidade dos ensaios.
+                    if (media_copos >= 100.0f)
+                    {
+                        conforme_gramas = "C";
+                    }
+                    else
+                    {
+                        conforme_gramas = "NC";
+                    }
+
+                    if (trincas == "Não" && rompimentos == "Não")
+                    {
+                        conforme = "C";
+                    }
+                    else
+                    {
+                        conforme = "NC";
+                    }
 
                     var registro = new ColetaModel.Ensaio7_8
                     {
@@ -1562,6 +1593,8 @@ namespace Coleta_Colchao.Controllers
                         dim_corpo_2 = dim_corpo_2,
                         trincas = trincas,
                         rompimentos = rompimentos,
+                        conforme_gramas = conforme_gramas,
+                        conforme = conforme,
                     };
 
                     _context.Add(registro);
@@ -1591,6 +1624,8 @@ namespace Coleta_Colchao.Controllers
                     editarDados.dim_corpo_2 = salvarDados.dim_corpo_2;
                     editarDados.trincas = salvarDados.trincas;
                     editarDados.rompimentos = salvarDados.rompimentos;
+                    string conforme_gramas = string.Empty;
+                    string conforme = string.Empty;
 
                     //realizando contas.
                     float media_copos = (editarDados.copos_prov_1 + editarDados.copos_prov_2 + editarDados.copos_prov_3 + editarDados.copos_prov_4 + editarDados.copos_prov_5 + editarDados.copos_prov_6 + editarDados.copos_prov_7 + editarDados.copos_prov_8 + editarDados.copos_prov_9 + editarDados.copos_prov_10) / 10;
@@ -1599,10 +1634,30 @@ namespace Coleta_Colchao.Controllers
 
                     float gramatura = (media_copos / (editarDados.area_corpo_1 * editarDados.area_corpo_2 / 100) * 10000);
 
+                    //verificando conformidade dos ensaios.
+                    if (media_copos >= 100.0f)
+                    {
+                        editarDados.conforme_gramas = "C";
+                    }
+                    else
+                    {
+                        editarDados.conforme_gramas = "NC";
+                    }
+
+                    if (editarDados.trincas == "Não" && editarDados.rompimentos == "Não")
+                    {
+                        editarDados.conforme = "C";
+                    }
+                    else
+                    {
+                        editarDados.conforme = "NC";
+                    }
+
                     //editando os valores das contas, caso precise.
                     editarDados.copos_media = media_copos;
                     editarDados.gramatura = gramatura;
 
+                    _context.Update(editarDados);
                     await _context.SaveChangesAsync();
                     TempData["Mensagem"] = "Dados Editado Com Sucesso";
                     return RedirectToAction(nameof(EnsaioMolas7_8), "Coleta", new { os, orcamento });
@@ -1636,6 +1691,7 @@ namespace Coleta_Colchao.Controllers
                     float rep_det_2 = salvarDados.rep_det_2;
                     float rep_det_3 = salvarDados.rep_det_3;
                     int temp_ens_rolagem = salvarDados.temp_ens_rolagem;
+                    string conforme = string.Empty;
 
                     //realizando calculos necessarios.
                     float media_3 = (rep_1 + rep_2 + rep_3) / 3;
@@ -1645,6 +1701,16 @@ namespace Coleta_Colchao.Controllers
                     float perda_porcentual = ((((media_det - media_3) / media_3) * 100) * -1);
                     string conv_perda_porcentual = perda_porcentual.ToString("N2");
                     perda_porcentual = float.Parse(conv_perda_porcentual);
+
+                    //verificando se esta conforme ou nao conforme
+                    if (perda_porcentual >= 25)
+                    {
+                        conforme = "NC";
+                    }
+                    else
+                    {
+                        conforme = "C";
+                    }
 
                     var registro = new ColetaModel.Ensaio7_6
                     {
@@ -1665,6 +1731,7 @@ namespace Coleta_Colchao.Controllers
                         media_det = media_det,
                         temp_ens_rolagem = temp_ens_rolagem,
                         perda_porc = perda_porcentual,
+                        conforme = conforme
                     };
 
                     _context.Add(registro);
@@ -1697,10 +1764,21 @@ namespace Coleta_Colchao.Controllers
                     perda_porcentual = float.Parse(conv_perda_porcentual);
                     //realizando calculos necessarios.
 
+                    //verificando se esta conforme ou nao conforme
+                    if (perda_porcentual >= 25)
+                    {
+                        editarDados.conforme = "NC";
+                    }
+                    else
+                    {
+                        editarDados.conforme = "C";
+                    }
+
                     editarDados.media_rep = media_3;
                     editarDados.media_det = media_det;
                     editarDados.perda_porc = perda_porcentual;
 
+                    _context.Update(editarDados);
                     await _context.SaveChangesAsync();
                     TempData["Mensagem"] = "Dados Edita Com Sucesso";
                     return RedirectToAction(nameof(EnsaioMolas7_6), "Coleta", new { os, orcamento });
@@ -1714,7 +1792,7 @@ namespace Coleta_Colchao.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> SalvarEnsaio7_7(string os, string orcamento, [Bind("data_ini,data_term,rasgo,quebra,contem_tipo_1,contem_tipo_2,contem_tipo_3,contem_tipo_4,contem_tipo_5,contem_tipo_6,contem_tipo_7,contem_tipo_8,minim_bitola_1,minim_bitola_2,mini_molas_1,mini_molas_2,mini_molas_3,mini_molas_4,mini_molas_5,mini_molas_6,mini_molas_7,mini_molas_8,calc_molas_1,calc_molas_2,calc_molas_3")] ColetaModel.Ensaio7_7 salvarDados)
+        public async Task<IActionResult> SalvarEnsaio7_7(string os, string orcamento, [Bind("data_ini,data_term,rasgo,quebra,contem_bonell,contem_mola,contem_lkf,contem_vericoil,contem_fio_continuo_1,contem_fio_continuo_2,contem_offset,minim_bitola_1,minim_bitola_2,mini_molas_1,mini_molas_2,mini_molas_3,mini_molas_4,mini_molas_5,mini_molas_6,mini_molas_7,mini_molas_8,calc_molas_1,calc_molas_2,calc_molas_3")] ColetaModel.Ensaio7_7 salvarDados)
         {
             try
             {
@@ -1726,14 +1804,14 @@ namespace Coleta_Colchao.Controllers
                     DateOnly data_term = salvarDados.data_term;
                     string rasgo = salvarDados.rasgo;
                     string quebra = salvarDados.quebra;
-                    string contem_tipo_1 = salvarDados.contem_tipo_1;
-                    string contem_tipo_2 = salvarDados.contem_tipo_2;
-                    string contem_tipo_3 = salvarDados.contem_tipo_3;
-                    string contem_tipo_4 = salvarDados.contem_tipo_4;
-                    string contem_tipo_5 = salvarDados.contem_tipo_5;
-                    string contem_tipo_6 = salvarDados.contem_tipo_6;
-                    string contem_tipo_7 = salvarDados.contem_tipo_7;
-                    string contem_tipo_8 = salvarDados.contem_tipo_8;
+                    string contem_bonell = salvarDados.contem_bonell;
+                    string contem_mola = salvarDados.contem_mola;
+                    string contem_lkf = salvarDados.contem_lkf;
+                    string contem_vericoil = salvarDados.contem_vericoil;
+                    string contem_fio_continuo_1 = salvarDados.contem_fio_continuo_1;
+                    string contem_fio_continuo_2 = salvarDados.contem_fio_continuo_2;
+                    string contem_offset = salvarDados.contem_offset;
+                    //string contem_tipo_8 = salvarDados.contem_tipo_8;
                     string minim_bitola_1 = salvarDados.minim_bitola_1;
                     string minim_bitola_2 = salvarDados.minim_bitola_2;
                     float mini_molas_1 = salvarDados.mini_molas_1;
@@ -1761,14 +1839,14 @@ namespace Coleta_Colchao.Controllers
                         data_term = data_term,
                         rasgo = rasgo,
                         quebra = quebra,
-                        contem_tipo_1 = contem_tipo_1,
-                        contem_tipo_2 = contem_tipo_2,
-                        contem_tipo_3 = contem_tipo_3,
-                        contem_tipo_4 = contem_tipo_4,
-                        contem_tipo_5 = contem_tipo_5,
-                        contem_tipo_6 = contem_tipo_6,
-                        contem_tipo_7 = contem_tipo_7,
-                        contem_tipo_8 = contem_tipo_8,
+                        contem_bonell = contem_bonell,
+                        contem_mola = contem_mola,
+                        contem_lkf = contem_lkf,
+                        contem_vericoil = contem_vericoil,
+                        contem_fio_continuo_1 = contem_fio_continuo_1,
+                        contem_fio_continuo_2 = contem_fio_continuo_2,
+                        contem_offset = contem_offset,
+                        //contem_tipo_8 = contem_tipo_8,
                         minim_bitola_1 = minim_bitola_1,
                         minim_bitola_2 = minim_bitola_2,
                         mini_molas_1 = mini_molas_1,
@@ -1797,14 +1875,13 @@ namespace Coleta_Colchao.Controllers
                     editarDados.data_term = salvarDados.data_term;
                     editarDados.rasgo = salvarDados.rasgo;
                     editarDados.quebra = salvarDados.quebra;
-                    editarDados.contem_tipo_1 = salvarDados.contem_tipo_1;
-                    editarDados.contem_tipo_2 = salvarDados.contem_tipo_2;
-                    editarDados.contem_tipo_3 = salvarDados.contem_tipo_3;
-                    editarDados.contem_tipo_4 = salvarDados.contem_tipo_4;
-                    editarDados.contem_tipo_5 = salvarDados.contem_tipo_5;
-                    editarDados.contem_tipo_6 = salvarDados.contem_tipo_6;
-                    editarDados.contem_tipo_7 = salvarDados.contem_tipo_7;
-                    editarDados.contem_tipo_8 = salvarDados.contem_tipo_8;
+                    editarDados.contem_bonell = salvarDados.contem_bonell;
+                    editarDados.contem_mola = salvarDados.contem_mola;
+                    editarDados.contem_lkf = salvarDados.contem_lkf;
+                    editarDados.contem_vericoil = salvarDados.contem_vericoil;
+                    editarDados.contem_fio_continuo_1 = salvarDados.contem_fio_continuo_1;
+                    editarDados.contem_fio_continuo_2 = salvarDados.contem_fio_continuo_2;
+                    editarDados.contem_offset = salvarDados.contem_offset;
                     editarDados.minim_bitola_1 = salvarDados.minim_bitola_1;
                     editarDados.minim_bitola_2 = salvarDados.minim_bitola_2;
                     editarDados.mini_molas_1 = salvarDados.mini_molas_1;
@@ -2358,80 +2435,80 @@ namespace Coleta_Colchao.Controllers
                     {
                         os = os,
                         orcamento = orcamento,
-                        data_ini =data_ini,
+                        data_ini = data_ini,
                         data_term = data_term,
                         temp_ini = temp_ini,
                         temp_fim = temp_fim,
-                         etiquieta_um = etiquieta_um,
-                         fixacao = fixacao,
-                         material = material,
-                         area_um = area_um,
-                         area_dois = area_dois,
-                         area_result = area_result.ToString(),
-                         etiquieta_dois = etiquieta_dois,
-                         marca = marca,
-                         dimensoes = dimensoes,
-                         info_altura = info_altura,
-                         medidas = medidas,
-                         colchoes = colchoes,
-                         tipo_colchao = tipo_colchao,
-                         letras = letras,
-                         altura_letra_um = altura_letra_um,
-                         negrito_um = negrito_um,
-                         caixa_alta_um = caixa_alta_um,
-                         coloracao_um = coloracao_um,
-                         classificacao = classificacao,
-                         uso = uso,
-                         composicao = composicao,
-                         tipo_espuma = tipo_espuma,
-                         densidade_nominal = densidade_nominal,
-                         espessura_mad = espessura_mad,
-                         comp_revestimento = comp_revestimento,
-                         data_fabricacao = data_fabricacao,
-                         pais_fabricacao = pais_fabricacao,
-                         cuidados = cuidados,
-                         aviso_um = aviso_um,
-                         altura_letra_dois = altura_letra_dois,
-                         negrito_dois = negrito_dois,
-                         caixa_alta_dois = caixa_alta_dois,
-                         coloracao_dois = coloracao_dois,
-                         esclarecimento_um = esclarecimento_um,
-                         altura_letra_tres = altura_letra_tres,
-                         negrito_tres = negrito_tres,
-                         caixa_alta_tres = caixa_alta_tres,
-                         coloracao_eti = coloracao_eti,
-                         esclarecimento_dois = esclarecimento_dois,
-                         altura_letra_quat = altura_letra_quat,
-                         negrito_quat = negrito_quat,
-                         caixa_alta_quat = caixa_alta_quat,
+                        etiquieta_um = etiquieta_um,
+                        fixacao = fixacao,
+                        material = material,
+                        area_um = area_um,
+                        area_dois = area_dois,
+                        area_result = area_result.ToString(),
+                        etiquieta_dois = etiquieta_dois,
+                        marca = marca,
+                        dimensoes = dimensoes,
+                        info_altura = info_altura,
+                        medidas = medidas,
+                        colchoes = colchoes,
+                        tipo_colchao = tipo_colchao,
+                        letras = letras,
+                        altura_letra_um = altura_letra_um,
+                        negrito_um = negrito_um,
+                        caixa_alta_um = caixa_alta_um,
+                        coloracao_um = coloracao_um,
+                        classificacao = classificacao,
+                        uso = uso,
+                        composicao = composicao,
+                        tipo_espuma = tipo_espuma,
+                        densidade_nominal = densidade_nominal,
+                        espessura_mad = espessura_mad,
+                        comp_revestimento = comp_revestimento,
+                        data_fabricacao = data_fabricacao,
+                        pais_fabricacao = pais_fabricacao,
+                        cuidados = cuidados,
+                        aviso_um = aviso_um,
+                        altura_letra_dois = altura_letra_dois,
+                        negrito_dois = negrito_dois,
+                        caixa_alta_dois = caixa_alta_dois,
+                        coloracao_dois = coloracao_dois,
+                        esclarecimento_um = esclarecimento_um,
+                        altura_letra_tres = altura_letra_tres,
+                        negrito_tres = negrito_tres,
+                        caixa_alta_tres = caixa_alta_tres,
+                        coloracao_eti = coloracao_eti,
+                        esclarecimento_dois = esclarecimento_dois,
+                        altura_letra_quat = altura_letra_quat,
+                        negrito_quat = negrito_quat,
+                        caixa_alta_quat = caixa_alta_quat,
                         coloracao_quat = coloracao_quat,
                         colchao_infantil = colchao_infantil,
-                         embalagem_colchao = embalagem_colchao,
-                         aviso_embalagem_um = aviso_embalagem_um,
-                         altura_letra_cinco = altura_letra_cinco,
-                         negrito_cinco = negrito_cinco,
-                         caixa_alta_cinco = caixa_alta_cinco,
-                         coloracao_cinco = coloracao_cinco,
-                         aviso_odor = aviso_odor,
-                         aviso_embalagem_dois = aviso_embalagem_dois,
-                         altura_letra_seis = altura_letra_seis,
-                         negrito_seis = negrito_seis,
-                         caixa_alta_seis = caixa_alta_seis,
-                         coloracao_seis = coloracao_seis,
-                         dec_voluntaria = dec_voluntaria,
-                         texto_negrito = texto_negrito,
-                         identificacao = identificacao,
-                         identificacao_dois = identificacao_dois,
-                         desc_lamina = desc_lamina,
-                         latex = latex,
-                         embalagem_uni = embalagem_uni,
-                         embalagem_protecao = embalagem_protecao,
-                         observacao = observacao,
-                         executador_um = executador_um,
-                         executador_dois = executador_dois,
-                         executador_tres = executador_tres,
-                         executador_quat = executador_quat,
-                };
+                        embalagem_colchao = embalagem_colchao,
+                        aviso_embalagem_um = aviso_embalagem_um,
+                        altura_letra_cinco = altura_letra_cinco,
+                        negrito_cinco = negrito_cinco,
+                        caixa_alta_cinco = caixa_alta_cinco,
+                        coloracao_cinco = coloracao_cinco,
+                        aviso_odor = aviso_odor,
+                        aviso_embalagem_dois = aviso_embalagem_dois,
+                        altura_letra_seis = altura_letra_seis,
+                        negrito_seis = negrito_seis,
+                        caixa_alta_seis = caixa_alta_seis,
+                        coloracao_seis = coloracao_seis,
+                        dec_voluntaria = dec_voluntaria,
+                        texto_negrito = texto_negrito,
+                        identificacao = identificacao,
+                        identificacao_dois = identificacao_dois,
+                        desc_lamina = desc_lamina,
+                        latex = latex,
+                        embalagem_uni = embalagem_uni,
+                        embalagem_protecao = embalagem_protecao,
+                        observacao = observacao,
+                        executador_um = executador_um,
+                        executador_dois = executador_dois,
+                        executador_tres = executador_tres,
+                        executador_quat = executador_quat,
+                    };
 
                     //salvando no banco
                     _context.Add(registro);
@@ -2546,5 +2623,5 @@ namespace Coleta_Colchao.Controllers
 
 
 
-        }
+    }
 }
