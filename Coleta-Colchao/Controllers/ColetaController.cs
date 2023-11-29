@@ -13,6 +13,7 @@ using static Coleta_Colchao.Models.ColetaModel;
 namespace Coleta_Colchao.Controllers
 {
     [Authorize]
+    //[Route("Coleta")]
     public class ColetaController : Controller
     {
         //conexao..
@@ -26,6 +27,7 @@ namespace Coleta_Colchao.Controllers
             _bancoContext = bancoContext;
         }
 
+
         public IActionResult Index(string os, string orcamento)
         {
             ViewBag.os = os;
@@ -33,13 +35,27 @@ namespace Coleta_Colchao.Controllers
             return View();
         }
 
+
+        //[Route("Molas/teste")]
         public IActionResult teste(string os, string orcamento)
         {
-            ViewBag.os = os;
-            ViewBag.orcamento = orcamento;
+            var dados = _context.teste.Where(x => x.os == os && x.orcamento == orcamento).FirstOrDefault();
+            if (dados != null)
+            {
+                ViewBag.os = os;
+                ViewBag.orcamento = orcamento;
+                return View("Molas/teste", dados);
 
-            return View("Molas/teste");
+            }
+            else
+            {
+                ViewBag.os = os;
+                ViewBag.orcamento = orcamento;
+                return View("Molas/teste");
+
+            }
         }
+
         public IActionResult EditarRegistro(string os, string orcamento)
         {
             var dados = _context.regtro_colchao.Where(x => x.os == os && x.orcamento == orcamento).ToList();
@@ -57,6 +73,7 @@ namespace Coleta_Colchao.Controllers
             }
 
         }
+
         public IActionResult EnsaioEspuma4_1(string os, string orcamento)
         {
             var dados = _context.ensaio_espuma4_1.Where(x => x.os == os && x.orcamento == orcamento).FirstOrDefault();
@@ -2203,9 +2220,20 @@ namespace Coleta_Colchao.Controllers
                     string caixa_alta_6_2 = salvarDados.caixa_alta_6_2;
                     string embalagem_unitaria = salvarDados.embalagem_unitaria;
                     string embalagem_garante = salvarDados.embalagem_garante;
+                    string conforme = string.Empty;
 
                     // realizando calculo necessario.
                     float calc_media = area_etiqueta_1 * area_etiqueta_2;
+
+                    //VERIFICANDO SE COLETA ESTA CONFORME OU NC
+                    if (etiqueta_ident == "Não" || revest_permanente == "Não" || etiqueta_duravel_indele == "Não" || face_superior == "Não" || visualizacao == "Não" || lingua_portuguesa == "Não" || lingua_portuguesa == "Não" || cnpj_cpf == "Não" || marca_modelo == "Não" || dimensoes_prod == "Não" || informada_altura == "Não" || composicoes == "Não" || contem_borda == "Não" || densidade_espuma == "Não" || composi_revestimento == "Não" || data_fabricacao == "Não" || ident_lote == "Não" || pais_origem == "Não" || codigo_barras == "Não" || cuidado_minimos == "Não" || cuidado_minimos == "Não" || aviso_esclarecimento == "Não" || possui_mais_laminas == "Não" || contem_advertencia == "Não" || altura_letra == "Não" || negrito == "Não" || caixa_alta == "Não" || contem_advertencia_mat == "Não" || altura_letra_mat == "Não" || negrito_mat == "Não" || caixa_alta_mat == "Não" || contem_instru_uso == "Não" || orientacoes == "Não" || alerta_consumidor == "Não" || desenho_esquematico == "Não" || contem_advertencia_6_2 == "Não" || altura_letra_6_2 == "Não" || negrito6_2 == "Não" || caixa_alta_6_2 == "Não" || embalagem_garante == "Não" || embalagem_unitaria == "Não")
+                    {
+                        conforme = "NC";
+                    }
+                    else
+                    {
+                        conforme = "C";
+                    }
 
                     var registro = new ColetaModel.EnsaioIdentificacaoEmbalagem
                     {
@@ -2256,6 +2284,7 @@ namespace Coleta_Colchao.Controllers
                         caixa_alta_6_2 = caixa_alta_6_2,
                         embalagem_unitaria = embalagem_unitaria,
                         embalagem_garante = embalagem_garante,
+                        conforme = conforme,
                     };
 
                     //salvando no banco
@@ -2314,6 +2343,15 @@ namespace Coleta_Colchao.Controllers
 
                     //realizando contas necessarias.
                     float calc_media = editarDados.area_etiqueta_1 * editarDados.area_etiqueta_2;
+
+                    if (editarDados.etiqueta_ident == "Não" || editarDados.revest_permanente == "Não" || editarDados.etiqueta_duravel_indele == "Não" || editarDados.face_superior == "Não" || editarDados.visualizacao == "Não" || editarDados.lingua_portuguesa == "Não" || editarDados.lingua_portuguesa == "Não" || editarDados.cnpj_cpf == "Não" || editarDados.marca_modelo == "Não" || editarDados.dimensoes_prod == "Não" || editarDados.informada_altura == "Não" || editarDados.composicoes == "Não" || editarDados.contem_borda == "Não" || editarDados.densidade_espuma == "Não" || editarDados.composi_revestimento == "Não" || editarDados.data_fabricacao == "Não" || editarDados.ident_lote == "Não" || editarDados.pais_origem == "Não" || editarDados.codigo_barras == "Não" || editarDados.cuidado_minimos == "Não" || editarDados.cuidado_minimos == "Não" || editarDados.aviso_esclarecimento == "Não" || editarDados.possui_mais_laminas == "Não" || editarDados.contem_advertencia == "Não" || editarDados.altura_letra == "Não" || editarDados.negrito == "Não" || editarDados.caixa_alta == "Não" || editarDados.contem_advertencia_mat == "Não" || editarDados.altura_letra_mat == "Não" || editarDados.negrito_mat == "Não" || editarDados.caixa_alta_mat == "Não" || editarDados.contem_instru_uso == "Não" || editarDados.orientacoes == "Não" || editarDados.alerta_consumidor == "Não" || editarDados.desenho_esquematico == "Não" || editarDados.contem_advertencia_6_2 == "Não" || editarDados.altura_letra_6_2 == "Não" || editarDados.negrito6_2 == "Não" || editarDados.caixa_alta_6_2 == "Não" || editarDados.embalagem_garante == "Não" || editarDados.embalagem_unitaria == "Não")
+                    {
+                        editarDados.conforme = "NC";
+                    }
+                    else
+                    {
+                        editarDados.conforme = "C";
+                    }
 
                     //recebendo valor depois do calculo.
                     editarDados.area_etiqueta_media = calc_media;
@@ -2607,20 +2645,26 @@ namespace Coleta_Colchao.Controllers
             }
         }
 
-        [Route("Molas/Teste")]
-        [HttpPost]
-        public async Task<IActionResult> resultado(string os, string orcamento, ColetaModel.Teste teste)
-        {
+        //[Route("Molas/teste")]
+        //[HttpPost]
+        //public async Task<IActionResult> resultado(string os, string orcamento, ColetaModel.Teste testee)
+        //{
 
-            if (ModelState.IsValid)
-            {
-                string nome = teste.nome;
-                string senha = teste.senha;
-                _context.Add(teste);
-                await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(teste), "Coleta", new { os, orcamento });
-            }
-            return View("Molas/teste");
-        }
+        //    if (ModelState.IsValid)
+        //    {
+        //        string nome = testee.nome;
+        //        string senha = testee.senha;
+        //        _context.Add(testee);
+        //        await _context.SaveChangesAsync();
+        //        TempData["Mensagem"] = "Dados Salvo Com Sucesso";
+        //        //return View("Molas/teste");
+        //        return RedirectToAction("teste", new { os, orcamento });
+
+
+
+        //    }
+        //    TempData["Mensagem"] = "Erros ao Salvar";
+        //    return RedirectToAction("teste", new {os,orcamento});
+        //}
     }
 }

@@ -28,6 +28,8 @@ namespace Coleta_Colchao.Controllers
             await HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
             return RedirectToAction("Login", "Acess");
         }
+
+        [Route("Home")]
         public IActionResult Index(string os, string orcamento)
         {
 
@@ -71,6 +73,8 @@ namespace Coleta_Colchao.Controllers
         }
 
 
+
+        [Route("Home/Index")]
         public async Task<IActionResult> BuscarOrcamento(string os)
         {
             try

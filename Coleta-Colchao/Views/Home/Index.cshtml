@@ -165,7 +165,7 @@
                                 @if (Model[i].codigo == "EMBCCH001000001")
                                 {
                                     <td>
-                                        <a role="button" target="_blank" class="btn btn-success" asp-controller="Coleta" asp-action="IdentificacaoEmbalagem" asp-route-os="@Model[i].OS" asp-route-orcamento="@Model[i].orcamento">Abrir</a>
+                                        <a role="button" target="_blank" class="btn btn-success" asp-controller="Coleta" asp-action="IdentificacaoEmbalagemMolas" asp-route-os="@Model[i].OS" asp-route-orcamento="@Model[i].orcamento">Abrir</a>
                                     </td>
                                 }
                                 @if (Model[i].codigo == "DURCCH000000001")
@@ -178,6 +178,9 @@
                                     <a role="button" target="_blank" class="btn btn-success" asp-controller="Coleta" asp-action="EditarRegistro" asp-route-os="@ViewBag.os" asp-route-orcamento="@ViewBag.orcamento">Informações</a>
                                 </td>
                             </tr>
+                            @* <td>
+                                <a role="button" target="_blank" class="btn btn-success" asp-controller="Coleta" asp-action="teste" asp-route-os="@ViewBag.os" asp-route-orcamento="@ViewBag.orcamento">teste</a>
+                            </td> *@
                         }
                     </table>
                 </div>

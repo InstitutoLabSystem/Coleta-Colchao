@@ -4,6 +4,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Drawing;
 using System.Reflection.Metadata;
 
+
 namespace Coleta_Colchao.Models
 {
     public class ColetaModel
@@ -424,6 +425,7 @@ namespace Coleta_Colchao.Models
             public string? caixa_alta_6_2 { get; set; }
             public string? embalagem_unitaria { get; set; }
             public string? embalagem_garante { get; set; }
+            public string? conforme { get; set; }
             public string? executador { get; set; }
             public string? auxiliar { get; set; }
         }
@@ -571,7 +573,8 @@ namespace Coleta_Colchao.Models
 
             [Required(ErrorMessage = "Nome obrigatorio")]
             public string nome { get; set; }
-            [Required(ErrorMessage = "senha obrigatorio")]
+
+            [Required(ErrorMessage = "Senha Obrigatoria")]
             public string senha { get; set; }
             public string os { get; set; }
             public string orcamento { get; set; }

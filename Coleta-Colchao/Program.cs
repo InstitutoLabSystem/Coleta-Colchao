@@ -1,5 +1,6 @@
 using Coleta_Colchao.Data;
 using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.AspNetCore.Routing.Patterns;
 using Microsoft.EntityFrameworkCore;
 using System.Globalization;
 
@@ -65,7 +66,7 @@ namespace Coleta_Colchao
             app.MapControllerRoute(
                 name: "default",
                 pattern: "{controller=Acess}/{action=Login}/{id?}");
-
+  
             app.Run();
         }
     }
