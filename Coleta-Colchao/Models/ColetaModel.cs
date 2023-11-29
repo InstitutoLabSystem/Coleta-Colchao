@@ -313,7 +313,7 @@ namespace Coleta_Colchao.Models
             public float media_det { get; set; }
             public int temp_ens_rolagem { get; set; }
             public float perda_porc { get; set; }
-            public string ?conforme { get; set; }
+            public string? conforme { get; set; }
             public string? executor { get; set; }
             public string? auxiliar { get; set; }
         }
@@ -352,7 +352,7 @@ namespace Coleta_Colchao.Models
             public float resultado_calc { get; set; }
             public string? executador { get; set; }
             public string? auxiliar { get; set; }
-            public string? molejo { get; set; }
+
         }
 
         public class Ensaio7_3
@@ -365,10 +365,6 @@ namespace Coleta_Colchao.Models
             public DateOnly data_term { get; set; }
             public float bordas { get; set; }
             public string faces_utilizadas { get; set; }
-            public int velocidade_face_1 { get; set; }
-            public int quant_face_1 { get; set; }
-            public int velocidade_face_2 { get; set; }
-            public int quant_face_2 { get; set; }
             public string? rasgo { get; set; }
             public string? quebra { get; set; }
             public string? executador { get; set; }
@@ -501,7 +497,7 @@ namespace Coleta_Colchao.Models
             public string material { get; set; }
             public string area_um { get; set; }
             public string area_dois { get; set; }
-            public string area_result { get;set; }
+            public string area_result { get; set; }
             public string etiquieta_dois { get; set; }
             public string marca { get; set; }
             public string dimensoes { get; set; }
@@ -514,10 +510,10 @@ namespace Coleta_Colchao.Models
             public string negrito_um { get; set; }
             public string caixa_alta_um { get; set; }
             public string coloracao_um { get; set; }
-            public string classificacao {  get; set; }
-            public string uso { get; set;}
+            public string classificacao { get; set; }
+            public string uso { get; set; }
             public string composicao { get; set; }
-            public string tipo_espuma{ get; set; }
+            public string tipo_espuma { get; set; }
             public string densidade_nominal { get; set; }
             public string espessura_mad { get; set; }
             public string comp_revestimento { get; set; }
@@ -568,31 +564,18 @@ namespace Coleta_Colchao.Models
 
         }
 
+        public class Teste
+        {
+            [Key]
+            public int Id { get; set; }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+            [Required(ErrorMessage = "Nome obrigatorio")]
+            public string nome { get; set; }
+            [Required(ErrorMessage = "senha obrigatorio")]
+            public string senha { get; set; }
+            public string os { get; set; }
+            public string orcamento { get; set; }
+        }
     }
 
 }

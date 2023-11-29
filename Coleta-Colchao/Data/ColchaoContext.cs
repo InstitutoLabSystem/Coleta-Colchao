@@ -21,5 +21,7 @@ namespace Coleta_Colchao.Data
         public DbSet<ColetaModel.Espuma4_3> ensaio_espuma4_3 { get; set; }
         public DbSet<ColetaModel.Espuma_identificacao_embalagem> espuma_identificacao_embalagem { get; set; }
         public DbSet<ColetaModel.EnsaioIdentificacaoEmbalagem> ensaio_identificacao_embalagem { get; set; }
+        public DbSet<ColetaModel.Teste> teste{ get; set; }
+
     }
 }

@@ -1,0 +1,40 @@
+﻿@model ColetaModel.Teste;
+@{
+    Layout = null;
+}
+@{
+    ViewData["Title"] = "ENSAIO DE ROLAGEM";
+}
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="~/css/coleta.css" asp-append-version="true" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        input {
+            text-align: center;
+        }
+    </style>
+
+</head>
+<body>
+    <form method="post" asp-controller="Coleta" asp-action="resultado" asp-route-os="@ViewBag.os" asp-route-orcamento="@ViewBag.orcamento">
+        <div class="form-group">
+            <label for="Nome">Nome</label>
+            <input type="text" class="form-control" id="NOME" aria-describedby="emailHelp" placeholder="Nome" asp-for="nome">
+            <small id="nome" class="form-text text-muted">nome</small>
+            <span asp-validation-for="nome"></span>
+        </div>
+        <div class="form-group">
+            <label for="senha">Nome</label>
+            <input type="text" class="form-control" id="NOME" aria-describedby="emailHelp" placeholder="Senha" asp-for="senha">
+            <small id="senha" class="form-text text-muted">senha</small>
+            <span asp-validation-for="senha"></span>
+        </div>
+        <button type="submit" class="btn btn-primary">Enviar dados</button>
+    </form>
+
+</body>
+</html>

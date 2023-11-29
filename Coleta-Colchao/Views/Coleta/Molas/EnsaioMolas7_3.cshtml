@@ -13,8 +13,8 @@
     <link rel="stylesheet" href="~/css/coleta.css" asp-append-version="true" />
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <style>
-        input{
-            text-align:center;
+        input {
+            text-align: center;
         }
     </style>
 
@@ -50,14 +50,7 @@
                     <td class="fundo-tabela">
                         <b> Ensaio de Rolagem</b>
                     </td>
-                    <td rowspan="12">
-                        <select class="form-control" name="Escolha" style="height:700px">
-                            <option selected> --- </option>
-                            <option> C </option>
-                            <option> NA </option>
-                            <option> NC </option>
-                        </select>
-                    </td>
+
                 </tr>
                 <tr>
                     <td>Posicionar o colchão no equipamento de Rolagem, de forma a não permitir o movimento horizontal durante o ensaio.</td>
@@ -66,7 +59,7 @@
                     <td>Após posicionado o colchão ajustar o equipamento de modo que o percurso do rolo chegue até 10 cm das bordas. </td>
                 </tr>
                 <tr>
-                    <td>Distância das bordas(cm): <input class="controlador" type="text" name="bordas"/>  </td>
+                    <td>Distância das bordas(cm): <input class="controlador" type="text" name="bordas" />  </td>
                 </tr>
                 <tr>
                     <td> Logo após, submeter o colchão a 50000 ciclos a uma frequência de (47 ± 5) m/min. </td>
@@ -77,25 +70,25 @@
                 <tr>
                     <td>
                         Quantidade De faces utilizadas:
-                        <select name="faces_utilizadas" class="controlador">
-                            <option selected>1</option>
-                            <option>2</option>
+                        <select name="faces_utilizadas" class="controlador" id="faces_utilizadas" onchange="Mudar()">
+                            <option value="1" selected>1</option>
+                            <option value="2">2</option>
                         </select>
                     </td>
                 </tr>
-                <tr>
+                <tr id="1_face">
                     <td>
                         1º Face:
-                        Velocidade do ciclos (Minutos) : <input class="controlador" style="width:100px; display:flex;"  type="text" name="velocidade_face_1" />
-                        Quantidade de ciclos : <input class="controlador" style="width:100px; display:flex;" type="text" name="quant_face_1" />
+                        Velocidade do ciclos (Minutos) : <input class="controlador" style="width:200px; type="text" name="velocidade_face_1" value="47" disabled/>
+                        Quantidade de ciclos : <input class="controlador" style="width:200px; type="text" name="quant_face_1" id="quant_face_1" disabled />
 
                     </td>
                 </tr>
-                <tr>
+                <tr id="2_face">
                     <td>
                         2º Face:
-                        Velocidade do ciclos : <input class="controlador" style="width:200px;" type="text" name="velocidade_face_2" />
-                        Quantidade de ciclos : <input class="controlador" style="width:200px;" type="text" name="quant_face_2" />
+                        Velocidade do ciclos : <input class="controlador" style="width:200px;" type="text" name="velocidade_face_2" value="47" disabled />
+                        Quantidade de ciclos : <input class="controlador" style="width:200px;" type="text" name="quant_face_2" id="quant_face_2" disabled />
                     </td>
                 </tr>
                 <tr>
@@ -156,14 +149,7 @@
                     <td class="fundo-tabela">
                         <b> Ensaio de Rolagem</b>
                     </td>
-                    <td rowspan="12">
-                        <select class="form-control" name="Escolha" style="height:700px">
-                            <option selected> --- </option>
-                            <option> C </option>
-                            <option> NA </option>
-                            <option> NC </option>
-                        </select>
-                    </td>
+                    
                 </tr>
                 <tr>
                     <td>Posicionar o colchão no equipamento de Rolagem, de forma a não permitir o movimento horizontal durante o ensaio.</td>
@@ -185,26 +171,40 @@
                         Quantidade De faces utilizadas:
                         <select name="faces_utilizadas" class="controlador">
                             <option selected>@Model.faces_utilizadas</option>
-                            <option >1</option>
+                            <option>1</option>
                             <option>2</option>
                         </select>
                     </td>
                 </tr>
-                <tr>
-                    <td>
-                        1º Face:
-                        Velocidade do ciclos (Minutos) : <input class="controlador" style="width:200px;" type="text" name="velocidade_face_1" value="@Model.velocidade_face_1" />
-                        Quantidade de ciclos : <input class="controlador" style="width:200px;" type="text" name="quant_face_1" value="@Model.quant_face_1" />
+                @if(Model.faces_utilizadas == "1")
+                {
+                    <tr id="1_face">
+                        <td>
+                            1º Face:
+                            Velocidade do ciclos (Minutos) : <input class="controlador" style="width:200px; type="text" name="velocidade_face_1" value="47" disabled />
+                            Quantidade de ciclos : <input class="controlador" style="width:200px; type="text" name="quant_face_1" id="quant_face_1" disabled value="50000"/>
 
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        2º Face:
-                        Velocidade do ciclos : <input class="controlador" style="width:200px;" type="text" name="velocidade_face_2" value="@Model.velocidade_face_2" />
-                        Quantidade de ciclos : <input class="controlador" style="width:200px;" type="text" name="quant_face_2" value="@Model.quant_face_2 " />
-                    </td>
-                </tr>
+                        </td>
+                    </tr>
+                }
+                else
+                {
+                    <tr id="1_face">
+                        <td>
+                            1º Face:
+                            Velocidade do ciclos (Minutos) : <input class="controlador" style="width:200px; type="text"  value="47" disabled />
+                            Quantidade de ciclos : <input class="controlador" style="width:200px; type="text"  id="quant_face_1" disabled value="25000"/>
+
+                        </td>
+                    </tr>
+                    <tr id="2_face">
+                        <td>
+                            2º Face:
+                            Velocidade do ciclos : <input class="controlador" style="width:200px;" type="text"  value="47" disabled />
+                            Quantidade de ciclos : <input class="controlador" style="width:200px;" type="text"  id="quant_face_2" disabled value="25000" />
+                        </td>
+                    </tr>
+                }
                 <tr>
                     <td>
                         Houve rasgos ou engarçamentos no revestimento?:
@@ -243,5 +243,33 @@
             alert('@Html.Raw(TempData["Mensagem"])');
         </script>
     }
+    <script>
+
+
+        function Mudar() {
+            var selectElement = document.getElementById('faces_utilizadas');
+            var face1Element = document.getElementById('1_face');
+            var face2Element = document.getElementById('2_face');
+            var quantFace1Element = document.getElementById('quant_face_1');
+            var quantFace2Element = document.getElementById('quant_face_2');
+
+
+            if (selectElement.value === '1') {
+                face1Element.style.display = 'table-row';
+                face2Element.style.display = 'none';
+                quantFace1Element.value = '50000';
+                quantFace2Element.value = '';
+
+
+            } else if (selectElement.value === '2') {
+                face1Element.style.display = 'table-row';
+                face2Element.style.display = 'table-row';
+                quantFace1Element.value = '25000';
+                quantFace2Element.value = '25000';
+            }
+        }
+
+    </script>
+
 </body>
 </html>
