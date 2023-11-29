@@ -1044,7 +1044,7 @@ namespace Coleta_Colchao.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> SalvarEspumaUm(string os, string orcamento, string comprimento_result, string largura_result, string altura_result, [Bind("data_ini,data_term,temp_ini,temp_fim,dimensao_temp,comprimento_result,comprimento_um,comprimento_esp,comprimento_dois," +
+        public async Task<IActionResult> SalvarEspumaUm(string os, string orcamento, string comprimento_result, string largura_result, string altura_result, string lamina_resul_um, string lamina_resul_dois, string lamina_resul_tres, string lamina_resul_quat, string lamina_resul_cinco, [Bind("data_ini,data_term,temp_ini,temp_fim,dimensao_temp,comprimento_result,comprimento_um,comprimento_esp,comprimento_dois," +
           "comprimento_tres,comprimento_media,largura_result,largura_um,largura_esp,largura_dois,largura_tres,largura_media,altura_result,altura_um,altura_esp,altura_dois,altura_tres,altura_media,lamina_um,lamina_comp_um," +
           "lamina_esp_um,lamina_comp_dois,lamina_comp_tres,lamina_media_um,lamina_tipo_um,lamina_min_um,lamina_max_um,lamina_resul_um,lamina_dois,lamina_comp_quat,lamina_esp_dois, lamina_comp_cinco,lamina_comp_seis,lamina_media_dois,lamina_tipo_dois," +
           "lamina_min_dois,lamina_max_dois,lamina_resul_dois,lamina_tres,lamina_comp_sete,lamina_esp_tres,lamina_comp_oito,lamina_comp_nove,lamina_media_tres,lamina_tipo_tres,lamina_min_tres,lamina_max_tres,lamina_resul_tres,lamina_quat,lamina_comp_dez,lamina_esp_quat," +
@@ -1146,9 +1146,32 @@ namespace Coleta_Colchao.Controllers
                     var lamina_tipo_um = salvar.lamina_tipo_um;
                     var lamina_min_um = salvar.lamina_min_um;
                     var lamina_max_um = salvar.lamina_max_um;
-                    var lamina_resul_um = salvar.lamina_resul_um;
+                    double lamina_minUm = double.Parse(lamina_min_um);
 
-             
+                    if (lamina_max_um != "---")
+                    {
+                        double lamina_maxUm = double.Parse(lamina_max_um);
+
+                        if ((lamina_media_um >= lamina_minUm) && (lamina_media_um <= lamina_maxUm))
+                        {
+                            lamina_resul_um = "C";
+                        }
+                        else
+                        {
+                            lamina_resul_um = "NC";
+                        }
+                    }
+                    else
+                    {
+                        if (lamina_media_um > lamina_minUm)
+                        {
+                            lamina_resul_um = "C";
+                        }
+                        else
+                        {
+                            lamina_resul_um = "NC";
+                        }
+                    }
 
                     var lamina_dois = salvar.lamina_dois;
                     var lamina_comp_quat = salvar.lamina_comp_quat;
@@ -1160,11 +1183,39 @@ namespace Coleta_Colchao.Controllers
                     double laminacompcinco = double.Parse(lamina_comp_cinco);
                     double laminacompseis = double.Parse(lamina_comp_seis);
                     var lamina_media_dois = ((laminacompquat + laminacompcinco + laminacompseis) / 3);
-
                     var lamina_tipo_dois = salvar.lamina_tipo_dois;
                     var lamina_min_dois = salvar.lamina_min_dois;
                     var lamina_max_dois = salvar.lamina_max_dois;
-                    var lamina_resul_dois = salvar.lamina_resul_dois;
+
+                    double lamina_minDois = double.Parse(lamina_min_dois);
+
+
+                    if (lamina_max_dois != "---")
+                    {
+                        double lamina_maxDois = double.Parse(lamina_max_dois);
+
+                        if ((lamina_media_dois >= lamina_minDois) && (lamina_media_dois <= lamina_maxDois))
+                        {
+                            lamina_resul_dois = "C";
+                        }
+                        else
+                        {
+                            lamina_resul_dois = "NC";
+                        }
+                    }
+                    else
+                    {
+                        if (lamina_media_dois > lamina_minDois)
+                        {
+                            lamina_resul_dois = "C";
+                        }
+                        else
+                        {
+                            lamina_resul_dois = "NC";
+                        }
+                    }
+
+
                     var lamina_tres = salvar.lamina_tres;
                     var lamina_comp_sete = salvar.lamina_comp_sete;
                     var lamina_esp_tres = salvar.lamina_esp_tres;
@@ -1175,11 +1226,40 @@ namespace Coleta_Colchao.Controllers
                     double laminacompoito = double.Parse(lamina_comp_oito);
                     double laminacompnove = double.Parse(lamina_comp_nove);
                     var lamina_media_tres = ((laminacompsete + laminacompoito + laminacompnove) / 3);
-
                     var lamina_tipo_tres = salvar.lamina_tipo_tres;
                     var lamina_min_tres = salvar.lamina_min_tres;
                     var lamina_max_tres = salvar.lamina_max_tres;
-                    var lamina_resul_tres = salvar.lamina_resul_tres;
+
+                    double lamina_minTres = double.Parse(lamina_min_tres);
+
+
+                    if (lamina_max_tres != "---")
+                    {
+                        double lamina_maxTres = double.Parse(lamina_max_tres);
+
+                        if ((lamina_media_tres >= lamina_minTres) && (lamina_media_tres <= lamina_maxTres))
+                        {
+                            lamina_resul_tres = "C";
+                        }
+                        else
+                        {
+                            lamina_resul_tres = "NC";
+                        }
+                    }
+                    else
+                    {
+                        if (lamina_media_tres > lamina_minTres)
+                        {
+                            lamina_resul_tres = "C";
+                        }
+                        else
+                        {
+                            lamina_resul_tres = "NC";
+                        }
+                    }
+
+
+
                     var lamina_quat = salvar.lamina_quat;
                     var lamina_comp_dez = salvar.lamina_comp_dez;
                     var lamina_esp_quat = salvar.lamina_esp_quat;
@@ -1191,11 +1271,37 @@ namespace Coleta_Colchao.Controllers
                     double laminacomponze = double.Parse(lamina_comp_onze);
                     double laminacompdoze = double.Parse(lamina_comp_doze);
                     var lamina_media_quat = ((laminacompdez + laminacomponze + laminacompdoze) / 3);
-
                     var lamina_tipo_quat = salvar.lamina_tipo_quat;
                     var lamina_min_quat = salvar.lamina_min_quat;
                     var lamina_max_quat = salvar.lamina_max_quat;
-                    var lamina_resul_quat = salvar.lamina_resul_quat;
+
+                    double lamina_minQuat = double.Parse(lamina_min_quat);
+                    if (lamina_max_quat != "---")
+                    {
+                        double lamina_maxQuat = double.Parse(lamina_max_quat);
+
+                            if ((lamina_media_quat >= lamina_minQuat) && (lamina_media_quat <= lamina_maxQuat))
+                            {
+                                lamina_resul_quat = "C";
+                            }
+                            else
+                            {
+                                lamina_resul_quat = "NC";
+                            }
+                    }
+                    else
+                    {
+                        if (lamina_media_quat > lamina_minQuat)
+                        {
+                            lamina_resul_quat = "C";
+                        }
+                        else
+                        {
+                            lamina_resul_quat = "NC";
+                        }
+                    }
+
+
                     var lamina_cinco = salvar.lamina_cinco;
                     var lamina_comp_treze = salvar.lamina_comp_treze;
                     var lamina_esp_cinco = salvar.lamina_esp_cinco;
@@ -1207,11 +1313,38 @@ namespace Coleta_Colchao.Controllers
                     double laminacompquatorze = double.Parse(lamina_comp_quatorze);
                     double laminacompquinze = double.Parse(lamina_comp_quinze);
                     var lamina_media_cinco = ((laminacomptreze + laminacompquatorze + laminacompquinze) / 3);
-
                     var lamina_tipo_cinco = salvar.lamina_tipo_cinco;
                     var lamina_min_cinco = salvar.lamina_min_cinco;
                     var lamina_max_cinco = salvar.lamina_max_cinco;
-                    var lamina_resul_cinco = salvar.lamina_resul_cinco;
+
+                    double lamina_minCinco = double.Parse(lamina_min_cinco);
+
+                    if (lamina_max_cinco != "---")
+                    {
+                        double lamina_maxCinco = double.Parse(lamina_max_cinco);
+
+                        if ((lamina_media_cinco >= lamina_minCinco) && (lamina_media_cinco <= lamina_maxCinco))
+                        {
+                            lamina_resul_cinco = "C";
+                        }
+                        else
+                        {
+                            lamina_resul_cinco = "NC";
+                        }
+                    }
+                    else
+                    {
+                        if (lamina_media_cinco > lamina_minCinco)
+                        {
+                            lamina_resul_cinco = "C";
+                        }
+                        else
+                        {
+                            lamina_resul_cinco = "NC";
+                        }
+                    }
+
+
                     var esp_tipo_um = salvar.esp_tipo_um;
                     var esp_lamina_um = salvar.esp_lamina_um;
 

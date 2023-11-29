@@ -220,7 +220,10 @@
             <td class="fundo-tabela">
                 <b>Espessura da lâmina de espuma do colchão ou colchonete Espessura da lâmina de espuma do colchão ou colchonete</b> <br /><br />
             </td>
-            <td rowspan="12" > NA </td>
+                    <td rowspan="12">
+                        <input class="form-control" type="text" name="" readonly style="height:100%; width:200px" />
+                    </td>
+                         
         </tr>
         <tr>
             <td> Retirar o revestimento do colchão ou colchonete e estender as lâminas de espuma sobre uma superfície
@@ -231,17 +234,17 @@
                 <table class="tables table-bordered border-secondary  table-sm">
                     <tr>
                         <td colspan="3">
-                            <select class="form-control"  name="lamina_um">
-                                <option selected> --- </option>
-                                <option> Colchonete </option>
-                                <option> Colchão infantil </option>
-                                <option> Colchão geral </option>
-                                <option> Colchão auxiliar </option>
-                                <option> Colchão box conjugado </option>
-                                <option> Colchão misto </option>
-                                <option> Composto </option>
-                            </select> 
-                        </td>
+                                    <select class="form-control" name="lamina_um" id="lamina_um" onchange="updateTipoLamina()">
+                                        <option selected> --- </option>
+                                        <option> Colchonete </option>
+                                        <option> Colchão infantil </option>
+                                        <option> Colchão geral </option>
+                                        <option> Colchão auxiliar </option>
+                                        <option> Colchão box conjugado </option>
+                                        <option> Colchão misto </option>
+                                        <option> Composto </option>
+                                    </select>
+                                </td>
                     </tr>
                     <tr>
                         <td class="fundo-tabela">Pontos de medição</td>
@@ -280,26 +283,21 @@
                     </tr>
                     <tr>
                         <td>
-                            <select class="form-control" name="lamina_tipo_um" >
-                                <option selected> --- </option>
-                                <option> Colchonete </option>
-                                <option> Colchão infantil </option>
-                                <option> Colchão geral </option>
-                                <option> Colchão auxiliar </option>
-                                <option> Colchão box conjugado </option>
-                                <option> Colchão misto </option>
-                                <option> Composto </option>
-                            </select> 
-                        </td>
-                        <td><input class="form-control" type="text" name="lamina_min_um"/></td>
-                        <td><input class="form-control" type="text" name="lamina_max_um" /></td>
+                                    <select class="form-control" name="lamina_tipo_um" id="lamina_tipo_um">
+                                        <option selected> --- </option>
+                                        <option> Colchonete </option>
+                                        <option> Colchão infantil </option>
+                                        <option> Colchão geral </option>
+                                        <option> Colchão auxiliar </option>
+                                        <option> Colchão box conjugado </option>
+                                        <option> Colchão misto </option>
+                                        <option> Composto </option>
+                                    </select>
+                                </td>
+                                <td><input class="form-control" type="text" name="lamina_min_um" id="lamina_min_um" readonly /></td>
+                                <td><input class="form-control" type="text" name="lamina_max_um" id="lamina_max_um" readonly /></td>
                         <td>
-                            <select class="form-control" name="lamina_resul_um" >
-                                <option selected> --- </option>
-                                <option> C </option>
-                                <option> NA </option>
-                                <option> NC </option>
-                            </select> 
+                                    <input class="form-control" type="text" name="lamina_resul_um" readonly />
                         </td>
                     </tr>
                  </table>
@@ -311,7 +309,7 @@
             <table class="tables table-bordered border-secondary  table-sm">
                 <tr>
                     <td colspan="3">
-                            <select class="form-control"  name="lamina_dois">
+                               <select class="form-control" name="lamina_dois" id="lamina_dois" onchange="updateTipoLamina2()">
                                 <option selected> --- </option>
                                 <option> Colchonete </option>
                                 <option> Colchão infantil </option>
@@ -360,7 +358,7 @@
                 </tr>
                 <tr>
                     <td>
-                            <select class="form-control" name="lamina_tipo_dois" >
+                            <select class="form-control" name="lamina_tipo_dois" id="lamina_tipo_dois">
                                 <option selected> --- </option>
                                 <option> Colchonete </option>
                                 <option> Colchão infantil </option>
@@ -371,15 +369,10 @@
                                 <option> Composto </option>
                             </select>
                         </td>
-                    <td><input class="form-control" type="text" name="lamina_min_dois" /></td>
-                    <td><input class="form-control" type="text" name="lamina_max_dois"/></td>
+                                <td><input class="form-control" type="text" name="lamina_min_dois" id="lamina_min_dois" readonly /></td>
+                                <td><input class="form-control" type="text" name="lamina_max_dois" id="lamina_max_dois" readonly /></td>
                         <td>
-                            <select class="form-control"  name="lamina_resul_dois">
-                                <option selected> --- </option>
-                                <option> C </option>
-                                <option> NA </option>
-                                <option> NC </option>
-                            </select>
+                                    <input class="form-control" type="text" name="lamina_resul_dois" readonly />
                         </td>
                 </tr>
             </table>
@@ -390,7 +383,7 @@
                 <table class="tables table-bordered border-secondary  table-sm">
                     <tr>
                         <td colspan="3">
-                            <select class="form-control" name="lamina_tres" >
+                             <select class="form-control" name="lamina_tres" id="lamina_tres" onchange="updateTipoLamina3()">
                                 <option selected> --- </option>
                                 <option> Colchonete </option>
                                 <option> Colchão infantil </option>
@@ -439,7 +432,7 @@
                     </tr>
                     <tr>
                         <td>
-                            <select class="form-control" name="lamina_tipo_tres" >
+                            <select class="form-control" name="lamina_tipo_tres" id="lamina_tipo_tres">
                                 <option selected> --- </option>
                                 <option> Colchonete </option>
                                 <option> Colchão infantil </option>
@@ -450,15 +443,10 @@
                                 <option> Composto </option>
                             </select>
                         </td>
-                        <td><input class="form-control" type="text" name="lamina_min_tres" /></td>
-                        <td><input class="form-control" type="text" name="lamina_max_tres"/></td>
+                                <td><input class="form-control" type="text" name="lamina_min_tres" id="lamina_min_tres" readonly /></td>
+                                <td><input class="form-control" type="text" name="lamina_max_tres" id="lamina_max_tres" readonly /></td>
                         <td>
-                            <select class="form-control" name="lamina_resul_tres" >
-                                <option selected> --- </option>
-                                <option> C </option>
-                                <option> NA </option>
-                                <option> NC </option>
-                            </select>
+                                    <input class="form-control" type="text" name="lamina_resul_tres" readonly />
                         </td>
                     </tr>
                 </table>
@@ -469,7 +457,7 @@
                 <table class="tables table-bordered border-secondary  table-sm">
                     <tr>
                         <td colspan="3">
-                            <select class="form-control" name="lamina_quat" >
+                                    <select class="form-control" name="lamina_quat" id="lamina_quat" onchange="updateTipoLamina4()">
                                 <option selected> --- </option>
                                 <option> Colchonete </option>
                                 <option> Colchão infantil </option>
@@ -518,7 +506,7 @@
                     </tr>
                     <tr>
                         <td>
-                            <select class="form-control"  name="lamina_tipo_quat">
+                            <select class="form-control"  name="lamina_tipo_quat" id="lamina_tipo_quat">
                                 <option selected> --- </option>
                                 <option> Colchonete </option>
                                 <option> Colchão infantil </option>
@@ -529,15 +517,10 @@
                                 <option> Composto </option>
                             </select>
                         </td>
-                        <td><input class="form-control" type="text" name="lamina_min_quat" /></td>
-                        <td><input class="form-control" type="text" name="lamina_max_quat"/></td>
+                                <td><input class="form-control" type="text" name="lamina_min_quat" id="lamina_min_quat" readonly /></td>
+                                <td><input class="form-control" type="text" name="lamina_max_quat" id="lamina_max_quat" readonly /></td>
                         <td>
-                            <select class="form-control" name="lamina_resul_quat" >
-                                <option selected> --- </option>
-                                <option> C </option>
-                                <option> NA </option>
-                                <option> NC </option>
-                            </select>
+                                    <input class="form-control" type="text" name="lamina_resul_quat" readonly/>
                         </td>
                     </tr>
                 </table>
@@ -548,7 +531,7 @@
                 <table class="tables table-bordered border-secondary  table-sm">
                     <tr>
                         <td colspan="3">
-                            <select class="form-control" name="lamina_cinco" >
+                                    <select class="form-control" name="lamina_cinco" id="lamina_cinco" onchange="updateTipoLamina5()">
                                 <option selected> --- </option>
                                 <option> Colchonete </option>
                                 <option> Colchão infantil </option>
@@ -597,7 +580,7 @@
                     </tr>
                     <tr>
                         <td>
-                            <select class="form-control" name="lamina_tipo_cinco" >
+                            <select class="form-control" name="lamina_tipo_cinco" id="lamina_tipo_cinco">
                                 <option selected> --- </option>
                                 <option> Colchonete </option>
                                 <option> Colchão infantil </option>
@@ -608,15 +591,10 @@
                                 <option> Composto </option>
                             </select>
                         </td>
-                        <td><input class="form-control" type="text" name="lamina_min_cinco" /></td>
-                        <td><input class="form-control" type="text" name="lamina_max_cinco" /></td>
+                                <td><input class="form-control" type="text" name="lamina_min_cinco" id="lamina_min_cinco" readonly /></td>
+                                <td><input class="form-control" type="text" name="lamina_max_cinco" id="lamina_max_cinco" readonly /></td>
                         <td>
-                            <select class="form-control"  name="lamina_resul_cinco">
-                                <option selected> --- </option>
-                                <option> C </option>
-                                <option> NA </option>
-                                <option> NC </option>
-                            </select>
+                                    <input class="form-control" type="text" name="lamina_resul_cinco" readonly />
                         </td>
                     </tr>
                 </table>
@@ -1024,7 +1002,9 @@
                     <td class="fundo-tabela">
                         <b>Espessura da lâmina de espuma do colchão ou colchonete Espessura da lâmina de espuma do colchão ou colchonete</b> <br /><br />
                     </td>
-                    <td rowspan="12"> NA </td>
+                    <td rowspan="12">
+                        <input class="form-control" type="text" name="" readonly style="height:1000px; width:200px" />
+                    </td>
                 </tr>
                 <tr>
                     <td>
@@ -1096,15 +1076,10 @@
                                         <option> Composto </option>
                                     </select>
                                 </td>
-                                <td><input class="form-control" type="text" name="lamina_min_um" value="@Model.lamina_min_um"/></td>
-                                <td><input class="form-control" type="text" name="lamina_max_um" value="@Model.lamina_max_um"/></td>
+                                <td><input class="form-control" type="text" name="lamina_min_um" value="@Model.lamina_min_um" readonly /></td>
+                                <td><input class="form-control" type="text" name="lamina_max_um" value="@Model.lamina_max_um" readonly /></td>
                                 <td>
-                                    <select class="form-control" name="lamina_resul_um" >
-                                        <option selected> @Model.lamina_resul_um </option>
-                                        <option> C </option>
-                                        <option> NA </option>
-                                        <option> NC </option>
-                                    </select>
+                                    <input class="form-control" type="text" name="lamina_resul_quat" value="@Model.lamina_resul_um" readonly />
                                 </td>
                             </tr>
                         </table>
@@ -1176,15 +1151,10 @@
                                         <option> Composto </option>
                                     </select>
                                 </td>
-                                <td><input class="form-control" type="text" name="lamina_min_dois" value="@Model.lamina_min_dois" /></td>
-                                <td><input class="form-control" type="text" name="lamina_max_dois" value="@Model.lamina_max_dois"/></td>
+                                <td><input class="form-control" type="text" name="lamina_min_dois" value="@Model.lamina_min_dois" readonly /></td>
+                                <td><input class="form-control" type="text" name="lamina_max_dois" value="@Model.lamina_max_dois" readonly/></td>
                                 <td>
-                                    <select class="form-control"  name="lamina_resul_dois">
-                                        <option selected> @Model.lamina_resul_dois </option>
-                                        <option> C </option>
-                                        <option> NA </option>
-                                        <option> NC </option>
-                                    </select>
+                                    <input class="form-control" type="text" name="lamina_resul_quat" value="@Model.lamina_resul_dois" readonly />
                                 </td>
                             </tr>
                         </table>
@@ -1255,15 +1225,10 @@
                                         <option> Composto </option>
                                     </select>
                                 </td>
-                                <td><input class="form-control" type="text" name="lamina_min_tres" value="@Model.lamina_min_tres" /></td>
-                                <td><input class="form-control" type="text" name="lamina_max_tres" value="@Model.lamina_max_tres"/></td>
-                                <td>
-                                    <select class="form-control" name="lamina_resul_tres">
-                                        <option selected> @Model.lamina_resul_tres </option>
-                                        <option> C </option>
-                                        <option> NA </option>
-                                        <option> NC </option>
-                                    </select>
+                                <td><input class="form-control" type="text" name="lamina_min_tres" value="@Model.lamina_min_tres" readonly /></td>
+                                <td><input class="form-control" type="text" name="lamina_max_tres" value="@Model.lamina_max_tres" readonly /></td>
+                                <td> 
+                                    <input class="form-control" type="text" name="lamina_resul_quat" value="@Model.lamina_resul_tres" readonly />
                                 </td>
                             </tr>
                         </table>
@@ -1334,15 +1299,10 @@
                                         <option> Composto </option>
                                     </select>
                                 </td>
-                                <td><input class="form-control" type="text" name="lamina_min_quat" value="@Model.lamina_min_quat" /></td>
-                                <td><input class="form-control" type="text" name="lamina_max_quat" value="@Model.lamina_max_quat" /></td>
+                                <td><input class="form-control" type="text" name="lamina_min_quat" value="@Model.lamina_min_quat" readonly /></td>
+                                <td><input class="form-control" type="text" name="lamina_max_quat" value="@Model.lamina_max_quat" readonly /></td>
                                 <td>
-                                    <select class="form-control" name="lamina_resul_quat">
-                                        <option selected> @Model.lamina_resul_quat </option>
-                                        <option> C </option>
-                                        <option> NA </option>
-                                        <option> NC </option>
-                                    </select>
+                                    <input class="form-control" type="text" name="lamina_resul_quat" value="@Model.lamina_resul_quat" readonly />
                                 </td>
                             </tr>
                         </table>
@@ -1413,18 +1373,29 @@
                                         <option> Composto </option>
                                     </select>
                                 </td>
-                                <td><input class="form-control" type="text" name="lamina_min_cinco" value="@Model.lamina_min_cinco"/></td>
-                                <td><input class="form-control" type="text" name="lamina_max_cinco" value="@Model.lamina_max_cinco" /></td>
+                                <td><input class="form-control" type="text" name="lamina_min_cinco" value="@Model.lamina_min_cinco" readonly/></td>
+                                <td><input class="form-control" type="text" name="lamina_max_cinco" value="@Model.lamina_max_cinco" readonly /></td>
                                 <td>
-                                    <select class="form-control"  name="lamina_resul_cinco">
-                                        <option selected> @Model.lamina_resul_cinco </option>
-                                        <option> C </option>
-                                        <option> NA </option>
-                                        <option> NC </option>
-                                    </select>
+                                    <input class="form-control" type="text" name="lamina_resul_quat" value="@Model.lamina_resul_cinco" readonly />
                                 </td>
                             </tr>
                         </table>
+                    </td>
+                </tr>
+                </table>
+
+
+            <table class="tables table-bordered border-secondary  table-sm">
+                <tr>
+                    <td rowspan="12">4.1</td>
+                    <td></td>
+                    <td rowspan="2">
+                        <select class="form-control" name="altura_result" style="height:400px; width:200px" readonly>
+                            <option selected> --- </option>
+                            <option> C </option>
+                            <option> NA </option>
+                            <option> NC </option>
+                        </select> <br /> <br />
                     </td>
                 </tr>
                 <tr>
@@ -1494,8 +1465,6 @@
                 </tr>
                 <tr>
                     <td>
-
-
                         Colchonete: A altura total não pode exceder 8 cm, inclusive com o revestimento.
                         <br /> <br />
                         <table class="tables table-bordered border-secondary  table-sm">
@@ -1561,6 +1530,14 @@
                             </tr>
                         </table>
                     </td>
+                    <td rowspan="1">
+                        <select class="form-control" name="altura_result" style="height:400px; width:200px" readonly>
+                            <option selected> --- </option>
+                            <option> C </option>
+                            <option> NA </option>
+                            <option> NC </option>
+                        </select> <br /> <br />
+                    </td>
                 </tr>
                 <tr>
                     <td>
@@ -1621,6 +1598,14 @@
                             </tr>
                         </table>
                     </td>
+                      <td rowspan="1">
+                        <select class="form-control" name="altura_result" style="height:400px; width:200px" readonly>
+                            <option selected> --- </option>
+                            <option> C </option>
+                            <option> NA </option>
+                            <option> NC </option>
+                        </select> <br /> <br />
+                    </td>
                 </tr>
                 <tr>
                     <td>
@@ -1641,6 +1626,230 @@
         alert('@Html.Raw(TempData["Mensagem"])');
 
     </script>
+
 }
 
+<script>
+    function updateTipoLamina() {
+        // Obtém o valor selecionado no primeiro select
+        var laminaUmSelect = document.getElementById("lamina_um");
+        var selectedValue = laminaUmSelect.options[laminaUmSelect.selectedIndex].value;
 
+        // Atualiza o valor no segundo select
+        var laminaTipoUmSelect = document.getElementById("lamina_tipo_um");
+        laminaTipoUmSelect.value = selectedValue;
+
+        // Verifica se a opção selecionada é "Colchonete" e define os valores nos campos apropriados
+        if (selectedValue === "Colchão infantil") {
+            document.getElementById("lamina_min_um").value = "7";
+            document.getElementById("lamina_max_um").value = "---";
+        }if(selectedValue === "Colchonete") {
+            document.getElementById("lamina_min_um").value = "4";
+            document.getElementById("lamina_max_um").value = "8";
+        }
+        if (selectedValue === "Colchão geral") {
+            document.getElementById("lamina_min_um").value = "12";
+            document.getElementById("lamina_max_um").value = "---";
+        }
+        if (selectedValue === "Colchão auxiliar") {
+            document.getElementById("lamina_min_um").value = "5";
+            document.getElementById("lamina_max_um").value = "---";
+        }
+        if (selectedValue === "Colchão box conjugado") {
+            document.getElementById("lamina_min_um").value = "5";
+            document.getElementById("lamina_max_um").value = "---";
+        }
+        if (selectedValue === "Colchão misto") {
+            document.getElementById("lamina_min_um").value = "5";
+            document.getElementById("lamina_max_um").value = "---";
+        }
+        if (selectedValue === "Composto") {
+            document.getElementById("lamina_min_um").value = "3";
+            document.getElementById("lamina_max_um").value = "---";
+        } if (selectedValue === "---") {
+            document.getElementById("lamina_min_um").value = "";
+            document.getElementById("lamina_max_um").value = "";
+        }
+      
+    }
+</script>
+
+<script>
+    function updateTipoLamina2() {
+        // Obtém o valor selecionado no primeiro select
+        var laminaUmSelect = document.getElementById("lamina_dois");
+        var selectedValue = laminaUmSelect.options[laminaUmSelect.selectedIndex].value;
+
+        // Atualiza o valor no segundo select
+        var laminaTipoUmSelect = document.getElementById("lamina_tipo_dois");
+        laminaTipoUmSelect.value = selectedValue;
+
+        // Verifica se a opção selecionada é "Colchonete" e define os valores nos campos apropriados
+        if (selectedValue === "Colchão infantil") {
+            document.getElementById("lamina_min_dois").value = "7";
+            document.getElementById("lamina_max_dois").value = "---";
+        } if (selectedValue === "Colchonete") {
+            document.getElementById("lamina_min_dois").value = "4";
+            document.getElementById("lamina_max_dois").value = "8";
+        }
+        if (selectedValue === "Colchão geral") {
+            document.getElementById("lamina_min_dois").value = "12";
+            document.getElementById("lamina_max_dois").value = "---";
+        }
+        if (selectedValue === "Colchão auxiliar") {
+            document.getElementById("lamina_min_dois").value = "5";
+            document.getElementById("lamina_max_dois").value = "---";
+        }
+        if (selectedValue === "Colchão box conjugado") {
+            document.getElementById("lamina_min_dois").value = "5";
+            document.getElementById("lamina_max_dois").value = "---";
+        }
+        if (selectedValue === "Colchão misto") {
+            document.getElementById("lamina_min_dois").value = "5";
+            document.getElementById("lamina_max_dois").value = "---";
+        }
+        if (selectedValue === "Composto") {
+            document.getElementById("lamina_min_dois").value = "3";
+            document.getElementById("lamina_max_dois").value = "---";
+        } if (selectedValue === "---") {
+            document.getElementById("lamina_min_dois").value = "";
+            document.getElementById("lamina_max_dois").value = "";
+        }
+
+    }
+</script>
+
+<script>
+    function updateTipoLamina3() {
+        // Obtém o valor selecionado no primeiro select
+        var laminaUmSelect = document.getElementById("lamina_tres");
+        var selectedValue = laminaUmSelect.options[laminaUmSelect.selectedIndex].value;
+
+        // Atualiza o valor no segundo select
+        var laminaTipoUmSelect = document.getElementById("lamina_tipo_tres");
+        laminaTipoUmSelect.value = selectedValue;
+
+        // Verifica se a opção selecionada é "Colchonete" e define os valores nos campos apropriados
+        if (selectedValue === "Colchão infantil") {
+            document.getElementById("lamina_min_tres").value = "7";
+            document.getElementById("lamina_max_tres").value = "---";
+        } if (selectedValue === "Colchonete") {
+            document.getElementById("lamina_min_tres").value = "4";
+            document.getElementById("lamina_max_tres").value = "8";
+        }
+        if (selectedValue === "Colchão geral") {
+            document.getElementById("lamina_min_tres").value = "12";
+            document.getElementById("lamina_max_tres").value = "---";
+        }
+        if (selectedValue === "Colchão auxiliar") {
+            document.getElementById("lamina_min_tres").value = "5";
+            document.getElementById("lamina_max_tres").value = "---";
+        }
+        if (selectedValue === "Colchão box conjugado") {
+            document.getElementById("lamina_min_tres").value = "5";
+            document.getElementById("lamina_max_tres").value = "---";
+        }
+        if (selectedValue === "Colchão misto") {
+            document.getElementById("lamina_min_tres").value = "5";
+            document.getElementById("lamina_max_tres").value = "---";
+        }
+        if (selectedValue === "Composto") {
+            document.getElementById("lamina_min_tres").value = "3";
+            document.getElementById("lamina_max_tres").value = "---";
+        } if (selectedValue === "---") {
+            document.getElementById("lamina_min_tres").value = "";
+            document.getElementById("lamina_max_tres").value = "";
+        }
+
+    }
+</script>
+
+<script>
+    function updateTipoLamina4() {
+        // Obtém o valor selecionado no primeiro select
+        var laminaUmSelect = document.getElementById("lamina_quat");
+        var selectedValue = laminaUmSelect.options[laminaUmSelect.selectedIndex].value;
+
+        // Atualiza o valor no segundo select
+        var laminaTipoUmSelect = document.getElementById("lamina_tipo_quat");
+        laminaTipoUmSelect.value = selectedValue;
+
+        // Verifica se a opção selecionada é "Colchonete" e define os valores nos campos apropriados
+        if (selectedValue === "Colchão infantil") {
+            document.getElementById("lamina_min_quat").value = "7";
+            document.getElementById("lamina_max_quat").value = "---";
+        } if (selectedValue === "Colchonete") {
+            document.getElementById("lamina_min_quat").value = "4";
+            document.getElementById("lamina_max_quat").value = "8";
+        }
+        if (selectedValue === "Colchão geral") {
+            document.getElementById("lamina_min_quat").value = "12";
+            document.getElementById("lamina_max_quat").value = "---";
+        }
+        if (selectedValue === "Colchão auxiliar") {
+            document.getElementById("lamina_min_quat").value = "5";
+            document.getElementById("lamina_max_quat").value = "---";
+        }
+        if (selectedValue === "Colchão box conjugado") {
+            document.getElementById("lamina_min_quat").value = "5";
+            document.getElementById("lamina_max_quat").value = "---";
+        }
+        if (selectedValue === "Colchão misto") {
+            document.getElementById("lamina_min_quat").value = "5";
+            document.getElementById("lamina_max_quat").value = "---";
+        }
+        if (selectedValue === "Composto") {
+            document.getElementById("lamina_min_quat").value = "3";
+            document.getElementById("lamina_max_quat").value = "---";
+        } if (selectedValue === "---") {
+            document.getElementById("lamina_min_quat").value = "";
+            document.getElementById("lamina_max_quat").value = "";
+        }
+
+    }
+</script>
+
+<script>
+    function updateTipoLamina5() {
+        // Obtém o valor selecionado no primeiro select
+        var laminaUmSelect = document.getElementById("lamina_cinco");
+        var selectedValue = laminaUmSelect.options[laminaUmSelect.selectedIndex].value;
+
+        // Atualiza o valor no segundo select
+        var laminaTipoUmSelect = document.getElementById("lamina_tipo_cinco");
+        laminaTipoUmSelect.value = selectedValue;
+
+        // Verifica se a opção selecionada é "Colchonete" e define os valores nos campos apropriados
+        if (selectedValue === "Colchão infantil") {
+            document.getElementById("lamina_min_cinco").value = "7";
+            document.getElementById("lamina_max_cinco").value = "---";
+        } if (selectedValue === "Colchonete") {
+            document.getElementById("lamina_min_cinco").value = "4";
+            document.getElementById("lamina_max_cinco").value = "8";
+        }
+        if (selectedValue === "Colchão geral") {
+            document.getElementById("lamina_min_cinco").value = "12";
+            document.getElementById("lamina_max_cinco").value = "---";
+        }
+        if (selectedValue === "Colchão auxiliar") {
+            document.getElementById("lamina_min_cinco").value = "5";
+            document.getElementById("lamina_max_cinco").value = "---";
+        }
+        if (selectedValue === "Colchão box conjugado") {
+            document.getElementById("lamina_min_cinco").value = "5";
+            document.getElementById("lamina_max_cinco").value = "---";
+        }
+        if (selectedValue === "Colchão misto") {
+            document.getElementById("lamina_min_cinco").value = "5";
+            document.getElementById("lamina_max_cinco").value = "---";
+        }
+        if (selectedValue === "Composto") {
+            document.getElementById("lamina_min_cinco").value = "3";
+            document.getElementById("lamina_max_cinco").value = "---";
+        } if (selectedValue === "---") {
+            document.getElementById("lamina_min_cinco").value = "";
+            document.getElementById("lamina_max_cinco").value = "";
+        }
+
+    }
+</script>
