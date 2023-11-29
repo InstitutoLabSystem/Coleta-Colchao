@@ -13,8 +13,27 @@
     <link rel="stylesheet" href="~/css/coleta.css" asp-append-version="true" />
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <style>
-        input{
-            text-align:center;
+        input {
+            text-align: center;
+        }
+
+
+        .controlador-conforme {
+            padding: 5px;
+            border-color: gray;
+            border-radius: 5px;
+            box-sizing: border-box;
+            height: 970px;
+            width: 90px;
+        }
+
+        .controlador-conforme-2 {
+            padding: 5px;
+            border-color: gray;
+            border-radius: 5px;
+            box-sizing: border-box;
+            height: 250px;
+            width: 90px;
         }
     </style>
 
@@ -51,6 +70,10 @@
                             Determinação da Deformação.
                         </b>
                     </td>
+                    <td rowspan="14"><input class="controlador-conforme" readonly /></td>
+                </tr>
+
+
                 <tr class="fundo-tabela">
                     <td>
                         Quando se for utilizado não tecido de fibras sintéticas, naturais e/ou artificiais, ela deve ter gramatura mínima de 100 g/m².
@@ -139,7 +162,8 @@
                             Ensaio de Flexibilidade de material isolante
                         </b>
                     </td>
-                    <td rowspan="14"></td>
+                    <td rowspan="14"><input class="controlador-conforme-2" readonly /></td>
+
                 </tr>
                 <tr>
                     <td>
@@ -198,7 +222,7 @@
                     </tr>
                     <tr>
                         <td>Inicio:</td>
-                        <td><input class="form-control" type="text" name="data_ini" value="@Model.data_ini"/></td>
+                        <td><input class="form-control" type="text" name="data_ini" value="@Model.data_ini" /></td>
                         <td>Termino:</td>
                         <td><input class="form-control" type="text" name="data_term" value="@Model.data_term" /></td>
                     </tr>
@@ -213,6 +237,8 @@
                             Determinação da Deformação.
                         </b>
                     </td>
+                    <td rowspan="14"><input class="controlador-conforme" readonly value="@Model.conforme_gramas" /></td>
+
                 <tr class="fundo-tabela">
                     <td>
                         Quando se for utilizado não tecido de fibras sintéticas, naturais e/ou artificiais, ela deve ter gramatura mínima de 100 g/m².
@@ -301,7 +327,7 @@
                             Ensaio de Flexibilidade de material isolante
                         </b>
                     </td>
-                    <td rowspan="14"></td>
+                    <td rowspan="14"><input class="controlador-conforme-2" readonly value="@Model.conforme" /></td>
                 </tr>
                 <tr>
                     <td>

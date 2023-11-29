@@ -132,7 +132,14 @@
                 </tr>
                 <tr>
                     <td> Estrutura </td>
-                    <td colspan="3"> <input class="form-control" type="text" name="estruturs" /> </td>
+                    <td colspan="3">
+                        @*                         <input class="form-control" type="text" name="estruturs" /> @*@
+                        <select class="form-control" name="estrutura">
+                            <option value="Estrutural">Estrutural</option>
+                            <option value="Conforto">Conforto</option>
+                        </select>
+
+                    </td>
                 </tr>
                 <tr>
                     <td> Tipo de Molejo </td>
@@ -159,11 +166,39 @@
                 </tr>
                 <tr class="molejo">
                     <td> Nome do Molejo </td>
-                    <td colspan="2"> <input class="form-control" type="text" name="nome_molejo_um" /> </td>
+                    <td colspan="2">
+                        <select class="form-control" name="nome_molejo_um">
+                            <option value="NA" selected> Escolha</option>
+                            <option value="Bonell">Bonell</option>
+                            <option value="Mola ensacada">Mola ensacada</option>
+                            <option value="LKF">LKF</option>
+                            <option value="Verticoil">Verticoil</option>
+                            <option value="Fio Continuo |">Fio Continuo |	</option>
+                            <option value="Fio continuo ||">Fio continuo ||</option>
+                            <option value="Offset">Offset</option>
+
+                        </select>
+                        @*                         <input class="form-control" type="text" name="nome_molejo_um" />
+                        *@
+                    </td>
                 </tr>
                 <tr>
                     <td> Nome do Molejo </td>
-                    <td colspan="2"> <input class="form-control" type="text" name="nome_molejo_dois" /> </td>
+                    <td colspan="2">
+                        <select class="form-control" name="nome_molejo_dois">
+                            <option value="NA" selected> Escolha</option>
+                            <option value="Bonell">Bonell</option>
+                            <option value="Mola ensacada">Mola ensacada</option>
+                            <option value="LKF">LKF</option>
+                            <option value="Verticoil">Verticoil</option>
+                            <option value="Fio Continuo |">Fio Continuo |	</option>
+                            <option value="Fio continuo ||">Fio continuo ||</option>
+                            <option value="Offset">Offset</option>
+
+                        </select>
+                        @*                         <input class="form-control" type="text" name="nome_molejo_dois" />
+                        *@
+                    </td>
                 </tr>
                 <tr class="quant_molas">
                     <td> Quantidade média de molas/m² </td>
