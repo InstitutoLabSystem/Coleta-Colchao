@@ -28,10 +28,17 @@ namespace Coleta_Colchao.Controllers
 
         public IActionResult Index(string os, string orcamento)
         {
-
             ViewBag.os = os;
             ViewBag.orcamento = orcamento;
             return View();
+        }
+
+        public IActionResult teste(string os, string orcamento)
+        {
+            ViewBag.os = os;
+            ViewBag.orcamento = orcamento;
+
+            return View("Molas/teste");
         }
         public IActionResult EditarRegistro(string os, string orcamento)
         {
@@ -532,7 +539,6 @@ namespace Coleta_Colchao.Controllers
             try
             {
                 var editarDados = _context.ensaio_molas_item7_5.Where(x => x.os == os && x.orcamento == orcamento).FirstOrDefault();
-
                 //verificando se foi realizado o ensaio 7.2
                 var ensaio7_2 = _context.ensaio_molas_item7_2.Where(x => x.os == os && x.orcamento == orcamento).FirstOrDefault();
                 if (ensaio7_2 == null)
@@ -543,6 +549,7 @@ namespace Coleta_Colchao.Controllers
 
                 if (editarDados == null)
                 {
+
                     // declarando as variaveis vazias para poder manipular elas.
                     DateOnly data_ini = salvarDados.data_ini;
                     DateOnly data_term = salvarDados.data_term;
@@ -1914,7 +1921,7 @@ namespace Coleta_Colchao.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> SalvarEnsaio7_3(string os, string orcamento, [Bind("data_ini,data_term,bordas,faces_utilizadas,velocidade_face_1,quant_face_1,velocidade_face_2,quant_face_2,rasgo,quebra")] ColetaModel.Ensaio7_3 salvarDados)
+        public async Task<IActionResult> SalvarEnsaio7_3(string os, string orcamento, [Bind("data_ini,data_term,bordas,faces_utilizadas,rasgo,quebra")] ColetaModel.Ensaio7_3 salvarDados)
         {
             try
             {
@@ -1926,10 +1933,6 @@ namespace Coleta_Colchao.Controllers
                     DateOnly data_term = salvarDados.data_term;
                     float bordas = salvarDados.bordas;
                     string faces_utilizadas = salvarDados.faces_utilizadas;
-                    int velocidade_face_1 = salvarDados.velocidade_face_1;
-                    int quant_face_1 = salvarDados.quant_face_1;
-                    int velocidade_face_2 = salvarDados.velocidade_face_2;
-                    int quant_face_2 = salvarDados.quant_face_2;
                     string rasgo = salvarDados.rasgo;
                     string quebra = salvarDados.quebra;
 
@@ -1941,10 +1944,6 @@ namespace Coleta_Colchao.Controllers
                         data_term = data_term,
                         bordas = bordas,
                         faces_utilizadas = faces_utilizadas,
-                        velocidade_face_1 = velocidade_face_1,
-                        quant_face_1 = quant_face_1,
-                        velocidade_face_2 = velocidade_face_2,
-                        quant_face_2 = quant_face_2,
                         rasgo = rasgo,
                         quebra = quebra,
                     };
@@ -1961,10 +1960,6 @@ namespace Coleta_Colchao.Controllers
                     editarDados.data_term = salvarDados.data_term;
                     editarDados.bordas = salvarDados.bordas;
                     editarDados.faces_utilizadas = salvarDados.faces_utilizadas;
-                    editarDados.velocidade_face_1 = salvarDados.velocidade_face_1;
-                    editarDados.quant_face_1 = salvarDados.quant_face_1;
-                    editarDados.velocidade_face_2 = salvarDados.velocidade_face_2;
-                    editarDados.quant_face_2 = salvarDados.quant_face_2;
                     editarDados.rasgo = salvarDados.rasgo;
                     editarDados.quebra = salvarDados.quebra;
 
@@ -2604,8 +2599,6 @@ namespace Coleta_Colchao.Controllers
                     return RedirectToAction(nameof(IdentificacaoEmbalagem), "Coleta", new { os, orcamento });
 
                 }
-
-
             }
             catch (Exception ex)
             {
@@ -2614,14 +2607,20 @@ namespace Coleta_Colchao.Controllers
             }
         }
 
+        [Route("Molas/Teste")]
+        [HttpPost]
+        public async Task<IActionResult> resultado(string os, string orcamento, ColetaModel.Teste teste)
+        {
 
-
-
-
-
-
-
-
-
+            if (ModelState.IsValid)
+            {
+                string nome = teste.nome;
+                string senha = teste.senha;
+                _context.Add(teste);
+                await _context.SaveChangesAsync();
+                return RedirectToAction(nameof(teste), "Coleta", new { os, orcamento });
+            }
+            return View("Molas/teste");
+        }
     }
 }

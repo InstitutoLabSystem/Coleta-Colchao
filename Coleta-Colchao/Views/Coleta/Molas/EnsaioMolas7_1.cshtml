@@ -68,15 +68,7 @@
                     <td>
                         <b>Pré - Rolagem:</b> Antes de serem efetuadas as inspeções e medições iniciais, deve ser realizada uma pré-rolagem com o rolo nas duas faces do colchão por uma frequência de 50 ciclos (cada face utilizável).
                     </td>
-                    <td rowspan="4">
-
-                        <select class="form-control" name="Escolha" style="height:; width: ; text-align:center">
-                            <option selected> --- </option>
-                            <option> C </option>
-                            <option> NA </option>
-                            <option> NC </option>
-                        </select>
-                    </td>
+                    
                 </tr>
                 <tr>
                     <td>
@@ -91,7 +83,7 @@
                 <tr>
                     <td>
                         1º Face:
-                        Velocidade do ciclos : <input type="text" name="velo_face_1" />
+                        Velocidade do ciclos : <input type="text" name="velo_face_1"/>
 
                         Quantidade de ciclos : <input type="text" name="quant_face_1" />
 
@@ -145,25 +137,17 @@
                 <tr class="fundo-tabela">
                     <td>Item</td>
                     <td>Descrição</td>
-                    <td>Resultado</td>
+                  
                 </tr>
                 <tr>
                     <td rowspan="4">7.1</td>
-                    <td>
+                    <td colspan="2">
                         <b>Pré - Rolagem:</b> Antes de serem efetuadas as inspeções e medições iniciais, deve ser realizada uma pré-rolagem com o rolo nas duas faces do colchão por uma frequência de 50 ciclos (cada face utilizável).
                     </td>
-                    <td rowspan="4">
-
-                        <select class="form-control" name="Escolha" style="height:; width: ; text-align:center">
-                            <option selected> --- </option>
-                            <option> C </option>
-                            <option> NA </option>
-                            <option> NC </option>
-                        </select>
-                    </td>
+                    
                 </tr>
                 <tr>
-                    <td>
+                    <td colspan="2">
                         Quantidade De faces utilizadas:
                         <select name="quant_face">
                             <option>1</option>
@@ -173,7 +157,7 @@
 
                 </tr>
                 <tr>
-                    <td>
+                    <td colspan="2">
                         1º Face:
                         Velocidade do ciclos : <input type="text" name="velo_face_1" value="@Model.velo_face_1" />
 
@@ -182,7 +166,7 @@
                     </td>
                 </tr>
                 <tr>
-                    <td>
+                    <td colspan="2">
                         2º Face:
                         Velocidade do ciclos : <input type="text" name="velo_face_2" value="@Model.velo_face_2" />
                         Quantidade de ciclos :  <input type="text" name="quant_face_2" value="@Model.quant_face_2" />
