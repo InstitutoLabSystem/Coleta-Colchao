@@ -1044,12 +1044,12 @@ namespace Coleta_Colchao.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> SalvarEspumaUm(string os, string orcamento, string comprimento_result, string largura_result, string altura_result, string lamina_resul_um, string lamina_resul_dois, string lamina_resul_tres, string lamina_resul_quat, string lamina_resul_cinco, [Bind("data_ini,data_term,temp_ini,temp_fim,dimensao_temp,comprimento_result,comprimento_um,comprimento_esp,comprimento_dois," +
+        public async Task<IActionResult> SalvarEspumaUm(string os, string orcamento, string comprimento_result, string largura_result, string altura_result, string lamina_resul_um, string lamina_resul_dois, string lamina_resul_final, string lamina_resul_tres, string lamina_resul_quat, string lamina_resul_cinco, [Bind("data_ini,data_term,temp_ini,temp_fim,dimensao_temp,comprimento_um,comprimento_esp,comprimento_dois," +
           "comprimento_tres,comprimento_media,largura_result,largura_um,largura_esp,largura_dois,largura_tres,largura_media,altura_result,altura_um,altura_esp,altura_dois,altura_tres,altura_media,lamina_um,lamina_comp_um," +
           "lamina_esp_um,lamina_comp_dois,lamina_comp_tres,lamina_media_um,lamina_tipo_um,lamina_min_um,lamina_max_um,lamina_resul_um,lamina_dois,lamina_comp_quat,lamina_esp_dois, lamina_comp_cinco,lamina_comp_seis,lamina_media_dois,lamina_tipo_dois," +
           "lamina_min_dois,lamina_max_dois,lamina_resul_dois,lamina_tres,lamina_comp_sete,lamina_esp_tres,lamina_comp_oito,lamina_comp_nove,lamina_media_tres,lamina_tipo_tres,lamina_min_tres,lamina_max_tres,lamina_resul_tres,lamina_quat,lamina_comp_dez,lamina_esp_quat," +
           "lamina_comp_onze,lamina_comp_doze,lamina_media_quat,lamina_tipo_quat,lamina_min_quat,lamina_max_quat,lamina_resul_quat,lamina_cinco,lamina_comp_treze,lamina_esp_cinco,lamina_comp_quatorze,lamina_comp_quinze,lamina_media_cinco,lamina_tipo_cinco," +
-          "lamina_min_cinco,lamina_max_cinco,lamina_resul_cinco,esp_tipo_um,esp_lamina_um,esp_especificado_um,esp_mm_um,esp_cm_um,esp_tipo_dois,esp_lamina_dois,esp_especificado_dois,esp_mm_dois,esp_cm_dois,col_tipo_um,col_especificado_um,col_encontrado_um,col_resul_um," +
+          "lamina_min_cinco,lamina_max_cinco,lamina_resul_cinco,lamina_resul_final,esp_tipo_um,esp_lamina_um,esp_especificado_um,esp_mm_um,esp_cm_um,esp_tipo_dois,esp_lamina_dois,esp_especificado_dois,esp_mm_dois,esp_cm_dois,col_tipo_um,col_especificado_um,col_encontrado_um,col_resul_um," +
           "col_tipo_dois,col_lamina_dois,col_especificado_dois,col_resul_dois,reves_tipo_um,reves_lamina_um,reves_especificado_um,reves_mm_um,reves_cm_um,reves_tipo_dois,reves_lamina_dois,reves_especificado_dois,reves_mm_dois,reves_cm_dois,temp_repouso,lamina_media_um")] ColetaModel.EspumaUm salvar)
         {
             try
@@ -1074,17 +1074,23 @@ namespace Coleta_Colchao.Controllers
                     double comprimentoum = double.Parse(comprimento_um);
                     double comprimentodois = double.Parse(comprimento_dois);
                     double comprimentotres = double.Parse(comprimento_tres);
-                    var comprimento_media = ((comprimentoum + comprimentodois + comprimentotres) / 3);
+                    var comprimento_media = ((comprimentoum + comprimentodois + comprimentotres) / 3); 
+                    // Arredonda a média para o número mais próximo
+                    double comprimento_media_arredondado = Math.Round(comprimento_media, 1); // O segundo parâmetro é o número de casas decimais desejado
+
 
                     double comprimentoesp = double.Parse(comprimento_esp);
 
-                    if(comprimento_media < (comprimentoesp - 1.5))
-                    {
-                        comprimento_result = "NC";
-                    }
-                    if (comprimento_media > (comprimentoesp + 1.5))
+                    double valor_min_comprimento = comprimentoesp - 1.5;
+                    double valor_max_comprimento = comprimentoesp + 1.5;
+
+                    if(comprimento_media_arredondado >= valor_min_comprimento && comprimento_media_arredondado <= valor_max_comprimento)
                     {
                         comprimento_result = "C";
+                    }
+                    else
+                    {
+                        comprimento_result = "NC";
                     }
 
                     var largura_um = salvar.largura_um;
@@ -1097,16 +1103,21 @@ namespace Coleta_Colchao.Controllers
                     double larguradois = double.Parse(largura_dois);
                     double larguratres = double.Parse(largura_tres);
                     var largura_media = ((larguraum + larguradois + larguratres) / 3);
+                    double largura_media_arredondado = Math.Round(largura_media, 1); // O segundo parâmetro é o número de casas decimais desejado
 
                     double larguraesp = double.Parse(largura_esp);
-                    if (largura_media < (larguraesp - 1.5))
+
+                    double valor_min_largura = larguraesp - 1.5;
+                    double valor_max_largura = larguraesp + 1.5;
+
+                    if (largura_media_arredondado >= valor_min_largura && largura_media_arredondado <= valor_max_largura)
+                    {
+                        largura_result = "C";
+                    }
+                    else
                     {
                         largura_result = "NC";
                     }
-                    if (largura_media > (larguraesp + 1.5))
-                    {
-                        largura_result = "C";
-                    }   
 
                     var altura_um = salvar.altura_um;
                     var altura_esp = salvar.altura_esp;
@@ -1117,15 +1128,20 @@ namespace Coleta_Colchao.Controllers
                     double alturadois = double.Parse(altura_dois);
                     double alturatres = double.Parse(altura_tres);
                     var altura_media = ((alturaum + alturadois + alturatres) / 3);
+                    double altura_media_arredondado = Math.Round(altura_media, 1); // O segundo parâmetro é o número de casas decimais desejado
 
                     double alturaesp = double.Parse(altura_esp);
-                    if (altura_media < (alturaesp - 1.5))
-                    {
-                        altura_result = "NC";
-                    }
-                    if (altura_media > (alturaesp + 1.5))
+
+                    double valor_min_altura = alturaesp - 1.5;
+                    double valor_max_altura = alturaesp + 1.5;
+
+                    if (altura_media_arredondado >= valor_min_altura && altura_media_arredondado <= valor_max_altura)
                     {
                         altura_result = "C";
+                    }
+                    else
+                    {
+                        altura_result = "NC";
                     }
 
                     var lamina_um = salvar.lamina_um;
@@ -1345,6 +1361,17 @@ namespace Coleta_Colchao.Controllers
                     }
 
 
+                    if (lamina_resul_um == "C" && lamina_resul_dois == "C" && lamina_resul_tres == "C" && lamina_resul_quat == "C" && lamina_resul_cinco == "C")
+                    {
+                        lamina_resul_final = "C";
+                    }
+                    else
+                    {
+                        lamina_resul_final = "NC";
+                    }
+
+
+
                     var esp_tipo_um = salvar.esp_tipo_um;
                     var esp_lamina_um = salvar.esp_lamina_um;
 
@@ -1408,19 +1435,19 @@ namespace Coleta_Colchao.Controllers
                         comprimento_dois = comprimento_um,
                         comprimento_tres = comprimento_tres,
                         comprimento_esp = comprimento_esp,
-                        comprimento_media = comprimento_media.ToString(),
+                        comprimento_media = comprimento_media_arredondado.ToString(),
                         comprimento_result = comprimento_result,
                         largura_um = largura_um,
                         largura_dois = largura_dois,
                         largura_tres = largura_tres,
                         largura_esp = largura_esp,
-                        largura_media = largura_media.ToString(),
+                        largura_media = largura_media_arredondado.ToString(),
                         largura_result = largura_result,
                         altura_um = altura_um,
                         altura_dois = altura_dois,
                         altura_tres = altura_tres,
                         altura_esp = altura_esp,
-                        altura_media = altura_media.ToString(),
+                        altura_media = altura_media_arredondado.ToString(),
                         altura_result = altura_result,
                         temp_repouso = temp_repouso,
                         lamina_um = lamina_um,
@@ -1473,6 +1500,7 @@ namespace Coleta_Colchao.Controllers
                         lamina_min_cinco = lamina_min_cinco,
                         lamina_max_cinco = lamina_max_cinco,
                         lamina_resul_cinco = lamina_resul_cinco,
+                        lamina_resul_final = lamina_resul_final,
                         esp_tipo_um = esp_tipo_um,
                         esp_lamina_um = esp_lamina_um,
                         esp_especificado_um = esp_especificado_um.ToString(),

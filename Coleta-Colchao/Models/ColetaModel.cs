@@ -126,6 +126,8 @@ namespace Coleta_Colchao.Models
             public string? lamina_min_cinco { get; set; }
             public string? lamina_max_cinco { get; set; }
             public string? lamina_resul_cinco { get; set; }
+
+            public string? lamina_resul_final { get; set; }
             public string? esp_tipo_um { get; set; }
             public string? esp_lamina_um { get; set; }
             public string? esp_especificado_um { get; set; }
