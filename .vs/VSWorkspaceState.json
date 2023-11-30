@@ -2,7 +2,7 @@
   "ExpandedNodes": [
     "",
     "\\Coleta-Colchao",
-    "\\Coleta-Colchao\\Models",
+    "\\Coleta-Colchao\\Controllers",
     "\\Coleta-Colchao\\Views",
     "\\Coleta-Colchao\\Views\\Coleta",
     "\\Coleta-Colchao\\Views\\Coleta\\Espuma",
@@ -11,6 +11,6 @@
     "\\Coleta-Colchao\\wwwroot",
     "\\Coleta-Colchao\\wwwroot\\css"
   ],
-  "SelectedNode": "\\Coleta-Colchao\\Views\\Coleta\\Molas\\IdentificacaoEmbalagemMolas.cshtml",
+  "SelectedNode": "\\Coleta-Colchao\\Controllers\\HomeController.cs",
   "PreviewInSolutionExplorer": false
 }

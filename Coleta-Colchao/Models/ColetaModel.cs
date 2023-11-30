@@ -566,19 +566,19 @@ namespace Coleta_Colchao.Models
 
         }
 
-        public class Teste
-        {
-            [Key]
-            public int Id { get; set; }
+        //public class Teste
+        //{
+        //    [Key]
+        //    public int Id { get; set; }
 
-            [Required(ErrorMessage = "Nome obrigatorio")]
-            public string nome { get; set; }
+        //    [Required(ErrorMessage = "Nome obrigatorio")]
+        //    public string nome { get; set; }
 
-            [Required(ErrorMessage = "Senha Obrigatoria")]
-            public string senha { get; set; }
-            public string os { get; set; }
-            public string orcamento { get; set; }
-        }
+        //    [Required(ErrorMessage = "Senha Obrigatoria")]
+        //    public string senha { get; set; }
+        //    public string os { get; set; }
+        //    public string orcamento { get; set; }
+        //}
     }
 
 }

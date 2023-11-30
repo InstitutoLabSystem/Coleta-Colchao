@@ -37,24 +37,24 @@ namespace Coleta_Colchao.Controllers
 
 
         //[Route("Molas/teste")]
-        public IActionResult teste(string os, string orcamento)
-        {
-            var dados = _context.teste.Where(x => x.os == os && x.orcamento == orcamento).FirstOrDefault();
-            if (dados != null)
-            {
-                ViewBag.os = os;
-                ViewBag.orcamento = orcamento;
-                return View("Molas/teste", dados);
+        //public IActionResult teste(string os, string orcamento)
+        //{
+        //    var dados = _context.teste.Where(x => x.os == os && x.orcamento == orcamento).FirstOrDefault();
+        //    if (dados != null)
+        //    {
+        //        ViewBag.os = os;
+        //        ViewBag.orcamento = orcamento;
+        //        return View("Molas/teste", dados);
 
-            }
-            else
-            {
-                ViewBag.os = os;
-                ViewBag.orcamento = orcamento;
-                return View("Molas/teste");
+        //    }
+        //    else
+        //    {
+        //        ViewBag.os = os;
+        //        ViewBag.orcamento = orcamento;
+        //        return View("Molas/teste");
 
-            }
-        }
+        //    }
+        //}
 
         public IActionResult EditarRegistro(string os, string orcamento)
         {
