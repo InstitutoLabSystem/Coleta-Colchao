@@ -97,7 +97,7 @@ namespace Coleta_Colchao.Controllers
 
                              }).ToList();
 
-                var buscarOs = _context.regtro_colchao.Where(x => x.os == os && x.orcamento == dados.First().orcamento).FirstOrDefault();
+                var buscarOs = _context.regtro_colchao.Where(x => x.os == os).FirstOrDefault();
                 if (buscarOs == null)
                 {
                     if (dados.Count != 0)

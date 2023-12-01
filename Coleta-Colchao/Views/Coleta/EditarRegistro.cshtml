@@ -18,8 +18,6 @@
             display: flex;
             flex-direction: column;
             justify-content: center;
-            padding-top: 80px;
-            padding-bottom: 80px;
             border-bottom: 2px solid rgba(255,255,255, 0.1);
             align-items: center;
         }
@@ -261,7 +259,7 @@
 
     <script>
         document.addEventListener("DOMContentLoaded", function () {
-            var selectQuantMolas = document.querySelector('select[name="quant_molejo"]');
+            var selectQuantMolas = document.querySelector('select[name="estrutura"]');
 
             selectQuantMolas.addEventListener('change', function () {
                 var selectedValue = selectQuantMolas.value;
@@ -277,7 +275,7 @@
                 trBitola.style.display = 'none';
 
                 // Mostrar as trs com base no valor selecionado
-                if (selectedValue === '2') {
+                if (selectedValue === 'Conforto') {
                     trFornecedor.style.display = 'table-row';
                     trMolejo.style.display = 'table-row';
                     trQuantMolas.style.display = 'table-row';

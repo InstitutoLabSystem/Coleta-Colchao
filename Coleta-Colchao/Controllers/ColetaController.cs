@@ -570,7 +570,7 @@ namespace Coleta_Colchao.Controllers
                     // declarando as variaveis vazias para poder manipular elas.
                     DateOnly data_ini = salvarDados.data_ini;
                     DateOnly data_term = salvarDados.data_term;
-                    TimeOnly temp_ensaio = salvarDados.temp_ensaio;
+                    string temp_ensaio = salvarDados.temp_ensaio;
                     int qtd_face = salvarDados.qtd_face;
                     string faces = salvarDados.faces;
                     float esp_face_1 = ensaio7_2.alt_media;
@@ -1816,7 +1816,7 @@ namespace Coleta_Colchao.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> SalvarEnsaio7_7(string os, string orcamento, [Bind("data_ini,data_term,rasgo,quebra,contem_bonell,contem_mola,contem_lkf,contem_vericoil,contem_fio_continuo_1,contem_fio_continuo_2,contem_offset,minim_bitola_1,minim_bitola_2,mini_molas_1,mini_molas_2,mini_molas_3,mini_molas_4,mini_molas_5,mini_molas_6,mini_molas_7,mini_molas_8,calc_molas_1,calc_molas_2,calc_molas_3")] ColetaModel.Ensaio7_7 salvarDados)
+        public async Task<IActionResult> SalvarEnsaio7_7(string os, string orcamento, [Bind("data_ini,data_term,rasgo,quebra,contem_bonell,contem_mola,contem_lkf,contem_vericoil,contem_fio_continuo_1,contem_fio_continuo_2,contem_offset,minim_bitola_1,minim_bitola_2,mini_molas_1,mini_molas_2,mini_molas_3,mini_molas_4,mini_molas_5,mini_molas_6,mini_molas_7,mini_molas_8,calc_molas_1,calc_molas_2,calc_molas_3,calc_molas_duplicado,calc_molas_duplicado_2,calc_molas_duplicado_3")] ColetaModel.Ensaio7_7 salvarDados)
         {
             try
             {
@@ -1849,11 +1849,23 @@ namespace Coleta_Colchao.Controllers
                     float calc_molas_1 = salvarDados.calc_molas_1;
                     float calc_molas_2 = salvarDados.calc_molas_2;
                     float calc_molas_3 = salvarDados.calc_molas_3;
+                    float calc_molas_duplicado = (float)salvarDados.calc_molas_duplicado;
+                    float calc_molas_duplicado_2 = (float)salvarDados.calc_molas_duplicado_2;
+                    float calc_molas_duplicado_3 = (float)salvarDados.calc_molas_duplicado_3;
+                    float resultado_calculo_duplicado = 0f;
 
                     //calculando resultado necassario.
                     float resultado_calc = (calc_molas_1 / (calc_molas_2 * calc_molas_3) * 10000);
                     string conv_resultado_calc = resultado_calc.ToString("N2");
                     resultado_calc = float.Parse(conv_resultado_calc);
+
+                    if (calc_molas_duplicado != 0 && calc_molas_duplicado_2 != 0 && calc_molas_duplicado_2 != 0)
+                    {
+                        resultado_calculo_duplicado = (calc_molas_duplicado / (calc_molas_duplicado_2 * calc_molas_duplicado_3) * 10000);
+                        string conv_resultado_calculo_duplicado = resultado_calculo_duplicado.ToString("N2");
+                        resultado_calculo_duplicado = float.Parse(conv_resultado_calculo_duplicado);
+                    }
+
 
                     var registro = new ColetaModel.Ensaio7_7
                     {
@@ -1885,6 +1897,10 @@ namespace Coleta_Colchao.Controllers
                         calc_molas_2 = calc_molas_2,
                         calc_molas_3 = calc_molas_3,
                         resultado_calc = resultado_calc,
+                        calc_molas_duplicado = calc_molas_duplicado,
+                        calc_molas_duplicado_2 = calc_molas_duplicado_2,
+                        calc_molas_duplicado_3 = calc_molas_duplicado_3,
+                        resultado_calc_duplicado = resultado_calculo_duplicado,
                     };
 
                     _context.Add(registro);
@@ -1919,12 +1935,24 @@ namespace Coleta_Colchao.Controllers
                     editarDados.calc_molas_1 = salvarDados.calc_molas_1;
                     editarDados.calc_molas_2 = salvarDados.calc_molas_2;
                     editarDados.calc_molas_3 = salvarDados.calc_molas_3;
+                    editarDados.calc_molas_duplicado = salvarDados.calc_molas_duplicado;
+                    editarDados.calc_molas_duplicado_2 = salvarDados.calc_molas_duplicado_2;
+                    editarDados.calc_molas_duplicado_3 = salvarDados.calc_molas_duplicado_3;
+
 
                     //calculando resultado necassario.
                     editarDados.resultado_calc = (editarDados.calc_molas_1 / (editarDados.calc_molas_2 * editarDados.calc_molas_3) * 10000);
                     string conv_resultado_calc = editarDados.resultado_calc.ToString("N2");
                     editarDados.resultado_calc = float.Parse(conv_resultado_calc);
 
+                    if (editarDados.calc_molas_duplicado != 0 && editarDados.calc_molas_duplicado_2 != 0 && editarDados.calc_molas_duplicado_3 != 0)
+                    {
+                        editarDados.resultado_calc_duplicado = (editarDados.calc_molas_duplicado / (editarDados.calc_molas_duplicado_2 * editarDados.calc_molas_duplicado_3) * 10000);
+                        string conv_resultado_calculo_duplicado = editarDados.resultado_calc_duplicado.ToString("N2");
+                        editarDados.resultado_calc_duplicado = float.Parse(conv_resultado_calculo_duplicado);
+                    }
+
+                    _context.Update(editarDados);
                     await _context.SaveChangesAsync();
                     TempData["Mensagem"] = "Dados Editado Com Sucesso";
                     return RedirectToAction(nameof(EnsaioMolas7_7), "Coleta", new { os, orcamento });
@@ -1952,6 +1980,17 @@ namespace Coleta_Colchao.Controllers
                     string faces_utilizadas = salvarDados.faces_utilizadas;
                     string rasgo = salvarDados.rasgo;
                     string quebra = salvarDados.quebra;
+                    string conforme = string.Empty;
+
+                    //verificando a conformidade.
+                    if(rasgo == "Não" || quebra == "Não")
+                    {
+                        conforme = "C";
+                    }
+                    else
+                    {
+                        conforme = "NC";
+                    }
 
                     var registro = new ColetaModel.Ensaio7_3
                     {
@@ -1963,6 +2002,7 @@ namespace Coleta_Colchao.Controllers
                         faces_utilizadas = faces_utilizadas,
                         rasgo = rasgo,
                         quebra = quebra,
+                        conforme = conforme,
                     };
 
                     _context.Add(registro);
@@ -1979,6 +2019,16 @@ namespace Coleta_Colchao.Controllers
                     editarDados.faces_utilizadas = salvarDados.faces_utilizadas;
                     editarDados.rasgo = salvarDados.rasgo;
                     editarDados.quebra = salvarDados.quebra;
+
+                    //verificando a conformidade.
+                    if (editarDados.rasgo == "Não" || editarDados.quebra == "Não")
+                    {
+                        editarDados.conforme = "C";
+                    }
+                    else
+                    {
+                        editarDados.conforme = "NC";
+                    }
 
                     _context.Update(editarDados);
                     await _context.SaveChangesAsync();

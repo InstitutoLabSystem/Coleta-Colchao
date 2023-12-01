@@ -165,7 +165,6 @@ namespace Coleta_Colchao.Models
             public int Id { get; set; }
             public string os { get; set; }
             public string orcamento { get; set; }
-
             public string? borda_aco { get; set; }
             public string? borda_espuma { get; set; }
             public string? borda_aco_molejo { get; set; }
@@ -192,7 +191,7 @@ namespace Coleta_Colchao.Models
             public string orcamento { get; set; }
             public DateOnly data_ini { get; set; }
             public DateOnly data_term { get; set; }
-            public TimeOnly temp_ensaio { get; set; }
+            public string? temp_ensaio { get; set; }
             public int qtd_face { get; set; }
             public string? faces { get; set; }
             public float esp_face_1 { get; set; }
@@ -351,6 +350,10 @@ namespace Coleta_Colchao.Models
             public float calc_molas_2 { get; set; }
             public float calc_molas_3 { get; set; }
             public float resultado_calc { get; set; }
+            public float calc_molas_duplicado { get; set; }
+            public float calc_molas_duplicado_2 { get; set; }
+            public float calc_molas_duplicado_3 { get; set; }
+            public float resultado_calc_duplicado { get; set; }
             public string? executador { get; set; }
             public string? auxiliar { get; set; }
 
@@ -368,6 +371,7 @@ namespace Coleta_Colchao.Models
             public string faces_utilizadas { get; set; }
             public string? rasgo { get; set; }
             public string? quebra { get; set; }
+            public string? conforme { get; set; }
             public string? executador { get; set; }
             public string? auxiliar { get; set; }
         }
