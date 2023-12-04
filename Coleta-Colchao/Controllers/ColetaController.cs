@@ -2,6 +2,7 @@
 using Coleta_Colchao.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.CodeAnalysis.CSharp.Syntax;
 using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using System.Data.Entity;
 using System.Data.Entity.Core.Mapping;
@@ -36,6 +37,19 @@ namespace Coleta_Colchao.Controllers
         }
 
 
+        public IActionResult IndexMolas(string os, string orcamento)
+        {
+            ViewBag.os = os;
+            ViewBag.orcamento = orcamento;
+            return View("Molas/IndexMolas");
+        }
+        public IActionResult IndexEspuma(string os, string orcamento)
+        {
+            ViewBag.os = os;
+            ViewBag.orcamento = orcamento;
+            return View("Molas/IndexEspuma");
+        }
+
         //[Route("Molas/teste")]
         //public IActionResult teste(string os, string orcamento)
         //{
@@ -56,14 +70,14 @@ namespace Coleta_Colchao.Controllers
         //    }
         //}
 
-        public IActionResult EditarRegistro(string os, string orcamento)
+        public IActionResult EditarRegistroMolas(string os, string orcamento)
         {
             var dados = _context.regtro_colchao.Where(x => x.os == os && x.orcamento == orcamento).ToList();
             if (dados != null)
             {
                 ViewBag.os = os;
                 ViewBag.orcamento = orcamento;
-                return View("EditarRegistro", dados);
+                return View("Molas/EditarRegistroMolas", dados);
             }
             else
             {
@@ -313,8 +327,90 @@ namespace Coleta_Colchao.Controllers
 
         //INICIO DAS FUNÇÕES PARA SALVAR OS DADOS,
 
+        //[HttpPost]
+        //public async Task<IActionResult> SalvarRegistro(string os, string orcamento, [Bind("lacre,realizacao_ensaios,quant_recebida,quant_ensaiada,data_realizacao_ini,data_realizacao_term,num_proc,cod_ref,tipo_cert,modelo_cert,tipo_proc,produto,estrutura,tipo_molejo,quant_molejo,fornecedor_um,fornecedor_dois,nome_molejo_um,nome_molejo_dois,quant_media_um,quant_media_dois,bitola_arame_um,bitola_arame_dois,borda_peri,isolante,latex,napa_cou_plas,manual")] ColetaModel.Registro registro)
+        //{
+        //    try
+        //    {
+        //        string lacre = registro.lacre;
+        //        string realizacao_ensaios = registro.realizacao_ensaios;
+        //        string quant_recebida = registro.quant_recebida;
+        //        string quant_ensaiada = registro.quant_ensaiada;
+        //        DateOnly data_realizacao_ini = registro.data_realizacao_ini;
+        //        DateOnly data_realizacao_term = registro.data_realizacao_term;
+        //        string num_proc = registro.num_proc;
+        //        string cod_ref = registro.cod_ref;
+        //        string tipo_cert = registro.tipo_cert;
+        //        string modelo_cert = registro.modelo_cert;
+        //        string tipo_proc = registro.tipo_proc;
+        //        string produto = registro.produto;
+        //        string estrutura = registro.estrutura;
+        //        string tipo_molejo = registro.tipo_molejo;
+        //        string quant_molejo = registro.quant_molejo;
+        //        string fornecedor_um = registro.fornecedor_um;
+        //        string fornecedor_dois = registro.fornecedor_dois;
+        //        string nome_molejo_um = registro.nome_molejo_um;
+        //        string nome_molejo_dois = registro.nome_molejo_dois;
+        //        string quant_media_um = registro.quant_media_um;
+        //        string quant_media_dois = registro.quant_media_dois;
+        //        string bitola_arame_um = registro.bitola_arame_um;
+        //        string bitola_arame_dois = registro.bitola_arame_dois;
+        //        string borda_peri = registro.borda_peri;
+        //        string isolante = registro.isolante;
+        //        string latex = registro.latex;
+        //        string napa_cou_plas = registro.napa_cou_plas;
+        //        string manual = registro.manual;
+
+
+        //        var salvarRegistro = new ColetaModel.Registro
+        //        {
+        //            orcamento = orcamento,
+        //            os = os,
+        //            lacre = lacre,
+        //            realizacao_ensaios = realizacao_ensaios,
+        //            quant_recebida = quant_recebida,
+        //            quant_ensaiada = quant_ensaiada,
+        //            data_realizacao_ini = data_realizacao_ini,
+        //            data_realizacao_term = data_realizacao_term,
+        //            num_proc = num_proc,
+        //            cod_ref = cod_ref,
+        //            tipo_cert = tipo_cert,
+        //            modelo_cert = modelo_cert,
+        //            tipo_proc = tipo_proc,
+        //            produto = produto,
+        //            estrutura = estrutura,
+        //            tipo_molejo = tipo_molejo,
+        //            quant_molejo = quant_molejo,
+        //            fornecedor_um = fornecedor_um,
+        //            fornecedor_dois = fornecedor_dois,
+        //            nome_molejo_um = nome_molejo_um,
+        //            nome_molejo_dois = nome_molejo_dois,
+        //            quant_media_um = quant_media_um,
+        //            quant_media_dois = quant_media_dois,
+        //            bitola_arame_um = bitola_arame_um,
+        //            bitola_arame_dois = bitola_arame_dois,
+        //            borda_peri = borda_peri,
+        //            isolante = isolante,
+        //            latex = latex,
+        //            napa_cou_plas = napa_cou_plas,
+        //            manual = manual,
+
+        //        };
+
+        //        _context.Add(salvarRegistro);
+        //        await _context.SaveChangesAsync();
+        //        TempData["Mensagem"] = "Dados Iniciais gravados com Sucesso";
+        //        return RedirectToAction(nameof(Index), "Home", new { os, orcamento });
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        _logger.LogError(ex, "Error", ex.Message);
+        //        throw;
+        //    }
+        //}
+
         [HttpPost]
-        public async Task<IActionResult> SalvarRegistro(string os, string orcamento, [Bind("lacre,realizacao_ensaios,quant_recebida,quant_ensaiada,data_realizacao_ini,data_realizacao_term,num_proc,cod_ref,tipo_cert,modelo_cert,tipo_proc,produto,estrutura,tipo_molejo,quant_molejo,fornecedor_um,fornecedor_dois,nome_molejo_um,nome_molejo_dois,quant_media_um,quant_media_dois,bitola_arame_um,bitola_arame_dois,borda_peri,isolante,latex,napa_cou_plas,manual")] ColetaModel.Registro registro)
+        public async Task<IActionResult> SalvarRegistroMolas(string os, string orcamento, [Bind("lacre,realizacao_ensaios,quant_recebida,quant_ensaiada,data_realizacao_ini,data_realizacao_term,num_proc,cod_ref,tipo_cert,modelo_cert,tipo_proc,produto,estrutura,tipo_molejo,quant_molejo,fornecedor_um,fornecedor_dois,nome_molejo_um,nome_molejo_dois,quant_media_um,quant_media_dois,bitola_arame_um,bitola_arame_dois,borda_peri,isolante,latex,napa_cou_plas,manual")] ColetaModel.Registro registro)
         {
             try
             {
@@ -395,8 +491,9 @@ namespace Coleta_Colchao.Controllers
             }
         }
 
+
         [HttpPost]
-        public async Task<IActionResult> EditarRegistro(string os, string orcamento, [Bind("lacre,realizacao_ensaios,quant_recebida,quant_ensaiada,data_realizacao_ini,data_realizacao_term,num_proc,cod_ref,tipo_cert,modelo_cert,tipo_proc,produto,estrutura,tipo_molejo,quant_molejo,fornecedor_um,fornecedor_dois,nome_molejo_um,nome_molejo_dois,quant_media_um,quant_media_dois,bitola_arame_um,bitola_arame_dois,borda_peri,isolante,latex,napa_cou_plas,manual")] ColetaModel.Registro EditarRegistros)
+        public async Task<IActionResult> EditarRegistroMolas(string os, string orcamento, [Bind("lacre,realizacao_ensaios,quant_recebida,quant_ensaiada,data_realizacao_ini,data_realizacao_term,num_proc,cod_ref,tipo_cert,modelo_cert,tipo_proc,produto,estrutura,tipo_molejo,quant_molejo,fornecedor_um,fornecedor_dois,nome_molejo_um,nome_molejo_dois,quant_media_um,quant_media_dois,bitola_arame_um,bitola_arame_dois,borda_peri,isolante,latex,napa_cou_plas,manual")] ColetaModel.Registro EditarRegistros)
         {
             var editarValores = _context.regtro_colchao.Where(x => x.os == os && x.orcamento == orcamento).FirstOrDefault();
             try
@@ -434,7 +531,7 @@ namespace Coleta_Colchao.Controllers
 
                     await _context.SaveChangesAsync();
                     TempData["Mensagem"] = "Dados Editado Com Sucesso";
-                    return RedirectToAction(nameof(EditarRegistro), "Coleta", new { os, orcamento });
+                    return RedirectToAction(nameof(EditarRegistroMolas), "Coleta", new { os, orcamento });
                 }
                 else
                 {
@@ -1983,7 +2080,7 @@ namespace Coleta_Colchao.Controllers
                     string conforme = string.Empty;
 
                     //verificando a conformidade.
-                    if(rasgo == "Não" || quebra == "Não")
+                    if (rasgo == "Não" || quebra == "Não")
                     {
                         conforme = "C";
                     }
@@ -2270,21 +2367,74 @@ namespace Coleta_Colchao.Controllers
                     string caixa_alta_6_2 = salvarDados.caixa_alta_6_2;
                     string embalagem_unitaria = salvarDados.embalagem_unitaria;
                     string embalagem_garante = salvarDados.embalagem_garante;
-                    string conforme = string.Empty;
+                    string conforme_requisitos = string.Empty;
+                    string conforme_requisitos_2 = string.Empty;
+                    string conforme_requisitos_3 = string.Empty;
+                    string conforme_requisitos_4 = string.Empty;
+                    string conforme_6_1 = string.Empty;
+                    string conforme_embalagem = string.Empty;
 
                     // realizando calculo necessario.
                     float calc_media = area_etiqueta_1 * area_etiqueta_2;
 
-                    //VERIFICANDO SE COLETA ESTA CONFORME OU NC
-                    if (etiqueta_ident == "Não" || revest_permanente == "Não" || etiqueta_duravel_indele == "Não" || face_superior == "Não" || visualizacao == "Não" || lingua_portuguesa == "Não" || lingua_portuguesa == "Não" || cnpj_cpf == "Não" || marca_modelo == "Não" || dimensoes_prod == "Não" || informada_altura == "Não" || composicoes == "Não" || contem_borda == "Não" || densidade_espuma == "Não" || composi_revestimento == "Não" || data_fabricacao == "Não" || ident_lote == "Não" || pais_origem == "Não" || codigo_barras == "Não" || cuidado_minimos == "Não" || cuidado_minimos == "Não" || aviso_esclarecimento == "Não" || possui_mais_laminas == "Não" || contem_advertencia == "Não" || altura_letra == "Não" || negrito == "Não" || caixa_alta == "Não" || contem_advertencia_mat == "Não" || altura_letra_mat == "Não" || negrito_mat == "Não" || caixa_alta_mat == "Não" || contem_instru_uso == "Não" || orientacoes == "Não" || alerta_consumidor == "Não" || desenho_esquematico == "Não" || contem_advertencia_6_2 == "Não" || altura_letra_6_2 == "Não" || negrito6_2 == "Não" || caixa_alta_6_2 == "Não" || embalagem_garante == "Não" || embalagem_unitaria == "Não")
+                    //VERIFICANDO SE COLETA ESTA CONFORME OU NC DE CADA CAMPO
+                    if (etiqueta_ident == "Não" || revest_permanente == "Não" || etiqueta_duravel_indele == "Não" || face_superior == "Não" || visualizacao == "Não" || lingua_portuguesa == "Não")
                     {
-                        conforme = "NC";
+                        conforme_requisitos = "NC";
                     }
                     else
                     {
-                        conforme = "C";
+                        conforme_requisitos = "C";
                     }
 
+                    if(cnpj_cpf == "Não" || marca_modelo == "Não" || dimensoes_prod == "Não")
+                    {
+                        conforme_requisitos_2 = "NC";
+                    }
+                    else
+                    {
+                        conforme_requisitos_2 = "C";
+
+                    }
+
+                    if(informada_altura == "Não" || composicoes == "Não" || contem_borda == "Não" || densidade_espuma == "Não" || composi_revestimento == "Não" || data_fabricacao == "Não" || ident_lote == "Não" || pais_origem == "Não" || codigo_barras == "Não" || cuidado_minimos == "Não")
+                    {
+                        conforme_requisitos_3 = "NC";
+                    }
+                    else
+                    {
+                        conforme_requisitos_3 = "C";
+                    }
+                    
+                    if(aviso_esclarecimento == "Não" || possui_mais_laminas == "Não" || contem_advertencia == "Não" || negrito == "Não" || caixa_alta == "Não" || contem_advertencia_mat == "Não" || negrito_mat == "Não")
+                    {
+                        conforme_requisitos_4 = "NC";
+                    }
+                    else
+                    {
+                        conforme_requisitos_4 = "C";
+                    }
+
+                    if(contem_instru_uso == "Não" || orientacoes == "Não" || alerta_consumidor == "Não" || desenho_esquematico == "Não" || contem_advertencia_6_2 == "Não" || altura_letra_6_2 == "Não" || negrito6_2 == "Não" || caixa_alta_6_2 == "Não")
+                    {
+                        conforme_6_1 = "NC";
+                    }
+                    else
+                    {
+                        conforme_6_1 = "C";
+                    }
+
+                    if(embalagem_garante == "Não" || embalagem_unitaria == "Não")
+                    {
+                        conforme_embalagem = "NC";
+                    }
+                    else
+                    {
+                        conforme_embalagem = "C";
+                    }
+                    //termino das verificações de conformidade.
+
+                   
                     var registro = new ColetaModel.EnsaioIdentificacaoEmbalagem
                     {
                         os = os,
@@ -2334,7 +2484,12 @@ namespace Coleta_Colchao.Controllers
                         caixa_alta_6_2 = caixa_alta_6_2,
                         embalagem_unitaria = embalagem_unitaria,
                         embalagem_garante = embalagem_garante,
-                        conforme = conforme,
+                        conforme_requisitos = conforme_requisitos,
+                        conforme_requisitos_2 = conforme_requisitos_2,
+                        conforme_requisitos_3 = conforme_requisitos_3,
+                        conforme_requisitos_4 = conforme_requisitos_4,
+                        conforme_6_1 = conforme_6_1,
+                        conforme_embalagem = conforme_embalagem,
                     };
 
                     //salvando no banco
@@ -2394,14 +2549,63 @@ namespace Coleta_Colchao.Controllers
                     //realizando contas necessarias.
                     float calc_media = editarDados.area_etiqueta_1 * editarDados.area_etiqueta_2;
 
-                    if (editarDados.etiqueta_ident == "Não" || editarDados.revest_permanente == "Não" || editarDados.etiqueta_duravel_indele == "Não" || editarDados.face_superior == "Não" || editarDados.visualizacao == "Não" || editarDados.lingua_portuguesa == "Não" || editarDados.lingua_portuguesa == "Não" || editarDados.cnpj_cpf == "Não" || editarDados.marca_modelo == "Não" || editarDados.dimensoes_prod == "Não" || editarDados.informada_altura == "Não" || editarDados.composicoes == "Não" || editarDados.contem_borda == "Não" || editarDados.densidade_espuma == "Não" || editarDados.composi_revestimento == "Não" || editarDados.data_fabricacao == "Não" || editarDados.ident_lote == "Não" || editarDados.pais_origem == "Não" || editarDados.codigo_barras == "Não" || editarDados.cuidado_minimos == "Não" || editarDados.cuidado_minimos == "Não" || editarDados.aviso_esclarecimento == "Não" || editarDados.possui_mais_laminas == "Não" || editarDados.contem_advertencia == "Não" || editarDados.altura_letra == "Não" || editarDados.negrito == "Não" || editarDados.caixa_alta == "Não" || editarDados.contem_advertencia_mat == "Não" || editarDados.altura_letra_mat == "Não" || editarDados.negrito_mat == "Não" || editarDados.caixa_alta_mat == "Não" || editarDados.contem_instru_uso == "Não" || editarDados.orientacoes == "Não" || editarDados.alerta_consumidor == "Não" || editarDados.desenho_esquematico == "Não" || editarDados.contem_advertencia_6_2 == "Não" || editarDados.altura_letra_6_2 == "Não" || editarDados.negrito6_2 == "Não" || editarDados.caixa_alta_6_2 == "Não" || editarDados.embalagem_garante == "Não" || editarDados.embalagem_unitaria == "Não")
+                    //VERIFICANDO SE COLETA ESTA CONFORME OU NC DE CADA CAMPO
+                    if (editarDados.etiqueta_ident == "Não" || editarDados.revest_permanente == "Não" || editarDados.etiqueta_duravel_indele == "Não" || editarDados.face_superior == "Não" || editarDados.visualizacao == "Não" || editarDados.lingua_portuguesa == "Não")
                     {
-                        editarDados.conforme = "NC";
+                        editarDados.conforme_requisitos = "NC";
                     }
                     else
                     {
-                        editarDados.conforme = "C";
+                        editarDados.conforme_requisitos = "C";
                     }
+
+                    if (editarDados.cnpj_cpf == "Não" || editarDados.marca_modelo == "Não" || editarDados.dimensoes_prod == "Não")
+                    {
+                        editarDados.conforme_requisitos_2 = "NC";
+                    }
+                    else
+                    {
+                        editarDados.conforme_requisitos_2 = "C";
+
+                    }
+
+                    if (editarDados.informada_altura == "Não" || editarDados.composicoes == "Não" || editarDados.contem_borda == "Não" || editarDados.densidade_espuma == "Não" || editarDados.composi_revestimento == "Não" || editarDados.data_fabricacao == "Não" || editarDados.ident_lote == "Não" || editarDados.pais_origem == "Não" || editarDados.codigo_barras == "Não" || editarDados.cuidado_minimos == "Não")
+                    {
+                        editarDados.conforme_requisitos_3 = "NC";
+                    }
+                    else
+                    {
+                        editarDados.conforme_requisitos_3 = "C";
+                    }
+
+                    if (editarDados.aviso_esclarecimento == "Não" || editarDados.possui_mais_laminas == "Não" || editarDados.contem_advertencia == "Não" || editarDados.negrito == "Não" || editarDados.caixa_alta == "Não" || editarDados.contem_advertencia_mat == "Não" || editarDados.negrito_mat == "Não")
+                    {
+                        editarDados.conforme_requisitos_4 = "NC";
+                    }
+                    else
+                    {
+                        editarDados.conforme_requisitos_4 = "C";
+                    }
+
+                    if (editarDados.contem_instru_uso == "Não" || editarDados.orientacoes == "Não" || editarDados.alerta_consumidor == "Não" || editarDados.desenho_esquematico == "Não" || editarDados.contem_advertencia_6_2 == "Não" || editarDados.altura_letra_6_2 == "Não" || editarDados.negrito6_2 == "Não" || editarDados.caixa_alta_6_2 == "Não")
+                    {
+                        editarDados.conforme_6_1 = "NC";
+                    }
+                    else
+                    {
+                        editarDados.conforme_6_1 = "C";
+                    }
+
+                    if (editarDados.embalagem_garante == "Não" || editarDados.embalagem_unitaria == "Não")
+                    {
+                        editarDados.conforme_embalagem = "NC";
+                    }
+                    else
+                    {
+                        editarDados.conforme_embalagem = "C";
+                    }
+                    //termino das verificações de conformidade.
+
 
                     //recebendo valor depois do calculo.
                     editarDados.area_etiqueta_media = calc_media;

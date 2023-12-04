@@ -429,7 +429,13 @@ namespace Coleta_Colchao.Models
             public string? caixa_alta_6_2 { get; set; }
             public string? embalagem_unitaria { get; set; }
             public string? embalagem_garante { get; set; }
-            public string? conforme { get; set; }
+            public string? conforme_requisitos { get; set; }
+            public string? conforme_requisitos_2 { get; set; }
+            public string? conforme_requisitos_3 { get; set; }
+            public string? conforme_requisitos_4 { get; set; }
+            public string? conforme_6_1 { get; set; }
+            public string? conforme_embalagem { get; set; }
+
             public string? executador { get; set; }
             public string? auxiliar { get; set; }
         }

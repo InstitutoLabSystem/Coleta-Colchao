@@ -7,6 +7,7 @@ using Coleta_Colchao.Data;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.Build.Framework;
 using System.Security.Claims;
+using System.Linq;
 
 namespace Coleta_Colchao.Controllers
 {
@@ -56,9 +57,22 @@ namespace Coleta_Colchao.Controllers
 
                 if (dados.Count != 0)
                 {
-                    ViewBag.os = os;
-                    ViewBag.orcamento = dados.First().orcamento;
-                    return View(dados);
+                    var RegeistroColchao = _context.regtro_colchao.Where(x => x.os == os && x.orcamento == orcamento).FirstOrDefault();
+                    if (RegeistroColchao == null)
+                    {
+                        ViewBag.os = os;
+                        ViewBag.orcamento = dados.First().orcamento;
+                        ViewBag.estrutura = RegeistroColchao.estrutura;
+                        return View(dados);
+                    }
+                    else
+                    {
+                        ViewBag.estrutura = RegeistroColchao.estrutura;
+                        ViewBag.os = os;
+                        ViewBag.orcamento = dados.First().orcamento;
+                        return View(dados);
+                    }
+
                 }
                 else
                 {
@@ -104,7 +118,19 @@ namespace Coleta_Colchao.Controllers
                     {
                         ViewBag.os = os;
                         ViewBag.orcamento = dados.First().orcamento;
-                        return RedirectToAction(nameof(Index), "Coleta", new { os, ViewBag.orcamento });
+
+                        if (dados.Any(x => x.descricao == "7.1 | PRE ROLAGEM "))
+                        {
+                            return RedirectToAction("IndexMolas", "Coleta", new { os, ViewBag.orcamento });
+                        }
+                        else if (dados.Any(x => x.descricao == "5.1 I DETERMINAÇÃO DA DENSIDADE"))
+                        {
+                            return RedirectToAction("IndexEspuma", "Coleta", new { os, ViewBag.orcamento });
+                        }
+                        else
+                        {
+                            return RedirectToAction(nameof(Index), "Coleta", new { os, ViewBag.orcamento });
+                        }
                     }
                     else
                     {
@@ -116,6 +142,7 @@ namespace Coleta_Colchao.Controllers
                 {
                     ViewBag.os = os;
                     ViewBag.orcamento = dados.First().orcamento;
+                    ViewBag.estrutura = buscarOs.estrutura;
                     return View("Index", dados);
                 }
             }
@@ -125,5 +152,7 @@ namespace Coleta_Colchao.Controllers
                 throw;
             }
         }
+
+
     }
 }
