@@ -138,14 +138,8 @@ namespace Coleta_Colchao.Models
             public string? esp_especificado_dois { get; set; }
             public string? esp_mm_dois { get; set; }
             public string? esp_cm_dois { get; set; }
-            public string? col_tipo_um { get; set; }
-            public string? col_especificado_um { get; set; }
-            public string? col_encontrado_um { get; set; }
-            public string? col_resul_um { get; set; }
-            public string? col_tipo_dois { get; set; }
-            public string? col_lamina_dois { get; set; }
-            public string? col_especificado_dois { get; set; }
-            public string? col_resul_dois { get; set; }
+
+            public string? esp_resul_final { get; set; }
             public string? reves_tipo_um { get; set; }
             public string? reves_lamina_um { get; set; }
             public string? reves_especificado_um { get; set; }
@@ -156,6 +150,7 @@ namespace Coleta_Colchao.Models
             public string? reves_especificado_dois { get; set; }
             public string? reves_mm_dois { get; set; }
             public string? reves_cm_dois { get; set; }
+            public string? reves_resul_final { get; set; }
             public string? lamina_media_um { get; set; }
         }
 

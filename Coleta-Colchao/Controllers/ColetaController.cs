@@ -1044,13 +1044,13 @@ namespace Coleta_Colchao.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> SalvarEspumaUm(string os, string orcamento, string comprimento_result, string largura_result, string altura_result, string lamina_resul_um, string lamina_resul_dois, string lamina_resul_final, string lamina_resul_tres, string lamina_resul_quat, string lamina_resul_cinco, [Bind("data_ini,data_term,temp_ini,temp_fim,dimensao_temp,comprimento_um,comprimento_esp,comprimento_dois," +
+        public async Task<IActionResult> SalvarEspumaUm(string os, string orcamento, string comprimento_result, string largura_result, string altura_result, string lamina_resul_um, string lamina_resul_dois, string lamina_resul_final, string lamina_resul_tres, string lamina_resul_quat, string lamina_resul_cinco, string esp_resul_final, 
+            string reves_resul_final, [Bind("data_ini,data_term,temp_ini,temp_fim,dimensao_temp,comprimento_um,comprimento_esp,comprimento_dois," +
           "comprimento_tres,comprimento_media,largura_result,largura_um,largura_esp,largura_dois,largura_tres,largura_media,altura_result,altura_um,altura_esp,altura_dois,altura_tres,altura_media,lamina_um,lamina_comp_um," +
           "lamina_esp_um,lamina_comp_dois,lamina_comp_tres,lamina_media_um,lamina_tipo_um,lamina_min_um,lamina_max_um,lamina_resul_um,lamina_dois,lamina_comp_quat,lamina_esp_dois, lamina_comp_cinco,lamina_comp_seis,lamina_media_dois,lamina_tipo_dois," +
           "lamina_min_dois,lamina_max_dois,lamina_resul_dois,lamina_tres,lamina_comp_sete,lamina_esp_tres,lamina_comp_oito,lamina_comp_nove,lamina_media_tres,lamina_tipo_tres,lamina_min_tres,lamina_max_tres,lamina_resul_tres,lamina_quat,lamina_comp_dez,lamina_esp_quat," +
           "lamina_comp_onze,lamina_comp_doze,lamina_media_quat,lamina_tipo_quat,lamina_min_quat,lamina_max_quat,lamina_resul_quat,lamina_cinco,lamina_comp_treze,lamina_esp_cinco,lamina_comp_quatorze,lamina_comp_quinze,lamina_media_cinco,lamina_tipo_cinco," +
-          "lamina_min_cinco,lamina_max_cinco,lamina_resul_cinco,lamina_resul_final,esp_tipo_um,esp_lamina_um,esp_especificado_um,esp_mm_um,esp_cm_um,esp_tipo_dois,esp_lamina_dois,esp_especificado_dois,esp_mm_dois,esp_cm_dois,col_tipo_um,col_especificado_um,col_encontrado_um,col_resul_um," +
-          "col_tipo_dois,col_lamina_dois,col_especificado_dois,col_resul_dois,reves_tipo_um,reves_lamina_um,reves_especificado_um,reves_mm_um,reves_cm_um,reves_tipo_dois,reves_lamina_dois,reves_especificado_dois,reves_mm_dois,reves_cm_dois,temp_repouso,lamina_media_um")] ColetaModel.EspumaUm salvar)
+          "lamina_min_cinco,lamina_max_cinco,lamina_resul_cinco,lamina_resul_final,esp_tipo_um,esp_lamina_um,esp_especificado_um,esp_mm_um,esp_cm_um,esp_tipo_dois,esp_lamina_dois,esp_especificado_dois,esp_mm_dois,esp_cm_dois,reves_tipo_um,reves_lamina_um,reves_especificado_um,reves_mm_um,reves_cm_um,reves_tipo_dois,reves_lamina_dois,reves_especificado_dois,reves_mm_dois,reves_cm_dois,temp_repouso,lamina_media_um")] ColetaModel.EspumaUm salvar)
         {
             try
             {
@@ -1132,7 +1132,7 @@ namespace Coleta_Colchao.Controllers
 
                     double alturaesp = double.Parse(altura_esp);
 
-                    double valor_min_altura = alturaesp - 1.5;
+                    double valor_min_altura = alturaesp - 0.5;
                     double valor_max_altura = alturaesp + 1.5;
 
                     if (altura_media_arredondado >= valor_min_altura && altura_media_arredondado <= valor_max_altura)
@@ -1157,7 +1157,7 @@ namespace Coleta_Colchao.Controllers
                     double laminacompdois = double.Parse(lamina_comp_dois);
                     double laminacomptres = double.Parse(lamina_comp_tres);
                     var lamina_media_um = ((laminacompum + laminacompdois + laminacomptres) / 3);
-
+                    double lamina_media_um_arredondado = Math.Round(lamina_media_um, 1);
 
                     var lamina_tipo_um = salvar.lamina_tipo_um;
                     var lamina_min_um = salvar.lamina_min_um;
@@ -1168,7 +1168,7 @@ namespace Coleta_Colchao.Controllers
                     {
                         double lamina_maxUm = double.Parse(lamina_max_um);
 
-                        if ((lamina_media_um >= lamina_minUm) && (lamina_media_um <= lamina_maxUm))
+                        if ((lamina_media_um_arredondado >= lamina_minUm) && (lamina_media_um_arredondado <= lamina_maxUm))
                         {
                             lamina_resul_um = "C";
                         }
@@ -1179,7 +1179,7 @@ namespace Coleta_Colchao.Controllers
                     }
                     else
                     {
-                        if (lamina_media_um > lamina_minUm)
+                        if (lamina_media_um_arredondado >= lamina_minUm)
                         {
                             lamina_resul_um = "C";
                         }
@@ -1199,6 +1199,8 @@ namespace Coleta_Colchao.Controllers
                     double laminacompcinco = double.Parse(lamina_comp_cinco);
                     double laminacompseis = double.Parse(lamina_comp_seis);
                     var lamina_media_dois = ((laminacompquat + laminacompcinco + laminacompseis) / 3);
+                    double lamina_media_dois_arredondado = Math.Round(lamina_media_dois, 1);
+
                     var lamina_tipo_dois = salvar.lamina_tipo_dois;
                     var lamina_min_dois = salvar.lamina_min_dois;
                     var lamina_max_dois = salvar.lamina_max_dois;
@@ -1210,7 +1212,7 @@ namespace Coleta_Colchao.Controllers
                     {
                         double lamina_maxDois = double.Parse(lamina_max_dois);
 
-                        if ((lamina_media_dois >= lamina_minDois) && (lamina_media_dois <= lamina_maxDois))
+                        if ((lamina_media_dois_arredondado >= lamina_minDois) && (lamina_media_dois_arredondado <= lamina_maxDois))
                         {
                             lamina_resul_dois = "C";
                         }
@@ -1221,7 +1223,7 @@ namespace Coleta_Colchao.Controllers
                     }
                     else
                     {
-                        if (lamina_media_dois > lamina_minDois)
+                        if (lamina_media_dois_arredondado >= lamina_minDois)
                         {
                             lamina_resul_dois = "C";
                         }
@@ -1242,6 +1244,8 @@ namespace Coleta_Colchao.Controllers
                     double laminacompoito = double.Parse(lamina_comp_oito);
                     double laminacompnove = double.Parse(lamina_comp_nove);
                     var lamina_media_tres = ((laminacompsete + laminacompoito + laminacompnove) / 3);
+                    double lamina_media_tres_arredondado = Math.Round(lamina_media_tres, 1);
+
                     var lamina_tipo_tres = salvar.lamina_tipo_tres;
                     var lamina_min_tres = salvar.lamina_min_tres;
                     var lamina_max_tres = salvar.lamina_max_tres;
@@ -1253,7 +1257,7 @@ namespace Coleta_Colchao.Controllers
                     {
                         double lamina_maxTres = double.Parse(lamina_max_tres);
 
-                        if ((lamina_media_tres >= lamina_minTres) && (lamina_media_tres <= lamina_maxTres))
+                        if ((lamina_media_tres_arredondado >= lamina_minTres) && (lamina_media_tres_arredondado <= lamina_maxTres))
                         {
                             lamina_resul_tres = "C";
                         }
@@ -1264,7 +1268,7 @@ namespace Coleta_Colchao.Controllers
                     }
                     else
                     {
-                        if (lamina_media_tres > lamina_minTres)
+                        if (lamina_media_tres_arredondado >= lamina_minTres)
                         {
                             lamina_resul_tres = "C";
                         }
@@ -1287,6 +1291,8 @@ namespace Coleta_Colchao.Controllers
                     double laminacomponze = double.Parse(lamina_comp_onze);
                     double laminacompdoze = double.Parse(lamina_comp_doze);
                     var lamina_media_quat = ((laminacompdez + laminacomponze + laminacompdoze) / 3);
+                    double lamina_media_quat_arredondado = Math.Round(lamina_media_quat, 1);
+
                     var lamina_tipo_quat = salvar.lamina_tipo_quat;
                     var lamina_min_quat = salvar.lamina_min_quat;
                     var lamina_max_quat = salvar.lamina_max_quat;
@@ -1296,7 +1302,7 @@ namespace Coleta_Colchao.Controllers
                     {
                         double lamina_maxQuat = double.Parse(lamina_max_quat);
 
-                            if ((lamina_media_quat >= lamina_minQuat) && (lamina_media_quat <= lamina_maxQuat))
+                            if ((lamina_media_quat_arredondado >= lamina_minQuat) && (lamina_media_quat_arredondado <= lamina_maxQuat))
                             {
                                 lamina_resul_quat = "C";
                             }
@@ -1307,7 +1313,7 @@ namespace Coleta_Colchao.Controllers
                     }
                     else
                     {
-                        if (lamina_media_quat > lamina_minQuat)
+                        if (lamina_media_quat_arredondado >= lamina_minQuat)
                         {
                             lamina_resul_quat = "C";
                         }
@@ -1329,6 +1335,8 @@ namespace Coleta_Colchao.Controllers
                     double laminacompquatorze = double.Parse(lamina_comp_quatorze);
                     double laminacompquinze = double.Parse(lamina_comp_quinze);
                     var lamina_media_cinco = ((laminacomptreze + laminacompquatorze + laminacompquinze) / 3);
+                    double lamina_media_cinco_arredondado = Math.Round(lamina_media_cinco, 1);
+
                     var lamina_tipo_cinco = salvar.lamina_tipo_cinco;
                     var lamina_min_cinco = salvar.lamina_min_cinco;
                     var lamina_max_cinco = salvar.lamina_max_cinco;
@@ -1339,7 +1347,7 @@ namespace Coleta_Colchao.Controllers
                     {
                         double lamina_maxCinco = double.Parse(lamina_max_cinco);
 
-                        if ((lamina_media_cinco >= lamina_minCinco) && (lamina_media_cinco <= lamina_maxCinco))
+                        if ((lamina_media_cinco_arredondado >= lamina_minCinco) && (lamina_media_cinco_arredondado <= lamina_maxCinco))
                         {
                             lamina_resul_cinco = "C";
                         }
@@ -1350,7 +1358,7 @@ namespace Coleta_Colchao.Controllers
                     }
                     else
                     {
-                        if (lamina_media_cinco > lamina_minCinco)
+                        if (lamina_media_cinco_arredondado >= lamina_minCinco)
                         {
                             lamina_resul_cinco = "C";
                         }
@@ -1371,12 +1379,15 @@ namespace Coleta_Colchao.Controllers
                     }
 
 
+                    // CONTAS tabela finais 
 
                     var esp_tipo_um = salvar.esp_tipo_um;
                     var esp_lamina_um = salvar.esp_lamina_um;
 
                     double esplamina_um = double.Parse(esp_lamina_um);
                     var esp_especificado_um = esplamina_um / 3;
+                    double esp_especificado_um_arredondado = Math.Round(esp_especificado_um, 1); // O segundo parâmetro é o número de casas decimais desejado
+
                     var esp_mm_um = salvar.esp_mm_um;
 
                     double mm_um = double.Parse(esp_mm_um);
@@ -1388,24 +1399,27 @@ namespace Coleta_Colchao.Controllers
 
                     double esplamina_dois = double.Parse(esp_lamina_dois);
                     var esp_especificado_dois = esplamina_dois / 3;
+                    double esp_especificado_dois_arredondado = Math.Round(esp_especificado_dois, 1); // O segundo parâmetro é o número de casas decimais desejado
 
                     double mm_dois = double.Parse(esp_mm_dois);
                     var esp_cm_dois = mm_dois / 10;
 
-                    var col_tipo_um = salvar.col_tipo_um;
-                    var col_especificado_um = salvar.col_especificado_um;
-                    var col_encontrado_um = salvar.col_encontrado_um;
-                    var col_resul_um = salvar.col_resul_um;
-                    var col_tipo_dois = salvar.col_tipo_dois;
-                    var col_lamina_dois = salvar.col_lamina_dois;
-                    var col_especificado_dois = salvar.col_especificado_dois;
-                    var col_resul_dois = salvar.col_resul_dois;
+                    if((esp_cm_um <= esp_especificado_um_arredondado) && (esp_cm_dois <= esp_especificado_dois_arredondado))
+                    {
+                        esp_resul_final = "C";
+                    }
+                    else
+                    {
+                        esp_resul_final = "NC";
+                    }
+
                     var reves_tipo_um = salvar.reves_tipo_um;
                     var reves_lamina_um = salvar.reves_lamina_um;
                     var reves_mm_um = salvar.reves_mm_um;
 
                     double reveslamina_um = double.Parse(reves_lamina_um);
                     var reves_especificado_um = reveslamina_um / 3;
+                    double reves_especificado_um_arredondado = Math.Round(reves_especificado_um, 1);
 
                     double reves_mm = double.Parse(reves_mm_um);
                     var reves_cm_um = reves_mm / 10;
@@ -1416,9 +1430,19 @@ namespace Coleta_Colchao.Controllers
 
                     double reveslamina_dois = double.Parse(reves_lamina_dois);
                     var reves_especificado_dois = reveslamina_dois / 3;
+                    double reves_especificado_dois_arredondado = Math.Round(reves_especificado_dois, 1);
 
                     double reves_mm_ = double.Parse(reves_mm_dois);
                     var reves_cm_dois = reves_mm_ / 10;
+
+                    if((reves_cm_um <= reves_especificado_um_arredondado) && (reves_cm_dois <= reves_especificado_dois_arredondado))
+                    {
+                        reves_resul_final = "C";
+                    }
+                    else
+                    {
+                        reves_resul_final = "NC";
+                    }
 
                     //salvando os valores
 
@@ -1455,7 +1479,7 @@ namespace Coleta_Colchao.Controllers
                         lamina_comp_dois = lamina_comp_dois,
                         lamina_comp_tres = lamina_comp_tres,
                         lamina_esp_um = lamina_esp_um,
-                        lamina_media_um = lamina_media_um.ToString(),
+                        lamina_media_um = lamina_media_um_arredondado.ToString(),
                         lamina_tipo_um = lamina_tipo_um,
                         lamina_min_um = lamina_min_um,
                         lamina_max_um = lamina_max_um,
@@ -1465,7 +1489,7 @@ namespace Coleta_Colchao.Controllers
                         lamina_comp_cinco = lamina_comp_cinco,
                         lamina_comp_seis = lamina_comp_seis,
                         lamina_esp_dois = lamina_esp_dois,
-                        lamina_media_dois = lamina_media_dois.ToString(),
+                        lamina_media_dois = lamina_media_dois_arredondado.ToString(),
                         lamina_tipo_dois = lamina_tipo_dois,
                         lamina_min_dois = lamina_min_dois,
                         lamina_max_dois = lamina_max_dois,
@@ -1475,7 +1499,7 @@ namespace Coleta_Colchao.Controllers
                         lamina_comp_oito = lamina_comp_oito,
                         lamina_comp_nove = lamina_comp_nove,
                         lamina_esp_tres = lamina_esp_tres,
-                        lamina_media_tres = lamina_media_tres.ToString(),
+                        lamina_media_tres = lamina_media_tres_arredondado.ToString(),
                         lamina_tipo_tres = lamina_tipo_tres,
                         lamina_min_tres = lamina_min_tres,
                         lamina_max_tres = lamina_max_tres,
@@ -1485,7 +1509,7 @@ namespace Coleta_Colchao.Controllers
                         lamina_comp_onze = lamina_comp_onze,
                         lamina_comp_doze = lamina_comp_doze,
                         lamina_esp_quat = lamina_esp_quat,
-                        lamina_media_quat = lamina_media_quat.ToString(),
+                        lamina_media_quat = lamina_media_quat_arredondado.ToString(),
                         lamina_tipo_quat = lamina_tipo_quat,
                         lamina_min_quat = lamina_min_quat,
                         lamina_max_quat = lamina_max_quat,
@@ -1495,7 +1519,7 @@ namespace Coleta_Colchao.Controllers
                         lamina_comp_quatorze = lamina_comp_quatorze,
                         lamina_comp_quinze = lamina_comp_quinze,
                         lamina_esp_cinco = lamina_esp_cinco,
-                        lamina_media_cinco = lamina_media_cinco.ToString(),
+                        lamina_media_cinco = lamina_media_cinco_arredondado.ToString(),
                         lamina_tipo_cinco = lamina_tipo_cinco,
                         lamina_min_cinco = lamina_min_cinco,
                         lamina_max_cinco = lamina_max_cinco,
@@ -1503,32 +1527,26 @@ namespace Coleta_Colchao.Controllers
                         lamina_resul_final = lamina_resul_final,
                         esp_tipo_um = esp_tipo_um,
                         esp_lamina_um = esp_lamina_um,
-                        esp_especificado_um = esp_especificado_um.ToString(),
+                        esp_especificado_um = esp_especificado_um_arredondado.ToString(),
                         esp_mm_um = esp_mm_um,
                         esp_cm_um = esp_cm_um.ToString(),
                         esp_tipo_dois = esp_tipo_dois,
                         esp_lamina_dois = esp_lamina_dois,
-                        esp_especificado_dois = esp_especificado_dois.ToString(),
+                        esp_especificado_dois = esp_especificado_dois_arredondado.ToString(),
                         esp_mm_dois = esp_mm_dois,
                         esp_cm_dois = esp_cm_dois.ToString(),
-                        col_tipo_um = col_tipo_um,
-                        col_especificado_um = col_especificado_um,
-                        col_encontrado_um = col_encontrado_um,
-                        col_resul_um = col_resul_um,
-                        col_tipo_dois = col_tipo_dois,
-                        col_lamina_dois = col_lamina_dois,
-                        col_especificado_dois = col_especificado_dois,
-                        col_resul_dois = col_resul_dois,
+                        esp_resul_final = esp_resul_final,
                         reves_tipo_um = reves_tipo_um,
                         reves_lamina_um = reves_lamina_um,
-                        reves_especificado_um = reves_especificado_um.ToString(),
+                        reves_especificado_um = reves_especificado_um_arredondado.ToString(),
                         reves_mm_um = reves_mm_um,
                         reves_cm_um = reves_cm_um.ToString(),
                         reves_tipo_dois = reves_tipo_dois,
                         reves_lamina_dois = reves_lamina_dois,
-                        reves_especificado_dois = reves_especificado_dois.ToString(),
+                        reves_especificado_dois = reves_especificado_dois_arredondado.ToString(),
                         reves_mm_dois = reves_mm_dois,
                         reves_cm_dois = reves_cm_dois.ToString(),
+                        reves_resul_final = reves_resul_final,
 
                     };
 
@@ -1547,30 +1565,59 @@ namespace Coleta_Colchao.Controllers
                     editarDados.temp_fim = salvar.temp_fim;
                     editarDados.dimensao_temp = salvar.dimensao_temp;
                     editarDados.comprimento_result = salvar.comprimento_result;
+                    editarDados.temp_repouso = salvar.temp_repouso;
                     editarDados.comprimento_um = salvar.comprimento_um;
-                    editarDados.comprimento_esp = salvar.comprimento_esp;
                     editarDados.comprimento_dois = salvar.comprimento_dois;
                     editarDados.comprimento_tres = salvar.comprimento_tres;
-                    editarDados.temp_repouso = salvar.temp_repouso;
+                    editarDados.comprimento_esp = salvar.comprimento_esp;
 
                     double comprimentoum = double.Parse(editarDados.comprimento_um);
                     double comprimentodois = double.Parse(editarDados.comprimento_dois);
                     double comprimentotres = double.Parse(editarDados.comprimento_tres);
-                    editarDados.comprimento_media = ((comprimentoum + comprimentodois + comprimentotres) / 3).ToString();
+                    double comprimento_media_um = ((comprimentoum + comprimentodois + comprimentotres) / 3);
+                    double comprimento_media_dois = Math.Round(comprimento_media_um, 1);
+                    editarDados.comprimento_media = comprimento_media_dois.ToString();
 
+                    double comprimentoesp = double.Parse(editarDados.comprimento_esp);
+
+                    double valor_min_comprimento = comprimentoesp - 1.5;
+                    double valor_max_comprimento = comprimentoesp + 1.5;
+
+                    if (comprimento_media_dois >= valor_min_comprimento && comprimento_media_dois <= valor_max_comprimento)
+                    {
+                        editarDados.comprimento_result = "C";
+                    }
+                    else
+                    {
+                        editarDados.comprimento_result = "NC";
+                    }
 
                     editarDados.largura_result = salvar.largura_result;
                     editarDados.largura_um = salvar.largura_um;
-                    editarDados.largura_esp = salvar.largura_esp;
                     editarDados.largura_dois = salvar.largura_dois;
                     editarDados.largura_tres = salvar.largura_tres;
-
+                    editarDados.largura_esp = salvar.largura_esp;
 
                     double larguraum = double.Parse(editarDados.largura_um);
                     double larguradois = double.Parse(editarDados.largura_dois);
                     double larguratres = double.Parse(editarDados.largura_tres);
-                    editarDados.largura_media = ((larguraum + larguradois + larguratres) / 3).ToString();
+                    double largura_media_um = ((larguraum + larguradois + larguratres) / 3);
+                    double largura_media_dois = Math.Round(largura_media_um, 1);
+                    editarDados.largura_media = largura_media_dois.ToString();
 
+                    double larguraesp = double.Parse(editarDados.largura_esp);
+
+                    double valor_min_largura = larguraesp - 1.5;
+                    double valor_max_largura = larguraesp + 1.5;
+
+                    if (largura_media_dois >= valor_min_largura && largura_media_dois <= valor_max_largura)
+                    {
+                        editarDados.largura_result = "C";
+                    }
+                    else
+                    {
+                        editarDados.largura_result = "NC";
+                    }
 
                     editarDados.altura_result = salvar.altura_result;
                     editarDados.altura_um = salvar.altura_um;
@@ -1581,7 +1628,23 @@ namespace Coleta_Colchao.Controllers
                     double alturaum = double.Parse(editarDados.altura_um);
                     double alturadois = double.Parse(editarDados.altura_dois);
                     double alturatres = double.Parse(editarDados.altura_tres);
-                    editarDados.altura_media = ((alturaum + alturadois + alturatres) / 3).ToString();
+                    double altura_media_um = ((alturaum + alturadois + alturatres) / 3);
+                    double altura_media_dois = Math.Round(altura_media_um, 1); // O segundo parâmetro é o número de casas decimais desejado
+                    editarDados.altura_media = altura_media_dois.ToString();
+
+                    double alturaesp = double.Parse(editarDados.altura_esp);
+
+                    double valor_min_altura = alturaesp - 0.5;
+                    double valor_max_altura = alturaesp + 1.5;
+
+                    if (altura_media_dois >= valor_min_altura && altura_media_dois <= valor_max_altura)
+                    {
+                        editarDados.altura_result = "C";
+                    }
+                    else
+                    {
+                        editarDados.altura_result = "NC";
+                    }
 
                     editarDados.lamina_um = salvar.lamina_um;
                     editarDados.lamina_comp_um = salvar.lamina_comp_um;
@@ -1589,18 +1652,45 @@ namespace Coleta_Colchao.Controllers
                     editarDados.lamina_comp_dois = salvar.lamina_comp_dois;
                     editarDados.lamina_comp_tres = salvar.lamina_comp_tres;
 
+                    // Contas Lamina
 
                     double laminacompum = double.Parse(editarDados.lamina_comp_um);
                     double laminacompdois = double.Parse(editarDados.lamina_comp_dois);
                     double laminacomptres = double.Parse(editarDados.lamina_comp_tres);
-                    editarDados.lamina_media_um = ((laminacompum + laminacompdois + laminacomptres) / 3).ToString();
-
+                    double lamina_mediaUm = ((laminacompum + laminacompdois + laminacomptres) / 3);
+                    double lamina_mediaUm_arredondado = Math.Round(lamina_mediaUm, 1);
+                    editarDados.lamina_media_um = lamina_mediaUm_arredondado.ToString(); 
 
                     editarDados.lamina_tipo_um = salvar.lamina_tipo_um;
-                    editarDados.lamina_min_um = salvar.lamina_min_um;
-                    editarDados.lamina_max_um = salvar.lamina_max_um;
-                    editarDados.lamina_resul_um = salvar.lamina_resul_um;
-                    editarDados.lamina_dois = salvar.lamina_dois;
+                    double lamina_minUm = double.Parse(editarDados.lamina_min_um);
+
+                    if (editarDados.lamina_max_um != "---")
+                    {
+                        double lamina_maxUm = double.Parse(editarDados.lamina_max_um);
+
+                        if ((lamina_mediaUm_arredondado >= lamina_minUm) && (lamina_mediaUm_arredondado <= lamina_maxUm))
+                        {
+                            editarDados.lamina_resul_um = "C";
+                        }
+                        else
+                        {
+                            editarDados.lamina_resul_um = "NC";
+                        }
+                    }
+                    else
+                    {
+                        if (lamina_mediaUm_arredondado >= lamina_minUm)
+                        {
+                            editarDados.lamina_resul_um = "C";
+                        }
+                        else
+                        {
+                            editarDados.lamina_resul_um = "NC";
+                        }
+                    }
+
+
+
                     editarDados.lamina_comp_quat = salvar.lamina_comp_quat;
                     editarDados.lamina_esp_dois = salvar.lamina_esp_dois;
                     editarDados.lamina_comp_cinco = salvar.lamina_comp_cinco;
@@ -1609,13 +1699,38 @@ namespace Coleta_Colchao.Controllers
                     double laminacompquat = double.Parse(editarDados.lamina_comp_quat);
                     double laminacompcinco = double.Parse(editarDados.lamina_comp_cinco);
                     double laminacompseis = double.Parse(editarDados.lamina_comp_seis);
-                    editarDados.lamina_media_dois = ((laminacompquat + laminacompcinco + laminacompseis) / 3).ToString();
+                    double lamina_mediaDois = ((laminacompquat + laminacompcinco + laminacompseis) / 3);
+                    double lamina_mediaDois_arredondado = Math.Round(lamina_mediaDois, 1);
+                    editarDados.lamina_media_dois = lamina_mediaDois_arredondado.ToString();
 
                     editarDados.lamina_tipo_dois = salvar.lamina_tipo_dois;
-                    editarDados.lamina_min_dois = salvar.lamina_min_dois;
-                    editarDados.lamina_max_dois = salvar.lamina_max_dois;
-                    editarDados.lamina_resul_dois = salvar.lamina_resul_dois;
-                    editarDados.lamina_tres = salvar.lamina_tres;
+                    double lamina_minDois = double.Parse(editarDados.lamina_min_dois);
+
+                    if (editarDados.lamina_max_dois != "---")
+                    {
+                        double lamina_maxDois = double.Parse(editarDados.lamina_max_dois);
+
+                        if ((lamina_mediaDois_arredondado >= lamina_minDois) && (lamina_mediaDois_arredondado <= lamina_maxDois))
+                        {
+                            editarDados.lamina_resul_dois = "C";
+                        }
+                        else
+                        {
+                            editarDados.lamina_resul_dois = "NC";
+                        }
+                    }
+                    else
+                    {
+                        if (lamina_mediaDois_arredondado >= lamina_minDois)
+                        {
+                            editarDados.lamina_resul_dois = "C";
+                        }
+                        else
+                        {
+                            editarDados.lamina_resul_dois = "NC";
+                        }
+                    }
+
                     editarDados.lamina_comp_sete = salvar.lamina_comp_sete;
                     editarDados.lamina_esp_tres = salvar.lamina_esp_tres;
                     editarDados.lamina_comp_oito = salvar.lamina_comp_oito;
@@ -1624,13 +1739,40 @@ namespace Coleta_Colchao.Controllers
                     double laminacompsete = double.Parse(editarDados.lamina_comp_sete);
                     double laminacompoito = double.Parse(editarDados.lamina_comp_oito);
                     double laminacompnove = double.Parse(editarDados.lamina_comp_nove);
-                    editarDados.lamina_media_tres = ((laminacompsete + laminacompoito + laminacompnove) / 3).ToString();
+                    double lamina_mediaTres = ((laminacompsete + laminacompoito + laminacompnove) / 3);
+
+                    double lamina_mediaTres_arredondado = Math.Round(lamina_mediaTres, 1);
+                    editarDados.lamina_media_tres = lamina_mediaTres_arredondado.ToString();
 
                     editarDados.lamina_tipo_tres = salvar.lamina_tipo_tres;
-                    editarDados.lamina_min_tres = salvar.lamina_min_tres;
-                    editarDados.lamina_max_tres = salvar.lamina_max_tres;
-                    editarDados.lamina_resul_tres = salvar.lamina_resul_tres;
-                    editarDados.lamina_quat = salvar.lamina_quat;
+                    double lamina_minTres = double.Parse(editarDados.lamina_min_tres);
+
+                    if (editarDados.lamina_max_tres != "---")
+                    {
+                        double lamina_maxTres = double.Parse(editarDados.lamina_max_tres);
+
+                        if ((lamina_mediaTres_arredondado >= lamina_minTres) && (lamina_mediaTres_arredondado <= lamina_maxTres))
+                        {
+                            editarDados.lamina_resul_tres = "C";
+                        }
+                        else
+                        {
+                            editarDados.lamina_resul_tres = "NC";
+                        }
+                    }
+                    else
+                    {
+                        if (lamina_mediaTres_arredondado >= lamina_minTres)
+                        {
+                            editarDados.lamina_resul_tres = "C";
+                        }
+                        else
+                        {
+                            editarDados.lamina_resul_tres = "NC";
+                        }
+                    }
+
+
                     editarDados.lamina_comp_dez = salvar.lamina_comp_dez;
                     editarDados.lamina_esp_quat = salvar.lamina_esp_quat;
                     editarDados.lamina_comp_onze = salvar.lamina_comp_onze;
@@ -1640,13 +1782,39 @@ namespace Coleta_Colchao.Controllers
                     double laminacompdez = double.Parse(editarDados.lamina_comp_dez);
                     double laminacomponze = double.Parse(editarDados.lamina_comp_onze);
                     double laminacompdoze = double.Parse(editarDados.lamina_comp_doze);
-                    editarDados.lamina_media_quat = ((laminacompdez + laminacomponze + laminacompdoze) / 3).ToString();
+                    double lamina_mediaQuat = ((laminacompdez + laminacomponze + laminacompdoze) / 3);
+                    double lamina_mediaQuat_arredondado = Math.Round(lamina_mediaQuat, 1);
+                    editarDados.lamina_media_quat = lamina_mediaQuat_arredondado.ToString();
 
                     editarDados.lamina_tipo_quat = salvar.lamina_tipo_quat;
-                    editarDados.lamina_min_quat = salvar.lamina_min_quat;
-                    editarDados.lamina_max_quat = salvar.lamina_max_quat;
-                    editarDados.lamina_resul_quat = salvar.lamina_resul_quat;
-                    editarDados.lamina_cinco = salvar.lamina_cinco;
+                    double lamina_minQuat = double.Parse(editarDados.lamina_min_quat);
+
+                    if (editarDados.lamina_max_quat != "---")
+                    {
+                        double lamina_maxQuat = double.Parse(editarDados.lamina_max_quat);
+
+                        if ((lamina_mediaQuat_arredondado >= lamina_minQuat) && (lamina_mediaQuat_arredondado <= lamina_maxQuat))
+                        {
+                            editarDados.lamina_resul_quat = "C";
+                        }
+                        else
+                        {
+                            editarDados.lamina_resul_quat = "NC";
+                        }
+                    }
+                    else
+                    {
+                        if (lamina_mediaQuat_arredondado >= lamina_minQuat)
+                        {
+                            editarDados.lamina_resul_quat = "C";
+                        }
+                        else
+                        {
+                            editarDados.lamina_resul_quat = "NC";
+                        }
+                    }
+
+
                     editarDados.lamina_comp_treze = salvar.lamina_comp_treze;
                     editarDados.lamina_esp_cinco = salvar.lamina_esp_cinco;
                     editarDados.lamina_comp_quatorze = salvar.lamina_comp_quatorze;
@@ -1656,51 +1824,106 @@ namespace Coleta_Colchao.Controllers
                     double laminacomptreze = double.Parse(editarDados.lamina_comp_treze);
                     double laminacompquatorze = double.Parse(editarDados.lamina_comp_quatorze);
                     double laminacompquinze = double.Parse(editarDados.lamina_comp_quinze);
-                    editarDados.lamina_media_cinco = ((laminacomptreze + laminacompquatorze + laminacompquinze) / 3).ToString();
+                    double lamina_mediaCinco = ((laminacomptreze + laminacompquatorze + laminacompquinze) / 3);
+                    double lamina_mediaCinco_arredondado = Math.Round(lamina_mediaCinco, 1);
+                    editarDados.lamina_media_cinco = lamina_mediaCinco_arredondado.ToString();
 
                     editarDados.lamina_tipo_cinco = salvar.lamina_tipo_cinco;
-                    editarDados.lamina_min_cinco = salvar.lamina_min_cinco;
-                    editarDados.lamina_max_cinco = salvar.lamina_max_cinco;
-                    editarDados.lamina_resul_cinco = salvar.lamina_resul_cinco;
+                    double lamina_minCinco = double.Parse(editarDados.lamina_min_cinco);
+
+                    if (editarDados.lamina_max_cinco != "---")
+                    {
+                        double lamina_maxCinco = double.Parse(editarDados.lamina_max_cinco);
+
+                        if ((lamina_mediaCinco_arredondado >= lamina_minCinco) && (lamina_mediaCinco_arredondado <= lamina_maxCinco))
+                        {
+                            editarDados.lamina_resul_cinco = "C";
+                        }
+                        else
+                        {
+                            editarDados.lamina_resul_cinco = "NC";
+                        }
+                    }
+                    else
+                    {
+                        if (lamina_mediaCinco_arredondado >= lamina_minCinco)
+                        {
+                            editarDados.lamina_resul_cinco = "C";
+                        }
+                        else
+                        {
+                            editarDados.lamina_resul_cinco = "NC";
+                        }
+                    }
+
+                    // CONTAS tabela finais 
+
                     editarDados.esp_tipo_um = salvar.esp_tipo_um;
                     editarDados.esp_lamina_um = salvar.esp_lamina_um;
-                    editarDados.esp_especificado_um = salvar.esp_especificado_um;
-                    editarDados.esp_mm_um = salvar.esp_mm_um;
+
+                    double esplamina_um = double.Parse(editarDados.esp_lamina_um);
+                    editarDados.esp_lamina_um = esplamina_um.ToString(); 
+                    var esp_especificadoum = esplamina_um / 3;
+                    double esp_especificado_um_arredondado = Math.Round(esp_especificadoum, 1);
+
+                    editarDados.esp_especificado_um = esp_especificado_um_arredondado.ToString();
 
                     double mm_um = double.Parse(editarDados.esp_mm_um);
                     editarDados.esp_cm_um = (mm_um / 10).ToString();
 
+
                     editarDados.esp_tipo_dois = salvar.esp_tipo_dois;
                     editarDados.esp_lamina_dois = salvar.esp_lamina_dois;
-                    editarDados.esp_especificado_dois = salvar.esp_especificado_dois;
-                    editarDados.esp_mm_dois = salvar.esp_mm_dois;
 
+                    double esplamina_dois = double.Parse(editarDados.esp_lamina_dois);
+                    editarDados.esp_lamina_dois = esplamina_dois.ToString();
+                    var esp_especificadodois = esplamina_dois / 3;
+                    double esp_especificado_dois_arredondado = Math.Round(esp_especificadodois, 1);
+
+                    editarDados.esp_especificado_dois = esp_especificado_dois_arredondado.ToString();
+            
                     double mm_dois = double.Parse(editarDados.esp_mm_dois);
                     editarDados.esp_cm_dois = (mm_dois / 10).ToString();
 
-                    editarDados.col_tipo_um = salvar.col_tipo_um;
-                    editarDados.col_especificado_um = salvar.col_especificado_um;
-                    editarDados.col_encontrado_um = salvar.col_encontrado_um;
-                    editarDados.col_resul_um = salvar.col_resul_um;
-                    editarDados.col_tipo_dois = salvar.col_tipo_dois;
-                    editarDados.col_lamina_dois = salvar.col_lamina_dois;
-                    editarDados.col_especificado_dois = salvar.col_especificado_dois;
-                    editarDados.col_resul_dois = salvar.col_resul_dois;
+                    //aqui
+   
                     editarDados.reves_tipo_um = salvar.reves_tipo_um;
-                    editarDados.reves_lamina_um = salvar.reves_lamina_um;
-                    editarDados.reves_especificado_um = salvar.reves_especificado_um;
                     editarDados.reves_mm_um = salvar.reves_mm_um;
+                    editarDados.reves_lamina_um = salvar.reves_lamina_um;
+
+                    double reveslamina_um = double.Parse(editarDados.reves_lamina_um);
+                    var reves_especificadoUm = reveslamina_um / 3;
+                    double reves_especificado_um_arredondado = Math.Round(reves_especificadoUm, 1);
+                    editarDados.reves_especificado_um = reves_especificado_um_arredondado.ToString();
 
                     double reves_mm = double.Parse(editarDados.reves_mm_um);
                     editarDados.reves_cm_um = (reves_mm / 10).ToString();
+                    double cm_um = double.Parse(editarDados.reves_cm_um);
 
                     editarDados.reves_tipo_dois = salvar.reves_tipo_dois;
-                    editarDados.reves_lamina_dois = salvar.reves_lamina_dois;
-                    editarDados.reves_especificado_dois = salvar.reves_especificado_dois;
                     editarDados.reves_mm_dois = salvar.reves_mm_dois;
+                    editarDados.reves_lamina_dois = salvar.reves_lamina_dois;
+
+                    double reveslamina_dois = double.Parse(editarDados.reves_lamina_dois);
+                    var reves_especificadoDois = reveslamina_dois / 3;
+                    double reves_especificado_dois_arredondado = Math.Round(reves_especificadoDois, 1);
+                    editarDados.reves_especificado_dois = reves_especificado_dois_arredondado.ToString();
 
                     double reves_mm_ = double.Parse(editarDados.reves_mm_dois);
                     editarDados.reves_cm_dois = (reves_mm_ / 10).ToString();
+                    double cm_dois = double.Parse(editarDados.reves_cm_dois);
+
+                    if (( cm_um <= reves_especificado_um_arredondado) && 
+                        (cm_dois <= reves_especificado_dois_arredondado))
+                    {
+                        editarDados.reves_resul_final = "C";
+                    }
+                    else
+                    {
+                        editarDados.reves_resul_final = "NC";
+                    }
+
+
 
                     await _context.SaveChangesAsync();
                     TempData["Mensagem"] = "Dados Editado Com Sucesso";

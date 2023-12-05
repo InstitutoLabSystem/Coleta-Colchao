@@ -192,7 +192,7 @@
                     </td>
                 </tr>
                 <tr>
-                    <td><strong>NOTA: </strong> São adimitadas tolerâncias de ± 1,5 cm.</td>
+                    <td><strong>NOTA: </strong> São adimitadas tolerâncias de (-0,5 / +1,5) cm</td>
                 </tr>
 
             </table>
@@ -666,82 +666,9 @@
                 </table>
             </td>
                     <td rowspan="1">
-                        <input class="form-control" type="text" name="" readonly style="height:300px; width:200px" value="" />
+                        <input class="form-control" type="text" name="esp_resul_final" readonly style="height:300px; width:200px"/>
                     </td>
                 </tr>
-        <tr>
-            <td>
-
-
-                Colchonete: A altura total não pode exceder 8 cm, inclusive com o revestimento.
-                <br /> <br />
-                <table class="tables table-bordered border-secondary  table-sm">
-                    <tr>
-                        <td rowspan="2" class="fundo-tabela"> Tipos </td>
-                        <td colspan="2" rowspan="1" class="fundo-tabela"> Espessura (cm) </td>
-                        <td rowspan="2" class="fundo-tabela"> Resultado </td>
-                    </tr>
-                    <tr>
-                        <td class="fundo-tabela">  Especificado  </td>
-                        <td class="fundo-tabela"> Encontrado </td>
-
-                    </tr>
-                    <tr>
-                        <td>
-                            <select class="form-control" name="col_tipo_um" >
-                                <option selected> --- </option>
-                                <option> Colchonete </option>
-                            </select>
-                        </td>
-                        <td><input class="form-control" type="text" name="col_especificado_um" /></td>
-                        <td><input class="form-control" type="text" name="col_encontrado_um"/></td>
-                        <td>
-                            <select class="form-control" name="col_resul_um" >
-                                <option selected> --- </option>
-                                <option> C </option>
-                                <option> NA </option>
-                                <option> NC </option>
-                            </select>
-                        </td>
-                    </tr>
-                </table>
-                <br /> <br />
-                <table class="tables table-bordered border-secondary  table-sm">
-                    <tr>
-                        <td rowspan="2" class="fundo-tabela"> Tipos </td>
-                        <td colspan="2" rowspan="1" class="fundo-tabela"> Espessura (cm) </td>
-                        <td rowspan="2" class="fundo-tabela"> Resultado </td>
-                    </tr>
-                    <tr>
-                        <td class="fundo-tabela">  Lâmina </td>
-                        <td class="fundo-tabela"> Especificado </td>
-
-                    </tr>
-                    <tr>
-                        <td>
-                            <select class="form-control" name="col_tipo_dois" >
-                                <option selected> --- </option>
-                                <option> Colchonete </option>
-                            </select>
-                        </td>
-                        <td><input class="form-control" type="text" name="col_lamina_dois"/></td>
-                        <td><input class="form-control" type="text" name="col_especificado_dois" /></td>
-                        <td>
-                            <select class="form-control" name="col_resul_dois" >
-                                <option selected> --- </option>
-                                <option> C </option>
-                                <option> NA </option>
-                                <option> NC </option>
-                            </select>
-                        </td>
-               
-                    </tr>
-                </table>
-            </td>
-                    <td rowspan="1">
-                        <input class="form-control" type="text" name="" readonly style="height:300px; width:200px" value="" />
-                    </td>
-        </tr>
         <tr>
             <td>
                 Conjulgado e auxiliar a soma das espessuras dos materiais que compõem o revestimento do colchão
@@ -802,7 +729,7 @@
                 </table>
             </td>
                     <td rowspan="1">
-                        <input class="form-control" type="text" name="" readonly style="height:300px; width:200px" value="" />
+                        <input class="form-control" type="text" name="reves_resul_final" readonly style="height:300px; width:200px" />
                     </td>
         </tr>
         <tr>
@@ -983,7 +910,7 @@
                     </td>
                 </tr>
                 <tr>
-                    <td><strong>NOTA: </strong> São adimitadas tolerâncias de ± 1,5 cm.</td>
+                    <td><strong>NOTA: </strong> São adimitadas tolerâncias de (-0,5 / +1,5) cm.</td>
                 </tr>
 
             </table>
@@ -1182,7 +1109,7 @@
                             </tr>
                             <tr>
                                 <td>1º </td>
-                                <td><input class="form-control" type="text" name="lamina_comp_sete" /></td>
+                                <td><input class="form-control" type="text" name="lamina_comp_sete" value="@Model.lamina_comp_sete" /></td>
                                 <td rowspan="3"><input class="form-control" type="text" style="width:100%;height:200px;" name="lamina_esp_tres" value="@Model.lamina_esp_tres" /> </td>
                             </tr>
                             <tr>
@@ -1458,80 +1385,7 @@
                         </table>
                     </td>
                     <td rowspan="1">
-                        <input class="form-control" type="text" name="" readonly style="height:300px; width:200px" value="" />
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-
-
-                        Colchonete: A altura total não pode exceder 8 cm, inclusive com o revestimento.
-                        <br /> <br />
-                        <table class="tables table-bordered border-secondary  table-sm">
-                            <tr>
-                                <td rowspan="2" class="fundo-tabela"> Tipos </td>
-                                <td colspan="2" rowspan="1" class="fundo-tabela"> Espessura (cm) </td>
-                                <td rowspan="2" class="fundo-tabela"> Resultado </td>
-                            </tr>
-                            <tr>
-                                <td class="fundo-tabela">  Especificado  </td>
-                                <td class="fundo-tabela"> Encontrado </td>
-
-                            </tr>
-                            <tr>
-                                <td>
-                                    <select class="form-control" name="col_tipo_um">
-                                        <option selected> @Model.col_tipo_um </option>
-                                        <option> Colchonete </option>
-                                    </select>
-                                </td>
-                                <td><input class="form-control" type="text" name="col_especificado_um" value="@Model.col_especificado_um"/></td>
-                                <td><input class="form-control" type="text" name="col_encontrado_um" value="@Model.col_encontrado_um" /></td>
-                                <td>
-                                    <select class="form-control" name="col_resul_um">
-                                        <option selected> @Model.col_resul_um </option>
-                                        <option> C </option>
-                                        <option> NA </option>
-                                        <option> NC </option>
-                                    </select>
-                                </td>
-                            </tr>
-                        </table>
-                        <br /> <br />
-                        <table class="tables table-bordered border-secondary  table-sm">
-                            <tr>
-                                <td rowspan="2" class="fundo-tabela"> Tipos </td>
-                                <td colspan="2" rowspan="1" class="fundo-tabela"> Espessura (cm) </td>
-                                <td rowspan="2" class="fundo-tabela"> Resultado </td>
-                            </tr>
-                            <tr>
-                                <td class="fundo-tabela">  Lâmina </td>
-                                <td class="fundo-tabela"> Especificado </td>
-
-                            </tr>
-                            <tr>
-                                <td>
-                                    <select class="form-control" name="col_tipo_dois">
-                                        <option selected> @Model.col_tipo_dois </option>
-                                        <option> Colchonete </option>
-                                    </select>
-                                </td>
-                                <td><input class="form-control" type="text" name="col_lamina_dois" value="@Model.col_lamina_dois" /></td>
-                                <td><input class="form-control" type="text" name="col_especificado_dois" value="@Model.col_especificado_dois"/></td>
-                                <td>
-                                    <select class="form-control" name="col_resul_dois">
-                                        <option selected> @Model.col_resul_dois </option>
-                                        <option> C </option>
-                                        <option> NA </option>
-                                        <option> NC </option>
-                                    </select>
-                                </td>
-
-                            </tr>
-                        </table>
-                    </td>
-                    <td rowspan="1">
-                        <input class="form-control" type="text" name="" readonly style="height:300px; width:200px" value="" />
+                        <input class="form-control" type="text" name="esp_resul_final" readonly style="height:300px; width:200px" value="@Model.esp_resul_final" />
                     </td>
                 </tr>
                 <tr>
@@ -1594,12 +1448,12 @@
                         </table>
                     </td>
                     <td rowspan="1">
-                        <input class="form-control" type="text" name="" readonly style="height:300px; width:200px" value="" />
+                        <input class="form-control" type="text" name="reves_resul_final" readonly style="height:300px; width:200px" value="@Model.reves_resul_final" />
                     </td>
                 </tr>
                 <tr>
                     <td>
-                        <button type="submit" value="SalvarEspumaUm" class="btn btn-danger">Salvar Coleta </button>
+                        <button type="submit" value="SalvarEspumaUm" class="btn btn-success"> Editar Coleta </button>
                     </td>
                 </tr>
             </table>
