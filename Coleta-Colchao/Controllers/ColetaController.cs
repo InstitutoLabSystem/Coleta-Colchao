@@ -148,13 +148,27 @@ namespace Coleta_Colchao.Controllers
             return View();
         }
 
-        public IActionResult EnsaioDurabilidade()
+        public IActionResult EnsaioDurabilidade(string os, string orcamento)
         {
-            return View();
+            var dados = _context.ensaio_base_durabilidade.Where(x => x.os == os && x.orcamento == orcamento).FirstOrDefault();
+            if (dados != null)
+            {
+                ViewBag.os = os;
+                ViewBag.orcamento = orcamento;
+                return View(dados);
+            }
+            else
+            {
+                ViewBag.os = os;
+                ViewBag.orcamento = orcamento;
+                return View();
+            }
+
         }
 
         public IActionResult EnsaioImpacto()
         {
+           
             return View();
         }
 
@@ -307,14 +321,25 @@ namespace Coleta_Colchao.Controllers
         public IActionResult IdentificacaoEmbalagemMolas(string os, string orcamento)
         {
             var dados = _context.ensaio_identificacao_embalagem.Where(x => x.os == os && x.orcamento == orcamento).FirstOrDefault();
+
+            //trazendo os dados para manipular no ensaio realizado.
+            var trazerDadosSalvos = _context.regtro_colchao.Where(x => x.os == os && x.orcamento == orcamento).FirstOrDefault();
             if (dados == null)
             {
+                ViewBag.latex = trazerDadosSalvos.latex;
+                ViewBag.napa = trazerDadosSalvos.napa_cou_plas;
+                ViewBag.manual = trazerDadosSalvos.manual;
+
                 ViewBag.os = os;
                 ViewBag.orcamento = orcamento;
                 return View("Molas/IdentificacaoEmbalagemMolas");
             }
             else
             {
+                ViewBag.latex = trazerDadosSalvos.latex;
+                ViewBag.napa = trazerDadosSalvos.napa_cou_plas;
+                ViewBag.manual = trazerDadosSalvos.manual;
+
                 ViewBag.os = os;
                 ViewBag.orcamento = orcamento;
                 return View("Molas/IdentificacaoEmbalagemMolas", dados);
@@ -2387,7 +2412,7 @@ namespace Coleta_Colchao.Controllers
                         conforme_requisitos = "C";
                     }
 
-                    if(cnpj_cpf == "Não" || marca_modelo == "Não" || dimensoes_prod == "Não")
+                    if (cnpj_cpf == "Não" || marca_modelo == "Não" || dimensoes_prod == "Não")
                     {
                         conforme_requisitos_2 = "NC";
                     }
@@ -2397,7 +2422,7 @@ namespace Coleta_Colchao.Controllers
 
                     }
 
-                    if(informada_altura == "Não" || composicoes == "Não" || contem_borda == "Não" || densidade_espuma == "Não" || composi_revestimento == "Não" || data_fabricacao == "Não" || ident_lote == "Não" || pais_origem == "Não" || codigo_barras == "Não" || cuidado_minimos == "Não")
+                    if (informada_altura == "Não" || composicoes == "Não" || contem_borda == "Não" || densidade_espuma == "Não" || composi_revestimento == "Não" || data_fabricacao == "Não" || ident_lote == "Não" || pais_origem == "Não" || codigo_barras == "Não" || cuidado_minimos == "Não")
                     {
                         conforme_requisitos_3 = "NC";
                     }
@@ -2405,8 +2430,8 @@ namespace Coleta_Colchao.Controllers
                     {
                         conforme_requisitos_3 = "C";
                     }
-                    
-                    if(aviso_esclarecimento == "Não" || possui_mais_laminas == "Não" || contem_advertencia == "Não" || negrito == "Não" || caixa_alta == "Não" || contem_advertencia_mat == "Não" || negrito_mat == "Não")
+
+                    if (aviso_esclarecimento == "Não" || possui_mais_laminas == "Não" || contem_advertencia == "Não" || negrito == "Não" || caixa_alta == "Não" || contem_advertencia_mat == "Não" || negrito_mat == "Não")
                     {
                         conforme_requisitos_4 = "NC";
                     }
@@ -2415,7 +2440,7 @@ namespace Coleta_Colchao.Controllers
                         conforme_requisitos_4 = "C";
                     }
 
-                    if(contem_instru_uso == "Não" || orientacoes == "Não" || alerta_consumidor == "Não" || desenho_esquematico == "Não" || contem_advertencia_6_2 == "Não" || altura_letra_6_2 == "Não" || negrito6_2 == "Não" || caixa_alta_6_2 == "Não")
+                    if (contem_instru_uso == "Não" || orientacoes == "Não" || alerta_consumidor == "Não" || desenho_esquematico == "Não" || contem_advertencia_6_2 == "Não" || altura_letra_6_2 == "Não" || negrito6_2 == "Não" || caixa_alta_6_2 == "Não")
                     {
                         conforme_6_1 = "NC";
                     }
@@ -2424,7 +2449,7 @@ namespace Coleta_Colchao.Controllers
                         conforme_6_1 = "C";
                     }
 
-                    if(embalagem_garante == "Não" || embalagem_unitaria == "Não")
+                    if (embalagem_garante == "Não" || embalagem_unitaria == "Não")
                     {
                         conforme_embalagem = "NC";
                     }
@@ -2434,7 +2459,7 @@ namespace Coleta_Colchao.Controllers
                     }
                     //termino das verificações de conformidade.
 
-                   
+
                     var registro = new ColetaModel.EnsaioIdentificacaoEmbalagem
                     {
                         os = os,
@@ -2899,6 +2924,119 @@ namespace Coleta_Colchao.Controllers
             }
         }
 
+        [HttpPost]
+        public async Task<IActionResult> salvarBaseDurabilidade(string os, string orcamento, ColetaModel.EnsaioBaseDurabilidade dados)
+        {
+            try
+            {
+                var editarRegistro = _context.ensaio_base_durabilidade.Where(x => x.os == os && x.orcamento == orcamento).FirstOrDefault();
+                if (editarRegistro == null)
+                {
+                    //recebendo os valors do html para as variaveis
+                    DateOnly data_inicio = dados.data_inicio;
+                    DateOnly data_termi = dados.data_termi;
+                    TimeOnly hora_inicio = dados.hora_inicio;
+                    TimeOnly hora_term = dados.hora_term;
+                    string temp_min = dados.temp_min;
+                    string temp_max = dados.temp_max;
+                    string base_cama = dados.base_cama;
+                    string angulo_encontrado = dados.angulo_encontrado;
+                    int distancia_ponto_a = dados.distancia_ponto_a;
+                    int forca_apli_ponto_a = dados.forca_apli_ponto_a;
+                    int tempo_apli_ponto_a = dados.tempo_apli_ponto_a;
+                    string quant_ciclos_ponto_a = dados.quant_ciclos_ponto_a;
+                    string suportou_ponto_a = dados.suportou_ponto_a;
+                    string ruptura_ponto_a = dados.ruptura_ponto_a;
+                    string afundamento_ponto_a = dados.afundamento_ponto_a;
+                    string rasgo_ponto_a = dados.rasgo_ponto_a;
+                    string rompimento_ponto_a = dados.rompimento_ponto_a;
+                    string prejudique_ponto_a = dados.prejudique_ponto_a;
+                    int distancia_ponto_b = dados.distancia_ponto_b;
+                    int forca_apli_ponto_b = dados.forca_apli_ponto_b;
+                    int tempo_apli_ponto_b = dados.tempo_apli_ponto_b;
+                    string quant_ciclos_ponto_b = dados.quant_ciclos_ponto_b;
+                    string suportou_ponto_b = dados.suportou_ponto_b;
+                    string ruptura_ponto_b = dados.ruptura_ponto_b;
+                    string afundamento_ponto_b = dados.afundamento_ponto_b;
+                    string rasgo_ponto_b = dados.rasgo_ponto_b;
+                    string rompimento_ponto_b = dados.rompimento_ponto_b;
+                    string prejudique_ponto_b = dados.prejudique_ponto_b;
+                    int distancia_ponto_c = dados.distancia_ponto_c;
+                    int forca_apli_ponto_c = dados.forca_apli_ponto_c;
+                    int tempo_apli_ponto_c = dados.tempo_apli_ponto_c;
+                    string quant_ciclos_ponto_c = dados.quant_ciclos_ponto_c;
+                    string suportou_ponto_c = dados.suportou_ponto_c;
+                    string ruptura_ponto_c = dados.ruptura_ponto_c;
+                    string afundamento_ponto_c = dados.afundamento_ponto_c;
+                    string rasgo_ponto_c = dados.rasgo_ponto_c;
+                    string rompimento_ponto_c = dados.rompimento_ponto_c;
+                    string prejudique_ponto_c = dados.prejudique_ponto_c;
+
+                    _context.Add(dados);
+                    await _context.SaveChangesAsync();
+
+                    TempData["Mensagem"] = "Dados salvo com sucesso.";
+                    return RedirectToAction("EnsaioDurabilidade", new { os, orcamento });
+                }
+                else
+                {
+                    //recebendo os valores para editar no banco.
+                    editarRegistro.data_inicio = dados.data_inicio;
+                    editarRegistro.data_termi = dados.data_termi;
+                    editarRegistro.hora_inicio = dados.hora_inicio;
+                    editarRegistro.hora_term = dados.hora_term;
+                    editarRegistro.temp_min = dados.temp_min;
+                    editarRegistro.temp_max = dados.temp_max;
+                    editarRegistro.base_cama = dados.base_cama;
+                    editarRegistro.angulo_encontrado = dados.angulo_encontrado;
+                    editarRegistro.distancia_ponto_a = dados.distancia_ponto_a;
+                    editarRegistro.forca_apli_ponto_a = dados.forca_apli_ponto_a;
+                    editarRegistro.tempo_apli_ponto_a = dados.tempo_apli_ponto_a;
+                    editarRegistro.quant_ciclos_ponto_a = dados.quant_ciclos_ponto_a;
+                    editarRegistro.suportou_ponto_a = dados.suportou_ponto_a;
+                    editarRegistro.ruptura_ponto_a = dados.ruptura_ponto_a;
+                    editarRegistro.afundamento_ponto_a = dados.afundamento_ponto_a;
+                    editarRegistro.rasgo_ponto_a = dados.rasgo_ponto_a;
+                    editarRegistro.rompimento_ponto_a = dados.rompimento_ponto_a;
+                    editarRegistro.prejudique_ponto_a = dados.prejudique_ponto_a;
+                    editarRegistro.distancia_ponto_b = dados.distancia_ponto_b;
+                    editarRegistro.forca_apli_ponto_b = dados.forca_apli_ponto_b;
+                    editarRegistro.tempo_apli_ponto_b = dados.tempo_apli_ponto_b;
+                    editarRegistro.quant_ciclos_ponto_b = dados.quant_ciclos_ponto_b;
+                    editarRegistro.suportou_ponto_b = dados.suportou_ponto_b;
+                    editarRegistro.ruptura_ponto_b = dados.ruptura_ponto_b;
+                    editarRegistro.afundamento_ponto_b = dados.afundamento_ponto_b;
+                    editarRegistro.rasgo_ponto_b = dados.rasgo_ponto_b;
+                    editarRegistro.rompimento_ponto_b = dados.rompimento_ponto_b;
+                    editarRegistro.prejudique_ponto_b = dados.prejudique_ponto_b;
+                    editarRegistro.distancia_ponto_c = dados.distancia_ponto_c;
+                    editarRegistro.forca_apli_ponto_c = dados.forca_apli_ponto_c;
+                    editarRegistro.tempo_apli_ponto_c = dados.tempo_apli_ponto_c;
+                    editarRegistro.quant_ciclos_ponto_c = dados.quant_ciclos_ponto_c;
+                    editarRegistro.suportou_ponto_c = dados.suportou_ponto_c;
+                    editarRegistro.ruptura_ponto_c = dados.ruptura_ponto_c;
+                    editarRegistro.afundamento_ponto_c = dados.afundamento_ponto_c;
+                    editarRegistro.rasgo_ponto_c = dados.rasgo_ponto_c;
+                    editarRegistro.rompimento_ponto_c = dados.rompimento_ponto_c;
+                    editarRegistro.prejudique_ponto_c = dados.prejudique_ponto_c;
+
+                    _context.Update(editarRegistro);
+                    await _context.SaveChangesAsync();
+
+                    TempData["Mensagem"] = "Dados Editado com sucesso.";
+                    return RedirectToAction("EnsaioDurabilidade", new { os, orcamento });
+                }
+
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "Error", ex.Message);
+                throw;
+            }
+        }
+
+
+
         //[Route("Molas/teste")]
         //[HttpPost]
         //public async Task<IActionResult> resultado(string os, string orcamento, ColetaModel.Teste testee)
@@ -2918,7 +3056,9 @@ namespace Coleta_Colchao.Controllers
 
         //    }
         //    TempData["Mensagem"] = "Erros ao Salvar";
-        //    return RedirectToAction("teste", new {os,orcamento});
+
+        //    //return RedirectToAction("teste", new { os, orcamento });
+        //    //return View("Molas/teste",testee);
         //}
     }
 }

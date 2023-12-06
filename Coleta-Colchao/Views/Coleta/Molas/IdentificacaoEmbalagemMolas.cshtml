@@ -13,13 +13,13 @@
     <link rel="stylesheet" href="~/css/coleta.css" asp-append-version="true" />
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <style>
-        input,select{
-            text-align:center;
+        input, select {
+            text-align: center;
         }
 
         .conformidade:last-child {
             font-weight: bold;
-           border-bottom:2px solid black;
+            border-bottom: 2px solid black;
         }
     </style>
 
@@ -188,7 +188,7 @@
                             <option value="Não"> Não </option>
                         </select>
                     </td>
-               
+
                 </tr>
                 <tr>
                     <td>
@@ -208,12 +208,11 @@
                             <option value="Sim"> Sim </option>
                             <option value="Não"> Não </option>
                         </select>
-
                     </td>
                 </tr>
                 <tr>
                     <td>
-                        h) Se borda de aço e/ou borda de espuma e/ou outro material: 
+                        h) Se borda de aço e/ou borda de espuma e/ou outro material:
                         <select class="controlador" name="contem_borda">
                             <option selected value="---"> --- </option>
                             <option value="Sim"> Sim </option>
@@ -302,21 +301,27 @@
                     </td>
                     <td rowspan="6" class="conformidade"></td>
                 </tr>
-                <tr>
-                    <td>
-                        q) Para os colchões de molas que possuam uma ou mais lâminas constituídas por látex, aviso de  esclarecimento,  em  negrito,  em  letras  com  o  mesmo  formato  e  tamanho  da  utilizada  na descrição  das  lâminas,  da  seguinte  forma:  <b>“A  LÂMINA  DE  LÁTEX  NÃO  FOI  AVALIADA  PELO PROCESSO DE CERTIFICAÇÃO DO PRODUTO”.</b> :
-                        <select class="controlador" name="possui_mais_laminas">
-                            <option selected value="---"> --- </option>
-                            <option value="Sim"> Sim </option>
-                            <option value="Não"> Não </option>
-                        </select>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        r)  Para  os  colchões de  molas  que  possuam  revestimentos  do tipo napa,  courvin,  plásticos e emborrachados,  aviso  de  esclarecimento,  em  letras  não  inferiores  a  2,5  mm    de  altura,  em negrito, caixa alta e em coloração que se destaque da cor de fundo da etiqueta, da seguinte forma:  <b>“O  REVESTIMENTO  NÃO  FOI  AVALIADO  PELO  PROCESSO  DE  CRTIFICAÇÃO  DO PRODUTO.”</b>
-                    </td>
-                </tr>
+                @if (ViewBag.latex != "Não")
+                {
+                    <tr>
+                        <td>
+                            q) Para os colchões de molas que possuam uma ou mais lâminas constituídas por látex, aviso de  esclarecimento,  em  negrito,  em  letras  com  o  mesmo  formato  e  tamanho  da  utilizada  na descrição  das  lâminas,  da  seguinte  forma:  <b>“A  LÂMINA  DE  LÁTEX  NÃO  FOI  AVALIADA  PELO PROCESSO DE CERTIFICAÇÃO DO PRODUTO”.</b> :
+                            <select class="controlador" name="possui_mais_laminas">
+                                <option selected value="---"> --- </option>
+                                <option value="Sim"> Sim </option>
+                                <option value="Não"> Não </option>
+                            </select>
+                        </td>
+                    </tr>
+                }
+                @if (ViewBag.napa != "Não")
+                {
+                    <tr>
+                        <td>
+                            r)  Para  os  colchões de  molas  que  possuam  revestimentos  do tipo napa,  courvin,  plásticos e emborrachados,  aviso  de  esclarecimento,  em  letras  não  inferiores  a  2,5  mm    de  altura,  em negrito, caixa alta e em coloração que se destaque da cor de fundo da etiqueta, da seguinte forma:  <b>“O  REVESTIMENTO  NÃO  FOI  AVALIADO  PELO  PROCESSO  DE  CRTIFICAÇÃO  DO PRODUTO.”</b>
+                        </td>
+                    </tr>
+                }
                 <tr>
                     <td>
                         <p>
@@ -380,7 +385,7 @@
                         </p>
                     </td>
                 </tr>
-                <tr >
+                <tr>
                     <td class="fundo-tabela">
                         6.1 - Instruções de uso
                     </td>
@@ -401,70 +406,74 @@
                         </select>
                     </td>
                 </tr>
-                <tr>
-                    <td>
-                        a) Orientações sobre o uso e manutenção do produto:
-                        <select class="controlador" name="orientacoes">
-                            <option selected value="---"> --- </option>
-                            <option value="Sim"> Sim </option>
-                            <option value="Não"> Não </option>
-                        </select>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        b) Alerta  ao  consumidor,  em  caso  de  colchões  que  utilizem  revestimentos  do  tipo  napa, courvin,  plásticos  e  emborrachados,  que  não  deve  ser  utilizado  álcool  ou  qualquer  tipo  de solvente  orgânico  para limpeza  desses  tipos  de  revestimento,  uma  vez  que  estes  podem danificá-los:
-                        <select class="controlador" name="alerta_consumidor">
-                            <option selected value="---"> --- </option>
-                            <option value="Sim"> Sim </option>
-                            <option value="Não"> Não </option>
-                        </select>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        c) Desenho  esquemático  do  colchão,  identificando  os  componentes  do  produto  (camadas de conforto, lâminas de espuma existentes, molejos, borda perimetral, revestimento) e seus respectivos  materiais  de  construção  e  especificações  (tipos de  espuma, densidades, tecidos, tipo de molejos, etc.):
-                        <select class="controlador" name="desenho_esquematico">
-                            <option selected value="---"> --- </option>
-                            <option value="Sim"> Sim </option>
-                            <option value="Não"> Não </option>
-                        </select>
-                    </td>
-                </tr>
-                <tr class="fundo-tabela">
-                    <td>
-                        6.2 - As instruções de uso devem conter o seguinte texto: “IMPORTANTE LER COM ATENÇÃO E GUARDAR PARA EVENTUAIS CONSULTAS”, em letras não inferiores a 5 mm de altura e com destaque em negrito.
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <p>
-                            Contém a advertência :
-                            <select class="controlador" name="contem_advertencia_6_2">
+                @if (ViewBag.manual != "Não")
+                {
+
+                    <tr>
+                        <td>
+                            a) Orientações sobre o uso e manutenção do produto:
+                            <select class="controlador" name="orientacoes">
                                 <option selected value="---"> --- </option>
                                 <option value="Sim"> Sim </option>
                                 <option value="Não"> Não </option>
                             </select>
-                        </p>
-                        <p> Altura da letra: <input class="controlador" type="text" name="altura_letra_6_2" /></p>
-                        <p>
-                            Está em negrito :
-                            <select class="controlador" name="negrito6_2">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            b) Alerta  ao  consumidor,  em  caso  de  colchões  que  utilizem  revestimentos  do  tipo  napa, courvin,  plásticos  e  emborrachados,  que  não  deve  ser  utilizado  álcool  ou  qualquer  tipo  de solvente  orgânico  para limpeza  desses  tipos  de  revestimento,  uma  vez  que  estes  podem danificá-los:
+                            <select class="controlador" name="alerta_consumidor">
                                 <option selected value="---"> --- </option>
                                 <option value="Sim"> Sim </option>
                                 <option value="Não"> Não </option>
                             </select>
-                        </p>
-                        <p>
-                            Esta em caixa alta :
-                            <select class="controlador" name="caixa_alta_6_2">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            c) Desenho  esquemático  do  colchão,  identificando  os  componentes  do  produto  (camadas de conforto, lâminas de espuma existentes, molejos, borda perimetral, revestimento) e seus respectivos  materiais  de  construção  e  especificações  (tipos de  espuma, densidades, tecidos, tipo de molejos, etc.):
+                            <select class="controlador" name="desenho_esquematico">
                                 <option selected value="---"> --- </option>
                                 <option value="Sim"> Sim </option>
                                 <option value="Não"> Não </option>
                             </select>
-                        </p>
-                    </td>
-                </tr>
+                        </td>
+                    </tr>
+                    <tr class="fundo-tabela">
+                        <td>
+                            6.2 - As instruções de uso devem conter o seguinte texto: “IMPORTANTE LER COM ATENÇÃO E GUARDAR PARA EVENTUAIS CONSULTAS”, em letras não inferiores a 5 mm de altura e com destaque em negrito.
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <p>
+                                Contém a advertência :
+                                <select class="controlador" name="contem_advertencia_6_2">
+                                    <option selected value="---"> --- </option>
+                                    <option value="Sim"> Sim </option>
+                                    <option value="Não"> Não </option>
+                                </select>
+                            </p>
+                            <p> Altura da letra: <input class="controlador" type="text" name="altura_letra_6_2" /></p>
+                            <p>
+                                Está em negrito :
+                                <select class="controlador" name="negrito6_2">
+                                    <option selected value="---"> --- </option>
+                                    <option value="Sim"> Sim </option>
+                                    <option value="Não"> Não </option>
+                                </select>
+                            </p>
+                            <p>
+                                Esta em caixa alta :
+                                <select class="controlador" name="caixa_alta_6_2">
+                                    <option selected value="---"> --- </option>
+                                    <option value="Sim"> Sim </option>
+                                    <option value="Não"> Não </option>
+                                </select>
+                            </p>
+                        </td>
+                    </tr>
+                }
                 <tr>
                     <td class="fundo-tabela">
                         Embalagem
@@ -607,7 +616,7 @@
                     <td>Área da etiqueta <input style="width:200px;" class="controlador" type="text" name="area_etiqueta_1" value="@Model.area_etiqueta_1" /> X <input style="width:200px;" class="controlador" type="text" name="area_etiqueta_2" value="@Model.area_etiqueta_2" /> = <input style="width:200px;" class="controlador" type="text" readonly value="@Model.area_etiqueta_media" /></td>
                 </tr>
                 <tr>
-                    <td class ="fundo-tabela">
+                    <td class="fundo-tabela">
                         Além disso o colchão deve conter em sua etiqueta as seguintes informações:
                     </td>
                     <td rowspan="4" class="conformidade">@Model.conforme_requisitos_2</td>
@@ -624,17 +633,17 @@
                         </select>
                     </td>
                 </tr>
-             @*    <tr>
-                    <td>
-                        b) Nome, razão social e identificação fiscal (CNPJ ou CPF) do fornecedor:
-                        <select class="controlador" name="Escolha">
-                            <option selected> @Model.cnpj_cpf</option>
-                            <option value="---"> --- </option>
-                            <option value="Sim"> Sim </option>
-                            <option value="Não"> Não </option>
-                        </select>
-                    </td>
-                </tr> *@
+                @*    <tr>
+            <td>
+            b) Nome, razão social e identificação fiscal (CNPJ ou CPF) do fornecedor:
+            <select class="controlador" name="Escolha">
+            <option selected> @Model.cnpj_cpf</option>
+            <option value="---"> --- </option>
+            <option value="Sim"> Sim </option>
+            <option value="Não"> Não </option>
+            </select>
+            </td>
+            </tr> *@
                 <tr>
                     <td>
                         c) Designação comercial do produto (marca e modelo) :
@@ -699,7 +708,7 @@
                 </tr>
                 <tr>
                     <td>
-                        h) Se borda de aço e/ou borda de espuma e/ou outro material: 
+                        h) Se borda de aço e/ou borda de espuma e/ou outro material:
                         <select class="controlador" name="contem_borda">
                             <option selected> @Model.contem_borda</option>
                             <option value="---"> --- </option>
@@ -795,24 +804,30 @@
                             <option value="Não"> Não </option>
                         </select>
                     </td>
-                    <td rowspan="6" class="conformidade">@Model.conforme_requisitos_4</td>
+                    <td rowspan="4" class="conformidade">@Model.conforme_requisitos_4</td>
                 </tr>
-                <tr>
-                    <td>
-                        q) Para os colchões de molas que possuam uma ou mais lâminas constituídas por látex, aviso de  esclarecimento,  em  negrito,  em  letras  com  o  mesmo  formato  e  tamanho  da  utilizada  na descrição  das  lâminas,  da  seguinte  forma:  <b>“A  LÂMINA  DE  LÁTEX  NÃO  FOI  AVALIADA  PELO PROCESSO DE CERTIFICAÇÃO DO PRODUTO”.</b> :
-                        <select class="controlador" name="possui_mais_laminas">
-                            <option selected> @Model.possui_mais_laminas</option>
-                            <option value="---"> --- </option>
-                            <option value="Sim"> Sim </option>
-                            <option value="Não"> Não </option>
-                        </select>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        r)  Para  os  colchões de  molas  que  possuam  revestimentos  do tipo napa,  courvin,  plásticos e emborrachados,  aviso  de  esclarecimento,  em  letras  não  inferiores  a  2,5  mm    de  altura,  em negrito, caixa alta e em coloração que se destaque da cor de fundo da etiqueta, da seguinte forma:  <b>“O  REVESTIMENTO  NÃO  FOI  AVALIADO  PELO  PROCESSO  DE  CRTIFICAÇÃO  DO PRODUTO.”</b>
-                    </td>
-                </tr>
+                @if (ViewBag.latex != "Não")
+                {
+                    <tr>
+                        <td>
+                            q) Para os colchões de molas que possuam uma ou mais lâminas constituídas por látex, aviso de  esclarecimento,  em  negrito,  em  letras  com  o  mesmo  formato  e  tamanho  da  utilizada  na descrição  das  lâminas,  da  seguinte  forma:  <b>“A  LÂMINA  DE  LÁTEX  NÃO  FOI  AVALIADA  PELO PROCESSO DE CERTIFICAÇÃO DO PRODUTO”.</b> :
+                            <select class="controlador" name="possui_mais_laminas">
+                                <option selected> @Model.possui_mais_laminas</option>
+                                <option value="---"> --- </option>
+                                <option value="Sim"> Sim </option>
+                                <option value="Não"> Não </option>
+                            </select>
+                        </td>
+                    </tr>
+                }
+                @if (ViewBag.napa != "Não")
+                {
+                    <tr>
+                        <td>
+                            r)  Para  os  colchões de  molas  que  possuam  revestimentos  do tipo napa,  courvin,  plásticos e emborrachados,  aviso  de  esclarecimento,  em  letras  não  inferiores  a  2,5  mm    de  altura,  em negrito, caixa alta e em coloração que se destaque da cor de fundo da etiqueta, da seguinte forma:  <b>“O  REVESTIMENTO  NÃO  FOI  AVALIADO  PELO  PROCESSO  DE  CRTIFICAÇÃO  DO PRODUTO.”</b>
+                        </td>
+                    </tr>
+                }
                 <tr>
                     <td>
                         <p>
@@ -882,11 +897,11 @@
                         </p>
                     </td>
                 </tr>
-                <tr >
+                <tr>
                     <td class="fundo-tabela">
                         6.1 - Instruções de uso
                     </td>
-                    <td rowspan="8" class="conformidade">@Model.conforme_6_1</td>
+                    <td rowspan="2" class="conformidade">@Model.conforme_6_1</td>
                 </tr>
                 <tr>
                     <td>
@@ -904,77 +919,80 @@
                         </select>
                     </td>
                 </tr>
-                <tr>
-                    <td>
-                        a) Orientações sobre o uso e manutenção do produto:
-                        <select class="controlador" name="orientacoes">
-                            <option selected> @Model.orientacoes</option>
-                            <option value="---"> --- </option>
-                            <option value="Sim"> Sim </option>
-                            <option value="Não"> Não </option>
-                        </select>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        b) Alerta  ao  consumidor,  em  caso  de  colchões  que  utilizem  revestimentos  do  tipo  napa, courvin,  plásticos  e  emborrachados,  que  não  deve  ser  utilizado  álcool  ou  qualquer  tipo  de solvente  orgânico  para limpeza  desses  tipos  de  revestimento,  uma  vez  que  estes  podem danificá-los:
-                        <select class="controlador" name="alerta_consumidor">
-                            <option selected> @Model.alerta_consumidor</option>
-                            <option value="---"> --- </option>
-                            <option value="Sim"> Sim </option>
-                            <option value="Não"> Não </option>
-                        </select>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        c) Desenho  esquemático  do  colchão,  identificando  os  componentes  do  produto  (camadas de conforto, lâminas de espuma existentes, molejos, borda perimetral, revestimento) e seus respectivos  materiais  de  construção  e  especificações  (tipos de  espuma, densidades, tecidos, tipo de molejos, etc.):
-                        <select class="controlador" name="desenho_esquematico">
-                            <option selected> @Model.desenho_esquematico</option>
-                            <option value="---"> --- </option>
-                            <option value="Sim"> Sim </option>
-                            <option value="Não"> Não </option>
-                        </select>
-                    </td>
-                </tr>
-                <tr class="fundo-tabela">
-                    <td>
-                        6.2 - As instruções de uso devem conter o seguinte texto: “IMPORTANTE LER COM ATENÇÃO E GUARDAR PARA EVENTUAIS CONSULTAS”, em letras não inferiores a 5 mm de altura e com destaque em negrito.
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <p>
-                            Contém a advertência :
-                            <select class="controlador" name="contem_advertencia_6_2">
-                                <option selected> @Model.contem_advertencia_6_2</option>
+                @if (ViewBag.manual != "Não")
+                {
+                    <tr>
+                        <td>
+                            a) Orientações sobre o uso e manutenção do produto:
+                            <select class="controlador" name="orientacoes">
+                                <option selected> @Model.orientacoes</option>
                                 <option value="---"> --- </option>
                                 <option value="Sim"> Sim </option>
                                 <option value="Não"> Não </option>
                             </select>
-                        </p>
-                        <p> Altura da letra: <input class="controlador" type="text" name="altura_letra_6_2" value="@Model.altura_letra_6_2" /></p>
-                        <p>
-                            Está em negrito :
-                            <select class="controlador" name="negrito6_2">
-                                <option selected> @Model.negrito6_2</option>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            b) Alerta  ao  consumidor,  em  caso  de  colchões  que  utilizem  revestimentos  do  tipo  napa, courvin,  plásticos  e  emborrachados,  que  não  deve  ser  utilizado  álcool  ou  qualquer  tipo  de solvente  orgânico  para limpeza  desses  tipos  de  revestimento,  uma  vez  que  estes  podem danificá-los:
+                            <select class="controlador" name="alerta_consumidor">
+                                <option selected> @Model.alerta_consumidor</option>
                                 <option value="---"> --- </option>
                                 <option value="Sim"> Sim </option>
                                 <option value="Não"> Não </option>
                             </select>
-                        </p>
-                        <p>
-                            Esta em caixa alta :
-                            <select class="controlador" name="caixa_alta_6_2">
-                                <option selected> @Model.caixa_alta_6_2</option>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            c) Desenho  esquemático  do  colchão,  identificando  os  componentes  do  produto  (camadas de conforto, lâminas de espuma existentes, molejos, borda perimetral, revestimento) e seus respectivos  materiais  de  construção  e  especificações  (tipos de  espuma, densidades, tecidos, tipo de molejos, etc.):
+                            <select class="controlador" name="desenho_esquematico">
+                                <option selected> @Model.desenho_esquematico</option>
                                 <option value="---"> --- </option>
                                 <option value="Sim"> Sim </option>
                                 <option value="Não"> Não </option>
                             </select>
-                        </p>
-                    </td>
-                </tr>
-                <tr >
+                        </td>
+                    </tr>
+                    <tr class="fundo-tabela">
+                        <td>
+                            6.2 - As instruções de uso devem conter o seguinte texto: “IMPORTANTE LER COM ATENÇÃO E GUARDAR PARA EVENTUAIS CONSULTAS”, em letras não inferiores a 5 mm de altura e com destaque em negrito.
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <p>
+                                Contém a advertência :
+                                <select class="controlador" name="contem_advertencia_6_2">
+                                    <option selected> @Model.contem_advertencia_6_2</option>
+                                    <option value="---"> --- </option>
+                                    <option value="Sim"> Sim </option>
+                                    <option value="Não"> Não </option>
+                                </select>
+                            </p>
+                            <p> Altura da letra: <input class="controlador" type="text" name="altura_letra_6_2" value="@Model.altura_letra_6_2" /></p>
+                            <p>
+                                Está em negrito :
+                                <select class="controlador" name="negrito6_2">
+                                    <option selected> @Model.negrito6_2</option>
+                                    <option value="---"> --- </option>
+                                    <option value="Sim"> Sim </option>
+                                    <option value="Não"> Não </option>
+                                </select>
+                            </p>
+                            <p>
+                                Esta em caixa alta :
+                                <select class="controlador" name="caixa_alta_6_2">
+                                    <option selected> @Model.caixa_alta_6_2</option>
+                                    <option value="---"> --- </option>
+                                    <option value="Sim"> Sim </option>
+                                    <option value="Não"> Não </option>
+                                </select>
+                            </p>
+                        </td>
+                    </tr>
+                }
+                <tr>
                     <td class="fundo-tabela">
                         Embalagem
                     </td>

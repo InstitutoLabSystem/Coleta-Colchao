@@ -129,7 +129,7 @@ namespace Coleta_Colchao.Controllers
                         }
                         else
                         {
-                            return RedirectToAction(nameof(Index), "Coleta", new { os, ViewBag.orcamento });
+                            return RedirectToAction("Index", "Home", new { os, ViewBag.orcamento });
                         }
                     }
                     else

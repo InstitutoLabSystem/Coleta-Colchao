@@ -2,9 +2,8 @@
     Layout = null;
 }
 @{
-    ViewData["Title"] = "Login";
+    ViewData["Title"] = "Ensaio de Impacto vertical";
 }
-
 
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -12,7 +11,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="~/css/coleta.css" asp-append-version="true" />
-    <title>Coleta</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <title>Ensaio Impacto Vertical</title>
 </head>
 <body>
     <br />
@@ -26,7 +26,7 @@
             </tr>
             <tr>
                 <td colspan="4"> Ensaio em Bases</td>
-                <td rowspan="2"> os aqui</td>
+                <td rowspan="2"> @ViewBag.os</td>
             </tr>
             <tr>
                 <td>Inicio:</td>
@@ -37,7 +37,6 @@
         </thead>
     </table>
     <br />
-
     <table class="tables table-bordered border-secondary  table-sm">
         <tr>
             <td rowspan="2" class="fundo-tabela"> <strong> Item </strong></td>
@@ -50,140 +49,63 @@
             <td class="fundo-tabela"><strong>Ensaio a ser realizado: DIN EN 1725:1998 - Domestic furniture – Beds and mattresses – Safety requirements and test methods</strong></td>
         </tr>
         <tr>
-            <td rowspan="12"> <strong>4.7.2 / 7.4 </strong></td>
+            <td rowspan="14"> <strong>4.7.2 / 7.4 </strong></td>
+            <td> <strong>Ensaio de Impacto vertical</strong></td>
+            <td rowspan="14">resultado aqui</td>
+        </tr>
+        <tr>
             <td>
-                <strong>Ensaio de Impacto vertical</strong> <br /><br />
-                O ensaio deve ser realizado sobcondições climáticas com temperatura de ( 20 ± 5 ) °C <br />
+                O ensaio deve ser realizado sobcondições climáticas com temperatura de ( 20 ± 5 ) °C
+            </td>
+        </tr>
+        <tr>
+            <td>
                 <table class="tables table-bordered border-secondary  table-sm">
                     <tr>
                         <td class="fundo-tabela"> Data de início </td>
-                        <td> 00/01/1900 </td>
+                        <td> <input type="date" class="form-control" /> </td>
                         <td class="fundo-tabela"> Hora de início: </td>
-                        <td>   <input class="form-control" type="text" /> </td>
+                        <td>   <input class="form-control" type="time" /> </td>
                         <td class="fundo-tabela"> Temperatura mínima: </td>
-                        <td> <input class="form-control" type="text" /> </td>
+                        <td> <input class="form-control" type="text" style=" width:150px;" /> </td>
                     </tr>
                     <tr>
                         <td class="fundo-tabela"> Data de término: </td>
-                        <td> 00/01/1900 </td>
+                        <td> <input type="date" class="form-control" /> </td>
                         <td class="fundo-tabela"> Hora do término: </td>
-                        <td>   <input class="form-control" type="text" /> </td>
+                        <td>   <input class="form-control" type="time" /> </td>
                         <td class="fundo-tabela"> Temperatura máxima: </td>
-                        <td> <input class="form-control" type="text" /> </td>
+                        <td> <input class="form-control" type="text" style=" width:150px;" /> </td>
                     </tr>
                 </table>
-                Posicionar a base em uma superfície plana e rígida e ajustar o dispositivo de impacto
-                de modo que o mesmo fique posicionado a uma altura de 180 mm (a partir da face superior do colchão). <br /> <br />
-                Medir a largura da base do colchão para definir os pontos de impacto e logo após realizar 10 impactos definido. <br /> <br />
-                Altura de queda <input class="form-control" type="text" /> <br /> <br />
-                Comprimento da base <input class="form-control" type="text" />  Largura da base <input class="form-control" type="text" />
-                <br /><br />
-                <img src="~/img/ensaioImpacto.png" />
             </td>
-            <td rowspan="12"></td>
         </tr>
         <tr>
-            <td class="fundo-tabela"> Bases com largura de dimensões ≤ 1150 mm </td>
-            </tr>
-            <tr>
             <td>
-                <table class="tables table-bordered border-secondary  table-sm">
-                    <tr>
-                    <td rowspan="2" class="fundo-tabela"> Pontos </td>
-                    <td rowspan="1" colspan="3" class="fundo-tabela"> Posicionamento dos pontos </td>
-                    <td rowspan="2" colspan="2" class="fundo-tabela"> Avaliação </td>
-                    </tr>
-                    <tr>
-                    <td class="fundo-tabela"> Comprimim </td>
-                    <td class="fundo-tabela"> X </td>
-                    <td class="fundo-tabela"> Largura </td>
-                    </tr>
-                    <tr>
-                    <td class="fundo-tabela"> Ponto A </td>
-                    <td> <input class="form-control" type="text" /> </td>
-                    <td> X </td>
-                    <td> <input class="form-control" type="text" />  </td>
-                    <td> Suportou o impacto </td>
-                    <td> <input class="form-control" type="text" />  </td>
-                    </tr>
-                    <tr>
-                    <td class="fundo-tabela"> Ponto B </td>
-                        <td> <input class="form-control" type="text" /> </td>
-                        <td> X </td>
-                        <td> <input class="form-control" type="text" />  </td>
-                        <td> Suportou o impacto </td>
-                        <td> <input class="form-control" type="text" />  </td>
-                    </tr>
-                    <tr>
-                    <td class="fundo-tabela"> Ponto C </td>
-                        <td> <input class="form-control" type="text" /> </td>
-                        <td> X </td>
-                        <td> <input class="form-control" type="text" />  </td>
-                        <td> Suportou o impacto </td>
-                        <td> <input class="form-control" type="text" />  </td>
-                    </tr>
-                    <tr>
-                    <td class="fundo-tabela"> Ponto D </td>
-                        <td> <input class="form-control" type="text" /> </td>
-                        <td> X </td>
-                        <td> <input class="form-control" type="text" />  </td>
-                        <td> Suportou o impacto </td>
-                        <td> <input class="form-control" type="text" />  </td>
-                    </tr>
-                    <tr>
-                    <td class="fundo-tabela"> Ponto G </td>
-                        <td> <input class="form-control" type="text" /> </td>
-                        <td> X </td>
-                        <td> <input class="form-control" type="text" />  </td>
-                        <td> Suportou o impacto </td>
-                        <td> <input class="form-control" type="text" />  </td>
-                    </tr>
-                    <tr>
-                    <td class="fundo-tabela"> Ponto I </td>
-                        <td> <input class="form-control" type="text" /> </td>
-                        <td> X </td>
-                        <td> <input class="form-control" type="text" />  </td>
-                        <td> Suportou o impacto </td>
-                        <td> <input class="form-control" type="text" />  </td>
-                    </tr>
-                    <tr>
-                    <td class="fundo-tabela"> Ponto J </td>
-                        <td> <input class="form-control" type="text" /> </td>
-                        <td> X </td>
-                        <td> <input class="form-control" type="text" />  </td>
-                        <td> Suportou o impacto </td>
-                        <td> <input class="form-control" type="text" />  </td>
-                    </tr>
-                </table> <br /> <br />
-                    Verificar se após os impactos a amostra apresenta algum defeito conforme citado abaixo: <br/> <br />
-                    <table class="tables table-bordered border-secondary  table-sm">
-
-                        <tr>
-                            <td class="fundo-tabela"> Houve ruptura da estrutura </td>
-                            <td> <input class="form-control" type="text" /> </td>
-                        </tr>
-                        <tr>
-                            <td class="fundo-tabela"> Houve afundamento da espuma </td>
-                            <td> <input class="form-control" type="text" /> </td>
-                        </tr>
-                        <tr>
-                            <td class="fundo-tabela"> Houve rasgo no revestimento </td>
-                            <td> <input class="form-control" type="text" /> </td>
-                        </tr>
-                        <tr>
-                            <td class="fundo-tabela"> Houve rompimento nos pés </td>
-                            <td> <input class="form-control" type="text" /> </td>
-                        </tr>
-                        <tr>
-                            <td class="fundo-tabela"> Apresentou algo que prejudique o seu comprometimento de uso </td>
-                            <td> <input class="form-control" type="text" /> </td>
-                        </tr>
-                    </table>
+                O ensaio deve ser realizado sobcondições climáticas com temperatura de ( 20 ± 5 ) °C <br />
             </td>
         </tr>
         <tr>
-            <td class="fundo-tabela"> Bases com largura de dimensões > 1150 mm </td> <br /> <br />
+            <td>
+                Posicionar a base em uma superfície plana e rígida e ajustar o dispositivo de impacto
+                de modo que o mesmo fique posicionado a uma altura de 180 mm (a partir da face superior do colchão)
+            </td>
         </tr>
+        <tr>
+            <td>    Medir a largura da base do colchão para definir os pontos de impacto e logo após realizar 10 impactos definido.</td>
+        </tr>
+        <tr>
+            <td>Altura de queda: <input class="controlador" type="text" /> </td>
+        </tr>
+        <tr>
+            <td>
+                Comprimento da base: <input style="width:100px;" class="controlador" type="text" />  Largura da base:  <input style="width:100px;" class="controlador" type="text" />
+            </td>
+        </tr>
+        <tr>
+            <td>   <img src="~/img/ensaioImpacto.png" /></td>
+        </tr>
+        <tr><td class="fundo-tabela"> Bases com largura de dimensões ≤ 1150 mm </td></tr>
         <tr>
             <td>
                 <table class="tables table-bordered border-secondary  table-sm">
@@ -253,103 +175,225 @@
                         <td> Suportou o impacto </td>
                         <td> <input class="form-control" type="text" />  </td>
                     </tr>
-                </table> <br /> <br />
-                Verificar se após os impactos a amostra apresenta algum defeito conforme citado abaixo: <br /> <br />
-                <table class="tables table-bordered border-secondary  table-sm">
-
-                    <tr>
-                        <td class="fundo-tabela"> Houve ruptura da estrutura </td>
-                        <td> <input class="form-control" type="text" /> </td>
-                    </tr>
-                    <tr>
-                        <td class="fundo-tabela"> Houve afundamento da espuma </td>
-                        <td> <input class="form-control" type="text" /> </td>
-                    </tr>
-                    <tr>
-                        <td class="fundo-tabela"> Houve rasgo no revestimento </td>
-                        <td> <input class="form-control" type="text" /> </td>
-                    </tr>
-                    <tr>
-                        <td class="fundo-tabela"> Houve rompimento nos pés </td>
-                        <td> <input class="form-control" type="text" /> </td>
-                    </tr>
-                    <tr>
-                        <td class="fundo-tabela"> Apresentou algo que prejudique o seu comprometimento de uso </td>
-                        <td> <input class="form-control" type="text" /> </td>
-                    </tr>
-                </table>
+                   
+                </table> 
+              
             </td>
         </tr>
+        <tr>
+            <td >
+                Verificar se após os impactos a amostra apresenta algum defeito conforme citado abaixo: <br /> <br />
+            </td>
+        </tr>
+        <tr>
+            <td> Houve ruptura da estrutura: <input class="controlador" type="text" /> </td>
+        </tr>
+    </table>
+    @* <br />
+
+    <table class="tables table-bordered border-secondary  table-sm">
+
+
+
+
+
+   
+    
+    Verificar se após os impactos a amostra apresenta algum defeito conforme citado abaixo: <br/> <br />
+    <table class="tables table-bordered border-secondary  table-sm">
+
+    <tr>
+    <td class="fundo-tabela"> Houve ruptura da estrutura </td>
+    <td> <input class="form-control" type="text" /> </td>
+    </tr>
+    <tr>
+    <td class="fundo-tabela"> Houve afundamento da espuma </td>
+    <td> <input class="form-control" type="text" /> </td>
+    </tr>
+    <tr>
+    <td class="fundo-tabela"> Houve rasgo no revestimento </td>
+    <td> <input class="form-control" type="text" /> </td>
+    </tr>
+    <tr>
+    <td class="fundo-tabela"> Houve rompimento nos pés </td>
+    <td> <input class="form-control" type="text" /> </td>
+    </tr>
+    <tr>
+    <td class="fundo-tabela"> Apresentou algo que prejudique o seu comprometimento de uso </td>
+    <td> <input class="form-control" type="text" /> </td>
+    </tr>
+    </table>
+    </td>
+    </tr>
+    <tr>
+    <td class="fundo-tabela"> Bases com largura de dimensões > 1150 mm </td> <br /> <br />
+    </tr>
+    <tr>
+    <td>
+    <table class="tables table-bordered border-secondary  table-sm">
+    <tr>
+    <td rowspan="2" class="fundo-tabela"> Pontos </td>
+    <td rowspan="1" colspan="3" class="fundo-tabela"> Posicionamento dos pontos </td>
+    <td rowspan="2" colspan="2" class="fundo-tabela"> Avaliação </td>
+    </tr>
+    <tr>
+    <td class="fundo-tabela"> Comprimim </td>
+    <td class="fundo-tabela"> X </td>
+    <td class="fundo-tabela"> Largura </td>
+    </tr>
+    <tr>
+    <td class="fundo-tabela"> Ponto A </td>
+    <td> <input class="form-control" type="text" /> </td>
+    <td> X </td>
+    <td> <input class="form-control" type="text" />  </td>
+    <td> Suportou o impacto </td>
+    <td> <input class="form-control" type="text" />  </td>
+    </tr>
+    <tr>
+    <td class="fundo-tabela"> Ponto B </td>
+    <td> <input class="form-control" type="text" /> </td>
+    <td> X </td>
+    <td> <input class="form-control" type="text" />  </td>
+    <td> Suportou o impacto </td>
+    <td> <input class="form-control" type="text" />  </td>
+    </tr>
+    <tr>
+    <td class="fundo-tabela"> Ponto C </td>
+    <td> <input class="form-control" type="text" /> </td>
+    <td> X </td>
+    <td> <input class="form-control" type="text" />  </td>
+    <td> Suportou o impacto </td>
+    <td> <input class="form-control" type="text" />  </td>
+    </tr>
+    <tr>
+    <td class="fundo-tabela"> Ponto D </td>
+    <td> <input class="form-control" type="text" /> </td>
+    <td> X </td>
+    <td> <input class="form-control" type="text" />  </td>
+    <td> Suportou o impacto </td>
+    <td> <input class="form-control" type="text" />  </td>
+    </tr>
+    <tr>
+    <td class="fundo-tabela"> Ponto G </td>
+    <td> <input class="form-control" type="text" /> </td>
+    <td> X </td>
+    <td> <input class="form-control" type="text" />  </td>
+    <td> Suportou o impacto </td>
+    <td> <input class="form-control" type="text" />  </td>
+    </tr>
+    <tr>
+    <td class="fundo-tabela"> Ponto I </td>
+    <td> <input class="form-control" type="text" /> </td>
+    <td> X </td>
+    <td> <input class="form-control" type="text" />  </td>
+    <td> Suportou o impacto </td>
+    <td> <input class="form-control" type="text" />  </td>
+    </tr>
+    <tr>
+    <td class="fundo-tabela"> Ponto J </td>
+    <td> <input class="form-control" type="text" /> </td>
+    <td> X </td>
+    <td> <input class="form-control" type="text" />  </td>
+    <td> Suportou o impacto </td>
+    <td> <input class="form-control" type="text" />  </td>
+    </tr>
+    </table> <br /> <br />
+    Verificar se após os impactos a amostra apresenta algum defeito conforme citado abaixo: <br /> <br />
+    <table class="tables table-bordered border-secondary  table-sm">
+
+    <tr>
+    <td class="fundo-tabela"> Houve ruptura da estrutura </td>
+    <td> <input class="form-control" type="text" /> </td>
+    </tr>
+    <tr>
+    <td class="fundo-tabela"> Houve afundamento da espuma </td>
+    <td> <input class="form-control" type="text" /> </td>
+    </tr>
+    <tr>
+    <td class="fundo-tabela"> Houve rasgo no revestimento </td>
+    <td> <input class="form-control" type="text" /> </td>
+    </tr>
+    <tr>
+    <td class="fundo-tabela"> Houve rompimento nos pés </td>
+    <td> <input class="form-control" type="text" /> </td>
+    </tr>
+    <tr>
+    <td class="fundo-tabela"> Apresentou algo que prejudique o seu comprometimento de uso </td>
+    <td> <input class="form-control" type="text" /> </td>
+    </tr>
+    </table>
+    </td>
+    </tr>
+    </table> *@
+    <br />
+    <br />
+    @* <table class="tables table-bordered border-secondary  table-sm">
+    <tr class="fundo-tabela">
+    <td colspan=" 4">
+    Instrumento(s)/Dispositivo(s)/Equipamento(s) Utilizado(s) que Requer(em) Calibração
+    </td>
+    </tr>
+    <tr>
+    <td>Código(s)</td>
+    <td>Descrição(ões)</td>
+    <td>Certificado(s)</td>
+    <td>validade(s)</td>
+    </tr>
+    </table>
+    <table class="tables table-bordered border-secondary  table-sm">
+    <tr class="fundo-tabela">
+    <td colspan=" 4">
+    Dispositivo(s)/Equipamento(s) Utilizado(s) que Não Requer(em) Calibração
+    </td>
+    </tr>
+    <tr>
+    <td>Código(s)</td>
+    <td>Descrição(ões)</td>
+    <td>Certificado(s)</td>
+    <td>validade(s)</td>
+    </tr>
+    </table>
+    <table class="tables table-bordered border-secondary  table-sm">
+    <tr class="fundo-tabela">
+    <td colspan=" 4">
+    Matéria(s)-Prima(s) Utilizada(s)
+    </td>
+    </tr>
+    <tr>
+    <td>Código(s)</td>
+    <td>Descrição(ões)</td>
+    <td>Certificado(s)</td>
+    <td>validade(s)</td>
+    </tr>
+    </table>
+    <table class="tables table-bordered border-secondary  table-sm">
+    <tr class="fundo-tabela">
+    <td colspan="4">
+    Observações
+    </td>
+    </tr>
+    <tr>
+    <td>
+    <textarea class="form-control w-100 mr-2 input">
+
+    </textarea>
+    </td>
+    </tr>
     </table>
     <br />
-    <br />
-                <table class="tables table-bordered border-secondary  table-sm">
-                    <tr class="fundo-tabela">
-                        <td colspan=" 4">
-                            Instrumento(s)/Dispositivo(s)/Equipamento(s) Utilizado(s) que Requer(em) Calibração
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>Código(s)</td>
-                        <td>Descrição(ões)</td>
-                        <td>Certificado(s)</td>
-                        <td>validade(s)</td>
-                    </tr>
-                </table>
-                <table class="tables table-bordered border-secondary  table-sm">
-                    <tr class="fundo-tabela">
-                        <td colspan=" 4">
-                            Dispositivo(s)/Equipamento(s) Utilizado(s) que Não Requer(em) Calibração
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>Código(s)</td>
-                        <td>Descrição(ões)</td>
-                        <td>Certificado(s)</td>
-                        <td>validade(s)</td>
-                    </tr>
-                </table>
-                <table class="tables table-bordered border-secondary  table-sm">
-                    <tr class="fundo-tabela">
-                        <td colspan=" 4">
-                            Matéria(s)-Prima(s) Utilizada(s)
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>Código(s)</td>
-                        <td>Descrição(ões)</td>
-                        <td>Certificado(s)</td>
-                        <td>validade(s)</td>
-                    </tr>
-                </table>
-                <table class="tables table-bordered border-secondary  table-sm">
-                    <tr class="fundo-tabela">
-                        <td colspan="4">
-                            Observações
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <textarea class="form-control w-100 mr-2 input">
-
-                                        </textarea>
-                        </td>
-                    </tr>
-                </table>
-                <br />
-                <table class="tables table-bordered border-secondary  table-sm">
-                    <tr class="fundo-tabela">
-                        <td colspan=" 4">
-                            Nome(s) do(s) Executor(es)
-                        </td>
-                    </tr>
-                    <tr>
-                        <td><input class="form-control" type="text" /></td>
-                        <td><input class="form-control" type="text" /></td>
-                        <td><input class="form-control" type="text" /></td>
-                        <td><input class="form-control" type="text" /></td>
-                    </tr>
-                </table>
+    <table class="tables table-bordered border-secondary  table-sm">
+    <tr class="fundo-tabela">
+    <td colspan=" 4">
+    Nome(s) do(s) Executor(es)
+    </td>
+    </tr>
+    <tr>
+    <td><input class="form-control" type="text" /></td>
+    <td><input class="form-control" type="text" /></td>
+    <td><input class="form-control" type="text" /></td>
+    <td><input class="form-control" type="text" /></td>
+    </tr>
+    </table> *@
 
 </body>
 </html>

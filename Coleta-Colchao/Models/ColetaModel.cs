@@ -1,5 +1,6 @@
 ﻿using Microsoft.CodeAnalysis.Classification;
 using NuGet.Versioning;
+using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.Drawing;
 using System.Reflection.Metadata;
@@ -573,6 +574,61 @@ namespace Coleta_Colchao.Models
             public string executador_dois { get; set; }
             public string executador_tres { get; set; }
             public string executador_quat { get; set; }
+
+        }
+
+        public class EnsaioBaseDurabilidade
+        {
+            [Key]
+            public int Id { get; set; }
+            public string os { get; set; }
+            public string orcamento { get; set; }
+        
+            public DateOnly data_inicio { get; set; }
+           
+            public DateOnly data_termi { get; set; }
+            public DateOnly data_inicio_durab { get; set; }
+            public DateOnly data_term_durab { get; set; }
+
+            public TimeOnly hora_inicio { get; set; }
+          
+            public TimeOnly hora_term { get; set; }
+            public string? temp_min { get; set; }
+            public string? temp_max { get; set; }
+            public string? base_cama { get; set; }
+            public string? angulo_encontrado { get; set; }
+            public int distancia_ponto_a { get; set; } 
+            public int forca_apli_ponto_a { get; set; }
+            public int tempo_apli_ponto_a { get; set; }
+            public string? quant_ciclos_ponto_a { get; set; }
+            public string? suportou_ponto_a { get; set; }
+            public string? ruptura_ponto_a { get; set; }
+            public string? afundamento_ponto_a { get; set; }
+            public string? rasgo_ponto_a { get; set; }
+            public string? rompimento_ponto_a { get; set; }
+            public string? prejudique_ponto_a { get; set; }
+            public int distancia_ponto_b { get; set; }
+            public int forca_apli_ponto_b { get; set; }
+            public int tempo_apli_ponto_b { get; set; }
+            public string? quant_ciclos_ponto_b { get; set; }
+            public string? suportou_ponto_b { get; set; }
+            public string? ruptura_ponto_b { get; set; }
+            public string? afundamento_ponto_b { get; set; }
+            public string? rasgo_ponto_b { get; set; }
+            public string? rompimento_ponto_b { get; set; }
+            public string? prejudique_ponto_b { get; set; }
+            public int distancia_ponto_c { get; set; }
+            public int forca_apli_ponto_c { get; set; }
+            public int tempo_apli_ponto_c { get; set; }
+            public string? quant_ciclos_ponto_c { get; set; }
+            public string? suportou_ponto_c { get; set; }
+            public string? ruptura_ponto_c { get; set; }
+            public string? afundamento_ponto_c { get; set; }
+            public string? rasgo_ponto_c { get; set; }
+            public string? rompimento_ponto_c { get; set; }
+            public string? prejudique_ponto_c { get; set; }
+            public string? executor { get; set; }
+            public string? auxiliar { get; set; }
 
         }
 

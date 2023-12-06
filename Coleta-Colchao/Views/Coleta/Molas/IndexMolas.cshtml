@@ -87,7 +87,7 @@
                         </select>
                     </td>
                     <td> Local da realizaçãp dos ensaios : </td>
-                    <td colspan="2"> <input class="form-control" type="text" name="realizacao_ensaios" disabled value="Labsystem"/> </td>
+                    <td colspan="2"> <input class="form-control" type="text" name="realizacao_ensaios"  value="Labsystem" disabled/> </td>
                 </tr>
                 <tr>
                     <td> Quantidade recebida : </td>
@@ -219,11 +219,26 @@
                 </tr>
                 <tr>
                     <td colspan="2">  Borda Pimental </td>
-                    <td colspan="3"> <input class="form-control" type="text" name="borda_peri" /> </td>
+                    <td colspan="3">
+                        @* <input class="form-control" type="text" name="borda_peri" /> *@
+                        <select class="form-control" name="borda_peri">
+                            <option value="NA">NA</option>
+                            <option value="Sim">Sim</option>
+                            <option value="Não">Não</option>
+                        </select>
+
+                    </td>
                 </tr>
                 <tr>
                     <td colspan="2">  Isolante </td>
-                    <td colspan="3"> <input class="form-control" type="text" name="isolante" /> </td>
+                    <td colspan="3">
+                      @*   <input class="form-control" type="text" name="isolante" /> *@
+                        <select class="form-control" name="isolante">
+                            <option value="NA">NA</option>
+                            <option value="Sim">Sim</option>
+                            <option value="Não">Não</option>
+                        </select>
+                    </td>
                 </tr>
                 <tr>
                     <td colspan="2">  Latex </td>

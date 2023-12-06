@@ -1,275 +1,812 @@
-﻿@{
+﻿@model ColetaModel.EnsaioBaseDurabilidade;
+@{
     Layout = null;
 }
 @{
-    ViewData["Title"] = "Login";
+    ViewData["Title"] = "Ensaio Base Durabilidade";
 }
-
-
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="~/css/coleta.css" asp-append-version="true" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <title>Coleta</title>
+
+    <style>
+        input{
+            text-align:center;
+        }
+
+        select {
+            text-align: center;
+        }
+    </style>
 </head>
 <body>
-    <br />
 
-<table class="tables table-bordered border-secondary  table-sm">
-    <thead>
-        <tr>
-            <td><img src="https://www.labsystem-nuvem.com.br/imagens_arq/imagens/img/LabSystem.png" class="imagem" /></td>
-            <td colspan="3" class="fundo-tabela">Coleta De Dados</td>
-            <td class="fundo-tabela">N Os:</td>
+    <form method="post" asp-controller="coleta" asp-action="salvarBaseDurabilidade" asp-route-os="@ViewBag.os" asp-route-orcamento="@ViewBag.orcamento">
+        @if (Model == null)
+        {
+      
+            <table class="tables table-bordered border-secondary  table-sm">
+                <thead>
+                    <tr>
+                        <td><img src="https://www.labsystem-nuvem.com.br/imagens_arq/imagens/img/LabSystem.png" class="imagem" /></td>
+                        <td colspan="3" class="fundo-tabela">Coleta De Dados</td>
+                        <td class="fundo-tabela">N Os:</td>
+                    </tr>
+                    <tr>
+                        <td colspan="4"> Ensaio em Bases</td>
+                        <td rowspan="2"> @ViewBag.os</td>
+                    </tr>
+
+                    <tr>
+                        <td>Inicio:</td>
+                        <td><input class="form-control" type="date" asp-for="data_inicio" /></td>
+                        <span asp-validation-for="data_inicio" class="text-danger"></span>
+                        <td>Termino:</td>
+                        <td><input class="form-control" type="date" name="data_termi" /></td>
+                        <span asp-validation-for="data_termi" class="text-danger"></span>
+
+                    </tr>
+                </thead>
+            </table>
+
+            <table class="tables table-bordered border-secondary  table-sm">
+                <tr>
+                    <td rowspan="2"> <strong> Item </strong></td>
+                    <td class="fundo-tabela">
+                        <strong>Descrição</strong>
+                    </td>
+                    <td rowspan="2"> <strong>Resultado</strong></td>
+                </tr>
+                <tr>
+                    <td class="fundo-tabela"> <strong>Ensaio a ser realizado: DIN EN 1725:1998 - Domestic furniture – Beds and mattresses – Safety requirements and test methods</strong> </td>
+
+                </tr>
+                <tr>
+                    <td rowspan="12"> <strong>4.7.1 / 7.3 </strong></td>
+                    <td><strong> Durabilidade </strong></td>
+                    <td rowspan="12"> <strong>resultado </strong></td>
+                </tr>
+                <tr>
+                    <td> O ensaio deve ser realizado sobcondições climáticas com temperatura de ( 20 ± 5 ) °C</td>
+                </tr>
+                <tr>
+                    <td>
+
+                        <table class="tables table-bordered border-secondary  table-sm">
+                            <tr>
+                                <td class="fundo-tabela"> Data de início </td>
+                                <td> <input class="form-control" type="date" asp-for="data_inicio_durab"/> </td>
+
+                                <td class="fundo-tabela"> Hora de início: </td>
+                                <td>   <input class="form-control" type="time" asp-for="hora_inicio" /> </td>
+
+                                <td class="fundo-tabela"> Temperatura mínima: </td>
+                                <td> <input class="form-control" type="text" asp-for="temp_min" /> </td>
+                            </tr>
+                            <tr>
+                                <td class="fundo-tabela"> Data de término: </td>
+                                <td><input class="form-control" type="date" asp-for="data_term_durab" /></td>
+                                <td class="fundo-tabela"> Hora do término: </td>
+                                <td> <input class="form-control" type="time" asp-for="hora_term" /> </td>
+
+                                <td class="fundo-tabela"> Temperatura máxima: </td>
+                                <td> <input class="form-control" type="text" asp-for="temp_max" /> </td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Posicionar a base em uma superfície plana e rígida e aplicar uma força vertical para baixo de 1000 N e mantê-la por (3 ± 1) s nos pontos A, B e C.
+                    </td>
+                </tr>
+                <tr>
+                    <td>  Aplicar a carga 10000 vezes em cada ponto.</td>
+                </tr>
+                <tr>
+                    <td>
+                        <strong> Nota: </strong> Caso a base da cama seja ajustável, o ensaio deve ser realizado com as peças ajustáveis na posição o mais próximo possivel de 7° acima da horizontal.
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        A base da cama é ajustável:
+                        <select asp-for="base_cama" class="controlador">
+                            <option value="Sim">Sim</option>
+                            <option value="Não">Não</option>
+                        </select>
+                    </td>
+
+                </tr>
+                <tr>
+                    <td>
+                        Ângulo encontrado:
+                        <input class="controlador" type="text" asp-for="angulo_encontrado" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <table class="tables table-bordered border-secondary  table-sm">
+                            <tr class="fundo-tabela">
+                                <td>Ponto A</td>
+                            </tr>
+                            <tr>
+                                <td>Distancia: <input style="width:100px;" class="controlador" type="text" asp-for="distancia_ponto_a" /> X <input style="width:100px;" class="controlador" type="text" /></td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    Força aplicada: <input style="width:100px;" class="controlador" type="text" asp-for="forca_apli_ponto_a" /> Tempo de aplicação da carga: <input style="width:100px;" class="controlador" type="text" asp-for="tempo_apli_ponto_a" />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    Quantidade de ciclos <input asp-for="quant_ciclos_ponto_a" class="controlador" type="text" />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    A amostra suportou numero dos ciclos:
+                                    <select asp-for="suportou_ponto_a" class="controlador">
+                                        <option value="Sim">Sim</option>
+                                        <option value="Não">Não</option>
+                                    </select>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    Verificar se após o término do ensaio a amostra apresente algum defeito conforme citado abaixo:
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    Houve ruptura da estrutura:
+                                    <select asp-for="ruptura_ponto_a" class="controlador">
+                                        <option value="Sim">Sim</option>
+                                        <option value="Não">Não</option>
+                                    </select>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    Houve afundamento da espuma:
+                                    <select asp-for="afundamento_ponto_a" class="controlador">
+                                        <option value="Sim">Sim</option>
+                                        <option value="Não">Não</option>
+                                    </select>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    Houve rasgo no revestimento:
+                                    <select asp-for="rasgo_ponto_a" class="controlador">
+                                        <option value="Sim">Sim</option>
+                                        <option value="Não">Não</option>
+                                    </select>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    Houve rompimento nos pés:
+                                    <select asp-for="rompimento_ponto_a" class="controlador">
+                                        <option value="Sim">Sim</option>
+                                        <option value="Não">Não</option>
+                                    </select>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    Apresentou algo que prejudique o seu comprometimento de uso:
+                                    <select asp-for="prejudique_ponto_a" class="controlador">
+                                        <option value="Sim">Sim</option>
+                                        <option value="Não">Não</option>
+                                    </select>
+                                </td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <table class="tables table-bordered border-secondary  table-sm">
+                            <tr class="fundo-tabela">
+                                <td>Ponto B</td>
+                            </tr>
+                            <tr>
+                                <td>Distancia: <input style="width:100px;" class="controlador" type="text" asp-for="distancia_ponto_b" /> X <input style="width:100px;" class="controlador" type="text" /></td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    Força aplicada: <input style="width:100px;" class="controlador" type="text" asp-for="forca_apli_ponto_b" /> Tempo de aplicação da carga: <input style="width:100px;" class="controlador" type="text" asp-for="tempo_apli_ponto_b" />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    Quantidade de ciclos <input asp-for="quant_ciclos_ponto_b" class="controlador" type="text" />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    A amostra suportou numero dos ciclos:
+                                    <select asp-for="suportou_ponto_b" class="controlador">
+                                        <option value="Sim">Sim</option>
+                                        <option value="Não">Não</option>
+                                    </select>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    Verificar se após o término do ensaio a amostra apresente algum defeito conforme citado abaixo:
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    Houve ruptura da estrutura:
+                                    <select asp-for="ruptura_ponto_b" class="controlador">
+                                        <option value="Sim">Sim</option>
+                                        <option value="Não">Não</option>
+                                    </select>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    Houve afundamento da espuma:
+                                    <select asp-for="afundamento_ponto_b" class="controlador">
+                                        <option value="Sim">Sim</option>
+                                        <option value="Não">Não</option>
+                                    </select>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    Houve rasgo no revestimento:
+                                    <select asp-for="rasgo_ponto_b" class="controlador">
+                                        <option value="Sim">Sim</option>
+                                        <option value="Não">Não</option>
+                                    </select>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    Houve rompimento nos pés:
+                                    <select asp-for="rompimento_ponto_b" class="controlador">
+                                        <option value="Sim">Sim</option>
+                                        <option value="Não">Não</option>
+                                    </select>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    Apresentou algo que prejudique o seu comprometimento de uso:
+                                    <select asp-for="prejudique_ponto_b" class="controlador">
+                                        <option value="Sim">Sim</option>
+                                        <option value="Não">Não</option>
+                                    </select>
+                                </td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <table class="tables table-bordered border-secondary  table-sm">
+                            <tr class="fundo-tabela">
+                                <td>Ponto C</td>
+                            </tr>
+                            <tr>
+                                <td>Distancia: <input style="width:100px;" class="controlador" type="text" asp-for="distancia_ponto_c" /> X <input style="width:100px;" class="controlador" type="text" /></td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    Força aplicada: <input style="width:100px;" class="controlador" type="text" asp-for="forca_apli_ponto_c" /> Tempo de aplicação da carga: <input style="width:100px;" class="controlador" type="text" asp-for="tempo_apli_ponto_c" />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    Quantidade de ciclos <input asp-for="quant_ciclos_ponto_c" class="controlador" type="text" />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    A amostra suportou numero dos ciclos:
+                                    <select asp-for="suportou_ponto_c" class="controlador">
+                                        <option value="Sim">Sim</option>
+                                        <option value="Não">Não</option>
+                                    </select>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    Verificar se após o término do ensaio a amostra apresente algum defeito conforme citado abaixo:
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    Houve ruptura da estrutura:
+                                    <select asp-for="ruptura_ponto_c" class="controlador">
+                                        <option value="Sim">Sim</option>
+                                        <option value="Não">Não</option>
+                                    </select>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    Houve afundamento da espuma:
+                                    <select asp-for="afundamento_ponto_c" class="controlador">
+                                        <option value="Sim">Sim</option>
+                                        <option value="Não">Não</option>
+                                    </select>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    Houve rasgo no revestimento:
+                                    <select asp-for="rasgo_ponto_c" class="controlador">
+                                        <option value="Sim">Sim</option>
+                                        <option value="Não">Não</option>
+                                    </select>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    Houve rompimento nos pés:
+                                    <select asp-for="rompimento_ponto_c" class="controlador">
+                                        <option value="Sim">Sim</option>
+                                        <option value="Não">Não</option>
+                                    </select>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    Apresentou algo que prejudique o seu comprometimento de uso:
+                                    <select asp-for="prejudique_ponto_c" class="controlador">
+                                        <option value="Sim">Sim</option>
+                                        <option value="Não">Não</option>
+                                    </select>
+                                </td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+
+            </table>
+
+            <div class="d-grid gap-2 d-flex justify-content-center">
+                <button type="submit" class="btn btn-success btn btn-primary btn-md">Salvar</button>
+            </div>
+        }
+        else
+        {
+           
+            <table class="tables table-bordered border-secondary  table-sm">
+                <thead>
+                    <tr>
+                        <td><img src="https://www.labsystem-nuvem.com.br/imagens_arq/imagens/img/LabSystem.png" class="imagem" /></td>
+                        <td colspan="3" class="fundo-tabela">Coleta De Dados</td>
+                        <td class="fundo-tabela">N Os:</td>
+                    </tr>
+                    <tr>
+                        <td colspan="4"> Ensaio em Bases</td>
+                        <td rowspan="2"> @ViewBag.os</td>
+                    </tr>
+
+                    <tr>
+                        <td>Inicio:</td>
+                        <td><input class="form-control" type="text" asp-for="data_inicio" value="@Model.data_inicio" /></td>
+                        <span asp-validation-for="data_inicio" class="text-danger"></span>
+                        <td>Termino:</td>
+                        <td><input class="form-control" type="text" asp-for="data_termi" value="@Model.data_termi" /></td>
+                        <span asp-validation-for="data_termi" class="text-danger"></span>
+
+                    </tr>
+                </thead>
+            </table>
+
+            <table class="tables table-bordered border-secondary  table-sm">
+                <tr>
+                    <td rowspan="2"> <strong> Item </strong></td>
+                    <td class="fundo-tabela">
+                        <strong>Descrição</strong>
+                    </td>
+                    <td rowspan="2"> <strong>Resultado</strong></td>
+                </tr>
+                <tr>
+                    <td class="fundo-tabela"> <strong>Ensaio a ser realizado: DIN EN 1725:1998 - Domestic furniture – Beds and mattresses – Safety requirements and test methods</strong> </td>
+
+                </tr>
+                <tr>
+                    <td rowspan="12"> <strong>4.7.1 / 7.3 </strong></td>
+                    <td><strong> Durabilidade </strong></td>
+                    <td rowspan="12"> <strong>resultado </strong></td>
+                </tr>
+                <tr>
+                    <td> O ensaio deve ser realizado sobcondições climáticas com temperatura de ( 20 ± 5 ) °C</td>
+                </tr>
+                <tr>
+                    <td>
+
+                        <table class="tables table-bordered border-secondary  table-sm">
+                            <tr>
+                                <td class="fundo-tabela"> Data de início </td>
+                                <td> <input class="form-control" type="text" asp-for="data_inicio_durab" /> </td>
+
+                                <td class="fundo-tabela"> Hora de início: </td>
+                                <td>   <input class="form-control" type="time" asp-for="hora_inicio" /> </td>
+
+                                <td class="fundo-tabela"> Temperatura mínima: </td>
+                                <td> <input class="form-control" type="text" asp-for="temp_min" /> </td>
+                            </tr>
+                            <tr>
+                                <td class="fundo-tabela"> Data de término: </td>
+                                <td><input class="form-control" type="text" asp-for="data_term_durab" /></td>
+                                <td class="fundo-tabela"> Hora do término: </td>
+                                <td> <input class="form-control" type="time" asp-for="hora_term" /> </td>
+
+                                <td class="fundo-tabela"> Temperatura máxima: </td>
+                                <td> <input class="form-control" type="text" asp-for="temp_max" /> </td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Posicionar a base em uma superfície plana e rígida e aplicar uma força vertical para baixo de 1000 N e mantê-la por (3 ± 1) s nos pontos A, B e C.
+                    </td>
+                </tr>
+                <tr>
+                    <td>  Aplicar a carga 10000 vezes em cada ponto.</td>
+                </tr>
+                <tr>
+                    <td>
+                        <strong> Nota: </strong> Caso a base da cama seja ajustável, o ensaio deve ser realizado com as peças ajustáveis na posição o mais próximo possivel de 7° acima da horizontal.
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        A base da cama é ajustável:
+                        <select asp-for="base_cama" class="controlador">
+                            <option value="Sim">Sim</option>
+                            <option value="Não">Não</option>
+                        </select>
+                    </td>
+
+                </tr>
+                <tr>
+                    <td>
+                        Ângulo encontrado:
+                        <input class="controlador" type="text" asp-for="angulo_encontrado" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <table class="tables table-bordered border-secondary  table-sm">
+                            <tr class="fundo-tabela">
+                                <td>Ponto A</td>
+                            </tr>
+                            <tr>
+                                <td>Distancia: <input style="width:100px;" class="controlador" type="text" asp-for="distancia_ponto_a" /> X <input style="width:100px;" class="controlador" type="text" /></td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    Força aplicada: <input style="width:100px;" class="controlador" type="text" asp-for="forca_apli_ponto_a" /> Tempo de aplicação da carga: <input style="width:100px;" class="controlador" type="text" asp-for="tempo_apli_ponto_a" />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    Quantidade de ciclos <input asp-for="quant_ciclos_ponto_a" class="controlador" type="text" />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    A amostra suportou numero dos ciclos:
+                                    <select asp-for="suportou_ponto_a" class="controlador">
+                                        <option value="Sim">Sim</option>
+                                        <option value="Não">Não</option>
+                                    </select>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    Verificar se após o término do ensaio a amostra apresente algum defeito conforme citado abaixo:
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    Houve ruptura da estrutura:
+                                    <select asp-for="ruptura_ponto_a" class="controlador">
+                                        <option value="Sim">Sim</option>
+                                        <option value="Não">Não</option>
+                                    </select>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    Houve afundamento da espuma:
+                                    <select asp-for="afundamento_ponto_a" class="controlador">
+                                        <option value="Sim">Sim</option>
+                                        <option value="Não">Não</option>
+                                    </select>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    Houve rasgo no revestimento:
+                                    <select asp-for="rasgo_ponto_a" class="controlador">
+                                        <option value="Sim">Sim</option>
+                                        <option value="Não">Não</option>
+                                    </select>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    Houve rompimento nos pés:
+                                    <select asp-for="rompimento_ponto_a" class="controlador">
+                                        <option value="Sim">Sim</option>
+                                        <option value="Não">Não</option>
+                                    </select>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    Apresentou algo que prejudique o seu comprometimento de uso:
+                                    <select asp-for="prejudique_ponto_a" class="controlador">
+                                        <option value="Sim">Sim</option>
+                                        <option value="Não">Não</option>
+                                    </select>
+                                </td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <table class="tables table-bordered border-secondary  table-sm">
+                            <tr class="fundo-tabela">
+                                <td>Ponto B</td>
+                            </tr>
+                            <tr>
+                                <td>Distancia: <input style="width:100px;" class="controlador" type="text" asp-for="distancia_ponto_b" /> X <input style="width:100px;" class="controlador" type="text" /></td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    Força aplicada: <input style="width:100px;" class="controlador" type="text" asp-for="forca_apli_ponto_b" /> Tempo de aplicação da carga: <input style="width:100px;" class="controlador" type="text" asp-for="tempo_apli_ponto_b" />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    Quantidade de ciclos <input asp-for="quant_ciclos_ponto_b" class="controlador" type="text" />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    A amostra suportou numero dos ciclos:
+                                    <select asp-for="suportou_ponto_b" class="controlador">
+                                        <option value="Sim">Sim</option>
+                                        <option value="Não">Não</option>
+                                    </select>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    Verificar se após o término do ensaio a amostra apresente algum defeito conforme citado abaixo:
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    Houve ruptura da estrutura:
+                                    <select asp-for="ruptura_ponto_b" class="controlador">
+                                        <option value="Sim">Sim</option>
+                                        <option value="Não">Não</option>
+                                    </select>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    Houve afundamento da espuma:
+                                    <select asp-for="afundamento_ponto_b" class="controlador">
+                                        <option value="Sim">Sim</option>
+                                        <option value="Não">Não</option>
+                                    </select>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    Houve rasgo no revestimento:
+                                    <select asp-for="rasgo_ponto_b" class="controlador">
+                                        <option value="Sim">Sim</option>
+                                        <option value="Não">Não</option>
+                                    </select>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    Houve rompimento nos pés:
+                                    <select asp-for="rompimento_ponto_b" class="controlador">
+                                        <option value="Sim">Sim</option>
+                                        <option value="Não">Não</option>
+                                    </select>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    Apresentou algo que prejudique o seu comprometimento de uso:
+                                    <select asp-for="prejudique_ponto_b" class="controlador">
+                                        <option value="Sim">Sim</option>
+                                        <option value="Não">Não</option>
+                                    </select>
+                                </td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <table class="tables table-bordered border-secondary  table-sm">
+                            <tr class="fundo-tabela">
+                                <td>Ponto C</td>
+                            </tr>
+                            <tr>
+                                <td>Distancia: <input style="width:100px;" class="controlador" type="text" asp-for="distancia_ponto_c" /> X <input style="width:100px;" class="controlador" type="text" /></td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    Força aplicada: <input style="width:100px;" class="controlador" type="text" asp-for="forca_apli_ponto_c" /> Tempo de aplicação da carga: <input style="width:100px;" class="controlador" type="text" asp-for="tempo_apli_ponto_c" />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    Quantidade de ciclos <input asp-for="quant_ciclos_ponto_c" class="controlador" type="text" />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    A amostra suportou numero dos ciclos:
+                                    <select asp-for="suportou_ponto_c" class="controlador">
+                                        <option value="Sim">Sim</option>
+                                        <option value="Não">Não</option>
+                                    </select>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    Verificar se após o término do ensaio a amostra apresente algum defeito conforme citado abaixo:
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    Houve ruptura da estrutura:
+                                    <select asp-for="ruptura_ponto_c" class="controlador">
+                                        <option value="Sim">Sim</option>
+                                        <option value="Não">Não</option>
+                                    </select>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    Houve afundamento da espuma:
+                                    <select asp-for="afundamento_ponto_c" class="controlador">
+                                        <option value="Sim">Sim</option>
+                                        <option value="Não">Não</option>
+                                    </select>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    Houve rasgo no revestimento:
+                                    <select asp-for="rasgo_ponto_c" class="controlador">
+                                        <option value="Sim">Sim</option>
+                                        <option value="Não">Não</option>
+                                    </select>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    Houve rompimento nos pés:
+                                    <select asp-for="rompimento_ponto_c" class="controlador">
+                                        <option value="Sim">Sim</option>
+                                        <option value="Não">Não</option>
+                                    </select>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    Apresentou algo que prejudique o seu comprometimento de uso:
+                                    <select asp-for="prejudique_ponto_c" class="controlador">
+                                        <option value="Sim">Sim</option>
+                                        <option value="Não">Não</option>
+                                    </select>
+                                </td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+
+            </table>
+
+            <div class="d-grid gap-2 d-flex justify-content-center">
+                <button type="submit" class="btn btn-success btn btn-primary btn-md">Editar</button>
+            </div>
+        }
+        @*    <br />
+        <br />
+        <table class="tables table-bordered border-secondary  table-sm">
+        <tr class="fundo-tabela">
+        <td colspan=" 4">
+        Instrumento(s)/Dispositivo(s)/Equipamento(s) Utilizado(s) que Requer(em) Calibração
+        </td>
         </tr>
         <tr>
-                <td colspan="4"> Ensaio em Bases</td>
-                <td rowspan="2"> os aqui</td>
+        <td>Código(s)</td>
+        <td>Descrição(ões)</td>
+        <td>Certificado(s)</td>
+        <td>validade(s)</td>
+        </tr>
+        </table>
+        <table class="tables table-bordered border-secondary  table-sm">
+        <tr class="fundo-tabela">
+        <td colspan=" 4">
+        Dispositivo(s)/Equipamento(s) Utilizado(s) que Não Requer(em) Calibração
+        </td>
         </tr>
         <tr>
-            <td>Inicio:</td>
-            <td><input class="form-control" type="date" /></td>
-            <td>Termino:</td>
-            <td><input class="form-control" type="date" /></td>
+        <td>Código(s)</td>
+        <td>Descrição(ões)</td>
+        <td>Certificado(s)</td>
+        <td>validade(s)</td>
         </tr>
-    </thead>
-</table>
-<br/>
-
-    <table class="tables table-bordered border-secondary  table-sm">
-        <tr>
-            <td rowspan="2" class="fundo-tabela"> <strong> Item </strong></td>
-            <td class="fundo-tabela" rowspan="1">
-                <strong>Descrição</strong>
-            </td>
-            <td rowspan="2" class="fundo-tabela"> <strong>Resultado</strong></td>
+        </table>
+        <table class="tables table-bordered border-secondary  table-sm">
+        <tr class="fundo-tabela">
+        <td colspan=" 4">
+        Matéria(s)-Prima(s) Utilizada(s)
+        </td>
         </tr>
         <tr>
-            <td class="fundo-tabela"> <strong>Ensaio a ser realizado: DIN EN 1725:1998 - Domestic furniture – Beds and mattresses – Safety requirements and test methods</strong> </td>
+        <td>Código(s)</td>
+        <td>Descrição(ões)</td>
+        <td>Certificado(s)</td>
+        <td>validade(s)</td>
+        </tr>
+        </table>
+        <table class="tables table-bordered border-secondary  table-sm">
+        <tr class="fundo-tabela">
+        <td colspan="4">
+        Observações
+        </td>
         </tr>
         <tr>
-            <td rowspan="12"> <strong>4.7.1 / 7.3 </strong></td>
-            <td> 
-                    <strong> Durabilidade </strong> <br /><br />
-                O ensaio deve ser realizado sobcondições climáticas com temperatura de ( 20 ± 5 ) °C
+        <td>
+        <textarea class="form-control w-100 mr-2 input">
 
-                <table class="tables table-bordered border-secondary  table-sm">
-                    <tr>
-                        <td class="fundo-tabela"> Data de início </td>
-                        <td> 00/01/1900 </td>
-                        <td class="fundo-tabela"> Hora de início: </td>
-                        <td>   <input class="form-control" type="text" /> </td>
-                        <td class="fundo-tabela"> Temperatura mínima: </td>
-                        <td> <input class="form-control" type="text" /> </td>
-                    </tr>
-                    <tr>
-                        <td class="fundo-tabela"> Data de término: </td>
-                        <td> 00/01/1900 </td>
-                        <td class="fundo-tabela"> Hora do término: </td>
-                        <td>   <input class="form-control" type="text" /> </td>
-                        <td class="fundo-tabela"> Temperatura máxima: </td>
-                        <td> <input class="form-control" type="text" /> </td>
-                    </tr>
-                </table>
-                <br />
-                Posicionar a base em uma superfície plana e rígida e aplicar uma força vertical para baixo de 1000 N e mantê-la por (3 ± 1) s nos pontos A, B e C.
-                <br /> <br />
-                Aplicar a carga 10000 vezes em cada ponto.
-                <br /> <br />
-                <strong> Nota: </strong> Caso a base da cama seja ajustável, o ensaio deve ser realizado com as peças ajustáveis na posição o mais próximo possivel de 7° acima da horizontal.
-                <br /> <br />
-                A base da cama é ajustável <input class="form-control" type="text" /> <br />
-                Ângulo encontrado: <input class="form-control" type="text" /> <br />
-            </td>
+        </textarea>
+        </td>
+        </tr>
+        </table>
+        <br />
+        <table class="tables table-bordered border-secondary  table-sm">
+        <tr class="fundo-tabela">
+        <td colspan=" 4">
+        Nome(s) do(s) Executor(es)
+        </td>
         </tr>
         <tr>
-            <td class="fundo-tabela">
-                <strong>Ponto A</strong>
-            </td>
+        <td><input class="form-control" type="text" /></td>
+        <td><input class="form-control" type="text" /></td>
+        <td><input class="form-control" type="text" /></td>
+        <td><input class="form-control" type="text" /></td>
         </tr>
-        <tr>
-            <td>
-                <br />
-                Ângulo encontrado: <input class="form-control" type="text" /> X <input class="form-control" type="text" /> <br /><br />
-                Força aplicada <input class="form-control" type="text" /> Tempo de aplicação da carga <input class="form-control" type="text" /> <br /><br />
-                Quantidade de ciclos <input class="form-control" type="text" /> <br /><br />
+        </table> *@
 
-                Verificar se após o término do ensaio a amostra apresente algum defeito conforme citado abaixo:
-                <br /><br />
-                <table class="tables table-bordered border-secondary  table-sm">
-
-                    <tr>
-                        <td class="fundo-tabela"> Houve ruptura da estrutura </td>
-                    <td> <input class="form-control" type="text" /> </td>
-                    </tr>
-                    <tr>
-                        <td class="fundo-tabela"> Houve afundamento da espuma </td>
-                        <td> <input class="form-control" type="text" /> </td>
-                    </tr>
-                    <tr>
-                        <td class="fundo-tabela"> Houve rasgo no revestimento </td>
-                        <td> <input class="form-control" type="text" /> </td>
-                    </tr>
-                    <tr>
-                        <td class="fundo-tabela"> Houve rompimento nos pés </td>
-                        <td> <input class="form-control" type="text" /> </td>
-                    </tr>
-                    <tr>
-                        <td class="fundo-tabela"> Apresentou algo que prejudique o seu comprometimento de uso </td>
-                        <td> <input class="form-control" type="text" /> </td>
-                    </tr>
-                </table>
-            
-            </td>
-        </tr>
-        <tr>
-            <td class="fundo-tabela"> <strong>Ponto B</strong></td>
-        </tr>
-        <tr>
-            <td>
-                <br />
-                Ângulo encontrado: <input class="form-control" type="text" /> X <input class="form-control" type="text" /> <br /><br />
-                Força aplicada <input class="form-control" type="text" /> Tempo de aplicação da carga <input class="form-control" type="text" /> <br /><br />
-                Quantidade de ciclos <input class="form-control" type="text" /> <br /><br />
-
-                Verificar se após o término do ensaio a amostra apresente algum defeito conforme citado abaixo:
-                <br /><br />
-                <table class="tables table-bordered border-secondary  table-sm">
-
-                    <tr>
-                        <td class="fundo-tabela"> Houve ruptura da estrutura </td>
-                        <td> <input class="form-control" type="text" /> </td>
-                    </tr>
-                    <tr>
-                        <td class="fundo-tabela"> Houve afundamento da espuma </td>
-                        <td> <input class="form-control" type="text" /> </td>
-                    </tr>
-                    <tr>
-                        <td class="fundo-tabela"> Houve rasgo no revestimento </td>
-                        <td> <input class="form-control" type="text" /> </td>
-                    </tr>
-                    <tr>
-                        <td class="fundo-tabela"> Houve rompimento nos pés </td>
-                        <td> <input class="form-control" type="text" /> </td>
-                    </tr>
-                    <tr>
-                        <td class="fundo-tabela"> Apresentou algo que prejudique o seu comprometimento de uso </td>
-                        <td> <input class="form-control" type="text" /> </td>
-                    </tr>
-                </table>
-
-            </td>
-        </tr>
-        <tr>
-            <td class="fundo-tabela"> <strong>Ponto C</strong></td>
-        </tr>
-        <tr>
-            <td>
-                <br />
-                Ângulo encontrado: <input class="form-control" type="text" /> X <input class="form-control" type="text" /> <br /><br />
-                Força aplicada <input class="form-control" type="text" /> Tempo de aplicação da carga <input class="form-control" type="text" /> <br /><br />
-                Quantidade de ciclos <input class="form-control" type="text" /> <br /><br />
-
-                Verificar se após o término do ensaio a amostra apresente algum defeito conforme citado abaixo:
-                <br /><br />
-                <table class="tables table-bordered border-secondary  table-sm">
-
-                    <tr>
-                        <td class="fundo-tabela"> Houve ruptura da estrutura </td>
-                        <td> <input class="form-control" type="text" /> </td>
-                    </tr>
-                    <tr>
-                        <td class="fundo-tabela"> Houve afundamento da espuma </td>
-                        <td> <input class="form-control" type="text" /> </td>
-                    </tr>
-                    <tr>
-                        <td class="fundo-tabela"> Houve rasgo no revestimento </td>
-                        <td> <input class="form-control" type="text" /> </td>
-                    </tr>
-                    <tr>
-                        <td class="fundo-tabela"> Houve rompimento nos pés </td>
-                        <td> <input class="form-control" type="text" /> </td>
-                    </tr>
-                    <tr>
-                        <td class="fundo-tabela"> Apresentou algo que prejudique o seu comprometimento de uso </td>
-                        <td> <input class="form-control" type="text" /> </td>
-                    </tr>
-                </table>
-
-            </td>
-        </tr>
-
-    </table>
-    <br /> <br />
-                <table class="tables table-bordered border-secondary  table-sm">
-                    <tr class="fundo-tabela">
-                        <td colspan=" 4">
-                            Instrumento(s)/Dispositivo(s)/Equipamento(s) Utilizado(s) que Requer(em) Calibração
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>Código(s)</td>
-                        <td>Descrição(ões)</td>
-                        <td>Certificado(s)</td>
-                        <td>validade(s)</td>
-                    </tr>
-                </table>
-                <table class="tables table-bordered border-secondary  table-sm">
-                    <tr class="fundo-tabela">
-                        <td colspan=" 4">
-                            Dispositivo(s)/Equipamento(s) Utilizado(s) que Não Requer(em) Calibração
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>Código(s)</td>
-                        <td>Descrição(ões)</td>
-                        <td>Certificado(s)</td>
-                        <td>validade(s)</td>
-                    </tr>
-                </table>
-                <table class="tables table-bordered border-secondary  table-sm">
-                    <tr class="fundo-tabela">
-                        <td colspan=" 4">
-                            Matéria(s)-Prima(s) Utilizada(s)
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>Código(s)</td>
-                        <td>Descrição(ões)</td>
-                        <td>Certificado(s)</td>
-                        <td>validade(s)</td>
-                    </tr>
-                </table>
-                <table class="tables table-bordered border-secondary  table-sm">
-                    <tr class="fundo-tabela">
-                        <td colspan="4">
-                            Observações
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <textarea class="form-control w-100 mr-2 input">
-
-                            </textarea>
-                        </td>
-                    </tr>
-                </table>
-                <br />
-                <table class="tables table-bordered border-secondary  table-sm">
-                    <tr class="fundo-tabela">
-                        <td colspan=" 4">
-                            Nome(s) do(s) Executor(es)
-                        </td>
-                    </tr>
-                    <tr>
-                        <td><input class="form-control" type="text" /></td>
-                        <td><input class="form-control" type="text" /></td>
-                        <td><input class="form-control" type="text" /></td>
-                        <td><input class="form-control" type="text" /></td>
-                    </tr>
-                </table>
-
-        </body>
-        </html>
+    </form>
+    @if (TempData.ContainsKey("Mensagem"))
+    {
+        <script>
+            alert('@Html.Raw(TempData["Mensagem"])');
+        </script>
+    }
+</body>
+</html>

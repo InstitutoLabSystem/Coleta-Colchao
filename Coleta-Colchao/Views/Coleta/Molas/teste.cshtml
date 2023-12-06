@@ -52,6 +52,10 @@
         <script>
             alert('@Html.Raw(TempData["Mensagem"])');
         </script>
+        
     }
+   @section Scripts{
+        <partial name="ValidationScriptsPartial" />
+   }
 </body>
 </html> *@

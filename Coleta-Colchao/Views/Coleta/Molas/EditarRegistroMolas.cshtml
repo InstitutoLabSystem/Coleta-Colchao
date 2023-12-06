@@ -1,9 +1,6 @@
 ﻿@model List<ColetaModel.Registro>;
 @{
-    Layout = null;
-}
-@{
-    ViewData["Title"] = "Login";
+    ViewData["Title"] = "Informações";
 }
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -225,33 +222,69 @@
                         </tr>
                         <tr>
                             <td colspan="2">  Borda Pimental </td>
-                            <td colspan="3"> <input class="form-control" type="text" name="borda_peri" value="@Model[i].borda_peri" /> </td>
+                            <td colspan="3">
+                                @* <input class="form-control" type="text" name="borda_peri" /> *@
+                                <select class="form-control" name="borda_peri">
+                                    <option selected>@Model[i].borda_peri</option>
+                                    <option value="NA">NA</option>
+                                    <option value="Sim">Sim</option>
+                                    <option value="Não">Não</option>
+                                </select>
+
+                            </td>
                         </tr>
                         <tr>
                             <td colspan="2">  Isolante </td>
-                            <td colspan="3"> <input class="form-control" type="text" name="isolante" value="@Model[i].isolante" /> </td>
+                            <td colspan="3">
+                                @*   <input class="form-control" type="text" name="isolante" /> *@
+                                <select class="form-control" name="isolante">
+                                    <option selected>@Model[i].isolante</option>
+                                    <option value="NA">NA</option>
+                                    <option value="Sim">Sim</option>
+                                    <option value="Não">Não</option>
+                                </select>
+                            </td>
                         </tr>
                         <tr>
                             <td colspan="2">  Latex </td>
-                            <td colspan="3"> <input class="form-control" type="text" name="latex" value="@Model[i].latex" /> </td>
+                            <td colspan="3">
+                                @* <input class="form-control" type="text" name="latex" />*@
+                                <select class="form-control" type="text" name="latex">
+                                    <option selected>@Model[i].latex</option>
+                                    <option value="Sim">Sim</option>
+                                    <option value="Não">Não</option>
+                                </select>
+                            </td>
                         </tr>
                         <tr>
                             <td colspan="2">  Napa, Courvin, Plásticos </td>
-                            <td colspan="3"> <input class="form-control" type="text" name="napa_cou_plas" value="@Model[i].napa_cou_plas" /> </td>
+                            <td colspan="3">
+                                @*                         <input class="form-control" type="text" name="napa_cou_plas" />
+                        *@
+                                <select class="form-control" type="text" name="napa_cou_plas">
+                                    <option selected>@Model[i].napa_cou_plas</option>
+                                    <option value="Sim">Sim</option>
+                                    <option value="Não">Não</option>
+                                </select>
+                            </td>
                         </tr>
                         <tr>
                             <td colspan="2">  Manual de Uso </td>
-                            <td colspan="3"> <input class="form-control" type="text" name="manual" value="@Model[i].manual" /> </td>
+                            <td colspan="3">
+                                @*  <input class="form-control" type="text" name="manual" />  *@
+                                <select class="form-control" type="text" name="manual">
+                                    <option selected>@Model[i].manual</option>
+                                    <option value="Sim">Sim</option>
+                                    <option value="Não">Não</option>
+                                </select>
+                            </td>
                         </tr>
                         <tr>
                             <td colspan="5">
                                 <button type="submit" class="btn btn-success"> Editar Informações</button>
                             </td>
                         </tr>
-
                     </table>
-
-
                 </div>
 
             }
