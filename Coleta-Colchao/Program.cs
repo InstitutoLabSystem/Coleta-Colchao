@@ -44,7 +44,7 @@ namespace Coleta_Colchao
                    option.LoginPath = "/Acess/Login";
                    option.ExpireTimeSpan = TimeSpan.FromMinutes(60);
                });
-           
+
 
             var app = builder.Build();
 
@@ -66,7 +66,7 @@ namespace Coleta_Colchao
             app.MapControllerRoute(
                 name: "default",
                 pattern: "{controller=Acess}/{action=Login}/{id?}");
-  
+
             app.Run();
         }
     }

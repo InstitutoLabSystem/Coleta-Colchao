@@ -23,6 +23,8 @@ namespace Coleta_Colchao.Data
         public DbSet<ColetaModel.EnsaioIdentificacaoEmbalagem> ensaio_identificacao_embalagem { get; set; }
         //public DbSet<ColetaModel.Teste> teste { get; set; }
         public DbSet<ColetaModel.EnsaioBaseDurabilidade> ensaio_base_durabilidade { get; set; }
+        public DbSet<ColetaModel.EnsaioBaseImpactoVertical> ensaio_base_impacto_vertical { get; set; }
+        public DbSet<ColetaModel.EnsaioBaseDurabilidadeEstrutural> ensaio_base_durabilidade_estrutural { get; set; }
 
     }
 }

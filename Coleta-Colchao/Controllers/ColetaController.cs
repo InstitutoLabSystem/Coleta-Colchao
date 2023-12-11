@@ -10,6 +10,7 @@ using System.Data.Entity.Core.Objects.DataClasses;
 using System.Drawing;
 using System.Security.Claims;
 using static Coleta_Colchao.Models.ColetaModel;
+using static Microsoft.EntityFrameworkCore.DbLoggerCategory;
 
 namespace Coleta_Colchao.Controllers
 {
@@ -51,23 +52,11 @@ namespace Coleta_Colchao.Controllers
         }
 
         //[Route("Molas/teste")]
-        //public IActionResult teste(string os, string orcamento)
+        //public IActionResult teste(string os)
         //{
-        //    var dados = _context.teste.Where(x => x.os == os && x.orcamento == orcamento).FirstOrDefault();
-        //    if (dados != null)
-        //    {
-        //        ViewBag.os = os;
-        //        ViewBag.orcamento = orcamento;
-        //        return View("Molas/teste", dados);
+        //    var dados = _context.teste.Where(x => x.os == os).FirstOrDefault();
+        //    return View(dados);
 
-        //    }
-        //    else
-        //    {
-        //        ViewBag.os = os;
-        //        ViewBag.orcamento = orcamento;
-        //        return View("Molas/teste");
-
-        //    }
         //}
 
         public IActionResult EditarRegistroMolas(string os, string orcamento)
@@ -143,14 +132,10 @@ namespace Coleta_Colchao.Controllers
         {
             return View();
         }
-        public IActionResult EnsaioBaseEstruturaDurabi()
+        public IActionResult EnsaioBaseEstruturaDurabi(string os, string orcamento)
         {
-            return View();
-        }
 
-        public IActionResult EnsaioDurabilidade(string os, string orcamento)
-        {
-            var dados = _context.ensaio_base_durabilidade.Where(x => x.os == os && x.orcamento == orcamento).FirstOrDefault();
+            var dados = _context.ensaio_base_durabilidade_estrutural.Where(x => x.os == os && x.orcamento == orcamento).FirstOrDefault();
             if (dados != null)
             {
                 ViewBag.os = os;
@@ -163,13 +148,58 @@ namespace Coleta_Colchao.Controllers
                 ViewBag.orcamento = orcamento;
                 return View();
             }
+        }
+
+        public IActionResult EnsaioDurabilidade(string os, string orcamento)
+        {
+
+            var dados = _context.ensaio_base_durabilidade.Where(x => x.os == os && x.orcamento == orcamento).FirstOrDefault();
+            var trazerEnsaio7_2 = _context.ensaio_molas_item7_2.Where(x => x.os == os && x.orcamento == orcamento).FirstOrDefault();
+
+            if (dados != null)
+            {
+                ViewBag.os = os;
+                ViewBag.orcamento = orcamento;
+
+
+
+                return View(dados);
+            }
+            else
+            {
+                ViewBag.os = os;
+                ViewBag.orcamento = orcamento;
+
+                //manipulando a variavel para mostrar na tela quando n tiver ensaio.
+                ViewBag.comprimento = (trazerEnsaio7_2.comp_espe * 10) / 2;
+                ViewBag.largura = (trazerEnsaio7_2.larg_espe * 10) / 2;
+
+                return View();
+            }
 
         }
 
-        public IActionResult EnsaioImpacto()
+        public IActionResult EnsaioImpacto(string os, string orcamento)
         {
-           
-            return View();
+            var dados = _context.ensaio_base_impacto_vertical.Where(x => x.os == os && x.orcamento == orcamento).FirstOrDefault();
+
+            //buscar valor preenchido no ensaio.
+            var buscarEnsaio7_2 = _context.ensaio_molas_item7_2.Where(x => x.os == os && x.orcamento == orcamento).FirstOrDefault();
+            if (dados == null)
+            {
+                ViewBag.os = os;
+                ViewBag.orcamento = orcamento;
+                ViewBag.comprimento = buscarEnsaio7_2.comp_espe * 10;
+                ViewBag.largura = buscarEnsaio7_2.larg_espe * 10;
+                return View();
+            }
+            else
+            {
+                ViewBag.os = os;
+                ViewBag.orcamento = orcamento;
+
+                return View(dados);
+            }
         }
 
         public IActionResult EnsaioMolas7_1(string os, string orcamento)
@@ -2942,35 +2972,58 @@ namespace Coleta_Colchao.Controllers
                     string base_cama = dados.base_cama;
                     string angulo_encontrado = dados.angulo_encontrado;
                     int distancia_ponto_a = dados.distancia_ponto_a;
-                    int forca_apli_ponto_a = dados.forca_apli_ponto_a;
-                    int tempo_apli_ponto_a = dados.tempo_apli_ponto_a;
-                    string quant_ciclos_ponto_a = dados.quant_ciclos_ponto_a;
+                    int largura_encontrad = dados.largura_ponto_a;
                     string suportou_ponto_a = dados.suportou_ponto_a;
                     string ruptura_ponto_a = dados.ruptura_ponto_a;
                     string afundamento_ponto_a = dados.afundamento_ponto_a;
                     string rasgo_ponto_a = dados.rasgo_ponto_a;
                     string rompimento_ponto_a = dados.rompimento_ponto_a;
                     string prejudique_ponto_a = dados.prejudique_ponto_a;
-                    int distancia_ponto_b = dados.distancia_ponto_b;
-                    int forca_apli_ponto_b = dados.forca_apli_ponto_b;
-                    int tempo_apli_ponto_b = dados.tempo_apli_ponto_b;
-                    string quant_ciclos_ponto_b = dados.quant_ciclos_ponto_b;
                     string suportou_ponto_b = dados.suportou_ponto_b;
                     string ruptura_ponto_b = dados.ruptura_ponto_b;
                     string afundamento_ponto_b = dados.afundamento_ponto_b;
                     string rasgo_ponto_b = dados.rasgo_ponto_b;
                     string rompimento_ponto_b = dados.rompimento_ponto_b;
                     string prejudique_ponto_b = dados.prejudique_ponto_b;
-                    int distancia_ponto_c = dados.distancia_ponto_c;
-                    int forca_apli_ponto_c = dados.forca_apli_ponto_c;
-                    int tempo_apli_ponto_c = dados.tempo_apli_ponto_c;
-                    string quant_ciclos_ponto_c = dados.quant_ciclos_ponto_c;
                     string suportou_ponto_c = dados.suportou_ponto_c;
                     string ruptura_ponto_c = dados.ruptura_ponto_c;
                     string afundamento_ponto_c = dados.afundamento_ponto_c;
                     string rasgo_ponto_c = dados.rasgo_ponto_c;
                     string rompimento_ponto_c = dados.rompimento_ponto_c;
                     string prejudique_ponto_c = dados.prejudique_ponto_c;
+
+
+                    //realizando se esta conforme ou nao conforme
+                    if (ruptura_ponto_a == "Não" && afundamento_ponto_a == "Não" && rasgo_ponto_a == "Não" && rompimento_ponto_a == "Não" && prejudique_ponto_a == "Não")
+                    {
+                        dados.conforme_a = "C";
+                    }
+                    else
+                    {
+                        dados.conforme_a = "NC";
+                    }
+
+                    //realizando se esta conforme ou nao conforme
+                    if (ruptura_ponto_b == "Não" && afundamento_ponto_b == "Não" && rasgo_ponto_b == "Não" && rompimento_ponto_b == "Não" && prejudique_ponto_b == "Não")
+                    {
+                        dados.conforme_b = "C";
+                    }
+                    else
+                    {
+                        dados.conforme_b = "NC";
+                    }
+
+                    //realizando se esta conforme ou nao conforme
+                    if (ruptura_ponto_c == "Não" && afundamento_ponto_c == "Não" && rasgo_ponto_c == "Não" && rompimento_ponto_c == "Não" && prejudique_ponto_c == "Não")
+                    {
+                        dados.conforme_c = "C";
+                    }
+                    else
+                    {
+                        dados.conforme_c = "NC";
+                    }
+
+
 
                     _context.Add(dados);
                     await _context.SaveChangesAsync();
@@ -2990,35 +3043,54 @@ namespace Coleta_Colchao.Controllers
                     editarRegistro.base_cama = dados.base_cama;
                     editarRegistro.angulo_encontrado = dados.angulo_encontrado;
                     editarRegistro.distancia_ponto_a = dados.distancia_ponto_a;
-                    editarRegistro.forca_apli_ponto_a = dados.forca_apli_ponto_a;
-                    editarRegistro.tempo_apli_ponto_a = dados.tempo_apli_ponto_a;
-                    editarRegistro.quant_ciclos_ponto_a = dados.quant_ciclos_ponto_a;
                     editarRegistro.suportou_ponto_a = dados.suportou_ponto_a;
                     editarRegistro.ruptura_ponto_a = dados.ruptura_ponto_a;
                     editarRegistro.afundamento_ponto_a = dados.afundamento_ponto_a;
                     editarRegistro.rasgo_ponto_a = dados.rasgo_ponto_a;
                     editarRegistro.rompimento_ponto_a = dados.rompimento_ponto_a;
                     editarRegistro.prejudique_ponto_a = dados.prejudique_ponto_a;
-                    editarRegistro.distancia_ponto_b = dados.distancia_ponto_b;
-                    editarRegistro.forca_apli_ponto_b = dados.forca_apli_ponto_b;
-                    editarRegistro.tempo_apli_ponto_b = dados.tempo_apli_ponto_b;
-                    editarRegistro.quant_ciclos_ponto_b = dados.quant_ciclos_ponto_b;
                     editarRegistro.suportou_ponto_b = dados.suportou_ponto_b;
                     editarRegistro.ruptura_ponto_b = dados.ruptura_ponto_b;
                     editarRegistro.afundamento_ponto_b = dados.afundamento_ponto_b;
                     editarRegistro.rasgo_ponto_b = dados.rasgo_ponto_b;
                     editarRegistro.rompimento_ponto_b = dados.rompimento_ponto_b;
                     editarRegistro.prejudique_ponto_b = dados.prejudique_ponto_b;
-                    editarRegistro.distancia_ponto_c = dados.distancia_ponto_c;
-                    editarRegistro.forca_apli_ponto_c = dados.forca_apli_ponto_c;
-                    editarRegistro.tempo_apli_ponto_c = dados.tempo_apli_ponto_c;
-                    editarRegistro.quant_ciclos_ponto_c = dados.quant_ciclos_ponto_c;
                     editarRegistro.suportou_ponto_c = dados.suportou_ponto_c;
                     editarRegistro.ruptura_ponto_c = dados.ruptura_ponto_c;
                     editarRegistro.afundamento_ponto_c = dados.afundamento_ponto_c;
                     editarRegistro.rasgo_ponto_c = dados.rasgo_ponto_c;
                     editarRegistro.rompimento_ponto_c = dados.rompimento_ponto_c;
                     editarRegistro.prejudique_ponto_c = dados.prejudique_ponto_c;
+
+                    //realizando se esta conforme ou nao conforme
+                    if (editarRegistro.ruptura_ponto_a == "Não" && editarRegistro.afundamento_ponto_a == "Não" && editarRegistro.rasgo_ponto_a == "Não" && editarRegistro.rompimento_ponto_a == "Não" && editarRegistro.prejudique_ponto_a == "Não")
+                    {
+                        editarRegistro.conforme_a = "C";
+                    }
+                    else
+                    {
+                        editarRegistro.conforme_a = "NC";
+                    }
+
+                    //realizando se esta conforme ou nao conforme
+                    if (editarRegistro.ruptura_ponto_b == "Não" && editarRegistro.afundamento_ponto_b == "Não" && editarRegistro.rasgo_ponto_b == "Não" && editarRegistro.rompimento_ponto_b == "Não" && editarRegistro.prejudique_ponto_b == "Não")
+                    {
+                        editarRegistro.conforme_b = "C";
+                    }
+                    else
+                    {
+                        editarRegistro.conforme_b = "NC";
+                    }
+
+                    //realizando se esta conforme ou nao conforme
+                    if (editarRegistro.ruptura_ponto_c == "Não" && editarRegistro.afundamento_ponto_c == "Não" && editarRegistro.rasgo_ponto_c == "Não" && editarRegistro.rompimento_ponto_c == "Não" && editarRegistro.prejudique_ponto_c == "Não")
+                    {
+                        editarRegistro.conforme_c = "C";
+                    }
+                    else
+                    {
+                        editarRegistro.conforme_c = "NC";
+                    }
 
                     _context.Update(editarRegistro);
                     await _context.SaveChangesAsync();
@@ -3035,30 +3107,278 @@ namespace Coleta_Colchao.Controllers
             }
         }
 
+        [HttpPost]
+        public async Task<IActionResult> salvarEnsaioImpactioVertical(string os, string orcamento, ColetaModel.EnsaioBaseImpactoVertical salvarDados)
+        {
+            try
+            {
+                var editarRegistro = _context.ensaio_base_impacto_vertical.Where(x => x.os == os && x.orcamento == orcamento).FirstOrDefault();
+                if (editarRegistro == null)
+                {
+                    //recebendo os valores do html.
+                    DateOnly data_ini = salvarDados.data_ini;
+                    DateOnly data_term = salvarDados.data_term;
+                    DateOnly data_ini_ens = salvarDados.data_ini_ens;
+                    DateOnly data_term_ens = salvarDados.data_term_ens;
+                    TimeOnly hora_inic = salvarDados.hora_inic;
+                    TimeOnly hora_term = salvarDados.hora_term;
+                    string tem_min = salvarDados.tem_min;
+                    string tem_max = salvarDados.tem_max;
+                    int comp_base = salvarDados.comp_base;
+                    int larg_base = salvarDados.larg_base;
+                    string impac_um_a = salvarDados.impac_um_a;
+                    string impac_um_b = salvarDados.impac_um_b;
+                    string impac_um_c = salvarDados.impac_um_c;
+                    string impac_um_d = salvarDados.impac_um_d;
+                    string impac_um_g = salvarDados.impac_um_g;
+                    string impac_um_i = salvarDados.impac_um_i;
+                    string impac_um_j = salvarDados.impac_um_j;
+                    string ruptura_um = salvarDados.ruptura_um;
+                    string afundamento_um = salvarDados.afundamento_um;
+                    string rasgo_um = salvarDados.rasgo_um;
+                    string rompimento_um = salvarDados.rompimento_um;
+                    string prejudique_um = salvarDados.prejudique_um;
+                    string impac_dois_a = salvarDados.impac_dois_a;
+                    string impac_dois_b = salvarDados.impac_dois_b;
+                    string impac_dois_c = salvarDados.impac_dois_c;
+                    string impac_dois_d = salvarDados.impac_dois_d;
+                    string impac_dois_g = salvarDados.impac_dois_g;
+                    string impac_dois_i = salvarDados.impac_dois_i;
+                    string impac_dois_j = salvarDados.impac_dois_j;
+                    string ruptura_dois = salvarDados.ruptura_dois;
+                    string afundamento_dois = salvarDados.afundamento_dois;
+                    string rasgo_dois = salvarDados.rasgo_dois;
+                    string rompimento_dois = salvarDados.rompimento_dois;
+                    string prejudique_dois = salvarDados.prejudique_dois;
 
+                    //realizando conforme e nao conforme
+                    if (impac_um_a == "Sim" && impac_um_b == "Sim" && impac_um_c == "Sim" && impac_um_d == "Sim" && impac_um_g == "Sim" && impac_um_i == "Sim" && impac_um_j == "Sim")
+                    {
+                        salvarDados.confome_ponto_a = "C";
+                    }
+                    else
+                    {
+                        salvarDados.confome_ponto_a = "NC";
+                    }
+
+                    if (ruptura_um == "Não" && prejudique_um == "Não" && rompimento_um == "Não" && rasgo_um == "Não" && afundamento_um == "Não")
+                    {
+                        salvarDados.conforme_um = "C";
+                    }
+                    else
+                    {
+                        salvarDados.conforme_um = "NC";
+                    }
+
+                    if (ruptura_dois == "Não" && prejudique_dois == "Não" && rompimento_dois == "Não" && rasgo_dois == "Não" && afundamento_dois == "Não")
+                    {
+                        salvarDados.conforme_dois = "C";
+                    }
+                    else
+                    {
+                        salvarDados.conforme_dois = "NC";
+                    }
+
+
+
+                    if (impac_dois_a == "Sim" && impac_dois_b == "Sim" && impac_dois_c == "Sim" && impac_dois_d == "Sim" && impac_dois_g == "Sim" && impac_dois_i == "Sim" && impac_dois_j == "Sim")
+                    {
+                        salvarDados.confome_ponto_b = "C";
+                    }
+                    else
+                    {
+                        salvarDados.confome_ponto_b = "NC";
+                    }
+                    //fim dos resultados de conforme ou nao conforme..
+
+
+                    _context.Add(salvarDados);
+                    await _context.SaveChangesAsync();
+                    TempData["Mensagem"] = "Dados Salvo com sucesso.";
+                    return RedirectToAction("EnsaioImpacto", new { os, orcamento });
+                }
+                else
+                {
+                    //editando os valores no html
+                    editarRegistro.data_ini = salvarDados.data_ini;
+                    editarRegistro.data_term = salvarDados.data_term;
+                    editarRegistro.data_ini_ens = salvarDados.data_ini_ens;
+                    editarRegistro.data_term_ens = salvarDados.data_term_ens;
+                    editarRegistro.hora_inic = salvarDados.hora_inic;
+                    editarRegistro.hora_term = salvarDados.hora_term;
+                    editarRegistro.tem_min = salvarDados.tem_min;
+                    editarRegistro.tem_max = salvarDados.tem_max;
+                    editarRegistro.comp_base = salvarDados.comp_base;
+                    editarRegistro.larg_base = salvarDados.larg_base;
+                    editarRegistro.impac_um_a = salvarDados.impac_um_a;
+                    editarRegistro.impac_um_b = salvarDados.impac_um_b;
+                    editarRegistro.impac_um_c = salvarDados.impac_um_c;
+                    editarRegistro.impac_um_d = salvarDados.impac_um_d;
+                    editarRegistro.impac_um_g = salvarDados.impac_um_g;
+                    editarRegistro.impac_um_i = salvarDados.impac_um_i;
+                    editarRegistro.impac_um_j = salvarDados.impac_um_j;
+                    editarRegistro.ruptura_um = salvarDados.ruptura_um;
+                    editarRegistro.afundamento_um = salvarDados.afundamento_um;
+                    editarRegistro.rasgo_um = salvarDados.rasgo_um;
+                    editarRegistro.rompimento_um = salvarDados.rompimento_um;
+                    editarRegistro.prejudique_um = salvarDados.prejudique_um;
+                    editarRegistro.impac_dois_a = salvarDados.impac_dois_a;
+                    editarRegistro.impac_dois_b = salvarDados.impac_dois_b;
+                    editarRegistro.impac_dois_c = salvarDados.impac_dois_c;
+                    editarRegistro.impac_dois_d = salvarDados.impac_dois_d;
+                    editarRegistro.impac_dois_g = salvarDados.impac_dois_g;
+                    editarRegistro.impac_dois_i = salvarDados.impac_dois_i;
+                    editarRegistro.impac_dois_j = salvarDados.impac_dois_j;
+                    editarRegistro.ruptura_dois = salvarDados.ruptura_dois;
+                    editarRegistro.afundamento_dois = salvarDados.afundamento_dois;
+                    editarRegistro.rasgo_dois = salvarDados.rasgo_dois;
+                    editarRegistro.rompimento_dois = salvarDados.rompimento_dois;
+                    editarRegistro.prejudique_dois = salvarDados.prejudique_dois;
+
+                    //realizando conforme e nao conforme
+                    if (editarRegistro.impac_um_a == "Sim" && editarRegistro.impac_um_b == "Sim" && editarRegistro.impac_um_c == "Sim" && editarRegistro.impac_um_d == "Sim" && editarRegistro.impac_um_g == "Sim" && editarRegistro.impac_um_i == "Sim" && editarRegistro.impac_um_j == "Sim")
+                    {
+                        editarRegistro.confome_ponto_a = "C";
+                    }
+                    else
+                    {
+                        editarRegistro.confome_ponto_a = "NC";
+                    }
+
+
+                    if (editarRegistro.ruptura_um == "Não" && editarRegistro.prejudique_um == "Não" && editarRegistro.rompimento_um == "Não" && editarRegistro.rasgo_um == "Não" && editarRegistro.afundamento_um == "Não")
+                    {
+                        editarRegistro.conforme_um = "C";
+                    }
+                    else
+                    {
+                        editarRegistro.conforme_um = "NC";
+                    }
+
+                    if (editarRegistro.ruptura_dois == "Não" && editarRegistro.prejudique_dois == "Não" && editarRegistro.rompimento_dois == "Não" && editarRegistro.rasgo_dois == "Não" && editarRegistro.afundamento_dois == "Não")
+                    {
+                        editarRegistro.conforme_dois = "C";
+                    }
+                    else
+                    {
+                        editarRegistro.conforme_dois = "NC";
+                    }
+
+                    if (editarRegistro.impac_dois_a == "Sim" && editarRegistro.impac_dois_b == "Sim" && editarRegistro.impac_dois_c == "Sim" && editarRegistro.impac_dois_d == "Sim" && editarRegistro.impac_dois_g == "Sim" && editarRegistro.impac_dois_i == "Sim" && editarRegistro.impac_dois_j == "Sim")
+                    {
+                        editarRegistro.confome_ponto_b = "C";
+                    }
+                    else
+                    {
+                        editarRegistro.confome_ponto_b = "NC";
+                    }
+                    //fim dos resultados de conforme ou nao conforme..
+
+                    _context.Update(editarRegistro);
+                    await _context.SaveChangesAsync();
+                    TempData["Mensagem"] = "Dados Editado com sucesso.";
+                    return RedirectToAction("EnsaioImpacto", new { os, orcamento });
+                }
+
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "Error", ex.Message);
+                throw;
+            }
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> SalvarBaseDurabilidadeEstrutural(string os, string orcamento, ColetaModel.EnsaioBaseDurabilidadeEstrutural salvarDados)
+        {
+            try
+            {
+                var editarRegistro = _context.ensaio_base_durabilidade_estrutural.Where(x => x.os == os && x.orcamento == orcamento).FirstOrDefault();
+                if (editarRegistro == null)
+                {
+                    //recebendo os valores do html.
+                    DateOnly data_ini = salvarDados.data_ini;
+                    DateOnly data_term = salvarDados.data_term;
+                    DateOnly data_ini_ens = salvarDados.data_ini_ens;
+                    DateOnly data_term_ens = salvarDados.data_term_ens;
+                    TimeOnly hora_ini = salvarDados.hora_ini;
+                    TimeOnly hora_term = salvarDados.hora_term;
+                    string temp_max = salvarDados.temp_max;
+                    string temp_min = salvarDados.temp_min;
+                    string suportou = salvarDados.suportou;
+                    string ruptura = salvarDados.ruptura;
+                    string quebra = salvarDados.quebra;
+                    string prejudicou = salvarDados.prejudicou;
+
+                    if (ruptura == "Não" && quebra == "Não" && prejudicou == "Não")
+                    {
+                        salvarDados.conforme = "C";
+                    }
+                    else
+                    {
+                        salvarDados.conforme = "NC";
+                    }
+
+
+                    _context.Add(salvarDados);
+                    await _context.SaveChangesAsync();
+                    TempData["Mensagem"] = "Dados Salvo com sucesso.";
+                    return RedirectToAction("EnsaioBaseEstruturaDurabi", new { os, orcamento });
+                }
+                else
+                {
+                    editarRegistro.data_ini = salvarDados.data_ini;
+                    editarRegistro.data_term = salvarDados.data_term;
+                    editarRegistro.data_ini_ens = salvarDados.data_ini_ens;
+                    editarRegistro.data_term_ens = salvarDados.data_term_ens;
+                    editarRegistro.hora_ini = salvarDados.hora_ini;
+                    editarRegistro.hora_term = salvarDados.hora_term;
+                    editarRegistro.temp_max = salvarDados.temp_max;
+                    editarRegistro.temp_min = salvarDados.temp_min;
+                    editarRegistro.suportou = salvarDados.suportou;
+                    editarRegistro.ruptura = salvarDados.ruptura;
+                    editarRegistro.quebra = salvarDados.quebra;
+                    editarRegistro.prejudicou = salvarDados.prejudicou;
+
+                    if (editarRegistro.ruptura == "Não" && editarRegistro.quebra == "Não" && editarRegistro.prejudicou == "Não")
+                    {
+                        editarRegistro.conforme = "C";
+                    }
+                    else
+                    {
+                        editarRegistro.conforme = "NC";
+                    }
+
+
+                    _context.Update(editarRegistro);
+                    await _context.SaveChangesAsync();
+                    TempData["Mensagem"] = "Dados Editado com sucesso.";
+                    return RedirectToAction("EnsaioBaseEstruturaDurabi", new { os, orcamento });
+                }
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "Error", ex.Message);
+                throw;
+            }
+
+        }
 
         //[Route("Molas/teste")]
         //[HttpPost]
-        //public async Task<IActionResult> resultado(string os, string orcamento, ColetaModel.Teste testee)
+        //public IActionResult editar(Teste testee)
         //{
 
         //    if (ModelState.IsValid)
         //    {
-        //        string nome = testee.nome;
-        //        string senha = testee.senha;
-        //        _context.Add(testee);
-        //        await _context.SaveChangesAsync();
-        //        TempData["Mensagem"] = "Dados Salvo Com Sucesso";
-        //        //return View("Molas/teste");
-        //        return RedirectToAction("teste", new { os, orcamento });
-
-
+        //        _context.Update(testee);
+        //        _context.SaveChanges();
+        //        TempData["Mensagem"] = "Dados editado Com Sucesso";
+        //        return RedirectToAction("teste");
 
         //    }
-        //    TempData["Mensagem"] = "Erros ao Salvar";
 
-        //    //return RedirectToAction("teste", new { os, orcamento });
-        //    //return View("Molas/teste",testee);
+        //    return View("teste");
         //}
     }
 }

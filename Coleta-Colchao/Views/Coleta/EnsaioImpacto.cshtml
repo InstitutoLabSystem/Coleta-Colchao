@@ -1,4 +1,5 @@
-﻿@{
+﻿@model ColetaModel.EnsaioBaseImpactoVertical;
+@{
     Layout = null;
 }
 @{
@@ -13,320 +14,935 @@
     <link rel="stylesheet" href="~/css/coleta.css" asp-append-version="true" />
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <title>Ensaio Impacto Vertical</title>
+    <style>
+        input {
+            text-align: center;
+        }
+
+        .form-control {
+            width: 100px;
+        }
+
+        select {
+            text-align: center;
+        }
+    </style>
+
 </head>
 <body>
     <br />
+    <form method="post" asp-controller="Coleta" asp-action="salvarEnsaioImpactioVertical" asp-route-os="@ViewBag.os" asp-route-orcamento="@ViewBag.orcamento">
+        @if (Model == null)
+        {
+            <table class="tables table-bordered border-secondary  table-sm">
+                <thead>
+                    <tr>
+                        <td><img src="https://www.labsystem-nuvem.com.br/imagens_arq/imagens/img/LabSystem.png" class="imagem" /></td>
+                        <td colspan="3" class="fundo-tabela">Coleta De Dados</td>
+                        <td class="fundo-tabela">N Os:</td>
+                    </tr>
+                    <tr>
+                        <td colspan="4"> Ensaio em Bases</td>
+                        <td rowspan="2"> @ViewBag.os</td>
+                    </tr>
+                    <tr>
+                        <td>Inicio:</td>
+                        <td><input class="controlador" type="date" asp-for="data_ini" /></td>
+                        <td>Termino:</td>
+                        <td><input class="controlador" type="date" asp-for="data_term" /></td>
+                    </tr>
+                </thead>
+            </table>
+            <br />
+            <table class="tables table-bordered border-secondary  table-sm">
+                <tr>
+                    <td rowspan="2" class="fundo-tabela"> <strong> Item </strong></td>
+                    <td class="fundo-tabela" rowspan="1">
+                        <strong>Descrição</strong>
+                    </td>
+                    <td rowspan="2" class="fundo-tabela"> <strong>Resultado</strong></td>
+                </tr>
+                <tr>
+                    <td class="fundo-tabela"><strong>Ensaio a ser realizado: DIN EN 1725:1998 - Domestic furniture – Beds and mattresses – Safety requirements and test methods</strong></td>
+                </tr>
+                <tr>
+                    <td rowspan="25"> <strong>4.7.2 / 7.4 </strong></td>
+                    <td colspan="2"> <strong>Ensaio de Impacto vertical</strong></td>
 
-    <table class="tables table-bordered border-secondary  table-sm">
-        <thead>
-            <tr>
-                <td><img src="https://www.labsystem-nuvem.com.br/imagens_arq/imagens/img/LabSystem.png" class="imagem" /></td>
-                <td colspan="3" class="fundo-tabela">Coleta De Dados</td>
-                <td class="fundo-tabela">N Os:</td>
-            </tr>
-            <tr>
-                <td colspan="4"> Ensaio em Bases</td>
-                <td rowspan="2"> @ViewBag.os</td>
-            </tr>
-            <tr>
-                <td>Inicio:</td>
-                <td><input class="form-control" type="date" /></td>
-                <td>Termino:</td>
-                <td><input class="form-control" type="date" /></td>
-            </tr>
-        </thead>
-    </table>
-    <br />
-    <table class="tables table-bordered border-secondary  table-sm">
-        <tr>
-            <td rowspan="2" class="fundo-tabela"> <strong> Item </strong></td>
-            <td class="fundo-tabela" rowspan="1">
-                <strong>Descrição</strong>
-            </td>
-            <td rowspan="2" class="fundo-tabela"> <strong>Resultado</strong></td>
-        </tr>
-        <tr>
-            <td class="fundo-tabela"><strong>Ensaio a ser realizado: DIN EN 1725:1998 - Domestic furniture – Beds and mattresses – Safety requirements and test methods</strong></td>
-        </tr>
-        <tr>
-            <td rowspan="14"> <strong>4.7.2 / 7.4 </strong></td>
-            <td> <strong>Ensaio de Impacto vertical</strong></td>
-            <td rowspan="14">resultado aqui</td>
-        </tr>
-        <tr>
-            <td>
-                O ensaio deve ser realizado sobcondições climáticas com temperatura de ( 20 ± 5 ) °C
-            </td>
-        </tr>
-        <tr>
-            <td>
-                <table class="tables table-bordered border-secondary  table-sm">
+                </tr>
+                <tr>
+                    <td colspan="2">
+                        O ensaio deve ser realizado sobcondições climáticas com temperatura de ( 20 ± 5 ) °C
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2">
+                        <table class="tables table-bordered border-secondary  table-sm">
+                            <tr>
+                                <td class="fundo-tabela"> Data de início </td>
+                                <td> <input type="date" class="form-control" style=" width:150px;" asp-for="data_ini_ens" /> </td>
+                                <td class="fundo-tabela"> Hora de início: </td>
+                                <td>   <input class="form-control" type="time" asp-for="hora_inic" /> </td>
+                                <td class="fundo-tabela"> Temperatura mínima: </td>
+                                <td> <input class="form-control" type="text" style=" width:150px;" asp-for="tem_min" /> </td>
+                            </tr>
+                            <tr>
+                                <td class="fundo-tabela"> Data de término: </td>
+                                <td> <input type="date" class="form-control" style=" width:150px;" asp-for="data_term_ens" /> </td>
+                                <td class="fundo-tabela"> Hora do término: </td>
+                                <td>   <input class="form-control" type="time" asp-for="hora_term" /> </td>
+                                <td class="fundo-tabela"> Temperatura máxima: </td>
+                                <td> <input class="form-control" type="text" style=" width:150px;" asp-for="tem_max" /> </td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2">
+                        O ensaio deve ser realizado sobcondições climáticas com temperatura de ( 20 ± 5 ) °C <br />
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2">
+                        Posicionar a base em uma superfície plana e rígida e ajustar o dispositivo de impacto
+                        de modo que o mesmo fique posicionado a uma altura de 180 mm (a partir da face superior do colchão)
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2">    Medir a largura da base do colchão para definir os pontos de impacto e logo após realizar 10 impactos definido.</td>
+                </tr>
+                <tr>
+                    <td colspan="2">Altura de queda(cm): <input class="controlador" type="text" value="180" disabled /> </td>
+                </tr>
+                <tr>
+                    <td colspan="2">
+                        Comprimento da base: <input id="com_base" style="width:100px;" class="controlador" type="text" asp-for="comp_base" value="@ViewBag.comprimento" readonly />  Largura da base:  <input id="larg_base" style="width:100px;" class="controlador" type="text" asp-for="larg_base" value="@ViewBag.largura" readonly />
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2">   <img src="~/img/ensaioImpacto.png" /></td>
+                </tr>
+                @if (ViewBag.largura <= 1150)
+                {
+                    <tr><td colspan="2" class="fundo-tabela"> Bases com largura de dimensões ≤ 1150 mm </td></tr>
                     <tr>
-                        <td class="fundo-tabela"> Data de início </td>
-                        <td> <input type="date" class="form-control" /> </td>
-                        <td class="fundo-tabela"> Hora de início: </td>
-                        <td>   <input class="form-control" type="time" /> </td>
-                        <td class="fundo-tabela"> Temperatura mínima: </td>
-                        <td> <input class="form-control" type="text" style=" width:150px;" /> </td>
-                    </tr>
-                    <tr>
-                        <td class="fundo-tabela"> Data de término: </td>
-                        <td> <input type="date" class="form-control" /> </td>
-                        <td class="fundo-tabela"> Hora do término: </td>
-                        <td>   <input class="form-control" type="time" /> </td>
-                        <td class="fundo-tabela"> Temperatura máxima: </td>
-                        <td> <input class="form-control" type="text" style=" width:150px;" /> </td>
-                    </tr>
-                </table>
-            </td>
-        </tr>
-        <tr>
-            <td>
-                O ensaio deve ser realizado sobcondições climáticas com temperatura de ( 20 ± 5 ) °C <br />
-            </td>
-        </tr>
-        <tr>
-            <td>
-                Posicionar a base em uma superfície plana e rígida e ajustar o dispositivo de impacto
-                de modo que o mesmo fique posicionado a uma altura de 180 mm (a partir da face superior do colchão)
-            </td>
-        </tr>
-        <tr>
-            <td>    Medir a largura da base do colchão para definir os pontos de impacto e logo após realizar 10 impactos definido.</td>
-        </tr>
-        <tr>
-            <td>Altura de queda: <input class="controlador" type="text" /> </td>
-        </tr>
-        <tr>
-            <td>
-                Comprimento da base: <input style="width:100px;" class="controlador" type="text" />  Largura da base:  <input style="width:100px;" class="controlador" type="text" />
-            </td>
-        </tr>
-        <tr>
-            <td>   <img src="~/img/ensaioImpacto.png" /></td>
-        </tr>
-        <tr><td class="fundo-tabela"> Bases com largura de dimensões ≤ 1150 mm </td></tr>
-        <tr>
-            <td>
-                <table class="tables table-bordered border-secondary  table-sm">
-                    <tr>
-                        <td rowspan="2" class="fundo-tabela"> Pontos </td>
-                        <td rowspan="1" colspan="3" class="fundo-tabela"> Posicionamento dos pontos </td>
-                        <td rowspan="2" colspan="2" class="fundo-tabela"> Avaliação </td>
-                    </tr>
-                    <tr>
-                        <td class="fundo-tabela"> Comprimim </td>
-                        <td class="fundo-tabela"> X </td>
-                        <td class="fundo-tabela"> Largura </td>
-                    </tr>
-                    <tr>
-                        <td class="fundo-tabela"> Ponto A </td>
-                        <td> <input class="form-control" type="text" /> </td>
-                        <td> X </td>
-                        <td> <input class="form-control" type="text" />  </td>
-                        <td> Suportou o impacto </td>
-                        <td> <input class="form-control" type="text" />  </td>
-                    </tr>
-                    <tr>
-                        <td class="fundo-tabela"> Ponto B </td>
-                        <td> <input class="form-control" type="text" /> </td>
-                        <td> X </td>
-                        <td> <input class="form-control" type="text" />  </td>
-                        <td> Suportou o impacto </td>
-                        <td> <input class="form-control" type="text" />  </td>
-                    </tr>
-                    <tr>
-                        <td class="fundo-tabela"> Ponto C </td>
-                        <td> <input class="form-control" type="text" /> </td>
-                        <td> X </td>
-                        <td> <input class="form-control" type="text" />  </td>
-                        <td> Suportou o impacto </td>
-                        <td> <input class="form-control" type="text" />  </td>
-                    </tr>
-                    <tr>
-                        <td class="fundo-tabela"> Ponto D </td>
-                        <td> <input class="form-control" type="text" /> </td>
-                        <td> X </td>
-                        <td> <input class="form-control" type="text" />  </td>
-                        <td> Suportou o impacto </td>
-                        <td> <input class="form-control" type="text" />  </td>
-                    </tr>
-                    <tr>
-                        <td class="fundo-tabela"> Ponto G </td>
-                        <td> <input class="form-control" type="text" /> </td>
-                        <td> X </td>
-                        <td> <input class="form-control" type="text" />  </td>
-                        <td> Suportou o impacto </td>
-                        <td> <input class="form-control" type="text" />  </td>
-                    </tr>
-                    <tr>
-                        <td class="fundo-tabela"> Ponto I </td>
-                        <td> <input class="form-control" type="text" /> </td>
-                        <td> X </td>
-                        <td> <input class="form-control" type="text" />  </td>
-                        <td> Suportou o impacto </td>
-                        <td> <input class="form-control" type="text" />  </td>
-                    </tr>
-                    <tr>
-                        <td class="fundo-tabela"> Ponto J </td>
-                        <td> <input class="form-control" type="text" /> </td>
-                        <td> X </td>
-                        <td> <input class="form-control" type="text" />  </td>
-                        <td> Suportou o impacto </td>
-                        <td> <input class="form-control" type="text" />  </td>
-                    </tr>
-                   
-                </table> 
-              
-            </td>
-        </tr>
-        <tr>
-            <td >
-                Verificar se após os impactos a amostra apresenta algum defeito conforme citado abaixo: <br /> <br />
-            </td>
-        </tr>
-        <tr>
-            <td> Houve ruptura da estrutura: <input class="controlador" type="text" /> </td>
-        </tr>
-    </table>
-    @* <br />
+                        <td>
+                            <table class="tables table-bordered border-secondary  table-sm">
+                                <tr>
+                                    <td rowspan="2" class="fundo-tabela"> Pontos </td>
+                                    <td rowspan="1" colspan="3" class="fundo-tabela"> Posicionamento dos pontos </td>
+                                    <td rowspan="2" colspan="2" class="fundo-tabela"> Avaliação </td>
+                                </tr>
+                                <tr>
+                                    <td class="fundo-tabela"> Comprimimento </td>
+                                    <td class="fundo-tabela"> X </td>
+                                    <td class="fundo-tabela"> Largura </td>
+                                </tr>
+                                <tr>
+                                    <td class="fundo-tabela"> Ponto A </td>
+                                    <td> <input class="form-control" type="text" id="comp_ponto_a_um" readonly /> </td>
+                                    <td> X </td>
+                                    <td> <input class="form-control" type="text" id="larg_ponto_a_um" readonly />  </td>
+                                    <td>
+                                        Suportou o impacto:
 
-    <table class="tables table-bordered border-secondary  table-sm">
+                                    </td>
+                                    <td>
+                                        <select class="form-control" asp-for="impac_um_a">
+                                            <option value="---">---</option>
+                                            <option value="Sim">Sim</option>
+                                            <option value="Não">Não</option>
+                                        </select>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="fundo-tabela"> Ponto B </td>
+                                    <td> <input class="form-control" type="text" readonly id="comp_ponto_b_um" /> </td>
+                                    <td> X </td>
+                                    <td> <input class="form-control" type="text" id="larg_ponto_b_um" readonly />  </td>
+                                    <td> Suportou o impacto </td>
+                                    <td>
+                                        <select class="form-control" asp-for="impac_um_b">
+                                            <option value="---">---</option>
+                                            <option value="Sim">Sim</option>
+                                            <option value="Não">Não</option>
+                                        </select>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="fundo-tabela"> Ponto C </td>
+                                    <td> <input class="form-control" type="text" readonly id="comp_ponto_c_um" /> </td>
+                                    <td> X </td>
+                                    <td> <input class="form-control" type="text" readonly id="larg_ponto_c_um" />  </td>
+                                    <td> Suportou o impacto </td>
+                                    <td>
+                                        <select class="form-control" asp-for="impac_um_c">
+                                            <option value="---">---</option>
+                                            <option value="Sim">Sim</option>
+                                            <option value="Não">Não</option>
+                                        </select>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="fundo-tabela"> Ponto D </td>
+                                    <td> <input class="form-control" type="text" readonly id="comp_ponto_d_um" /> </td>
+                                    <td> X </td>
+                                    <td> <input class="form-control" type="text" readonly id="larg_ponto_d_um" />  </td>
+                                    <td> Suportou o impacto </td>
+                                    <td>
+                                        <select class="form-control" asp-for="impac_um_d">
+                                            <option value="---">---</option>
+                                            <option value="Sim">Sim</option>
+                                            <option value="Não">Não</option>
+                                        </select>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="fundo-tabela"> Ponto G </td>
+                                    <td> <input class="form-control" type="text" readonly id="comp_ponto_g_um" /> </td>
+                                    <td> X </td>
+                                    <td> <input class="form-control" type="text" readonly id="larg_ponto_g_um" />  </td>
+                                    <td> Suportou o impacto </td>
+                                    <td>
+                                        <select class="form-control" asp-for="impac_um_g">
+                                            <option value="---">---</option>
+                                            <option value="Sim">Sim</option>
+                                            <option value="Não">Não</option>
+                                        </select>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="fundo-tabela"> Ponto I </td>
+                                    <td> <input class="form-control" type="text" readonly id="comp_ponto_i_um" /> </td>
+                                    <td> X </td>
+                                    <td> <input class="form-control" type="text" readonly id="larg_ponto_i_um" />  </td>
+                                    <td> Suportou o impacto </td>
+                                    <td>
+                                        <select class="form-control" asp-for="impac_um_i">
+                                            <option value="---">---</option>
+                                            <option value="Sim">Sim</option>
+                                            <option value="Não">Não</option>
+                                        </select>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="fundo-tabela"> Ponto J </td>
+                                    <td> <input class="form-control" type="text" readonly id="comp_ponto_j_um" /> </td>
+                                    <td> X </td>
+                                    <td> <input class="form-control" type="text" readonly id="larg_ponto_j_um" />  </td>
+                                    <td> Suportou o impacto </td>
+                                    <td>
+                                        <select class="form-control" asp-for="impac_um_j">
+                                            <option value="---">---</option>
+                                            <option value="Sim">Sim</option>
+                                            <option value="Não">Não</option>
+                                        </select>
+                                    </td>
+                                </tr>
 
+                            </table>
 
+                        </td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">
+                            Verificar se após os impactos a amostra apresenta algum defeito conforme citado abaixo: <br /> <br />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            Houve ruptura da estrutura:
+                            <select class="controlador" asp-for="ruptura_um">
+                                <option value="---">---</option>
+                                <option value="Sim">Sim</option>
+                                <option value="Não">Não</option>
+                            </select>
+                        </td>
+                        <td rowspan="5"></td>
+                    </tr>
+                    <tr>
+                        <td>
+                            Houve afundamento de espuma:
+                            <select class="controlador" asp-for="afundamento_um">
+                                <option value="---">---</option>
+                                <option value="Sim">Sim</option>
+                                <option value="Não">Não</option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            Houve rasgo no revestimento:
+                            <select class="controlador" asp-for="rasgo_um">
+                                <option value="---">---</option>
+                                <option value="Sim">Sim</option>
+                                <option value="Não">Não</option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            Houve rompimento nos pés:
+                            <select class="controlador" asp-for="rompimento_um">
+                                <option value="---">---</option>
+                                <option value="Sim">Sim</option>
+                                <option value="Não">Não</option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            Apresentou algo que prejudique o seu comprometimento de uso:
+                            <select class="controlador" style="width:200px;" asp-for="prejudique_um">
+                                <option value="---">---</option>
+                                <option value="Sim">Sim</option>
+                                <option value="Não">Não</option>
+                            </select>
+                        </td>
+                    </tr>
+                }
+                else
+                {
+                    <tr>
+                        <td class="fundo-tabela"> Bases com largura de dimensões >= 1150 mm </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <table class="tables table-bordered border-secondary  table-sm">
+                                <tr>
+                                    <td rowspan="2" class="fundo-tabela"> Pontos </td>
+                                    <td rowspan="1" colspan="3" class="fundo-tabela"> Posicionamento dos pontos </td>
+                                    <td rowspan="2" colspan="2" class="fundo-tabela"> Avaliação </td>
+                                </tr>
+                                <tr>
+                                    <td class="fundo-tabela"> Comprimimento </td>
+                                    <td class="fundo-tabela"> X </td>
+                                    <td class="fundo-tabela"> Largura </td>
+                                </tr>
+                                <tr>
+                                    <td class="fundo-tabela"> Ponto A </td>
+                                    <td> <input class="form-control" type="text" id="comp_ponto_a_dois" readonly asp-for="comp_base" /> </td>
+                                    <td> X </td>
+                                    <td> <input class="form-control" type="text" id="larg_ponto_a_dois" readonly asp-for="larg_base" />  </td>
+                                    <td> Suportou o impacto </td>
+                                    <td>
+                                        <select class="form-control" asp-for="impac_dois_a">
+                                            <option value="---">---</option>
+                                            <option value="Sim">Sim</option>
+                                            <option value="Não">Não</option>
+                                        </select>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="fundo-tabela"> Ponto B </td>
+                                    <td> <input class="form-control" type="text" id="comp_ponto_b_dois" readonly /> </td>
+                                    <td> X </td>
+                                    <td> <input class="form-control" type="text" id="larg_ponto_b_dois" readonly />  </td>
+                                    <td> Suportou o impacto </td>
+                                    <td>
+                                        <select class="form-control" asp-for="impac_dois_b">
+                                            <option value="---">---</option>
+                                            <option value="Sim">Sim</option>
+                                            <option value="Não">Não</option>
+                                        </select>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="fundo-tabela"> Ponto C </td>
+                                    <td> <input class="form-control" type="text" id="comp_ponto_c_dois" readonly /> </td>
+                                    <td> X </td>
+                                    <td> <input class="form-control" type="text" id="larg_ponto_c_dois" readonly />  </td>
+                                    <td> Suportou o impacto </td>
+                                    <td>
+                                        <select class="form-control" asp-for="impac_dois_c">
+                                            <option value="---">---</option>
+                                            <option value="Sim">Sim</option>
+                                            <option value="Não">Não</option>
+                                        </select>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="fundo-tabela"> Ponto D </td>
+                                    <td> <input class="form-control" type="text" id="comp_ponto_d_dois" readonly /> </td>
+                                    <td> X </td>
+                                    <td> <input class="form-control" type="text" id="larg_ponto_d_dois" readonly />  </td>
+                                    <td> Suportou o impacto </td>
+                                    <td>
+                                        <select class="form-control" asp-for="impac_dois_d">
+                                            <option value="---">---</option>
+                                            <option value="Sim">Sim</option>
+                                            <option value="Não">Não</option>
+                                        </select>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="fundo-tabela"> Ponto G </td>
+                                    <td> <input class="form-control" type="text" id="comp_ponto_g_dois" readonly /> </td>
+                                    <td> X </td>
+                                    <td> <input class="form-control" type="text" id="larg_ponto_g_dois" readonly />  </td>
+                                    <td> Suportou o impacto </td>
+                                    <td>
+                                        <select class="form-control" asp-for="impac_dois_g">
+                                            <option value="---">---</option>
+                                            <option value="Sim">Sim</option>
+                                            <option value="Não">Não</option>
+                                        </select>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="fundo-tabela"> Ponto I </td>
+                                    <td> <input class="form-control" type="text" id="comp_ponto_i_dois" readonly /> </td>
+                                    <td> X </td>
+                                    <td> <input class="form-control" type="text" id="larg_ponto_i_dois" readonly />  </td>
+                                    <td> Suportou o impacto </td>
+                                    <td>
+                                        <select class="form-control" asp-for="impac_dois_i">
+                                            <option value="---">---</option>
+                                            <option value="Sim">Sim</option>
+                                            <option value="Não">Não</option>
+                                        </select>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="fundo-tabela"> Ponto J </td>
+                                    <td> <input class="form-control" type="text" id="comp_ponto_j_dois" readonly /> </td>
+                                    <td> X </td>
+                                    <td> <input class="form-control" type="text" id="larg_ponto_j_dois" readonly />  </td>
+                                    <td> Suportou o impacto </td>
+                                    <td>
+                                        <select class="form-control" asp-for="impac_dois_j">
+                                            <option value="---">---</option>
+                                            <option value="Sim">Sim</option>
+                                            <option value="Não">Não</option>
+                                        </select>
+                                    </td>
+                                </tr>
 
+                            </table>
 
+                        </td>
+                        <td></td>
+                    </tr>
 
-   
-    
-    Verificar se após os impactos a amostra apresenta algum defeito conforme citado abaixo: <br/> <br />
-    <table class="tables table-bordered border-secondary  table-sm">
+                    <tr>
+                        <td>
+                            Verificar se após os impactos a amostra apresenta algum defeito conforme citado abaixo: <br /> <br />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            Houve ruptura da estrutura:
+                            <select class="controlador" asp-for="ruptura_dois">
+                                <option value="---">---</option>
+                                <option value="Sim">Sim</option>
+                                <option value="Não">Não</option>
+                            </select>
+                        </td>
+                        <td rowspan="5"></td>
+                    </tr>
+                    <tr>
+                        <td>
+                            Houve afundamento de espuma:
+                            <select class="controlador" asp-for="afundamento_dois">
+                                <option value="---">---</option>
+                                <option value="Sim">Sim</option>
+                                <option value="Não">Não</option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            Houve rasgo no revestimento:
+                            <select class="controlador" asp-for="rasgo_dois">
+                                <option value="---">---</option>
+                                <option value="Sim">Sim</option>
+                                <option value="Não">Não</option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            Houve rompimento nos pés:
+                            <select class="controlador" asp-for="rompimento_dois">
+                                <option value="---">---</option>
+                                <option value="Sim">Sim</option>
+                                <option value="Não">Não</option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            Apresentou algo que prejudique o seu comprometimento de uso:
+                            <select class="controlador" style="width:200px;" asp-for="prejudique_dois">
+                                <option value="---">---</option>
+                                <option value="Sim">Sim</option>
+                                <option value="Não">Não</option>
+                            </select>
+                        </td>
+                    </tr>
+                }
+            </table>
+            <div class="d-grid gap-2 d-flex justify-content-center">
+                <button type="submit" class="btn btn-success btn btn-primary btn-md">Salvar</button>
+            </div>
+        }
+        else
+        {
+            <table class="tables table-bordered border-secondary  table-sm">
+                <thead>
+                    <tr>
+                        <td><img src="https://www.labsystem-nuvem.com.br/imagens_arq/imagens/img/LabSystem.png" class="imagem" /></td>
+                        <td colspan="3" class="fundo-tabela">Coleta De Dados</td>
+                        <td class="fundo-tabela">N Os:</td>
+                    </tr>
+                    <tr>
+                        <td colspan="4"> Ensaio em Bases</td>
+                        <td rowspan="2"> @ViewBag.os</td>
+                    </tr>
+                    <tr>
+                        <td>Inicio:</td>
+                        <td><input class="controlador" type="text" asp-for="data_ini" value="@Model.data_ini" /></td>
+                        <td>Termino:</td>
+                        <td><input class="controlador" type="text" asp-for="data_term" value="@Model.data_term" /></td>
+                    </tr>
+                </thead>
+            </table>
+            <br />
+            <table class="tables table-bordered border-secondary  table-sm">
+                <tr>
+                    <td rowspan="2" class="fundo-tabela"> <strong> Item </strong></td>
+                    <td class="fundo-tabela" rowspan="1">
+                        <strong>Descrição</strong>
+                    </td>
+                    <td rowspan="2" class="fundo-tabela"> <strong>Resultado</strong></td>
+                </tr>
+                <tr>
+                    <td class="fundo-tabela"><strong>Ensaio a ser realizado: DIN EN 1725:1998 - Domestic furniture – Beds and mattresses – Safety requirements and test methods</strong></td>
+                </tr>
+                <tr>
+                    <td rowspan="25"> <strong>4.7.2 / 7.4 </strong></td>
+                    <td colspan="2"> <strong>Ensaio de Impacto vertical</strong></td>
 
-    <tr>
-    <td class="fundo-tabela"> Houve ruptura da estrutura </td>
-    <td> <input class="form-control" type="text" /> </td>
-    </tr>
-    <tr>
-    <td class="fundo-tabela"> Houve afundamento da espuma </td>
-    <td> <input class="form-control" type="text" /> </td>
-    </tr>
-    <tr>
-    <td class="fundo-tabela"> Houve rasgo no revestimento </td>
-    <td> <input class="form-control" type="text" /> </td>
-    </tr>
-    <tr>
-    <td class="fundo-tabela"> Houve rompimento nos pés </td>
-    <td> <input class="form-control" type="text" /> </td>
-    </tr>
-    <tr>
-    <td class="fundo-tabela"> Apresentou algo que prejudique o seu comprometimento de uso </td>
-    <td> <input class="form-control" type="text" /> </td>
-    </tr>
-    </table>
-    </td>
-    </tr>
-    <tr>
-    <td class="fundo-tabela"> Bases com largura de dimensões > 1150 mm </td> <br /> <br />
-    </tr>
-    <tr>
-    <td>
-    <table class="tables table-bordered border-secondary  table-sm">
-    <tr>
-    <td rowspan="2" class="fundo-tabela"> Pontos </td>
-    <td rowspan="1" colspan="3" class="fundo-tabela"> Posicionamento dos pontos </td>
-    <td rowspan="2" colspan="2" class="fundo-tabela"> Avaliação </td>
-    </tr>
-    <tr>
-    <td class="fundo-tabela"> Comprimim </td>
-    <td class="fundo-tabela"> X </td>
-    <td class="fundo-tabela"> Largura </td>
-    </tr>
-    <tr>
-    <td class="fundo-tabela"> Ponto A </td>
-    <td> <input class="form-control" type="text" /> </td>
-    <td> X </td>
-    <td> <input class="form-control" type="text" />  </td>
-    <td> Suportou o impacto </td>
-    <td> <input class="form-control" type="text" />  </td>
-    </tr>
-    <tr>
-    <td class="fundo-tabela"> Ponto B </td>
-    <td> <input class="form-control" type="text" /> </td>
-    <td> X </td>
-    <td> <input class="form-control" type="text" />  </td>
-    <td> Suportou o impacto </td>
-    <td> <input class="form-control" type="text" />  </td>
-    </tr>
-    <tr>
-    <td class="fundo-tabela"> Ponto C </td>
-    <td> <input class="form-control" type="text" /> </td>
-    <td> X </td>
-    <td> <input class="form-control" type="text" />  </td>
-    <td> Suportou o impacto </td>
-    <td> <input class="form-control" type="text" />  </td>
-    </tr>
-    <tr>
-    <td class="fundo-tabela"> Ponto D </td>
-    <td> <input class="form-control" type="text" /> </td>
-    <td> X </td>
-    <td> <input class="form-control" type="text" />  </td>
-    <td> Suportou o impacto </td>
-    <td> <input class="form-control" type="text" />  </td>
-    </tr>
-    <tr>
-    <td class="fundo-tabela"> Ponto G </td>
-    <td> <input class="form-control" type="text" /> </td>
-    <td> X </td>
-    <td> <input class="form-control" type="text" />  </td>
-    <td> Suportou o impacto </td>
-    <td> <input class="form-control" type="text" />  </td>
-    </tr>
-    <tr>
-    <td class="fundo-tabela"> Ponto I </td>
-    <td> <input class="form-control" type="text" /> </td>
-    <td> X </td>
-    <td> <input class="form-control" type="text" />  </td>
-    <td> Suportou o impacto </td>
-    <td> <input class="form-control" type="text" />  </td>
-    </tr>
-    <tr>
-    <td class="fundo-tabela"> Ponto J </td>
-    <td> <input class="form-control" type="text" /> </td>
-    <td> X </td>
-    <td> <input class="form-control" type="text" />  </td>
-    <td> Suportou o impacto </td>
-    <td> <input class="form-control" type="text" />  </td>
-    </tr>
-    </table> <br /> <br />
-    Verificar se após os impactos a amostra apresenta algum defeito conforme citado abaixo: <br /> <br />
-    <table class="tables table-bordered border-secondary  table-sm">
+                </tr>
+                <tr>
+                    <td colspan="2">
+                        O ensaio deve ser realizado sobcondições climáticas com temperatura de ( 20 ± 5 ) °C
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2">
+                        <table class="tables table-bordered border-secondary  table-sm">
+                            <tr>
+                                <td class="fundo-tabela"> Data de início </td>
+                                <td> <input type="text" class="form-control" style=" width:150px;" asp-for="data_ini_ens" value="@Model.data_ini_ens" /> </td>
+                                <td class="fundo-tabela"> Hora de início: </td>
+                                <td>   <input class="form-control" type="time" asp-for="hora_inic" /> </td>
+                                <td class="fundo-tabela"> Temperatura mínima: </td>
+                                <td> <input class="form-control" type="text" style=" width:150px;" asp-for="tem_min" /> </td>
+                            </tr>
+                            <tr>
+                                <td class="fundo-tabela"> Data de término: </td>
+                                <td> <input type="text" class="form-control" style=" width:150px;" asp-for="data_term_ens" value="@Model.data_term" /> </td>
+                                <td class="fundo-tabela"> Hora do término: </td>
+                                <td>   <input class="form-control" type="time" asp-for="hora_term" /> </td>
+                                <td class="fundo-tabela"> Temperatura máxima: </td>
+                                <td> <input class="form-control" type="text" style=" width:150px;" asp-for="tem_max" /> </td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2">
+                        O ensaio deve ser realizado sobcondições climáticas com temperatura de ( 20 ± 5 ) °C <br />
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2">
+                        Posicionar a base em uma superfície plana e rígida e ajustar o dispositivo de impacto
+                        de modo que o mesmo fique posicionado a uma altura de 180 mm (a partir da face superior do colchão)
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2">    Medir a largura da base do colchão para definir os pontos de impacto e logo após realizar 10 impactos definido.</td>
+                </tr>
+                <tr>
+                    <td colspan="2">Altura de queda(cm): <input class="controlador" type="text" value="180" disabled /> </td>
+                </tr>
+                <tr>
+                    <td colspan="2">
+                        Comprimento da base: <input id="com_base" style="width:100px;" class="controlador" type="text" asp-for="comp_base" value="@Model.comp_base" readonly />  Largura da base:  <input id="larg_base" style="width:100px;" class="controlador" type="text" asp-for="larg_base" value="@Model.larg_base" readonly />
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2">   <img src="~/img/ensaioImpacto.png" /></td>
+                </tr>
+                @if (Model.larg_base <= 1150)
+                {
+                    <tr><td colspan="2" class="fundo-tabela"> Bases com largura de dimensões ≤ 1150 mm </td></tr>
+                    <tr>
+                        <td>
+                            <table class="tables table-bordered border-secondary  table-sm">
+                                <tr>
+                                    <td rowspan="2" class="fundo-tabela"> Pontos </td>
+                                    <td rowspan="1" colspan="3" class="fundo-tabela"> Posicionamento dos pontos </td>
+                                    <td rowspan="2" colspan="2" class="fundo-tabela"> Avaliação </td>
+                                </tr>
+                                <tr>
+                                    <td class="fundo-tabela"> Comprimimento </td>
+                                    <td class="fundo-tabela"> X </td>
+                                    <td class="fundo-tabela"> Largura </td>
+                                </tr>
+                                <tr>
+                                    <td class="fundo-tabela"> Ponto A </td>
+                                    <td> <input class="form-control" type="text" id="comp_ponto_a_um" readonly /> </td>
+                                    <td> X </td>
+                                    <td> <input class="form-control" type="text" id="larg_ponto_a_um" readonly />  </td>
+                                    <td>
+                                        Suportou o impacto:
 
-    <tr>
-    <td class="fundo-tabela"> Houve ruptura da estrutura </td>
-    <td> <input class="form-control" type="text" /> </td>
-    </tr>
-    <tr>
-    <td class="fundo-tabela"> Houve afundamento da espuma </td>
-    <td> <input class="form-control" type="text" /> </td>
-    </tr>
-    <tr>
-    <td class="fundo-tabela"> Houve rasgo no revestimento </td>
-    <td> <input class="form-control" type="text" /> </td>
-    </tr>
-    <tr>
-    <td class="fundo-tabela"> Houve rompimento nos pés </td>
-    <td> <input class="form-control" type="text" /> </td>
-    </tr>
-    <tr>
-    <td class="fundo-tabela"> Apresentou algo que prejudique o seu comprometimento de uso </td>
-    <td> <input class="form-control" type="text" /> </td>
-    </tr>
-    </table>
-    </td>
-    </tr>
-    </table> *@
-    <br />
-    <br />
+                                    </td>
+                                    <td>
+                                        <select class="form-control" asp-for="impac_um_a">
+                                            <option value="---">---</option>
+                                            <option value="Sim">Sim</option>
+                                            <option value="Não">Não</option>
+                                        </select>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="fundo-tabela"> Ponto B </td>
+                                    <td> <input class="form-control" type="text" readonly id="comp_ponto_b_um" /> </td>
+                                    <td> X </td>
+                                    <td> <input class="form-control" type="text" id="larg_ponto_b_um" readonly />  </td>
+                                    <td> Suportou o impacto </td>
+                                    <td>
+                                        <select class="form-control" asp-for="impac_um_b">
+                                            <option value="---">---</option>
+                                            <option value="Sim">Sim</option>
+                                            <option value="Não">Não</option>
+                                        </select>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="fundo-tabela"> Ponto C </td>
+                                    <td> <input class="form-control" type="text" readonly id="comp_ponto_c_um" /> </td>
+                                    <td> X </td>
+                                    <td> <input class="form-control" type="text" readonly id="larg_ponto_c_um" />  </td>
+                                    <td> Suportou o impacto </td>
+                                    <td>
+                                        <select class="form-control" asp-for="impac_um_c">
+                                            <option value="---">---</option>
+                                            <option value="Sim">Sim</option>
+                                            <option value="Não">Não</option>
+                                        </select>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="fundo-tabela"> Ponto D </td>
+                                    <td> <input class="form-control" type="text" readonly id="comp_ponto_d_um" /> </td>
+                                    <td> X </td>
+                                    <td> <input class="form-control" type="text" readonly id="larg_ponto_d_um" />  </td>
+                                    <td> Suportou o impacto </td>
+                                    <td>
+                                        <select class="form-control" asp-for="impac_um_d">
+                                            <option value="---">---</option>
+                                            <option value="Sim">Sim</option>
+                                            <option value="Não">Não</option>
+                                        </select>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="fundo-tabela"> Ponto G </td>
+                                    <td> <input class="form-control" type="text" readonly id="comp_ponto_g_um" /> </td>
+                                    <td> X </td>
+                                    <td> <input class="form-control" type="text" readonly id="larg_ponto_g_um" />  </td>
+                                    <td> Suportou o impacto </td>
+                                    <td>
+                                        <select class="form-control" asp-for="impac_um_g">
+                                            <option value="---">---</option>
+                                            <option value="Sim">Sim</option>
+                                            <option value="Não">Não</option>
+                                        </select>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="fundo-tabela"> Ponto I </td>
+                                    <td> <input class="form-control" type="text" readonly id="comp_ponto_i_um" /> </td>
+                                    <td> X </td>
+                                    <td> <input class="form-control" type="text" readonly id="larg_ponto_i_um" />  </td>
+                                    <td> Suportou o impacto </td>
+                                    <td>
+                                        <select class="form-control" asp-for="impac_um_i">
+                                            <option value="---">---</option>
+                                            <option value="Sim">Sim</option>
+                                            <option value="Não">Não</option>
+                                        </select>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="fundo-tabela"> Ponto J </td>
+                                    <td> <input class="form-control" type="text" readonly id="comp_ponto_j_um" /> </td>
+                                    <td> X </td>
+                                    <td> <input class="form-control" type="text" readonly id="larg_ponto_j_um" />  </td>
+                                    <td> Suportou o impacto </td>
+                                    <td>
+                                        <select class="form-control" asp-for="impac_um_j">
+                                            <option value="---">---</option>
+                                            <option value="Sim">Sim</option>
+                                            <option value="Não">Não</option>
+                                        </select>
+                                    </td>
+                                </tr>
+
+                            </table>
+
+                        </td>
+                        <td>@Model.confome_ponto_a</td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">
+                            Verificar se após os impactos a amostra apresenta algum defeito conforme citado abaixo: <br /> <br />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            Houve ruptura da estrutura:
+                            <select class="controlador" asp-for="ruptura_um">
+                                <option value="---">---</option>
+                                <option value="Sim">Sim</option>
+                                <option value="Não">Não</option>
+                            </select>
+                        </td>
+                        <td rowspan="5">@Model.conforme_um</td>
+                    </tr>
+                    <tr>
+                        <td>
+                            Houve afundamento de espuma:
+                            <select class="controlador" asp-for="afundamento_um">
+                                <option value="---">---</option>
+                                <option value="Sim">Sim</option>
+                                <option value="Não">Não</option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            Houve rasgo no revestimento:
+                            <select class="controlador" asp-for="rasgo_um">
+                                <option value="---">---</option>
+                                <option value="Sim">Sim</option>
+                                <option value="Não">Não</option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            Houve rompimento nos pés:
+                            <select class="controlador" asp-for="rompimento_um">
+                                <option value="---">---</option>
+                                <option value="Sim">Sim</option>
+                                <option value="Não">Não</option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            Apresentou algo que prejudique o seu comprometimento de uso:
+                            <select class="controlador" style="width:200px;" asp-for="prejudique_um">
+                                <option value="---">---</option>
+                                <option value="Sim">Sim</option>
+                                <option value="Não">Não</option>
+                            </select>
+                        </td>
+                    </tr>
+                }
+                else
+                {
+                    <tr>
+                        <td class="fundo-tabela"> Bases com largura de dimensões >= 1150 mm </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <table class="tables table-bordered border-secondary  table-sm">
+                                <tr>
+                                    <td rowspan="2" class="fundo-tabela"> Pontos </td>
+                                    <td rowspan="1" colspan="3" class="fundo-tabela"> Posicionamento dos pontos </td>
+                                    <td rowspan="2" colspan="2" class="fundo-tabela"> Avaliação </td>
+                                </tr>
+                                <tr>
+                                    <td class="fundo-tabela"> Comprimimento </td>
+                                    <td class="fundo-tabela"> X </td>
+                                    <td class="fundo-tabela"> Largura </td>
+                                </tr>
+                                <tr>
+                                    <td class="fundo-tabela"> Ponto A </td>
+                                    <td> <input class="form-control" type="text" id="comp_ponto_a_dois" readonly /> </td>
+                                    <td> X </td>
+                                    <td> <input class="form-control" type="text" id="larg_ponto_a_dois" readonly />  </td>
+                                    <td> Suportou o impacto </td>
+                                    <td>
+                                        <select class="form-control" asp-for="impac_dois_a">
+                                            <option value="---">---</option>
+                                            <option value="Sim">Sim</option>
+                                            <option value="Não">Não</option>
+                                        </select>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="fundo-tabela"> Ponto B </td>
+                                    <td> <input class="form-control" type="text" id="comp_ponto_b_dois" readonly /> </td>
+                                    <td> X </td>
+                                    <td> <input class="form-control" type="text" id="larg_ponto_b_dois" readonly />  </td>
+                                    <td> Suportou o impacto </td>
+                                    <td>
+                                        <select class="form-control" asp-for="impac_dois_b">
+                                            <option value="---">---</option>
+                                            <option value="Sim">Sim</option>
+                                            <option value="Não">Não</option>
+                                        </select>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="fundo-tabela"> Ponto C </td>
+                                    <td> <input class="form-control" type="text" id="comp_ponto_c_dois" readonly /> </td>
+                                    <td> X </td>
+                                    <td> <input class="form-control" type="text" id="larg_ponto_c_dois" readonly />  </td>
+                                    <td> Suportou o impacto </td>
+                                    <td>
+                                        <select class="form-control" asp-for="impac_dois_c">
+                                            <option value="---">---</option>
+                                            <option value="Sim">Sim</option>
+                                            <option value="Não">Não</option>
+                                        </select>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="fundo-tabela"> Ponto D </td>
+                                    <td> <input class="form-control" type="text" id="comp_ponto_d_dois" readonly /> </td>
+                                    <td> X </td>
+                                    <td> <input class="form-control" type="text" id="larg_ponto_d_dois" readonly />  </td>
+                                    <td> Suportou o impacto </td>
+                                    <td>
+                                        <select class="form-control" asp-for="impac_dois_d">
+                                            <option value="---">---</option>
+                                            <option value="Sim">Sim</option>
+                                            <option value="Não">Não</option>
+                                        </select>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="fundo-tabela"> Ponto G </td>
+                                    <td> <input class="form-control" type="text" id="comp_ponto_g_dois" readonly /> </td>
+                                    <td> X </td>
+                                    <td> <input class="form-control" type="text" id="larg_ponto_g_dois" readonly />  </td>
+                                    <td> Suportou o impacto </td>
+                                    <td>
+                                        <select class="form-control" asp-for="impac_dois_g">
+                                            <option value="---">---</option>
+                                            <option value="Sim">Sim</option>
+                                            <option value="Não">Não</option>
+                                        </select>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="fundo-tabela"> Ponto I </td>
+                                    <td> <input class="form-control" type="text" id="comp_ponto_i_dois" readonly /> </td>
+                                    <td> X </td>
+                                    <td> <input class="form-control" type="text" id="larg_ponto_i_dois" readonly />  </td>
+                                    <td> Suportou o impacto </td>
+                                    <td>
+                                        <select class="form-control" asp-for="impac_dois_i">
+                                            <option value="---">---</option>
+                                            <option value="Sim">Sim</option>
+                                            <option value="Sim">Não</option>
+                                        </select>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="fundo-tabela"> Ponto J </td>
+                                    <td> <input class="form-control" type="text" id="comp_ponto_j_dois" readonly /> </td>
+                                    <td> X </td>
+                                    <td> <input class="form-control" type="text" id="larg_ponto_j_dois" readonly />  </td>
+                                    <td> Suportou o impacto </td>
+                                    <td>
+                                        <select class="form-control" asp-for="impac_dois_j">
+                                            <option value="---">---</option>
+                                            <option value="Sim">Sim</option>
+                                            <option value="Não">Não</option>
+                                        </select>
+                                    </td>
+                                </tr>
+
+                            </table>
+
+                        </td>
+                        <td>@Model.confome_ponto_b</td>
+                    </tr>
+
+                    <tr>
+                        <td>
+                            Verificar se após os impactos a amostra apresenta algum defeito conforme citado abaixo: <br /> <br />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            Houve ruptura da estrutura:
+                            <select class="controlador" asp-for="ruptura_dois">
+                                <option value="---">---</option>
+                                <option value="Sim">Sim</option>
+                                <option value="Não">Não</option>
+                            </select>
+                        </td>
+                        <td rowspan="5">@Model.conforme_dois</td>
+                    </tr>
+                    <tr>
+                        <td>
+                            Houve afundamento de espuma:
+                            <select class="controlador" asp-for="afundamento_dois">
+                                <option value="---">---</option>
+                                <option value="Sim">Sim</option>
+                                <option value="Não">Não</option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            Houve rasgo no revestimento:
+                            <select class="controlador" asp-for="rasgo_dois">
+                                <option value="---">---</option>
+                                <option value="Sim">Sim</option>
+                                <option value="Não">Não</option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            Houve rompimento nos pés:
+                            <select class="controlador" asp-for="rompimento_dois">
+                                <option value="---">---</option>
+                                <option value="Sim">Sim</option>
+                                <option value="Não">Não</option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            Apresentou algo que prejudique o seu comprometimento de uso:
+                            <select class="controlador" style="width:200px;" asp-for="prejudique_dois">
+                                <option value="---">---</option>
+                                <option value="Sim">Sim</option>
+                                <option value="Não">Não</option>
+                            </select>
+                        </td>
+                    </tr>
+                }
+            </table>
+            <div class="d-grid gap-2 d-flex justify-content-center">
+                <button type="submit" class="btn btn-success btn btn-primary btn-md">Editar</button>
+            </div>
+        }
+    </form>
     @* <table class="tables table-bordered border-secondary  table-sm">
     <tr class="fundo-tabela">
     <td colspan=" 4">
@@ -394,6 +1010,132 @@
     <td><input class="form-control" type="text" /></td>
     </tr>
     </table> *@
+    @if (TempData.ContainsKey("Mensagem"))
+    {
+        <script>
+            alert('@Html.Raw(TempData["Mensagem"])');
+        </script>
+    }
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            //REALIZANDO OS CALCULOS PAR AMOSTRAR NO COMPRIMENTO E LARGURA DAS TABELAS
+            var com_base = document.getElementById("com_base");
+            var valor_com_base = com_base.value;
+          
+
+            var larg_base = document.getElementById("larg_base");
+            var valor_larg_base = larg_base.value;
+
+            if (valor_larg_base <= 1150) {
+                console.log("entrou no if");
+                //realizando comprimento da tabela < 1150, comprimento primeiro.
+                var ponto_b_um = document.getElementById("comp_ponto_b_um");
+                console.log(ponto_b_um)
+                ponto_b_um.value = valor_com_base / 2;
+
+                var ponto_a_um = document.getElementById("comp_ponto_a_um");
+                ponto_a_um.value = ponto_b_um.value - 150;
+
+                var ponto_c_um = document.getElementById("comp_ponto_c_um");
+                ponto_c_um.value = ponto_b_um.value / 2;
+
+                var ponto_d_um = document.getElementById("comp_ponto_d_um");
+                ponto_d_um.value = ponto_b_um.value;
+
+                var ponto_g_um = document.getElementById("comp_ponto_g_um");
+                ponto_g_um.value = ponto_b_um.value - 150;
+
+                var ponto_i_um = document.getElementById("comp_ponto_i_um");
+                ponto_i_um.value = ponto_g_um.value;
+
+                var ponto_j_um = document.getElementById("comp_ponto_j_um");
+                ponto_j_um.value = ponto_g_um.value;
+
+                // largura da tabala <1150
+                var larg_ponto_a_um = document.getElementById("larg_ponto_a_um");
+                larg_ponto_a_um.value = valor_larg_base / 2;
+
+                var larg_ponto_b_um = document.getElementById("larg_ponto_b_um");
+                larg_ponto_b_um.value = larg_ponto_a_um.value;
+
+
+                var larg_ponto_d_um = document.getElementById("larg_ponto_d_um");
+                larg_ponto_d_um.value = larg_ponto_a_um.value - 150;
+
+                var larg_ponto_c_um = document.getElementById("larg_ponto_c_um");
+                larg_ponto_c_um.value = larg_ponto_d_um.value;
+
+                var larg_ponto_g_um = document.getElementById("larg_ponto_g_um");
+                larg_ponto_g_um.value = larg_ponto_b_um.value;
+
+                var larg_ponto_i_um = document.getElementById("larg_ponto_i_um");
+                larg_ponto_i_um.value = larg_ponto_d_um.value;
+
+                var larg_ponto_j_um = document.getElementById("larg_ponto_j_um");
+                larg_ponto_j_um.value = larg_ponto_d_um.value;
+
+            } 
+            
+            if (valor_larg_base > 1150) {
+                console.log("entrou no else");
+                //realizando a tabela que é maior que >1150
+                //pegando o comprimento primeiro
+
+                var ponto_b_dois = document.getElementById("comp_ponto_b_dois");
+                console.log(ponto_b_dois);
+                console.log(valor_com_base);
+                ponto_b_dois.value = valor_com_base / 2;
+
+                var ponto_a_dois = document.getElementById("comp_ponto_a_dois");
+                ponto_a_dois.value = ponto_b_dois.value - 150;
+
+                var ponto_c_dois = document.getElementById("comp_ponto_c_dois");
+                ponto_c_dois.value = ponto_b_dois.value / 2;
+
+                var ponto_d_dois = document.getElementById("comp_ponto_d_dois");
+                ponto_d_dois.value = ponto_b_dois.value;
+
+                var ponto_g_dois = document.getElementById("comp_ponto_g_dois");
+                ponto_g_dois.value = ponto_b_dois.value - 150;
+
+                var ponto_i_dois = document.getElementById("comp_ponto_i_dois");
+                ponto_i_dois.value = ponto_g_dois.value;
+
+                var ponto_j_dois = document.getElementById("comp_ponto_j_dois");
+                ponto_j_dois.value = ponto_g_dois.value;
+
+                // realizando logica com a largura agora.
+                var larg_ponto_a_dois = document.getElementById("larg_ponto_a_dois");
+                larg_ponto_a_dois.value = valor_larg_base / 2;
+
+                var larg_ponto_b_dois = document.getElementById("larg_ponto_b_dois");
+                larg_ponto_b_dois.value = larg_ponto_a_dois.value;
+
+
+                var larg_ponto_d_dois = document.getElementById("larg_ponto_d_dois");
+                larg_ponto_d_dois.value = larg_ponto_a_dois.value - 150;
+
+                var larg_ponto_c_dois = document.getElementById("larg_ponto_c_dois");
+                larg_ponto_c_dois.value = larg_ponto_d_dois.value;
+
+                var larg_ponto_g_dois = document.getElementById("larg_ponto_g_dois");
+                larg_ponto_g_dois.value = larg_ponto_b_dois.value;
+
+                var larg_ponto_i_dois = document.getElementById("larg_ponto_i_dois");
+                larg_ponto_i_dois.value = larg_ponto_d_dois.value;
+
+                var larg_ponto_j_dois = document.getElementById("larg_ponto_j_dois");
+                larg_ponto_j_dois.value = larg_ponto_d_dois.value;
+            }
+
+
+
+
+
+
+
+        });
+    </script>
 
 </body>
 </html>

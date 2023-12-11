@@ -33,57 +33,59 @@ namespace Coleta_Colchao.Controllers
         [Route("Home")]
         public IActionResult Index(string os, string orcamento)
         {
+            //if (os != null)
+            //{
 
-            if (os != null)
-            {
+            //    var dados = (from p in _bancoContext.programacao_lab_ensaios
+            //                 join c in _bancoContext.ordemservicocotacaoitem_hc_copylab
+            //                 on new { Orcamento = p.Orcamento, Item = p.Item } equals new { Orcamento = c.orcamento, Item = c.Item.ToString() }
+            //                 join hc in _bancoContext.Wmoddetprod
+            //                 on c.CodigoEnsaio equals hc.codmaster
+            //                 where p.OS == os
+            //                 orderby hc.codigo
+            //                 select new HomeModel.Resposta
+            //                 {
+            //                     orcamento = p.Orcamento,
+            //                     OS = p.OS,
+            //                     codmaster = hc.codmaster,
+            //                     codigo = hc.codigo,
+            //                     descricao = hc.descricao,
+            //                     ProdEnsaiado = c.ProdEnsaiado
 
-                var dados = (from p in _bancoContext.programacao_lab_ensaios
-                             join c in _bancoContext.ordemservicocotacaoitem_hc_copylab
-                             on new { Orcamento = p.Orcamento, Item = p.Item } equals new { Orcamento = c.orcamento, Item = c.Item.ToString() }
-                             join hc in _bancoContext.Wmoddetprod
-                             on c.CodigoEnsaio equals hc.codmaster
-                             where p.OS == os
-                             orderby hc.codigo
-                             select new HomeModel.Resposta
-                             {
-                                 orcamento = p.Orcamento,
-                                 OS = p.OS,
-                                 codmaster = hc.codmaster,
-                                 codigo = hc.codigo,
-                                 descricao = hc.descricao,
-                                 ProdEnsaiado = c.ProdEnsaiado
+            //                 }).ToList();
 
-                             }).ToList();
+            //    if (dados.Count != 0)
+            //    {
+            //        var RegeistroColchao = _context.regtro_colchao.Where(x => x.os == os && x.orcamento == orcamento).FirstOrDefault();
+            //        if (RegeistroColchao == null)
+            //        {
+            //            ViewBag.os = os;
+            //            ViewBag.orcamento = dados.First().orcamento;
+            //            ViewBag.estrutura = RegeistroColchao.estrutura;
+            //            return View(dados);
+            //        }
+            //        else
+            //        {
+            //            ViewBag.estrutura = RegeistroColchao.estrutura;
+            //            ViewBag.os = os;
+            //            ViewBag.orcamento = dados.First().orcamento;
+            //            return View(dados);
+            //        }
 
-                if (dados.Count != 0)
-                {
-                    var RegeistroColchao = _context.regtro_colchao.Where(x => x.os == os && x.orcamento == orcamento).FirstOrDefault();
-                    if (RegeistroColchao == null)
-                    {
-                        ViewBag.os = os;
-                        ViewBag.orcamento = dados.First().orcamento;
-                        ViewBag.estrutura = RegeistroColchao.estrutura;
-                        return View(dados);
-                    }
-                    else
-                    {
-                        ViewBag.estrutura = RegeistroColchao.estrutura;
-                        ViewBag.os = os;
-                        ViewBag.orcamento = dados.First().orcamento;
-                        return View(dados);
-                    }
-
-                }
-                else
-                {
-                    TempData["Mensagem"] = "Orçamento Não Encontrado.";
-                    return View("Index");
-                }
-            }
-            else
-            {
-                return View();
-            }
+            //    }
+            //    else
+            //    {
+            //        TempData["Mensagem"] = "Orçamento Não Encontrado.";
+            //        return View("Index");
+            //    }
+            //}
+            //else
+            //{
+            //    return View();
+            //}
+            ViewBag.os = os;
+            ViewBag.orcamento = orcamento;
+            return View();
         }
 
 
