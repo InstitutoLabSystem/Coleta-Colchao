@@ -583,54 +583,120 @@ namespace Coleta_Colchao.Models
             public int Id { get; set; }
             public string os { get; set; }
             public string orcamento { get; set; }
-        
+
             public DateOnly data_inicio { get; set; }
-           
+
             public DateOnly data_termi { get; set; }
             public DateOnly data_inicio_durab { get; set; }
             public DateOnly data_term_durab { get; set; }
 
             public TimeOnly hora_inicio { get; set; }
-          
+
             public TimeOnly hora_term { get; set; }
             public string? temp_min { get; set; }
             public string? temp_max { get; set; }
             public string? base_cama { get; set; }
             public string? angulo_encontrado { get; set; }
-            public int distancia_ponto_a { get; set; } 
-            public int forca_apli_ponto_a { get; set; }
-            public int tempo_apli_ponto_a { get; set; }
-            public string? quant_ciclos_ponto_a { get; set; }
+            public int distancia_ponto_a { get; set; }
+            public int largura_ponto_a { get; set; }
             public string? suportou_ponto_a { get; set; }
             public string? ruptura_ponto_a { get; set; }
             public string? afundamento_ponto_a { get; set; }
             public string? rasgo_ponto_a { get; set; }
             public string? rompimento_ponto_a { get; set; }
             public string? prejudique_ponto_a { get; set; }
-            public int distancia_ponto_b { get; set; }
-            public int forca_apli_ponto_b { get; set; }
-            public int tempo_apli_ponto_b { get; set; }
-            public string? quant_ciclos_ponto_b { get; set; }
             public string? suportou_ponto_b { get; set; }
             public string? ruptura_ponto_b { get; set; }
             public string? afundamento_ponto_b { get; set; }
             public string? rasgo_ponto_b { get; set; }
             public string? rompimento_ponto_b { get; set; }
             public string? prejudique_ponto_b { get; set; }
-            public int distancia_ponto_c { get; set; }
-            public int forca_apli_ponto_c { get; set; }
-            public int tempo_apli_ponto_c { get; set; }
-            public string? quant_ciclos_ponto_c { get; set; }
             public string? suportou_ponto_c { get; set; }
             public string? ruptura_ponto_c { get; set; }
             public string? afundamento_ponto_c { get; set; }
             public string? rasgo_ponto_c { get; set; }
             public string? rompimento_ponto_c { get; set; }
             public string? prejudique_ponto_c { get; set; }
+            public string? conforme_a { get; set; }
+            public string? conforme_b { get; set; }
+            public string? conforme_c { get; set; }
             public string? executor { get; set; }
             public string? auxiliar { get; set; }
 
         }
+
+        public class EnsaioBaseImpactoVertical
+        {
+            [Key]
+            public int Id { get; set; }
+            public string os { get; set; }
+            public string orcamento { get; set; }
+            public DateOnly data_ini { get; set; }
+            public DateOnly data_term { get; set; }
+            public DateOnly data_ini_ens { get; set; }
+            public DateOnly data_term_ens { get; set; }
+            public TimeOnly hora_inic { get; set; }
+            public TimeOnly hora_term { get; set; }
+            public string? tem_min { get; set; }
+            public string? tem_max { get; set; }
+            public int comp_base { get; set; }
+            public int larg_base { get; set; }
+            public string? impac_um_a { get; set; }
+            public string? impac_um_b { get; set; }
+            public string? impac_um_c { get; set; }
+            public string? impac_um_d { get; set; }
+            public string? impac_um_g { get; set; }
+            public string? impac_um_i { get; set; }
+            public string? impac_um_j { get; set; }
+            public string? ruptura_um { get; set; }
+            public string? afundamento_um { get; set; }
+            public string? rasgo_um { get; set; }
+            public string? rompimento_um { get; set; }
+            public string? prejudique_um { get; set; }
+            public string? impac_dois_a { get; set; }
+            public string? impac_dois_b { get; set; }
+            public string? impac_dois_c { get; set; }
+            public string? impac_dois_d { get; set; }
+            public string? impac_dois_g { get; set; }
+            public string? impac_dois_i { get; set; }
+            public string? impac_dois_j { get; set; }
+            public string? ruptura_dois { get; set; }
+            public string? afundamento_dois { get; set; }
+            public string? rasgo_dois { get; set; }
+            public string? rompimento_dois { get; set; }
+            public string? prejudique_dois { get; set; }
+            public string? confome_ponto_a { get; set; }
+            public string? confome_ponto_b { get; set; }
+            public string? conforme_um { get; set; }
+            public string? conforme_dois { get; set; }
+            public string? executor { get; set; }
+            public string? auxiliar { get; set; }
+
+        }
+
+        public class EnsaioBaseDurabilidadeEstrutural
+        {
+            [Key]
+            public int Id { get; set; }
+            public string os { get; set; }
+            public string orcamento { get; set; }
+            public DateOnly data_ini { get; set; }
+            public DateOnly data_term { get; set; }
+            public DateOnly data_ini_ens { get; set; }
+            public DateOnly data_term_ens { get; set; }
+            public TimeOnly hora_ini { get; set; }
+            public TimeOnly hora_term { get; set; }
+            public string? temp_max { get; set; }
+            public string? temp_min { get; set; }
+            public string? suportou { get; set; }
+            public string? ruptura { get; set; }
+            public string? quebra { get; set; }
+            public string? prejudicou { get; set; }
+            public string? conforme { get; set; }
+            public string? auxiliar { get; set; }
+            public string? executor { get; set; }
+        }
+
 
         //public class Teste
         //{
@@ -643,7 +709,7 @@ namespace Coleta_Colchao.Models
         //    [Required(ErrorMessage = "Senha Obrigatoria")]
         //    public string senha { get; set; }
         //    public string os { get; set; }
-        //    public string orcamento { get; set; }
+        //    public string? orcamento { get; set; }
         //}
     }
 
