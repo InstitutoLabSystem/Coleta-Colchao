@@ -54,7 +54,7 @@
 
         @if (Model != null)
         {
-
+         
             <div class="custom-container-wrapper mb-3">
                 <div class="form-row mt-4">
                     <table class="tables table-bordered table-striped  table-sm">
@@ -93,18 +93,40 @@
                                     <td>
                                         <a role="button" target="_blank" class="btn btn-success" asp-controller="Coleta" asp-action="EnsaioMolas4_3" asp-route-os="@Model[i].OS" asp-route-orcamento="@Model[i].orcamento">Abrir</a>
                                     </td>
+                                    <td>
+                                        <a role="button" target="_blank" class="btn btn-success" asp-controller="Coleta" asp-action="EditarRegistroMolas" asp-route-os="@ViewBag.os" asp-route-orcamento="@ViewBag.orcamento">Informações</a>
+                                    </td>
                                 }
                                 @if (Model[i].codigo == "DEFCCH001000001")
                                 {
                                     <td>
                                         <a role="button" target="_blank" class="btn btn-success" asp-controller="Coleta" asp-action="EnsaioMolas7_5" asp-route-os="@Model[i].OS" asp-route-orcamento="@Model[i].orcamento">Abrir</a>
                                     </td>
+                                    <td>
+                                        <a role="button" target="_blank" class="btn btn-success" asp-controller="Coleta" asp-action="EditarRegistroMolas" asp-route-os="@ViewBag.os" asp-route-orcamento="@ViewBag.orcamento">Informações</a>
+                                    </td>
                                 }
                                 @if (Model[i].codigo == "DIMCCH001000001")
                                 {
-                                    <td>
-                                        <a role="button" target="_blank" class="btn btn-success" asp-controller="Coleta" asp-action="EnsaioMolas7_2" asp-route-os="@Model[i].OS" asp-route-orcamento="@Model[i].orcamento">Abrir</a>
-                                    </td>
+                                    if(ViewBag.ensaio == "Molas")
+                                    {
+                                        <td>
+                                            <a role="button" target="_blank" class="btn btn-success" asp-controller="Coleta" asp-action="EnsaioMolas7_2" asp-route-os="@Model[i].OS" asp-route-orcamento="@Model[i].orcamento">Abrir</a>
+                                        </td>
+                                        <td>
+                                            <a role="button" target="_blank" class="btn btn-success" asp-controller="Coleta" asp-action="EditarRegistroMolas" asp-route-os="@ViewBag.os" asp-route-orcamento="@ViewBag.orcamento">Informações</a>
+                                        </td>
+                                    }
+                                    else
+                                    {
+                                        <td>
+                                            <a role="button" target="_blank" class="btn btn-success" asp-controller="Coleta" asp-action="EnsaioEspuma4_1" asp-route-os="@Model[i].OS" asp-route-orcamento="@Model[i].orcamento">Abrir</a>
+                                        </td>
+                                        <td>
+                                            <a role="button" target="_blank" class="btn btn-success" asp-controller="Coleta" asp-action="EditarIndexEspuma" asp-route-os="@ViewBag.os" asp-route-orcamento="@ViewBag.orcamento">Informações</a>
+                                        </td>
+                                    }
+
                                 }
 
                                 @if (Model[i].codigo == "FLECCH001000001")
@@ -112,11 +134,17 @@
                                     <td>
                                         <a role="button" target="_blank" class="btn btn-success" asp-controller="Coleta" asp-action="EnsaioMolas7_8" asp-route-os="@Model[i].OS" asp-route-orcamento="@Model[i].orcamento">Abrir</a>
                                     </td>
+                                    <td>
+                                        <a role="button" target="_blank" class="btn btn-success" asp-controller="Coleta" asp-action="EditarRegistroMolas" asp-route-os="@ViewBag.os" asp-route-orcamento="@ViewBag.orcamento">Informações</a>
+                                    </td>
                                 }
                                 @if (Model[i].codigo == "IDTCCH001000001")
                                 {
                                     <td>
                                         <a role="button" target="_blank" class="btn btn-success" asp-controller="Coleta" asp-action="EnsaioMolas7_6" asp-route-os="@Model[i].OS" asp-route-orcamento="@Model[i].orcamento">Abrir</a>
+                                    </td>
+                                    <td>
+                                        <a role="button" target="_blank" class="btn btn-success" asp-controller="Coleta" asp-action="EditarRegistroMolas" asp-route-os="@ViewBag.os" asp-route-orcamento="@ViewBag.orcamento">Informações</a>
                                     </td>
                                 }
                                 @if (Model[i].codigo == "MLJCCH001000001")
@@ -124,11 +152,17 @@
                                     <td>
                                         <a role="button" target="_blank" class="btn btn-success" asp-controller="Coleta" asp-action="EnsaioMolas7_7" asp-route-os="@Model[i].OS" asp-route-orcamento="@Model[i].orcamento">Abrir</a>
                                     </td>
+                                    <td>
+                                        <a role="button" target="_blank" class="btn btn-success" asp-controller="Coleta" asp-action="EditarRegistroMolas" asp-route-os="@ViewBag.os" asp-route-orcamento="@ViewBag.orcamento">Informações</a>
+                                    </td>
                                 }
                                 @if (Model[i].codigo == "PRLCCH001000001")
                                 {
                                     <td>
                                         <a role="button" target="_blank" class="btn btn-success" asp-controller="Coleta" asp-action="EnsaioMolas7_1" asp-route-os="@Model[i].OS" asp-route-orcamento="@Model[i].orcamento">Abrir</a>
+                                    </td>
+                                    <td>
+                                        <a role="button" target="_blank" class="btn btn-success" asp-controller="Coleta" asp-action="EditarRegistroMolas" asp-route-os="@ViewBag.os" asp-route-orcamento="@ViewBag.orcamento">Informações</a>
                                     </td>
                                 }
                                 @if (Model[i].codigo == "RLGCCH001000001")
@@ -136,11 +170,17 @@
                                     <td>
                                         <a role="button" target="_blank" class="btn btn-success" asp-controller="Coleta" asp-action="EnsaioMolas7_3" asp-route-os="@Model[i].OS" asp-route-orcamento="@Model[i].orcamento">Abrir</a>
                                     </td>
+                                    <td>
+                                        <a role="button" target="_blank" class="btn btn-success" asp-controller="Coleta" asp-action="EditarRegistroMolas" asp-route-os="@ViewBag.os" asp-route-orcamento="@ViewBag.orcamento">Informações</a>
+                                    </td>
                                 }
                                 @if (Model[i].codigo == "CASCCH000000001")
                                 {
                                     <td>
-                                        <a role="button" target="_blank" class="btn btn-success" asp-controller="Coleta" asp-action="EnsaioEspuma4_4" asp-route-os="@Model[i].OS" asp-route-orcamento="@Model[i].orcamento">Abrir</a>
+                                        <a role="button" target="_blank" class="btn btn-success" asp-controller="Coleta" asp-action="Espuma4_4" asp-route-os="@Model[i].OS" asp-route-orcamento="@Model[i].orcamento">Abrir</a>
+                                    </td>
+                                    <td>
+                                        <a role="button" target="_blank" class="btn btn-success" asp-controller="Coleta" asp-action="EditarIndexEspuma" asp-route-os="@ViewBag.os" asp-route-orcamento="@ViewBag.orcamento">Informações</a>
                                     </td>
                                 }
                                 @if (Model[i].codigo == "COLCCH001000001")
@@ -148,35 +188,94 @@
                                     <td>
                                         <a role="button" target="_blank" class="btn btn-success" asp-controller="Coleta" asp-action="EnsaioEspuma4_3" asp-route-os="@Model[i].OS" asp-route-orcamento="@Model[i].orcamento">Abrir</a>
                                     </td>
+                                    <td>
+                                        <a role="button" target="_blank" class="btn btn-success" asp-controller="Coleta" asp-action="EditarIndexEspuma" asp-route-os="@ViewBag.os" asp-route-orcamento="@ViewBag.orcamento">Informações</a>
+                                    </td>
                                 }
                                 @if (Model[i].codigo == "CRGCCH003000001")
                                 {
                                     <td>
                                         <a role="button" target="_blank" class="btn btn-success" asp-controller="Coleta" asp-action="EnsaioBaseCargaEstatica" asp-route-os="@Model[i].OS" asp-route-orcamento="@Model[i].orcamento">Abrir</a>
                                     </td>
+                                    <td>
+                                        <a role="button" target="_blank" class="btn btn-success" asp-controller="Coleta" asp-action="EditarIndexEspuma" asp-route-os="@ViewBag.os" asp-route-orcamento="@ViewBag.orcamento">Informações</a>
+                                    </td>
                                 }
-
                                 @if (Model[i].codigo == "IMPCCH001000001")
                                 {
-                                    <td>
-                                        <a role="button" target="_blank" class="btn btn-success" asp-controller="Coleta" asp-action="EnsaioImpacto" asp-route-os="@Model[i].OS" asp-route-orcamento="@Model[i].orcamento">Abrir</a>
-                                    </td>
+                                    if(ViewBag.ensaio == "Molas")
+                                    {
+                                        <td>
+                                            <a role="button" target="_blank" class="btn btn-success" asp-controller="Coleta" asp-action="EnsaioImpacto" asp-route-os="@Model[i].OS" asp-route-orcamento="@Model[i].orcamento">Abrir</a>
+                                        </td>
+                                        <td>
+                                            <a role="button" target="_blank" class="btn btn-success" asp-controller="Coleta" asp-action="EditarRegistroMolas" asp-route-os="@ViewBag.os" asp-route-orcamento="@ViewBag.orcamento">Informações</a>
+                                        </td>
+                                    }
+                                    else
+                                    {
+                                        <td>
+                                            <a role="button" target="_blank" class="btn btn-success" asp-controller="Coleta" asp-action="EnsaioImpactoEspuma" asp-route-os="@Model[i].OS" asp-route-orcamento="@Model[i].orcamento">Abrir</a>
+                                        </td>
+                                        <td>
+                                            <a role="button" target="_blank" class="btn btn-success" asp-controller="Coleta" asp-action="EditarIndexEspuma" asp-route-os="@ViewBag.os" asp-route-orcamento="@ViewBag.orcamento">Informações</a>
+                                        </td>
+                                    }
+
                                 }
                                 @if (Model[i].codigo == "EMBCCH001000001")
                                 {
-                                    <td>
-                                        <a role="button" target="_blank" class="btn btn-success" asp-controller="Coleta" asp-action="IdentificacaoEmbalagemMolas" asp-route-os="@Model[i].OS" asp-route-orcamento="@Model[i].orcamento">Abrir</a>
-                                    </td>
+                                    if(ViewBag.ensaio == "Molas")
+                                    {
+                                        <td>
+                                            <a role="button" target="_blank" class="btn btn-success" asp-controller="Coleta" asp-action="IdentificacaoEmbalagemMolas" asp-route-os="@Model[i].OS" asp-route-orcamento="@Model[i].orcamento">Abrir</a>
+                                        </td>
+                                        <td>
+                                            <a role="button" target="_blank" class="btn btn-success" asp-controller="Coleta" asp-action="EditarRegistroMolas" asp-route-os="@ViewBag.os" asp-route-orcamento="@ViewBag.orcamento">Informações</a>
+                                        </td>
+                                    }
+                                    else
+                                    {
+                                        <td>
+                                            <a role="button" target="_blank" class="btn btn-success" asp-controller="Coleta" asp-action="IdentificacaoEmbalagem" asp-route-os="@Model[i].OS" asp-route-orcamento="@Model[i].orcamento">Abrir</a>
+                                        </td>
+                                        <td>
+                                            <a role="button" target="_blank" class="btn btn-success" asp-controller="Coleta" asp-action="EditarIndexEspuma" asp-route-os="@ViewBag.os" asp-route-orcamento="@ViewBag.orcamento">Informações</a>
+                                        </td>
+                                    }
+                                  
                                 }
                                 @if (Model[i].codigo == "DURCCH000000001")
+                                {
+                                    @if (ViewBag.Ensaio == "Molas")
+                                    {
+                                        <td>
+                                            <a role="button" target="_blank" class="btn btn-success" asp-controller="Coleta" asp-action="EnsaioDurabilidade" asp-route-os="@Model[i].OS" asp-route-orcamento="@Model[i].orcamento">Abrir</a>
+                                        </td>
+                                        <td>
+                                            <a role="button" target="_blank" class="btn btn-success" asp-controller="Coleta" asp-action="EditarRegistroMolas" asp-route-os="@ViewBag.os" asp-route-orcamento="@ViewBag.orcamento">Informações</a>
+                                        </td>
+                                    }
+                                    else
+                                    {
+                                        <td>
+                                            <a role="button" target="_blank" class="btn btn-success" asp-controller="Coleta" asp-action="EnsaioDurabilidadeEspuma" asp-route-os="@Model[i].OS" asp-route-orcamento="@Model[i].orcamento">Abrir</a>
+                                        </td>
+                                        <td>
+                                            <a role="button" target="_blank" class="btn btn-success" asp-controller="Coleta" asp-action="EditarIndexEspuma" asp-route-os="@ViewBag.os" asp-route-orcamento="@ViewBag.orcamento">Informações</a>
+                                        </td>
+                                    }
+                                }
+                                @if (Model[i].codigo == "DNSCCH002000001")
                                 {
                                     <td>
                                         <a role="button" target="_blank" class="btn btn-success" asp-controller="Coleta" asp-action="EnsaioDurabilidade" asp-route-os="@Model[i].OS" asp-route-orcamento="@Model[i].orcamento">Abrir</a>
                                     </td>
+                                    <td>
+                                        <a role="button" target="_blank" class="btn btn-success" asp-controller="Coleta" asp-action="EditarRegistroMolas" asp-route-os="@ViewBag.os" asp-route-orcamento="@ViewBag.orcamento">Informações</a>
+                                    </td>
                                 }
-                                <td>
-                                    <a role="button" target="_blank" class="btn btn-success" asp-controller="Coleta" asp-action="EditarRegistroMolas" asp-route-os="@ViewBag.os" asp-route-orcamento="@ViewBag.orcamento">Informações</a>
-                                </td>
+                               
                             </tr>
                         }
                         @if (ViewBag.estrutura != null)

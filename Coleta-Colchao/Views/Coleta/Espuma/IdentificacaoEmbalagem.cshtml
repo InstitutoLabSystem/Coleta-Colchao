@@ -11,7 +11,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">ol
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="~/css/coleta.css" asp-append-version="true" />
     <title>Coleta</title>
 </head>
@@ -623,7 +623,7 @@
             </table>
 
             @* inicio de outras tabelas *@
-            <table class="tables table-bordered border-secondary  table-sm">
+            @* <table class="tables table-bordered border-secondary  table-sm">
                 <tr class="fundo-tabela">
                     <td colspan=" 4">
                         Instrumento(s)/Dispositivo(s)/Equipamento(s) Utilizado(s) que Requer(em) Calibração
@@ -693,7 +693,10 @@
                         <button type="submit" value="EspumaIdentificacaoEmbalagem" class="btn btn-danger">Salvar Coleta </button>
                     </td>
                 </tr>
-            </table>
+            </table> *@
+            <div class="d-grid gap-2 d-flex justify-content-center">
+                <button type="submit" class="btn btn-success btn btn-primary btn-md">Editar</button>
+            </div>
         }
         else
         {
@@ -1310,7 +1313,7 @@
                     <td>validade(s)</td>
                 </tr>
             </table>
-            <table class="tables table-bordered border-secondary  table-sm">
+          @*   <table class="tables table-bordered border-secondary  table-sm">
                 <tr class="fundo-tabela">
                     <td colspan=" 4">
                         Dispositivo(s)/Equipamento(s) Utilizado(s) que Não Requer(em) Calibração
@@ -1367,7 +1370,10 @@
                         <button type="submit" value="EspumaIdentificacaoEmbalagem" class="btn btn-success"> Editar </button>
                     </td>
                 </tr>
-            </table>
+            </table> *@
+            <div class="d-grid gap-2 d-flex justify-content-center">
+                <button type="submit" class="btn btn-success btn btn-primary btn-md">Editar</button>
+            </div>
         }
 
 

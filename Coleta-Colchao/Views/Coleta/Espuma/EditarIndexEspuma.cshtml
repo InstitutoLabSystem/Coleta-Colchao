@@ -1,0 +1,314 @@
+﻿@model ColetaModel.RegistroEspuma;
+﻿@{
+    ViewData["Title"] = "Index Espuma";
+}
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="~/css/coleta.css" asp-append-version="true" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        .full-height {
+            min-height: 80vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            border-bottom: 2px solid rgba(255,255,255, 0.1);
+            align-items: center;
+        }
+
+        .hidden {
+            opacity: 0;
+            filter: blur(15px);
+            transform: translateX(-100%);
+            transition: all 0.2s;
+        }
+
+        .show {
+            opacity: 1;
+            filter: blur(0);
+            transform: translateX(0);
+            transition: all 0.5s;
+        }
+
+        .sessaodois {
+            display: none;
+        }
+
+        .estilo-select {
+            background-color: #F0F0F0;
+            border: 1px solid #CCCCCC;
+            padding: 5px;
+            border-radius: 5px;
+        }
+
+        .densidade_1, .densidade_2, .densidade_3, .densidade_4, .densidade_5 {
+            display: none;
+        }
+
+        body {
+            padding: 0px;
+            margin: 0;
+            background-color: #fafafa;
+        }
+    </style>
+</head>
+<body>
+
+    <form method="post" asp-controller="Coleta" asp-action="EditarRegistroEspuma" asp-route-os="@ViewBag.os" asp-route-orcamento="@ViewBag.orcamento">
+        <div class="full-height text-center">
+            <table class="tables table-bordered border-secondary  table-sm">
+                <tr>
+                    <td colspan="5" class="fundo-tabela">
+                        <h1>
+                            Informações Iniciais
+                        </h1>
+                    </td>
+                </tr>
+                <tr>
+                    <td> Orçamento : </td>
+                    <td colspan="4"> <input class="form-control" type="text" value="@ViewBag.orcamento" readonly name="orcamento" /> </td>
+                </tr>
+                <tr>
+                    <td> Ordem de serviço : </td>
+                    <td colspan="4"> <input class="form-control" type="text" value="@ViewBag.os" readonly name="os" /> </td>
+                </tr>
+                <tr>
+                    <td> Contém Lacre : </td>
+                    <td>
+                        <select class="form-control" asp-for="lacre">
+                            <option value="Sim">Sim</option>
+                            <option value="Não">Não</option>
+                        </select>
+                    </td>
+                    <td> Local da realização dos ensaios : </td>
+                    <td colspan="2"> <input class="form-control" type="text" asp-for="realizacao_ensaios" /> </td>
+                </tr>
+                <tr>
+                    <td> Quantidade recebida : </td>
+                    <td> <input class="form-control" type="text" asp-for="quant_recebida" /> </td>
+                    <td> Quantidade Ensaiada :  </td>
+                    <td colspan="2"> <input class="form-control" type="text" asp-for="quant_ensaiada" /> </td>
+                </tr>
+                <tr>
+                    <td> Data de realização dos ensaios: </td>
+                    <td> Ínicio: </td>
+                    <td> <input class="form-control" type="date" asp-for="data_realizacao_ini" /> </td>
+                    <td> Término :  </td>
+                    <td> <input class="form-control" type="date" asp-for="data_realizacao_term" /> </td>
+                </tr>
+            </table>
+
+            <table class="tables table-bordered border-secondary  table-sm">
+                <tr>
+                    <td> Número de processo </td>
+                    <td> <input class="form-control" type="text" asp-for="num_proc" /> </td>
+                    <td> Código de referência </td>
+                    <td> <input class="form-control" type="text" asp-for="cod_ref" /> </td>
+                </tr>
+                <tr>
+                    <td> Tipo de certificação </td>
+                    <td colspan="2"> Modelo de certificação </td>
+                    <td> Tipo de processo: </td>
+                </tr>
+                <tr>
+                    <td> <input class="form-control" type="text" asp-for="tipo_cert" /> </td>
+                    <td colspan="2"> <input class="form-control" type="text" name="modelo_cert" /> </td>
+                    <td> <input class="form-control" type="text" asp-for="tipo_proc" /> </td>
+                </tr>
+                <tr>
+                    <td> Produto </td>
+                    <td colspan="3"> <input class="form-control" type="text" asp-for="produto" /> </td>
+                </tr>
+                <tr>
+                    <td> Classificação do protudo </td>
+                    <td colspan="3">
+                        @*                         <input class="form-control" type="text" name="estruturs" /> @*@
+                        <select class="form-control" asp-for="clasi_produto">
+                            <option value="Simples">Simples</option>
+                            <option value="Composto">Composto</option>
+                        </select>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td> Tipo Do Colchão </td>
+                    <td colspan="3">
+                        @*                         <input class="form-control" type="text" name="estruturs" /> @*@
+                        <select class="form-control" asp-for="tipo_colchao">
+                            <option value="Colchão De Espuma">Colchão De Espuma</option>
+                            <option value="Colchonete">Colchonete</option>
+                            <option value="Colchão Infantil">Colchão Infantil</option>
+                            <option value="Colchão Auxiliar">Colchão Auxiliar</option>
+                            <option value="Colchão Box Conjugado">Colchão Box Conjugado</option>
+                            <option value="Colchão Misto">Colchão Misto</option>
+                        </select>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td> Uso </td>
+                    <td colspan="3">
+                        <select class="form-control" asp-for="uso">
+                            <option value="Geral">Geral</option>
+                            <option value="Infantil">Infantil</option>
+                            <option value="Hospitalar">Hospitalar</option>
+                        </select>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>Tipo Da Espuma</td>
+                    <td colspan="3">
+                        <select class="form-control" asp-for="tipo_espuma">
+                            <option value="Convencional">Convencional</option>
+                            <option value="Macia">Macia</option>
+                            <option value="Hipermacia">Hipermacia</option>
+                            <option value="Aglomerado">Aglomerado</option>
+                            <option value="Alta Resiliência">Alta Resiliência</option>
+                            <option value="Viscoelástica">Viscoelástica</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Quantidade de Lâminas</td>
+                    <td colspan="3">
+                        <select class="form-control" asp-for="quant_laminas" id="quantidade" name="quantidade">
+                            <option value="Escolha">Selecione...</option>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr class="densidade_1">
+                    <td>
+                        Densidade Da Espuma
+                    </td>
+                    <td colspan="3"><input class="form-control" type="text" asp-for="densidade_1" /> </td>
+                </tr>
+                <tr class="densidade_2">
+                    <td>
+                        Densidade Da Espuma
+                    </td>
+                    <td colspan="3"><input class="form-control" type="text" asp-for="densidade_2" /> </td>
+                </tr>
+                <tr class="densidade_3">
+                    <td>
+                        Densidade Da Espuma
+                    </td>
+                    <td colspan="3"><input class="form-control" type="text" asp-for="densidade_3" /> </td>
+                </tr>
+                <tr class="densidade_4">
+                    <td>
+                        Densidade Da Espuma
+                    </td>
+                    <td colspan="3"><input class="form-control" type="text" asp-for="densidade_4" /> </td>
+                </tr>
+                <tr class="densidade_5">
+                    <td>
+                        Densidade Da Espuma
+                    </td>
+                    <td colspan="3"><input class="form-control" type="text" asp-for="densidade_5" /> </td>
+                </tr>
+                <tr>
+                    <td>Possui Revestimento</td>
+                    <td colspan="3">
+                        <select class="form-control" asp-for="revestimento">
+
+                            <option value="Sim">Sim</option>
+                            <option value="Não">Não</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Outros Materiais</td>
+                    <td colspan="3">
+                        <select class="form-control" asp-for="outros_materia">
+                            <option value="Couvin">Couvin</option>
+                            <option value="Plástico">Plástico</option>
+                            <option value="Lâmina  Latex">Lâmina  Latex</option>
+                            <option value="Lâmina Rabatan">Lâmina Rabatan</option>
+                            <option value="Etil vinil acetato (EVA)">Etil vinil acetato (EVA)</option>
+                            <option value="Elementos magnéticos">Elementos magnéticos</option>
+                            <option value="Massageadores">Massageadores</option>
+                            <option value="Infravermelho">Infravermelho</option>
+                        </select>
+                    </td>
+                </tr>
+            </table>
+            <tr>
+                <td >
+                    <button type="submit" class="btn btn-success"> Salvar Informações</button>
+                </td>
+            </tr>
+        </div>
+    </form>
+
+
+
+    @if (TempData.ContainsKey("Mensagem"))
+    {
+        <script>
+            alert('@Html.Raw(TempData["Mensagem"])');
+        </script>
+    }
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            var selectQuantMolas = document.querySelector('select[name="quantidade"]');
+
+            selectQuantMolas.addEventListener('change', function () {
+                var selectedValue = selectQuantMolas.value;
+                console.log(selectedValue);
+                var trDensidade1 = document.querySelector('.densidade_1');
+                var trDensidade2 = document.querySelector('.densidade_2');
+                var trDensidade3 = document.querySelector('.densidade_3');
+                var trDensidade4 = document.querySelector('.densidade_4');
+                var trDensidade5 = document.querySelector('.densidade_5');
+
+                trDensidade1.style.display = 'none';
+                trDensidade2.style.display = 'none';
+                trDensidade3.style.display = 'none';
+                trDensidade4.style.display = 'none';
+                trDensidade5.style.display = 'none';
+
+                // Mostrar as trs com base no valor selecionado
+                if (selectedValue === '1') {
+                    trDensidade1.style.display = 'table-row';
+                } else if (selectedValue === '2'){
+                    trDensidade1.style.display = 'table-row';
+                    trDensidade2.style.display = 'table-row';
+                } else if (selectedValue === '3') {
+                    trDensidade1.style.display = 'table-row';
+                    trDensidade2.style.display = 'table-row';
+                    trDensidade3.style.display = 'table-row';
+                } else if (selectedValue === '4') {
+                    trDensidade1.style.display = 'table-row';
+                    trDensidade2.style.display = 'table-row';
+                    trDensidade3.style.display = 'table-row';
+                    trDensidade4.style.display = 'table-row';
+                }else{
+                    trDensidade1.style.display = 'table-row';
+                    trDensidade2.style.display = 'table-row';
+                    trDensidade3.style.display = 'table-row';
+                    trDensidade4.style.display = 'table-row';
+                    trDensidade5.style.display = 'table-row';
+                }
+            });
+        });
+    </script>
+    @if (TempData.ContainsKey("Mensagem"))
+    {
+        <script>
+            alert('@Html.Raw(TempData["Mensagem"])');
+
+        </script>
+    }
+
+</body>
+</html>

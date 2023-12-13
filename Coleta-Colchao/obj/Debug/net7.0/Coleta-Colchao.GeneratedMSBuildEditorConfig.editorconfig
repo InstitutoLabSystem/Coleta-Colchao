@@ -34,8 +34,20 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ29sZXRhXEVuc2Fpb0R1cmFiaWxpZGFkZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Users/Molina/source/repos/InstitutoLabSystem/Coleta-Colchao/Coleta-Colchao/Views/Coleta/EnsaioDurabilidadeEspuma.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ29sZXRhXEVuc2Fpb0R1cmFiaWxpZGFkZUVzcHVtYS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/Molina/source/repos/InstitutoLabSystem/Coleta-Colchao/Coleta-Colchao/Views/Coleta/EnsaioImpacto.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ29sZXRhXEVuc2Fpb0ltcGFjdG8uY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Molina/source/repos/InstitutoLabSystem/Coleta-Colchao/Coleta-Colchao/Views/Coleta/EnsaioImpactoEspuma.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ29sZXRhXEVuc2Fpb0ltcGFjdG9Fc3B1bWEuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Molina/source/repos/InstitutoLabSystem/Coleta-Colchao/Coleta-Colchao/Views/Coleta/Espuma/EditarIndexEspuma.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ29sZXRhXEVzcHVtYVxFZGl0YXJJbmRleEVzcHVtYS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/Molina/source/repos/InstitutoLabSystem/Coleta-Colchao/Coleta-Colchao/Views/Coleta/Espuma/EnsaioEspuma4_1.cshtml]
@@ -44,6 +56,10 @@ build_metadata.AdditionalFiles.CssScope =
 
 [C:/Users/Molina/source/repos/InstitutoLabSystem/Coleta-Colchao/Coleta-Colchao/Views/Coleta/Espuma/EnsaioEspuma4_3.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ29sZXRhXEVzcHVtYVxFbnNhaW9Fc3B1bWE0XzMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Molina/source/repos/InstitutoLabSystem/Coleta-Colchao/Coleta-Colchao/Views/Coleta/Espuma/Espuma4_4.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ29sZXRhXEVzcHVtYVxFc3B1bWE0XzQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/Molina/source/repos/InstitutoLabSystem/Coleta-Colchao/Coleta-Colchao/Views/Coleta/Espuma/IdentificacaoEmbalagem.cshtml]

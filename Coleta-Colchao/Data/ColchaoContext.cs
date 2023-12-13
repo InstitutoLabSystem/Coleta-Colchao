@@ -19,12 +19,15 @@ namespace Coleta_Colchao.Data
         public DbSet<ColetaModel.Ensaio7_7> ensaio_molas_item7_7 { get; set; }
         public DbSet<ColetaModel.Ensaio7_3> ensaio_molas_item7_3 { get; set; }
         public DbSet<ColetaModel.Espuma4_3> ensaio_espuma4_3 { get; set; }
+        public DbSet<ColetaModel.EnsaioEspuma4_4> ensaio_espuma_item_4_4 { get; set; }
         public DbSet<ColetaModel.Espuma_identificacao_embalagem> espuma_identificacao_embalagem { get; set; }
         public DbSet<ColetaModel.EnsaioIdentificacaoEmbalagem> ensaio_identificacao_embalagem { get; set; }
+        public DbSet<ColetaModel.CargasEstatica> ensaio_base_carga_estatica { get; set; }
         //public DbSet<ColetaModel.Teste> teste { get; set; }
         public DbSet<ColetaModel.EnsaioBaseDurabilidade> ensaio_base_durabilidade { get; set; }
         public DbSet<ColetaModel.EnsaioBaseImpactoVertical> ensaio_base_impacto_vertical { get; set; }
         public DbSet<ColetaModel.EnsaioBaseDurabilidadeEstrutural> ensaio_base_durabilidade_estrutural { get; set; }
+        public DbSet<ColetaModel.RegistroEspuma> regtro_colchao_espuma { get; set; }
 
     }
 }

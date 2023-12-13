@@ -49,6 +49,40 @@ namespace Coleta_Colchao.Models
 
         }
 
+        public class RegistroEspuma
+        {
+            [Key]
+            public int Id { get; set; }
+            public string orcamento { get; set; }
+            public string os { get; set; }
+            public string? lacre { get; set; }
+            public string? realizacao_ensaios { get; set; }
+            public string? quant_recebida { get; set; }
+            public string? quant_ensaiada { get; set; }
+            public DateOnly data_realizacao_ini { get; set; }
+            public DateOnly data_realizacao_term { get; set; }
+            public string? num_proc { get; set; }
+            public string? cod_ref { get; set; }
+            public string? tipo_cert { get; set; }
+            public string? modelo_cert { get; set; }
+            public string? tipo_proc { get; set; }
+            public string? produto { get; set; }
+            public string? clasi_produto { get; set; }
+            public string? tipo_colchao { get; set; }
+            public string? uso { get; set; }
+            public string? tipo_espuma { get; set; }
+            public int quant_laminas { get; set; }
+            public string? densidade_1 { get; set; }
+            public string? densidade_2 { get; set; }
+            public string? densidade_3 { get; set; }
+            public string? densidade_4 { get; set; }
+            public string? densidade_5 { get; set; }
+            public string? revestimento { get; set; }
+            public string? outros_materia { get; set; }
+            public string? status { get; set; }
+
+        }
+
         public class EspumaUm
         {
             [Key]
@@ -697,6 +731,44 @@ namespace Coleta_Colchao.Models
             public string? executor { get; set; }
         }
 
+        public class EnsaioEspuma4_4
+        {
+            [Key]
+            public int Id { get; set; }
+            public string os { get; set; }
+            public string orcamento { get; set; }
+            public DateOnly data_ini { get; set; }
+            public DateOnly data_term { get; set; }
+            public string? superior_horizontal { get; set; }
+            public string? inferior_horizontal { get; set; }
+            public string? executor { get; set; }
+            public string? auxiliar { get; set; }
+        }
+
+        public class CargasEstatica
+        {
+            [Key]
+            public int Id { get; set; }
+            public string os { get; set; }
+            public string orcamento { get; set; }
+            public DateOnly data_ini { get; set; }
+            public DateOnly data_term { get; set; }
+            public DateOnly data_ini_ens { get; set; }
+            public DateOnly data_term_ens { get; set; }
+            public TimeOnly hora_ensaio { get; set; }
+            public TimeOnly term_ensaio { get; set; }
+            public string? temp_min { get; set; }
+            public string? temp_max { get; set; }
+            public string? local_aplicado { get; set; }
+            public string? forca_aplicada { get; set; }
+            public string? aplicacao_carga { get; set; }
+            public string? suportou_aplicacao { get; set; }
+            public string? ruptura { get; set; }
+            public string? afundamento { get; set; }
+            public string? rasgo { get; set; }
+            public string? rompimento { get; set; }
+            public string? prejudique { get; set; }
+        }
 
         //public class Teste
         //{

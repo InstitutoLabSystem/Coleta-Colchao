@@ -25,12 +25,11 @@
     </style>
 </head>
 <body>
-
     <form method="post" asp-controller="coleta" asp-action="salvarBaseDurabilidade" asp-route-os="@ViewBag.os" asp-route-orcamento="@ViewBag.orcamento">
         @if (Model == null)
         {
-
             <table class="tables table-bordered border-secondary  table-sm">
+                <input name="ensaio" type="hidden" value="@ViewBag.ensaio"/>
                 <thead>
                     <tr>
                         <td><img src="https://www.labsystem-nuvem.com.br/imagens_arq/imagens/img/LabSystem.png" class="imagem" /></td>

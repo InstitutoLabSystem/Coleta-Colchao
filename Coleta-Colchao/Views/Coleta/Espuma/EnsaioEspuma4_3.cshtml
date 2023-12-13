@@ -4,7 +4,7 @@
     Layout = null;
 }
 @{
-    ViewData["Title"] = "";
+    ViewData["Title"] = "AVALIAÇÃO DA COLAGEM";
 }
 
 <!DOCTYPE html>
@@ -17,10 +17,10 @@
     <title>Coleta</title>
 </head>
 <body>
-    <br/>
+    <br />
     <form asp-controller="Coleta" class="meuFormulario" id="form1" asp-action="SalvarEspuma4_3" method="post" asp-route-os="@ViewData["os"]" asp-route-orcamento="@ViewData["orcamento"]">
-        
-        @if(Model == null)
+
+        @if (Model == null)
         {
             <table class="tables table-bordered border-secondary  table-sm">
                 <thead>
@@ -67,7 +67,7 @@
                     <td>
                         <strong> Colchão tipo simples </strong> <br /> <br />
                         A lâmina colada sobre a lâmina central deve ser composta de uma única peça. <br />
-                        A lâmina central é composta por um uúnica peça?   
+                        A lâmina central é composta por um uúnica peça?
                         <select class="form-control" name="lamina_central">
                             <option selected> --- </option>
                             <option> Sim </option>
@@ -79,9 +79,9 @@
                     <td class="fundo-tabela"> Colagem horizontal com peça inteira </td>
                 </tr>
                 <tr>
-                    <td> 
+                    <td>
                         Pode haver no máximo duas colagens na horizontal, de mesma densidade. <br /> <br />
-                        Quantidades de colagens   <input class="form-control" type="text" name="quant_colagens"/> <br /> <br />
+                        Quantidades de colagens   <input class="form-control" type="text" name="quant_colagens" /> <br /> <br />
                         As colagens são de mesmas densidades
                         <select class="form-control" name="colagens_densidade">
                             <option selected> --- </option>
@@ -89,14 +89,14 @@
                             <option> Não </option>
                         </select> <br /> <br />
                         A lâmina central deve ter no mínimo 50%  da espessura nominal do produto sem o revestimento <br /> <br />
-                        Espessura nominal do produto sem o revestimento 
-                        <input class="form-control" type="text" name="espessura_nominal"/> <br /> <br />
-                        Espessura da lâmina central encontrado 
+                        Espessura nominal do produto sem o revestimento
+                        <input class="form-control" type="text" name="espessura_nominal" /> <br /> <br />
+                        Espessura da lâmina central encontrado
                         <input class="form-control" type="text" name="espessura_central" /> <br /> <br />
-                        Porcentagem encontrada 
-                        <input class="form-control" type="text" name="porcentagem_enc"/> <br /> <br />
+                        Porcentagem encontrada
+                        <input class="form-control" type="text" name="porcentagem_enc" /> <br /> <br />
                         A menor lâmina do colchão ou colchonete deve ter no mínimo 3 cm de espessura.  <br /> <br />
-                        Espessura da menor lâmina 
+                        Espessura da menor lâmina
                         <input class="form-control" type="text" name="lamina_menor_esp" /> <br /> <br />
 
                     </td>
@@ -132,7 +132,7 @@
                     <td>
                         <strong> Colagem horizontal </strong> <br /> <br />
                         As colagens horizontais devem ocorrer entre as espumas de características diferentes, porém com espessura mínima de 3 cm.<br /> <br />
-                        Ocorrem entre as espumas de características diferente?  
+                        Ocorrem entre as espumas de características diferente?
                         <select class="form-control" name="espuma">
                             <option selected> --- </option>
                             <option> Sim </option>
@@ -142,42 +142,42 @@
                         <table class="tables table-bordered border-secondary  table-sm">
                             <tr>
                                 <td class="fundo-tabela"> Espessura da lâmina </td>
-                                <td> <input class="form-control" type="text"  name="esp_lamina_um"/> </td>
+                                <td> <input class="form-control" type="text" name="esp_lamina_um" /> </td>
                             </tr>
                             <tr>
                                 <td class="fundo-tabela"> Espessura da lâmina </td>
-                                <td> <input class="form-control" type="text"  name="esp_lamina_dois" /> </td>
+                                <td> <input class="form-control" type="text" name="esp_lamina_dois" /> </td>
                             </tr>
                             <tr>
                                 <td class="fundo-tabela"> Espessura da lâmina </td>
-                                <td> <input class="form-control" type="text"  name="esp_lamina_tres" /> </td>
+                                <td> <input class="form-control" type="text" name="esp_lamina_tres" /> </td>
                             </tr>
                             <tr>
                                 <td class="fundo-tabela"> Espessura da lâmina </td>
-                                <td> <input class="form-control" type="text"  name="esp_lamina_quat" /> </td>
+                                <td> <input class="form-control" type="text" name="esp_lamina_quat" /> </td>
                             </tr>
                             <tr>
                                 <td class="fundo-tabela"> Espessura da lâmina </td>
-                                <td> <input class="form-control" type="text"  name="esp_lamina_cinco" /> </td>
+                                <td> <input class="form-control" type="text" name="esp_lamina_cinco" /> </td>
                             </tr>
                             <tr>
                                 <td class="fundo-tabela"> Espessura da lâmina </td>
-                                <td> <input class="form-control" type="text"  name="esp_lamina_seis" /> </td>
+                                <td> <input class="form-control" type="text" name="esp_lamina_seis" /> </td>
                             </tr>
                             <tr>
                                 <td class="fundo-tabela"> Espessura da lâmina </td>
-                                <td> <input class="form-control" type="text"  name="esp_lamina_sete" /> </td>
+                                <td> <input class="form-control" type="text" name="esp_lamina_sete" /> </td>
                             </tr>
                             <tr>
                                 <td class="fundo-tabela"> Espessura da lâmina </td>
-                                <td> <input class="form-control" type="text"  name="esp_lamina_oito" /> </td>
+                                <td> <input class="form-control" type="text" name="esp_lamina_oito" /> </td>
                             </tr>
                         </table>
                     </td>
                 </tr>
                 <tr>
                     <td class="fundo-tabela">
-                        <strong> Colagem na largura </strong> 
+                        <strong> Colagem na largura </strong>
                     </td>
                 </tr>
                 <tr>
@@ -191,77 +191,77 @@
                 </tr>
                 <tr>
                     <td class="fundo-tabela">
-                        <strong> Colagem no comprimento </strong> 
+                        <strong> Colagem no comprimento </strong>
                     </td>
-                    <tr>
-                        <td>
-                            Pode ser utilizada uma colagem no sentido do comprimento, somente para colchão de casal, 
-                            utilizando-se espumas convecionais de densidades distintas, desde que não haja colagem na largura.
-                            Esta colagem deve ser localizada no centro do colchão. <br /> <br />
-                            O colchão é de casal
-                            <select class="form-control" name="colchao_casal">
-                                <option selected> --- </option>
-                                <option> Sim </option>
-                                <option> Não </option>
-                            </select> <br /> <br />
-                            Possuí colagem no sentido do comprimento?
-                            <select class="form-control" name="colagem_comp">
-                                <option selected> --- </option>
-                                <option> Sim </option>
-                                <option> Não </option>
-                            </select> <br /> <br />
-                            A espuma é convencional
-                            <select class="form-control" name="espuma_conv">
-                                <option selected> --- </option>
-                                <option> Sim </option>
-                                <option> Não </option>
-                            </select> <br /> <br />
-                            As espumas possuem densidades distintas
-                            <select class="form-control" name="espuma_densidade">
-                                <option selected> --- </option>
-                                <option> Sim </option>
-                                <option> Não </option>
-                            </select> <br /> <br />
-                            Possui colagem na largura
-                            <select class="form-control" name="colagem_largura">
-                                <option selected> --- </option>
-                                <option> Sim </option>
-                                <option> Não </option>
-                            </select> <br /> <br />
-                            Quantidades de colagens <input class="form-control" type="text"  name="quant_colagens_quat"/> <br /> <br />
-                            A colagem está localizada no centro do colchão? 
-                            <select class="form-control" name="localidade">
-                                <option selected> --- </option>
-                                <option> Sim </option>
-                                <option> Não </option>
-                            </select> <br /> <br />
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="fundo-tabela"> Colchonete </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            Somente é permitada uma colagem na horizontal com espessura mínima de 3 cm. <br /> <br />
-                            Quantidades de colagens  <input class="form-control" type="text" name="quant_colagens_cinco"/> <br /> <br />
-                            Espessura da lâmina <input class="form-control" type="text" name="espessura_lamina"/> <br /> <br />
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="fundo-tabela"> Colagem com adesivos á base de solventes aromáticos </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            Não é permitido o uso de adesviso à base de solventes aromáticos em colchão infantil. <br /> <br />
-                            Possui adesivos à base de solventes aromáticos?
-                            <select class="form-control" name="adesivo">
-                                <option selected> --- </option>
-                                <option> Sim </option>
-                                <option> Não </option>
-                            </select> <br /> <br />
-                        </td>
+                <tr>
+                    <td>
+                        Pode ser utilizada uma colagem no sentido do comprimento, somente para colchão de casal,
+                        utilizando-se espumas convecionais de densidades distintas, desde que não haja colagem na largura.
+                        Esta colagem deve ser localizada no centro do colchão. <br /> <br />
+                        O colchão é de casal
+                        <select class="form-control" name="colchao_casal">
+                            <option selected> --- </option>
+                            <option> Sim </option>
+                            <option> Não </option>
+                        </select> <br /> <br />
+                        Possuí colagem no sentido do comprimento?
+                        <select class="form-control" name="colagem_comp">
+                            <option selected> --- </option>
+                            <option> Sim </option>
+                            <option> Não </option>
+                        </select> <br /> <br />
+                        A espuma é convencional
+                        <select class="form-control" name="espuma_conv">
+                            <option selected> --- </option>
+                            <option> Sim </option>
+                            <option> Não </option>
+                        </select> <br /> <br />
+                        As espumas possuem densidades distintas
+                        <select class="form-control" name="espuma_densidade">
+                            <option selected> --- </option>
+                            <option> Sim </option>
+                            <option> Não </option>
+                        </select> <br /> <br />
+                        Possui colagem na largura
+                        <select class="form-control" name="colagem_largura">
+                            <option selected> --- </option>
+                            <option> Sim </option>
+                            <option> Não </option>
+                        </select> <br /> <br />
+                        Quantidades de colagens <input class="form-control" type="text" name="quant_colagens_quat" /> <br /> <br />
+                        A colagem está localizada no centro do colchão?
+                        <select class="form-control" name="localidade">
+                            <option selected> --- </option>
+                            <option> Sim </option>
+                            <option> Não </option>
+                        </select> <br /> <br />
+                    </td>
+                </tr>
+                <tr>
+                    <td class="fundo-tabela"> Colchonete </td>
+                </tr>
+                <tr>
+                    <td>
+                        Somente é permitada uma colagem na horizontal com espessura mínima de 3 cm. <br /> <br />
+                        Quantidades de colagens  <input class="form-control" type="text" name="quant_colagens_cinco" /> <br /> <br />
+                        Espessura da lâmina <input class="form-control" type="text" name="espessura_lamina" /> <br /> <br />
+                    </td>
+                </tr>
+                <tr>
+                    <td class="fundo-tabela"> Colagem com adesivos á base de solventes aromáticos </td>
+                </tr>
+                <tr>
+                    <td>
+                        Não é permitido o uso de adesviso à base de solventes aromáticos em colchão infantil. <br /> <br />
+                        Possui adesivos à base de solventes aromáticos?
+                        <select class="form-control" name="adesivo">
+                            <option selected> --- </option>
+                            <option> Sim </option>
+                            <option> Não </option>
+                        </select> <br /> <br />
+                    </td>
 
-                    </tr>
+                </tr>
             </table>
 
             <table class="tables table-bordered border-secondary  table-sm">
@@ -341,7 +341,7 @@
                     <td>
                         <textarea class="form-control w-100 mr-2 input" name="observacoes">
 
-                        </textarea>
+                            </textarea>
                     </td>
                 </tr>
             </table>
@@ -379,7 +379,7 @@
                     </tr>
                     <tr>
                         <td>Inicio:</td>
-                        <td><input class="form-control" type="text" name="data_ini" value="@Model.data_ini"/></td>
+                        <td><input class="form-control" type="text" name="data_ini" value="@Model.data_ini" /></td>
                         <td>Termino:</td>
                         <td><input class="form-control" type="text" name="data_term" value="@Model.data_term" /></td>
                     </tr>
@@ -391,7 +391,7 @@
                     <td>Temperatura Inicial:</td>
                     <td><input class="form-control" type="text" name="temp_ini" value="@Model.temp_ini" /></td>
                     <td>Temperatura Final:</td>
-                    <td><input class="form-control" type="text" name="temp_fim" value="@Model.temp_fim"/></td>
+                    <td><input class="form-control" type="text" name="temp_fim" value="@Model.temp_fim" /></td>
                 </tr>
             </table>
             <br />
@@ -412,7 +412,7 @@
                         <strong> Colchão tipo simples </strong> <br /> <br />
                         A lâmina colada sobre a lâmina central deve ser composta de uma única peça. <br />
                         A lâmina central é composta por um uúnica peça?
-                        <select class="form-control" name="lamina_central" >
+                        <select class="form-control" name="lamina_central">
                             <option selected> @Model.lamina_central </option>
                             <option> Sim </option>
                             <option> Não </option>
@@ -436,7 +436,7 @@
                         Espessura nominal do produto sem o revestimento
                         <input class="form-control" type="text" name="espessura_nominal" value="@Model.espessura_nominal" /> <br /> <br />
                         Espessura da lâmina central encontrado
-                        <input class="form-control" type="text" name="espessura_central" value="@Model.espessura_central"/> <br /> <br />
+                        <input class="form-control" type="text" name="espessura_central" value="@Model.espessura_central" /> <br /> <br />
                         Porcentagem encontrada
                         <input class="form-control" type="text" name="porcentagem_enc" value="@Model.porcentagem_enc" /> <br /> <br />
                         A menor lâmina do colchão ou colchonete deve ter no mínimo 3 cm de espessura.  <br /> <br />
@@ -454,11 +454,11 @@
                     <td>
                         Pode haver somente uma colagem no sentido da largura, com distância máxima de 40 cm da extremidade do colchão. <br /> <br />
                         Quantidades de colagens
-                        <input class="form-control" type="text" name="quant_colagens_dois" value="@Model.quant_colagens_dois"  /> <br /> <br />
+                        <input class="form-control" type="text" name="quant_colagens_dois" value="@Model.quant_colagens_dois" /> <br /> <br />
                         Distância da extremidade do colchão
-                        <input class="form-control" type="text" name="distancia_um" value="@Model.distancia_um"  /> <br /> <br />
+                        <input class="form-control" type="text" name="distancia_um" value="@Model.distancia_um" /> <br /> <br />
                         Distância da extremidade do colchão
-                        <input class="form-control" type="text" name="distancia_dois" value="@Model.distancia_dois"  /> <br /> <br />
+                        <input class="form-control" type="text" name="distancia_dois" value="@Model.distancia_dois" /> <br /> <br />
                         Não é permitido utilizar colagens no sentido do comprimento. <br /> <br />
                         Possui colagens do sentido do comprimento?
                         <select class="form-control" name="colagens_comp">
@@ -481,7 +481,7 @@
                         <strong> Colagem horizontal </strong> <br /> <br />
                         As colagens horizontais devem ocorrer entre as espumas de características diferentes, porém com espessura mínima de 3 cm.<br /> <br />
                         Ocorrem entre as espumas de características diferente?
-                        <select class="form-control" name="espuma" >
+                        <select class="form-control" name="espuma">
                             <option selected> @Model.espuma </option>
                             <option> Sim </option>
                             <option> Não </option>
@@ -490,35 +490,35 @@
                         <table class="tables table-bordered border-secondary  table-sm">
                             <tr>
                                 <td class="fundo-tabela"> Espessura da lâmina </td>
-                                <td> <input class="form-control" type="text"  name="esp_lamina_um" value="@Model.esp_lamina_um" /> </td>
+                                <td> <input class="form-control" type="text" name="esp_lamina_um" value="@Model.esp_lamina_um" /> </td>
                             </tr>
                             <tr>
                                 <td class="fundo-tabela"> Espessura da lâmina </td>
-                                <td> <input class="form-control" type="text"  name="esp_lamina_dois" value="@Model.esp_lamina_dois"/> </td>
+                                <td> <input class="form-control" type="text" name="esp_lamina_dois" value="@Model.esp_lamina_dois" /> </td>
                             </tr>
                             <tr>
                                 <td class="fundo-tabela"> Espessura da lâmina </td>
-                                <td> <input class="form-control" type="text"  name="esp_lamina_tres" value="@Model.esp_lamina_tres"/> </td>
+                                <td> <input class="form-control" type="text" name="esp_lamina_tres" value="@Model.esp_lamina_tres" /> </td>
                             </tr>
                             <tr>
                                 <td class="fundo-tabela"> Espessura da lâmina </td>
-                                <td> <input class="form-control" type="text"  name="esp_lamina_quat" value="@Model.esp_lamina_quat" /> </td>
+                                <td> <input class="form-control" type="text" name="esp_lamina_quat" value="@Model.esp_lamina_quat" /> </td>
                             </tr>
                             <tr>
                                 <td class="fundo-tabela"> Espessura da lâmina </td>
-                                <td> <input class="form-control" type="text"  name="esp_lamina_cinco" value="@Model.esp_lamina_cinco"/> </td>
+                                <td> <input class="form-control" type="text" name="esp_lamina_cinco" value="@Model.esp_lamina_cinco" /> </td>
                             </tr>
                             <tr>
                                 <td class="fundo-tabela"> Espessura da lâmina </td>
-                                <td> <input class="form-control" type="text"  name="esp_lamina_seis" value="@Model.esp_lamina_seis" /> </td>
+                                <td> <input class="form-control" type="text" name="esp_lamina_seis" value="@Model.esp_lamina_seis" /> </td>
                             </tr>
                             <tr>
                                 <td class="fundo-tabela"> Espessura da lâmina </td>
-                                <td> <input class="form-control" type="text"  name="esp_lamina_sete" value="@Model.esp_lamina_sete"/> </td>
+                                <td> <input class="form-control" type="text" name="esp_lamina_sete" value="@Model.esp_lamina_sete" /> </td>
                             </tr>
                             <tr>
                                 <td class="fundo-tabela"> Espessura da lâmina </td>
-                                <td> <input class="form-control" type="text"  name="esp_lamina_oito" value="@Model.esp_lamina_oito"/> </td>
+                                <td> <input class="form-control" type="text" name="esp_lamina_oito" value="@Model.esp_lamina_oito" /> </td>
                             </tr>
                         </table>
                     </td>
@@ -533,7 +533,7 @@
                         Pode haver somente uma colagem no sentido da largura, com distância máxima de 40 cm da extremidade do colchão. <br /> <br />
                         Quantidades de colagens <input class="form-control" type="text" name="quant_colagens_tres" value="@Model.quant_colagens_tres" /> <br /> <br />
                         Distância da extremidade do colchão <input class="form-control" type="text" name="distancia_tres" value="@Model.distancia_tres" /> <br /> <br />
-                        Distância da extremidade do colchão  <input class="form-control" type="text" name="distancia_quat" value="@Model.distancia_quat"/> <br /> <br />
+                        Distância da extremidade do colchão  <input class="form-control" type="text" name="distancia_quat" value="@Model.distancia_quat" /> <br /> <br />
 
                     </td>
                 </tr>
@@ -547,13 +547,13 @@
                         utilizando-se espumas convecionais de densidades distintas, desde que não haja colagem na largura.
                         Esta colagem deve ser localizada no centro do colchão. <br /> <br />
                         O colchão é de casal
-                        <select class="form-control" name="colchao_casal" >
+                        <select class="form-control" name="colchao_casal">
                             <option selected> @Model.colchao_casal </option>
                             <option> Sim </option>
                             <option> Não </option>
                         </select> <br /> <br />
                         Possuí colagem no sentido do comprimento?
-                        <select class="form-control" name="colagem_comp" >
+                        <select class="form-control" name="colagem_comp">
                             <option selected> @Model.colagem_comp </option>
                             <option> Sim </option>
                             <option> Não </option>
@@ -571,7 +571,7 @@
                             <option> Não </option>
                         </select> <br /> <br />
                         Possui colagem na largura
-                        <select class="form-control" name="colagem_largura" >
+                        <select class="form-control" name="colagem_largura">
                             <option selected> @Model.colagem_largura </option>
                             <option> Sim </option>
                             <option> Não </option>
@@ -591,7 +591,7 @@
                 <tr>
                     <td>
                         Somente é permitada uma colagem na horizontal com espessura mínima de 3 cm. <br /> <br />
-                        Quantidades de colagens  <input class="form-control" type="text" name="quant_colagens_cinco" value="@Model.quant_colagens_cinco"/> <br /> <br />
+                        Quantidades de colagens  <input class="form-control" type="text" name="quant_colagens_cinco" value="@Model.quant_colagens_cinco" /> <br /> <br />
                         Espessura da lâmina <input class="form-control" type="text" name="espessura_lamina" value="@Model.espessura_lamina" /> <br /> <br />
                     </td>
                 </tr>
@@ -687,7 +687,7 @@
                 </tr>
                 <tr>
                     <td>
-                        <input class="form-control w-100 mr-2 input" name="observacoes" value="@Model.observacoes"/>
+                        <input class="form-control w-100 mr-2 input" name="observacoes" value="@Model.observacoes" />
 
                     </td>
                 </tr>
@@ -701,19 +701,19 @@
                 <tr>
                     <td><input type="text" class="form-control" name="executador_um" value="@Model.executador_um" /></td>
                     <td><input type="text" class="form-control" name="executador_dois" value="@Model.executador_dois" /></td>
-                    <td><input type="text" class="form-control" name="executador_tres" value="@Model.executador_tres"/></td>
+                    <td><input type="text" class="form-control" name="executador_tres" value="@Model.executador_tres" /></td>
                     <td><input type="text" class="form-control" name="executador_quat" value="@Model.executador_quat" /></td>
                 </tr>
                 <tr>
-                <td colspan="4">
+                    <td colspan="4">
                         <button type="submit" value="SalvarEspuma4_3" class="btn btn-success"> Editar </button>
-                </td>
+                    </td>
                 </tr>
             </table>
         }
     </form>
-  </body>
-  </html>
+</body>
+</html>
 
 
 @if (TempData.ContainsKey("Mensagem"))
