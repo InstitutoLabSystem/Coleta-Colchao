@@ -178,7 +178,7 @@
                     <tr>
                         <td>Quantidade de Lâminas</td>
                         <td colspan="3">
-                            <select class="form-control" asp-for="quant_laminas" id="quantidade" name="quantidade">
+                            <select class="form-control" asp-for="quant_laminas" id="quantidade" name="quant_laminas">
                                 <option value="Escolha">Selecione...</option>
                                 <option value="1">1</option>
                                 <option value="2">2</option>
@@ -264,7 +264,7 @@
 
     <script>
         document.addEventListener("DOMContentLoaded", function () {
-            var selectQuantMolas = document.querySelector('select[name="quantidade"]');
+            var selectQuantMolas = document.querySelector('select[name="quant_laminas"]');
 
             selectQuantMolas.addEventListener('change', function () {
                 var selectedValue = selectQuantMolas.value;

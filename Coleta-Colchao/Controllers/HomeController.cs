@@ -72,7 +72,7 @@ namespace Coleta_Colchao.Controllers
                         ViewBag.os = os;
                         ViewBag.orcamento = dados.First().orcamento;
 
-                        if (dados.Any(x => x.descricao == "7.1 | PRE ROLAGEM"))
+                        if (dados.Any(x => x.codigo == "PRLCCH001000001"))
                         {
                             return RedirectToAction("IndexMolas", "Coleta", new { os, ViewBag.orcamento });
                         }
