@@ -96,17 +96,16 @@ namespace Coleta_Colchao.Controllers
             {
                 ViewBag.os = os;
                 ViewBag.orcamento = orcamento;
-                //ViewBag.quantidadeLaminas = RegistroEspuma.quant_laminas;
-                //ViewBag.tipoColchao = RegistroEspuma.tipo_colchao;
+                ViewBag.quantidadeLaminas = RegistroEspuma.quant_laminas;
+                ViewBag.tipoColchao = RegistroEspuma.tipo_colchao;
                 return View("Espuma/EnsaioEspuma4_1", dados);
-
             }
             else
             {
                 ViewBag.os = os;
                 ViewBag.orcamento = orcamento;
-                //ViewBag.quantidadeLaminas = RegistroEspuma.quant_laminas;
-                //ViewBag.tipoColchao = RegistroEspuma.tipo_colchao;
+                ViewBag.quantidadeLaminas = RegistroEspuma.quant_laminas;
+                ViewBag.tipoColchao = RegistroEspuma.tipo_colchao;
                 return View("Espuma/EnsaioEspuma4_1");
             }
 
