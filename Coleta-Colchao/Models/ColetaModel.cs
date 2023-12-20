@@ -119,8 +119,8 @@ namespace Coleta_Colchao.Models
             public float lamina_esp_um { get; set; }
             public float lamina_media_um { get; set; }
             public string? lamina_tipo_um { get; set; }
-            public string? lamina_min_um { get; set; }
-            public string? lamina_max_um { get; set; }
+            public float lamina_min_um { get; set; }
+            public float lamina_max_um { get; set; }
             public string? lamina_resul_um { get; set; }
             public string? lamina_dois { get; set; }
             public float lamina_comp_quat { get; set; }
@@ -129,8 +129,8 @@ namespace Coleta_Colchao.Models
             public float lamina_esp_dois { get; set; }
             public float lamina_media_dois { get; set; }
             public string? lamina_tipo_dois { get; set; }
-            public string? lamina_min_dois { get; set; }
-            public string? lamina_max_dois { get; set; }
+            public float lamina_min_dois { get; set; }
+            public float lamina_max_dois { get; set; }
             public string? lamina_resul_dois { get; set; }
             public string? lamina_tres { get; set; }
             public float lamina_comp_sete { get; set; }
@@ -139,8 +139,8 @@ namespace Coleta_Colchao.Models
             public float lamina_esp_tres { get; set; }
             public float lamina_media_tres { get; set; }
             public string? lamina_tipo_tres { get; set; }
-            public string? lamina_min_tres { get; set; }
-            public string? lamina_max_tres { get; set; }
+            public float lamina_min_tres { get; set; }
+            public float lamina_max_tres { get; set; }
             public string? lamina_resul_tres { get; set; }
             public string? lamina_quat { get; set; }
             public float lamina_comp_dez { get; set; }
@@ -149,8 +149,8 @@ namespace Coleta_Colchao.Models
             public float lamina_esp_quat { get; set; }
             public float lamina_media_quat { get; set; }
             public string? lamina_tipo_quat { get; set; }
-            public string? lamina_min_quat { get; set; }
-            public string? lamina_max_quat { get; set; }
+            public float lamina_min_quat { get; set; }
+            public float lamina_max_quat { get; set; }
             public string? lamina_resul_quat { get; set; }
             public string? lamina_cinco { get; set; }
             public float lamina_comp_treze { get; set; }
@@ -159,8 +159,8 @@ namespace Coleta_Colchao.Models
             public float lamina_esp_cinco { get; set; }
             public float lamina_media_cinco { get; set; }
             public string? lamina_tipo_cinco { get; set; }
-            public string? lamina_min_cinco { get; set; }
-            public string? lamina_max_cinco { get; set; }
+            public float lamina_min_cinco { get; set; }
+            public float lamina_max_cinco { get; set; }
             public string? lamina_resul_cinco { get; set; }
             public string? lamina_resul_final { get; set; }
             public string? esp_tipo_um { get; set; }
