@@ -76,7 +76,7 @@ namespace Coleta_Colchao.Controllers
                         {
                             return RedirectToAction("IndexMolas", "Coleta", new { os, ViewBag.orcamento });
                         }
-                        else if (dados.Any(x => x.descricao == "4.1  |  DETERMINAÇÃO DAS DIMENSÕES"))
+                        else if (dados.Any(x => x.codigo == "DIMCCH001000001"))
                         {
                             return RedirectToAction("IndexEspuma", "Coleta", new { os, ViewBag.orcamento });
                         }

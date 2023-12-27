@@ -16,13 +16,12 @@
     <title>Coleta</title>
 </head>
 <body>
-    <br/>
+    <br />
 
     <form asp-controller="Coleta" class="meuFormulario" id="form1" asp-action="EspumaIdentificacaoEmbalagem" method="post" asp-route-os="@ViewData["os"]" asp-route-orcamento="@ViewData["orcamento"]">
-        
+
         @if (Model == null)
         {
-
             <table class="tables table-bordered border-secondary  table-sm">
                 <thead>
                     <tr>
@@ -38,7 +37,7 @@
                         <td>Inicio:</td>
                         <td><input class="form-control" type="date" name="data_ini" /></td>
                         <td>Termino:</td>
-                        <td><input class="form-control" type="date" name="data_term"/></td>
+                        <td><input class="form-control" type="date" name="data_term" /></td>
                     </tr>
                 </thead>
             </table>
@@ -59,9 +58,9 @@
                     <td>Resultado</td>
                 </tr>
                 <tr>
-                    <td rowspan="12"> 2 </td>
+                    <td rowspan="45"> 2 </td>
                     <td class="fundo-tabela"> Identificação </td>
-                    <td rowspan="12"> NA </td>
+                    <td rowspan="16">  </td>
                 </tr>
                 <tr>
                     <td>
@@ -69,83 +68,119 @@
                         para sua perfeita identificação,  uma etiqueta,  de  pelo  menos  150  cm2,  em  material  durável  e  indelével,
                         fixada  de  forma  permanente  em  seu  revestimento,  em  local  distinto  da  face  inferior do  produto, que permita sua completa visualização,
                         ainda quando embalado, e com as seguintes informações, em língua portuguesa: <br /> <br />
-
-                        Possuí etiqueta de identificação <br /> <br />
-                        <select class="form-control" name="etiquieta_um">
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Possuí etiqueta de identificação:
+                        <select class="controlador" name="etiquieta_um">
                             <option selected> --- </option>
                             <option> Sim </option>
                             <option> Não </option>
-                        </select> <br /> <br />
-
-                        Está permenentemente fixada em seu revestimento de forma permanente <br /> <br />
-                        <select class="form-control" name="fixacao">
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Está permenentemente fixada em seu revestimento de forma permanente:
+                        <select class="controlador" name="fixacao">
                             <option selected> --- </option>
                             <option> Sim </option>
                             <option> Não </option>
-                        </select> <br /> <br />
-
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
                         A etiqueta é confeccionada de material durável e indelével
-                        <br /> <br />
-                        <select class="form-control" name="material">
+
+                        <select class="controlador" name="material">
                             <option selected> --- </option>
                             <option> Sim </option>
                             <option> Não </option>
-                        </select> <br /> <br />
-
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
                         Àrea da etiqueta
-                        <br /><br /><input class="form-control" type="text" name="area_um" /> <b> X </b> <input class="form-control" type="text" name="area_dois" /> <b> = </b> <input class="form-control" type="text" name="area_result" readonly/> <br /> <br />
-
-                        Além disso o colchão deve conter em sua etiqueta as seguintes informações: <br /> <br />
-
-                        a) Nome, razão social e CNPJ do fabricante ou do importador   <br /> <br />
-                        <select class="form-control" name="etiquieta_dois">
+                        <br /><br /><input class="form-control" type="text" name="area_um" /> <b> X </b> <input class="form-control" type="text" name="area_dois" /> <b> = </b> <input class="form-control" type="text" name="area_result" readonly /> <br /> <br />
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Além disso o colchão deve conter em sua etiqueta as seguintes informações:
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        a) Nome, razão social e CNPJ do fabricante ou do importador
+                        <select class="controlador" name="etiquieta_dois">
                             <option selected> --- </option>
                             <option> Sim </option>
                             <option> Não </option>
-                        </select> <br /> <br />
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        b) Marca e modelo do produto:
 
-                        b) Marca e modelo do produto
-                        <br /> <br />
-                        <select class="form-control" name="marca">
+                        <select class="controlador" name="marca">
                             <option selected> --- </option>
                             <option> Sim </option>
                             <option> Não </option>
-                        </select> <br /> <br />
-
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
                         c) Dimensões  do  produto  sem  os  pés  (altura  x  comprimento  x  largura,  nesta  ordem),
                         incluindo suas respectivas tolerâncias, conforme a ABNT NBR 13579-1:2011, ou seja, - 0,50/+ 1,50 cm (- 5,0 mm/+ 15,0 mm) para a altura
-                        e ± 1,50 cm (±15,0 mm) para o comprimento e largura; <br /> <br />
-                        <select class="form-control" name="dimensoes">
+                        e ± 1,50 cm (±15,0 mm) para o comprimento e largura:
+                        <select class="controlador" name="dimensoes">
                             <option selected> --- </option>
                             <option> Sim </option>
                             <option> Não </option>
-                        </select> <br /> <br />
-
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
                         Nota c.1) No caso de colchão box conjugado (unibox), deve ser incluída a informação da altura do produto sem os pés,
-                        como também da altura dos pés isoladamente. <br /> <br />
-                        <select class="form-control" name="info_altura">
+                        como também da altura dos pés isoladamente.
+                        <select class="controlador" name="info_altura">
                             <option selected> --- </option>
                             <option> Sim </option>
                             <option> Não </option>
-                        </select> <br /> <br />
-
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
                         Nota c.2) Devem ser utilizadas as unidades centímetro (cm) ou milímetro (mm) quando a medida tiver até 100 cm.
-                        Quando a medida for maior que 100 cm, ela deve ser expressa em metros (m).  <br /> <br />
-                        <select class="form-control" name="medidas">
+                        Quando a medida for maior que 100 cm, ela deve ser expressa em metros (m):
+                        <select class="controlador" name="medidas">
                             <option selected> --- </option>
                             <option> Sim </option>
                             <option> Não </option>
-                        </select> <br /> <br />
-
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
                         Nota c.3) No caso de colchões e colchonetes antirrefluxo, as dimensões devem ser declaradas da seguinte forma:
-                        altura menor/altura maior, comprimento, largura, nesta ordem.
-                        <br /> <br />
-                        <select class="form-control" name="colchoes">
+                        altura menor /altura maior, comprimento, largura, nesta ordem:
+
+                        <select class="controlador" name="colchoes">
                             <option selected> --- </option>
                             <option> Sim </option>
                             <option> Não </option>
-                        </select> <br /> <br />
-
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
                         d) Tipo  do  colchão:  se  colchão  de  espuma  tradicional;  ou  colchão  box  conjugado;
                         ou  colchão auxiliar; ou colchão misto; ou colchonete
                         <br /> <br />
@@ -154,28 +189,33 @@
                             <option> Sim </option>
                             <option> Não </option>
                         </select> <br /> <br />
-
+                    </td>
+                </tr>
+                <tr>
+                    <td>
                         Nota:  O  tipo  do  produto,  indicando  se  “COLHÃO  DE  ESPUMA”  ou  se  “COLCHÃO  BOX CONJUGADO”,
                         “COLCHÃO  AUXILIAR”,    ou  se  “COLCHÃO  MISTO”  ou  “COLCHONETE”,  deverá constar  na  etiqueta  do  produto  em
                         letras não  inferiores  a  20  mm  de  altura,  em  negrito,
-                        caixa alta e em coloração que se destaque da cor de fundo da etiqueta.
-                        <br /> <br />
-                        <select class="form-control" name="letras">
+                        caixa alta e em coloração que se destaque da cor de fundo da etiqueta:
+                        <select class="controlador" name="letras">
                             <option selected> --- </option>
                             <option> Sim </option>
                             <option> Não </option>
-                        </select> <br /> <br />
-
-
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
                         <table class="tables table-bordered border-secondary  table-sm">
+                            Altura Da Letra
                             <tr>
                                 <td class="fundo-tabela"> Altura da letra </td>
-                                <td> <input class="form-control" type="text"  name="altura_letra_um" /> </td>
+                                <td> <input class="form-control" type="text" name="altura_letra_um" /> </td>
                             </tr>
                             <tr>
                                 <td class="fundo-tabela"> Está em negrito </td>
                                 <td>
-                                    <select class="form-control" name="negrito_um" >
+                                    <select class="form-control" name="negrito_um">
                                         <option selected> --- </option>
                                         <option> Sim </option>
                                         <option> Não </option>
@@ -185,117 +225,162 @@
                             <tr>
                                 <td class="fundo-tabela"> Está em caixa alta </td>
                                 <td>
-                                    <select class="form-control" name="caixa_alta_um" >
+                                    <select class="controlador" name="caixa_alta_um">
                                         <option selected> --- </option>
                                         <option> Sim </option>
                                         <option> Não </option>
                                     </select>
                                 </td>
                             </tr>
-                        </table> <br /> <br />
-
-                        Está em coloração que se destaque da cor do fundo da etiqueta
-                        <br /> <br />
-                        <select class="form-control" name="coloracao_um">
+                        </table>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Está em coloração que se destaque da cor do fundo da etiqueta.
+                        <select class="controlador" name="coloracao_um">
                             <option selected> --- </option>
                             <option> Sim </option>
                             <option> Não </option>
-                        </select> <br /> <br />
-
-                        e) Classificação do produto: simples ou composto;<br /> <br />
-                        <select class="form-control" name="classificacao">
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        e) Classificação do produto: simples ou composto:
+                        <select class="controlador" name="classificacao">
                             <option selected> --- </option>
                             <option> Sim </option>
                             <option> Não </option>
-                        </select> <br /> <br />
-
-                        f) Uso: geral, infantil ou hospitalar; <br /> <br />
-                        <select class="form-control" name="uso">
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        f) Uso: geral, infantil ou hospitalar:
+                        <select class="controlador" name="uso">
                             <option selected> --- </option>
                             <option> Sim </option>
                             <option> Não </option>
-                        </select> <br /> <br />
-
-                        g) Composição qualitativa dos componentes internos do colchão; <br /> <br />
-                        <select class="form-control" name="composicao">
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        g) Composição qualitativa dos componentes internos do colchão:
+                        <select class="controlador" name="composicao">
                             <option selected> --- </option>
                             <option> Sim </option>
                             <option> Não </option>
-                        </select> <br /> <br />
-
-                        h) Tipo(s) de espuma(s) utilizada(s), exceto a do revestimento;<br /> <br />
-                        <select class="form-control" name="tipo_espuma">
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        h) Tipo(s) de espuma(s) utilizada(s), exceto a do revestimento:
+                        <select class="controlador" name="tipo_espuma">
                             <option selected> --- </option>
                             <option> Sim </option>
                             <option> Não </option>
-                        </select> <br /> <br />
-
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
                         i) Densidade(s) nominal(is) da(s) lâmina(s) de espuma utilizada(s), em kg/m3 e,
-                        para o caso de colchão composto e/ou misto, suas respectivas espessuras <br /> <br />
-                        <select class="form-control" name="densidade_nominal">
+                        para o caso de colchão composto e/ou misto, suas respectivas espessuras
+                        <select class="controlador" name="densidade_nominal">
                             <option selected> --- </option>
                             <option> Sim </option>
                             <option> Não </option>
-                        </select> <br /> <br />
-
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
                         j) Espessura da madeira/compensado/chapa dura/ou outro material com funções similares,
-                        incluindo identificação inequívoca destes materiais, para o caso de colchão misto; <br /> <br />
-                        <select class="form-control" name="espessura_mad">
+                        incluindo identificação inequívoca destes materiais, para o caso de colchão misto;
+                        <select class="controlador" name="espessura_mad">
                             <option selected> --- </option>
                             <option> Sim </option>
                             <option> Não </option>
-                        </select> <br /> <br />
-
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
                         k) Composição do revestimento: tecido (composição percentual); espuma (densidade) e outros materiais <br /> <br />
-                        <select class="form-control" name="comp_revestimento">
+                        <select class="controlador" name="comp_revestimento">
                             <option selected> --- </option>
                             <option> Sim </option>
                             <option> Não </option>
-                        </select> <br /> <br />
-
-                        l) Data de fabricação (dia, mês e ano, nesta ordem);<br /> <br />
-                        <select class="form-control" name="data_fabricacao">
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        l) Data de fabricação (dia, mês e ano, nesta ordem);
+                        <select class="controlador" name="data_fabricacao">
                             <option selected> --- </option>
                             <option> Sim </option>
                             <option> Não </option>
-                        </select> <br /> <br />
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
 
-                        m) País de fabricação; <br /> <br />
-                        <select class="form-control" name="pais_fabricacao">
+                        m) País de fabricação;
+                        <select class="controlador" name="pais_fabricacao">
                             <option selected> --- </option>
                             <option> Sim </option>
                             <option> Não </option>
-                        </select> <br /> <br />
-
-                        n) Cuidados mínimos para conservação do produto; <br /> <br />
-                        <select class="form-control" name="cuidados">
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        n) Cuidados mínimos para conservação do produto;
+                        <select class="controlador" name="cuidados">
                             <option selected> --- </option>
                             <option> Sim </option>
                             <option> Não </option>
-                        </select> <br /> <br />
-
+                        </select>
+                    </td>
+                </tr>
+                @if (ViewBag.outrosMateriais == "Lâmina Rabatan" || ViewBag.outrosMateriais == "Elementos magnéticos" || ViewBag.outrosMateriais == "Infravermelho" || ViewBag.outrosMateriais == "Massageadores")
+                {
+                    <tr>
+                        <td>
                         o) Aviso de atenção, para os colchões mistos constituídos por materiais distintos da espuma de poliuretano
                         (como  elementos  magnéticos,  massageadores,  tipo  rabatan,  infravermelho,  entre outros,  exceto  chapa  dura)
                         da  seguinte  forma:  “ATENÇÃO:  O  SELO  DE IDENTIFICAÇÃO DA CONFORMIDADE  DO  INMETRO  REFERE-SE  SOMENTE  ÀS  AVALIAÇÕES  DA  ESPUMA  FLEXÍVEL  DE POLIURETANO,
-                        DO REVESTIMENTO  e  DA  CHAPA  DURA.  AS  DEMAIS  PROPRIEDADES  E  MATERIAIS DECLARADOS PELO FABRICANTE  NÃO FORAM AVALIADOS."; <br /> <br />
-                        <select class="form-control" name="aviso_um">
+                        DO REVESTIMENTO  e  DA  CHAPA  DURA.  AS  DEMAIS  PROPRIEDADES  E  MATERIAIS DECLARADOS PELO FABRICANTE  NÃO FORAM AVALIADOS.";
+                        <select class="controlador" name="aviso_um">
                             <option selected> --- </option>
                             <option> Sim </option>
                             <option> Não </option>
-                        </select> <br /> <br />
-
+                        </select>
+                    </td>
+                </tr>
+                }
+                <tr>
+                    <td>
                         Nota:  O  aviso  de  atenção  deve  ser  apresentado  em  letras  não  inferiores  a  3  mm  de  altura,
-                        em negrito, caixa alta e em coloração que se destaque da cor de fundo da etiqueta. <br /> <br />
-
+                        em negrito, caixa alta e em coloração que se destaque da cor de fundo da etiqueta.
+                    </td>
+                </tr>
+                <tr>
+                    <td>
                         <table class="tables table-bordered border-secondary  table-sm">
                             <tr>
                                 <td class="fundo-tabela"> Altura da letra </td>
-                                <td> <input class="form-control" type="text"  name="altura_letra_dois" /> </td>
+                                <td> <input class="form-control" type="text" name="altura_letra_dois" /> </td>
                             </tr>
                             <tr>
                                 <td class="fundo-tabela"> Está em negrito </td>
                                 <td>
-                                    <select class="form-control" name="negrito_dois" >
+                                    <select class="form-control" name="negrito_dois">
                                         <option selected> --- </option>
                                         <option> Sim </option>
                                         <option> Não </option>
@@ -305,42 +390,49 @@
                             <tr>
                                 <td class="fundo-tabela"> Está em caixa alta </td>
                                 <td>
-                                    <select class="form-control" name="caixa_alta_dois" >
+                                    <select class="form-control" name="caixa_alta_dois">
                                         <option selected> --- </option>
                                         <option> Sim </option>
                                         <option> Não </option>
                                     </select>
                                 </td>
                             </tr>
-                        </table> <br /> <br />
+                        </table>
+                    </td>
+                </tr>
 
-                        Está em coloração que se destaque da cor do fundo da etiqueta <br /> <br />
-                        <select class="form-control" name="coloracao_dois">
-                            <option selected> --- </option>
-                            <option> Sim </option>
-                            <option> Não </option>
-                        </select> <br /> <br />
+                @if (ViewBag.outrosMateriais == "Lâmina  Latex" || ViewBag.outrosMateriais == "Lâmina Rabatan" || ViewBag.outrosMateriais == "Etil vinil acetato(EVA)")
+                {
+                    <tr>
+                        <td>
+                            p) Aviso de esclarecimento, para os colchões que possuam uma ou mais lâminas constituídas por látex, tipo rabatan ou etil vinil acetato (EVA) da seguinte forma:
+                            “A lâmina de látex não foi avaliada pelo  processo  de  certificação  do  produto.”;  ou  “A  lâmina  tipo  rabatan  não  foi  avaliada  pelo processo  de  certificação  do
+                            produto.”;  ou  “A  lâmina  de  EVA  não  foi  avaliada  pelo  processo  de certificação do produto;
+                            <select class="controlador" name="esclarecimento_um">
+                                <option selected> --- </option>
+                                <option> Sim </option>
+                                <option> Não </option>
+                            </select>
+                        </td>
+                    </tr>
+                }
+                <tr>
+                    <td>
+                        Nota: O aviso de esclarecimento deve ser em negrito, em letras com o mesmo formato e tamanho da utilizada na descrição das lâminas
 
-                        p) Aviso de esclarecimento, para os colchões que possuam uma ou mais lâminas constituídas por látex, tipo rabatan ou etil vinil acetato (EVA) da seguinte forma:
-                        “A lâmina de látex não foi avaliada pelo  processo  de  certificação  do  produto.”;  ou  “A  lâmina  tipo  rabatan  não  foi  avaliada  pelo processo  de  certificação  do
-                        produto.”;  ou  “A  lâmina  de  EVA  não  foi  avaliada  pelo  processo  de certificação do produto; <br /> <br />
-                        <select class="form-control" name="esclarecimento_um">
-                            <option selected> --- </option>
-                            <option> Sim </option>
-                            <option> Não </option>
-                        </select> <br /> <br />
-
-                        Nota: O aviso de esclarecimento deve ser em negrito, em letras com o mesmo formato e tamanho da utilizada na descrição das lâminas <br /> <br />
-
+                    </td>
+                </tr>
+                <tr>
+                    <td>
                         <table class="tables table-bordered border-secondary  table-sm">
                             <tr>
                                 <td class="fundo-tabela"> Altura da letra </td>
-                                <td> <input class="form-control" type="text"  name="altura_letra_tres" /> </td>
+                                <td> <input class="form-control" type="text" name="altura_letra_tres" /> </td>
                             </tr>
                             <tr>
                                 <td class="fundo-tabela"> Está em negrito </td>
                                 <td>
-                                    <select class="form-control" name="negrito_tres" >
+                                    <select class="form-control" name="negrito_tres">
                                         <option selected> --- </option>
                                         <option> Sim </option>
                                         <option> Não </option>
@@ -350,7 +442,7 @@
                             <tr>
                                 <td class="fundo-tabela"> Está em caixa alta </td>
                                 <td>
-                                    <select class="form-control" name="caixa_alta_tres" >
+                                    <select class="form-control" name="caixa_alta_tres">
                                         <option selected> --- </option>
                                         <option> Sim </option>
                                         <option> Não </option>
@@ -360,34 +452,47 @@
                             <tr>
                                 <td class="fundo-tabela"> Está em coloração que se destaque da cor do fundo da etiqueta </td>
                                 <td>
-                                    <select class="form-control" name="coloracao_eti" >
+                                    <select class="form-control" name="coloracao_eti">
                                         <option selected> --- </option>
                                         <option> Sim </option>
                                         <option> Não </option>
                                     </select>
                                 </td>
                             </tr>
-                        </table> <br /> 
-                        q) Aviso de esclarecimento, para os colchões e colchonetes que possuam revestimentos do tipo napa,  courvin,  plásticos  e  similares,  da  seguinte  forma: 
-                        “O  REVESTIMENTO  NÃO  FOI  AVALIADO PELO PROCESSO DE CERTIFICAÇÃO DO PRODUTO”.<br /><br />
-                        <select class="form-control" name="esclarecimento_dois">
+                        </table>
+                    </td>
+                </tr>
+                @if (ViewBag.outrosMateriais == "Couvin" || ViewBag.outrosMateriais == "Plástico")
+                {
+                    <tr>
+                        <td>
+                        q) Aviso de esclarecimento, para os colchões e colchonetes que possuam revestimentos do tipo napa,  courvin,  plásticos  e  similares,  da  seguinte  forma:
+                        “O  REVESTIMENTO  NÃO  FOI  AVALIADO PELO PROCESSO DE CERTIFICAÇÃO DO PRODUTO”.
+                        <select class="controlador" name="esclarecimento_dois">
                             <option selected> --- </option>
                             <option> Sim </option>
                             <option> Não </option>
-                        </select> <br /> <br />
-
+                        </select>
+                    </td>
+                </tr>
+                }
+                <tr>
+                    <td>
                         Nota - O aviso de esclarecimento deve ser apresentado em letras não inferiores a 3 mm de altura, em negrito,
-                        caixa alta e em coloração que se destaque da cor de fundo da etiqueta
-
+                        caixa alta e em coloração que se destaque da cor de fundo da etiqueta.
+                    </td>
+                </tr>
+                <tr>
+                    <td>
                         <table class="tables table-bordered border-secondary  table-sm">
                             <tr>
                                 <td class="fundo-tabela"> Altura da letra </td>
-                                <td> <input class="form-control" type="text"  name="altura_letra_quat" /> </td>
+                                <td> <input class="form-control" type="text" name="altura_letra_quat" /> </td>
                             </tr>
                             <tr>
                                 <td class="fundo-tabela"> Está em negrito </td>
                                 <td>
-                                    <select class="form-control" name="negrito_quat" >
+                                    <select class="form-control" name="negrito_quat">
                                         <option selected> --- </option>
                                         <option> Sim </option>
                                         <option> Não </option>
@@ -397,7 +502,7 @@
                             <tr>
                                 <td class="fundo-tabela"> Está em caixa alta </td>
                                 <td>
-                                    <select class="form-control" name="caixa_alta_quat" >
+                                    <select class="form-control" name="caixa_alta_quat">
                                         <option selected> --- </option>
                                         <option> Sim </option>
                                         <option> Não </option>
@@ -407,46 +512,61 @@
                             <tr>
                                 <td class="fundo-tabela"> Está em coloração que se destaque da cor do fundo da etiqueta </td>
                                 <td>
-                                    <select class="form-control" name="coloracao_quat" >
+                                    <select class="form-control" name="coloracao_quat">
                                         <option selected> --- </option>
                                         <option> Sim </option>
                                         <option> Não </option>
                                     </select>
                                 </td>
                             </tr>
-                        </table> <br />
+                        </table>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
                         2.11  Colchão infantil é aquele destinado, exclusivamente, para utilização em berços.
-                        <br /><br /><select class="form-control" name="colchao_infantil">
+                        <br /><br /><select class="controlador" name="colchao_infantil">
                             <option selected> --- </option>
                             <option> Sim </option>
                             <option> Não </option>
-                        </select> <br /><br />
-
-                        2.11.1  A  embalagem  do  colchão  infantil  deve  apresentar  o  seguinte  aviso:  
-                        “ATENÇÃO:  DEVEM, OBRIGATORIAMENTE, SER OBSERVADAS AS RESTRIÇÕES QUANTO ÀS DIMENSÕES DESTE COLCHÃO CONSTANTES  
-                        NAS  INSTRUÇÕES  DE  USO  DO  BERÇO  EM  QUE  SERÁ  UTILIZADO.  AS  DIMENSÕES ESPECIFICADAS  PELO  FABRICANTE  DO  BERÇO 
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        2.11.1  A  embalagem  do  colchão  infantil  deve  apresentar  o  seguinte  aviso:
+                        “ATENÇÃO:  DEVEM, OBRIGATORIAMENTE, SER OBSERVADAS AS RESTRIÇÕES QUANTO ÀS DIMENSÕES DESTE COLCHÃO CONSTANTES
+                        NAS  INSTRUÇÕES  DE  USO  DO  BERÇO  EM  QUE  SERÁ  UTILIZADO.  AS  DIMENSÕES ESPECIFICADAS  PELO  FABRICANTE  DO  BERÇO
                         NÃO  PODEM  PERMITIR  A  FORMAÇÃO  DE  ESPAÇO MAIOR QUE 30,0 mm (3,0 cm) ENTRE AS LATERAIS OU EXTREMIDADES DO BERÇO E O COLCHÃO.”
-                        <br /><br /><select class="form-control" name="embalagem_colchao">
+                        <br /><br /><select class="controlador" name="embalagem_colchao">
                             <option selected> --- </option>
                             <option> Sim </option>
                             <option> Não </option>
-                        </select> <br /><br />
-
-                        2.11.2  O  aviso  na  embalagem  deve  ser  apresentado  em  letras  não  inferiores  a  20  mm 
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        2.11.2  O  aviso  na  embalagem  deve  ser  apresentado  em  letras  não  inferiores  a  20  mm
                         de  altura, em negrito, caixa alta e em coloração que se destaque da cor de fundo da embalagem
-                        <br /><br /><select class="form-control" name="aviso_embalagem_um">
+                        <br /><br /><select class="controlador" name="aviso_embalagem_um">
                             <option selected> --- </option>
                             <option> Sim </option>
                             <option> Não </option>
-                        </select> <br /><br /> <table class="tables table-bordered border-secondary  table-sm">
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <table class="tables table-bordered border-secondary  table-sm">
                             <tr>
                                 <td class="fundo-tabela"> Altura da letra </td>
-                                <td> <input class="form-control" type="text"  name="altura_letra_cinco" /> </td>
+                                <td> <input class="form-control" type="text" name="altura_letra_cinco" /> </td>
                             </tr>
                             <tr>
                                 <td class="fundo-tabela"> Está em negrito </td>
                                 <td>
-                                    <select class="form-control" name="negrito_cinco" >
+                                    <select class="form-control" name="negrito_cinco">
                                         <option selected> --- </option>
                                         <option> Sim </option>
                                         <option> Não </option>
@@ -456,7 +576,7 @@
                             <tr>
                                 <td class="fundo-tabela"> Está em caixa alta </td>
                                 <td>
-                                    <select class="form-control"  name="caixa_alta_cinco">
+                                    <select class="form-control" name="caixa_alta_cinco">
                                         <option selected> --- </option>
                                         <option> Sim </option>
                                         <option> Não </option>
@@ -466,15 +586,15 @@
                             <tr>
                                 <td class="fundo-tabela"> Está em coloração que se destaque da cor do fundo da etiqueta </td>
                                 <td>
-                                    <select class="form-control" name="coloracao_cinco" >
+                                    <select class="form-control" name="coloracao_cinco">
                                         <option selected> --- </option>
                                         <option> Sim </option>
                                         <option> Não </option>
                                     </select>
                                 </td>
                             </tr>
-                        </table> <br />
-                    </td> 
+                        </table>
+                    </td>
                 </tr>
             </table>
 
@@ -491,32 +611,38 @@
                 </tr>
                 <tr>
                     <td>
-                        2.12  Para  os  colchões  e  colchonetes  que  apresentem  resíduos  das  matérias  primas  ou  adesivos, não  nocivos,  entretanto  com  odor  característico  
+                        2.12  Para  os  colchões  e  colchonetes  que  apresentem  resíduos  das  matérias  primas  ou  adesivos, não  nocivos,  entretanto  com  odor  característico
                         persistente,  a  embalagem  deve  apresentar  o seguinte aviso:  “ATENÇÃO: ESTE PRODUTO PERMANECEU EM LOCAL AREJADO PARA DISSIPAÇÃO DOS VAPORES VOLÁTEIS,
-                        ANTES DE SER EMBALADO. AINDA ASSIM, RECOMENDA-SE QUE DESEMBALE O PRODUTO E DEIXE-O POR (X HORAS) EM LOCAL AREJADO, ANTES DO USO". <br /> <br />
-                        <select class="form-control" name="aviso_odor">
+                        ANTES DE SER EMBALADO. AINDA ASSIM, RECOMENDA-SE QUE DESEMBALE O PRODUTO E DEIXE-O POR (X HORAS) EM LOCAL AREJADO, ANTES DO USO".
+                        <select class="controlador" name="aviso_odor">
                             <option selected> --- </option>
                             <option> Sim </option>
                             <option> Não </option>
-                        </select> <br /> <br />
-
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
                         2.12.1  O  aviso  na  embalagem  deve  ser  apresentado  em  letras  não  inferiores  a  20  mm  de  altura,
-                        em negrito, caixa alta e em coloração que se destaque da cor de fundo da embalagem <br /> <br />
-                        <select class="form-control" name="aviso_embalagem_dois">
+                        em negrito, caixa alta e em coloração que se destaque da cor de fundo da embalagem
+                        <select class="controlador" name="aviso_embalagem_dois">
                             <option selected>---</option>
                             <option> Sim </option>
                             <option> Não </option>
-                        </select> <br /> <br />
-
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
                         <table class="tables table-bordered border-secondary  table-sm">
                             <tr>
                                 <td class="fundo-tabela"> Altura da letra </td>
-                                <td> <input class="form-control" type="text"  name="altura_letra_seis" /> </td>
+                                <td> <input class="form-control" type="text" name="altura_letra_seis" /> </td>
                             </tr>
                             <tr>
                                 <td class="fundo-tabela"> Está em negrito </td>
                                 <td>
-                                    <select class="form-control" name="negrito_seis" >
+                                    <select class="form-control" name="negrito_seis">
                                         <option selected> --- </option>
                                         <option> Sim </option>
                                         <option> Não </option>
@@ -526,71 +652,98 @@
                             <tr>
                                 <td class="fundo-tabela"> Está em caixa alta </td>
                                 <td>
-                                    <select class="form-control" name="caixa_alta_seis" >
+                                    <select class="form-control" name="caixa_alta_seis">
                                         <option selected> --- </option>
                                         <option> Sim </option>
                                         <option> Não </option>
                                     </select>
                                 </td>
                             </tr>
-                        </table> <br /> <br />
-                        Está em coloração que se destaque da cor do fundo da etiqueta <br /> <br />
-                        <input class="form-control" type="text" name="coloracao_seis" /> <br /> <br />
+                        </table>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
 
-                        2.13  No  caso  de  declaração  voluntária  do fornecedor  sobre  funcionalidades  dos  colchões  mistos, 
-                        as instruções de uso ou de informações ao usuário (manual do produto) devem incluir o seguinte texto: 
+                        Está em coloração que se destaque da cor do fundo da etiqueta:
+                        <input class="controlador" type="text" name="coloracao_seis" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        2.13  No  caso  de  declaração  voluntária  do fornecedor  sobre  funcionalidades  dos  colchões  mistos,
+                        as instruções de uso ou de informações ao usuário (manual do produto) devem incluir o seguinte texto:
                         “As  características  sobre  as  funcionalidades  descritas  a  seguir  não  foram  avaliadas  pelo processo de certificação do produto.”<br /> <br />
-                        <select class="form-control" name="dec_voluntaria">
+                        <select class="controlador" name="dec_voluntaria">
                             <option selected> --- </option>
                             <option> Sim </option>
                             <option> Não </option>
-                        </select> <br /> <br />
-
-                        2.13.1 O texto deve ser em negrito, com o mesmo formato e tamanho de letra da utilizada ndescrição 
-                        e em todos os locais onde se descrevam tais funcionalidades. <br /> <br />
-                        <select class="form-control" name="texto_negrito">
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        2.13.1 O texto deve ser em negrito, com o mesmo formato e tamanho de letra da utilizada ndescrição
+                        e em todos os locais onde se descrevam tais funcionalidades.
+                        <select class="controlador" name="texto_negrito">
                             <option selected> --- </option>
                             <option> Sim </option>
                             <option> Não </option>
-                        </select> <br /> <br />
-
-                        2.14 Não  é  permitida  a  identificação  de  qualquer  família,  marca,  modelo  ou  nome  de  colchão ou colchonete, 
-                        da utilização de quaisquer termos e características diferentes dos de sua constituição real. <br /> <br />
-                        <select class="form-control" name="identificacao">
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        2.14 Não  é  permitida  a  identificação  de  qualquer  família,  marca,  modelo  ou  nome  de  colchão ou colchonete,
+                        da utilização de quaisquer termos e características diferentes dos de sua constituição real.
+                        <select class="controlador" name="identificacao">
                             <option selected> --- </option>
                             <option> Sim </option>
                             <option> Não </option>
-                        </select> <br /> <br />
-
-                        2.14.1 É proibido identificar qualquer família, marca, modelo ou nome de colchão ou colchonete  com  numeral  cardinal  e/ou  ordinal,  
-                        acompanhado  ou  não  da  letra  “D”,  divergente da(s)  densidade(s)  nominal(is)  apresentada(s)  pela(s)  lâmina(s)  de  espuma(s)  
-                        que  constitui(em)  o colchão  ou  colchonete,  exceto  quando  o  numeral  apresentar  mais  que  4  (dígitos), 
-                        evitando qualquer  confusão  quanto  à  densidade  do  colchão,  ou  ao  atendimento  a  normas  de  gestão consagradas.  <br /> <br />
-                        <select class="form-control" name="identificacao_dois">
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        2.14.1 É proibido identificar qualquer família, marca, modelo ou nome de colchão ou colchonete  com  numeral  cardinal  e/ou  ordinal,
+                        acompanhado  ou  não  da  letra  “D”,  divergente da(s)  densidade(s)  nominal(is)  apresentada(s)  pela(s)  lâmina(s)  de  espuma(s)
+                        que  constitui(em)  o colchão  ou  colchonete,  exceto  quando  o  numeral  apresentar  mais  que  4  (dígitos),
+                        evitando qualquer  confusão  quanto  à  densidade  do  colchão,  ou  ao  atendimento  a  normas  de  gestão consagradas.
+                        <select class="contralador" name="identificacao_dois">
                             <option selected> --- </option>
                             <option> Sim </option>
                             <option> Não </option>
-                        </select> <br /> <br />
-
-                        2.14.2 O requisito estabelecido no subitem anterior aplica-se, também, aos colchões compostos  e/ou  mistos, 
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        2.14.2 O requisito estabelecido no subitem anterior aplica-se, também, aos colchões compostos  e/ou  mistos,
                         cujo  conjunto  de  lâminas  e  estrutura  podem  apresentar  características equivalentes  a  um  colchão  simples  com  densidade  nominal  superior.
-                        Nestes  casos,  todas  as lâminas  de  espuma  devem  ter  suas  densidades  nominais  e  espessuras  devidamente  descritas, individualmente,  
-                        na  etiqueta  do  colchão,  não  sendo  possível,  na  designação  do  produto,  dar destaque à densidade específica de uma determinada lâmina.<br /> <br />
-                        <select class="form-control" name="desc_lamina">
-                            <option selected> --- </option>
-                            <option> Sim </option>
-                            <option> Não </option>
-                        </select> <br /> <br />
-
-                        2.14.3 É  proibido  utilizar  de  nomenclatura  com  o  termo  “látex”  para  identificar  qualquer família, marca,
-                        modelo ou nome de colchão ou colchonete quando o produto não for constituído integralmente de látex ou sua composição for inferior a 70% de látex.<br /> <br />
-                        <select class="form-control" name="latex">
+                        Nestes  casos,  todas  as lâminas  de  espuma  devem  ter  suas  densidades  nominais  e  espessuras  devidamente  descritas, individualmente,
+                        na  etiqueta  do  colchão,  não  sendo  possível,  na  designação  do  produto,  dar destaque à densidade específica de uma determinada lâmina.
+                        <select class="controlador" name="desc_lamina">
                             <option selected> --- </option>
                             <option> Sim </option>
                             <option> Não </option>
                         </select> <br /> <br />
                     </td>
                 </tr>
+                @if (ViewBag.outrosMateriais == "Lâmina  Latex")
+                {
+                <tr>
+                    <td>
+                        2.14.3 É  proibido  utilizar  de  nomenclatura  com  o  termo  “látex”  para  identificar  qualquer família, marca,
+                        modelo ou nome de colchão ou colchonete quando o produto não for constituído integralmente de látex ou sua composição for inferior a 70% de látex.
+                        <select class="controlador" name="latex">
+                            <option selected> --- </option>
+                            <option> Sim </option>
+                            <option> Não </option>
+                        </select>
+                    </td>
+                </tr>
+                }
+
             </table>
             <br />
 
@@ -602,100 +755,103 @@
                 </tr>
                 <tr>
                     <td>
-                        A embalagem deve ser unitária e  garantir a proteçao do produto. <br /> <br />
-                        A embalagem é unitária.<br /> <br />
-                        <select class="form-control" name="embalagem_uni">
-                    <option selected> --- </option>
-                    <option> Sim </option>
-                    <option> Não </option>
-                </select> <br /> <br />
-
-                A embalagem garante a proteção do produto<br /> <br />
-                <select class="form-control" name="embalagem_protecao">
+                        A embalagem deve ser unitária e  garantir a proteçao do produto.
+                        A embalagem é unitária
+                        <select class="controlador" name="embalagem_uni">
                             <option selected> --- </option>
                             <option> Sim </option>
                             <option> Não </option>
-                        </select> <br /> <br />
+                        </select>
 
 
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        A embalagem garante a proteção do produto
+                        <select class="controlador" name="embalagem_protecao">
+                            <option selected> --- </option>
+                            <option> Sim </option>
+                            <option> Não </option>
+                        </select>
                     </td>
                 </tr>
             </table>
 
             @* inicio de outras tabelas *@
             @* <table class="tables table-bordered border-secondary  table-sm">
-                <tr class="fundo-tabela">
-                    <td colspan=" 4">
-                        Instrumento(s)/Dispositivo(s)/Equipamento(s) Utilizado(s) que Requer(em) Calibração
-                    </td>
-                </tr>
-                <tr>
-                    <td>Código(s)</td>
-                    <td>Descrição(ões)</td>
-                    <td>Certificado(s)</td>
-                    <td>validade(s)</td>
-                </tr>
-            </table>
-            <table class="tables table-bordered border-secondary  table-sm">
-                <tr class="fundo-tabela">
-                    <td colspan=" 4">
-                        Dispositivo(s)/Equipamento(s) Utilizado(s) que Não Requer(em) Calibração
-                    </td>
-                </tr>
-                <tr>
-                    <td>Código(s)</td>
-                    <td>Descrição(ões)</td>
-                    <td>Certificado(s)</td>
-                    <td>validade(s)</td>
-                </tr>
-            </table>
-            <table class="tables table-bordered border-secondary  table-sm">
-                <tr class="fundo-tabela">
-                    <td colspan=" 4">
-                        Matéria(s)-Prima(s) Utilizada(s)
-                    </td>
-                </tr>
-                <tr>
-                    <td>Código(s)</td>
-                    <td>Descrição(ões)</td>
-                    <td>Certificado(s)</td>
-                    <td>validade(s)</td>
-                </tr>
-            </table>
-            <table class="tables table-bordered border-secondary  table-sm">
-                <tr class="fundo-tabela">
-                    <td colspan=" 4">
-                        Observações
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <input class="form-control w-100 mr-2 input" name="observacao">
+        <tr class="fundo-tabela">
+        <td colspan=" 4">
+        Instrumento(s)/Dispositivo(s)/Equipamento(s) Utilizado(s) que Requer(em) Calibração
+        </td>
+        </tr>
+        <tr>
+        <td>Código(s)</td>
+        <td>Descrição(ões)</td>
+        <td>Certificado(s)</td>
+        <td>validade(s)</td>
+        </tr>
+        </table>
+        <table class="tables table-bordered border-secondary  table-sm">
+        <tr class="fundo-tabela">
+        <td colspan=" 4">
+        Dispositivo(s)/Equipamento(s) Utilizado(s) que Não Requer(em) Calibração
+        </td>
+        </tr>
+        <tr>
+        <td>Código(s)</td>
+        <td>Descrição(ões)</td>
+        <td>Certificado(s)</td>
+        <td>validade(s)</td>
+        </tr>
+        </table>
+        <table class="tables table-bordered border-secondary  table-sm">
+        <tr class="fundo-tabela">
+        <td colspan=" 4">
+        Matéria(s)-Prima(s) Utilizada(s)
+        </td>
+        </tr>
+        <tr>
+        <td>Código(s)</td>
+        <td>Descrição(ões)</td>
+        <td>Certificado(s)</td>
+        <td>validade(s)</td>
+        </tr>
+        </table>
+        <table class="tables table-bordered border-secondary  table-sm">
+        <tr class="fundo-tabela">
+        <td colspan=" 4">
+        Observações
+        </td>
+        </tr>
+        <tr>
+        <td>
+        <input class="form-control w-100 mr-2 input" name="observacao">
 
 
-                    </td>
-                </tr>
-            </table>
-            <table class="tables table-bordered border-secondary  table-sm">
-                <tr class="fundo-tabela">
-                    <td colspan="4">
-                        Nome(s) do(s) Executador(es)
-                    </td>
-                </tr>
-                <tr>
-                    <td><input type="text" class="form-control" name="executador_um" /></td>
-                    <td><input type="text" class="form-control" name="executador_dois" /></td>
-                    <td><input type="text" class="form-control" name="executador_tres" /></td>
-                    <td><input type="text" class="form-control" name="executador_quat" /></td>
-                </tr>
-                <tr>
-                    <td colspan="4">
-                        <button type="submit" value="EspumaIdentificacaoEmbalagem" class="btn btn-danger">Salvar Coleta </button>
-                    </td>
-                </tr>
-            </table> *@
+        </td>
+        </tr>
+        </table>
+        <table class="tables table-bordered border-secondary  table-sm">
+        <tr class="fundo-tabela">
+        <td colspan="4">
+        Nome(s) do(s) Executador(es)
+        </td>
+        </tr>
+        <tr>
+        <td><input type="text" class="form-control" name="executador_um" /></td>
+        <td><input type="text" class="form-control" name="executador_dois" /></td>
+        <td><input type="text" class="form-control" name="executador_tres" /></td>
+        <td><input type="text" class="form-control" name="executador_quat" /></td>
+        </tr>
+        <tr>
+        <td colspan="4">
+        <button type="submit" value="EspumaIdentificacaoEmbalagem" class="btn btn-danger">Salvar Coleta </button>
+        </td>
+        </tr>
+        </table> *@
             <div class="d-grid gap-2 d-flex justify-content-center">
-                <button type="submit" class="btn btn-success btn btn-primary btn-md">Editar</button>
+                <button type="submit" class="btn btn-success btn btn-primary btn-md">Salvar</button>
             </div>
         }
         else
@@ -713,7 +869,7 @@
                     </tr>
                     <tr>
                         <td>Inicio:</td>
-                        <td><input class="form-control" type="text" name="data_ini" value="@Model.data_ini"/></td>
+                        <td><input class="form-control" type="text" name="data_ini" value="@Model.data_ini" /></td>
                         <td>Termino:</td>
                         <td><input class="form-control" type="text" name="data_term" value="@Model.data_term" /></td>
                     </tr>
@@ -723,9 +879,9 @@
             <table class="tables table-bordered border-secondary  table-sm">
                 <tr>
                     <td>Temperatura Inicial:</td>
-                    <td><input class="form-control" type="text" name="temp_ini" value="@Model.temp_ini"/></td>
+                    <td><input class="form-control" type="text" name="temp_ini" value="@Model.temp_ini" /></td>
                     <td>Temperatura Final:</td>
-                    <td><input class="form-control" type="text" name="temp_fim" value="@Model.temp_fim"/></td>
+                    <td><input class="form-control" type="text" name="temp_fim" value="@Model.temp_fim" /></td>
                 </tr>
             </table>
             <br />
@@ -736,93 +892,129 @@
                     <td>Resultado</td>
                 </tr>
                 <tr>
-                    <td rowspan="12"> 2 </td>
+                    <td rowspan="45"> 2 </td>
                     <td class="fundo-tabela"> Identificação </td>
-                    <td rowspan="12"> NA </td>
+                    <td rowspan="16">  </td>
                 </tr>
                 <tr>
                     <td>
                         Os  colchões e colchonetes de espuma flexível de poliuretano devem apresentar,
                         para sua perfeita identificação,  uma etiqueta,  de  pelo  menos  150  cm2,  em  material  durável  e  indelével,
                         fixada  de  forma  permanente  em  seu  revestimento,  em  local  distinto  da  face  inferior do  produto, que permita sua completa visualização,
-                        ainda quando embalado, e com as seguintes informações, em língua portuguesa: <br /> <br />
-
-                        Possuí etiqueta de identificação <br /> <br />
-                        <select class="form-control" name="etiquieta_um">
-                            <option selected> @Model.etiquieta_um </option>
+                        ainda quando embalado, e com as seguintes informações, em língua portuguesa:
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Possuí etiqueta de identificação:
+                        <select class="controlador" name="etiquieta_um">
+                            <option selected>@Model.etiquieta_um"</option>
                             <option> Sim </option>
                             <option> Não </option>
-                        </select> <br /> <br />
-
-                        Está permenentemente fixada em seu revestimento de forma permanente <br /> <br />
-                        <select class="form-control" name="fixacao" >
-                            <option selected> @Model.fixacao </option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Está permenentemente fixada em seu revestimento de forma permanente:
+                        <select class="controlador" name="fixacao">
+                            <option selected>@Model.fixacao</option>
                             <option> Sim </option>
                             <option> Não </option>
-                        </select> <br /> <br />
-
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
                         A etiqueta é confeccionada de material durável e indelével
-                        <br /> <br />
-                        <select class="form-control" name="material">
-                            <option selected> @Model.material </option>
+
+                        <select class="controlador" name="material">
+                            <option selected>@Model.material</option>
                             <option> Sim </option>
                             <option> Não </option>
-                        </select> <br /> <br />
-
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
                         Àrea da etiqueta
-                        <br /><br /><input class="form-control" type="text" name="area_um" value="@Model.area_um"/> <b> X </b> <input class="form-control" type="text" name="area_dois" value="@Model.area_dois"/> <b> = </b> <input class="form-control" type="text" name="area_result" readonly value="@Model.area_result"/> <br /> <br />
-
-                        Além disso o colchão deve conter em sua etiqueta as seguintes informações: <br /> <br />
-
-                        a) Nome, razão social e CNPJ do fabricante ou do importador   <br /> <br />
-                        <select class="form-control" name="etiquieta_dois">
+                        <br /><br /><input class="form-control" type="text" name="area_um" value="@Model.area_um" /> <b> X </b> <input class="form-control" type="text" name="area_dois" value="@Model.area_dois" /> <b> = </b> <input class="form-control" type="text" name="area_result" readonly value="@Model.area_result" /> <br /> <br />
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Além disso o colchão deve conter em sua etiqueta as seguintes informações:
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        a) Nome, razão social e CNPJ do fabricante ou do importador
+                        <select class="controlador" name="etiquieta_dois">
                             <option selected> @Model.etiquieta_dois </option>
                             <option> Sim </option>
                             <option> Não </option>
-                        </select> <br /> <br />
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        b) Marca e modelo do produto:
 
-                        b) Marca e modelo do produto
-                        <br /> <br />
-                        <select class="form-control" name="marca" >
+                        <select class="controlador" name="marca">
                             <option selected> @Model.marca </option>
                             <option> Sim </option>
                             <option> Não </option>
-                        </select> <br /> <br />
-
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
                         c) Dimensões  do  produto  sem  os  pés  (altura  x  comprimento  x  largura,  nesta  ordem),
                         incluindo suas respectivas tolerâncias, conforme a ABNT NBR 13579-1:2011, ou seja, - 0,50/+ 1,50 cm (- 5,0 mm/+ 15,0 mm) para a altura
-                        e ± 1,50 cm (±15,0 mm) para o comprimento e largura; <br /> <br />
-                        <select class="form-control" name="dimensoes" >
-                            <option selected> @Model.dimensoes </option>
+                        e ± 1,50 cm (±15,0 mm) para o comprimento e largura:
+                        <select class="controlador" name="dimensoes">
+                            <option selected>@Model.dimensoes</option>   
                             <option> Sim </option>
                             <option> Não </option>
-                        </select> <br /> <br />
-
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
                         Nota c.1) No caso de colchão box conjugado (unibox), deve ser incluída a informação da altura do produto sem os pés,
-                        como também da altura dos pés isoladamente. <br /> <br />
-                        <select class="form-control" name="info_altura" >
-                            <option selected> @Model.info_altura </option>
+                        como também da altura dos pés isoladamente.
+                        <select class="controlador" name="info_altura">
+                            <option selected>@Model.info_altura </option>
                             <option> Sim </option>
                             <option> Não </option>
-                        </select> <br /> <br />
-
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
                         Nota c.2) Devem ser utilizadas as unidades centímetro (cm) ou milímetro (mm) quando a medida tiver até 100 cm.
-                        Quando a medida for maior que 100 cm, ela deve ser expressa em metros (m).  <br /> <br />
-                        <select class="form-control" name="medidas">
+                        Quando a medida for maior que 100 cm, ela deve ser expressa em metros (m):
+                        <select class="controlador" name="medidas" >
                             <option selected> @Model.medidas </option>
                             <option> Sim </option>
                             <option> Não </option>
-                        </select> <br /> <br />
-
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
                         Nota c.3) No caso de colchões e colchonetes antirrefluxo, as dimensões devem ser declaradas da seguinte forma:
-                        altura menor/altura maior, comprimento, largura, nesta ordem.
-                        <br /> <br />
-                        <select class="form-control" name="colchoes" >
+                        altura menor /altura maior, comprimento, largura, nesta ordem:
+
+                        <select class="controlador" name="colchoes" >
                             <option selected> @Model.colchoes </option>
                             <option> Sim </option>
                             <option> Não </option>
-                        </select> <br /> <br />
-
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
                         d) Tipo  do  colchão:  se  colchão  de  espuma  tradicional;  ou  colchão  box  conjugado;
                         ou  colchão auxiliar; ou colchão misto; ou colchonete
                         <br /> <br />
@@ -831,23 +1023,28 @@
                             <option> Sim </option>
                             <option> Não </option>
                         </select> <br /> <br />
-
+                    </td>
+                </tr>
+                <tr>
+                    <td>
                         Nota:  O  tipo  do  produto,  indicando  se  “COLHÃO  DE  ESPUMA”  ou  se  “COLCHÃO  BOX CONJUGADO”,
                         “COLCHÃO  AUXILIAR”,    ou  se  “COLCHÃO  MISTO”  ou  “COLCHONETE”,  deverá constar  na  etiqueta  do  produto  em
                         letras não  inferiores  a  20  mm  de  altura,  em  negrito,
-                        caixa alta e em coloração que se destaque da cor de fundo da etiqueta.
-                        <br /> <br />
-                        <select class="form-control" name="letras">
+                        caixa alta e em coloração que se destaque da cor de fundo da etiqueta:
+                        <select class="controlador" name="letras">
                             <option selected> @Model.letras </option>
                             <option> Sim </option>
                             <option> Não </option>
-                        </select> <br /> <br />
-
-
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
                         <table class="tables table-bordered border-secondary  table-sm">
+                            Altura Da Letra
                             <tr>
                                 <td class="fundo-tabela"> Altura da letra </td>
-                                <td> <input class="form-control" type="text" name="altura_letra_um" value="@Model.altura_letra_um"/> </td>
+                                <td> <input class="form-control" type="text" name="altura_letra_um" value="@Model.altura_letra_um" /> </td>
                             </tr>
                             <tr>
                                 <td class="fundo-tabela"> Está em negrito </td>
@@ -862,112 +1059,157 @@
                             <tr>
                                 <td class="fundo-tabela"> Está em caixa alta </td>
                                 <td>
-                                    <select class="form-control" name="caixa_alta_um">
+                                    <select class="controlador" name="caixa_alta_um">
                                         <option selected> @Model.caixa_alta_um </option>
                                         <option> Sim </option>
                                         <option> Não </option>
                                     </select>
                                 </td>
                             </tr>
-                        </table> <br /> <br />
-
-                        Está em coloração que se destaque da cor do fundo da etiqueta
-                        <br /> <br />
-                        <select class="form-control" name="coloracao_um">
+                        </table>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Está em coloração que se destaque da cor do fundo da etiqueta.
+                        <select class="controlador" name="coloracao_um">
                             <option selected> @Model.coloracao_um </option>
                             <option> Sim </option>
                             <option> Não </option>
-                        </select> <br /> <br />
-
-                        e) Classificação do produto: simples ou composto;<br /> <br />
-                        <select class="form-control" name="classificacao" >
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        e) Classificação do produto: simples ou composto:
+                        <select class="controlador" name="classificacao">
                             <option selected> @Model.classificacao </option>
                             <option> Sim </option>
                             <option> Não </option>
-                        </select> <br /> <br />
-
-                        f) Uso: geral, infantil ou hospitalar; <br /> <br />
-                        <select class="form-control" name="uso">
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        f) Uso: geral, infantil ou hospitalar:
+                        <select class="controlador" name="uso">
                             <option selected> @Model.uso </option>
                             <option> Sim </option>
                             <option> Não </option>
-                        </select> <br /> <br />
-
-                        g) Composição qualitativa dos componentes internos do colchão; <br /> <br />
-                        <select class="form-control" name="composicao">
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        g) Composição qualitativa dos componentes internos do colchão:
+                        <select class="controlador" name="composicao">
                             <option selected> @Model.composicao </option>
                             <option> Sim </option>
                             <option> Não </option>
-                        </select> <br /> <br />
-
-                        h) Tipo(s) de espuma(s) utilizada(s), exceto a do revestimento;<br /> <br />
-                        <select class="form-control" name="tipo_espuma">
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        h) Tipo(s) de espuma(s) utilizada(s), exceto a do revestimento:
+                        <select class="controlador" name="tipo_espuma">
                             <option selected> @Model.tipo_espuma </option>
                             <option> Sim </option>
                             <option> Não </option>
-                        </select> <br /> <br />
-
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
                         i) Densidade(s) nominal(is) da(s) lâmina(s) de espuma utilizada(s), em kg/m3 e,
-                        para o caso de colchão composto e/ou misto, suas respectivas espessuras <br /> <br />
-                        <select class="form-control" name="densidade_nominal">
+                        para o caso de colchão composto e/ou misto, suas respectivas espessuras
+                        <select class="controlador" name="densidade_nominal">
                             <option selected> @Model.densidade_nominal </option>
                             <option> Sim </option>
                             <option> Não </option>
-                        </select> <br /> <br />
-
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
                         j) Espessura da madeira/compensado/chapa dura/ou outro material com funções similares,
-                        incluindo identificação inequívoca destes materiais, para o caso de colchão misto; <br /> <br />
-                        <select class="form-control" name="espessura_mad" >
+                        incluindo identificação inequívoca destes materiais, para o caso de colchão misto;
+                        <select class="controlador" name="espessura_mad" >
                             <option selected> @Model.espessura_mad </option>
                             <option> Sim </option>
                             <option> Não </option>
-                        </select> <br /> <br />
-
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
                         k) Composição do revestimento: tecido (composição percentual); espuma (densidade) e outros materiais <br /> <br />
-                        <select class="form-control" name="comp_revestimento">
+                        <select class="controlador" name="comp_revestimento">
                             <option selected> @Model.comp_revestimento </option>
                             <option> Sim </option>
                             <option> Não </option>
-                        </select> <br /> <br />
-
-                        l) Data de fabricação (dia, mês e ano, nesta ordem);<br /> <br />
-                        <select class="form-control" name="data_fabricacao">
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        l) Data de fabricação (dia, mês e ano, nesta ordem);
+                        <select class="controlador" name="data_fabricacao">
                             <option selected> @Model.data_fabricacao </option>
                             <option> Sim </option>
                             <option> Não </option>
-                        </select> <br /> <br />
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
 
-                        m) País de fabricação; <br /> <br />
-                        <select class="form-control" name="pais_fabricacao">
+                        m) País de fabricação;
+                        <select class="controlador" name="pais_fabricacao">
                             <option selected> @Model.pais_fabricacao </option>
                             <option> Sim </option>
                             <option> Não </option>
-                        </select> <br /> <br />
-
-                        n) Cuidados mínimos para conservação do produto; <br /> <br />
-                        <select class="form-control" name="cuidados">
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        n) Cuidados mínimos para conservação do produto;
+                        <select class="controlador" name="cuidados">
                             <option selected> @Model.cuidados </option>
                             <option> Sim </option>
                             <option> Não </option>
-                        </select> <br /> <br />
-
-                        o) Aviso de atenção, para os colchões mistos constituídos por materiais distintos da espuma de poliuretano
-                        (como  elementos  magnéticos,  massageadores,  tipo  rabatan,  infravermelho,  entre outros,  exceto  chapa  dura)
-                        da  seguinte  forma:  “ATENÇÃO:  O  SELO  DE IDENTIFICAÇÃO DA CONFORMIDADE  DO  INMETRO  REFERE-SE  SOMENTE  ÀS  AVALIAÇÕES  DA  ESPUMA  FLEXÍVEL  DE POLIURETANO,
-                        DO REVESTIMENTO  e  DA  CHAPA  DURA.  AS  DEMAIS  PROPRIEDADES  E  MATERIAIS DECLARADOS PELO FABRICANTE  NÃO FORAM AVALIADOS."; <br /> <br />
-                        <select class="form-control" name="aviso_um">
-                            <option selected> @Model.aviso_um </option>
-                            <option> Sim </option>
-                            <option> Não </option>
-                        </select> <br /> <br />
-
+                        </select>
+                    </td>
+                </tr>
+                @if (ViewBag.outrosMateriais == "Lâmina Rabatan" || ViewBag.outrosMateriais == "Elementos magnéticos" || ViewBag.outrosMateriais == "Infravermelho" || ViewBag.outrosMateriais == "Massageadores")
+                {
+                    <tr>
+                        <td>
+                            o) Aviso de atenção, para os colchões mistos constituídos por materiais distintos da espuma de poliuretano
+                            (como  elementos  magnéticos,  massageadores,  tipo  rabatan,  infravermelho,  entre outros,  exceto  chapa  dura)
+                            da  seguinte  forma:  “ATENÇÃO:  O  SELO  DE IDENTIFICAÇÃO DA CONFORMIDADE  DO  INMETRO  REFERE-SE  SOMENTE  ÀS  AVALIAÇÕES  DA  ESPUMA  FLEXÍVEL  DE POLIURETANO,
+                            DO REVESTIMENTO  e  DA  CHAPA  DURA.  AS  DEMAIS  PROPRIEDADES  E  MATERIAIS DECLARADOS PELO FABRICANTE  NÃO FORAM AVALIADOS.";
+                            <select class="controlador" name="aviso_um">
+                                <option selected> @Model.aviso_um </option>
+                                <option> Sim </option>
+                                <option> Não </option>
+                            </select>
+                        </td>
+                    </tr>
+                }
+                <tr>
+                    <td>
                         Nota:  O  aviso  de  atenção  deve  ser  apresentado  em  letras  não  inferiores  a  3  mm  de  altura,
-                        em negrito, caixa alta e em coloração que se destaque da cor de fundo da etiqueta. <br /> <br />
-
+                        em negrito, caixa alta e em coloração que se destaque da cor de fundo da etiqueta.
+                    </td>
+                </tr>
+                <tr>
+                    <td>
                         <table class="tables table-bordered border-secondary  table-sm">
                             <tr>
                                 <td class="fundo-tabela"> Altura da letra </td>
-                                <td> <input class="form-control" type="text" name="altura_letra_dois" value="@Model.altura_letra_dois"/> </td>
+                                <td> <input class="form-control" type="text" name="altura_letra_dois" value="@Model.altura_letra_dois" /> </td>
                             </tr>
                             <tr>
                                 <td class="fundo-tabela"> Está em negrito </td>
@@ -989,30 +1231,37 @@
                                     </select>
                                 </td>
                             </tr>
-                        </table> <br /> <br />
+                        </table>
+                    </td>
+                </tr>
 
-                        Está em coloração que se destaque da cor do fundo da etiqueta <br /> <br />
-                        <select class="form-control" name="coloracao_dois">
-                            <option selected> @Model.coloracao_dois </option>
-                            <option> Sim </option>
-                            <option> Não </option>
-                        </select> <br /> <br />
+                @if (ViewBag.outrosMateriais == "Lâmina  Latex" || ViewBag.outrosMateriais == "Lâmina Rabatan" || ViewBag.outrosMateriais == "Etil vinil acetato(EVA)")
+                {
+                    <tr>
+                        <td>
+                            p) Aviso de esclarecimento, para os colchões que possuam uma ou mais lâminas constituídas por látex, tipo rabatan ou etil vinil acetato (EVA) da seguinte forma:
+                            “A lâmina de látex não foi avaliada pelo  processo  de  certificação  do  produto.”;  ou  “A  lâmina  tipo  rabatan  não  foi  avaliada  pelo processo  de  certificação  do
+                            produto.”;  ou  “A  lâmina  de  EVA  não  foi  avaliada  pelo  processo  de certificação do produto;
+                            <select class="controlador" name="esclarecimento_um">
+                                <option selected> @Model.esclarecimento_um </option>
+                                <option> Sim </option>
+                                <option> Não </option>
+                            </select>
+                        </td>
+                    </tr>
+                }
+                <tr>
+                    <td>
+                        Nota: O aviso de esclarecimento deve ser em negrito, em letras com o mesmo formato e tamanho da utilizada na descrição das lâminas
 
-                        p) Aviso de esclarecimento, para os colchões que possuam uma ou mais lâminas constituídas por látex, tipo rabatan ou etil vinil acetato (EVA) da seguinte forma:
-                        “A lâmina de látex não foi avaliada pelo  processo  de  certificação  do  produto.”;  ou  “A  lâmina  tipo  rabatan  não  foi  avaliada  pelo processo  de  certificação  do
-                        produto.”;  ou  “A  lâmina  de  EVA  não  foi  avaliada  pelo  processo  de certificação do produto; <br /> <br />
-                        <select class="form-control" name="esclarecimento_um">
-                            <option selected> @Model.esclarecimento_um </option>
-                            <option> Sim </option>
-                            <option> Não </option>
-                        </select> <br /> <br />
-
-                        Nota: O aviso de esclarecimento deve ser em negrito, em letras com o mesmo formato e tamanho da utilizada na descrição das lâminas <br /> <br />
-
+                    </td>
+                </tr>
+                <tr>
+                    <td>
                         <table class="tables table-bordered border-secondary  table-sm">
                             <tr>
                                 <td class="fundo-tabela"> Altura da letra </td>
-                                <td> <input class="form-control" type="text"  name="altura_letra_tres" value="@Model.altura_letra_tres"/> </td>
+                                <td> <input class="form-control" type="text" name="altura_letra_tres" value="@Model.altura_letra_tres" /> </td>
                             </tr>
                             <tr>
                                 <td class="fundo-tabela"> Está em negrito </td>
@@ -1037,34 +1286,47 @@
                             <tr>
                                 <td class="fundo-tabela"> Está em coloração que se destaque da cor do fundo da etiqueta </td>
                                 <td>
-                                    <select class="form-control" name="coloracao_eti" >
+                                    <select class="form-control" name="coloracao_eti">
                                         <option selected> @Model.coloracao_eti </option>
                                         <option> Sim </option>
                                         <option> Não </option>
                                     </select>
                                 </td>
                             </tr>
-                        </table> <br />
-                        q) Aviso de esclarecimento, para os colchões e colchonetes que possuam revestimentos do tipo napa,  courvin,  plásticos  e  similares,  da  seguinte  forma:
-                        “O  REVESTIMENTO  NÃO  FOI  AVALIADO PELO PROCESSO DE CERTIFICAÇÃO DO PRODUTO”.<br /><br />
-                        <select class="form-control" name="esclarecimento_dois">
-                            <option selected> @Model.esclarecimento_dois </option>
-                            <option> Sim </option>
-                            <option> Não </option>
-                        </select> <br /> <br />
-
+                        </table>
+                    </td>
+                </tr>
+                @if (ViewBag.outrosMateriais == "Couvin" || ViewBag.outrosMateriais == "Plástico")
+                {
+                    <tr>
+                        <td>
+                            q) Aviso de esclarecimento, para os colchões e colchonetes que possuam revestimentos do tipo napa,  courvin,  plásticos  e  similares,  da  seguinte  forma:
+                            “O  REVESTIMENTO  NÃO  FOI  AVALIADO PELO PROCESSO DE CERTIFICAÇÃO DO PRODUTO”.
+                            <select class="controlador" name="esclarecimento_dois">
+                                <option selected> @Model.esclarecimento_dois </option>
+                                <option> Sim </option>
+                                <option> Não </option>
+                            </select>
+                        </td>
+                    </tr>
+                }
+                <tr>
+                    <td>
                         Nota - O aviso de esclarecimento deve ser apresentado em letras não inferiores a 3 mm de altura, em negrito,
-                        caixa alta e em coloração que se destaque da cor de fundo da etiqueta
-
+                        caixa alta e em coloração que se destaque da cor de fundo da etiqueta.
+                    </td>
+                </tr>
+                <tr>
+                    <td>
                         <table class="tables table-bordered border-secondary  table-sm">
                             <tr>
                                 <td class="fundo-tabela"> Altura da letra </td>
-                                <td> <input class="form-control" type="text"  name="altura_letra_quat" value="@Model.altura_letra_quat"/> </td>
+                                <td> <input class="form-control" type="text" name="altura_letra_quat" value="@Model.altura_letra_quat" /> </td>
                             </tr>
                             <tr>
                                 <td class="fundo-tabela"> Está em negrito </td>
                                 <td>
-                                    <select class="form-control" name="negrito_quat" >
+                                    <select class="form-control" name="negrito_quat">
                                         <option selected> @Model.negrito_quat </option>
                                         <option> Sim </option>
                                         <option> Não </option>
@@ -1085,40 +1347,55 @@
                                 <td class="fundo-tabela"> Está em coloração que se destaque da cor do fundo da etiqueta </td>
                                 <td>
                                     <select class="form-control" name="coloracao_quat">
-                                        <option selected> @Model.coloracao_quat </option>
+                                        <option selected> @Model.caixa_alta_quat </option>
                                         <option> Sim </option>
                                         <option> Não </option>
                                     </select>
                                 </td>
                             </tr>
-                        </table> <br />
+                        </table>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
                         2.11  Colchão infantil é aquele destinado, exclusivamente, para utilização em berços.
-                        <br /><br /><select class="form-control" name="colchao_infantil">
+                        <br /><br /><select class="controlador" name="colchao_infantil">
                             <option selected> @Model.colchao_infantil </option>
                             <option> Sim </option>
                             <option> Não </option>
-                        </select> <br /><br />
-
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
                         2.11.1  A  embalagem  do  colchão  infantil  deve  apresentar  o  seguinte  aviso:
                         “ATENÇÃO:  DEVEM, OBRIGATORIAMENTE, SER OBSERVADAS AS RESTRIÇÕES QUANTO ÀS DIMENSÕES DESTE COLCHÃO CONSTANTES
                         NAS  INSTRUÇÕES  DE  USO  DO  BERÇO  EM  QUE  SERÁ  UTILIZADO.  AS  DIMENSÕES ESPECIFICADAS  PELO  FABRICANTE  DO  BERÇO
                         NÃO  PODEM  PERMITIR  A  FORMAÇÃO  DE  ESPAÇO MAIOR QUE 30,0 mm (3,0 cm) ENTRE AS LATERAIS OU EXTREMIDADES DO BERÇO E O COLCHÃO.”
-                        <br /><br /><select class="form-control" name="embalagem_colchao">
+                        <br /><br /><select class="controlador" name="embalagem_colchao">
                             <option selected> @Model.embalagem_colchao </option>
                             <option> Sim </option>
                             <option> Não </option>
-                        </select> <br /><br />
-
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
                         2.11.2  O  aviso  na  embalagem  deve  ser  apresentado  em  letras  não  inferiores  a  20  mm
                         de  altura, em negrito, caixa alta e em coloração que se destaque da cor de fundo da embalagem
-                        <br /><br /><select class="form-control" name="aviso_embalagem_um">
-                            <option selected> @Model.aviso_embalagem_um" </option>
+                        <select class="controlador" name="aviso_embalagem_um">
+                            <option selected> @Model.aviso_embalagem_um </option>
                             <option> Sim </option>
                             <option> Não </option>
-                        </select> <br /><br /> <table class="tables table-bordered border-secondary  table-sm">
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <table class="tables table-bordered border-secondary  table-sm">
                             <tr>
                                 <td class="fundo-tabela"> Altura da letra </td>
-                                <td> <input class="form-control" type="text"  name="altura_letra_cinco" value="@Model.altura_letra_cinco"/> </td>
+                                <td> <input class="form-control" type="text" name="altura_letra_cinco" value="@Model.altura_letra_cinco" /> </td>
                             </tr>
                             <tr>
                                 <td class="fundo-tabela"> Está em negrito </td>
@@ -1133,7 +1410,7 @@
                             <tr>
                                 <td class="fundo-tabela"> Está em caixa alta </td>
                                 <td>
-                                    <select class="form-control"  name="caixa_alta_cinco">
+                                    <select class="form-control" name="caixa_alta_cinco">
                                         <option selected> @Model.caixa_alta_cinco </option>
                                         <option> Sim </option>
                                         <option> Não </option>
@@ -1143,14 +1420,14 @@
                             <tr>
                                 <td class="fundo-tabela"> Está em coloração que se destaque da cor do fundo da etiqueta </td>
                                 <td>
-                                    <select class="form-control" name="coloracao_cinco">
+                                    <select class="form-control" name="coloracao_cinco" >
                                         <option selected> @Model.coloracao_cinco </option>
                                         <option> Sim </option>
                                         <option> Não </option>
                                     </select>
                                 </td>
                             </tr>
-                        </table> <br />
+                        </table>
                     </td>
                 </tr>
             </table>
@@ -1170,25 +1447,31 @@
                     <td>
                         2.12  Para  os  colchões  e  colchonetes  que  apresentem  resíduos  das  matérias  primas  ou  adesivos, não  nocivos,  entretanto  com  odor  característico
                         persistente,  a  embalagem  deve  apresentar  o seguinte aviso:  “ATENÇÃO: ESTE PRODUTO PERMANECEU EM LOCAL AREJADO PARA DISSIPAÇÃO DOS VAPORES VOLÁTEIS,
-                        ANTES DE SER EMBALADO. AINDA ASSIM, RECOMENDA-SE QUE DESEMBALE O PRODUTO E DEIXE-O POR (X HORAS) EM LOCAL AREJADO, ANTES DO USO". <br /> <br />
-                        <select class="form-control" name="aviso_odor">
+                        ANTES DE SER EMBALADO. AINDA ASSIM, RECOMENDA-SE QUE DESEMBALE O PRODUTO E DEIXE-O POR (X HORAS) EM LOCAL AREJADO, ANTES DO USO".
+                        <select class="controlador" name="aviso_odor">
                             <option selected> @Model.aviso_odor </option>
                             <option> Sim </option>
                             <option> Não </option>
-                        </select> <br /> <br />
-
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
                         2.12.1  O  aviso  na  embalagem  deve  ser  apresentado  em  letras  não  inferiores  a  20  mm  de  altura,
-                        em negrito, caixa alta e em coloração que se destaque da cor de fundo da embalagem <br /> <br />
-                        <select class="form-control" name="aviso_embalagem_dois">
-                            <option selected> @Model.aviso_embalagem_dois </option>
+                        em negrito, caixa alta e em coloração que se destaque da cor de fundo da embalagem
+                        <select class="controlador" name="aviso_embalagem_dois" >
+                            <option selected>@Model.aviso_embalagem_dois</option>
                             <option> Sim </option>
                             <option> Não </option>
-                        </select> <br /> <br />
-
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
                         <table class="tables table-bordered border-secondary  table-sm">
                             <tr>
                                 <td class="fundo-tabela"> Altura da letra </td>
-                                <td> <input class="form-control" type="text"  name="altura_letra_seis" value="@Model.altura_letra_seis"  /> </td>
+                                <td> <input class="form-control" type="text" name="altura_letra_seis" value="@Model.altura_letra_seis" /> </td>
                             </tr>
                             <tr>
                                 <td class="fundo-tabela"> Está em negrito </td>
@@ -1203,71 +1486,98 @@
                             <tr>
                                 <td class="fundo-tabela"> Está em caixa alta </td>
                                 <td>
-                                    <select class="form-control" name="caixa_alta_seis" >
+                                    <select class="form-control" name="caixa_alta_seis">
                                         <option selected> @Model.caixa_alta_seis </option>
                                         <option> Sim </option>
                                         <option> Não </option>
                                     </select>
                                 </td>
                             </tr>
-                        </table> <br /> <br />
-                        Está em coloração que se destaque da cor do fundo da etiqueta <br /> <br />
-                        <input class="form-control" type="text" name="coloracao_seis" value="@Model.coloracao_seis"/> <br /> <br />
+                        </table>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
 
+                        Está em coloração que se destaque da cor do fundo da etiqueta:
+                        <input class="controlador" type="text" name="coloracao_seis" value="@Model.coloracao_seis" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>
                         2.13  No  caso  de  declaração  voluntária  do fornecedor  sobre  funcionalidades  dos  colchões  mistos,
                         as instruções de uso ou de informações ao usuário (manual do produto) devem incluir o seguinte texto:
                         “As  características  sobre  as  funcionalidades  descritas  a  seguir  não  foram  avaliadas  pelo processo de certificação do produto.”<br /> <br />
-                        <select class="form-control" name="dec_voluntaria">
+                        <select class="controlador" name="dec_voluntaria">
                             <option selected> @Model.dec_voluntaria </option>
                             <option> Sim </option>
                             <option> Não </option>
-                        </select> <br /> <br />
-
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
                         2.13.1 O texto deve ser em negrito, com o mesmo formato e tamanho de letra da utilizada ndescrição
-                        e em todos os locais onde se descrevam tais funcionalidades. <br /> <br />
-                        <select class="form-control" name="texto_negrito">
-                            <option selected>  @Model.texto_negrito </option>
+                        e em todos os locais onde se descrevam tais funcionalidades.
+                        <select class="controlador" name="texto_negrito">
+                            <option selected> @Model.texto_negrito </option>
                             <option> Sim </option>
                             <option> Não </option>
-                        </select> <br /> <br />
-
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
                         2.14 Não  é  permitida  a  identificação  de  qualquer  família,  marca,  modelo  ou  nome  de  colchão ou colchonete,
-                        da utilização de quaisquer termos e características diferentes dos de sua constituição real. <br /> <br />
-                        <select class="form-control" name="identificacao">
+                        da utilização de quaisquer termos e características diferentes dos de sua constituição real.
+                        <select class="controlador" name="identificacao">
                             <option selected> @Model.identificacao </option>
                             <option> Sim </option>
                             <option> Não </option>
-                        </select> <br /> <br />
-
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
                         2.14.1 É proibido identificar qualquer família, marca, modelo ou nome de colchão ou colchonete  com  numeral  cardinal  e/ou  ordinal,
                         acompanhado  ou  não  da  letra  “D”,  divergente da(s)  densidade(s)  nominal(is)  apresentada(s)  pela(s)  lâmina(s)  de  espuma(s)
                         que  constitui(em)  o colchão  ou  colchonete,  exceto  quando  o  numeral  apresentar  mais  que  4  (dígitos),
-                        evitando qualquer  confusão  quanto  à  densidade  do  colchão,  ou  ao  atendimento  a  normas  de  gestão consagradas.  <br /> <br />
-                        <select class="form-control" name="identificacao_dois">
+                        evitando qualquer  confusão  quanto  à  densidade  do  colchão,  ou  ao  atendimento  a  normas  de  gestão consagradas.
+                        <select class="contralador" name="identificacao_dois" >
                             <option selected> @Model.identificacao_dois </option>
                             <option> Sim </option>
                             <option> Não </option>
-                        </select> <br /> <br />
-
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
                         2.14.2 O requisito estabelecido no subitem anterior aplica-se, também, aos colchões compostos  e/ou  mistos,
                         cujo  conjunto  de  lâminas  e  estrutura  podem  apresentar  características equivalentes  a  um  colchão  simples  com  densidade  nominal  superior.
                         Nestes  casos,  todas  as lâminas  de  espuma  devem  ter  suas  densidades  nominais  e  espessuras  devidamente  descritas, individualmente,
-                        na  etiqueta  do  colchão,  não  sendo  possível,  na  designação  do  produto,  dar destaque à densidade específica de uma determinada lâmina.<br /> <br />
-                        <select class="form-control" name="desc_lamina">
+                        na  etiqueta  do  colchão,  não  sendo  possível,  na  designação  do  produto,  dar destaque à densidade específica de uma determinada lâmina.
+                        <select class="controlador" name="desc_lamina">
                             <option selected> @Model.desc_lamina </option>
-                            <option> Sim </option>
-                            <option> Não </option>
-                        </select> <br /> <br />
-
-                        2.14.3 É  proibido  utilizar  de  nomenclatura  com  o  termo  “látex”  para  identificar  qualquer família, marca,
-                        modelo ou nome de colchão ou colchonete quando o produto não for constituído integralmente de látex ou sua composição for inferior a 70% de látex.<br /> <br />
-                        <select class="form-control" name="latex" >
-                            <option selected> @Model.latex </option>
                             <option> Sim </option>
                             <option> Não </option>
                         </select> <br /> <br />
                     </td>
                 </tr>
+                @if (ViewBag.outrosMateriais == "Lâmina  Latex")
+                {
+                    <tr>
+                        <td>
+                            2.14.3 É  proibido  utilizar  de  nomenclatura  com  o  termo  “látex”  para  identificar  qualquer família, marca,
+                            modelo ou nome de colchão ou colchonete quando o produto não for constituído integralmente de látex ou sua composição for inferior a 70% de látex.
+                            <select class="controlador" name="latex" >
+                                <option selected> @Model.latex </option>
+                                <option> Sim </option>
+                                <option> Não </option>
+                            </select>
+                        </td>
+                    </tr>
+                }
+
             </table>
             <br />
 
@@ -1279,22 +1589,25 @@
                 </tr>
                 <tr>
                     <td>
-                        A embalagem deve ser unitária e  garantir a proteçao do produto. <br /> <br />
-                        A embalagem é unitária.<br /> <br />
-                        <select class="form-control" name="embalagem_uni">
+                        A embalagem deve ser unitária e  garantir a proteçao do produto.
+                        A embalagem é unitária
+                        <select class="controlador" name="embalagem_uni">
                             <option selected> @Model.embalagem_uni </option>
-                        <option> Sim </option>
-                        <option> Não </option>
-                    </select> <br /> <br />
+                            <option> Sim </option>
+                            <option> Não </option>
+                        </select>
 
-                    A embalagem garante a proteção do produto<br /> <br />
-                    <select class="form-control" name="embalagem_protecao" >
+
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        A embalagem garante a proteção do produto
+                        <select class="controlador" name="embalagem_protecao" >
                             <option selected> @Model.embalagem_protecao </option>
                             <option> Sim </option>
                             <option> Não </option>
-                        </select> <br /> <br />
-
-
+                        </select>
                     </td>
                 </tr>
             </table>
@@ -1313,64 +1626,64 @@
                     <td>validade(s)</td>
                 </tr>
             </table>
-          @*   <table class="tables table-bordered border-secondary  table-sm">
-                <tr class="fundo-tabela">
-                    <td colspan=" 4">
-                        Dispositivo(s)/Equipamento(s) Utilizado(s) que Não Requer(em) Calibração
-                    </td>
-                </tr>
-                <tr>
-                    <td>Código(s)</td>
-                    <td>Descrição(ões)</td>
-                    <td>Certificado(s)</td>
-                    <td>validade(s)</td>
-                </tr>
-            </table>
-            <table class="tables table-bordered border-secondary  table-sm">
-                <tr class="fundo-tabela">
-                    <td colspan=" 4">
-                        Matéria(s)-Prima(s) Utilizada(s)
-                    </td>
-                </tr>
-                <tr>
-                    <td>Código(s)</td>
-                    <td>Descrição(ões)</td>
-                    <td>Certificado(s)</td>
-                    <td>validade(s)</td>
-                </tr>
-            </table>
-            <table class="tables table-bordered border-secondary  table-sm">
-                <tr class="fundo-tabela">
-                    <td colspan=" 4">
-                        Observações
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <input class="form-control w-100 mr-2 input" name="observacao" value="@Model.observacao">
+            @*   <table class="tables table-bordered border-secondary  table-sm">
+        <tr class="fundo-tabela">
+        <td colspan=" 4">
+        Dispositivo(s)/Equipamento(s) Utilizado(s) que Não Requer(em) Calibração
+        </td>
+        </tr>
+        <tr>
+        <td>Código(s)</td>
+        <td>Descrição(ões)</td>
+        <td>Certificado(s)</td>
+        <td>validade(s)</td>
+        </tr>
+        </table>
+        <table class="tables table-bordered border-secondary  table-sm">
+        <tr class="fundo-tabela">
+        <td colspan=" 4">
+        Matéria(s)-Prima(s) Utilizada(s)
+        </td>
+        </tr>
+        <tr>
+        <td>Código(s)</td>
+        <td>Descrição(ões)</td>
+        <td>Certificado(s)</td>
+        <td>validade(s)</td>
+        </tr>
+        </table>
+        <table class="tables table-bordered border-secondary  table-sm">
+        <tr class="fundo-tabela">
+        <td colspan=" 4">
+        Observações
+        </td>
+        </tr>
+        <tr>
+        <td>
+        <input class="form-control w-100 mr-2 input" name="observacao" value="@Model.observacao">
 
 
-                    </td>
-                </tr>
-            </table>
-            <table class="tables table-bordered border-secondary  table-sm">
-                <tr class="fundo-tabela">
-                    <td colspan="4">
-                        Nome(s) do(s) Executador(es)
-                    </td>
-                </tr>
-                <tr>
-                    <td><input type="text" class="form-control" name="executador_um" value="@Model.executador_um" /></td>
-                    <td><input type="text" class="form-control" name="executador_dois" value="@Model.executador_dois"/></td>
-                    <td><input type="text" class="form-control" name="executador_tres" value="@Model.executador_tres" /></td>
-                    <td><input type="text" class="form-control" name="executador_quat" value="@Model.executador_quat"  /></td>
-                </tr>
-                <tr>
-                    <td colspan="4">
-                        <button type="submit" value="EspumaIdentificacaoEmbalagem" class="btn btn-success"> Editar </button>
-                    </td>
-                </tr>
-            </table> *@
+        </td>
+        </tr>
+        </table>
+        <table class="tables table-bordered border-secondary  table-sm">
+        <tr class="fundo-tabela">
+        <td colspan="4">
+        Nome(s) do(s) Executador(es)
+        </td>
+        </tr>
+        <tr>
+        <td><input type="text" class="form-control" name="executador_um" value="@Model.executador_um" /></td>
+        <td><input type="text" class="form-control" name="executador_dois" value="@Model.executador_dois"/></td>
+        <td><input type="text" class="form-control" name="executador_tres" value="@Model.executador_tres" /></td>
+        <td><input type="text" class="form-control" name="executador_quat" value="@Model.executador_quat"  /></td>
+        </tr>
+        <tr>
+        <td colspan="4">
+        <button type="submit" value="EspumaIdentificacaoEmbalagem" class="btn btn-success"> Editar </button>
+        </td>
+        </tr>
+        </table> *@
             <div class="d-grid gap-2 d-flex justify-content-center">
                 <button type="submit" class="btn btn-success btn btn-primary btn-md">Editar</button>
             </div>
@@ -1379,8 +1692,8 @@
 
     </form>
 
-  </body>
-  </html>
+</body>
+</html>
 
 
 @if (TempData.ContainsKey("Mensagem"))

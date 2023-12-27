@@ -193,6 +193,8 @@ namespace Coleta_Colchao.Models
             public float reves_mm_dois { get; set; }
             public float reves_cm_dois { get; set; }
             public string? reves_resul_final { get; set; }
+
+
         }
 
 
@@ -528,7 +530,6 @@ namespace Coleta_Colchao.Models
             public string executador_dois { get; set; }
             public string executador_tres { get; set; }
             public string executador_quat { get; set; }
-
         }
 
 
@@ -539,77 +540,77 @@ namespace Coleta_Colchao.Models
             public string orcamento { get; set; }
             public DateOnly data_ini { get; set; }
             public DateOnly data_term { get; set; }
-            public string temp_ini { get; set; }
-            public string temp_fim { get; set; }
-            public string etiquieta_um { get; set; }
-            public string fixacao { get; set; }
-            public string material { get; set; }
-            public string area_um { get; set; }
-            public string area_dois { get; set; }
-            public string area_result { get; set; }
-            public string etiquieta_dois { get; set; }
-            public string marca { get; set; }
-            public string dimensoes { get; set; }
-            public string info_altura { get; set; }
-            public string medidas { get; set; }
-            public string colchoes { get; set; }
-            public string tipo_colchao { get; set; }
-            public string letras { get; set; }
-            public string altura_letra_um { get; set; }
-            public string negrito_um { get; set; }
-            public string caixa_alta_um { get; set; }
-            public string coloracao_um { get; set; }
-            public string classificacao { get; set; }
-            public string uso { get; set; }
-            public string composicao { get; set; }
-            public string tipo_espuma { get; set; }
-            public string densidade_nominal { get; set; }
-            public string espessura_mad { get; set; }
-            public string comp_revestimento { get; set; }
-            public string data_fabricacao { get; set; }
-            public string pais_fabricacao { get; set; }
-            public string cuidados { get; set; }
-            public string aviso_um { get; set; }
-            public string altura_letra_dois { get; set; }
-            public string negrito_dois { get; set; }
-            public string caixa_alta_dois { get; set; }
-            public string coloracao_dois { get; set; }
-            public string esclarecimento_um { get; set; }
-            public string altura_letra_tres { get; set; }
-            public string negrito_tres { get; set; }
-            public string caixa_alta_tres { get; set; }
-            public string coloracao_eti { get; set; }
-            public string esclarecimento_dois { get; set; }
-            public string altura_letra_quat { get; set; }
-            public string negrito_quat { get; set; }
-            public string caixa_alta_quat { get; set; }
-            public string coloracao_quat { get; set; }
-            public string colchao_infantil { get; set; }
-            public string embalagem_colchao { get; set; }
-            public string aviso_embalagem_um { get; set; }
-            public string altura_letra_cinco { get; set; }
-            public string negrito_cinco { get; set; }
-            public string caixa_alta_cinco { get; set; }
-            public string coloracao_cinco { get; set; }
-            public string aviso_odor { get; set; }
-            public string aviso_embalagem_dois { get; set; }
-            public string altura_letra_seis { get; set; }
-            public string negrito_seis { get; set; }
-            public string caixa_alta_seis { get; set; }
-            public string coloracao_seis { get; set; }
-            public string dec_voluntaria { get; set; }
-            public string texto_negrito { get; set; }
-            public string identificacao { get; set; }
-            public string identificacao_dois { get; set; }
-            public string desc_lamina { get; set; }
-            public string latex { get; set; }
-            public string embalagem_uni { get; set; }
-            public string embalagem_protecao { get; set; }
-            public string observacao { get; set; }
-            public string executador_um { get; set; }
-            public string executador_dois { get; set; }
-            public string executador_tres { get; set; }
-            public string executador_quat { get; set; }
+            public string? temp_ini { get; set; }
+            public string? temp_fim { get; set; }
+            public string? etiquieta_um { get; set; }
+            public string? fixacao { get; set; }
+            public string? material { get; set; }
+            public string? area_um { get; set; }
+            public string? area_dois { get; set; }
+            public string? area_result { get; set; }
+            public string? etiquieta_dois { get; set; }
+            public string? marca { get; set; }
+            public string? dimensoes { get; set; }
+            public string? info_altura { get; set; }
+            public string? medidas { get; set; }
+            public string? colchoes { get; set; }
+            public string? tipo_colchao { get; set; }
+            public string? letras { get; set; }
+            public string? altura_letra_um { get; set; }
+            public string? negrito_um { get; set; }
+            public string? caixa_alta_um { get; set; }
+            public string? coloracao_um { get; set; }
+            public string? classificacao { get; set; }
+            public string? uso { get; set; }
+            public string? composicao { get; set; }
+            public string? tipo_espuma { get; set; }
+            public string? densidade_nominal { get; set; }
+            public string? espessura_mad { get; set; }
+            public string? comp_revestimento { get; set; }
+            public string? data_fabricacao { get; set; }
+            public string? pais_fabricacao { get; set; }
+            public string? cuidados { get; set; }
+            public string? aviso_um { get; set; }
+            public string? altura_letra_dois { get; set; }
+            public string? negrito_dois { get; set; }
+            public string? caixa_alta_dois { get; set; }
+            public string? coloracao_dois { get; set; }
+            public string? esclarecimento_um { get; set; }
+            public string? altura_letra_tres { get; set; }
+            public string? negrito_tres { get; set; }
+            public string? caixa_alta_tres { get; set; }
+            public string? coloracao_eti { get; set; }
+            public string? esclarecimento_dois { get; set; }
+            public string? altura_letra_quat { get; set; }
+            public string? negrito_quat { get; set; }
+            public string? caixa_alta_quat { get; set; }
+            public string? coloracao_quat { get; set; }
+            public string? colchao_infantil { get; set; }
+            public string? embalagem_colchao { get; set; }
+            public string? aviso_embalagem_um { get; set; }
+            public string? altura_letra_cinco { get; set; }
+            public string? negrito_cinco { get; set; }
+            public string? caixa_alta_cinco { get; set; }
+            public string? coloracao_cinco { get; set; }
+            public string? aviso_odor { get; set; }
+            public string? aviso_embalagem_dois { get; set; }
+            public string? altura_letra_seis { get; set; }
+            public string? negrito_seis { get; set; }
+            public string? caixa_alta_seis { get; set; }
+            public string? coloracao_seis { get; set; }
+            public string? dec_voluntaria { get; set; }
+            public string? texto_negrito { get; set; }
+            public string? identificacao { get; set; }
+            public string? identificacao_dois { get; set; }
+            public string? desc_lamina { get; set; }
+            public string? latex { get; set; }
+            public string? embalagem_uni { get; set; }
+            public string? embalagem_protecao { get; set; }
+            public string? observacao { get; set; }
+            public string? executador_um { get; set; }
+            public string? executador_dois { get; set; }
+            public string? executador_tres { get; set; }
+            public string? executador_quat { get; set; }
 
         }
 
