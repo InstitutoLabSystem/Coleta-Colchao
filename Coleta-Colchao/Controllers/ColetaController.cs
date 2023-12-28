@@ -2976,6 +2976,7 @@ namespace Coleta_Colchao.Controllers
                     string area_um = salvar.area_um;
                     string area_dois = salvar.area_dois;
 
+                    //realizando calculo.
                     double areaum = double.Parse(area_um);
                     double areadois = double.Parse(area_dois);
                     double calculo_area_result  = areaum * areadois;
@@ -3892,7 +3893,6 @@ namespace Coleta_Colchao.Controllers
                     TempData["Mensagem"] = "Dados Editado com sucesso.";
                     return RedirectToAction("EnsaioImpactoEspuma", new { os, orcamento });
                 }
-
             }
             catch (Exception ex)
             {

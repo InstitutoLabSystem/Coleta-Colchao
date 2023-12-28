@@ -14,6 +14,14 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="~/css/coleta.css" asp-append-version="true" />
     <title>Coleta</title>
+    <style>
+        input{
+            text-align:center;
+        }
+        select{
+            text-align: center;
+        }
+    </style>
 </head>
 <body>
     <br />
@@ -225,7 +233,7 @@
                             <tr>
                                 <td class="fundo-tabela"> Está em caixa alta </td>
                                 <td>
-                                    <select class="controlador" name="caixa_alta_um">
+                                    <select class="form-control" name="caixa_alta_um">
                                         <option selected> --- </option>
                                         <option> Sim </option>
                                         <option> Não </option>
@@ -352,17 +360,17 @@
                 {
                     <tr>
                         <td>
-                        o) Aviso de atenção, para os colchões mistos constituídos por materiais distintos da espuma de poliuretano
-                        (como  elementos  magnéticos,  massageadores,  tipo  rabatan,  infravermelho,  entre outros,  exceto  chapa  dura)
-                        da  seguinte  forma:  “ATENÇÃO:  O  SELO  DE IDENTIFICAÇÃO DA CONFORMIDADE  DO  INMETRO  REFERE-SE  SOMENTE  ÀS  AVALIAÇÕES  DA  ESPUMA  FLEXÍVEL  DE POLIURETANO,
-                        DO REVESTIMENTO  e  DA  CHAPA  DURA.  AS  DEMAIS  PROPRIEDADES  E  MATERIAIS DECLARADOS PELO FABRICANTE  NÃO FORAM AVALIADOS.";
-                        <select class="controlador" name="aviso_um">
-                            <option selected> --- </option>
-                            <option> Sim </option>
-                            <option> Não </option>
-                        </select>
-                    </td>
-                </tr>
+                            o) Aviso de atenção, para os colchões mistos constituídos por materiais distintos da espuma de poliuretano
+                            (como  elementos  magnéticos,  massageadores,  tipo  rabatan,  infravermelho,  entre outros,  exceto  chapa  dura)
+                            da  seguinte  forma:  “ATENÇÃO:  O  SELO  DE IDENTIFICAÇÃO DA CONFORMIDADE  DO  INMETRO  REFERE-SE  SOMENTE  ÀS  AVALIAÇÕES  DA  ESPUMA  FLEXÍVEL  DE POLIURETANO,
+                            DO REVESTIMENTO  e  DA  CHAPA  DURA.  AS  DEMAIS  PROPRIEDADES  E  MATERIAIS DECLARADOS PELO FABRICANTE  NÃO FORAM AVALIADOS.";
+                            <select class="controlador" name="aviso_um">
+                                <option selected> --- </option>
+                                <option> Sim </option>
+                                <option> Não </option>
+                            </select>
+                        </td>
+                    </tr>
                 }
                 <tr>
                     <td>
@@ -466,15 +474,15 @@
                 {
                     <tr>
                         <td>
-                        q) Aviso de esclarecimento, para os colchões e colchonetes que possuam revestimentos do tipo napa,  courvin,  plásticos  e  similares,  da  seguinte  forma:
-                        “O  REVESTIMENTO  NÃO  FOI  AVALIADO PELO PROCESSO DE CERTIFICAÇÃO DO PRODUTO”.
-                        <select class="controlador" name="esclarecimento_dois">
-                            <option selected> --- </option>
-                            <option> Sim </option>
-                            <option> Não </option>
-                        </select>
-                    </td>
-                </tr>
+                            q) Aviso de esclarecimento, para os colchões e colchonetes que possuam revestimentos do tipo napa,  courvin,  plásticos  e  similares,  da  seguinte  forma:
+                            “O  REVESTIMENTO  NÃO  FOI  AVALIADO PELO PROCESSO DE CERTIFICAÇÃO DO PRODUTO”.
+                            <select class="controlador" name="esclarecimento_dois">
+                                <option selected> --- </option>
+                                <option> Sim </option>
+                                <option> Não </option>
+                            </select>
+                        </td>
+                    </tr>
                 }
                 <tr>
                     <td>
@@ -731,17 +739,17 @@
                 </tr>
                 @if (ViewBag.outrosMateriais == "Lâmina  Latex")
                 {
-                <tr>
-                    <td>
-                        2.14.3 É  proibido  utilizar  de  nomenclatura  com  o  termo  “látex”  para  identificar  qualquer família, marca,
-                        modelo ou nome de colchão ou colchonete quando o produto não for constituído integralmente de látex ou sua composição for inferior a 70% de látex.
-                        <select class="controlador" name="latex">
-                            <option selected> --- </option>
-                            <option> Sim </option>
-                            <option> Não </option>
-                        </select>
-                    </td>
-                </tr>
+                    <tr>
+                        <td>
+                            2.14.3 É  proibido  utilizar  de  nomenclatura  com  o  termo  “látex”  para  identificar  qualquer família, marca,
+                            modelo ou nome de colchão ou colchonete quando o produto não for constituído integralmente de látex ou sua composição for inferior a 70% de látex.
+                            <select class="controlador" name="latex">
+                                <option selected> --- </option>
+                                <option> Sim </option>
+                                <option> Não </option>
+                            </select>
+                        </td>
+                    </tr>
                 }
 
             </table>
@@ -908,7 +916,7 @@
                     <td>
                         Possuí etiqueta de identificação:
                         <select class="controlador" name="etiquieta_um">
-                            <option selected>@Model.etiquieta_um"</option>
+                            <option selected>@Model.etiquieta_um</option>
                             <option> Sim </option>
                             <option> Não </option>
                         </select>
@@ -973,7 +981,7 @@
                         incluindo suas respectivas tolerâncias, conforme a ABNT NBR 13579-1:2011, ou seja, - 0,50/+ 1,50 cm (- 5,0 mm/+ 15,0 mm) para a altura
                         e ± 1,50 cm (±15,0 mm) para o comprimento e largura:
                         <select class="controlador" name="dimensoes">
-                            <option selected>@Model.dimensoes</option>   
+                            <option selected>@Model.dimensoes</option>
                             <option> Sim </option>
                             <option> Não </option>
                         </select>
@@ -994,7 +1002,7 @@
                     <td>
                         Nota c.2) Devem ser utilizadas as unidades centímetro (cm) ou milímetro (mm) quando a medida tiver até 100 cm.
                         Quando a medida for maior que 100 cm, ela deve ser expressa em metros (m):
-                        <select class="controlador" name="medidas" >
+                        <select class="controlador" name="medidas">
                             <option selected> @Model.medidas </option>
                             <option> Sim </option>
                             <option> Não </option>
@@ -1006,7 +1014,7 @@
                         Nota c.3) No caso de colchões e colchonetes antirrefluxo, as dimensões devem ser declaradas da seguinte forma:
                         altura menor /altura maior, comprimento, largura, nesta ordem:
 
-                        <select class="controlador" name="colchoes" >
+                        <select class="controlador" name="colchoes">
                             <option selected> @Model.colchoes </option>
                             <option> Sim </option>
                             <option> Não </option>
@@ -1059,7 +1067,7 @@
                             <tr>
                                 <td class="fundo-tabela"> Está em caixa alta </td>
                                 <td>
-                                    <select class="controlador" name="caixa_alta_um">
+                                    <select class="form-control" name="caixa_alta_um">
                                         <option selected> @Model.caixa_alta_um </option>
                                         <option> Sim </option>
                                         <option> Não </option>
@@ -1134,7 +1142,7 @@
                     <td>
                         j) Espessura da madeira/compensado/chapa dura/ou outro material com funções similares,
                         incluindo identificação inequívoca destes materiais, para o caso de colchão misto;
-                        <select class="controlador" name="espessura_mad" >
+                        <select class="controlador" name="espessura_mad">
                             <option selected> @Model.espessura_mad </option>
                             <option> Sim </option>
                             <option> Não </option>
@@ -1276,7 +1284,7 @@
                             <tr>
                                 <td class="fundo-tabela"> Está em caixa alta </td>
                                 <td>
-                                    <select class="form-control" name="caixa_alta_tres" >
+                                    <select class="form-control" name="caixa_alta_tres">
                                         <option selected> @Model.caixa_alta_tres </option>
                                         <option> Sim </option>
                                         <option> Não </option>
@@ -1420,7 +1428,7 @@
                             <tr>
                                 <td class="fundo-tabela"> Está em coloração que se destaque da cor do fundo da etiqueta </td>
                                 <td>
-                                    <select class="form-control" name="coloracao_cinco" >
+                                    <select class="form-control" name="coloracao_cinco">
                                         <option selected> @Model.coloracao_cinco </option>
                                         <option> Sim </option>
                                         <option> Não </option>
@@ -1459,7 +1467,7 @@
                     <td>
                         2.12.1  O  aviso  na  embalagem  deve  ser  apresentado  em  letras  não  inferiores  a  20  mm  de  altura,
                         em negrito, caixa alta e em coloração que se destaque da cor de fundo da embalagem
-                        <select class="controlador" name="aviso_embalagem_dois" >
+                        <select class="controlador" name="aviso_embalagem_dois">
                             <option selected>@Model.aviso_embalagem_dois</option>
                             <option> Sim </option>
                             <option> Não </option>
@@ -1543,7 +1551,7 @@
                         acompanhado  ou  não  da  letra  “D”,  divergente da(s)  densidade(s)  nominal(is)  apresentada(s)  pela(s)  lâmina(s)  de  espuma(s)
                         que  constitui(em)  o colchão  ou  colchonete,  exceto  quando  o  numeral  apresentar  mais  que  4  (dígitos),
                         evitando qualquer  confusão  quanto  à  densidade  do  colchão,  ou  ao  atendimento  a  normas  de  gestão consagradas.
-                        <select class="contralador" name="identificacao_dois" >
+                        <select class="contralador" name="identificacao_dois">
                             <option selected> @Model.identificacao_dois </option>
                             <option> Sim </option>
                             <option> Não </option>
@@ -1569,7 +1577,7 @@
                         <td>
                             2.14.3 É  proibido  utilizar  de  nomenclatura  com  o  termo  “látex”  para  identificar  qualquer família, marca,
                             modelo ou nome de colchão ou colchonete quando o produto não for constituído integralmente de látex ou sua composição for inferior a 70% de látex.
-                            <select class="controlador" name="latex" >
+                            <select class="controlador" name="latex">
                                 <option selected> @Model.latex </option>
                                 <option> Sim </option>
                                 <option> Não </option>
@@ -1603,7 +1611,7 @@
                 <tr>
                     <td>
                         A embalagem garante a proteção do produto
-                        <select class="controlador" name="embalagem_protecao" >
+                        <select class="controlador" name="embalagem_protecao">
                             <option selected> @Model.embalagem_protecao </option>
                             <option> Sim </option>
                             <option> Não </option>
@@ -1613,7 +1621,7 @@
             </table>
 
             @* inicio de outras tabelas *@
-            <table class="tables table-bordered border-secondary  table-sm">
+       @*      <table class="tables table-bordered border-secondary  table-sm">
                 <tr class="fundo-tabela">
                     <td colspan=" 4">
                         Instrumento(s)/Dispositivo(s)/Equipamento(s) Utilizado(s) que Requer(em) Calibração
@@ -1625,7 +1633,7 @@
                     <td>Certificado(s)</td>
                     <td>validade(s)</td>
                 </tr>
-            </table>
+            </table> *@
             @*   <table class="tables table-bordered border-secondary  table-sm">
         <tr class="fundo-tabela">
         <td colspan=" 4">
@@ -1691,7 +1699,6 @@
 
 
     </form>
-
 </body>
 </html>
 

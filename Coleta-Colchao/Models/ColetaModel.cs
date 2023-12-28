@@ -79,7 +79,7 @@ namespace Coleta_Colchao.Models
             public string? densidade_5 { get; set; }
             public string? revestimento { get; set; }
             public string? outros_materia { get; set; }
-            public string? status { get; set; }
+            
 
         }
 

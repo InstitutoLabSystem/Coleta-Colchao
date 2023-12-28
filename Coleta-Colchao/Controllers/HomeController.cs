@@ -59,7 +59,7 @@ namespace Coleta_Colchao.Controllers
                                  codmaster = hc.codmaster,
                                  codigo = hc.codigo,
                                  descricao = hc.descricao,
-                                 ProdEnsaiado = c.ProdEnsaiado
+                                 ProdEnsaiado = c.ProdEnsaiado,
 
                              }).ToList();
 
