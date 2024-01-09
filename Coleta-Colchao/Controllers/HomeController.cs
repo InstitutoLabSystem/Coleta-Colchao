@@ -60,7 +60,7 @@ namespace Coleta_Colchao.Controllers
                                  codigo = hc.codigo,
                                  descricao = hc.descricao,
                                  ProdEnsaiado = c.ProdEnsaiado,
-
+                                  
                              }).ToList();
 
                 var buscarOs = _context.regtro_colchao.Where(x => x.os == os).FirstOrDefault();
@@ -80,9 +80,14 @@ namespace Coleta_Colchao.Controllers
                         {
                             return RedirectToAction("IndexEspuma", "Coleta", new { os, ViewBag.orcamento });
                         }
+                        else if (dados.Any(x => x.codigo == "FTCCCH002000001"))
+                        {
+                            return RedirectToAction("IndexLamina", "Coleta", new { os, ViewBag.orcamento });
+                        }
                         else
                         {
-                            return RedirectToAction("Index", "Home", new { os, ViewBag.orcamento });
+                            TempData["Mensagem"] = "Nenhum codigo encontrado.";
+                            return RedirectToAction("Index", "Home");
                         }
                     }
                     else

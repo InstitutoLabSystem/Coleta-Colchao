@@ -70,6 +70,34 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ29sZXRhXEVzcHVtYVxJbmRleEVzcHVtYS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Users/Molina/source/repos/InstitutoLabSystem/Coleta-Colchao/Coleta-Colchao/Views/Coleta/Laminas/IndexLamina.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ29sZXRhXExhbWluYXNcSW5kZXhMYW1pbmEuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Molina/source/repos/InstitutoLabSystem/Coleta-Colchao/Coleta-Colchao/Views/Coleta/Laminas/LaminaDeterminacaoDensidade.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ29sZXRhXExhbWluYXNcTGFtaW5hRGV0ZXJtaW5hY2FvRGVuc2lkYWRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Molina/source/repos/InstitutoLabSystem/Coleta-Colchao/Coleta-Colchao/Views/Coleta/Laminas/LaminaDPC.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ29sZXRhXExhbWluYXNcTGFtaW5hRFBDLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Molina/source/repos/InstitutoLabSystem/Coleta-Colchao/Coleta-Colchao/Views/Coleta/Laminas/LaminaFadiga.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ29sZXRhXExhbWluYXNcTGFtaW5hRmFkaWdhLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Molina/source/repos/InstitutoLabSystem/Coleta-Colchao/Coleta-Colchao/Views/Coleta/Laminas/LaminaF_I.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ29sZXRhXExhbWluYXNcTGFtaW5hRl9JLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Molina/source/repos/InstitutoLabSystem/Coleta-Colchao/Coleta-Colchao/Views/Coleta/Laminas/LaminaPFI.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ29sZXRhXExhbWluYXNcTGFtaW5hUEZJLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Molina/source/repos/InstitutoLabSystem/Coleta-Colchao/Coleta-Colchao/Views/Coleta/Laminas/LamindaDeterminacaoResiliencia.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ29sZXRhXExhbWluYXNcTGFtaW5kYURldGVybWluYWNhb1Jlc2lsaWVuY2lhLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/Molina/source/repos/InstitutoLabSystem/Coleta-Colchao/Coleta-Colchao/Views/Coleta/Molas/EditarRegistroMolas.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ29sZXRhXE1vbGFzXEVkaXRhclJlZ2lzdHJvTW9sYXMuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 

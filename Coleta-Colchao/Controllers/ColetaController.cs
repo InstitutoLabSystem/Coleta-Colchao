@@ -46,6 +46,12 @@ namespace Coleta_Colchao.Controllers
             ViewBag.orcamento = orcamento;
             return View("Molas/IndexMolas");
         }
+        public IActionResult IndexLamina(string os, string orcamento)
+        {
+            ViewBag.os = os;
+            ViewBag.orcamento = orcamento;
+            return View("Laminas/IndexLamina");
+        }
         public IActionResult IndexEspuma(string os, string orcamento)
         {
             ViewBag.os = os;
@@ -473,90 +479,34 @@ namespace Coleta_Colchao.Controllers
             return View("Molas/IdentificacaoEmbalagem2");
         }
 
+        public IActionResult LaminaDeterminacaoDensidade()
+        {
+            return View("Laminas/LaminaDeterminacaoDensidade");
+        }
+
+        public IActionResult LamindaDeterminacaoResiliencia()
+        {
+            return View("Laminas/LamindaDeterminacaoResiliencia");
+        }
+        public IActionResult LaminaDPC()
+        {
+            return View("Laminas/LaminaDPC");
+        }
+
+        public IActionResult LaminaFadiga()
+        {
+            return View("Laminas/LaminaFadiga");
+        }
+        public IActionResult LaminaPFI()
+        {
+            return View("Laminas/LaminaPFI");
+        }
+        public IActionResult LaminaF_I()
+        {
+            return View("Laminas/LaminaF_I");
+        }
+
         //INICIO DAS FUNÇÕES PARA SALVAR OS DADOS,
-
-        //[HttpPost]
-        //public async Task<IActionResult> SalvarRegistro(string os, string orcamento, [Bind("lacre,realizacao_ensaios,quant_recebida,quant_ensaiada,data_realizacao_ini,data_realizacao_term,num_proc,cod_ref,tipo_cert,modelo_cert,tipo_proc,produto,estrutura,tipo_molejo,quant_molejo,fornecedor_um,fornecedor_dois,nome_molejo_um,nome_molejo_dois,quant_media_um,quant_media_dois,bitola_arame_um,bitola_arame_dois,borda_peri,isolante,latex,napa_cou_plas,manual")] ColetaModel.Registro registro)
-        //{
-        //    try
-        //    {
-        //        string lacre = registro.lacre;
-        //        string realizacao_ensaios = registro.realizacao_ensaios;
-        //        string quant_recebida = registro.quant_recebida;
-        //        string quant_ensaiada = registro.quant_ensaiada;
-        //        DateOnly data_realizacao_ini = registro.data_realizacao_ini;
-        //        DateOnly data_realizacao_term = registro.data_realizacao_term;
-        //        string num_proc = registro.num_proc;
-        //        string cod_ref = registro.cod_ref;
-        //        string tipo_cert = registro.tipo_cert;
-        //        string modelo_cert = registro.modelo_cert;
-        //        string tipo_proc = registro.tipo_proc;
-        //        string produto = registro.produto;
-        //        string estrutura = registro.estrutura;
-        //        string tipo_molejo = registro.tipo_molejo;
-        //        string quant_molejo = registro.quant_molejo;
-        //        string fornecedor_um = registro.fornecedor_um;
-        //        string fornecedor_dois = registro.fornecedor_dois;
-        //        string nome_molejo_um = registro.nome_molejo_um;
-        //        string nome_molejo_dois = registro.nome_molejo_dois;
-        //        string quant_media_um = registro.quant_media_um;
-        //        string quant_media_dois = registro.quant_media_dois;
-        //        string bitola_arame_um = registro.bitola_arame_um;
-        //        string bitola_arame_dois = registro.bitola_arame_dois;
-        //        string borda_peri = registro.borda_peri;
-        //        string isolante = registro.isolante;
-        //        string latex = registro.latex;
-        //        string napa_cou_plas = registro.napa_cou_plas;
-        //        string manual = registro.manual;
-
-
-        //        var salvarRegistro = new ColetaModel.Registro
-        //        {
-        //            orcamento = orcamento,
-        //            os = os,
-        //            lacre = lacre,
-        //            realizacao_ensaios = realizacao_ensaios,
-        //            quant_recebida = quant_recebida,
-        //            quant_ensaiada = quant_ensaiada,
-        //            data_realizacao_ini = data_realizacao_ini,
-        //            data_realizacao_term = data_realizacao_term,
-        //            num_proc = num_proc,
-        //            cod_ref = cod_ref,
-        //            tipo_cert = tipo_cert,
-        //            modelo_cert = modelo_cert,
-        //            tipo_proc = tipo_proc,
-        //            produto = produto,
-        //            estrutura = estrutura,
-        //            tipo_molejo = tipo_molejo,
-        //            quant_molejo = quant_molejo,
-        //            fornecedor_um = fornecedor_um,
-        //            fornecedor_dois = fornecedor_dois,
-        //            nome_molejo_um = nome_molejo_um,
-        //            nome_molejo_dois = nome_molejo_dois,
-        //            quant_media_um = quant_media_um,
-        //            quant_media_dois = quant_media_dois,
-        //            bitola_arame_um = bitola_arame_um,
-        //            bitola_arame_dois = bitola_arame_dois,
-        //            borda_peri = borda_peri,
-        //            isolante = isolante,
-        //            latex = latex,
-        //            napa_cou_plas = napa_cou_plas,
-        //            manual = manual,
-
-        //        };
-
-        //        _context.Add(salvarRegistro);
-        //        await _context.SaveChangesAsync();
-        //        TempData["Mensagem"] = "Dados Iniciais gravados com Sucesso";
-        //        return RedirectToAction(nameof(Index), "Home", new { os, orcamento });
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        _logger.LogError(ex, "Error", ex.Message);
-        //        throw;
-        //    }
-        //}
-
         [HttpPost]
         public async Task<IActionResult> SalvarRegistroMolas(string os, string orcamento, [Bind("lacre,realizacao_ensaios,quant_recebida,quant_ensaiada,data_realizacao_ini,data_realizacao_term,num_proc,cod_ref,tipo_cert,modelo_cert,tipo_proc,produto,estrutura,tipo_molejo,quant_molejo,fornecedor_um,fornecedor_dois,nome_molejo_um,nome_molejo_dois,quant_media_um,quant_media_dois,bitola_arame_um,bitola_arame_dois,borda_peri,isolante,latex,napa_cou_plas,manual")] ColetaModel.Registro registro)
         {
