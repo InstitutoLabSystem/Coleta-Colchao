@@ -52,6 +52,13 @@ namespace Coleta_Colchao.Controllers
             ViewBag.orcamento = orcamento;
             return View("Laminas/IndexLamina");
         }
+        public IActionResult EditarLamina(string os, string orcamento)
+        {
+            var dados = _context.regtro_colchao_lamina.Where(x => x.os == os && x.orcamento == orcamento).FirstOrDefault();
+            ViewBag.os = os;
+            ViewBag.orcamento = orcamento;
+            return View("Laminas/EditarLamina", dados);
+        }
         public IActionResult IndexEspuma(string os, string orcamento)
         {
             ViewBag.os = os;
@@ -66,13 +73,6 @@ namespace Coleta_Colchao.Controllers
             ViewBag.orcamento = orcamento;
             return View("Espuma/IndexEspuma", dados);
         }
-
-        //[Route("Molas/teste")]
-        //public IActionResult teste(string os)
-        //{
-        //    var dados = _context.teste.Where(x => x.os == os).FirstOrDefault();
-        //    return View(dados);
-        //}
 
         public IActionResult EditarRegistroMolas(string os, string orcamento)
         {
@@ -588,6 +588,73 @@ namespace Coleta_Colchao.Controllers
                 throw;
             }
         }
+
+        [HttpPost]
+        public async Task<IActionResult> salvarLamina(string os, string orcamento, ColetaModel.RegistroLamina salvar)
+        {
+            try
+            {
+                _context.regtro_colchao_lamina.Add(salvar);
+                await _context.SaveChangesAsync();
+                TempData["Mensagem"] = "Dados Salvo Com Sucesso";
+                return RedirectToAction(nameof(Index), "Home", new { os, orcamento });
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "Error", ex.Message);
+                throw;
+            }
+
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> editarLamina(string os, string orcamento, ColetaModel.RegistroLamina dados)
+        {
+            try
+            {
+                var Editardados = _context.regtro_colchao_lamina.Where(x => x.os == os && x.orcamento == orcamento).FirstOrDefault();
+
+                if(Editardados != null)
+                {
+                    //atualizando valores mudados entre dados e editar dados
+                    Editardados.quant_recebida = dados.quant_recebida;
+                    Editardados.quant_ensaiada = dados.quant_ensaiada;
+                    Editardados.data_realizacao_ini = dados.data_realizacao_ini;
+                    Editardados.data_realizacao_term = dados.data_realizacao_term;
+                    Editardados.num_proc = dados.num_proc;
+                    Editardados.cod_ref = dados.cod_ref;
+                    Editardados.tipo_cert = dados.tipo_cert;
+                    Editardados.modelo_cert = dados.modelo_cert;
+                    Editardados.tipo_proc = dados.tipo_proc;
+                    Editardados.Ensaio_resiliencia = dados.Ensaio_resiliencia;
+                    Editardados.Ensaio_DPC = dados.Ensaio_DPC;
+                    Editardados.Ensaio_FI = dados.Ensaio_FI;
+                    Editardados.Ensaio_FC = dados.Ensaio_FC;
+                    Editardados.Ensaio_fadiga = dados.Ensaio_fadiga;
+                    Editardados.Ensaio_teor = dados.Ensaio_teor;
+                    Editardados.Ensaio_pos_fadiga = dados.Ensaio_pos_fadiga;
+
+
+                    _context.regtro_colchao_lamina.Update(Editardados);
+                    await _context.SaveChangesAsync();
+
+                    TempData["Mensagem"] = "Dados editado Com Sucesso";
+                    return RedirectToAction(nameof(Index), "Home", new { os, orcamento });
+                }
+                else
+                {
+                    TempData["Mensagem"] = "ERRO AO EDITAR";
+                    return RedirectToAction(nameof(EditarLamina), "Coleta", new { os, orcamento });
+                }
+ 
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "Error", ex.Message);
+                throw;
+            }
+        }
+
 
         [HttpPost]
         public async Task<IActionResult> SalvarRegistroEspuma(string os, string orcamento, ColetaModel.RegistroEspuma salvarDados)
@@ -2929,7 +2996,7 @@ namespace Coleta_Colchao.Controllers
                     //realizando calculo.
                     double areaum = double.Parse(area_um);
                     double areadois = double.Parse(area_dois);
-                    double calculo_area_result  = areaum * areadois;
+                    double calculo_area_result = areaum * areadois;
                     string area_result = calculo_area_result.ToString();
 
                     string etiquieta_dois = salvar.etiquieta_dois;

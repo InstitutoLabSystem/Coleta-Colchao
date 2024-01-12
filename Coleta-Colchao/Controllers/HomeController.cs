@@ -60,12 +60,13 @@ namespace Coleta_Colchao.Controllers
                                  codigo = hc.codigo,
                                  descricao = hc.descricao,
                                  ProdEnsaiado = c.ProdEnsaiado,
-                                  
+
                              }).ToList();
 
                 var buscarOs = _context.regtro_colchao.Where(x => x.os == os).FirstOrDefault();
                 var buscarEspumaOs = _context.regtro_colchao_espuma.Where(x => x.os == os).FirstOrDefault();
-                if (buscarOs == null && buscarEspumaOs == null)
+                var buscarLamina = _context.regtro_colchao_lamina.Where(x => x.os == os).FirstOrDefault();
+                if (buscarOs == null && buscarEspumaOs == null && buscarLamina == null)
                 {
                     if (dados.Count != 0)
                     {
@@ -98,7 +99,7 @@ namespace Coleta_Colchao.Controllers
                 }
                 else
                 {
-                    if(buscarOs != null)
+                    if (buscarOs != null)
                     {
                         ViewBag.os = os;
                         ViewBag.orcamento = dados.First().orcamento;
@@ -107,12 +108,20 @@ namespace Coleta_Colchao.Controllers
 
                         return View("Index", dados);
                     }
-                    
-                    if(buscarEspumaOs != null)
+
+                    if (buscarEspumaOs != null)
                     {
                         ViewBag.os = os;
                         ViewBag.orcamento = dados.First().orcamento;
                         ViewBag.ensaio = "Espuma";
+                        return View("Index", dados);
+                    }
+
+                    if(buscarLamina != null)
+                    {
+                        ViewBag.os = os;
+                        ViewBag.orcamento = dados.First().orcamento;
+                        ViewBag.ensaio = "Laminas";
                         return View("Index", dados);
                     }
                     return View("Index");

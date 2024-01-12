@@ -773,19 +773,36 @@ namespace Coleta_Colchao.Models
             public string? prejudique { get; set; }
         }
 
-        //public class Teste
-        //{
-        //    [Key]
-        //    public int Id { get; set; }
+        public class RegistroLamina
+        {
+            [Key]
+            public int Id { get; set; }
+            public string orcamento { get; set; }
+            public string os { get; set; }
+            public string? lacre { get; set; }
+            public string? realizacao_ensaios { get; set; }
+            public string? quant_recebida { get; set; }
+            public string? quant_ensaiada { get; set; }
+            public DateOnly data_realizacao_ini { get; set; }
+            public DateOnly data_realizacao_term { get; set; }
+            public string? num_proc { get; set; }
+            public string? cod_ref { get; set; }
+            public string? tipo_cert { get; set; }
+            public string? modelo_cert { get; set; }
+            public string? tipo_proc { get; set; }
+            public string? produto { get; set; }
+            public int Ensaio_resiliencia { get; set; }
+            public int Ensaio_DPC { get; set; }
+            public int Ensaio_FI { get; set; }
+            public int Ensaio_FC { get; set; }
+            public int Ensaio_fadiga { get; set; }
+            public int Ensaio_teor { get; set; }
+            public int Ensaio_pos_fadiga { get; set; }
+            public string? status { get; set; }
 
-        //    [Required(ErrorMessage = "Nome obrigatorio")]
-        //    public string nome { get; set; }
 
-        //    [Required(ErrorMessage = "Senha Obrigatoria")]
-        //    public string senha { get; set; }
-        //    public string os { get; set; }
-        //    public string? orcamento { get; set; }
-        //}
+        }
+
     }
 
 }
