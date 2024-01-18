@@ -79,7 +79,7 @@ namespace Coleta_Colchao.Models
             public string? densidade_5 { get; set; }
             public string? revestimento { get; set; }
             public string? outros_materia { get; set; }
-            
+
 
         }
 
@@ -798,11 +798,124 @@ namespace Coleta_Colchao.Models
             public int Ensaio_fadiga { get; set; }
             public int Ensaio_teor { get; set; }
             public int Ensaio_pos_fadiga { get; set; }
+            public int Ensaio_Densidade { get; set; }
             public string? status { get; set; }
-
-
         }
 
-    }
+        public class SalvarLaminaDeterminacaoDensidade
+        {
+            public int Id { get; set; }
+            public string orcamento { get; set; }
+            public string os { get; set; }
+            public int item { get; set; }
+            public DateOnly data_ini { get; set; }
+            public DateOnly data_term { get; set; }
+            public string? tipo_espuma { get; set; }
+            public float lar_amostra_um_um { get; set; }
+            public float lar_amostra_um_dois { get; set; }
+            public float lar_amostra_um_tres { get; set; }
+            public float lar_amostra_um_quatro { get; set; }
+            public float lar_amostra_dois_um { get; set; }
+            public float lar_amostra_dois_dois { get; set; }
+            public float lar_amostra_dois_tres { get; set; }
+            public float lar_amostra_dois_quatro { get; set; }
+            public float lar_amostra_tres_um { get; set; }
+            public float lar_amostra_tres_dois { get; set; }
+            public float lar_amostra_tres_tres { get; set; }
+            public float lar_amostra_tres_quatro { get; set; }
+            public float lar_media_um { get; set; }
+            public float lar_media_dois { get; set; }
+            public float lar_media_tres { get; set; }
+            public float comp_amostra_um_um { get; set; }
+            public float comp_amostra_um_dois { get; set; }
+            public float comp_amostra_um_tres { get; set; }
+            public float comp_amostra_um_quat { get; set; }
+            public float comp_amostra_dois_um { get; set; }
+            public float comp_amostra_dois_dois { get; set; }
+            public float comp_amostra_dois_tres { get; set; }
+            public float comp_amostra_dois_quat { get; set; }
+            public float comp_amostra_tres_um { get; set; }
+            public float comp_amostra_tres_dois { get; set; }
+            public float comp_amostra_tres_tres { get; set; }
+            public float comp_amostra_tres_quat { get; set; }
+            public float comp_media_um { get; set; }
+            public float comp_media_dois { get; set; }
+            public float comp_media_tres { get; set; }
+            public float esp_amostra_um_um { get; set; }
+            public float esp_amostra_um_dois { get; set; }
+            public float esp_amostra_um_tres { get; set; }
+            public float esp_amostra_um_quat { get; set; }
+            public float esp_amostra_um_cinco { get; set; }
+            public float esp_amostra_um_seis { get; set; }
+            public float esp_amostra_um_sete { get; set; }
+            public float esp_amostra_um_oito { get; set; }
+            public float esp_amostra_dois_um { get; set; }
+            public float esp_amostra_dois_dois { get; set; }
+            public float esp_amostra_dois_tres { get; set; }
+            public float esp_amostra_dois_quat { get; set; }
+            public float esp_amostra_dois_cinco { get; set; }
+            public float esp_amostra_dois_seis { get; set; }
+            public float esp_amostra_dois_sete { get; set; }
+            public float esp_amostra_dois_oito { get; set; }
+            public float esp_amostra_tres_um { get; set; }
+            public float esp_amostra_tres_dois { get; set; }
+            public float esp_amostra_tres_tres { get; set; }
+            public float esp_amostra_tres_quat { get; set; }
+            public float esp_amostra_tres_cinco { get; set; }
+            public float esp_amostra_tres_seis { get; set; }
+            public float esp_amostra_tres_sete { get; set; }
+            public float esp_amostra_tres_oito { get; set; }
+            public float esp_media_um { get; set; }
+            public float esp_media_dois { get; set; }
+            public float esp_media_tres { get; set; }
+            public float calc_amostra_um { get; set; }
+            public float calc_amostra_dois { get; set; }
+            public float calc_amostra_tres { get; set; }
+            public float massa_um { get; set; }
+            public float massa_dois { get; set; }
+            public float massa_tres { get; set; }
+            public float dr_um_um { get; set; }
+            public float dr_um_dois { get; set; }
+            public float dr_resul_um { get; set; }
+            public float dr_dois_um { get; set; }
+            public float dr_dois_dois { get; set; }
+            public float dr_resul_dois { get; set; }
+            public float dr_tres_um { get; set; }
+            public float dr_tres_dois { get; set; }
+            public float dr_resul_tres { get; set; }
+            public float dr_media { get; set; }
+        }
 
+        public class LaminaResiliencia
+        {
+            [Key]
+            public int Id { get; set; }
+            public string orcamento { get; set; }
+            public string os { get; set; }
+            public int item { get; set; }
+            public DateOnly data_ini { get; set; }
+            public DateOnly data_term { get; set; }
+            public string? tipo_espuma { get; set; }
+            public float resil_amostra_um_um { get; set; }
+            public float resil_amostra_um_dois { get; set; }
+            public float resil_amostra_um_tres { get; set; }
+            public float varia_amostra_um_um  {get; set; }
+            public float varia_amostra_um_dois  {get; set; }
+            public float media_res_um { get; set; }
+            public float resil_amostra_dois_um { get; set; }
+            public float resil_amostra_dois_dois { get; set; }
+            public float resil_amostra_dois_tres { get; set; }
+            public float varia_amostra_dois_um { get; set; }
+            public float varia_amostra_dois_dois { get; set; }
+            public float media_res_dois { get; set; }
+            public float resil_amostra_tres_um { get; set; }
+            public float resil_amostra_tres_dois { get; set; }
+            public float resil_amostra_tres_tres { get; set; }
+            public float varia_amostra_tres_um { get; set; }
+            public float varia_amostra_tres_dois { get; set; }
+            public float media_res_tres { get; set; }
+            public float resiliencia_esp {get; set; }
+            public float resiliencia_enc { get; set; }
+    }
+    }
 }

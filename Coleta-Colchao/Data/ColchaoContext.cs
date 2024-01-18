@@ -28,5 +28,7 @@ namespace Coleta_Colchao.Data
         public DbSet<ColetaModel.EnsaioBaseDurabilidadeEstrutural> ensaio_base_durabilidade_estrutural { get; set; }
         public DbSet<ColetaModel.RegistroEspuma> regtro_colchao_espuma { get; set; }
         public DbSet<ColetaModel.RegistroLamina> regtro_colchao_lamina { get; set; }
+        public DbSet<ColetaModel.SalvarLaminaDeterminacaoDensidade> lamina_determinacao_densidade { get; set; }
+        public DbSet<ColetaModel.LaminaResiliencia> lamina_resiliencia { get; set; }
     }
 }

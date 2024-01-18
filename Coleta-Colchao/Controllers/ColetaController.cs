@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.CodeAnalysis.CSharp.Syntax;
 using Microsoft.EntityFrameworkCore.Metadata.Internal;
+using Microsoft.EntityFrameworkCore.Storage;
 using Microsoft.VisualBasic;
 using System.Data.Entity;
 using System.Data.Entity.Core.Mapping;
@@ -24,6 +25,9 @@ namespace Coleta_Colchao.Controllers
         private readonly ILogger<ColetaController> _logger;
         private readonly ColchaoContext _context;
         private readonly BancoContext _bancoContext;
+
+        public object Mapper { get; private set; }
+
         public ColetaController(ILogger<ColetaController> logger, ColchaoContext colchaoContex, BancoContext bancoContext)
         {
             _logger = logger;
@@ -479,32 +483,96 @@ namespace Coleta_Colchao.Controllers
             return View("Molas/IdentificacaoEmbalagem2");
         }
 
-        public IActionResult LaminaDeterminacaoDensidade()
+        public IActionResult LaminaDeterminacaoDensidade(string os, string orcamento, int item)
         {
-            return View("Laminas/LaminaDeterminacaoDensidade");
+            var dados = _context.lamina_determinacao_densidade.Where(x => x.os == os && x.orcamento == orcamento && x.item == item).FirstOrDefault();
+            if (dados == null)
+            {
+                ViewBag.os = os;
+                ViewBag.orcamento = orcamento;
+                ViewBag.item = item;
+                return View("Laminas/LaminaDeterminacaoDensidade");
+            }
+            else
+            {
+                ViewBag.os = os;
+                ViewBag.orcamento = orcamento;
+                ViewBag.item = item;
+                return View("Laminas/LaminaDeterminacaoDensidade", dados);
+            }
+
         }
 
-        public IActionResult LamindaDeterminacaoResiliencia()
+        public IActionResult LamindaDeterminacaoResiliencia(string os, string orcamento, int item)
         {
-            return View("Laminas/LamindaDeterminacaoResiliencia");
+            var dados = _context.lamina_resiliencia.Where(x => x.os == os && x.orcamento == orcamento && x.item == item).FirstOrDefault();
+
+            if (dados == null)
+            {
+                ViewBag.os = os;
+                ViewBag.orcamento = orcamento;
+                ViewBag.item = item;
+                return View("Laminas/LamindaDeterminacaoResiliencia");
+            }
+            else
+            {
+                ViewBag.os = os;
+                ViewBag.orcamento = orcamento;
+                ViewBag.item = item;
+                return View("Laminas/LamindaDeterminacaoResiliencia", dados);
+            }
+
         }
-        public IActionResult LaminaDPC()
+        public IActionResult LaminaDPC(string os, string orcamento, int i)
         {
+            ViewBag.os = os;
+            ViewBag.orcamento = orcamento;
+            ViewBag.item = i;
+
+
             return View("Laminas/LaminaDPC");
         }
 
-        public IActionResult LaminaFadiga()
+        public IActionResult LaminaFadiga(string os, string orcamento)
         {
+            ViewBag.os = os;
+            ViewBag.orcamento = orcamento;
             return View("Laminas/LaminaFadiga");
         }
-        public IActionResult LaminaPFI()
+        public IActionResult LaminaPFI(string os, string orcamento, int i)
         {
+            ViewBag.os = os;
+            ViewBag.orcamento = orcamento;
+            ViewBag.item = i;
             return View("Laminas/LaminaPFI");
         }
-        public IActionResult LaminaF_I()
+        public IActionResult LaminaF_I(string os, string orcamento)
         {
+            ViewBag.os = os;
+            ViewBag.orcamento = orcamento;
             return View("Laminas/LaminaF_I");
         }
+
+        public IActionResult RealizarEnsaios(string os, string orcamento, string ensaio)
+        {
+            var dados = _context.regtro_colchao_lamina.Where(x => x.os == os && x.orcamento == orcamento).FirstOrDefault();
+
+            ViewBag.os = os;
+            ViewBag.orcamento = orcamento;
+            ViewBag.ensaio = ensaio;
+            return View("Laminas/RealizarEnsaios", dados);
+        }
+
+        public IActionResult FatorConforto(string os, string orcamento, string ensaio)
+        {
+            var dados = _context.regtro_colchao_lamina.Where(x => x.os == os && x.orcamento == orcamento).FirstOrDefault();
+
+            ViewBag.os = os;
+            ViewBag.orcamento = orcamento;
+            ViewBag.ensaio = ensaio;
+            return View("Laminas/FatorConforto", dados);
+        }
+
 
         //INICIO DAS FUNÇÕES PARA SALVAR OS DADOS,
         [HttpPost]
@@ -614,7 +682,7 @@ namespace Coleta_Colchao.Controllers
             {
                 var Editardados = _context.regtro_colchao_lamina.Where(x => x.os == os && x.orcamento == orcamento).FirstOrDefault();
 
-                if(Editardados != null)
+                if (Editardados != null)
                 {
                     //atualizando valores mudados entre dados e editar dados
                     Editardados.quant_recebida = dados.quant_recebida;
@@ -635,7 +703,7 @@ namespace Coleta_Colchao.Controllers
                     Editardados.Ensaio_pos_fadiga = dados.Ensaio_pos_fadiga;
 
 
-                    _context.regtro_colchao_lamina.Update(Editardados);
+                    _context.regtro_colchao_lamina.Update(dados);
                     await _context.SaveChangesAsync();
 
                     TempData["Mensagem"] = "Dados editado Com Sucesso";
@@ -646,7 +714,7 @@ namespace Coleta_Colchao.Controllers
                     TempData["Mensagem"] = "ERRO AO EDITAR";
                     return RedirectToAction(nameof(EditarLamina), "Coleta", new { os, orcamento });
                 }
- 
+
             }
             catch (Exception ex)
             {
@@ -4075,20 +4143,254 @@ namespace Coleta_Colchao.Controllers
             }
         }
 
-        //[Route("Molas/teste")]
-        //[HttpPost]
-        //public IActionResult editar(Teste testee)
-        //{
+        [HttpPost]
+        public async Task<IActionResult> SalvarDeterminacaoDensidade(string os, string orcamento, int item, ColetaModel.SalvarLaminaDeterminacaoDensidade salvarDados)
+        {
+            try
+            {
+                var editarDados = _context.lamina_determinacao_densidade.Where(x => x.os == os && x.orcamento == orcamento && x.item == item).FirstOrDefault();
+                if (editarDados == null)
+                {
+                    //realizando calculo da media das amostras..
+                    float media_amostra_um = ((salvarDados.lar_amostra_um_um + salvarDados.lar_amostra_um_dois + salvarDados.lar_amostra_um_tres + salvarDados.lar_amostra_um_quatro) / 4);
+                    salvarDados.lar_media_um = media_amostra_um;
 
-        //    if (ModelState.IsValid)
-        //    {
-        //        _context.Update(testee);
-        //        _context.SaveChanges();
-        //        TempData["Mensagem"] = "Dados editado Com Sucesso";
-        //        return RedirectToAction("teste");
+                    float media_amostra_dois = ((salvarDados.lar_amostra_dois_um + salvarDados.lar_amostra_dois_dois + salvarDados.lar_amostra_dois_tres + salvarDados.lar_amostra_dois_quatro) / 4);
+                    salvarDados.lar_media_dois = media_amostra_dois;
 
-        //    }
-        //    return View("teste");
-        //}
+                    float media_amostra_tres = ((salvarDados.lar_amostra_tres_um + salvarDados.lar_amostra_tres_dois + salvarDados.lar_amostra_tres_tres + salvarDados.lar_amostra_tres_quatro) / 4);
+                    salvarDados.lar_media_tres = media_amostra_tres;
+
+                    float media_comp_um = ((salvarDados.comp_amostra_um_um + salvarDados.comp_amostra_um_um + salvarDados.comp_amostra_um_um + salvarDados.comp_amostra_um_um) / 4);
+                    salvarDados.comp_media_um = media_comp_um;
+
+                    float media_comp_dois = ((salvarDados.comp_amostra_dois_um + salvarDados.comp_amostra_dois_um + salvarDados.comp_amostra_dois_um + salvarDados.comp_amostra_dois_um) / 4);
+                    salvarDados.comp_media_dois = media_comp_dois;
+
+                    float media_comp_tres = ((salvarDados.comp_amostra_tres_um + salvarDados.comp_amostra_tres_um + salvarDados.comp_amostra_tres_um + salvarDados.comp_amostra_tres_um) / 4);
+                    salvarDados.comp_media_tres = media_comp_tres;
+
+                    float media_esp_um = ((salvarDados.esp_amostra_um_um + salvarDados.esp_amostra_um_dois + salvarDados.esp_amostra_um_tres + salvarDados.esp_amostra_um_quat + salvarDados.esp_amostra_um_cinco + salvarDados.esp_amostra_um_seis + salvarDados.esp_amostra_um_sete + salvarDados.esp_amostra_um_oito) / 8);
+                    salvarDados.esp_media_um = media_esp_um;
+
+                    float media_esp_dois = ((salvarDados.esp_amostra_dois_um + salvarDados.esp_amostra_dois_dois + salvarDados.esp_amostra_dois_tres + salvarDados.esp_amostra_dois_quat + salvarDados.esp_amostra_dois_cinco + salvarDados.esp_amostra_dois_seis + salvarDados.esp_amostra_dois_sete + salvarDados.esp_amostra_dois_oito) / 8);
+                    salvarDados.esp_media_dois = media_esp_dois;
+
+                    float media_esp_tres = ((salvarDados.esp_amostra_tres_um + salvarDados.esp_amostra_tres_dois + salvarDados.esp_amostra_tres_tres + salvarDados.esp_amostra_tres_quat + salvarDados.esp_amostra_tres_cinco + salvarDados.esp_amostra_tres_seis + salvarDados.esp_amostra_tres_sete + salvarDados.esp_amostra_tres_oito) / 8);
+                    salvarDados.esp_media_tres = media_esp_tres;
+
+                    // final do calculo da medias de largura, comprimento, e espessura.
+
+                    //inicio calculo total..
+                    float vol_calc_amostra_um = ((media_amostra_um * media_comp_um * media_esp_um) / 1000);
+                    float vol_calc_amostra_dois = ((media_amostra_dois * media_comp_dois * media_esp_dois) / 1000);
+                    float vol_calc_amostra_tres = ((media_amostra_tres * media_comp_tres * media_esp_tres) / 1000);
+                    //final do calculo..
+
+                    //inicio calculo dr..
+                    salvarDados.dr_um_um = salvarDados.massa_um;
+                    salvarDados.dr_um_dois = vol_calc_amostra_um;
+                    salvarDados.dr_resul_um = ((salvarDados.dr_um_um / salvarDados.dr_um_dois) * 1000);
+
+                    salvarDados.dr_dois_um = salvarDados.massa_dois;
+                    salvarDados.dr_dois_dois = vol_calc_amostra_dois;
+                    salvarDados.dr_resul_dois = ((salvarDados.dr_dois_um / salvarDados.dr_dois_dois) * 1000);
+
+                    salvarDados.dr_tres_um = salvarDados.massa_tres;
+                    salvarDados.dr_tres_dois = vol_calc_amostra_tres;
+                    salvarDados.dr_resul_tres = ((salvarDados.dr_tres_um / salvarDados.dr_tres_dois) * 1000);
+
+                    salvarDados.dr_media = ((salvarDados.dr_resul_um + salvarDados.dr_resul_dois + salvarDados.dr_resul_tres) / 3);
+
+                    _context.lamina_determinacao_densidade.Add(salvarDados);
+                    await _context.SaveChangesAsync();
+
+                    TempData["Mensagem"] = "Dados salvo com sucesso.";
+                    return RedirectToAction("LaminaDeterminacaoDensidade", "Coleta", new { os, orcamento, item });
+                }
+                else
+                {
+                    ////recebendo os valores para editar no html...
+                    editarDados.data_ini = salvarDados.data_ini;
+                    editarDados.data_term = salvarDados.data_term;
+                    editarDados.tipo_espuma = salvarDados.tipo_espuma;
+
+                    ////largura
+                    editarDados.lar_amostra_um_um = salvarDados.lar_amostra_um_um;
+                    editarDados.lar_amostra_um_dois = salvarDados.lar_amostra_um_dois;
+                    editarDados.lar_amostra_um_tres = salvarDados.lar_amostra_um_tres;
+                    editarDados.lar_amostra_um_quatro = salvarDados.lar_amostra_um_quatro;
+                    editarDados.lar_amostra_dois_um = salvarDados.lar_amostra_dois_um;
+                    editarDados.lar_amostra_dois_dois = salvarDados.lar_amostra_dois_dois;
+                    editarDados.lar_amostra_dois_tres = salvarDados.lar_amostra_dois_tres;
+                    editarDados.lar_amostra_dois_quatro = salvarDados.lar_amostra_dois_quatro;
+                    editarDados.lar_amostra_tres_um = salvarDados.lar_amostra_tres_um;
+                    editarDados.lar_amostra_tres_dois = salvarDados.lar_amostra_tres_dois;
+                    editarDados.lar_amostra_tres_tres = salvarDados.lar_amostra_tres_tres;
+                    editarDados.lar_amostra_tres_quatro = salvarDados.lar_amostra_tres_quatro;
+                    ////comprimento
+                    editarDados.comp_amostra_um_um = salvarDados.comp_amostra_um_um;
+                    editarDados.comp_amostra_um_dois = salvarDados.comp_amostra_um_dois;
+                    editarDados.comp_amostra_um_tres = salvarDados.comp_amostra_um_tres;
+                    editarDados.comp_amostra_um_quat = salvarDados.comp_amostra_um_quat;
+                    editarDados.comp_amostra_dois_um = salvarDados.comp_amostra_dois_um;
+                    editarDados.comp_amostra_dois_dois = salvarDados.comp_amostra_dois_dois;
+                    editarDados.comp_amostra_dois_tres = salvarDados.comp_amostra_dois_tres;
+                    editarDados.comp_amostra_dois_quat = salvarDados.comp_amostra_dois_quat;
+                    editarDados.comp_amostra_tres_um = salvarDados.comp_amostra_dois_um;
+                    editarDados.comp_amostra_tres_dois = salvarDados.comp_amostra_tres_dois;
+                    editarDados.comp_amostra_tres_tres = salvarDados.comp_amostra_tres_tres;
+                    editarDados.comp_amostra_tres_quat = salvarDados.comp_amostra_tres_quat;
+                    ////espessura.
+                    editarDados.esp_amostra_um_um = salvarDados.esp_amostra_um_um;
+                    editarDados.esp_amostra_um_dois = salvarDados.esp_amostra_um_dois;
+                    editarDados.esp_amostra_um_tres = salvarDados.esp_amostra_um_tres;
+                    editarDados.esp_amostra_um_quat = salvarDados.esp_amostra_um_quat;
+                    editarDados.esp_amostra_um_cinco = salvarDados.esp_amostra_um_cinco;
+                    editarDados.esp_amostra_um_seis = salvarDados.esp_amostra_um_seis;
+                    editarDados.esp_amostra_um_sete = salvarDados.esp_amostra_um_sete;
+                    editarDados.esp_amostra_um_oito = salvarDados.esp_amostra_um_oito;
+                    editarDados.esp_amostra_dois_um = salvarDados.esp_amostra_um_um;
+                    editarDados.esp_amostra_dois_dois = salvarDados.esp_amostra_dois_dois;
+                    editarDados.esp_amostra_dois_tres = salvarDados.esp_amostra_dois_tres;
+                    editarDados.esp_amostra_dois_quat = salvarDados.esp_amostra_dois_quat;
+                    editarDados.esp_amostra_dois_cinco = salvarDados.esp_amostra_dois_cinco;
+                    editarDados.esp_amostra_dois_seis = salvarDados.esp_amostra_dois_seis;
+                    editarDados.esp_amostra_dois_sete = salvarDados.esp_amostra_dois_sete;
+                    editarDados.esp_amostra_dois_oito = salvarDados.esp_amostra_dois_oito;
+                    editarDados.esp_amostra_tres_um = salvarDados.esp_amostra_tres_um;
+                    editarDados.esp_amostra_tres_dois = salvarDados.esp_amostra_tres_dois;
+                    editarDados.esp_amostra_tres_tres = salvarDados.esp_amostra_tres_tres;
+                    editarDados.esp_amostra_tres_quat = salvarDados.esp_amostra_tres_quat;
+                    editarDados.esp_amostra_tres_cinco = salvarDados.esp_amostra_tres_cinco;
+                    editarDados.esp_amostra_tres_seis = salvarDados.esp_amostra_tres_seis;
+                    editarDados.esp_amostra_tres_sete = salvarDados.esp_amostra_tres_sete;
+                    editarDados.esp_amostra_tres_oito = salvarDados.esp_amostra_tres_oito;
+
+                    //atualizando a media de cada valor, encontrado.
+                    editarDados.lar_media_um = ((editarDados.lar_amostra_um_um + salvarDados.lar_amostra_um_dois + editarDados.lar_amostra_um_tres + editarDados.lar_amostra_um_quatro) / 4);
+                    editarDados.lar_media_dois = ((editarDados.lar_amostra_dois_um + salvarDados.lar_amostra_dois_dois + editarDados.lar_amostra_dois_tres + editarDados.lar_amostra_dois_quatro) / 4);
+                    editarDados.lar_media_tres = ((editarDados.lar_amostra_tres_um + salvarDados.lar_amostra_tres_dois + editarDados.lar_amostra_tres_tres + editarDados.lar_amostra_tres_quatro) / 4);
+
+                    editarDados.comp_media_um = ((editarDados.comp_amostra_um_um + editarDados.comp_amostra_um_dois + editarDados.comp_amostra_um_tres + editarDados.comp_amostra_um_quat) / 4);
+                    editarDados.comp_media_dois = ((editarDados.comp_amostra_dois_um + editarDados.comp_amostra_dois_dois + editarDados.comp_amostra_dois_tres + editarDados.comp_amostra_dois_quat) / 4);
+                    editarDados.comp_media_tres = ((editarDados.comp_amostra_tres_um + editarDados.comp_amostra_tres_dois + editarDados.comp_amostra_dois_tres + editarDados.comp_amostra_tres_quat) / 4);
+
+                    editarDados.esp_media_um = ((editarDados.esp_amostra_tres_um + editarDados.esp_amostra_tres_dois + editarDados.esp_amostra_tres_tres + editarDados.esp_amostra_tres_quat + editarDados.esp_amostra_tres_cinco + editarDados.esp_amostra_tres_seis + editarDados.esp_amostra_tres_sete + editarDados.esp_amostra_tres_oito) / 8);
+                    editarDados.esp_media_dois = ((editarDados.esp_amostra_dois_um + editarDados.esp_amostra_dois_dois + editarDados.esp_amostra_dois_tres + editarDados.esp_amostra_dois_quat + editarDados.esp_amostra_dois_cinco + editarDados.esp_amostra_dois_seis + editarDados.esp_amostra_dois_sete + editarDados.esp_amostra_dois_oito) / 8);
+                    editarDados.esp_media_tres = ((editarDados.esp_amostra_tres_um + editarDados.esp_amostra_tres_dois + editarDados.esp_amostra_tres_tres + editarDados.esp_amostra_tres_quat + editarDados.esp_amostra_tres_cinco + editarDados.esp_amostra_tres_seis + editarDados.esp_amostra_tres_sete + editarDados.esp_amostra_tres_oito) / 8);
+
+                    editarDados.calc_amostra_um = ((editarDados.lar_media_um * editarDados.comp_media_um * editarDados.esp_media_um) / 1000);
+                    editarDados.calc_amostra_dois = ((editarDados.lar_media_dois * editarDados.comp_media_dois * editarDados.esp_media_dois) / 1000);
+                    editarDados.calc_amostra_tres = ((editarDados.lar_media_tres * editarDados.comp_media_tres * editarDados.esp_media_tres) / 1000);
+
+                    //campo de massa.
+                    editarDados.massa_um = salvarDados.massa_um;
+                    editarDados.massa_dois = salvarDados.massa_dois;
+                    editarDados.massa_tres = salvarDados.massa_tres;
+
+                    //inicio DR
+                    editarDados.dr_um_um = editarDados.massa_um;
+                    editarDados.dr_um_dois = editarDados.calc_amostra_um;
+                    editarDados.dr_resul_um = ((editarDados.dr_um_um / editarDados.dr_um_dois) * 1000);
+
+                    editarDados.dr_dois_um = editarDados.massa_dois;
+                    editarDados.dr_dois_dois = editarDados.calc_amostra_dois;
+                    editarDados.dr_resul_dois = ((editarDados.dr_dois_um / editarDados.dr_dois_dois) * 1000);
+
+                    editarDados.dr_tres_um = editarDados.massa_tres;
+                    editarDados.dr_tres_dois = editarDados.calc_amostra_tres;
+                    editarDados.dr_resul_tres = ((editarDados.dr_tres_um / editarDados.dr_tres_dois) * 1000);
+
+                    editarDados.dr_media = ((editarDados.dr_resul_um + editarDados.dr_resul_dois + editarDados.dr_resul_tres) / 3);
+
+
+                    _context.lamina_determinacao_densidade.Update(editarDados);
+                    await _context.SaveChangesAsync();
+
+                    TempData["Mensagem"] = "Dados Editado com sucesso.";
+                    return RedirectToAction("LaminaDeterminacaoDensidade", "Coleta", new { os, orcamento, item });
+
+                }
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "Error", ex.Message);
+                throw;
+            }
+        }
+        [HttpPost]
+        public async Task<IActionResult> SalvarLaminaResiliencia(string os, string orcamento, int item, ColetaModel.LaminaResiliencia salvarDados)
+        {
+            try
+            {
+                var editarDados = _context.lamina_resiliencia.Where(x => x.os == os && x.orcamento == orcamento && x.item == item).FirstOrDefault();
+
+                if (editarDados == null)
+                {
+                    //realizando calculos necessarios, convertendo direto para 2 casas decimais dps da virgula... convertendo para string e float a mesmo tempo.
+                    salvarDados.varia_amostra_um_um = float.Parse((((salvarDados.resil_amostra_um_dois - salvarDados.resil_amostra_um_um) / salvarDados.resil_amostra_um_um) * 100).ToString("N2"));
+                    salvarDados.varia_amostra_um_dois = float.Parse(((((salvarDados.resil_amostra_um_tres - salvarDados.resil_amostra_um_um) / salvarDados.resil_amostra_um_um) * 100) * -1).ToString("N2"));
+                    salvarDados.media_res_um = ((salvarDados.resil_amostra_um_um + salvarDados.resil_amostra_um_dois + salvarDados.resil_amostra_um_tres) / 3);
+
+                    salvarDados.varia_amostra_dois_um = float.Parse(((((salvarDados.resil_amostra_dois_dois - salvarDados.resil_amostra_dois_um) / salvarDados.resil_amostra_dois_um) * 100) * -1).ToString("N2"));
+                    salvarDados.varia_amostra_dois_dois = float.Parse(((((salvarDados.resil_amostra_dois_tres - salvarDados.resil_amostra_dois_um) / salvarDados.resil_amostra_dois_um) * 100) * -1).ToString("N2"));
+                    salvarDados.media_res_dois = float.Parse(((salvarDados.resil_amostra_dois_um + salvarDados.resil_amostra_dois_dois + salvarDados.resil_amostra_dois_tres) / 3).ToString("N2"));
+
+                    salvarDados.varia_amostra_tres_um = (((salvarDados.resil_amostra_tres_dois - salvarDados.resil_amostra_tres_um) / salvarDados.resil_amostra_tres_um) * 100);
+                    salvarDados.varia_amostra_tres_dois = (((salvarDados.resil_amostra_tres_tres - salvarDados.resil_amostra_tres_um) / salvarDados.resil_amostra_tres_um) * 100);
+                    salvarDados.media_res_tres = ((salvarDados.resil_amostra_tres_um + salvarDados.resil_amostra_tres_dois + salvarDados.resil_amostra_tres_tres) / 3);
+
+                    salvarDados.resiliencia_enc = ((salvarDados.media_res_um + salvarDados.media_res_dois + salvarDados.media_res_tres) / 3);
+
+                    _context.lamina_resiliencia.Add(salvarDados);
+                    await _context.SaveChangesAsync();
+                    TempData["Mensagem"] = "Dados gravado com sucesso.";
+                    return RedirectToAction("LamindaDeterminacaoResiliencia", "Coleta", new { os, orcamento, item });
+                }
+                else
+                {
+                    //editando os valores do html.
+                    editarDados.tipo_espuma = salvarDados.tipo_espuma;
+                    editarDados.data_ini = salvarDados.data_ini;
+                    editarDados.data_term = salvarDados.data_term;
+                    editarDados.resil_amostra_um_dois = salvarDados.resil_amostra_um_dois;
+                    editarDados.resil_amostra_um_um = salvarDados.resil_amostra_um_um;
+                    editarDados.resil_amostra_um_tres = salvarDados.resil_amostra_um_tres;
+                    editarDados.resil_amostra_dois_um = salvarDados.resil_amostra_dois_um;
+                    editarDados.resil_amostra_dois_dois = salvarDados.resil_amostra_dois_dois;
+                    editarDados.resil_amostra_dois_tres = salvarDados.resil_amostra_dois_tres;
+                    editarDados.resil_amostra_tres_um = salvarDados.resil_amostra_tres_um;
+                    editarDados.resil_amostra_tres_dois = salvarDados.resil_amostra_tres_dois;
+                    editarDados.resil_amostra_tres_tres = salvarDados.resil_amostra_tres_tres;
+
+                    //realizando calculos necessarios, convertendo direto para 2 casas decimais dps da virgula... convertendo para string e float a mesmo tempo.
+                    editarDados.varia_amostra_um_um = float.Parse((((editarDados.resil_amostra_um_dois - editarDados.resil_amostra_um_um) / editarDados.resil_amostra_um_um) * 100).ToString("N2"));
+                    editarDados.varia_amostra_um_dois = float.Parse(((((editarDados.resil_amostra_um_tres - editarDados.resil_amostra_um_um) / editarDados.resil_amostra_um_um) * 100) * -1).ToString("N2"));
+                    editarDados.media_res_um = ((editarDados.resil_amostra_um_um + editarDados.resil_amostra_um_dois + editarDados.resil_amostra_um_tres) / 3);
+
+                    editarDados.varia_amostra_dois_um = float.Parse(((((editarDados.resil_amostra_dois_dois - editarDados.resil_amostra_dois_um) / editarDados.resil_amostra_dois_um) * 100) * -1).ToString("N2"));
+                    editarDados.varia_amostra_dois_dois = float.Parse(((((editarDados.resil_amostra_dois_tres - editarDados.resil_amostra_dois_um) / editarDados.resil_amostra_dois_um) * 100) * -1).ToString("N2"));
+                    editarDados.media_res_dois = float.Parse(((editarDados.resil_amostra_dois_um + editarDados.resil_amostra_dois_dois + editarDados.resil_amostra_dois_tres) / 3).ToString("N2"));
+
+                    editarDados.varia_amostra_tres_um = (((editarDados.resil_amostra_tres_dois - editarDados.resil_amostra_tres_um) / editarDados.resil_amostra_tres_um) * 100);
+                    editarDados.varia_amostra_tres_dois = (((editarDados.resil_amostra_tres_tres - editarDados.resil_amostra_tres_um) / editarDados.resil_amostra_tres_um) * 100);
+                    editarDados.media_res_tres = ((editarDados.resil_amostra_tres_um + editarDados.resil_amostra_tres_dois + editarDados.resil_amostra_tres_tres) / 3);
+
+                    editarDados.resiliencia_esp = salvarDados.resiliencia_esp;
+                    editarDados.resiliencia_enc = ((editarDados.media_res_um + editarDados.media_res_dois + editarDados.media_res_tres) / 3);
+
+                    _context.lamina_resiliencia.Update(editarDados);
+                    await _context.SaveChangesAsync();
+                    TempData["Mensagem"] = "Dados editado com sucesso.";
+                    return RedirectToAction("LamindaDeterminacaoResiliencia", "Coleta", new { os, orcamento, item });
+                }
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "Error", ex.Message);
+                throw;
+            }
+        }
     }
 }

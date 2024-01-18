@@ -1,9 +1,11 @@
-﻿@{
+﻿@model ColetaModel.LaminaResiliencia;
+@{
     Layout = null;
 }
 @{
     ViewData["Title"] = "Ensaio Lamina Densidade";
 }
+
 
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -12,219 +14,244 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="~/css/coleta.css" asp-append-version="true" />
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <title>Coleta</title>
-    @*  <style>
-    .controlador-conforme {
-    padding: 5px;
-    border-color: gray;
-    border-radius: 5px;
-    box-sizing: border-box;
-    height: 500px;
-    width: 100px;
-    }
+    <title>Determinação Resiliencia</title>
+    <style>
+        /*    .controlador-conforme {
+            padding: 5px;
+            border-color: gray;
+            border-radius: 5px;
+            box-sizing: border-box;
+            height: 500px;
+            width: 100px;
+            } */
 
-    input {
-    text-align: center;
-    }
-    </style> *@
+        input {
+            text-align: center;
+        }
+    </style>
 </head>
 <body>
-    <table class="tables table-bordered border-secondary  table-sm">
-        <thead>
-            <tr>
-                <td><img src="https://www.labsystem-nuvem.com.br/imagens_arq/imagens/img/LabSystem.png" class="imagem" /></td>
-                <td colspan="3" class="fundo-tabela">Coleta De Dados</td>
-                <td class="fundo-tabela">N Os:</td>
+    <form method="post" asp-controller="Coleta" asp-action="SalvarLaminaResiliencia" asp-route-os="@ViewBag.os" asp-route-orcamento="@ViewBag.orcamento" asp-route-item="@ViewBag.item">
+        <table class="tables table-bordered border-secondary  table-sm">
+            <thead>
+                <tr>
+                    <td><img src="https://www.labsystem-nuvem.com.br/imagens_arq/imagens/img/LabSystem.png" class="imagem" /></td>
+                    <td colspan="3" class="fundo-tabela">Coleta De Dados</td>
+                    <td class="fundo-tabela">N Os:</td>
+                </tr>
+                <tr>
+                    <td colspan="4">Ensaios de Colchão de Espuma (Portaria Inmetro 35)</td>
+                    <td rowspan="2"> @ViewBag.os</td>
+                </tr>
+                @if (Model == null)
+                {
+                    <tr>
+                        <td>Inicio:</td>
+                        <td><input class="form-control" type="date" asp-for="data_ini" /></td>
+                        <td>Termino:</td>
+                        <td><input class="form-control" type="date" asp-for="data_term" /></td>
+                    </tr>
+                }
+                else
+                {
+                    <tr>
+                        <td>Inicio:</td>
+                        <td><input class="form-control" type="text" asp-for="data_ini" /></td>
+                        <td>Termino:</td>
+                        <td><input class="form-control" type="text" asp-for="data_term" /></td>
+                    </tr>
+                }
+
+            </thead>
+        </table>
+        <table class="tables table-bordered border-secondary  table-sm">
+            <tr class="fundo-tabela">
+                <td>Item</td>
+                <td>Descrição</td>
+                <td>Resultado</td>
             </tr>
             <tr>
-                <td colspan="4">Ensaios de Colchão de Espuma (Portaria Inmetro 35)</td>
-                <td rowspan="2"> os aqui</td>
+                <td rowspan="10">5.2</td>
+                <td>
+                    <b>Determinação da Resiliência</b>
+                </td>
+                <td rowspan="10">Resultado</td>
             </tr>
             <tr>
-                <td>Inicio:</td>
-                <td><input class="form-control" type="date" /></td>
-                <td>Termino:</td>
-                <td><input class="form-control" type="date" /></td>
+                <td>
+                    Separar 3 corpos de prova e posiciona-lo na parte inferior do dispositivo.
+                </td>
             </tr>
-        </thead>
-    </table>
-    <table class="tables table-bordered border-secondary  table-sm">
-        <tr class="fundo-tabela">
-            <td>Item</td>
-            <td>Descrição</td>
-            <td>Resultado</td>
-        </tr>
-        <tr>
-            <td rowspan="10">5.2</td>
-            <td>
-                <b>Determinação da Resiliência</b>
-            </td>
-            <td rowspan="10">Resultado</td>
-        </tr>
-        <tr>
-            <td>
-                Separar 3 corpos de prova e posiciona-lo na parte inferior do dispositivo.
-            </td>
-        </tr>
-        <tr>
-            <td>
-                Deixar a esfera cair sobre a espuma de uma altura de 476 mm e verificar a % resilência.
-            </td>
-        </tr>
-        <tr>
-            <td>
-                <table class="tables table-bordered border-secondary  table-sm">
-                    <tr>
-                        <td class="fundo-tabela">Tipo Espuma</td>
-                        <td colspan="3"><input type="text" class="form-control" /></td>
-                    </tr>
-                    <tr class="fundo-tabela">
-                        <td>1º Amostra </td>
-                        <td>Altura (mm) </td>
-                        <td>Resiliência % </td>
-                        <td>Variação </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            1°
-                        </td>
-                        <td>476,0 mm</td>
-                        <td><input type="text" class="form-control" /></td>
-                        <td>---</td>
-                    </tr>
-                    <tr>
-                        <td>
-                            2°
-                        </td>
-                        <td>476,0 mm</td>
-                        <td><input type="text" class="form-control" /></td>
-                        <td>---</td>
-                    </tr>
-                    <tr>
-                        <td>
-                            3°
-                        </td>
-                        <td>476,0 mm</td>
-                        <td><input type="text" class="form-control" /></td>
-                        <td>---</td>
-                    </tr>
-                    <tr>
-                        <td>
-                            Média de Resiliência - 1º Amostra
-                        </td>
-                        <td class="fundo-tabela">Resiliencia %</td>
-                        <td colspan="2"><input type="text" class="form-control" readonly /></td>
-                    </tr>
-                </table>
-            </td>
-        </tr>
-        <tr>
-            <td>
-                <table class="tables table-bordered border-secondary  table-sm">
-                    <tr>
-                        <td class="fundo-tabela">Tipo Espuma</td>
-                        <td colspan="3"><input type="text" class="form-control" /></td>
-                    </tr>
-                    <tr class="fundo-tabela">
-                        <td>2º Amostra </td>
-                        <td>Altura (mm) </td>
-                        <td>Resiliência % </td>
-                        <td>Variação </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            1°
-                        </td>
-                        <td>476,0 mm</td>
-                        <td><input type="text" class="form-control" /></td>
-                        <td>---</td>
-                    </tr>
-                    <tr>
-                        <td>
-                            2°
-                        </td>
-                        <td>476,0 mm</td>
-                        <td><input type="text" class="form-control" /></td>
-                        <td>---</td>
-                    </tr>
-                    <tr>
-                        <td>
-                            3°
-                        </td>
-                        <td>476,0 mm</td>
-                        <td><input type="text" class="form-control" /></td>
-                        <td>---</td>
-                    </tr>
-                    <tr>
-                        <td>
-                            Média de Resiliência - 2º Amostra
-                        </td>
-                        <td class="fundo-tabela">Resiliencia %</td>
-                        <td colspan="2"><input type="text" class="form-control" readonly /></td>
-                    </tr>
-                </table>
-            </td>
-        </tr>
-        <tr>
-            <td>
-                <table class="tables table-bordered border-secondary  table-sm">
-                    <tr>
-                        <td class="fundo-tabela">Tipo Espuma</td>
-                        <td colspan="3"><input type="text" class="form-control" /></td>
-                    </tr>
-                    <tr class="fundo-tabela">
-                        <td>3º Amostra </td>
-                        <td>Altura (mm) </td>
-                        <td>Resiliência % </td>
-                        <td>Variação </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            1°
-                        </td>
-                        <td>476,0 mm</td>
-                        <td><input type="text" class="form-control" /></td>
-                        <td>---</td>
-                    </tr>
-                    <tr>
-                        <td>
-                            2°
-                        </td>
-                        <td>476,0 mm</td>
-                        <td><input type="text" class="form-control" /></td>
-                        <td>---</td>
-                    </tr>
-                    <tr>
-                        <td>
-                            3°
-                        </td>
-                        <td>476,0 mm</td>
-                        <td><input type="text" class="form-control" /></td>
-                        <td>---</td>
-                    </tr>
-                    <tr>
-                        <td>
-                            Média de Resiliência - 3º Amostra
-                        </td>
-                        <td class="fundo-tabela">Resiliencia %</td>
-                        <td colspan="2"><input type="text" class="form-control" readonly /></td>
-                    </tr>
-                </table>
-            </td>
-        </tr>
-        <tr>
-            <td>
-                Resiliência especificada % <input type="text" class="controlador" readonly />
-            </td>
-        </tr>
-        <tr>
-            <td>
-                Resiliência encontrada % <input type="text" class="controlador" readonly />
-            </td>
-        </tr>
-    </table>
-    <div class="d-grid gap-2 d-flex justify-content-center">
-        <button type="submit" class="btn btn-success btn btn-primary btn-md">Salvar Dados</button>
-    </div>
+            <tr>
+                <td>
+                    Deixar a esfera cair sobre a espuma de uma altura de 476 mm e verificar a % resilência.
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <table class="tables table-bordered border-secondary  table-sm">
+                        <tr>
+                            <td class="fundo-tabela">Tipo Espuma</td>
+                            <td colspan="3"><input type="text" class="form-control" asp-for="tipo_espuma" /></td>
+                        </tr>
+                        <tr class="fundo-tabela">
+                            <td>1º Amostra </td>
+                            <td>Altura (mm) </td>
+                            <td>Resiliência % </td>
+                            <td>Variação </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                1°
+                            </td>
+                            <td>476,0 mm</td>
+                            <td><input type="text" class="form-control" asp-for="resil_amostra_um_um" /></td>
+                            <td>---</td>
+                        </tr>
+                        <tr>
+                            <td>
+                                2°
+                            </td>
+                            <td>476,0 mm</td>
+                            <td><input type="text" class="form-control" asp-for="resil_amostra_um_dois" /></td>
+                            <td><input type="text" class="form-control" readonly asp-for="varia_amostra_um_um" /></td>
+                        </tr>
+                        <tr>
+                            <td>
+                                3°
+                            </td>
+                            <td>476,0 mm</td>
+                            <td><input type="text" class="form-control" asp-for="resil_amostra_um_tres" /></td>
+                            <td><input type="text" class="form-control" readonly asp-for="varia_amostra_um_dois" /></td>
+                        </tr>
+                        <tr>
+                            <td>
+                                Média de Resiliência - 1º Amostra
+                            </td>
+                            <td class="fundo-tabela">Resiliencia %</td>
+                            <td colspan="2"><input type="text" class="form-control" readonly asp-for="media_res_um" /></td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <table class="tables table-bordered border-secondary  table-sm">
+
+                        <tr class="fundo-tabela">
+                            <td>2º Amostra </td>
+                            <td>Altura (mm) </td>
+                            <td>Resiliência % </td>
+                            <td>Variação </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                1°
+                            </td>
+                            <td>476,0 mm</td>
+                            <td><input type="text" class="form-control" asp-for="resil_amostra_dois_um" /></td>
+                            <td>---</td>
+                        </tr>
+                        <tr>
+                            <td>
+                                2°
+                            </td>
+                            <td>476,0 mm</td>
+                            <td><input type="text" class="form-control" asp-for="resil_amostra_dois_dois" /></td>
+                            <td><input type="text" class="form-control" readonly asp-for="varia_amostra_dois_um" /></td>
+                        </tr>
+                        <tr>
+                            <td>
+                                3°
+                            </td>
+                            <td>476,0 mm</td>
+                            <td><input type="text" class="form-control" asp-for="resil_amostra_dois_tres" /></td>
+                            <td><input type="text" class="form-control" readonly asp-for="varia_amostra_dois_dois" /></td>
+                        </tr>
+                        <tr>
+                            <td>
+                                Média de Resiliência - 2º Amostra
+                            </td>
+                            <td class="fundo-tabela">Resiliencia %</td>
+                            <td colspan="2"><input type="text" class="form-control" readonly asp-for="media_res_dois" /></td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <table class="tables table-bordered border-secondary  table-sm">
+
+                        <tr class="fundo-tabela">
+                            <td>3º Amostra </td>
+                            <td>Altura (mm) </td>
+                            <td>Resiliência % </td>
+                            <td>Variação </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                1°
+                            </td>
+                            <td>476,0 mm</td>
+                            <td><input type="text" class="form-control" asp-for="resil_amostra_tres_um" /></td>
+                            <td>---</td>
+                        </tr>
+                        <tr>
+                            <td>
+                                2°
+                            </td>
+                            <td>476,0 mm</td>
+                            <td><input type="text" class="form-control" asp-for="resil_amostra_tres_dois" /></td>
+                            <td><input type="text" class="form-control" readonly asp-for="varia_amostra_tres_um" /></td>
+                        </tr>
+                        <tr>
+                            <td>
+                                3°
+                            </td>
+                            <td>476,0 mm</td>
+                            <td><input type="text" class="form-control" asp-for="resil_amostra_tres_tres" /></td>
+                            <td><input type="text" class="form-control" readonly asp-for="varia_amostra_tres_dois" /></td>
+                        </tr>
+                        <tr>
+                            <td>
+                                Média de Resiliência - 3º Amostra
+                            </td>
+                            <td class="fundo-tabela">Resiliencia %</td>
+                            <td colspan="2"><input type="text" class="form-control" readonly asp-for="media_res_tres" /></td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Resiliência especificada % <input type="text" class="controlador" asp-for="resiliencia_esp" />
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Resiliência encontrada % <input type="text" class="controlador" readonly asp-for="resiliencia_enc" />
+                </td>
+            </tr>
+        </table>
+        @if (Model == null)
+        {
+            <div class="d-grid gap-2 d-flex justify-content-center">
+                <button type="submit" class="btn btn-success btn btn-primary btn-md">Salvar Dados</button>
+            </div>
+        }
+        else
+        {
+            <div class="d-grid gap-2 d-flex justify-content-center">
+                <button type="submit" class="btn btn-success btn btn-primary btn-md">Editar Dados</button>
+            </div>
+        }
+
+    </form>
+    @if (TempData.ContainsKey("Mensagem"))
+    {
+        <script>
+            alert('@Html.Raw(TempData["Mensagem"])');
+        </script>
+    }
 </body>
 </html>

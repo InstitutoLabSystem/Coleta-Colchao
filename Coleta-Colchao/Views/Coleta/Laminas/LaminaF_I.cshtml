@@ -12,7 +12,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="~/css/coleta.css" asp-append-version="true" />
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <title>Coleta</title>
+    <title>Coleta F.I</title>
     @*  <style>
     .controlador-conforme {
     padding: 5px;
@@ -38,7 +38,7 @@
             </tr>
             <tr>
                 <td colspan="4">Ensaios de Colchão de Espuma (Portaria Inmetro 35)</td>
-                <td rowspan="2"> os aqui</td>
+                <td rowspan="2"> @ViewBag.os</td>
             </tr>
             <tr>
                 <td>Inicio:</td>
@@ -501,24 +501,7 @@
                 </table>
             </td>
         </tr>
-        <tr>
-            <td>
-                Fator de conforto (F.C)
-            </td>
-            <td rowspan="5">Resultado</td>
-        </tr>
-        <tr>
-            <td>
-                Para o cálculo do fator de conforto utiliza-se a seguinte equação:
-            </td>
-        </tr>
-        <tr>
-            <td>F.C : Força de Indentação a 65% ÷  Força de Indentação a 25% </td>
-        </tr>
-        <tr>
 
-            <td>F.C : <input type="text" class="controlador" style="width:100px;" /> ÷  <input type="text" class="controlador" style="width:100px;" />  = <input type="text" class="controlador" readonly style="width:100px;" disabled /></td>
-        </tr>
     </table>
     <br />
     <div class="d-grid gap-2 d-flex justify-content-center">
