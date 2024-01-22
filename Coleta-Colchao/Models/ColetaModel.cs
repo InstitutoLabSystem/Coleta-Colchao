@@ -899,8 +899,8 @@ namespace Coleta_Colchao.Models
             public float resil_amostra_um_um { get; set; }
             public float resil_amostra_um_dois { get; set; }
             public float resil_amostra_um_tres { get; set; }
-            public float varia_amostra_um_um  {get; set; }
-            public float varia_amostra_um_dois  {get; set; }
+            public float varia_amostra_um_um { get; set; }
+            public float varia_amostra_um_dois { get; set; }
             public float media_res_um { get; set; }
             public float resil_amostra_dois_um { get; set; }
             public float resil_amostra_dois_dois { get; set; }
@@ -914,8 +914,244 @@ namespace Coleta_Colchao.Models
             public float varia_amostra_tres_um { get; set; }
             public float varia_amostra_tres_dois { get; set; }
             public float media_res_tres { get; set; }
-            public float resiliencia_esp {get; set; }
+            public float resiliencia_esp { get; set; }
             public float resiliencia_enc { get; set; }
-    }
+        }
+
+        public class LaminaDPC
+        {
+            [Key]
+            public int Id { get; set; }
+            public string orcamento { get; set; }
+            public string os { get; set; }
+            public int item { get; set; }
+            public DateOnly data_ini { get; set; }
+            public DateOnly date_term { get; set; }
+            public float lar_amostra_um_um { get; set; }
+            public float lar_amostra_um_dois { get; set; }
+            public float lar_amostra_um_tres { get; set; }
+            public float lar_amostra_um_quatro { get; set; }
+            public float lar_amostra_dois_um { get; set; }
+            public float lar_amostra_dois_dois { get; set; }
+            public float lar_amostra_dois_tres { get; set; }
+            public float lar_amostra_dois_quatro { get; set; }
+            public float lar_amostra_tres_um { get; set; }
+            public float lar_amostra_tres_dois { get; set; }
+            public float lar_amostra_tres_tres { get; set; }
+            public float lar_amostra_tres_quatro { get; set; }
+            public float lar_media_um { get; set; }
+            public float lar_media_dois { get; set; }
+            public float lar_media_tres { get; set; }
+            public float comp_amostra_um_um { get; set; }
+            public float comp_amostra_um_dois { get; set; }
+            public float comp_amostra_um_tres { get; set; }
+            public float comp_amostra_um_quatro { get; set; }
+            public float comp_amostra_dois_um { get; set; }
+            public float comp_amostra_dois_dois { get; set; }
+            public float comp_amostra_dois_tres { get; set; }
+            public float comp_amostra_dois_quatro { get; set; }
+            public float comp_amostra_tres_um { get; set; }
+            public float comp_amostra_tres_dois { get; set; }
+            public float comp_amostra_tres_tres { get; set; }
+            public float comp_amostra_tres_quatro { get; set; }
+            public float comp_media_um { get; set; }
+            public float comp_media_dois { get; set; }
+            public float comp_media_tres { get; set; }
+            public float esp_ini_amostra_um_um { get; set; }
+            public float esp_ini_amostra_um_dois { get; set; }
+            public float esp_ini_amostra_um_tres { get; set; }
+            public float esp_ini_amostra_um_quatro { get; set; }
+            public float esp_ini_amostra_um_cinco { get; set; }
+            public float esp_ini_amostra_um_seis { get; set; }
+            public float esp_ini_amostra_um_sete { get; set; }
+            public float esp_ini_amostra_um_oito { get; set; }
+            public float esp_ini_amostra_dois_um { get; set; }
+            public float esp_ini_amostra_dois_dois { get; set; }
+            public float esp_ini_amostra_dois_tres { get; set; }
+            public float esp_ini_amostra_dois_quatro { get; set; }
+            public float esp_ini_amostra_dois_cinco { get; set; }
+            public float esp_ini_amostra_dois_seis { get; set; }
+            public float esp_ini_amostra_dois_sete { get; set; }
+            public float esp_ini_amostra_dois_oito { get; set; }
+            public float esp_ini_amostra_tres_um { get; set; }
+            public float esp_ini_amostra_tres_dois { get; set; }
+            public float esp_ini_amostra_tres_tres { get; set; }
+            public float esp_ini_amostra_tres_quatro { get; set; }
+            public float esp_ini_amostra_tres_cinco { get; set; }
+            public float esp_ini_amostra_tres_seis { get; set; }
+            public float esp_ini_amostra_tres_sete { get; set; }
+            public float esp_ini_amostra_tres_oito { get; set; }
+            public float esp_media_um { get; set; }
+            public float esp_media_dois { get; set; }
+            public float esp_media_tres { get; set; }
+            public float media_esp_total { get; set; }
+            public float media_esp_amostra_um { get; set; }
+            public float media_esp_amostra_dois { get; set; }
+            public float media_esp_amostra_tres { get; set; }
+            public float reducao_porc { get; set; }
+            public float reducao_mm { get; set; }
+            public DateOnly ini_data { get; set; }
+            public DateOnly term_data { get; set; }
+            public TimeOnly ini_hora { get; set; }
+            public TimeOnly term_hora { get; set; }
+            public float temp_min { get; set; }
+            public float temp_max { get; set; }
+            public int umi_min { get; set; }
+            public int umi_max { get; set; }
+            public float esp_fin_amostra_um_um { get; set; }
+            public float esp_fin_amostra_um_dois { get; set; }
+            public float esp_fin_amostra_um_tres { get; set; }
+            public float esp_fin_amostra_um_quatro { get; set; }
+            public float esp_fin_amostra_um_cinco { get; set; }
+            public float esp_fin_amostra_um_seis { get; set; }
+            public float esp_fin_amostra_um_sete { get; set; }
+            public float esp_fin_amostra_um_oito { get; set; }
+            public float esp_fin_amostra_dois_um { get; set; }
+            public float esp_fin_amostra_dois_dois { get; set; }
+            public float esp_fin_amostra_dois_tres { get; set; }
+            public float esp_fin_amostra_dois_quatro { get; set; }
+            public float esp_fin_amostra_dois_cinco { get; set; }
+            public float esp_fin_amostra_dois_seis { get; set; }
+            public float esp_fin_amostra_dois_sete { get; set; }
+            public float esp_fin_amostra_dois_oito { get; set; }
+            public float esp_fin_amostra_tres_um { get; set; }
+            public float esp_fin_amostra_tres_dois { get; set; }
+            public float esp_fin_amostra_tres_tres { get; set; }
+            public float esp_fin_amostra_tres_quatro { get; set; }
+            public float esp_fin_amostra_tres_cinco { get; set; }
+            public float esp_fin_amostra_tres_seis { get; set; }
+            public float esp_fin_amostra_tres_sete { get; set; }
+            public float esp_fin_amostra_tres_oito { get; set; }
+            public float media_esp_fin_um { get; set; }
+            public float media_esp_fin_dois { get; set; }
+            public float media_esp_fin_tres { get; set; }
+            public int tempo_repouso_um { get; set; }
+            public int tempo_repouso_dois { get; set; }
+            public int tempo_repouso_tres { get; set; }
+            public float dpc_amostra_um_um { get; set; }
+            public float dpc_amostra_um_dois { get; set; }
+            public float dpc_amostra_um_tres { get; set; }
+            public float dpc_amostra_dois_um { get; set; }
+            public float dpc_amostra_dois_dois { get; set; }
+            public float dpc_amostra_dois_tres { get; set; }
+            public float dpc_amostra_tres_um { get; set; }
+            public float dpc_amostra_tres_dois { get; set; }
+            public float dpc_amostra_tres_tres { get; set; }
+            public float med_dpc_amostra_um { get; set; }
+            public float med_dpc_amostra_dois { get; set; }
+            public float med_dpc_amostra_tres { get; set; }
+            public float vari_amsotra_dois { get; set; }
+            public float vari_amsotra_tres { get; set; }
+            public float especificada { get; set; }
+            public float encontrada { get; set; }
+            public string? tipo_espuma { get; set; }
+
+        }
+
+        public class LaminaFI
+        {
+            public int Id { get; set; }
+            public string orcamento { get; set; }
+            public string os { get; set; }
+            public int item { get; set; }
+            public DateOnly data_ini { get; set; }
+            public DateOnly data_term { get; set; }
+            public string? tipo_espuma { get; set; }
+            public float lar_amostra_um_um { get; set; }
+            public float lar_amostra_um_dois { get; set; }
+            public float lar_amostra_um_tres { get; set; }
+            public float lar_amostra_um_quatro { get; set; }
+            public float lar_amostra_dois_um { get; set; }
+            public float lar_amostra_dois_dois { get; set; }
+            public float lar_amostra_dois_tres { get; set; }
+            public float lar_amostra_dois_quatro { get; set; }
+            public float lar_amostra_tres_um { get; set; }
+            public float lar_amostra_tres_dois { get; set; }
+            public float lar_amostra_tres_tres { get; set; }
+            public float lar_amostra_tres_quatro { get; set; }
+            public float lar_media_um { get; set; }
+            public float lar_media_dois { get; set; }
+            public float lar_media_tres { get; set; }
+            public float comp_amostra_um_um { get; set; }
+            public float comp_amostra_um_dois { get; set; }
+            public float comp_amostra_um_tres { get; set; }
+            public float comp_amostra_um_quatro { get; set; }
+            public float comp_amostra_dois_um { get; set; }
+            public float comp_amostra_dois_dois { get; set; }
+            public float comp_amostra_dois_tres { get; set; }
+            public float comp_amostra_dois_quatro { get; set; }
+            public float comp_amostra_tres_um { get; set; }
+            public float comp_amostra_tres_dois { get; set; }
+            public float comp_amostra_tres_tres { get; set; }
+            public float comp_amostra_tres_quatro { get; set; }
+            public float comp_media_um { get; set; }
+            public float comp_media_dois { get; set; }
+            public float comp_media_tres { get; set; }
+            public float esp_ini_amostra_um_um { get; set; }
+            public float esp_ini_amostra_um_dois { get; set; }
+            public float esp_ini_amostra_um_tres { get; set; }
+            public float esp_ini_amostra_um_quatro { get; set; }
+            public float esp_ini_amostra_um_cinco { get; set; }
+            public float esp_ini_amostra_um_seis { get; set; }
+            public float esp_ini_amostra_um_sete { get; set; }
+            public float esp_ini_amostra_um_oito { get; set; }
+            public float esp_ini_amostra_dois_um { get; set; }
+            public float esp_ini_amostra_dois_dois { get; set; }
+            public float esp_ini_amostra_dois_tres { get; set; }
+            public float esp_ini_amostra_dois_quatro { get; set; }
+            public float esp_ini_amostra_dois_cinco { get; set; }
+            public float esp_ini_amostra_dois_seis { get; set; }
+            public float esp_ini_amostra_dois_sete { get; set; }
+            public float esp_ini_amostra_dois_oito { get; set; }
+            public float esp_ini_amostra_tres_um { get; set; }
+            public float esp_ini_amostra_tres_dois { get; set; }
+            public float esp_ini_amostra_tres_tres { get; set; }
+            public float esp_ini_amostra_tres_quatro { get; set; }
+            public float esp_ini_amostra_tres_cinco { get; set; }
+            public float esp_ini_amostra_tres_seis { get; set; }
+            public float esp_ini_amostra_tres_sete { get; set; }
+            public float esp_ini_amostra_tres_oito { get; set; }
+            public float esp_media_um { get; set; }
+            public float esp_media_dois { get; set; }
+            public float esp_media_tres { get; set; }
+            public float pre_carga { get; set; }
+            public float reducao_um { get; set; }
+            public float reducao_dois { get; set; }
+            public float reducao_tres { get; set; }
+            public string? espuma_vsiocoelastica { get; set; }
+            public int comp_25_um { get; set; }
+            public int comp_25_dois { get; set; }
+            public int comp_25_tres { get; set; }
+            public int temp_25_um { get; set; }
+            public int temp_25_dois { get; set; }
+            public int temp_25_tres { get; set; }
+            public float fi_25_um { get; set; }
+            public float fi_25_dois { get; set; }
+            public float fi_25_tres { get; set; }
+            public float media_25 { get; set; }
+            public int comp_40_um { get; set; }
+            public int comp_40_dois { get; set; }
+            public int comp_40_tres { get; set; }
+            public int temp_40_um { get; set; }
+            public int temp_40_dois { get; set; }
+            public int temp_40_tres { get; set; }
+            public float fi_40_um { get; set; }
+            public float fi_40_dois { get; set; }
+            public float fi_40_tres { get; set; }
+            public float media_40 { get; set; }
+            public int comp_65_um { get; set; }
+            public int comp_65_dois { get; set; }
+            public int comp_65_tres { get; set; }
+            public int temp_65_um { get; set; }
+            public int temp_65_dois { get; set; }
+            public int temp_65_tres { get; set; }
+            public float media_65 { get; set; }
+            public float fator_ind_65 { get; set; }
+            public float fator_ind_40 { get; set; }
+            public float fator_ind_25 { get; set; }
+            public float forca_esp_25 { get; set; }
+            public float forca_esp_40 { get; set; }
+            public float forca_esp_65 { get; set; }
+        }
     }
 }

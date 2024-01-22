@@ -30,5 +30,7 @@ namespace Coleta_Colchao.Data
         public DbSet<ColetaModel.RegistroLamina> regtro_colchao_lamina { get; set; }
         public DbSet<ColetaModel.SalvarLaminaDeterminacaoDensidade> lamina_determinacao_densidade { get; set; }
         public DbSet<ColetaModel.LaminaResiliencia> lamina_resiliencia { get; set; }
+        public DbSet<ColetaModel.LaminaDPC> lamina_dpc { get; set; }
+        public DbSet<ColetaModel.LaminaFI> lamina_fi { get; set; }
     }
 }
