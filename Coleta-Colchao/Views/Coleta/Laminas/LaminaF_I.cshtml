@@ -16,13 +16,13 @@
     <title>Coleta F.I</title>
     <style>
         /* .controlador-conforme {
-            padding: 5px;
-            border-color: gray;
-            border-radius: 5px;
-            box-sizing: border-box;
-            height: 500px;
-            width: 100px;
-            } */
+                            padding: 5px;
+                            border-color: gray;
+                            border-radius: 5px;
+                            box-sizing: border-box;
+                            height: 500px;
+                            width: 100px;
+                            } */
 
         input {
             text-align: center;
@@ -42,12 +42,25 @@
                     <td colspan="4">Ensaios de Colchão de Espuma (Portaria Inmetro 35)</td>
                     <td rowspan="2"> @ViewBag.os</td>
                 </tr>
-                <tr>
-                    <td>Inicio:</td>
-                    <td><input class="form-control" type="date" asp-for="data_ini" /></td>
-                    <td>Termino:</td>
-                    <td><input class="form-control" type="date" asp-for="data_term" /></td>
-                </tr>
+                @if(Model == null)
+                {
+                    <tr>
+                        <td>Inicio:</td>
+                        <td><input class="form-control" type="date" asp-for="data_ini" /></td>
+                        <td>Termino:</td>
+                        <td><input class="form-control" type="date" asp-for="data_term" /></td>
+                    </tr>
+                }
+                else
+                {
+                    <tr>
+                        <td>Inicio:</td>
+                        <td><input class="form-control" type="text" asp-for="data_ini" /></td>
+                        <td>Termino:</td>
+                        <td><input class="form-control" type="text" asp-for="data_term" /></td>
+                    </tr>
+                }
+               
             </thead>
         </table>
         <br />
@@ -77,7 +90,7 @@
                     <table class="tables table-bordered border-secondary  table-sm">
                         <tr>
                             <td class="fundo-tabela">Tipo Espuma</td>
-                            <td colspan="3"><input type="text" class="form-control" /></td>
+                            <td colspan="3"><input type="text" class="form-control" asp-for="tipo_espuma" /></td>
                         </tr>
                         <tr class="fundo-tabela">
                             <td rowspan="6">---</td>
@@ -217,7 +230,7 @@
                             <td>Media:</td>
                             <td><input type="text" class="form-control" readonly asp-for="esp_media_um" /></td>
                             <td><input type="text" class="form-control" readonly asp-for="esp_media_dois" /></td>
-                            <td><input type="text" class="form-control" readonly aasp-for="esp_media_tres" /></td>
+                            <td><input type="text" class="form-control" readonly asp-for="esp_media_tres" /></td>
                         </tr>
                     </table>
                     <table class="tables table-bordered border-secondary  table-sm">
@@ -225,23 +238,19 @@
                             <td class="fundo-tabela">
                                 Média da espessura - 1° Amostra
                             </td>
-                            <td><input type="text" class="form-control" readonly /></td>
+                            <td><input type="text" class="form-control" readonly asp-for="media_espessura_um" /></td>
                         </tr>
                         <tr>
                             <td class="fundo-tabela">
                                 Média da espessura - 2° Amostra
                             </td>
-                            <td><input type="text" class="form-control" readonly /></td>
+                            <td><input type="text" class="form-control" readonly asp-for="media_espessura_dois" /></td>
                         </tr>
                         <tr>
                             <td class="fundo-tabela">
                                 Média da espessura - 3° Amostra
                             </td>
-                            <td><input type="text" class="form-control" readonly /></td>
-                        </tr>
-                        <tr>
-                            <td class="fundo-tabela">Média da espessura</td>
-                            <td><input type="text" class="form-control" readonly /></td>
+                            <td><input type="text" class="form-control" readonly asp-for="media_espessura_tres" /></td>
                         </tr>
                     </table>
                 </td>
@@ -255,8 +264,10 @@
                 <td>
                     <table class="tables table-bordered border-secondary  table-sm">
                         <tr>
-                            <td class="fundo-tabela">Pré Carga (N)</td>
-                            <td><input type="text" class="form-control" /></td>
+                            <td class="fundo-tabela">
+                                Pré Carga (N)
+                                 <td><input type="text" class="form-control" asp-for="pre_carga"/>
+                            </td>
                         </tr>
                     </table>
                 </td>
@@ -273,25 +284,25 @@
                             <td class="fundo-tabela">
                                 Amostra 1 - Redução %
                             </td>
-                            <td><input type="text" class="form-control" /></td>
+                            <td><input type="text" class="form-control" asp-for="reducao_porc_um" /></td>
                             <td class="fundo-tabela">Redução (mm)</td>
-                            <td><input type="text" class="form-control" readonly /></td>
+                            <td><input type="text" class="form-control" readonly asp-for="reducao_um" /></td>
                         </tr>
                         <tr>
                             <td class="fundo-tabela">
                                 Amostra 2 - Redução %
                             </td>
-                            <td><input type="text" class="form-control" /></td>
+                            <td><input type="text" class="form-control" asp-for="reducao_porc_dois" /></td>
                             <td class="fundo-tabela">Redução (mm)</td>
-                            <td><input type="text" class="form-control" readonly /></td>
+                            <td><input type="text" class="form-control" readonly asp-for="reducao_dois" /></td>
                         </tr>
                         <tr>
                             <td class="fundo-tabela">
                                 Amostra 3 - Redução %
                             </td>
-                            <td><input type="text" class="form-control" /></td>
+                            <td><input type="text" class="form-control" asp-for="reducao_porc_tres" /></td>
                             <td class="fundo-tabela">Redução (mm)</td>
-                            <td><input type="text" class="form-control" readonly /></td>
+                            <td><input type="text" class="form-control" readonly asp-for="reducao_tres" /></td>
                         </tr>
                     </table>
                 </td>
@@ -302,10 +313,15 @@
                 </td>
             </tr>
             <tr>
-                <td>A espuma é viscoelástica : <input type="text" class="controlador" /></td>
+                <td>A espuma é viscoelástica : 
+                    <select class="controlador" asp-for="espuma_vsiocoelastica">
+                        <option value="Sim">Sim</option>
+                        <option value="Não">Não</option>
+                    </select>
+                </td>
             </tr>
             <tr>
-                <td>Tempo de espera após a pré-compressão: <input type="text" class="controlador" /> </td>
+                <td>Tempo de espera após a pré-compressão: <input type="text" class="controlador" asp-for="tempo_espera" /> </td>
             </tr>
             <tr>
                 <td>
@@ -333,34 +349,34 @@
                             <td>
                                 1°
                             </td>
-                            <td><input type="text" class="form-control" /></td>
-                            <td><input type="text" class="form-control" readonly /></td>
-                            <td><input type="text" class="form-control" /></td>
-                            <td><input type="text" class="form-control" /></td>
+                            <td><input type="text" class="form-control" asp-for="comp_25_um"/></td>
+                            <td><input type="text" class="form-control" readonly asp-for="reducao_25_um"/></td>
+                            <td><input type="text" class="form-control" asp-for="temp_25_um"/></td>
+                            <td><input type="text" class="form-control" asp-for="fi_25_um"/></td>
                         </tr>
                         <tr>
                             <td>
                                 2°
                             </td>
-                            <td><input type="text" class="form-control" /></td>
-                            <td><input type="text" class="form-control" readonly /></td>
-                            <td><input type="text" class="form-control" /></td>
-                            <td><input type="text" class="form-control" /></td>
+                            <td><input type="text" class="form-control" asp-for="comp_25_dois" /></td>
+                            <td><input type="text" class="form-control" readonly asp-for="reducao_25_dois"/></td>
+                            <td><input type="text" class="form-control" asp-for="temp_25_dois" /></td>
+                            <td><input type="text" class="form-control" asp-for="fi_25_dois" /></td>
                         </tr>
                         <tr>
                             <td>
                                 3°
                             </td>
-                            <td><input type="text" class="form-control" /></td>
-                            <td><input type="text" class="form-control" readonly /></td>
-                            <td><input type="text" class="form-control" /></td>
-                            <td><input type="text" class="form-control" /></td>
+                            <td><input type="text" class="form-control" asp-for="comp_25_tres" /></td>
+                            <td><input type="text" class="form-control" readonly asp-for="reducao_25_tres" /></td>
+                            <td><input type="text" class="form-control" asp-for="temp_25_tres" /></td>
+                            <td><input type="text" class="form-control" asp-for="fi_25_tres" /></td>
                         </tr>
                         <tr>
                             <td colspan="2">
                                 Média da força de indentação (N)
                             </td>
-                            <td colspan="3"><input type="text" class="form-control" readonly /></td>
+                            <td colspan="3"><input type="text" class="form-control" readonly asp-for="media_25" /></td>
 
                         </tr>
                     </table>
@@ -387,34 +403,34 @@
                             <td>
                                 1°
                             </td>
-                            <td><input type="text" class="form-control" /></td>
-                            <td><input type="text" class="form-control" readonly /></td>
-                            <td><input type="text" class="form-control" /></td>
-                            <td><input type="text" class="form-control" /></td>
+                            <td><input type="text" class="form-control" asp-for="comp_40_um" /></td>
+                            <td><input type="text" class="form-control" readonly asp-for="reducao_40_um" /></td>
+                            <td><input type="text" class="form-control" asp-for="temp_40_um"/></td>
+                            <td><input type="text" class="form-control" asp-for="fi_40_um"/></td>
                         </tr>
                         <tr>
                             <td>
                                 2°
                             </td>
-                            <td><input type="text" class="form-control" /></td>
-                            <td><input type="text" class="form-control" readonly /></td>
-                            <td><input type="text" class="form-control" /></td>
-                            <td><input type="text" class="form-control" /></td>
+                            <td><input type="text" class="form-control" asp-for="comp_40_dois" /></td>
+                            <td><input type="text" class="form-control" readonly asp-for="reducao_40_dois" /></td>
+                            <td><input type="text" class="form-control" asp-for="temp_40_dois" /></td>
+                            <td><input type="text" class="form-control" asp-for="fi_40_dois" /></td>
                         </tr>
                         <tr>
                             <td>
                                 3°
                             </td>
-                            <td><input type="text" class="form-control" /></td>
-                            <td><input type="text" class="form-control" readonly /></td>
-                            <td><input type="text" class="form-control" /></td>
-                            <td><input type="text" class="form-control" /></td>
+                            <td><input type="text" class="form-control" asp-for="comp_40_tres" /></td>
+                            <td><input type="text" class="form-control" readonly asp-for="reducao_40_tres" /></td>
+                            <td><input type="text" class="form-control" asp-for="temp_40_tres" /></td>
+                            <td><input type="text" class="form-control" asp-for="fi_40_tres" /></td>
                         </tr>
                         <tr>
                             <td colspan="2">
                                 Média da força de indentação (N)
                             </td>
-                            <td colspan="3"><input type="text" class="form-control" readonly /></td>
+                            <td colspan="3"><input type="text" class="form-control" readonly asp-for="media_40"/></td>
 
                         </tr>
                     </table>
@@ -441,34 +457,34 @@
                             <td>
                                 1°
                             </td>
-                            <td><input type="text" class="form-control" /></td>
-                            <td><input type="text" class="form-control" readonly /></td>
-                            <td><input type="text" class="form-control" /></td>
-                            <td><input type="text" class="form-control" /></td>
+                            <td><input type="text" class="form-control" asp-for="comp_65_um"/></td>
+                            <td><input type="text" class="form-control" readonly asp-for="reducao_65_um"/></td>
+                            <td><input type="text" class="form-control" asp-for="temp_65_um"/></td>
+                            <td><input type="text" class="form-control" asp-for="fi_65_um"/></td>
                         </tr>
                         <tr>
                             <td>
                                 2°
                             </td>
-                            <td><input type="text" class="form-control" /></td>
-                            <td><input type="text" class="form-control" readonly /></td>
-                            <td><input type="text" class="form-control" /></td>
-                            <td><input type="text" class="form-control" /></td>
+                            <td><input type="text" class="form-control" asp-for="comp_65_dois" /></td>
+                            <td><input type="text" class="form-control" readonly asp-for="reducao_65_dois" /></td>
+                            <td><input type="text" class="form-control" asp-for="temp_65_dois" /></td>
+                            <td><input type="text" class="form-control" asp-for="fi_65_dois" /></td>
                         </tr>
                         <tr>
                             <td>
                                 3°
                             </td>
-                            <td><input type="text" class="form-control" /></td>
-                            <td><input type="text" class="form-control" readonly /></td>
-                            <td><input type="text" class="form-control" /></td>
-                            <td><input type="text" class="form-control" /></td>
+                            <td><input type="text" class="form-control" asp-for="comp_65_tres" /></td>
+                            <td><input type="text" class="form-control" readonly asp-for="reducao_65_tres" /></td>
+                            <td><input type="text" class="form-control" asp-for="temp_65_tres" /></td>
+                            <td><input type="text" class="form-control" asp-for="fi_65_tres" /></td>
                         </tr>
                         <tr>
                             <td colspan="2">
                                 Média da força de indentação (N)
                             </td>
-                            <td colspan="3"><input type="text" class="form-control" readonly /></td>
+                            <td colspan="3"><input type="text" class="form-control" readonly asp-for="media_65" /></td>
 
                         </tr>
                     </table>
@@ -488,28 +504,43 @@
                         </tr>
                         <tr>
                             <td>25%</td>
-                            <td><input type="text" class="form-control" /></td>
-                            <td><input type="text" class="form-control" readonly /></td>
+                            <td><input type="text" class="form-control" asp-for="forca_esp_25" /></td>
+                            <td><input type="text" class="form-control" readonly asp-for="fator_ind_25" /></td>
                         </tr>
                         <tr>
                             <td>40%</td>
-                            <td><input type="text" class="form-control" /></td>
-                            <td><input type="text" class="form-control" readonly /></td>
+                            <td><input type="text" class="form-control" asp-for="forca_esp_40" /></td>
+                            <td><input type="text" class="form-control" readonly asp-for="fator_ind_40" /></td>
                         </tr>
                         <tr>
                             <td>65%</td>
-                            <td><input type="text" class="form-control" /></td>
-                            <td><input type="text" class="form-control" readonly /></td>
+                            <td><input type="text" class="form-control"  asp-for="forca_esp_65" /></td>
+                            <td><input type="text" class="form-control" readonly asp-for="fator_ind_65" /></td>
                         </tr>
                     </table>
                 </td>
             </tr>
-
         </table>
         <br />
-        <div class="d-grid gap-2 d-flex justify-content-center">
-            <button type="submit" class="btn btn-success btn btn-primary btn-md">Salvar Dados</button>
-        </div>
+        @if(Model == null)
+        {
+            <div class="d-grid gap-2 d-flex justify-content-center">
+                <button type="submit" class="btn btn-success btn btn-primary btn-md">Salvar Dados</button>
+            </div>
+        }
+        else
+        {
+            <div class="d-grid gap-2 d-flex justify-content-center">
+                <button type="submit" class="btn btn-success btn btn-primary btn-md">Editar Dados</button>
+            </div>
+        }
+
     </form>
+    @if (TempData.ContainsKey("Mensagem"))
+    {
+        <script>
+            alert('@Html.Raw(TempData["Mensagem"])');
+        </script>
+    }
 </body>
 </html>

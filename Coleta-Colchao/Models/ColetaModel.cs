@@ -1114,6 +1114,10 @@ namespace Coleta_Colchao.Models
             public float esp_media_um { get; set; }
             public float esp_media_dois { get; set; }
             public float esp_media_tres { get; set; }
+            public float media_espessura_um { get; set; }
+            public float media_espessura_dois { get; set; }
+            public float media_espessura_tres { get; set; }
+
             public float pre_carga { get; set; }
             public float reducao_um { get; set; }
             public float reducao_dois { get; set; }
@@ -1122,6 +1126,9 @@ namespace Coleta_Colchao.Models
             public int comp_25_um { get; set; }
             public int comp_25_dois { get; set; }
             public int comp_25_tres { get; set; }
+            public float reducao_25_um { get; set; }
+            public float reducao_25_dois { get; set; }
+            public float reducao_25_tres { get; set; }
             public int temp_25_um { get; set; }
             public int temp_25_dois { get; set; }
             public int temp_25_tres { get; set; }
@@ -1135,6 +1142,9 @@ namespace Coleta_Colchao.Models
             public int temp_40_um { get; set; }
             public int temp_40_dois { get; set; }
             public int temp_40_tres { get; set; }
+            public float reducao_40_um { get; set; }
+            public float reducao_40_dois { get; set; }
+            public float reducao_40_tres { get; set; }
             public float fi_40_um { get; set; }
             public float fi_40_dois { get; set; }
             public float fi_40_tres { get; set; }
@@ -1145,6 +1155,12 @@ namespace Coleta_Colchao.Models
             public int temp_65_um { get; set; }
             public int temp_65_dois { get; set; }
             public int temp_65_tres { get; set; }
+            public float fi_65_um { get; set; }
+            public float fi_65_dois { get; set; }
+            public float fi_65_tres { get; set; }
+            public float reducao_65_um { get; set; }
+            public float reducao_65_dois { get; set; }
+            public float reducao_65_tres { get; set; }
             public float media_65 { get; set; }
             public float fator_ind_65 { get; set; }
             public float fator_ind_40 { get; set; }
@@ -1152,6 +1168,10 @@ namespace Coleta_Colchao.Models
             public float forca_esp_25 { get; set; }
             public float forca_esp_40 { get; set; }
             public float forca_esp_65 { get; set; }
+            public float reducao_porc_um { get; set; }
+            public float reducao_porc_dois { get; set; }
+            public float reducao_porc_tres { get; set; }
+            public int tempo_espera { get; set; }
         }
     }
 }
