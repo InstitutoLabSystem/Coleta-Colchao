@@ -91,7 +91,6 @@ namespace Coleta_Colchao.Controllers
                 ViewBag.orcamento = orcamento;
                 return View();
             }
-
         }
 
         public IActionResult EnsaioEspuma4_1(string os, string orcamento)
@@ -540,18 +539,43 @@ namespace Coleta_Colchao.Controllers
             }
         }
 
-        public IActionResult LaminaFadiga(string os, string orcamento)
+        public IActionResult LaminaFadiga(string os, string orcamento, int item)
         {
-            ViewBag.os = os;
-            ViewBag.orcamento = orcamento;
-            return View("Laminas/LaminaFadiga");
+            var dados = _context.lamina_fadiga_dinamica.Where(x => x.os == os && x.orcamento == orcamento && x.item == item).FirstOrDefault();
+            if (dados == null)
+            {
+                ViewBag.os = os;
+                ViewBag.orcamento = orcamento;
+                ViewBag.item = item;
+                return View("Laminas/LaminaFadiga");
+            }
+            else
+            {
+                ViewBag.os = os;
+                ViewBag.orcamento = orcamento;
+                ViewBag.item = item;
+                return View("Laminas/LaminaFadiga", dados);
+            }
+
         }
-        public IActionResult LaminaPFI(string os, string orcamento, int i)
+        public IActionResult LaminaPFI(string os, string orcamento, int item)
         {
-            ViewBag.os = os;
-            ViewBag.orcamento = orcamento;
-            ViewBag.item = i;
-            return View("Laminas/LaminaPFI");
+            var dados = _context.lamina_pfi.Where(x => x.os == os && x.orcamento == orcamento && x.item == item).FirstOrDefault();
+            if(dados == null)
+            {
+                ViewBag.os = os;
+                ViewBag.orcamento = orcamento;
+                ViewBag.item = item;
+                return View("Laminas/LaminaPFI");
+            }
+            else
+            {
+                ViewBag.os = os;
+                ViewBag.orcamento = orcamento;
+                ViewBag.item = item;
+                return View("Laminas/LaminaPFI", dados);
+            }
+           
         }
         public IActionResult LaminaF_I(string os, string orcamento, int item)
         {
@@ -4720,6 +4744,7 @@ namespace Coleta_Colchao.Controllers
                 throw;
             }
         }
+
         [HttpPost]
         public async Task<IActionResult> salvarLaminaFI(string os, string orcamento, int item, ColetaModel.LaminaFI salvarDados)
         {
@@ -4979,6 +5004,338 @@ namespace Coleta_Colchao.Controllers
                     TempData["Mensagem"] = "Dados Editado com sucesso.";
                     return RedirectToAction("LaminaF_I", "Coleta", new { os, orcamento, item });
                 }
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "Error", ex.Message);
+                throw;
+            }
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> SalvarLaminaFadiga(string os, string orcamento, int item, ColetaModel.LaminaFadigaRotativa salvarDados)
+        {
+            try
+            {
+                var editarDados = _context.lamina_fadiga_dinamica.Where(x => x.os == os && x.orcamento == orcamento && x.item == item).FirstOrDefault();
+                if (editarDados == null)
+                {
+                    //realizando o calculo de media...
+                    float lar_media_um = ((salvarDados.lar_amostra_um_um + salvarDados.lar_amostra_um_dois + salvarDados.lar_amostra_um_tres + salvarDados.lar_amostra_um_quatro) / 4);
+                    salvarDados.lar_media_um = lar_media_um;
+
+                    float lar_media_dois = ((salvarDados.lar_amostra_dois_um + salvarDados.lar_amostra_dois_dois + salvarDados.lar_amostra_dois_tres + salvarDados.lar_amostra_dois_quatro) / 4);
+                    salvarDados.lar_media_dois = lar_media_dois;
+
+                    float lar_media_tres = ((salvarDados.lar_amostra_tres_um + salvarDados.lar_amostra_tres_dois + salvarDados.lar_amostra_tres_tres + salvarDados.lar_amostra_tres_quatro) / 4);
+                    salvarDados.lar_media_tres = lar_media_tres;
+
+                    float comp_media_um = ((salvarDados.comp_amostra_um_um + salvarDados.comp_amostra_um_dois + salvarDados.comp_amostra_um_tres + salvarDados.comp_amostra_um_quatro) / 4);
+                    salvarDados.comp_media_um = comp_media_um;
+
+                    float comp_media_dois = ((salvarDados.comp_amostra_dois_um + salvarDados.comp_amostra_dois_dois + salvarDados.comp_amostra_dois_tres + salvarDados.comp_amostra_dois_quatro) / 4);
+                    salvarDados.comp_media_dois = comp_media_dois;
+
+                    float comp_media_tres = ((salvarDados.comp_amostra_tres_um + salvarDados.comp_amostra_tres_dois + salvarDados.comp_amostra_tres_tres + salvarDados.comp_amostra_tres_quatro) / 4);
+                    salvarDados.comp_media_tres = comp_media_tres;
+
+                    float media_espi_ini_um = ((salvarDados.esp_ini_amostra_um_um + salvarDados.esp_ini_amostra_um_dois + salvarDados.esp_ini_amostra_um_tres + salvarDados.esp_ini_amostra_um_quatro + salvarDados.esp_ini_amostra_um_cinco + salvarDados.esp_ini_amostra_um_seis + salvarDados.esp_ini_amostra_um_sete + salvarDados.esp_ini_amostra_um_oito) / 8);
+                    salvarDados.esp_ini_media_um = media_espi_ini_um;
+
+                    float media_espi_ini_dois = ((salvarDados.esp_ini_amostra_dois_um + salvarDados.esp_ini_amostra_dois_dois + salvarDados.esp_ini_amostra_dois_tres + salvarDados.esp_ini_amostra_dois_quatro + salvarDados.esp_ini_amostra_dois_cinco + salvarDados.esp_ini_amostra_dois_seis + salvarDados.esp_ini_amostra_dois_sete + salvarDados.esp_ini_amostra_dois_oito) / 8);
+                    salvarDados.esp_ini_media_dois = media_espi_ini_dois;
+
+                    float media_espi_ini_tres = ((salvarDados.esp_ini_amostra_tres_um + salvarDados.esp_ini_amostra_tres_dois + salvarDados.esp_ini_amostra_tres_tres + salvarDados.esp_ini_amostra_tres_quatro + salvarDados.esp_ini_amostra_tres_cinco + salvarDados.esp_ini_amostra_tres_seis + salvarDados.esp_ini_amostra_tres_sete + salvarDados.esp_ini_amostra_tres_oito) / 8);
+                    salvarDados.esp_ini_media_tres = media_espi_ini_tres;
+
+                    //RECEBENDO OS VALORES DA MEDIA DA ESPESSURA....
+                    salvarDados.media_espessura_um = salvarDados.esp_ini_media_um;
+                    salvarDados.media_espessura_dois = salvarDados.esp_ini_media_dois;
+                    salvarDados.media_espessura_tres = salvarDados.esp_ini_media_tres;
+                    salvarDados.media_espessura_total = ((salvarDados.esp_ini_media_um + salvarDados.esp_ini_media_dois + salvarDados.esp_ini_media_tres) / 3);
+
+
+                    //calculo de media esp final...
+                    float media_esp_final_um = ((salvarDados.esp_final_amostra_um_um + salvarDados.esp_final_amostra_um_dois + salvarDados.esp_final_amostra_um_tres + salvarDados.esp_final_amostra_um_quatro + salvarDados.esp_final_amostra_um_cinco + salvarDados.esp_final_amostra_um_seis + salvarDados.esp_final_amostra_um_sete + salvarDados.esp_final_amostra_um_oito) / 8);
+                    salvarDados.media_esp_fin_um = media_esp_final_um;
+
+                    float media_esp_final_dois = ((salvarDados.esp_final_amostra_dois_um + salvarDados.esp_final_amostra_dois_dois + salvarDados.esp_final_amostra_dois_tres + salvarDados.esp_final_amostra_dois_quatro + salvarDados.esp_final_amostra_dois_cinco + salvarDados.esp_final_amostra_dois_seis + salvarDados.esp_final_amostra_dois_sete + salvarDados.esp_final_amostra_dois_oito) / 8);
+                    salvarDados.media_esp_fin_dois = media_esp_final_dois;
+
+                    float media_esp_final_tres = ((salvarDados.esp_final_amostra_tres_um + salvarDados.esp_final_amostra_tres_dois + salvarDados.esp_final_amostra_tres_tres + salvarDados.esp_final_amostra_tres_quatro + salvarDados.esp_final_amostra_tres_cinco + salvarDados.esp_final_amostra_tres_seis + salvarDados.esp_final_amostra_tres_sete + salvarDados.esp_final_amostra_tres_oito) / 8);
+                    salvarDados.media_esp_fin_tres = media_esp_final_tres;
+
+
+                    //CALCULO DE PERDA DE ESPESSURA.
+                    salvarDados.pe_um_um = salvarDados.media_espessura_um;
+                    salvarDados.pe_um_dois = salvarDados.media_esp_fin_um;
+                    salvarDados.pe_um_tres = salvarDados.media_esp_fin_um;
+                    salvarDados.pe_media_um = (((salvarDados.pe_um_um - salvarDados.pe_um_dois) / salvarDados.pe_um_tres) * 100);
+
+                    salvarDados.pe_dois_um = salvarDados.media_espessura_dois;
+                    salvarDados.pe_dois_dois = salvarDados.media_esp_fin_dois;
+                    salvarDados.pe_dois_tres = salvarDados.media_esp_fin_dois;
+                    salvarDados.pe_media_dois = (((salvarDados.pe_dois_um - salvarDados.pe_dois_dois) / salvarDados.pe_dois_tres) * 100);
+
+                    salvarDados.pe_tres_um = salvarDados.media_espessura_tres;
+                    salvarDados.pe_tres_dois = salvarDados.media_esp_fin_tres;
+                    salvarDados.pe_tres_tres = salvarDados.media_esp_fin_dois;
+                    salvarDados.pe_media_tres = (((salvarDados.pe_tres_um - salvarDados.pe_tres_dois) / salvarDados.pe_tres_tres) * 100);
+
+                    //pe_especificado resultado.
+                    salvarDados.pe_encontrado = ((salvarDados.pe_media_um + salvarDados.pe_media_dois + salvarDados.pe_media_tres) / 3);
+
+                    _context.lamina_fadiga_dinamica.Add(salvarDados);
+                    await _context.SaveChangesAsync();
+                    TempData["Mensagem"] = "Dados Salvo com sucesso.";
+                    return RedirectToAction("LaminaFadiga", "Coleta", new { os, orcamento, item });
+                }
+                else
+                {
+                    editarDados.data_ini = salvarDados.data_ini;
+                    editarDados.data_term = salvarDados.data_term;
+                    //editando os valores de largura.
+
+                    editarDados.lar_amostra_um_um = salvarDados.lar_amostra_um_um;
+                    editarDados.lar_amostra_um_dois = salvarDados.lar_amostra_um_dois;
+                    editarDados.lar_amostra_um_tres = salvarDados.lar_amostra_um_tres;
+                    editarDados.lar_amostra_um_quatro = salvarDados.lar_amostra_um_quatro;
+
+                    editarDados.lar_amostra_dois_um = salvarDados.lar_amostra_dois_um;
+                    editarDados.lar_amostra_dois_dois = salvarDados.lar_amostra_dois_dois;
+                    editarDados.lar_amostra_dois_tres = salvarDados.lar_amostra_dois_tres;
+                    editarDados.lar_amostra_dois_quatro = salvarDados.lar_amostra_dois_quatro;
+
+                    editarDados.lar_amostra_tres_um = salvarDados.lar_amostra_tres_um;
+                    editarDados.lar_amostra_tres_dois = salvarDados.lar_amostra_tres_dois;
+                    editarDados.lar_amostra_tres_tres = salvarDados.lar_amostra_tres_tres;
+                    editarDados.lar_amostra_tres_quatro = salvarDados.lar_amostra_tres_quatro;
+
+                    //editando comp..
+                    editarDados.comp_amostra_um_um = salvarDados.comp_amostra_um_um;
+                    editarDados.comp_amostra_um_dois = salvarDados.comp_amostra_um_dois;
+                    editarDados.comp_amostra_um_tres = salvarDados.comp_amostra_um_tres;
+                    editarDados.comp_amostra_um_quatro = salvarDados.comp_amostra_um_quatro;
+
+                    editarDados.comp_amostra_dois_um = salvarDados.comp_amostra_dois_um;
+                    editarDados.comp_amostra_dois_dois = salvarDados.comp_amostra_dois_dois;
+                    editarDados.comp_amostra_dois_tres = salvarDados.comp_amostra_dois_tres;
+                    editarDados.comp_amostra_dois_quatro = salvarDados.comp_amostra_dois_quatro;
+
+                    editarDados.comp_amostra_tres_um = salvarDados.comp_amostra_tres_um;
+                    editarDados.comp_amostra_tres_dois = salvarDados.comp_amostra_tres_dois;
+                    editarDados.comp_amostra_tres_tres = salvarDados.comp_amostra_tres_tres;
+                    editarDados.comp_amostra_tres_quatro = salvarDados.comp_amostra_tres_quatro;
+
+                    //editando espessura inicial
+                    editarDados.esp_ini_amostra_um_um = salvarDados.esp_ini_amostra_um_um;
+                    editarDados.esp_ini_amostra_um_dois = salvarDados.esp_ini_amostra_um_dois;
+                    editarDados.esp_ini_amostra_um_tres = salvarDados.esp_ini_amostra_um_tres;
+                    editarDados.esp_ini_amostra_um_quatro = salvarDados.esp_ini_amostra_um_quatro;
+                    editarDados.esp_ini_amostra_um_cinco = salvarDados.esp_ini_amostra_um_cinco;
+                    editarDados.esp_ini_amostra_um_seis = salvarDados.esp_ini_amostra_um_seis;
+                    editarDados.esp_ini_amostra_um_sete = salvarDados.esp_ini_amostra_um_sete;
+                    editarDados.esp_ini_amostra_um_oito = salvarDados.esp_ini_amostra_um_oito;
+
+                    editarDados.esp_ini_amostra_dois_um = salvarDados.esp_ini_amostra_dois_um;
+                    editarDados.esp_ini_amostra_dois_dois = salvarDados.esp_ini_amostra_dois_dois;
+                    editarDados.esp_ini_amostra_dois_tres = salvarDados.esp_ini_amostra_dois_tres;
+                    editarDados.esp_ini_amostra_dois_quatro = salvarDados.esp_ini_amostra_dois_quatro;
+                    editarDados.esp_ini_amostra_dois_cinco = salvarDados.esp_ini_amostra_dois_cinco;
+                    editarDados.esp_ini_amostra_dois_seis = salvarDados.esp_ini_amostra_dois_seis;
+                    editarDados.esp_ini_amostra_dois_sete = salvarDados.esp_ini_amostra_dois_sete;
+                    editarDados.esp_ini_amostra_dois_oito = salvarDados.esp_ini_amostra_dois_oito;
+
+                    editarDados.esp_ini_amostra_tres_um = salvarDados.esp_ini_amostra_tres_um;
+                    editarDados.esp_ini_amostra_tres_dois = salvarDados.esp_ini_amostra_tres_dois;
+                    editarDados.esp_ini_amostra_tres_tres = salvarDados.esp_ini_amostra_tres_tres;
+                    editarDados.esp_ini_amostra_tres_quatro = salvarDados.esp_ini_amostra_tres_quatro;
+                    editarDados.esp_ini_amostra_tres_cinco = salvarDados.esp_ini_amostra_tres_cinco;
+                    editarDados.esp_ini_amostra_tres_seis = salvarDados.esp_ini_amostra_tres_seis;
+                    editarDados.esp_ini_amostra_tres_sete = salvarDados.esp_ini_amostra_tres_sete;
+                    editarDados.esp_ini_amostra_tres_oito = salvarDados.esp_ini_amostra_tres_oito;
+
+                    //realizando calculo de media de cada tabela...
+                    editarDados.lar_media_um = ((editarDados.lar_amostra_um_um + editarDados.lar_amostra_um_dois + editarDados.lar_amostra_um_tres + editarDados.lar_amostra_um_quatro) / 4);
+                    editarDados.lar_media_dois = ((editarDados.lar_amostra_dois_um + editarDados.lar_amostra_dois_dois + editarDados.lar_amostra_dois_tres + editarDados.lar_amostra_dois_quatro) / 4);
+                    editarDados.lar_media_tres = ((editarDados.lar_amostra_tres_um + editarDados.lar_amostra_tres_dois + editarDados.lar_amostra_tres_tres + editarDados.lar_amostra_tres_quatro) / 4);
+
+                    editarDados.comp_media_um = ((editarDados.comp_amostra_um_um + editarDados.comp_amostra_um_dois + editarDados.comp_amostra_um_tres + editarDados.comp_amostra_um_quatro) / 4);
+                    editarDados.comp_media_dois = ((editarDados.comp_amostra_dois_um + editarDados.comp_amostra_dois_dois + editarDados.comp_amostra_dois_tres + editarDados.comp_amostra_dois_quatro) / 4);
+                    editarDados.comp_media_tres = ((editarDados.comp_amostra_tres_um + editarDados.comp_amostra_tres_dois + editarDados.comp_amostra_tres_tres + editarDados.comp_amostra_tres_quatro) / 4);
+
+                    editarDados.esp_ini_media_um = ((editarDados.esp_ini_amostra_um_um + editarDados.esp_ini_amostra_um_dois + editarDados.esp_ini_amostra_um_tres + editarDados.esp_ini_amostra_um_quatro + editarDados.esp_ini_amostra_um_cinco + editarDados.esp_ini_amostra_um_seis + editarDados.esp_ini_amostra_um_sete + editarDados.esp_ini_amostra_um_oito) / 8);
+                    editarDados.esp_ini_media_dois = ((editarDados.esp_ini_amostra_dois_um + editarDados.esp_ini_amostra_dois_dois + editarDados.esp_ini_amostra_dois_tres + editarDados.esp_ini_amostra_dois_quatro + editarDados.esp_ini_amostra_dois_cinco + editarDados.esp_ini_amostra_dois_seis + editarDados.esp_ini_amostra_dois_sete + editarDados.esp_ini_amostra_dois_oito) / 8);
+                    editarDados.esp_ini_media_tres = ((editarDados.esp_ini_amostra_tres_um + editarDados.esp_ini_amostra_tres_dois + editarDados.esp_ini_amostra_tres_tres + editarDados.esp_ini_amostra_tres_quatro + editarDados.esp_ini_amostra_tres_cinco + editarDados.esp_ini_amostra_tres_seis + editarDados.esp_ini_amostra_tres_sete + editarDados.esp_ini_amostra_tres_oito) / 8);
+
+                    //editando os valores meida da espessura...
+                    editarDados.media_espessura_um = editarDados.esp_ini_media_um;
+                    editarDados.media_espessura_dois = editarDados.esp_ini_media_dois;
+                    editarDados.media_espessura_tres = editarDados.esp_ini_media_tres;
+                    editarDados.media_espessura_total = ((editarDados.esp_ini_media_um + editarDados.esp_ini_media_dois + editarDados.esp_ini_media_tres) / 3);
+
+                    //qtd ciclos.
+                    editarDados.ciclos_um = salvarDados.ciclos_um;
+                    editarDados.ciclos_dois = salvarDados.ciclos_dois;
+                    editarDados.ciclos_tres = salvarDados.ciclos_tres;
+
+                    //esp final.
+                    editarDados.esp_final_amostra_um_um = salvarDados.esp_final_amostra_um_um;
+                    editarDados.esp_final_amostra_um_dois = salvarDados.esp_final_amostra_um_dois;
+                    editarDados.esp_final_amostra_um_tres = salvarDados.esp_final_amostra_um_tres;
+                    editarDados.esp_final_amostra_um_quatro = salvarDados.esp_final_amostra_um_quatro;
+                    editarDados.esp_final_amostra_um_cinco = salvarDados.esp_final_amostra_um_cinco;
+                    editarDados.esp_final_amostra_um_seis = salvarDados.esp_final_amostra_um_seis;
+                    editarDados.esp_final_amostra_um_sete = salvarDados.esp_final_amostra_um_sete;
+                    editarDados.esp_final_amostra_um_oito = salvarDados.esp_final_amostra_um_oito;
+
+                    editarDados.esp_final_amostra_dois_um = salvarDados.esp_final_amostra_dois_um;
+                    editarDados.esp_final_amostra_dois_dois = salvarDados.esp_final_amostra_dois_dois;
+                    editarDados.esp_final_amostra_dois_tres = salvarDados.esp_final_amostra_dois_tres;
+                    editarDados.esp_final_amostra_dois_quatro = salvarDados.esp_final_amostra_dois_quatro;
+                    editarDados.esp_final_amostra_dois_cinco = salvarDados.esp_final_amostra_dois_cinco;
+                    editarDados.esp_final_amostra_dois_seis = salvarDados.esp_final_amostra_dois_seis;
+                    editarDados.esp_final_amostra_dois_sete = salvarDados.esp_final_amostra_dois_sete;
+                    editarDados.esp_final_amostra_dois_oito = salvarDados.esp_final_amostra_dois_oito;
+
+                    editarDados.esp_final_amostra_tres_um = salvarDados.esp_final_amostra_tres_um;
+                    editarDados.esp_final_amostra_tres_dois = salvarDados.esp_final_amostra_tres_dois;
+                    editarDados.esp_final_amostra_tres_tres = salvarDados.esp_final_amostra_tres_tres;
+                    editarDados.esp_final_amostra_tres_quatro = salvarDados.esp_final_amostra_tres_quatro;
+                    editarDados.esp_final_amostra_tres_cinco = salvarDados.esp_final_amostra_tres_cinco;
+                    editarDados.esp_final_amostra_tres_seis = salvarDados.esp_final_amostra_tres_seis;
+                    editarDados.esp_final_amostra_tres_sete = salvarDados.esp_final_amostra_tres_sete;
+                    editarDados.esp_final_amostra_tres_oito = salvarDados.esp_final_amostra_tres_oito;
+
+                    //media de esp final...
+                    editarDados.media_esp_fin_um = ((editarDados.esp_final_amostra_um_um + editarDados.esp_final_amostra_um_dois + editarDados.esp_final_amostra_um_tres + editarDados.esp_final_amostra_um_quatro + editarDados.esp_final_amostra_um_cinco + editarDados.esp_final_amostra_um_seis + editarDados.esp_final_amostra_um_sete + editarDados.esp_final_amostra_um_oito) / 8);
+                    editarDados.media_esp_fin_dois = ((editarDados.esp_final_amostra_dois_um + editarDados.esp_final_amostra_dois_dois + editarDados.esp_final_amostra_dois_tres + editarDados.esp_final_amostra_dois_quatro + editarDados.esp_final_amostra_dois_cinco + editarDados.esp_final_amostra_dois_seis + editarDados.esp_final_amostra_dois_sete + editarDados.esp_final_amostra_dois_oito) / 8);
+                    editarDados.media_esp_fin_tres = ((editarDados.esp_final_amostra_tres_um + editarDados.esp_final_amostra_tres_dois + editarDados.esp_final_amostra_tres_tres + editarDados.esp_final_amostra_tres_quatro + editarDados.esp_final_amostra_tres_cinco + editarDados.esp_final_amostra_tres_seis + editarDados.esp_final_amostra_tres_sete + editarDados.esp_final_amostra_tres_oito) / 8);
+
+
+                    //calculo de perda de espessura..
+                    editarDados.pe_um_um = editarDados.media_espessura_um;
+                    editarDados.pe_um_dois = editarDados.media_esp_fin_um;
+                    editarDados.pe_um_tres = editarDados.media_esp_fin_um;
+                    editarDados.pe_media_um = (((editarDados.pe_um_um - editarDados.pe_um_dois) / editarDados.pe_um_tres) * 100);
+
+                    editarDados.pe_dois_um = editarDados.media_espessura_dois;
+                    editarDados.pe_dois_dois = editarDados.media_esp_fin_dois;
+                    editarDados.pe_dois_tres = editarDados.media_esp_fin_dois;
+                    editarDados.pe_media_dois = (((editarDados.pe_dois_um - editarDados.pe_dois_dois) / editarDados.pe_dois_tres) * 100);
+
+                    editarDados.pe_tres_um = editarDados.media_espessura_tres;
+                    editarDados.pe_tres_dois = editarDados.media_esp_fin_tres;
+                    editarDados.pe_tres_tres = editarDados.media_esp_fin_dois;
+                    editarDados.pe_media_tres = (((editarDados.pe_tres_um - editarDados.pe_tres_dois) / editarDados.pe_tres_tres) * 100);
+
+                    editarDados.pe_especificado = salvarDados.pe_especificado;
+                    editarDados.pe_encontrado = ((editarDados.pe_media_um + editarDados.pe_media_dois + editarDados.pe_media_tres) / 3);
+
+                    _context.lamina_fadiga_dinamica.Update(editarDados);
+                    await _context.SaveChangesAsync();
+                    TempData["Mensagem"] = "Dados Editado com sucesso.";
+                    return RedirectToAction("LaminaFadiga", "Coleta", new { os, orcamento, item });
+                }
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "Error", ex.Message);
+                throw;
+            }
+        }
+        public async Task<IActionResult> SalvarLaminaPFI(string os, string orcamento, int item, ColetaModel.LaminaPFI salvarDados)
+        {
+            try
+            {
+                //realizando media de largura, comprimento, e espessura.
+                //largura.
+                float lar_media_um = ((salvarDados.lar_amostra_um_um + salvarDados.lar_amostra_um_dois + salvarDados.lar_amostra_um_tres + salvarDados.lar_amostra_um_quatro) / 4);
+                salvarDados.lar_media_um = lar_media_um;
+
+                float lar_media_dois = ((salvarDados.lar_amostra_dois_um + salvarDados.lar_amostra_dois_dois + salvarDados.lar_amostra_dois_tres + salvarDados.lar_amostra_dois_quatro) / 4);
+                salvarDados.lar_media_dois = lar_media_dois;
+
+                float lar_media_tres = ((salvarDados.lar_amostra_tres_um + salvarDados.lar_amostra_tres_dois + salvarDados.lar_amostra_tres_tres + salvarDados.lar_amostra_tres_quatro) / 4);
+                salvarDados.lar_media_tres = lar_media_tres;
+
+                //comprimento.
+                float comp_media_um  = ((salvarDados.lar_amostra_um_um + salvarDados.lar_amostra_um_dois + salvarDados.lar_amostra_um_tres + salvarDados.lar_amostra_um_quatro) / 4);
+                salvarDados.comp_media_um = comp_media_um;
+
+                float comp_media_dois = ((salvarDados.lar_amostra_dois_um + salvarDados.lar_amostra_dois_dois + salvarDados.lar_amostra_dois_tres + salvarDados.lar_amostra_dois_quatro) / 4);
+                salvarDados.comp_media_dois = comp_media_dois;
+
+                float comp_media_tres = ((salvarDados.lar_amostra_tres_um + salvarDados.lar_amostra_tres_dois + salvarDados.lar_amostra_tres_tres + salvarDados.lar_amostra_tres_quatro) / 4);
+                salvarDados.comp_media_tres = comp_media_tres;
+
+                //espessura.. 
+                float media_esp_um = ((salvarDados.esp_ini_amostra_um_um + salvarDados.esp_ini_amostra_um_dois + salvarDados.esp_ini_amostra_um_tres + salvarDados.esp_ini_amostra_um_quatro + salvarDados.esp_ini_amostra_um_cinto + salvarDados.esp_ini_amostra_um_seis + salvarDados.esp_ini_amostra_um_sete + salvarDados.esp_ini_amostra_um_oito) / 8);
+                salvarDados.esp_media_um = media_esp_um;
+
+                float media_esp_dois = ((salvarDados.esp_ini_amostra_dois_um + salvarDados.esp_ini_amostra_dois_dois + salvarDados.esp_ini_amostra_dois_tres + salvarDados.esp_ini_amostra_dois_quatro + salvarDados.esp_ini_amostra_dois_cinto + salvarDados.esp_ini_amostra_dois_seis + salvarDados.esp_ini_amostra_dois_sete + salvarDados.esp_ini_amostra_dois_oito) / 8);
+                salvarDados.esp_media_dois = media_esp_dois;
+
+                float media_esp_tres = ((salvarDados.esp_ini_amostra_tres_um + salvarDados.esp_ini_amostra_tres_dois + salvarDados.esp_ini_amostra_tres_tres + salvarDados.esp_ini_amostra_tres_quatro + salvarDados.esp_ini_amostra_tres_cinto + salvarDados.esp_ini_amostra_tres_seis + salvarDados.esp_ini_amostra_tres_sete + salvarDados.esp_ini_amostra_tres_oito) / 8);
+                salvarDados.esp_media_tres = media_esp_tres;
+
+                //media da espessura..
+                salvarDados.media_espessura_um = salvarDados.esp_media_um;
+                salvarDados.media_espessura_dois = salvarDados.esp_media_dois;
+                salvarDados.media_espessura_tres = salvarDados.esp_media_tres;
+
+
+                //calculo de reducao...
+                float red_25_um = ((salvarDados.media_espessura_um * salvarDados.comp_25_um) / 100);
+                salvarDados.red_25_um = red_25_um;
+
+                float red_25_dois = ((salvarDados.media_espessura_dois * salvarDados.comp_25_dois) / 100);
+                salvarDados.red_25_dois = red_25_dois;
+
+                float red_25_tres = ((salvarDados.media_espessura_tres * salvarDados.comp_25_tres) / 100);
+                salvarDados.red_25_tres = red_25_tres;
+
+
+                float red_40_um = ((salvarDados.media_espessura_um * salvarDados.comp_40_um) / 100);
+                salvarDados.red_40_um = red_40_um;
+
+                float red_40_dois = ((salvarDados.media_espessura_dois * salvarDados.comp_40_dois) / 100);
+                salvarDados.red_40_dois = red_40_dois;
+
+                float red_40_tres = ((salvarDados.media_espessura_tres * salvarDados.comp_40_tres) / 100);
+                salvarDados.red_40_tres = red_40_tres;
+
+
+                float red_65_um = ((salvarDados.media_espessura_um * salvarDados.comp_65_um) / 100);
+                salvarDados.red_65_um = red_65_um;
+
+                float red_65_dois = ((salvarDados.media_espessura_dois * salvarDados.comp_65_dois) / 100);
+                salvarDados.red_65_dois = red_65_dois;
+
+                float red_65_tres = ((salvarDados.media_espessura_tres * salvarDados.comp_65_tres) / 100);
+                salvarDados.red_65_tres = red_65_tres;
+
+
+                float media_red_total_25 = ((salvarDados.fi_25_um + salvarDados.fi_25_dois + salvarDados.fi_25_tres) / 3);
+                salvarDados.media_25_comp = media_red_total_25;
+
+                float media_red_total_40 = ((salvarDados.fi_40_um + salvarDados.fi_40_dois + salvarDados.fi_40_tres) / 3);
+                salvarDados.media_40_comp = media_red_total_40;
+
+                float media_red_total_65 = ((salvarDados.fi_65_um + salvarDados.fi_65_dois + salvarDados.fi_65_tres) / 3);
+                salvarDados.media_65_comp = media_red_total_65;
+
+                //força encontrada de indentação..
+                salvarDados.forca_ind_enc_25 = salvarDados.media_25_comp;
+                salvarDados.forca_ind_enc_40 = salvarDados.media_40_comp;
+                salvarDados.forca_ind_enc_65 = salvarDados.media_65_comp;
+
+                //inicio de calculos de pfi..
+                
+
+
+                TempData["Mensagem"] = "Dados Salvo com sucesso.";
+                return RedirectToAction("LaminaFadiga", "Coleta", new { os, orcamento, item });
             }
             catch (Exception ex)
             {

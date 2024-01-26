@@ -32,5 +32,7 @@ namespace Coleta_Colchao.Data
         public DbSet<ColetaModel.LaminaResiliencia> lamina_resiliencia { get; set; }
         public DbSet<ColetaModel.LaminaDPC> lamina_dpc { get; set; }
         public DbSet<ColetaModel.LaminaFI> lamina_fi { get; set; }
+        public DbSet<ColetaModel.LaminaFadigaRotativa> lamina_fadiga_dinamica { get; set; }
+        public DbSet<ColetaModel.LaminaPFI> lamina_pfi { get; set; }
     }
 }

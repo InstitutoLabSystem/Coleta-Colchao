@@ -84,14 +84,12 @@ namespace Coleta_Colchao.Controllers
                                 TempData["Mensagem"] = "Logado Com Sucesso";
                                 await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, new ClaimsPrincipal(claimsIdenty), properties);
                                 return RedirectToAction("Index", "Home");
-
                             }
                             else
                             {
                                 TempData["Mensagem"] = "Usuário não tem permissão";
                                 return View("Login", "Acess");
                             }
-
                         }
                     }
                     else

@@ -1,4 +1,5 @@
-﻿@{
+﻿@model ColetaModel.LaminaPFI;
+@{
     Layout = null;
 }
 @{
@@ -29,502 +30,532 @@
     </style> *@
 </head>
 <body>
-    <table class="tables table-bordered border-secondary  table-sm">
-        <thead>
-            <tr>
-                <td><img src="https://www.labsystem-nuvem.com.br/imagens_arq/imagens/img/LabSystem.png" class="imagem" /></td>
-                <td colspan="3" class="fundo-tabela">Coleta De Dados</td>
-                <td class="fundo-tabela">N Os:</td>
+    <form method="post" asp-controller="Coleta" asp-action="SalvarLaminaPFI" asp-route-os="@ViewBag.os" asp-route-orcamento="@ViewBag.orcamento" asp-route-item="@ViewBag.item">
+        <table class="tables table-bordered border-secondary  table-sm">
+            <thead>
+                <tr>
+                    <td><img src="https://www.labsystem-nuvem.com.br/imagens_arq/imagens/img/LabSystem.png" class="imagem" /></td>
+                    <td colspan="3" class="fundo-tabela">Coleta De Dados</td>
+                    <td class="fundo-tabela">N Os:</td>
+                </tr>
+                <tr>
+                    <td colspan="4">Ensaios de Colchão de Espuma (Portaria Inmetro 35)</td>
+                    <td rowspan="2"> @ViewBag.os</td>
+                </tr>
+                @if (Model == null)
+                {
+                    <tr>
+                        <td>Inicio:</td>
+                        <td><input class="form-control" type="date" asp-for="data_ini" /></td>
+                        <td>Termino:</td>
+                        <td><input class="form-control" type="date" asp-for="data_term" /></td>
+                    </tr>
+                }
+                else
+                {
+                    <tr>
+                        <td>Inicio:</td>
+                        <td><input class="form-control" type="text" asp-for="data_ini" /></td>
+                        <td>Termino:</td>
+                        <td><input class="form-control" type="text" asp-for="data_term" /></td>
+                    </tr>
+                }
+            </thead>
+        </table>
+        <br />
+        <table class="tables table-bordered border-secondary  table-sm">
+            <tr class="fundo-tabela">
+                <td>Item</td>
+                <td>Descrição</td>
+                <td>Resultado</td>
             </tr>
             <tr>
-                <td colspan="4">Ensaios de Colchão de Espuma (Portaria Inmetro 35)</td>
-                <td rowspan="2"> @ViewBag.os</td>
+                <td rowspan="30">5.6</td>
+                <td>
+                    <b>
+                        Determinação da força de indentação (Perda de F.I)
+                    </b>
+                </td>
+                <td rowspan="13">RESULTADO</td>
             </tr>
             <tr>
-                <td>Inicio:</td>
-                <td><input class="form-control" type="date" /></td>
-                <td>Termino:</td>
-                <td><input class="form-control" type="date" /></td>
+                <td>
+                    Após realizar o ensaio de fadiga dinâmica, repetir o ensaio de "Determinação da força de indentação"
+                </td>
             </tr>
-        </thead>
-    </table>
-    <br />
-    <table class="tables table-bordered border-secondary  table-sm">
-        <tr class="fundo-tabela">
-            <td>Item</td>
-            <td>Descrição</td>
-            <td>Resultado</td>
-        </tr>
-        <tr>
-            <td rowspan="30">5.6</td>
-            <td>
-                <b>
-                    Determinação da força de indentação (Perda de F.I)
-                </b>
-            </td>
-            <td rowspan="13">RESULTADO</td>
-        </tr>
-        <tr>
-            <td>
-                Após realizar o ensaio de fadiga dinâmica, repetir o ensaio de "Determinação da força de indentação"
-            </td>
-        </tr>
 
-        <tr>
-            <td>
-                Separar 3 corpos de prova e realizar as medições das seguintes dimesões: (Largura x comprimento x altura).
-            </td>
-        </tr>
-        <tr>
-            <td>
-                <table class="tables table-bordered border-secondary  table-sm">
-                    <tr>
-                        <td class="fundo-tabela">Tipo Espuma</td>
-                        <td colspan="3"><input type="text" class="form-control" /></td>
-                    </tr>
-                    <tr class="fundo-tabela">
-                        <td rowspan="6">---</td>
-                        <td> Amostra 1º</td>
-                        <td> Amostra 2º</td>
-                        <td> Amostra 3º</td>
-                    </tr>
-                    <tr class="fundo-tabela">
-                        <td>Largura (mm)</td>
-                        <td>Largura (mm)</td>
-                        <td>Largura (mm)</td>
-                    </tr>
-                    <tr>
-                        <td><input type="text" class="form-control" /></td>
-                        <td><input type="text" class="form-control" /></td>
-                        <td><input type="text" class="form-control" /></td>
-                    </tr>
-                    <tr>
-                        <td><input type="text" class="form-control" /></td>
-                        <td><input type="text" class="form-control" /></td>
-                        <td><input type="text" class="form-control" /></td>
-                    </tr>
-                    <tr>
-                        <td><input type="text" class="form-control" /></td>
-                        <td><input type="text" class="form-control" /></td>
-                        <td><input type="text" class="form-control" /></td>
-                    </tr>
-                    <tr>
-                        <td><input type="text" class="form-control" /></td>
-                        <td><input type="text" class="form-control" /></td>
-                        <td><input type="text" class="form-control" /></td>
-                    </tr>
-                    <tr>
-                        <td>Media:</td>
-                        <td><input type="text" class="form-control" readonly /></td>
-                        <td><input type="text" class="form-control" readonly /></td>
-                        <td><input type="text" class="form-control" readonly /></td>
-                    </tr>
-                </table>
-                <br />
-                <table class="tables table-bordered border-secondary  table-sm">
+            <tr>
+                <td>
+                    Separar 3 corpos de prova e realizar as medições das seguintes dimesões: (Largura x comprimento x altura).
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <table class="tables table-bordered border-secondary  table-sm">
+                        <tr>
+                            <td class="fundo-tabela">Tipo Espuma</td>
+                            <td colspan="3"><input type="text" class="form-control" asp-for="tipo_espuma" /></td>
+                        </tr>
+                        <tr class="fundo-tabela">
+                            <td rowspan="6">---</td>
+                            <td> Amostra 1º</td>
+                            <td> Amostra 2º</td>
+                            <td> Amostra 3º</td>
+                        </tr>
+                        <tr class="fundo-tabela">
+                            <td>Largura (mm)</td>
+                            <td>Largura (mm)</td>
+                            <td>Largura (mm)</td>
+                        </tr>
+                        <tr>
+                            <td><input type="text" class="form-control" asp-for="lar_amostra_um_um" /></td>
+                            <td><input type="text" class="form-control" asp-for="lar_amostra_dois_um" /></td>
+                            <td><input type="text" class="form-control" asp-for="lar_amostra_tres_um" /></td>
+                        </tr>
+                        <tr>
+                            <td><input type="text" class="form-control" asp-for="lar_amostra_um_dois" /></td>
+                            <td><input type="text" class="form-control" asp-for="lar_amostra_dois_dois" /></td>
+                            <td><input type="text" class="form-control" asp-for="lar_amostra_tres_dois" /></td>
+                        </tr>
+                        <tr>
+                            <td><input type="text" class="form-control" asp-for="lar_amostra_um_tres" /></td>
+                            <td><input type="text" class="form-control" asp-for="lar_amostra_dois_tres" /></td>
+                            <td><input type="text" class="form-control" asp-for="lar_amostra_tres_tres" /></td>
+                        </tr>
+                        <tr>
+                            <td><input type="text" class="form-control" asp-for="lar_amostra_um_quatro" /></td>
+                            <td><input type="text" class="form-control" asp-for="lar_amostra_dois_quatro" /></td>
+                            <td><input type="text" class="form-control" asp-for="lar_amostra_tres_quatro" /></td>
+                        </tr>
+                        <tr>
+                            <td>Media:</td>
+                            <td><input type="text" class="form-control" readonly asp-for="lar_media_um"/></td>
+                            <td><input type="text" class="form-control" readonly asp-for="lar_media_dois" /></td>
+                            <td><input type="text" class="form-control" readonly asp-for="lar_media_tres" /></td>
+                        </tr>
+                    </table>
+                    <br />
+                    <table class="tables table-bordered border-secondary  table-sm">
 
-                    <tr class="fundo-tabela">
-                        <td rowspan="6">---</td>
-                        <td> Amostra 1º</td>
-                        <td> Amostra 2º</td>
-                        <td> Amostra 3º</td>
-                    </tr>
-                    <tr class="fundo-tabela">
-                        <td>Comprimento (mm)</td>
-                        <td>Comprimento (mm)</td>
-                        <td>Comprimento (mm)</td>
-                    </tr>
-                    <tr>
-                        <td><input type="text" class="form-control" /></td>
-                        <td><input type="text" class="form-control" /></td>
-                        <td><input type="text" class="form-control" /></td>
-                    </tr>
-                    <tr>
-                        <td><input type="text" class="form-control" /></td>
-                        <td><input type="text" class="form-control" /></td>
-                        <td><input type="text" class="form-control" /></td>
-                    </tr>
-                    <tr>
-                        <td><input type="text" class="form-control" /></td>
-                        <td><input type="text" class="form-control" /></td>
-                        <td><input type="text" class="form-control" /></td>
-                    </tr>
-                    <tr>
-                        <td><input type="text" class="form-control" /></td>
-                        <td><input type="text" class="form-control" /></td>
-                        <td><input type="text" class="form-control" /></td>
-                    </tr>
-                    <tr>
-                        <td>Media:</td>
-                        <td><input type="text" class="form-control" readonly /></td>
-                        <td><input type="text" class="form-control" readonly /></td>
-                        <td><input type="text" class="form-control" readonly /></td>
-                    </tr>
-                </table>
-                <br />
-                <table class="tables table-bordered border-secondary  table-sm">
+                        <tr class="fundo-tabela">
+                            <td rowspan="6">---</td>
+                            <td> Amostra 1º</td>
+                            <td> Amostra 2º</td>
+                            <td> Amostra 3º</td>
+                        </tr>
+                        <tr class="fundo-tabela">
+                            <td>Comprimento (mm)</td>
+                            <td>Comprimento (mm)</td>
+                            <td>Comprimento (mm)</td>
+                        </tr>
+                        <tr>
+                            <td><input type="text" class="form-control" asp-for="comp_amostra_um_um"/></td>
+                            <td><input type="text" class="form-control" asp-for="comp_amostra_dois_um" /></td>
+                            <td><input type="text" class="form-control" asp-for="comp_amostra_tres_um" /></td>
+                        </tr>
+                        <tr>
+                            <td><input type="text" class="form-control" asp-for="comp_amostra_um_dois"/></td>
+                            <td><input type="text" class="form-control" asp-for="comp_amostra_dois_dois" /></td>
+                            <td><input type="text" class="form-control" asp-for="comp_amostra_tres_dois" /></td>
+                        </tr>
+                        <tr>
+                            <td><input type="text" class="form-control" asp-for="comp_amostra_um_tres" /></td>
+                            <td><input type="text" class="form-control" asp-for="comp_amostra_dois_tres" /></td>
+                            <td><input type="text" class="form-control" asp-for="comp_amostra_tres_tres" /></td>
+                        </tr>
+                        <tr>
+                            <td><input type="text" class="form-control" asp-for="comp_amostra_um_quatro" /></td>
+                            <td><input type="text" class="form-control" asp-for="comp_amostra_dois_quatro" /></td>
+                            <td><input type="text" class="form-control" asp-for="comp_amostra_tres_quatro" /></td>
+                        </tr>
+                        <tr>
+                            <td>Media:</td>
+                            <td><input type="text" class="form-control" readonly asp-for="comp_media_um"/></td>
+                            <td><input type="text" class="form-control" readonly asp-for="comp_media_dois" /></td>
+                            <td><input type="text" class="form-control" readonly asp-for="comp_media_tres" /></td>
+                        </tr>
+                    </table>
+                    <br />
+                    <table class="tables table-bordered border-secondary  table-sm">
 
-                    <tr class="fundo-tabela">
-                        <td rowspan="10">---</td>
-                        <td> Amostra 1º</td>
-                        <td> Amostra 2º</td>
-                        <td> Amostra 3º</td>
-                    </tr>
-                    <tr class="fundo-tabela">
-                        <td>Espessura Inicial (mm)</td>
-                        <td>Espessura Inicial (mm)</td>
-                        <td>Espessura Inicial (mm)</td>
-                    </tr>
-                    <tr>
-                        <td><input type="text" class="form-control" /></td>
-                        <td><input type="text" class="form-control" /></td>
-                        <td><input type="text" class="form-control" /></td>
-                    </tr>
-                    <tr>
-                        <td><input type="text" class="form-control" /></td>
-                        <td><input type="text" class="form-control" /></td>
-                        <td><input type="text" class="form-control" /></td>
-                    </tr>
-                    <tr>
-                        <td><input type="text" class="form-control" /></td>
-                        <td><input type="text" class="form-control" /></td>
-                        <td><input type="text" class="form-control" /></td>
-                    </tr>
-                    <tr>
-                        <td><input type="text" class="form-control" /></td>
-                        <td><input type="text" class="form-control" /></td>
-                        <td><input type="text" class="form-control" /></td>
-                    </tr>
-                    <tr>
-                        <td><input type="text" class="form-control" /></td>
-                        <td><input type="text" class="form-control" /></td>
-                        <td><input type="text" class="form-control" /></td>
-                    </tr>
-                    <tr>
-                        <td><input type="text" class="form-control" /></td>
-                        <td><input type="text" class="form-control" /></td>
-                        <td><input type="text" class="form-control" /></td>
-                    </tr>
-                    <tr>
-                        <td><input type="text" class="form-control" /></td>
-                        <td><input type="text" class="form-control" /></td>
-                        <td><input type="text" class="form-control" /></td>
-                    </tr>
-                    <tr>
-                        <td><input type="text" class="form-control" /></td>
-                        <td><input type="text" class="form-control" /></td>
-                        <td><input type="text" class="form-control" /></td>
-                    </tr>
-                    <tr>
-                        <td>Media:</td>
-                        <td><input type="text" class="form-control" readonly /></td>
-                        <td><input type="text" class="form-control" readonly /></td>
-                        <td><input type="text" class="form-control" readonly /></td>
-                    </tr>
-                </table>
-                <table class="tables table-bordered border-secondary  table-sm">
-                    <tr>
-                        <td class="fundo-tabela">
-                            Média da espessura - 1° Amostra
-                        </td>
-                        <td><input type="text" class="form-control" readonly /></td>
-                    </tr>
-                    <tr>
-                        <td class="fundo-tabela">
-                            Média da espessura - 2° Amostra
-                        </td>
-                        <td><input type="text" class="form-control" readonly /></td>
-                    </tr>
-                    <tr>
-                        <td class="fundo-tabela">
-                            Média da espessura - 3° Amostra
-                        </td>
-                        <td><input type="text" class="form-control" readonly /></td>
-                    </tr>
-                    <tr>
-                        <td class="fundo-tabela">Média da espessura</td>
-                        <td><input type="text" class="form-control" readonly /></td>
-                    </tr>
-                </table>
-            </td>
-        </tr>
-        <tr>
-            <td>
-                Aproximar o indentador da amostra de modo a aplicar uma pré carga de 5 N.
-            </td>
-        </tr>
-        <tr>
-            <td>
-                <table class="tables table-bordered border-secondary  table-sm">
-                    <tr>
-                        <td class="fundo-tabela">Pré Carga (N)</td>
-                        <td><input type="text" class="form-control" /></td>
-                    </tr>
-                </table>
-            </td>
-        </tr>
-        <tr>
-            <td>
-                Comprimir os corpos de prova a (22 ± 1) % da sua espessura inicial. Manter a compressão por (30 ± 1) s e medir a força de indentação.
-            </td>
-        </tr>
-        <tr>
-            <td>
-                <table class="tables table-bordered border-secondary  table-sm">
-                    <tr class="fundo-tabela">
-                        <td>Amostra</td>
-                        <td>
-                            Compressão(25 ± 1) %
-                        </td>
-                        <td>Redução</td>
-                        <td>Tempo</td>
-                        <td>F.I (N)</td>
-                    </tr>
-                    <tr>
-                        <td>
-                            1°
-                        </td>
-                        <td><input type="text" class="form-control" /></td>
-                        <td><input type="text" class="form-control" readonly /></td>
-                        <td><input type="text" class="form-control" /></td>
-                        <td><input type="text" class="form-control" /></td>
-                    </tr>
-                    <tr>
-                        <td>
-                            2°
-                        </td>
-                        <td><input type="text" class="form-control" /></td>
-                        <td><input type="text" class="form-control" readonly /></td>
-                        <td><input type="text" class="form-control" /></td>
-                        <td><input type="text" class="form-control" /></td>
-                    </tr>
-                    <tr>
-                        <td>
-                            3°
-                        </td>
-                        <td><input type="text" class="form-control" /></td>
-                        <td><input type="text" class="form-control" readonly /></td>
-                        <td><input type="text" class="form-control" /></td>
-                        <td><input type="text" class="form-control" /></td>
-                    </tr>
-                    <tr>
-                        <td colspan="2">
-                            Média da força de indentação (N)
-                        </td>
-                        <td colspan="3"><input type="text" class="form-control" readonly /></td>
-                    </tr>
-                </table>
-            </td>
-        </tr>
-        <tr>
-            <td>
-                Comprimir os corpos de prova a (40 ± 1) % da sua espessura inicial. Manter a compressão por (30 ± 1) s e medir a força de indentação.
-            </td>
-        </tr>
-        <tr>
-            <td>
-                <table class="tables table-bordered border-secondary  table-sm">
-                    <tr class="fundo-tabela">
-                        <td>Amostra</td>
-                        <td>
-                            Compressão(40 ± 1) %
-                        </td>
-                        <td>Redução</td>
-                        <td>Tempo</td>
-                        <td>F.I (N)</td>
-                    </tr>
-                    <tr>
-                        <td>
-                            1°
-                        </td>
-                        <td><input type="text" class="form-control" /></td>
-                        <td><input type="text" class="form-control" readonly /></td>
-                        <td><input type="text" class="form-control" /></td>
-                        <td><input type="text" class="form-control" /></td>
-                    </tr>
-                    <tr>
-                        <td>
-                            2°
-                        </td>
-                        <td><input type="text" class="form-control" /></td>
-                        <td><input type="text" class="form-control" readonly /></td>
-                        <td><input type="text" class="form-control" /></td>
-                        <td><input type="text" class="form-control" /></td>
-                    </tr>
-                    <tr>
-                        <td>
-                            3°
-                        </td>
-                        <td><input type="text" class="form-control" /></td>
-                        <td><input type="text" class="form-control" readonly /></td>
-                        <td><input type="text" class="form-control" /></td>
-                        <td><input type="text" class="form-control" /></td>
-                    </tr>
-                    <tr>
-                        <td colspan="2">
-                            Média da força de indentação (N)
-                        </td>
-                        <td colspan="3"><input type="text" class="form-control" readonly /></td>
+                        <tr class="fundo-tabela">
+                            <td rowspan="10">---</td>
+                            <td> Amostra 1º</td>
+                            <td> Amostra 2º</td>
+                            <td> Amostra 3º</td>
+                        </tr>
+                        <tr class="fundo-tabela">
+                            <td>Espessura Inicial (mm)</td>
+                            <td>Espessura Inicial (mm)</td>
+                            <td>Espessura Inicial (mm)</td>
+                        </tr>
+                        <tr>
+                            <td><input type="text" class="form-control" asp-for="esp_ini_amostra_um_um"/></td>
+                            <td><input type="text" class="form-control" asp-for="esp_ini_amostra_dois_um" /></td>
+                            <td><input type="text" class="form-control" asp-for="esp_ini_amostra_tres_um" /></td>
+                        </tr>
+                        <tr>
+                            <td><input type="text" class="form-control" asp-for="esp_ini_amostra_um_dois" /></td>
+                            <td><input type="text" class="form-control" asp-for="esp_ini_amostra_dois_dois" /></td>
+                            <td><input type="text" class="form-control" asp-for="esp_ini_amostra_tres_dois" /></td>
+                        </tr>
+                        <tr>
+                            <td><input type="text" class="form-control" asp-for="esp_ini_amostra_um_tres"/></td>
+                            <td><input type="text" class="form-control" asp-for="esp_ini_amostra_dois_tres" /></td>
+                            <td><input type="text" class="form-control" asp-for="esp_ini_amostra_tres_tres" /></td>
+                        </tr>
+                        <tr>
+                            <td><input type="text" class="form-control" asp-for="esp_ini_amostra_um_quatro" /></td>
+                            <td><input type="text" class="form-control" asp-for="esp_ini_amostra_dois_quatro" /></td>
+                            <td><input type="text" class="form-control" asp-for="esp_ini_amostra_tres_quatro" /></td>
+                        </tr>
+                        <tr>
+                            <td><input type="text" class="form-control" asp-for="esp_ini_amostra_um_cinto" /></td>
+                            <td><input type="text" class="form-control" asp-for="esp_ini_amostra_dois_cinto" /></td>
+                            <td><input type="text" class="form-control" asp-for="esp_ini_amostra_tres_cinto" /></td>
+                        </tr>
+                        <tr>
+                            <td><input type="text" class="form-control" asp-for="esp_ini_amostra_um_seis" /></td>
+                            <td><input type="text" class="form-control" asp-for="esp_ini_amostra_dois_seis" /></td>
+                            <td><input type="text" class="form-control" asp-for="esp_ini_amostra_tres_seis" /></td>
+                        </tr>
+                        <tr>
+                            <td><input type="text" class="form-control" asp-for="esp_ini_amostra_um_sete" /></td>
+                            <td><input type="text" class="form-control" asp-for="esp_ini_amostra_dois_sete" /></td>
+                            <td><input type="text" class="form-control" asp-for="esp_ini_amostra_tres_sete" /></td>
+                        </tr>
+                        <tr>
+                            <td><input type="text" class="form-control" asp-for="esp_ini_amostra_um_oito" /></td>
+                            <td><input type="text" class="form-control" asp-for="esp_ini_amostra_dois_oito" /></td>
+                            <td><input type="text" class="form-control" asp-for="esp_ini_amostra_tres_oito" /></td>
+                        </tr>
+                        <tr>
+                            <td>Media:</td>
+                            <td><input type="text" class="form-control" readonly asp-for="esp_media_um"/></td>
+                            <td><input type="text" class="form-control" readonly asp-for="esp_media_dois" /></td>
+                            <td><input type="text" class="form-control" readonly asp-for="esp_media_tres" /></td>
+                        </tr>
+                    </table>
+                    <table class="tables table-bordered border-secondary  table-sm">
+                        <tr>
+                            <td class="fundo-tabela">
+                                Média da espessura - 1° Amostra
+                            </td>
+                            <td><input type="text" class="form-control" readonly asp-for="media_espessura_um" /></td>
+                        </tr>
+                        <tr>
+                            <td class="fundo-tabela">
+                                Média da espessura - 2° Amostra
+                            </td>
+                            <td><input type="text" class="form-control" readonly asp-for="media_espessura_dois" /></td>
+                        </tr>
+                        <tr>
+                            <td class="fundo-tabela">
+                                Média da espessura - 3° Amostra
+                            </td>
+                            <td><input type="text" class="form-control" readonly asp-for="media_espessura_tres" /></td>
+                        </tr>
+                        <tr>
+                            <td class="fundo-tabela">Média da espessura</td>
+                            <td><input type="text" class="form-control" readonly asp-for="media_espessura_total" /></td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Aproximar o indentador da amostra de modo a aplicar uma pré carga de 5 N.
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <table class="tables table-bordered border-secondary  table-sm">
+                        <tr>
+                            <td class="fundo-tabela">Pré Carga (N)</td>
+                            <td><input type="text" class="form-control" asp-for="pre_carga"/></td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Comprimir os corpos de prova a (22 ± 1) % da sua espessura inicial. Manter a compressão por (30 ± 1) s e medir a força de indentação.
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <table class="tables table-bordered border-secondary  table-sm">
+                        <tr class="fundo-tabela">
+                            <td>Amostra</td>
+                            <td>
+                                Compressão(25 ± 1) %
+                            </td>
+                            <td>Redução</td>
+                            <td>Tempo</td>
+                            <td>F.I (N)</td>
+                        </tr>
+                        <tr>
+                            <td>
+                                1°
+                            </td>
+                            <td><input type="text" class="form-control" asp-for="comp_25_um"/></td>
+                            <td><input type="text" class="form-control" readonly asp-for="red_25_um"/></td>
+                            <td><input type="text" class="form-control" asp-for="temp_25_um"/></td>
+                            <td><input type="text" class="form-control" asp-for="fi_25_um"/></td>
+                        </tr>
+                        <tr>
+                            <td>
+                                2°
+                            </td>
+                            <td><input type="text" class="form-control" asp-for="comp_25_dois" /></td>
+                            <td><input type="text" class="form-control" readonly asp-for="red_25_dois" /></td>
+                            <td><input type="text" class="form-control" asp-for="temp_25_dois" /></td>
+                            <td><input type="text" class="form-control" asp-for="fi_25_dois" /></td>
+                        </tr>
+                        <tr>
+                            <td>
+                                3°
+                            </td>
+                            <td><input type="text" class="form-control" asp-for="comp_25_tres" /></td>
+                            <td><input type="text" class="form-control" readonly asp-for="red_25_tres" /></td>
+                            <td><input type="text" class="form-control" asp-for="temp_25_tres" /></td>
+                            <td><input type="text" class="form-control" asp-for="fi_25_tres" /></td>
+                        </tr>
+                        <tr>
+                            <td colspan="2">
+                                Média da força de indentação (N)
+                            </td>
+                            <td colspan="3"><input type="text" class="form-control" readonly asp-for="media_25_comp"/></td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Comprimir os corpos de prova a (40 ± 1) % da sua espessura inicial. Manter a compressão por (30 ± 1) s e medir a força de indentação.
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <table class="tables table-bordered border-secondary  table-sm">
+                        <tr class="fundo-tabela">
+                            <td>Amostra</td>
+                            <td>
+                                Compressão(40 ± 1) %
+                            </td>
+                            <td>Redução</td>
+                            <td>Tempo</td>
+                            <td>F.I (N)</td>
+                        </tr>
+                        <tr>
+                            <td>
+                                1°
+                            </td>
+                            <td><input type="text" class="form-control" asp-for="comp_40_um"/></td>
+                            <td><input type="text" class="form-control" readonly asp-for="red_40_um"/></td>
+                            <td><input type="text" class="form-control" asp-for="temp_25_um"/></td>
+                            <td><input type="text" class="form-control" asp-for="fi_40_um"/></td>
+                        </tr>
+                        <tr>
+                            <td>
+                                2°
+                            </td>
+                            <td><input type="text" class="form-control" asp-for="comp_40_dois" /></td>
+                            <td><input type="text" class="form-control" readonly asp-for="red_40_dois" /></td>
+                            <td><input type="text" class="form-control" asp-for="temp_25_dois" /></td>
+                            <td><input type="text" class="form-control" asp-for="fi_40_dois" /></td>
+                        </tr>
+                        <tr>
+                            <td>
+                                3°
+                            </td>
+                            <td><input type="text" class="form-control" asp-for="comp_40_tres" /></td>
+                            <td><input type="text" class="form-control" readonly asp-for="red_40_tres" /></td>
+                            <td><input type="text" class="form-control" asp-for="temp_25_tres" /></td>
+                            <td><input type="text" class="form-control" asp-for="fi_40_tres" /></td>
+                        </tr>
+                        <tr>
+                            <td colspan="2">
+                                Média da força de indentação (N)
+                            </td>
+                            <td colspan="3"><input type="text" class="form-control" readonly asp-for="media_40_comp"/></td>
 
-                    </tr>
-                </table>
-            </td>
-        </tr>
-        <tr>
-            <td>
-                Comprimir os corpos de prova a (65 ± 1) % da sua espessura inicial. Manter a compressão por (30 ± 1) s e medir a força de indentação.
-            </td>
-        </tr>
-        <tr>
-            <td>
-                <table class="tables table-bordered border-secondary  table-sm">
-                    <tr class="fundo-tabela">
-                        <td>Amostra</td>
-                        <td>
-                            Compressão(65 ± 1) %
-                        </td>
-                        <td>Redução</td>
-                        <td>Tempo</td>
-                        <td>F.I (N)</td>
-                    </tr>
-                    <tr>
-                        <td>
-                            1°
-                        </td>
-                        <td><input type="text" class="form-control" /></td>
-                        <td><input type="text" class="form-control" readonly /></td>
-                        <td><input type="text" class="form-control" /></td>
-                        <td><input type="text" class="form-control" /></td>
-                    </tr>
-                    <tr>
-                        <td>
-                            2°
-                        </td>
-                        <td><input type="text" class="form-control" /></td>
-                        <td><input type="text" class="form-control" readonly /></td>
-                        <td><input type="text" class="form-control" /></td>
-                        <td><input type="text" class="form-control" /></td>
-                    </tr>
-                    <tr>
-                        <td>
-                            3°
-                        </td>
-                        <td><input type="text" class="form-control" /></td>
-                        <td><input type="text" class="form-control" readonly /></td>
-                        <td><input type="text" class="form-control" /></td>
-                        <td><input type="text" class="form-control" /></td>
-                    </tr>
-                    <tr>
-                        <td colspan="2">
-                            Média da força de indentação (N)
-                        </td>
-                        <td colspan="3"><input type="text" class="form-control" readonly /></td>
-                    </tr>
-                </table>
-            </td>
-        </tr>
-        <tr>
-            <td>
-                <table class="tables table-bordered border-secondary  table-sm">
-                    <tr class="fundo-tabela">
-                        <td>Compressão</td>
-                        <td>
-                            Força de Indentação (N) Especificado
-                        </td>
-                        <td>
-                            Força de Indentação (N) Encontrado
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>25%</td>
-                        <td><input type="text" class="form-control" /></td>
-                        <td><input type="text" class="form-control" readonly /></td>
-                    </tr>
-                    <tr>
-                        <td>40%</td>
-                        <td><input type="text" class="form-control" /></td>
-                        <td><input type="text" class="form-control" readonly /></td>
-                    </tr>
-                    <tr>
-                        <td>65%</td>
-                        <td><input type="text" class="form-control" /></td>
-                        <td><input type="text" class="form-control" readonly /></td>
-                    </tr>
-                </table>
-            </td>
-        </tr>
-        <tr>
-            <td>
-                <b> Perda de força de indentação.</b>
-            </td>
-            <td rowspan="10">Resultado</td>
-        </tr>
-        <tr>
-            <td>
-                <b>Após a realização do ensaio de fadiga dinâmica, repetir o ensaio de força de indentação.</b>
-            </td>
-        </tr>
-        <tr>
-            <td>P.F.I 25% : <input type="text" class="controlador" style="width:100px;" /> -  <input type="text" class="controlador" style="width:100px;" /> ÷ <input type="text" class="controlador" style="width:100px;" /> = <input type="text" class="controlador" value="100" disabled style="width:100px;" /></td>
-        </tr>
-        <tr>
-            <td>
-                <table class="tables table-bordered border-secondary  table-sm">
-                    <tr>
-                        <td class="fundo-tabela">
-                            P.F.I : - 25% Especificada
-                        </td>
-                        <td><input type="text" class="form-control" /> </td>
-                    </tr>
-                    <tr>
-                        <td class="fundo-tabela">P.F.I : - 25% Especificada </td>
-                        <td><input type="text" class="form-control" disabled /> </td>
-                    </tr>
-                </table>
-            </td>
-        </tr>
-        <tr>
-            <td>P.F.I 40% : <input type="text" class="controlador" style="width:100px;" /> -  <input type="text" class="controlador" style="width:100px;" /> ÷ <input type="text" class="controlador" style="width:100px;" /> = <input type="text" class="controlador" value="100" disabled style="width:100px;" /></td>
-        </tr>
-        <tr>
-            <td>
-                <table class="tables table-bordered border-secondary  table-sm">
-                    <tr>
-                        <td class="fundo-tabela">
-                            P.F.I : - 40% Especificada
-                        </td>
-                        <td><input type="text" class="form-control" /> </td>
-                    </tr>
-                    <tr>
-                        <td class="fundo-tabela">P.F.I : - 40% Especificada </td>
-                        <td><input type="text" class="form-control" disabled /> </td>
-                    </tr>
-                </table>
-            </td>
-        </tr>
-        <tr>
-            <td>P.F.I 65% : <input type="text" class="controlador" style="width:100px;" /> -  <input type="text" class="controlador" style="width:100px;" /> ÷ <input type="text" class="controlador" style="width:100px;" /> = <input type="text" class="controlador" value="100" disabled style="width:100px;" /></td>
-        </tr>
-        <tr>
-            <td>
-                <table class="tables table-bordered border-secondary  table-sm">
-                    <tr>
-                        <td class="fundo-tabela">
-                            P.F.I : - 65% Especificada
-                        </td>
-                        <td><input type="text" class="form-control" /> </td>
-                    </tr>
-                    <tr>
-                        <td class="fundo-tabela">P.F.I : - 65% Especificada </td>
-                        <td><input type="text" class="form-control" disabled /> </td>
-                    </tr>
-                </table>
-            </td>
-        </tr>
-    </table>
-    <br />
-    <div class="d-grid gap-2 d-flex justify-content-center">
-        <button type="submit" class="btn btn-success btn btn-primary btn-md">Salvar Dados</button>
-    </div>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Comprimir os corpos de prova a (65 ± 1) % da sua espessura inicial. Manter a compressão por (30 ± 1) s e medir a força de indentação.
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <table class="tables table-bordered border-secondary  table-sm">
+                        <tr class="fundo-tabela">
+                            <td>Amostra</td>
+                            <td>
+                                Compressão(65 ± 1) %
+                            </td>
+                            <td>Redução</td>
+                            <td>Tempo</td>
+                            <td>F.I (N)</td>
+                        </tr>
+                        <tr>
+                            <td>
+                                1°
+                            </td>
+                            <td><input type="text" class="form-control" asp-for="comp_65_um" /></td>
+                            <td><input type="text" class="form-control" readonly asp-for="red_65_um" /></td>
+                            <td><input type="text" class="form-control" asp-for="temp_65_um" /></td>
+                            <td><input type="text" class="form-control" asp-for="fi_65_um" /></td>
+                        </tr>
+                        <tr>
+                            <td>
+                                2°
+                            </td>
+                            <td><input type="text" class="form-control" asp-for="comp_65_dois" /></td>
+                            <td><input type="text" class="form-control" readonly asp-for="red_65_dois" /></td>
+                            <td><input type="text" class="form-control" asp-for="temp_65_dois" /></td>
+                            <td><input type="text" class="form-control" asp-for="fi_65_dois" /></td>
+                        </tr>
+                        <tr>
+                            <td>
+                                3°
+                            </td>
+                            <td><input type="text" class="form-control" asp-for="comp_65_tres" /></td>
+                            <td><input type="text" class="form-control" readonly asp-for="red_65_tres" /></td>
+                            <td><input type="text" class="form-control" asp-for="temp_65_tres" /></td>
+                            <td><input type="text" class="form-control" asp-for="fi_65_tres" /></td>
+                        </tr>
+                        <tr>
+                            <td colspan="2">
+                                Média da força de indentação (N)
+                            </td>
+                            <td colspan="3"><input type="text" class="form-control" readonly asp-for="media_65_comp"/></td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <table class="tables table-bordered border-secondary  table-sm">
+                        <tr class="fundo-tabela">
+                            <td>Compressão</td>
+                            <td>
+                                Força de Indentação (N) Especificado
+                            </td>
+                            <td>
+                                Força de Indentação (N) Encontrado
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>25%</td>
+                            <td><input type="text" class="form-control" asp-for="forca_ind_esp_25" /></td>
+                            <td><input type="text" class="form-control" readonly asp-for="forca_ind_enc_25" /></td>
+                        </tr>
+                        <tr>
+                            <td>40%</td>
+                            <td><input type="text" class="form-control" asp-for="forca_ind_esp_40" /></td>
+                            <td><input type="text" class="form-control" readonly asp-for="forca_ind_enc_40" /></td>
+                        </tr>
+                        <tr>
+                            <td>65%</td>
+                            <td><input type="text" class="form-control" asp-for="forca_ind_esp_65" /></td>
+                            <td><input type="text" class="form-control" readonly asp-for="forca_ind_enc_65" /></td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <b> Perda de força de indentação.</b>
+                </td>
+                <td rowspan="10">Resultado</td>
+            </tr>
+            <tr>
+                <td>
+                    <b>Após a realização do ensaio de fadiga dinâmica, repetir o ensaio de força de indentação.</b>
+                </td>
+            </tr>
+            <tr>
+                <td>P.F.I 25% : <input type="text" class="controlador" style="width:100px;" asp-for="pfi_25_um" readonly/> -  <input type="text" class="controlador" style="width:100px;" asp-for="pfi_25_dois" readonly/> ÷ <input type="text" class="controlador" style="width:100px;" asp-for="pfi_25_tres" readonly/> = <input type="text" class="controlador" value="100" disabled style="width:100px;" /></td>
+            </tr>
+            <tr>
+                <td>
+                    <table class="tables table-bordered border-secondary  table-sm">
+                        <tr>
+                            <td class="fundo-tabela">
+                                P.F.I : - 25% Especificada
+                            </td>
+                            <td><input type="text" class="form-control" asp-for="pfi_25_especificada" /> </td>
+                        </tr>
+                        <tr>
+                            <td class="fundo-tabela">P.F.I : - 25% Encontrada </td>
+                            <td><input type="text" class="form-control" readonly asp-for="pfi_25_encontrada" /> </td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+            <tr>
+                <td>P.F.I 40% : <input type="text" class="controlador" style="width:100px;" asp-for="pfi_40_um" readonly /> -  <input type="text" class="controlador" style="width:100px;" asp-for="pfi_40_dois" readonly /> ÷ <input type="text" class="controlador" style="width:100px;" asp-for="pfi_40_tres" readonly/> = <input type="text" class="controlador" value="100" disabled style="width:100px;" /></td>
+            </tr>
+            <tr>
+                <td>
+                    <table class="tables table-bordered border-secondary  table-sm">
+                        <tr>
+                            <td class="fundo-tabela">
+                                P.F.I : - 40% Especificada
+                            </td>
+                            <td><input type="text" class="form-control" asp-for="pfi_40_especificada" /> </td>
+                        </tr>
+                        <tr>
+                            <td class="fundo-tabela">P.F.I : - 40% Encontrado </td>
+                            <td><input type="text" class="form-control" readonly asp-for="pfi_40_encontrada" /> </td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+            <tr>
+                <td>P.F.I 65% : <input type="text" class="controlador" style="width:100px;" asp-for="pfi_65_um" readonly /> -  <input type="text" class="controlador" style="width:100px;" asp-for="pfi_65_dois" readonly /> ÷ <input type="text" class="controlador" style="width:100px;" asp-for="pfi_65_tres" readonly /> = <input type="text" class="controlador" value="100" disabled style="width:100px;" /></td>
+            </tr>
+            <tr>
+                <td>
+                    <table class="tables table-bordered border-secondary  table-sm">
+                        <tr>
+                            <td class="fundo-tabela">
+                                P.F.I : - 65% Especificada
+                            </td>
+                            <td><input type="text" class="form-control" asp-for="pfi_65_especificada" /> </td>
+                        </tr>
+                        <tr>
+                            <td class="fundo-tabela">P.F.I : - 65% Encontrada </td>
+                            <td><input type="text" class="form-control" readonly asp-for="pfi_65_encontrada" /> </td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+        </table>
+        <br />
+        @if (Model == null)
+        {
+            <div class="d-grid gap-2 d-flex justify-content-center">
+                <button type="submit" class="btn btn-success btn btn-primary btn-md">Salvar Dados</button>
+            </div>
+        }
+        else
+        {
+            <div class="d-grid gap-2 d-flex justify-content-center">
+                <button type="submit" class="btn btn-success btn btn-primary btn-md">Editar Dados</button>
+            </div>
+        }
+    </form>
+
+    @if (TempData.ContainsKey("Mensagem"))
+    {
+        <script>
+            alert('@Html.Raw(TempData["Mensagem"])');
+        </script>
+    }
 </body>
 </html>
