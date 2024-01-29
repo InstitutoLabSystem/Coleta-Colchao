@@ -14,8 +14,8 @@
     <link rel="stylesheet" href="~/css/coleta.css" asp-append-version="true" />
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <title>DETERMINAÇÃO DO TEOR DE CINZAS</title>
-    @*  <style>
-    .controlador-conforme {
+      <style>
+   /*  .controlador-conforme {
     padding: 5px;
     border-color: gray;
     border-radius: 5px;
@@ -23,11 +23,11 @@
     height: 500px;
     width: 100px;
     }
-
+ */
     input {
     text-align: center;
     }
-    </style> *@
+    </style> 
 </head>
 <body>
     <form method="post" asp-controller="Coleta" asp-action="SalvarLaminaPFI" asp-route-os="@ViewBag.os" asp-route-orcamento="@ViewBag.orcamento" asp-route-item="@ViewBag.item">
@@ -210,9 +210,9 @@
                             <td><input type="text" class="form-control" asp-for="esp_ini_amostra_tres_quatro" /></td>
                         </tr>
                         <tr>
-                            <td><input type="text" class="form-control" asp-for="esp_ini_amostra_um_cinto" /></td>
-                            <td><input type="text" class="form-control" asp-for="esp_ini_amostra_dois_cinto" /></td>
-                            <td><input type="text" class="form-control" asp-for="esp_ini_amostra_tres_cinto" /></td>
+                            <td><input type="text" class="form-control" asp-for="esp_ini_amostra_um_cinco" /></td>
+                            <td><input type="text" class="form-control" asp-for="esp_ini_amostra_dois_cinco" /></td>
+                            <td><input type="text" class="form-control" asp-for="esp_ini_amostra_tres_cinco" /></td>
                         </tr>
                         <tr>
                             <td><input type="text" class="form-control" asp-for="esp_ini_amostra_um_seis" /></td>

@@ -1335,7 +1335,7 @@ namespace Coleta_Colchao.Models
             public float esp_ini_amostra_um_dois { get; set; }
             public float esp_ini_amostra_um_tres { get; set; }
             public float esp_ini_amostra_um_quatro { get; set; }
-            public float esp_ini_amostra_um_cinto { get; set; }
+            public float esp_ini_amostra_um_cinco { get; set; }
             public float esp_ini_amostra_um_seis { get; set; }
             public float esp_ini_amostra_um_sete { get; set; }
             public float esp_ini_amostra_um_oito { get; set; }
@@ -1343,7 +1343,7 @@ namespace Coleta_Colchao.Models
             public float esp_ini_amostra_dois_dois { get; set; }
             public float esp_ini_amostra_dois_tres { get; set; }
             public float esp_ini_amostra_dois_quatro { get; set; }
-            public float esp_ini_amostra_dois_cinto { get; set; }
+            public float esp_ini_amostra_dois_cinco { get; set; }
             public float esp_ini_amostra_dois_seis { get; set; }
             public float esp_ini_amostra_dois_sete { get; set; }
             public float esp_ini_amostra_dois_oito { get; set; }
@@ -1351,7 +1351,7 @@ namespace Coleta_Colchao.Models
             public float esp_ini_amostra_tres_dois { get; set; }
             public float esp_ini_amostra_tres_tres { get; set; }
             public float esp_ini_amostra_tres_quatro { get; set; }
-            public float esp_ini_amostra_tres_cinto { get; set; }
+            public float esp_ini_amostra_tres_cinco { get; set; }
             public float esp_ini_amostra_tres_seis { get; set; }
             public float esp_ini_amostra_tres_sete { get; set; }
             public float esp_ini_amostra_tres_oito { get; set; }
@@ -1427,7 +1427,7 @@ namespace Coleta_Colchao.Models
             public float pfi_65_dois { get; set; }
             public float pfi_65_tres { get; set; }
             public int pfi_65_especificada { get; set; }
-            public int pfi_65_encontrada { get; set; }
+            public float pfi_65_encontrada { get; set; }
             public float media_espessura_total { get; set; }
         }
     }

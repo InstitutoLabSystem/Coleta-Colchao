@@ -11,6 +11,6 @@
     "\\Coleta-Colchao\\wwwroot",
     "\\Coleta-Colchao\\wwwroot\\css"
   ],
-  "SelectedNode": "\\Coleta-Colchao\\Views\\Coleta\\Laminas\\LaminaPFI.cshtml",
+  "SelectedNode": "\\Coleta-Colchao\\Controllers\\ColetaController.cs",
   "PreviewInSolutionExplorer": false
 }
