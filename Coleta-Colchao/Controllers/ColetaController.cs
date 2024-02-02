@@ -2129,7 +2129,7 @@ namespace Coleta_Colchao.Controllers
                     string conv_media_copos = media_copos.ToString("N4");
                     media_copos = float.Parse(conv_media_copos);
 
-                    float gramatura = (media_copos / (area_corpo_1 * area_corpo_2 / 100) * 10000);
+                    float gramatura = media_copos / (area_corpo_1 * area_corpo_2 / 100) * 10000;
 
                     //verificando conformidade dos ensaios.
                     if (media_copos >= 100.0f)
