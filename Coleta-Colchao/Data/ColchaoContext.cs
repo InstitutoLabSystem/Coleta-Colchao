@@ -34,5 +34,6 @@ namespace Coleta_Colchao.Data
         public DbSet<ColetaModel.LaminaFI> lamina_fi { get; set; }
         public DbSet<ColetaModel.LaminaFadigaRotativa> lamina_fadiga_dinamica { get; set; }
         public DbSet<ColetaModel.LaminaPFI> lamina_pfi { get; set; }
+        public DbSet<Arquivos.Imagens> colchao_anexos { get; set; }
     }
 }

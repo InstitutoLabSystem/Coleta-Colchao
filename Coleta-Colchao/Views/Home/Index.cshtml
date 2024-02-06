@@ -55,12 +55,15 @@
         @if (Model != null)
         {
 
+
             <div class="custom-container-wrapper mb-3">
+                <a role="button" target="_blank" class="btn btn-success" asp-controller="Coleta" asp-action="EnviarFotos" asp-route-os="@ViewBag.os" asp-route-orcamento="@ViewBag.orcamento">Abrir</a>
                 <div class="form-row mt-4">
                     <table class="tables table-bordered table-striped  table-sm">
                         <tr>
                             <td class="fundo-tabela" colspan="7">DADOS DA COLETA</td>
                         </tr>
+
                         <tr class="fundo-tabela">
                             <td>OS</td>
                             <td>ORCAMENTO</td>

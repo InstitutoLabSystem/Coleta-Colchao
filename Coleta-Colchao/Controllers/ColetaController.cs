@@ -4,12 +4,14 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.CodeAnalysis.CSharp.Syntax;
 using Microsoft.EntityFrameworkCore.Metadata.Internal;
+using Microsoft.EntityFrameworkCore.Migrations.Operations;
 using Microsoft.EntityFrameworkCore.Storage;
 using Microsoft.VisualBasic;
 using System.Data.Entity;
 using System.Data.Entity.Core.Mapping;
 using System.Data.Entity.Core.Objects.DataClasses;
 using System.Drawing;
+using System.Net;
 using System.Reflection.Metadata.Ecma335;
 using System.Runtime.CompilerServices;
 using System.Security.Claims;
@@ -620,6 +622,26 @@ namespace Coleta_Colchao.Controllers
             ViewBag.orcamento = orcamento;
             ViewBag.ensaio = ensaio;
             return View("Laminas/FatorConforto", dados);
+        }
+
+        public IActionResult EnviarFotos(string os, string orcamento)
+        {
+            int novaOs = int.Parse(os);
+            var dados = _context.colchao_anexos.Where(x => x.rae == novaOs && x.orcamento == orcamento).FirstOrDefault();
+
+            if(dados == null)
+            {
+                ViewBag.os = os;
+                ViewBag.orcamento = orcamento;
+                return View();
+            }
+            else
+            {
+                ViewBag.os = os;
+                ViewBag.orcamento = orcamento;
+                return View(dados);
+            }
+            
         }
 
 
@@ -5574,6 +5596,54 @@ namespace Coleta_Colchao.Controllers
                 _logger.LogError(ex, "Error", ex.Message);
                 throw;
             }
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Anexar(List<IFormFile> arquivo, string os, string orcamento, List<string> titulo, List<string> layout, List<int> juntar)
+        {
+            try
+            {
+                for (int i = 0; i < arquivo.Count; i++)
+                {
+
+                    //pegando os dados do arquivo para salvar.
+                    string newFileName = arquivo[i].FileName;
+                    string tipoArquivo = Path.GetExtension(newFileName);
+
+                    ////salvando no ftp
+                    string url = "ftp://labsystem-nuvem.com.br/imagens_arq/imagens/relatorios/colchao/" + os + '-' + i + tipoArquivo;
+                    FtpWebRequest request = (FtpWebRequest)WebRequest.Create(url);
+                    request.Credentials = new NetworkCredential("u838556479.admin", "@7847Awse");
+                    request.Method = WebRequestMethods.Ftp.UploadFile;
+
+                    using (Stream ftpStream = request.GetRequestStream())
+                    {
+                        arquivo[i].CopyTo(ftpStream);
+                    }
+
+                    string newUrl = "https://labsystem-nuvem.com.br/imagens_arq/imagens/relatorios/colchao/" + os + '-' + i + tipoArquivo;
+                    //salvando no banco de dados.
+                    var dados = new Arquivos.Imagens
+                    {
+                        rae = int.Parse(os),
+                        orcamento = orcamento,
+                        titulo = titulo[i],
+                        layout = layout[i],
+                        juntar = juntar[i],
+                        img = newUrl
+                    };
+                    _context.colchao_anexos.Add(dados);
+                }
+                await _context.SaveChangesAsync();
+                //return Json(new { success = true, message = "Dados salvos com sucesso." });
+                return RedirectToAction(nameof(EnviarFotos), "Coleta", new { os, orcamento });
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "Error", ex.Message);
+                throw;
+            }
+            
         }
     }
 }

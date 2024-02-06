@@ -1,0 +1,287 @@
+﻿@model Arquivos.Imagens;
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="~/css/coleta.css" asp-append-version="true" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            background-color: #f8f9fa;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        .container {
+            max-width: 400px;
+            margin: auto;
+            padding: 20px;
+            background-color: #ffffff;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            margin-top: 50px;
+        }
+
+        .form-label {
+            color: #495057;
+        }
+
+        .form-control {
+            border-radius: 5px;
+            transition: box-shadow 0.15s ease-in-out;
+        }
+
+            .form-control:focus {
+                box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+            }
+
+        .btn-primary {
+            background-color: #007bff;
+            border-color: #007bff;
+            border-radius: 5px;
+        }
+
+            .btn-primary:hover {
+                background-color: #0056b3;
+                border-color: #0056b3;
+            }
+
+        .preview-image {
+            margin-bottom: 10px;
+            height: 300px;
+            width: 250px;
+        }
+
+        .img-container {
+            display: inline-block;
+            margin-right: 10px;
+            margin-bottom: 10px;
+        }
+
+        .delete-button {
+            cursor: pointer;
+            background-color: #dc3545;
+            color: #fff;
+            border: none;
+            padding: 5px 10px;
+            border-radius: 5px;
+        }
+    </style>
+    <title>Envio De Anexos</title>
+</head>
+
+<body>
+    <div class="container">
+        <form id="formAnexo" method="post" asp-controller="Coleta" asp-action="Anexar" enctype="multipart/form-data" asp-route-os="@ViewBag.os" aasp-route-orcamento="@ViewBag.orcamento">
+            <div class="mb-3">
+                <label for="arquivo" class="form-label">Anexo</label>
+                <input type="file" class="form-control" id="arquivo" name="arquivo" multiple>
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Titulo</label>
+                <input class="form-control" type="text" name="titulo[]" id="titulo">
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Agrupar</label>
+                <select class="form-control" name="juntar[]" id="juntar">
+                    <option value="1">Não Juntar</option>
+                    <option value="2">Juntar</option>
+                </select>
+            </div>
+            <div class="mb-3">
+                <label class="form-label">layout</label>
+                <select class="form-control" name="layout[]" id="layout">
+                    <option value="paisagem">Paisagem</option>
+                    <option value="retrato">Retrato</option>
+                </select>
+            </div>
+            <button type="button" class="btn btn-primary" onclick="anexarImagem()">Anexar</button>
+            <button type="submit" class="btn btn-primary">Enviar</button>
+        </form>
+
+        <div id="previewContainer"></div>
+        
+        @if(Model == null)
+        {
+           <p>nulo</p>
+        }
+        else
+        {
+            <p>nao é nulo</p>
+        }
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+    @if (TempData.ContainsKey("Mensagem"))
+    {
+        <script>
+            alert('@Html.Raw(TempData["Mensagem"])');
+        </script>
+    }
+</body>
+
+</html>
+<script>
+    // Função para converter uma URL de dados em Blob
+    function dataURLtoBlob(dataURL) {
+        const arr = dataURL.split(',');
+        const mime = arr[0].match(/:(.*?);/)[1];
+        const bstr = atob(arr[1]);
+        let n = bstr.length;
+        const u8arr = new Uint8Array(n);
+        while (n--) {
+            u8arr[n] = bstr.charCodeAt(n);
+        }
+        return new Blob([u8arr], { type: mime });
+    }
+
+    // Array para armazenar imagens
+    let imagensArray = [];
+
+    function carregarImagensSalvas() {
+        // Verificar se há imagens salvas no localStorage
+        const imagensSalvas = localStorage.getItem('imagensArray');
+        if (imagensSalvas) {
+            imagensArray = JSON.parse(imagensSalvas);
+
+            // Adicionar as imagens ao container de visualização
+            const previewContainer = document.getElementById('previewContainer');
+            for (const imagemData of imagensArray) {
+                const imgContainer = document.createElement('div');
+                imgContainer.classList.add('img-container');
+
+                const imgElement = document.createElement('img');
+                imgElement.src = imagemData.src;
+                imgElement.alt = imagemData.alt;
+                imgElement.classList.add('preview-image');
+
+                const deleteButton = document.createElement('button');
+                deleteButton.innerHTML = 'X';
+                deleteButton.classList.add('delete-button');
+                deleteButton.addEventListener('click', function () {
+                    const index = imagensArray.indexOf(imagemData);
+                    if (index !== -1) {
+                        imagensArray.splice(index, 1);
+                        imgContainer.remove();
+                        localStorage.setItem('imagensArray', JSON.stringify(imagensArray));
+                    }
+                });
+
+                imgContainer.appendChild(imgElement);
+                imgContainer.appendChild(deleteButton);
+
+                previewContainer.appendChild(imgContainer);
+            }
+        }
+    }
+
+    function anexarImagem() {
+        const previewContainer = document.getElementById('previewContainer');
+        const inputArquivo = document.getElementById('arquivo');
+
+        if (inputArquivo.files.length > 0) {
+            for (const file of inputArquivo.files) {
+                const reader = new FileReader();
+
+                reader.onload = function (e) {
+                    const imagemData = {
+                        src: e.target.result,
+                        alt: file.name,
+                        titulo: document.getElementById('titulo').value,
+                        juntar: document.getElementById('juntar').value,
+                        layout: document.getElementById('layout').value
+                    };
+
+                    imagensArray.push(imagemData);
+
+                    const imgContainer = document.createElement('div');
+                    imgContainer.classList.add('img-container');
+
+                    const imgElement = document.createElement('img');
+                    imgElement.src = imagemData.src;
+                    imgElement.alt = imagemData.alt;
+                    imgElement.classList.add('preview-image');
+
+                    const deleteButton = document.createElement('button');
+                    deleteButton.innerHTML = 'X';
+                    deleteButton.classList.add('delete-button');
+                    deleteButton.addEventListener('click', function () {
+                        const index = imagensArray.indexOf(imagemData);
+                        if (index !== -1) {
+                            imagensArray.splice(index, 1);
+                            imgContainer.remove();
+                        }
+                    });
+
+                    imgContainer.appendChild(imgElement);
+                    imgContainer.appendChild(deleteButton);
+
+                    previewContainer.appendChild(imgContainer);
+                };
+
+                reader.readAsDataURL(file);
+            }
+
+            // Limpar os campos após o loop de processamento das imagens
+            console.log(document.getElementById('titulo').value);
+            console.log(document.getElementById('juntar').value);
+            console.log(document.getElementById('layout').value);
+
+            // document.getElementById('titulo').value = '';
+            // document.getElementById('juntar').value = '';
+            // document.getElementById('layout').value = '';
+            inputArquivo.value = '';
+        } else {
+            alert('Por favor, selecione uma imagem antes de anexar.');
+        }
+    }
+
+    document.getElementById('formAnexo').addEventListener('submit', function (event) {
+        event.preventDefault();
+
+        if (imagensArray.length === 0) {
+            alert('Por favor, anexe pelo menos uma imagem antes de enviar.');
+            return;
+        }
+
+        const formData = new FormData();
+
+        for (const imagemData of imagensArray) {
+            const blob = dataURLtoBlob(imagemData.src);
+            formData.append('arquivo', blob, imagemData.alt);
+            formData.append('titulo', imagemData.titulo); // Adiciona o título da imagem ao FormData
+            formData.append('juntar', imagemData.juntar); // Adiciona o valor de juntar ao FormData
+            formData.append('layout', imagemData.layout); // Adiciona o valor de layout ao FormData
+            console.log(imagemData);
+        }
+     
+
+        formData.append('os', @ViewBag.os);
+        formData.append('orcamento', @ViewBag.orcamento);
+
+        fetch('/Coleta/Anexar', {
+            method: 'POST',
+            body: formData
+        })
+            .then(response => response.text())
+            .then(data => {
+                if (data.includes('Dados salvos com sucesso')) {
+                    localStorage.removeItem('imagensArray');
+                    window.location.replace('/Coleta/EnviarFotos?os=' + '@ViewBag.os' + '&orcamento=' + '@ViewBag.orcamento');
+                    console.log('Dados salvos com sucesso');
+                    alert("Salvo com sucesso");
+                } else {
+                    alert('Erro ao salvar dados: ' + data);
+                }
+            })
+            .catch(error => console.error('Erro ao enviar a solicitação:', error));
+    });
+
+    // Carregar imagens salvas ao carregar a página
+    document.addEventListener('DOMContentLoaded', carregarImagensSalvas);
+</script>
+
+
