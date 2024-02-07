@@ -295,6 +295,26 @@ namespace Coleta_Colchao.Models
             public string? conforme_comprimento { get; set; }
             public string? conforme_largura { get; set; }
             public string? conforme_altura { get; set; }
+            public string? tipo_espuma_1 { get; set; }
+            public string? tipo_espuma_2 { get; set; }
+            public string? tipo_espuma_3 { get; set; }
+            public string? tipo_espuma_4 { get; set; }
+            public string? tipo_espuma_5 { get; set; }
+            public string? tipo_espuma_6 { get; set; }
+            public string? tipo_espuma_7 { get; set; }
+            public string? tipo_espuma_8 { get; set; }
+            public string? tipo_espuma_9 { get; set; }
+            public string? tipo_espuma_10 { get; set; }
+            public string? esp_tipo_esp_1 { get; set; }
+            public string? esp_tipo_esp_2 { get; set; }
+            public string? esp_tipo_esp_3 { get; set; }
+            public string? esp_tipo_esp_4 { get; set; }
+            public string? esp_tipo_esp_5 { get; set; }
+            public string? esp_tipo_esp_6 { get; set; }
+            public string? esp_tipo_esp_7 { get; set; }
+            public string? esp_tipo_esp_8 { get; set; }
+            public string? esp_tipo_esp_9 { get; set; }
+            public string? esp_tipo_esp_10 { get; set; }
             public string? executor { get; set; }
             public string? auxiliar { get; set; }
         }

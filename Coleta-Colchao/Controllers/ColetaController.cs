@@ -629,7 +629,7 @@ namespace Coleta_Colchao.Controllers
             int novaOs = int.Parse(os);
             var dados = _context.colchao_anexos.Where(x => x.rae == novaOs && x.orcamento == orcamento).FirstOrDefault();
 
-            if(dados == null)
+            if (dados == null)
             {
                 ViewBag.os = os;
                 ViewBag.orcamento = orcamento;
@@ -641,7 +641,7 @@ namespace Coleta_Colchao.Controllers
                 ViewBag.orcamento = orcamento;
                 return View(dados);
             }
-            
+
         }
 
 
@@ -1342,7 +1342,7 @@ namespace Coleta_Colchao.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> SalvarEnsaio7_2(string os, string orcamento, [Bind("data_ini,data_term,temp_ini,temp_term,comp_med_1,comp_med_2,comp_med_3,comp_espe,larg_med_1,larg_med_2,larg_med_3,larg_espe,alt_med_1,alt_med_2,alt_med_3,alt_espe,executor,auxiliar")] ColetaModel.Ensaio7_2 salvarDados)
+        public async Task<IActionResult> SalvarEnsaio7_2(string os, string orcamento, [Bind("data_ini,data_term,temp_ini,temp_term,comp_med_1,comp_med_2,comp_med_3,comp_espe,larg_med_1,larg_med_2,larg_med_3,larg_espe,alt_med_1,alt_med_2,alt_med_3,alt_espe,tipo_espuma_1,tipo_espuma_2,tipo_espuma_3,tipo_espuma_4,tipo_espuma_5,tipo_espuma_6,tipo_espuma_7,tipo_espuma_8,tipo_espuma_9,tipo_espuma_10,esp_tipo_esp_1,esp_tipo_esp_2,esp_tipo_esp_3,esp_tipo_esp_4,esp_tipo_esp_5,esp_tipo_esp_6,esp_tipo_esp_7,esp_tipo_esp_8,esp_tipo_esp_9,esp_tipo_esp_10,executor,auxiliar")] ColetaModel.Ensaio7_2 salvarDados)
         {
             try
             {
@@ -1369,6 +1369,28 @@ namespace Coleta_Colchao.Controllers
                     string conforme_comprimento = string.Empty;
                     string conform_largura = string.Empty;
                     string conform_altura = string.Empty;
+                    string tipo_espuma_1 = salvarDados.tipo_espuma_1;
+                    string tipo_espuma_2 = salvarDados.tipo_espuma_2;
+                    string tipo_espuma_3 = salvarDados.tipo_espuma_3;
+                    string tipo_espuma_4 = salvarDados.tipo_espuma_4;
+                    string tipo_espuma_5 = salvarDados.tipo_espuma_5;
+                    string tipo_espuma_6 = salvarDados.tipo_espuma_6;
+                    string tipo_espuma_7 = salvarDados.tipo_espuma_7;
+                    string tipo_espuma_8 = salvarDados.tipo_espuma_8;
+                    string tipo_espuma_9 = salvarDados.tipo_espuma_9;
+                    string tipo_espuma_10 = salvarDados.tipo_espuma_10;
+                    string esp_tipo_esp_1 = salvarDados.esp_tipo_esp_1;
+                    string esp_tipo_esp_2 = salvarDados.esp_tipo_esp_2;
+                    string esp_tipo_esp_3 = salvarDados.esp_tipo_esp_3;
+                    string esp_tipo_esp_4 = salvarDados.esp_tipo_esp_4;
+                    string esp_tipo_esp_5 = salvarDados.esp_tipo_esp_5;
+                    string esp_tipo_esp_6 = salvarDados.esp_tipo_esp_6;
+                    string esp_tipo_esp_7 = salvarDados.esp_tipo_esp_7;
+                    string esp_tipo_esp_8 = salvarDados.esp_tipo_esp_8;
+                    string esp_tipo_esp_9 = salvarDados.esp_tipo_esp_9;
+                    string esp_tipo_esp_10 = salvarDados.esp_tipo_esp_10;
+
+         
 
                     //calculando a media dos resultados.
                     float media_comprimeto = (comp_med_1 + comp_med_2 + comp_med_3) / 3;
@@ -1450,6 +1472,26 @@ namespace Coleta_Colchao.Controllers
                         conforme_comprimento = conforme_comprimento,
                         conforme_largura = conform_largura,
                         conforme_altura = conform_altura,
+                        tipo_espuma_1 = tipo_espuma_1,
+                        tipo_espuma_2 = tipo_espuma_2,
+                        tipo_espuma_3 = tipo_espuma_3,
+                        tipo_espuma_4 = tipo_espuma_4,
+                        tipo_espuma_5 = tipo_espuma_5,
+                        tipo_espuma_6 = tipo_espuma_6,
+                        tipo_espuma_7 = tipo_espuma_7,
+                        tipo_espuma_8 = tipo_espuma_8,
+                        tipo_espuma_9 = tipo_espuma_9,
+                        tipo_espuma_10 = tipo_espuma_10,
+                        esp_tipo_esp_1 = esp_tipo_esp_1,
+                        esp_tipo_esp_2 = esp_tipo_esp_2,
+                        esp_tipo_esp_3 = esp_tipo_esp_3,
+                        esp_tipo_esp_4 = esp_tipo_esp_4,
+                        esp_tipo_esp_5 = esp_tipo_esp_5,
+                        esp_tipo_esp_6 = esp_tipo_esp_6,
+                        esp_tipo_esp_7 = esp_tipo_esp_7,
+                        esp_tipo_esp_8 = esp_tipo_esp_8,
+                        esp_tipo_esp_9 = esp_tipo_esp_9,
+                        esp_tipo_esp_10 = esp_tipo_esp_10,
                     };
 
                     _context.Add(registro);
@@ -1477,6 +1519,26 @@ namespace Coleta_Colchao.Controllers
                     editarDados.alt_med_2 = salvarDados.alt_med_2;
                     editarDados.alt_med_3 = salvarDados.alt_med_3;
                     editarDados.alt_espe = salvarDados.alt_espe;
+                    editarDados.tipo_espuma_1 = salvarDados.tipo_espuma_1;
+                    editarDados.tipo_espuma_2 = salvarDados.tipo_espuma_2;
+                    editarDados.tipo_espuma_3 = salvarDados.tipo_espuma_3;
+                    editarDados.tipo_espuma_4 = salvarDados.tipo_espuma_4;
+                    editarDados.tipo_espuma_5 = salvarDados.tipo_espuma_5;
+                    editarDados.tipo_espuma_6 = salvarDados.tipo_espuma_6;
+                    editarDados.tipo_espuma_7 = salvarDados.tipo_espuma_7;
+                    editarDados.tipo_espuma_8 = salvarDados.tipo_espuma_8;
+                    editarDados.tipo_espuma_9 = salvarDados.tipo_espuma_9;
+                    editarDados.tipo_espuma_10 = salvarDados.tipo_espuma_10;
+                    editarDados.esp_tipo_esp_1 = salvarDados.esp_tipo_esp_1;
+                    editarDados.esp_tipo_esp_2 = salvarDados.esp_tipo_esp_2;
+                    editarDados.esp_tipo_esp_3 = salvarDados.esp_tipo_esp_3;
+                    editarDados.esp_tipo_esp_4 = salvarDados.esp_tipo_esp_4;
+                    editarDados.esp_tipo_esp_5 = salvarDados.esp_tipo_esp_5;
+                    editarDados.esp_tipo_esp_6 = salvarDados.esp_tipo_esp_6;
+                    editarDados.esp_tipo_esp_7 = salvarDados.esp_tipo_esp_7;
+                    editarDados.esp_tipo_esp_8 = salvarDados.esp_tipo_esp_8;
+                    editarDados.esp_tipo_esp_9 = salvarDados.esp_tipo_esp_9;
+                    editarDados.esp_tipo_esp_10 = salvarDados.esp_tipo_esp_10;
 
 
 
@@ -5498,7 +5560,7 @@ namespace Coleta_Colchao.Controllers
                     editarDados.temp_25_um = salvarDados.temp_25_um;
                     editarDados.fi_25_um = salvarDados.fi_25_um;
                     editarDados.red_25_um = ((editarDados.media_espessura_um * editarDados.comp_25_um) / 100);
-                  
+
 
                     editarDados.comp_25_dois = salvarDados.comp_25_dois;
                     editarDados.temp_25_dois = salvarDados.temp_25_dois;
@@ -5552,16 +5614,16 @@ namespace Coleta_Colchao.Controllers
                     editarDados.forca_ind_esp_40 = salvarDados.forca_ind_esp_40;
                     editarDados.forca_ind_esp_25 = salvarDados.forca_ind_esp_25;
                     editarDados.forca_ind_esp_65 = salvarDados.forca_ind_esp_25;
-                 
+
                     editarDados.forca_ind_enc_25 = editarDados.media_25_comp;
                     editarDados.forca_ind_enc_40 = editarDados.media_40_comp;
                     editarDados.forca_ind_enc_65 = editarDados.media_65_comp;
-         
+
 
                     //calculos de pfi.
                     var buscarFi = _context.lamina_fi.Where(x => x.os == os && x.orcamento == orcamento && x.item == item).FirstOrDefault();
 
-                    if( buscarFi == null)
+                    if (buscarFi == null)
                     {
                         TempData["Mensagem"] = "Erro ao editar dados";
                         return RedirectToAction(nameof(LaminaPFI), "Coleta", new { os, orcamento, item });
@@ -5643,7 +5705,7 @@ namespace Coleta_Colchao.Controllers
                 _logger.LogError(ex, "Error", ex.Message);
                 throw;
             }
-            
+
         }
     }
 }
