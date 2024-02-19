@@ -72,6 +72,10 @@ namespace Coleta_Colchao.Models
             public string? tipo_colchao { get; set; }
             public string? uso { get; set; }
             public string? tipo_espuma { get; set; }
+            public string? tipo_espuma_2 { get; set; }
+            public string? tipo_espuma_3 { get; set; }
+            public string? tipo_espuma_4 { get; set; }
+            public string? tipo_espuma_5 { get; set; }
             public int quant_laminas { get; set; }
             public string? densidade_1 { get; set; }
             public string? densidade_2 { get; set; }

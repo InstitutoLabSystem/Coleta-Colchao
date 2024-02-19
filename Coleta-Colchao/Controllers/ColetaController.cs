@@ -76,7 +76,7 @@ namespace Coleta_Colchao.Controllers
             var dados = _context.regtro_colchao_espuma.Where(x => x.os == os && x.orcamento == orcamento).FirstOrDefault();
             ViewBag.os = os;
             ViewBag.orcamento = orcamento;
-            return View("Espuma/IndexEspuma", dados);
+            return View("Espuma/EditarIndexEspuma", dados);
         }
 
         public IActionResult EditarRegistroMolas(string os, string orcamento)
@@ -860,6 +860,10 @@ namespace Coleta_Colchao.Controllers
                     editarDados.tipo_colchao = salvarDados.tipo_colchao;
                     editarDados.uso = salvarDados.uso;
                     editarDados.tipo_espuma = salvarDados.tipo_espuma;
+                    editarDados.tipo_espuma_2 = salvarDados.tipo_espuma_2;
+                    editarDados.tipo_espuma_3 = salvarDados.tipo_espuma_3;
+                    editarDados.tipo_espuma_4 = salvarDados.tipo_espuma_4;
+                    editarDados.tipo_espuma_5 = salvarDados.tipo_espuma_5;
                     editarDados.quant_laminas = salvarDados.quant_laminas;
                     editarDados.densidade_1 = salvarDados.densidade_1;
                     editarDados.densidade_2 = salvarDados.densidade_2;

@@ -554,7 +554,6 @@ C:\Users\Molina\source\repos\InstitutoLabSystem\Coleta-Colchao\Coleta-Colchao\ob
 C:\Users\Molina\source\repos\InstitutoLabSystem\Coleta-Colchao\Coleta-Colchao\obj\Debug\net7.0\scopedcss\Views\Shared\_Layout.cshtml.rz.scp.css
 C:\Users\Molina\source\repos\InstitutoLabSystem\Coleta-Colchao\Coleta-Colchao\obj\Debug\net7.0\scopedcss\bundle\Coleta-Colchao.styles.css
 C:\Users\Molina\source\repos\InstitutoLabSystem\Coleta-Colchao\Coleta-Colchao\obj\Debug\net7.0\scopedcss\projectbundle\Coleta-Colchao.bundle.scp.css
-C:\Users\Molina\source\repos\InstitutoLabSystem\Coleta-Colchao\Coleta-Colchao\obj\Debug\net7.0\Coleta-Colchao.csproj.CopyComplete
 C:\Users\Molina\source\repos\InstitutoLabSystem\Coleta-Colchao\Coleta-Colchao\obj\Debug\net7.0\Coleta-Colchao.dll
 C:\Users\Molina\source\repos\InstitutoLabSystem\Coleta-Colchao\Coleta-Colchao\obj\Debug\net7.0\refint\Coleta-Colchao.dll
 C:\Users\Molina\source\repos\InstitutoLabSystem\Coleta-Colchao\Coleta-Colchao\obj\Debug\net7.0\Coleta-Colchao.pdb
@@ -1124,3 +1123,4 @@ C:\xampp\htdocs\Coleta-Colchao\Coleta-Colchao\obj\Debug\net7.0\Coleta-Colchao.ge
 C:\xampp\htdocs\Coleta-Colchao\Coleta-Colchao\obj\Debug\net7.0\ref\Coleta-Colchao.dll
 C:\Users\Molina\source\repos\InstitutoLabSystem\Coleta-Colchao\Coleta-Colchao\obj\Debug\net7.0\Coleta-Colchao.sourcelink.json
 C:\xampp\htdocs\Coleta-Colchao\Coleta-Colchao\obj\Debug\net7.0\Coleta-Colchao.sourcelink.json
+C:\Users\Molina\source\repos\InstitutoLabSystem\Coleta-Colchao\Coleta-Colchao\obj\Debug\net7.0\Coleta-C.98129255.Up2Date

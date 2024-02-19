@@ -159,19 +159,175 @@
                     </td>
                 </tr>
 
-                <tr>
-                    <td>Tipo Da Espuma</td>
-                    <td colspan="3">
-                        <select class="form-control" asp-for="tipo_espuma">
-                            <option value="Convencional">Convencional</option>
-                            <option value="Macia">Macia</option>
-                            <option value="Hipermacia">Hipermacia</option>
-                            <option value="Aglomerado">Aglomerado</option>
-                            <option value="Alta Resiliência">Alta Resiliência</option>
-                            <option value="Viscoelástica">Viscoelástica</option>
-                        </select>
-                    </td>
-                </tr>
+                @if (Model.tipo_espuma != null)
+                {
+                    <tr>
+                        <td>Tipo Da Espuma</td>
+                        <td colspan="3">
+                            <select class="form-control" asp-for="tipo_espuma">
+                                <option value="Convencional" selected id="valor">@Model.tipo_espuma</option>
+                                <option value="Convencional">Convencional</option>
+                                <option value="Macia">Macia</option>
+                                <option value="Hipermacia">Hipermacia</option>
+                                <option value="Aglomerado">Aglomerado</option>
+                                <option value="Alta Resiliência">Alta Resiliência</option>
+                                <option value="Viscoelástica">Viscoelástica</option>
+                            </select>
+                        </td>
+                    </tr>
+                }
+                else
+                {
+                    <tr id="tipo_espuma">
+                        <td>Tipo Da Espuma</td>
+                        <td colspan="3">
+                            <select class="form-control" asp-for="tipo_espuma">
+                                <option value="Convencional">Convencional</option>
+                                <option value="Macia">Macia</option>
+                                <option value="Hipermacia">Hipermacia</option>
+                                <option value="Aglomerado">Aglomerado</option>
+                                <option value="Alta Resiliência">Alta Resiliência</option>
+                                <option value="Viscoelástica">Viscoelástica</option>
+                            </select>
+                        </td>
+                    </tr>
+                }
+
+                @if (Model.tipo_espuma_2 != null)
+                {
+                    <tr>
+                        <td>Tipo Da Espuma</td>
+                        <td colspan="3">
+                            <select class="form-control" asp-for="tipo_espuma_2">
+                                <option value="Convencional">Convencional</option>
+                                <option value="Macia">Macia</option>
+                                <option value="Hipermacia">Hipermacia</option>
+                                <option value="Aglomerado">Aglomerado</option>
+                                <option value="Alta Resiliência">Alta Resiliência</option>
+                                <option value="Viscoelástica">Viscoelástica</option>
+                            </select>
+                        </td>
+                    </tr>
+                }
+                else
+                {
+                    <tr id="tipo_espuma_2">
+                        <td>Tipo Da Espuma</td>
+                        <td colspan="3">
+                            <select class="form-control" asp-for="tipo_espuma_2">
+                                <option></option>
+                                <option value="Convencional">Convencional</option>
+                                <option value="Macia">Macia</option>
+                                <option value="Hipermacia">Hipermacia</option>
+                                <option value="Aglomerado">Aglomerado</option>
+                                <option value="Alta Resiliência">Alta Resiliência</option>
+                                <option value="Viscoelástica">Viscoelástica</option>
+                            </select>
+                        </td>
+                    </tr>
+                }
+
+
+                @if (Model.tipo_espuma_3 != null)
+                {
+                    <tr>
+                        <td>Tipo Da Espuma</td>
+                        <td colspan="3">
+                            <select class="form-control" asp-for="tipo_espuma_3">
+                                <option value="Convencional">Convencional</option>
+                                <option value="Macia">Macia</option>
+                                <option value="Hipermacia">Hipermacia</option>
+                                <option value="Aglomerado">Aglomerado</option>
+                                <option value="Alta Resiliência">Alta Resiliência</option>
+                                <option value="Viscoelástica">Viscoelástica</option>
+                            </select>
+                        </td>
+                    </tr>
+                }
+                else
+                {
+                    <tr id="tipo_espuma_3">
+                        <td>Tipo Da Espuma</td>
+                        <td colspan="3">
+                            <select class="form-control" asp-for="tipo_espuma_3">
+                                <option></option>
+                                <option value="Convencional">Convencional</option>
+                                <option value="Macia">Macia</option>
+                                <option value="Hipermacia">Hipermacia</option>
+                                <option value="Aglomerado">Aglomerado</option>
+                                <option value="Alta Resiliência">Alta Resiliência</option>
+                                <option value="Viscoelástica">Viscoelástica</option>
+                            </select>
+                        </td>
+                    </tr>
+                }
+                @if (Model.tipo_espuma_4 != null)
+                {
+                    <tr>
+                        <td>Tipo Da Espuma</td>
+                        <td colspan="3">
+                            <select class="form-control" asp-for="tipo_espuma_4">
+                                <option value="Convencional">Convencional</option>
+                                <option value="Macia">Macia</option>
+                                <option value="Hipermacia">Hipermacia</option>
+                                <option value="Aglomerado">Aglomerado</option>
+                                <option value="Alta Resiliência">Alta Resiliência</option>
+                                <option value="Viscoelástica">Viscoelástica</option>
+                            </select>
+                        </td>
+                    </tr>
+                }
+                else
+                {
+                    <tr id="tipo_espuma_4">
+                        <td>Tipo Da Espuma</td>
+                        <td colspan="3">
+                            <select class="form-control" asp-for="tipo_espuma_4">
+                                <option></option>
+                                <option value="Convencional">Convencional</option>
+                                <option value="Macia">Macia</option>
+                                <option value="Hipermacia">Hipermacia</option>
+                                <option value="Aglomerado">Aglomerado</option>
+                                <option value="Alta Resiliência">Alta Resiliência</option>
+                                <option value="Viscoelástica">Viscoelástica</option>
+                            </select>
+                        </td>
+                    </tr>
+                }
+                @if (Model.tipo_espuma_5 != null)
+                {
+                    <tr>
+                        <td>Tipo Da Espuma</td>
+                        <td colspan="3">
+                            <select class="form-control" asp-for="tipo_espuma_5">
+
+                                <option value="Convencional">Convencional</option>
+                                <option value="Macia">Macia</option>
+                                <option value="Hipermacia">Hipermacia</option>
+                                <option value="Aglomerado">Aglomerado</option>
+                                <option value="Alta Resiliência">Alta Resiliência</option>
+                                <option value="Viscoelástica">Viscoelástica</option>
+                            </select>
+                        </td>
+                    </tr>
+                }
+                else
+                {
+                    <tr id="tipo_espuma_5">
+                        <td>Tipo Da Espuma</td>
+                        <td colspan="3">
+                            <select class="form-control" asp-for="tipo_espuma_5">
+                                <option></option>
+                                <option value="Convencional">Convencional</option>
+                                <option value="Macia">Macia</option>
+                                <option value="Hipermacia">Hipermacia</option>
+                                <option value="Aglomerado">Aglomerado</option>
+                                <option value="Alta Resiliência">Alta Resiliência</option>
+                                <option value="Viscoelástica">Viscoelástica</option>
+                            </select>
+                        </td>
+                    </tr>
+                }
                 <tr>
                     <td>Quantidade de Lâminas</td>
                     <td colspan="3">
@@ -185,36 +341,96 @@
                         </select>
                     </td>
                 </tr>
-                <tr class="densidade_1">
-                    <td>
-                        Densidade Da Espuma
-                    </td>
-                    <td colspan="3"><input class="form-control" type="text" asp-for="densidade_1" /> </td>
-                </tr>
-                <tr class="densidade_2">
-                    <td>
-                        Densidade Da Espuma
-                    </td>
-                    <td colspan="3"><input class="form-control" type="text" asp-for="densidade_2" /> </td>
-                </tr>
-                <tr class="densidade_3">
-                    <td>
-                        Densidade Da Espuma
-                    </td>
-                    <td colspan="3"><input class="form-control" type="text" asp-for="densidade_3" /> </td>
-                </tr>
-                <tr class="densidade_4">
-                    <td>
-                        Densidade Da Espuma
-                    </td>
-                    <td colspan="3"><input class="form-control" type="text" asp-for="densidade_4" /> </td>
-                </tr>
-                <tr class="densidade_5">
-                    <td>
-                        Densidade Da Espuma
-                    </td>
-                    <td colspan="3"><input class="form-control" type="text" asp-for="densidade_5" /> </td>
-                </tr>
+                @if (Model.densidade_1 != null)
+                {
+                    <tr>
+                        <td>
+                            Densidade Da Espuma
+                        </td>
+                        <td colspan="3"><input class="form-control" type="text" asp-for="densidade_1" /> </td>
+                    </tr>
+                }
+                else
+                {
+                    <tr id="densidade_1">
+                        <td>
+                            Densidade Da Espuma
+                        </td>
+                        <td colspan="3"><input class="form-control" type="text" asp-for="densidade_1" /> </td>
+                    </tr>
+                }
+                @if (Model.densidade_2 != null)
+                {
+                    <tr>
+                        <td>
+                            Densidade Da Espuma
+                        </td>
+                        <td colspan="3"><input class="form-control" type="text" asp-for="densidade_2" /> </td>
+                    </tr>
+                }
+                else
+                {
+                    <tr id="densidade_2">
+                        <td>
+                            Densidade Da Espuma
+                        </td>
+                        <td colspan="3"><input class="form-control" type="text" asp-for="densidade_2" /> </td>
+                    </tr>
+                }
+                @if (Model.densidade_3 != null)
+                {
+                    <tr>
+                        <td>
+                            Densidade Da Espuma
+                        </td>
+                        <td colspan="3"><input class="form-control" type="text" asp-for="densidade_3" /> </td>
+                    </tr>
+                }
+                else
+                {
+                    <tr id="densidade_3">
+                        <td>
+                            Densidade Da Espuma
+                        </td>
+                        <td colspan="3"><input class="form-control" type="text" asp-for="densidade_3" /> </td>
+                    </tr>
+                }
+                @if (Model.densidade_4 != null)
+                {
+                    <tr>
+                        <td>
+                            Densidade Da Espuma
+                        </td>
+                        <td colspan="3"><input class="form-control" type="text" asp-for="densidade_4" /> </td>
+                    </tr>
+                }
+                else
+                {
+                    <tr id="densidade_4">
+                        <td>
+                            Densidade Da Espuma
+                        </td>
+                        <td colspan="3"><input class="form-control" type="text" asp-for="densidade_4" /> </td>
+                    </tr>
+                }
+                @if (Model.densidade_5 != null)
+                {
+                    <tr>
+                        <td>
+                            Densidade Da Espuma
+                        </td>
+                        <td colspan="3"><input class="form-control" type="text" asp-for="densidade_5" /> </td>
+                    </tr>
+                }
+                else
+                {
+                    <tr id="densidade_5">
+                        <td>
+                            Densidade Da Espuma
+                        </td>
+                        <td colspan="3"><input class="form-control" type="text" asp-for="densidade_5" /> </td>
+                    </tr>
+                }
                 <tr>
                     <td>Possui Revestimento</td>
                     <td colspan="3">
@@ -260,44 +476,151 @@
 
     <script>
         document.addEventListener("DOMContentLoaded", function () {
+
             var selectQuantMolas = document.querySelector('select[name="quant_laminas"]');
 
-            selectQuantMolas.addEventListener('change', function () {
-                var selectedValue = selectQuantMolas.value;
-                console.log(selectedValue);
-                var trDensidade1 = document.querySelector('.densidade_1');
-                var trDensidade2 = document.querySelector('.densidade_2');
-                var trDensidade3 = document.querySelector('.densidade_3');
-                var trDensidade4 = document.querySelector('.densidade_4');
-                var trDensidade5 = document.querySelector('.densidade_5');
+            var tipo_espuma = document.getElementById("tipo_espuma");
+            var tipo_espuma_2 = document.getElementById("tipo_espuma_2");
+            var tipo_espuma_3 = document.getElementById("tipo_espuma_3");
+            var tipo_espuma_4 = document.getElementById("tipo_espuma_4");
+            var tipo_espuma_5 = document.getElementById("tipo_espuma_5");
 
-                trDensidade1.style.display = 'none';
-                trDensidade2.style.display = 'none';
-                trDensidade3.style.display = 'none';
-                trDensidade4.style.display = 'none';
-                trDensidade5.style.display = 'none';
+            var selectedValue = selectQuantMolas.value;
+            var trDensidade1 = document.getElementById('densidade_1');
+            var trDensidade2 = document.getElementById('densidade_2');
+            var trDensidade3 = document.getElementById('densidade_3');
+            var trDensidade4 = document.getElementById('densidade_4');
+            var trDensidade5 = document.getElementById('densidade_5');
+
+            trDensidade1.style.display = 'none';
+            trDensidade2.style.display = 'none';
+            trDensidade3.style.display = 'none';
+            trDensidade4.style.display = 'none';
+            trDensidade5.style.display = 'none';
+
+            tipo_espuma.style.display = 'none';
+            tipo_espuma_2.style.display = 'none';
+            tipo_espuma_3.style.display = 'none';
+            tipo_espuma_4.style.display = 'none';
+            tipo_espuma_5.style.display = 'none';
+            tipo_espuma_5.style.display = 'none';
+
+
+            console.log(trDensidade1.value);
+            if (tipo_espuma.value != undefined) {
+                tipo_espuma.style.display = 'table-row';
+
+            }
+            if (tipo_espuma_2.value != undefined) {
+                tipo_espuma.style.display = 'table-row';
+                tipo_espuma_2.style.display = 'table-row';
+            }
+            if (tipo_espuma_3.value != undefined) {
+                tipo_espuma.style.display = 'table-row';
+                tipo_espuma_2.style.display = 'table-row';
+                tipo_espuma_3.style.display = 'table-row';
+            }
+            if (tipo_espuma_4.value != undefined) {
+                tipo_espuma.style.display = 'table-row';
+                tipo_espuma_2.style.display = 'table-row';
+                tipo_espuma_3.style.display = 'table-row';
+                tipo_espuma_4.style.display = 'table-row';
+            }
+            if (tipo_espuma_5.value != undefined) {
+                tipo_espuma.style.display = 'table-row';
+                tipo_espuma_2.style.display = 'table-row';
+                tipo_espuma_3.style.display = 'table-row';
+                tipo_espuma_4.style.display = 'table-row';
+                tipo_espuma_5.style.display = 'table-row';
+            }
+
+            console.log(densidade_2.value);
+
+            if (trDensidade1.value != undefined) {
+                trDensidade1.style.display = 'table-row';
+
+            }
+            if (trDensidade2.value != undefined) {
+                trDensidade1.style.display = 'table-row';
+                trDensidade2.style.display = 'table-row';
+
+            }
+            if (trDensidade3.value != undefined) {
+                trDensidade1.style.display = 'table-row';
+                trDensidade2.style.display = 'table-row';
+                trDensidade3.style.display = 'table-row';
+
+            }
+            if (trDensidade4.value != undefined) {
+                trDensidade1.style.display = 'table-row';
+                trDensidade2.style.display = 'table-row';
+                trDensidade3.style.display = 'table-row';
+                trDensidade4.style.display = 'table-row';
+
+            }
+            if (trDensidade5.value != undefined) {
+                trDensidade1.style.display = 'table-row';
+                trDensidade2.style.display = 'table-row';
+                trDensidade3.style.display = 'table-row';
+                trDensidade4.style.display = 'table-row';
+                trDensidade5.style.display = 'table-row';
+            }
+
+            selectQuantMolas.addEventListener('change', function () {
+
+                var tipo_espuma = document.getElementById("tipo_espuma");
+                var tipo_espuma_2 = document.getElementById("tipo_espuma_2");
+                var tipo_espuma_3 = document.getElementById("tipo_espuma_3");
+                var tipo_espuma_4 = document.getElementById("tipo_espuma_4");
+                var tipo_espuma_5 = document.getElementById("tipo_espuma_5");
+
+                var selectedValue = selectQuantMolas.value;
+                var trDensidade1 = document.getElementById('densidade_1');
+                var trDensidade2 = document.getElementById('densidade_2');
+                var trDensidade3 = document.getElementById('densidade_3');
+                var trDensidade4 = document.getElementById('densidade_4');
+                var trDensidade5 = document.getElementById('densidade_5');
 
                 // Mostrar as trs com base no valor selecionado
                 if (selectedValue === '1') {
                     trDensidade1.style.display = 'table-row';
+                    tipo_espuma.style.display = 'table-row';
                 } else if (selectedValue === '2') {
                     trDensidade1.style.display = 'table-row';
                     trDensidade2.style.display = 'table-row';
+
+                    tipo_espuma.style.display = 'table-row';
+                    tipo_espuma_2.style.display = 'table-row';
                 } else if (selectedValue === '3') {
                     trDensidade1.style.display = 'table-row';
                     trDensidade2.style.display = 'table-row';
                     trDensidade3.style.display = 'table-row';
+
+                    tipo_espuma.style.display = 'table-row';
+                    tipo_espuma_2.style.display = 'table-row';
+                    tipo_espuma_3.style.display = 'table-row';
                 } else if (selectedValue === '4') {
                     trDensidade1.style.display = 'table-row';
                     trDensidade2.style.display = 'table-row';
                     trDensidade3.style.display = 'table-row';
                     trDensidade4.style.display = 'table-row';
+
+                    tipo_espuma.style.display = 'table-row';
+                    tipo_espuma_2.style.display = 'table-row';
+                    tipo_espuma_3.style.display = 'table-row';
+                    tipo_espuma_4.style.display = 'table-row';
                 } else {
                     trDensidade1.style.display = 'table-row';
                     trDensidade2.style.display = 'table-row';
                     trDensidade3.style.display = 'table-row';
                     trDensidade4.style.display = 'table-row';
                     trDensidade5.style.display = 'table-row';
+
+                    tipo_espuma.style.display = 'table-row';
+                    tipo_espuma_2.style.display = 'table-row';
+                    tipo_espuma_3.style.display = 'table-row';
+                    tipo_espuma_4.style.display = 'table-row';
+                    tipo_espuma_5.style.display = 'table-row';
                 }
             });
         });
