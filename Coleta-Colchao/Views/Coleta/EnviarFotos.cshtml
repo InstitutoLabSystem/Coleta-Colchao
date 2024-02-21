@@ -1,4 +1,4 @@
-﻿@model Arquivos.Imagens;
+﻿@model List<Arquivos.Imagens>;
 @{
     Layout = null;
 }
@@ -50,17 +50,7 @@
                 border-color: #0056b3;
             }
 
-        .preview-image {
-            margin-bottom: 10px;
-            height: 300px;
-            width: 250px;
-        }
 
-        .img-container {
-            display: inline-block;
-            margin-right: 10px;
-            margin-bottom: 10px;
-        }
 
         .delete-button {
             cursor: pointer;
@@ -69,6 +59,22 @@
             border: none;
             padding: 5px 10px;
             border-radius: 5px;
+        }
+
+        .img-container {
+            display: flex;
+            flex-wrap: wrap;
+        }
+
+        .image-item {
+            width: calc(50% - 10px); /* 10px de margem entre as imagens */
+            margin-bottom: 10px;
+        }
+
+        .preview-image {
+            width: 100%;
+            height: auto;
+            object-fit: cover;
         }
     </style>
     <title>Envio De Anexos</title>
@@ -88,8 +94,8 @@
             <div class="mb-3">
                 <label class="form-label">Agrupar</label>
                 <select class="form-control" name="juntar[]" id="juntar">
-                    <option value="1">Não Juntar</option>
-                    <option value="2">Juntar</option>
+                    <option value="0">Não Juntar</option>
+                    <option value="1">Juntar</option>
                 </select>
             </div>
             <div class="mb-3">
@@ -102,9 +108,20 @@
             <button type="button" class="btn btn-primary" onclick="anexarImagem()">Anexar</button>
             <button type="submit" class="btn btn-primary">Enviar</button>
         </form>
-
-        <div id="previewContainer"></div>
+        <br />
+        <div class="img-container" id="previewContainer">
+            @for (int i = 0; i < Model.Count; i++)
+            {
+                @if (Model != null)
+                {
+                    <div class="image-item">
+                        <img src="@Model[i].img" class="preview-image" />
+                    </div>
+                }
+            }
+        </div>
     </div>
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
     @if (TempData.ContainsKey("Mensagem"))
     {
@@ -248,7 +265,6 @@
             formData.append('layout', imagemData.layout); // Adiciona o valor de layout ao FormData
             console.log(imagemData);
         }
-     
 
         formData.append('os', @ViewBag.os);
         formData.append('orcamento', @ViewBag.orcamento);

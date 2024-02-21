@@ -11,6 +11,7 @@ using System.Data.Entity;
 using System.Data.Entity.Core.Mapping;
 using System.Data.Entity.Core.Objects.DataClasses;
 using System.Drawing;
+using System.Linq;
 using System.Net;
 using System.Reflection.Metadata.Ecma335;
 using System.Runtime.CompilerServices;
@@ -627,7 +628,7 @@ namespace Coleta_Colchao.Controllers
         public IActionResult EnviarFotos(string os, string orcamento)
         {
             int novaOs = int.Parse(os);
-            var dados = _context.colchao_anexos.Where(x => x.rae == novaOs && x.orcamento == orcamento).FirstOrDefault();
+            var dados = _context.colchao_anexos.Where(x => x.rae == novaOs && x.orcamento == orcamento).ToList();
 
             if (dados == null)
             {
@@ -2221,7 +2222,7 @@ namespace Coleta_Colchao.Controllers
                     string conv_media_copos = media_copos.ToString("N4");
                     media_copos = float.Parse(conv_media_copos);
 
-                    float gramatura =((media_copos / (area_corpo_1 * area_corpo_2 / 100)) * 10000);
+                    float gramatura = ((media_copos / (area_corpo_1 * area_corpo_2 / 100)) * 10000);
 
 
 
@@ -5849,7 +5850,6 @@ namespace Coleta_Colchao.Controllers
             {
                 for (int i = 0; i < arquivo.Count; i++)
                 {
-
                     //pegando os dados do arquivo para salvar.
                     string newFileName = arquivo[i].FileName;
                     string tipoArquivo = Path.GetExtension(newFileName);
