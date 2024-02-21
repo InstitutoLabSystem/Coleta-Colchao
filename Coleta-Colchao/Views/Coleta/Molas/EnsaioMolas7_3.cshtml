@@ -105,6 +105,7 @@
                     <td>
                         Houve rasgos ou engarçamentos no revestimento?:
                         <select class="controlador" name="rasgo">
+                            <option></option>
                             <option selected value="Sim">Sim</option>
                             <option value="Não">Não</option>
                         </select>
@@ -114,6 +115,7 @@
                     <td>
                         Houve quebra de molas no molejo?:
                         <select class="controlador" name="quebra">
+                            <option></option>
                             <option value="Sim" selected>Sim</option>
                             <option value="Não">Não</option>
                         </select>
@@ -220,7 +222,7 @@
                         Houve rasgos ou engarçamentos no revestimento?:
                         <select class="controlador" name="rasgo">
                             <option selected>@Model.rasgo</option>
-                            <option value="Sim" selected>Sim</option>
+                            <option value="Sim">Sim</option>
                             <option value="Não">Não</option>
                         </select>
                     </td>
@@ -229,7 +231,8 @@
                     <td>
                         Houve quebra de molas no molejo?:
                         <select class="controlador" name="quebra">
-                            <option value="Sim" selected>Sim</option>
+                            <option  selected>@Model.quebra</option>
+                            <option value="Sim">Sim</option>
                             <option value="Não">Não</option>
                         </select>
                     </td>

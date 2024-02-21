@@ -377,6 +377,20 @@
                                     </td>
                                 </tr>
                                 <tr>
+                                    <td class="fundo-tabela"> Ponto E </td>
+                                    <td> <input class="form-control" type="text" id="comp_ponto_e_dois" readonly /> </td>
+                                    <td> X </td>
+                                    <td> <input class="form-control" type="text" id="larg_ponto_e_dois" readonly />  </td>
+                                    <td> Suportou o impacto </td>
+                                    <td>
+                                        <select class="form-control" asp-for="impac_dois_e">
+                                            <option value="---">---</option>
+                                            <option value="Sim">Sim</option>
+                                            <option value="Não">Não</option>
+                                        </select>
+                                    </td>
+                                </tr>
+                                <tr>
                                     <td class="fundo-tabela"> Ponto G </td>
                                     <td> <input class="form-control" type="text" id="comp_ponto_g_dois" readonly /> </td>
                                     <td> X </td>
@@ -832,6 +846,20 @@
                                     </td>
                                 </tr>
                                 <tr>
+                                    <td class="fundo-tabela"> Ponto E </td>
+                                    <td> <input class="form-control" type="text" id="comp_ponto_e_dois" readonly /> </td>
+                                    <td> X </td>
+                                    <td> <input class="form-control" type="text" id="larg_ponto_e_dois" readonly />  </td>
+                                    <td> Suportou o impacto </td>
+                                    <td>
+                                        <select class="form-control" asp-for="impac_dois_e">
+                                            <option value="---">---</option>
+                                            <option value="Sim">Sim</option>
+                                            <option value="Não">Não</option>
+                                        </select>
+                                    </td>
+                                </tr>
+                                <tr>
                                     <td class="fundo-tabela"> Ponto G </td>
                                     <td> <input class="form-control" type="text" id="comp_ponto_g_dois" readonly /> </td>
                                     <td> X </td>
@@ -855,7 +883,7 @@
                                         <select class="form-control" asp-for="impac_dois_i">
                                             <option value="---">---</option>
                                             <option value="Sim">Sim</option>
-                                            <option value="Sim">Não</option>
+                                            <option value="Não">Não</option>
                                         </select>
                                     </td>
                                 </tr>
@@ -1017,7 +1045,6 @@
         </script>
     }
     <script>
-        document.addEventListener("DOMContentLoaded", function () {
             //REALIZANDO OS CALCULOS PAR AMOSTRAR NO COMPRIMENTO E LARGURA DAS TABELAS
             var com_base = document.getElementById("com_base");
             var valor_com_base = com_base.value;
@@ -1077,13 +1104,11 @@
             } 
             
             if (valor_larg_base > 1150) {
-                console.log("entrou no else");
                 //realizando a tabela que é maior que >1150
                 //pegando o comprimento primeiro
 
                 var ponto_b_dois = document.getElementById("comp_ponto_b_dois");
-                console.log(ponto_b_dois);
-                console.log(valor_com_base);
+           
                 ponto_b_dois.value = valor_com_base / 2;
 
                 var ponto_a_dois = document.getElementById("comp_ponto_a_dois");
@@ -1095,9 +1120,11 @@
                 var ponto_d_dois = document.getElementById("comp_ponto_d_dois");
                 ponto_d_dois.value = ponto_b_dois.value;
 
+                var ponto_e_dois = document.getElementById("comp_ponto_e_dois");
+                ponto_e_dois.value = ponto_c_dois.value;
+
                 var ponto_g_dois = document.getElementById("comp_ponto_g_dois");
                 ponto_g_dois.value = ponto_b_dois.value - 150;
-
                 var ponto_i_dois = document.getElementById("comp_ponto_i_dois");
                 ponto_i_dois.value = ponto_g_dois.value;
 
@@ -1111,9 +1138,11 @@
                 var larg_ponto_b_dois = document.getElementById("larg_ponto_b_dois");
                 larg_ponto_b_dois.value = larg_ponto_a_dois.value;
 
-
                 var larg_ponto_d_dois = document.getElementById("larg_ponto_d_dois");
                 larg_ponto_d_dois.value = larg_ponto_a_dois.value - 150;
+
+                var larg_ponto_e_dois = document.getElementById("larg_ponto_e_dois");
+                larg_ponto_e_dois.value = larg_ponto_d_dois.value;
 
                 var larg_ponto_c_dois = document.getElementById("larg_ponto_c_dois");
                 larg_ponto_c_dois.value = larg_ponto_d_dois.value;
@@ -1128,13 +1157,6 @@
                 larg_ponto_j_dois.value = larg_ponto_d_dois.value;
             }
 
-
-
-
-
-
-
-        });
     </script>
 
 </body>

@@ -155,7 +155,7 @@
                             <td> Quantidade de Molejo </td>
                             <td colspan="3">
                                 <select class="form-control" name="quant_molejo">
-                                    <option selected> --- </option>
+                                    <option selected> @Model[i].quant_molejo </option>
                                     <option value="1"> 1 </option>
                                     <option value="2"> 2 </option>
                                 </select>
@@ -190,7 +190,7 @@
                         <tr>
                             <td> Nome do Molejo </td>
                             <td colspan="2">
-                                <select class="form-control" name="nome_molejo_um">
+                                <select class="form-control" name="nome_molejo_dois">
                                     <option value="@Model[i].nome_molejo_dois" selected> @Model[i].nome_molejo_dois</option>
                                     <option value="Bonell">Bonell</option>
                                     <option value="Mola ensacada">Mola ensacada</option>

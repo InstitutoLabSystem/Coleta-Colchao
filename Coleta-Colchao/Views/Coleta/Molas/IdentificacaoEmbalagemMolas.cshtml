@@ -355,6 +355,9 @@
                     <td>
                         s)  Caso o colchão seja embalado com material plástico, a embalagem deve ser visivelmente marcada,  em  letras  não  inferiores  a  5  mm  de  altura  e  com  destaque  em  negrito,  com  o seguinte  aviso: <b>“PARA  EVITAR  O  PERIGO  DE  ASFIXIA,  MANTER  ESTA  EMBALAGEM  PLÁSTICA FORA DO ALCANCE DE CRIANÇAS”</b> .
                     </td>
+                    <td rowspan="4">
+                        conforme
+                    </td>
                 </tr>
                 <tr>
                     <td>
@@ -606,7 +609,7 @@
                         A etiqueta está com suas informações em lingua portuguesa:
                         <select class="controlador" name="lingua_portuguesa">
                             <option selected> @Model.lingua_portuguesa</option>
-                            <option value="---"> --- </option>
+                            <option value=""> --- </option>
                             <option value="Sim"> Sim </option>
                             <option value="Não"> Não </option>
                         </select>
@@ -864,6 +867,7 @@
                     <td>
                         s)  Caso o colchão seja embalado com material plástico, a embalagem deve ser visivelmente marcada,  em  letras  não  inferiores  a  5  mm  de  altura  e  com  destaque  em  negrito,  com  o seguinte  aviso: <b>“PARA  EVITAR  O  PERIGO  DE  ASFIXIA,  MANTER  ESTA  EMBALAGEM  PLÁSTICA FORA DO ALCANCE DE CRIANÇAS”</b> .
                     </td>
+                    <td rowspan="2" class="conformidade">@Model.conforme_requisitos_5</td>
                 </tr>
                 <tr>
                     <td>
@@ -901,7 +905,7 @@
                     <td class="fundo-tabela">
                         6.1 - Instruções de uso
                     </td>
-                    <td rowspan="2" class="conformidade">@Model.conforme_6_1</td>
+                    <td rowspan="6" class="conformidade">@Model.conforme_6_1</td>
                 </tr>
                 <tr>
                     <td>
@@ -954,10 +958,11 @@
                             </select>
                         </td>
                     </tr>
-                    <tr class="fundo-tabela">
-                        <td>
+                    <tr >
+                        <td class="fundo-tabela">
                             6.2 - As instruções de uso devem conter o seguinte texto: “IMPORTANTE LER COM ATENÇÃO E GUARDAR PARA EVENTUAIS CONSULTAS”, em letras não inferiores a 5 mm de altura e com destaque em negrito.
                         </td>
+                        <td rowspan="2">@Model.conforme_6_2</td>
                     </tr>
                     <tr>
                         <td>

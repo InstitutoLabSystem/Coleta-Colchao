@@ -497,7 +497,9 @@ namespace Coleta_Colchao.Models
             public string? conforme_requisitos_2 { get; set; }
             public string? conforme_requisitos_3 { get; set; }
             public string? conforme_requisitos_4 { get; set; }
+            public string? conforme_requisitos_5 { get; set; }
             public string? conforme_6_1 { get; set; }
+            public string? conforme_6_2 { get; set; }
             public string? conforme_embalagem { get; set; }
 
             public string? executador { get; set; }
@@ -719,6 +721,7 @@ namespace Coleta_Colchao.Models
             public string? impac_dois_b { get; set; }
             public string? impac_dois_c { get; set; }
             public string? impac_dois_d { get; set; }
+            public string? impac_dois_e { get; set; }
             public string? impac_dois_g { get; set; }
             public string? impac_dois_i { get; set; }
             public string? impac_dois_j { get; set; }
