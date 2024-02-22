@@ -2985,11 +2985,11 @@ namespace Coleta_Colchao.Controllers
                         float conv_altura_letra = float.Parse(altura_letra);
                         if (conv_altura_letra >= 2.5)
                         {
-                            conforme_requisitos_4 = "NC";
+                            conforme_requisitos_4 = "C";
                         }
                         else
                         {
-                            conforme_requisitos_4 = "C";
+                            conforme_requisitos_4 = "NC";
                         }
 
                     }
@@ -3012,11 +3012,11 @@ namespace Coleta_Colchao.Controllers
                         float conv_altura_letra_mat = float.Parse(altura_letra_mat);
                         if (conv_altura_letra_mat >= 5)
                         {
-                            conforme_requisitos_5 = "NC";
+                            conforme_requisitos_5 = "C";
                         }
                         else
                         {
-                            conforme_requisitos_5 = "C";
+                            conforme_requisitos_5 = "NC";
                         }
                     }
                     else
@@ -3024,11 +3024,11 @@ namespace Coleta_Colchao.Controllers
                         float conv_altura_letra_mat = float.Parse(altura_letra_mat);
                         if (conv_altura_letra_mat >= 5)
                         {
-                            conforme_requisitos_5 = "NC";
+                            conforme_requisitos_5 = "C";
                         }
                         else
                         {
-                            conforme_requisitos_5 = "C";
+                            conforme_requisitos_5 = "NC";
                         }
                     }
 
@@ -3038,11 +3038,11 @@ namespace Coleta_Colchao.Controllers
                         float conv_altura_letra_6_2 = float.Parse(altura_letra_6_2);
                         if (conv_altura_letra_6_2 >= 5)
                         {
-                            conforme_6_2 = "NC";
+                            conforme_6_2 = "C";
                         }
                         else
                         {
-                            conforme_6_2 = "C";
+                            conforme_6_2 = "NC";
                         }
                     }
                     else
@@ -3050,11 +3050,11 @@ namespace Coleta_Colchao.Controllers
                         float conv_altura_letra_6_2 = float.Parse(altura_letra_6_2);
                         if (conv_altura_letra_6_2 >= 5)
                         {
-                            conforme_6_2 = "NC";
+                            conforme_6_2 = "C";
                         }
                         else
                         {
-                            conforme_6_2 = "C";
+                            conforme_6_2 = "NC";
                         }
                     }
 
@@ -3254,11 +3254,11 @@ namespace Coleta_Colchao.Controllers
                         float conv_altura_letra = float.Parse(editarDados.altura_letra);
                         if (conv_altura_letra <= 2.5)
                         {
-                            editarDados.conforme_requisitos_4 = "C";
+                            editarDados.conforme_requisitos_4 = "NC";
                         }
                         else
                         {
-                            editarDados.conforme_requisitos_4 = "NC";
+                            editarDados.conforme_requisitos_4 = "C";
                         }
                     }
 
@@ -3268,11 +3268,11 @@ namespace Coleta_Colchao.Controllers
                         float conv_altura_letra_mat = float.Parse(editarDados.altura_letra_mat);
                         if (conv_altura_letra_mat >= 5)
                         {
-                            editarDados.conforme_requisitos_5 = "NC";
+                            editarDados.conforme_requisitos_5 = "C";
                         }
                         else
                         {
-                            editarDados.conforme_requisitos_5 = "C";
+                            editarDados.conforme_requisitos_5 = "NC";
                         }
                     }
                     else
@@ -3280,11 +3280,11 @@ namespace Coleta_Colchao.Controllers
                         float conv_altura_letra_mat = float.Parse(editarDados.altura_letra_mat);
                         if (conv_altura_letra_mat >= 5)
                         {
-                            editarDados.conforme_requisitos_5 = "NC";
+                            editarDados.conforme_requisitos_5 = "C";
                         }
                         else
                         {
-                            editarDados.conforme_requisitos_5 = "C";
+                            editarDados.conforme_requisitos_5 = "NC";
                         }
                     }
 
@@ -3302,11 +3302,11 @@ namespace Coleta_Colchao.Controllers
                         float conv_altura_letra_6_2 = float.Parse(editarDados.altura_letra_6_2);
                         if (conv_altura_letra_6_2 >= 5)
                         {
-                            editarDados.conforme_6_2 = "NC";
+                            editarDados.conforme_6_2 = "C";
                         }
                         else
                         {
-                            editarDados.conforme_6_2 = "C";
+                            editarDados.conforme_6_2 = "NC";
                         }
                     }
                     else
@@ -3314,11 +3314,11 @@ namespace Coleta_Colchao.Controllers
                         float conv_altura_letra_6_2 = float.Parse(editarDados.altura_letra_6_2);
                         if (conv_altura_letra_6_2 >= 5)
                         {
-                            editarDados.conforme_6_2 = "NC";
+                            editarDados.conforme_6_2 = "C";
                         }
                         else
                         {
-                            editarDados.conforme_6_2 = "C";
+                            editarDados.conforme_6_2 = "NC";
                         }
                     }
 
