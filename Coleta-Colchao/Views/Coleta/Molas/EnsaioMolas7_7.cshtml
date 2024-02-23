@@ -69,8 +69,8 @@
                         Houve rasgos ou engarçamentos no revestimento?
                         <select class="controlador" name="rasgo">
                             <option selected> --- </option>
-                            <option> Sim </option>
-                            <option> Não </option>
+                            <option value="Sim"> Sim </option>
+                            <option value="Não"> Não </option>
                         </select>
                     </td>
                 </tr>
@@ -79,8 +79,8 @@
                         Houve quebra de molas no molejo?
                         <select class="controlador" name="quebra">
                             <option selected> --- </option>
-                            <option> Sim </option>
-                            <option> Não </option>
+                            <option value="Sim"> Sim </option>
+                            <option value="Não"> Não </option>
                         </select>
                     </td>
                 </tr>
@@ -386,7 +386,7 @@
                     <td class="fundo-tabela">
                         <b> Ensaio de Rolagem</b>
                     </td>
-                    <td rowspan="9"><input class="controlador-conforme" disabled /></td>
+                    <td rowspan="9"><input class="controlador-conforme" disabled value="@Model.conforme" /></td>
 
                 </tr>
                 <tr>
@@ -397,8 +397,8 @@
                         Houve rasgos ou engarçamentos no revestimento?
                         <select class="controlador" name="rasgo">
                             <option selected>  @Model.rasgo </option>
-                            <option> Sim </option>
-                            <option> Não </option>
+                            <option value="Sim"> Sim </option>
+                            <option value="Não"> Não </option>
                         </select>
                     </td>
                 </tr>
@@ -407,8 +407,8 @@
                         Houve quebra de molas no molejo?
                         <select class="controlador" name="quebra">
                             <option selected>  @Model.quebra </option>
-                            <option> Sim </option>
-                            <option> Não </option>
+                            <option value="Sim"> Sim </option>
+                            <option value="Não"> Não </option>
                         </select>
                     </td>
                 </tr>

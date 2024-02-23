@@ -1157,6 +1157,13 @@
                 larg_ponto_j_dois.value = larg_ponto_d_dois.value;
             }
 
+        document.addEventListener("keydown", function (e) {
+            if (e.keyCode === 13) {
+
+                e.preventDefault();
+
+            }
+        });
     </script>
 
 </body>

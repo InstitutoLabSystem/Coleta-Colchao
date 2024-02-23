@@ -919,6 +919,7 @@ namespace Coleta_Colchao.Controllers
                     editarValores.fornecedor_um = EditarRegistros.fornecedor_um;
                     editarValores.fornecedor_dois = EditarRegistros.fornecedor_dois;
                     editarValores.nome_molejo_um = EditarRegistros.nome_molejo_um;
+                    editarValores.nome_molejo_dois = EditarRegistros.nome_molejo_dois;
                     editarValores.quant_media_um = EditarRegistros.quant_media_um;
                     editarValores.quant_media_dois = EditarRegistros.quant_media_dois;
                     editarValores.bitola_arame_um = EditarRegistros.bitola_arame_um;
@@ -1006,7 +1007,7 @@ namespace Coleta_Colchao.Controllers
                     _context.Add(registro);
                     await _context.SaveChangesAsync();
                     TempData["Mensagem"] = "Dados Salvo Com Sucesso";
-                    return View("Molas/EnsaioMolas4_3");
+                    return RedirectToAction(nameof(EnsaioMolas4_3), "coleta", new { os, orcamento });
                 }
                 else
                 {
@@ -2507,6 +2508,7 @@ namespace Coleta_Colchao.Controllers
                     float calc_molas_duplicado_2 = (float)salvarDados.calc_molas_duplicado_2;
                     float calc_molas_duplicado_3 = (float)salvarDados.calc_molas_duplicado_3;
                     float resultado_calculo_duplicado = 0f;
+                    string conforme = string.Empty;
 
                     //calculando resultado necassario.
                     float resultado_calc = (calc_molas_1 / (calc_molas_2 * calc_molas_3) * 10000);
@@ -2518,6 +2520,15 @@ namespace Coleta_Colchao.Controllers
                         resultado_calculo_duplicado = (calc_molas_duplicado / (calc_molas_duplicado_2 * calc_molas_duplicado_3) * 10000);
                         string conv_resultado_calculo_duplicado = resultado_calculo_duplicado.ToString("N2");
                         resultado_calculo_duplicado = float.Parse(conv_resultado_calculo_duplicado);
+                    }
+
+                    if(rasgo == "Sim" ||  quebra == "Sim")
+                    {
+                        conforme = "NC";
+                    }
+                    else
+                    {
+                        conforme = "C";
                     }
 
 
@@ -2555,6 +2566,7 @@ namespace Coleta_Colchao.Controllers
                         calc_molas_duplicado_2 = calc_molas_duplicado_2,
                         calc_molas_duplicado_3 = calc_molas_duplicado_3,
                         resultado_calc_duplicado = resultado_calculo_duplicado,
+                        conforme = conforme
                     };
 
                     _context.Add(registro);
@@ -2604,6 +2616,15 @@ namespace Coleta_Colchao.Controllers
                         editarDados.resultado_calc_duplicado = (editarDados.calc_molas_duplicado / (editarDados.calc_molas_duplicado_2 * editarDados.calc_molas_duplicado_3) * 10000);
                         string conv_resultado_calculo_duplicado = editarDados.resultado_calc_duplicado.ToString("N2");
                         editarDados.resultado_calc_duplicado = float.Parse(conv_resultado_calculo_duplicado);
+                    }
+
+                    if (editarDados.rasgo == "Sim" || editarDados.quebra == "Sim")
+                    {
+                        editarDados.conforme = "NC";
+                    }
+                    else
+                    {
+                        editarDados.conforme = "C";
                     }
 
                     _context.Update(editarDados);

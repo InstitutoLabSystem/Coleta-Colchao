@@ -290,6 +290,15 @@
 
     // Carregar imagens salvas ao carregar a página
     document.addEventListener('DOMContentLoaded', carregarImagensSalvas);
+
+    document.addEventListener("keydown", function (e) {
+        if (e.keyCode === 13) {
+
+            e.preventDefault();
+
+        }
+    });
+
 </script>
 
 

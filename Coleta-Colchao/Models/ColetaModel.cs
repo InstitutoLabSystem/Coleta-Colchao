@@ -420,7 +420,7 @@ namespace Coleta_Colchao.Models
             public float resultado_calc_duplicado { get; set; }
             public string? executador { get; set; }
             public string? auxiliar { get; set; }
-
+            public string? conforme { get; set; }
         }
 
         public class Ensaio7_3
