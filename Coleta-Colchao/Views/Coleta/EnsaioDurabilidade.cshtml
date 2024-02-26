@@ -55,6 +55,16 @@
 
             <table class="tables table-bordered border-secondary  table-sm">
                 <tr>
+                    <td>Temperatura Inicial (°C) :</td>
+                    <td><input class="form-control" type="text" asp-for="temp_ini" /></td>
+                    <td>Temperatura Final (°C) :</td>
+                    <td><input class="form-control" type="text" asp-for="temp_term" /></td>
+                </tr>
+            </table>
+            <br />
+
+            <table class="tables table-bordered border-secondary  table-sm">
+                <tr>
                     <td rowspan="2"> <strong> Item </strong></td>
                     <td class="fundo-tabela">
                         <strong>Descrição</strong>
@@ -79,17 +89,17 @@
                         <table class="tables table-bordered border-secondary  table-sm">
                             <tr>
                                 <td class="fundo-tabela"> Data de início </td>
-                                <td> <input class="form-control" type="date" asp-for="data_inicio_durab" /> </td>
+                                <td> <input class="form-control" type="date" asp-for="data_inicio" readonly /> </td>
 
                                 <td class="fundo-tabela"> Hora de início: </td>
-                                <td>   <input class="form-control" type="time" asp-for="hora_inicio" /> </td>
+                                <td> <input class="form-control" type="time" asp-for="hora_inicio" /> </td>
 
                                 <td class="fundo-tabela"> Temperatura mínima: </td>
                                 <td> <input class="form-control" type="text" asp-for="temp_min" /> </td>
                             </tr>
                             <tr>
                                 <td class="fundo-tabela"> Data de término: </td>
-                                <td><input class="form-control" type="date" asp-for="data_term_durab" /></td>
+                                <td><input class="form-control" type="date" asp-for="data_termi" readonly /></td>
                                 <td class="fundo-tabela"> Hora do término: </td>
                                 <td> <input class="form-control" type="time" asp-for="hora_term" /> </td>
 
@@ -426,6 +436,16 @@
                     </tr>
                 </thead>
             </table>
+            <table class="tables table-bordered border-secondary  table-sm">
+                <tr>
+                    <td>Temperatura Inicial (°C) :</td>
+                    <td><input class="form-control" type="text" asp-for="temp_ini" /></td>
+                    <td>Temperatura Final (°C) :</td>
+                    <td><input class="form-control" type="text" asp-for="temp_term" /></td>
+                </tr>
+            </table>
+            <br />
+
 
             <table class="tables table-bordered border-secondary  table-sm">
                 <tr>
@@ -452,7 +472,7 @@
                         <table class="tables table-bordered border-secondary  table-sm">
                             <tr>
                                 <td class="fundo-tabela"> Data de início </td>
-                                <td> <input class="form-control" type="text" asp-for="data_inicio_durab" /> </td>
+                                <td> <input class="form-control" type="text" asp-for="data_inicio" readonly /> </td>
 
                                 <td class="fundo-tabela"> Hora de início: </td>
                                 <td>   <input class="form-control" type="time" asp-for="hora_inicio" /> </td>
@@ -462,7 +482,7 @@
                             </tr>
                             <tr>
                                 <td class="fundo-tabela"> Data de término: </td>
-                                <td><input class="form-control" type="text" asp-for="data_term_durab" /></td>
+                                <td><input class="form-control" type="text" asp-for="data_termi" readonly /></td>
                                 <td class="fundo-tabela"> Hora do término: </td>
                                 <td> <input class="form-control" type="time" asp-for="hora_term" /> </td>
 

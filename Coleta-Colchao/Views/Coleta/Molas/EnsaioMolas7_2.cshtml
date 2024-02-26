@@ -278,11 +278,11 @@
                         <table class="tables table-bordered border-secondary  table-sm">
                             <tr class="fundo-tabela">
                                 <td>Tipo de espuma</td>
-                                <td>Espessura mínima especificada</td>
+                                <td>Espessura mínima especificada (mm)</td>
                             </tr>
                             <tr id="tipo_empuma_1">
                                 <td>
-                                    <select class="controlador" name="tipo_espuma_1" style="width:200px;">
+                                    <select class="controlador" name="tipo_espuma_1" style="width:300px;">
                                         <option></option>
                                         <option value="Espuma do Matelassê">Espuma do Matelassê </option>
                                         <option value="Espuma de acabamento (face sup)"> Espuma de acabamento (face sup)</option>
@@ -312,7 +312,7 @@
                             </tr>
                             <tr id="tipo_empuma_3">
                                 <td>
-                                    <select class="controlador" name="tipo_espuma_3">
+                                    <select class="controlador" name="tipo_espuma_3" style="width:300px;">
                                         <option></option>
                                         <option value="Espuma do Matelassê">Espuma do Matelassê </option>
                                         <option value="Espuma de acabamento (face sup)"> Espuma de acabamento (face sup)</option>
@@ -327,7 +327,7 @@
                             </tr>
                             <tr id="tipo_empuma_4">
                                 <td>
-                                    <select class="controlador" name="tipo_espuma_4">
+                                    <select class="controlador" name="tipo_espuma_4" style="width:300px;">
                                         <option></option>
                                         <option value="Espuma do Matelassê">Espuma do Matelassê </option>
                                         <option value="Espuma de acabamento (face sup)"> Espuma de acabamento (face sup)</option>
@@ -342,7 +342,7 @@
                             </tr>
                             <tr id="tipo_empuma_5">
                                 <td>
-                                    <select class="controlador" name="tipo_espuma_5">
+                                    <select class="controlador" name="tipo_espuma_5" style="width:300px;">
                                         <option></option>
                                         <option value="Espuma do Matelassê">Espuma do Matelassê </option>
                                         <option value="Espuma de acabamento (face sup)"> Espuma de acabamento (face sup)</option>
@@ -357,7 +357,7 @@
                             </tr>
                             <tr id="tipo_empuma_6">
                                 <td>
-                                    <select class="controlador" name="tipo_espuma_6">
+                                    <select class="controlador" name="tipo_espuma_6" style="width:300px;">
                                         <option></option>
                                         <option value="Espuma do Matelassê">Espuma do Matelassê </option>
                                         <option value="Espuma de acabamento (face sup)"> Espuma de acabamento (face sup)</option>
@@ -372,7 +372,7 @@
                             </tr>
                             <tr id="tipo_empuma_7">
                                 <td>
-                                    <select class="controlador" name="tipo_espuma_7">
+                                    <select class="controlador" name="tipo_espuma_7" style="width:300px;">
                                         <option></option>
                                         <option value="Espuma do Matelassê">Espuma do Matelassê </option>
                                         <option value="Espuma de acabamento (face sup)"> Espuma de acabamento (face sup)</option>
@@ -387,7 +387,7 @@
                             </tr>
                             <tr id="tipo_empuma_8">
                                 <td>
-                                    <select class="controlador" name="tipo_espuma_8">
+                                    <select class="controlador" name="tipo_espuma_8" style="width:300px;">
                                         <option></option>
                                         <option value="Espuma do Matelassê">Espuma do Matelassê </option>
                                         <option value="Espuma de acabamento (face sup)"> Espuma de acabamento (face sup)</option>
@@ -402,7 +402,7 @@
                             </tr>
                             <tr id="tipo_empuma_9">
                                 <td>
-                                    <select class="controlador" name="tipo_espuma_9">
+                                    <select class="controlador" name="tipo_espuma_9" style="width:300px;">
                                         <option></option>
                                         <option value="Espuma do Matelassê">Espuma do Matelassê </option>
                                         <option value="Espuma de acabamento (face sup)"> Espuma de acabamento (face sup)</option>
@@ -417,7 +417,7 @@
                             </tr>
                             <tr id="tipo_empuma_10">
                                 <td>
-                                    <select class="controlador" name="tipo_espuma_10">
+                                    <select class="controlador" name="tipo_espuma_10" style="width:300px;">
                                         <option></option>
                                         <option value="Espuma do Matelassê">Espuma do Matelassê </option>
                                         <option value="Espuma de acabamento (face sup)"> Espuma de acabamento (face sup)</option>
@@ -662,7 +662,8 @@
                         <table class="tables table-bordered border-secondary  table-sm">
                             <tr class="fundo-tabela">
                                 <td>Tipo de espuma</td>
-                                <td>Espessura mínima especificada</td>
+                                <td>Espessura mínima especificada (mm)</td>
+                                <td>resultado</td>
                             </tr>
                             @if (Model.tipo_espuma_1 != null)
                             {
@@ -680,6 +681,7 @@
                                         </select>
                                     </td>
                                     <td><input class="form-control" type="text" name="esp_tipo_esp_1" value="@Model.esp_tipo_esp_1" /></td>
+                                    <td rowspan="10">@Model.conformidade</td>
                                 </tr>
                             }
                             @if (Model.tipo_espuma_2 != null)
@@ -844,6 +846,7 @@
                                     <td><input class="form-control" type="text" name="esp_tipo_esp_10" value="@Model.esp_tipo_esp_1" 0 /></td>
                                 </tr>
                             }
+                           
                         </table>
                     </td>
                 </tr>

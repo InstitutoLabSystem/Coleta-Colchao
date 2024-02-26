@@ -13,8 +13,8 @@
     <link rel="stylesheet" href="~/css/coleta.css" asp-append-version="true" />
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <style>
-        input{
-            text-align:center;
+        input {
+            text-align: center;
         }
 
         .controlador-conforme {
@@ -59,7 +59,7 @@
                         </b>
                     </td>
                     <td rowspan="12">
-                        <input readonly class="controlador-conforme"/>
+                        <input readonly class="controlador-conforme" />
 
                     </td>
                 </tr>
@@ -79,6 +79,7 @@
                     <td>
                         As faces do colchão possui dureza diferente:
                         <select class="controlador" name="faces">
+                            <option value="NA">NA</option>
                             <option value="Sim"> Sim </option>
                             <option value="Não"> Não </option>
                         </select>
@@ -129,7 +130,7 @@
                 </tr>
                 <tr>
                     <td>
-                      
+
                         <table class="tables table-bordered border-secondary  table-sm">
                             <tr class="fundo-tabela">
                                 <td>1º Face (cm)</td>
@@ -137,7 +138,7 @@
                             </tr>
 
                             <tr>
-                                <td>Espessura inicial: <input class="form-control" type="text" name="esp_face_1" readonly/></td>
+                                <td>Espessura inicial: <input class="form-control" type="text" name="esp_face_1" readonly /></td>
                                 <td>Espessura inicial: <input class="form-control" type="text" name="esp_face_2" readonly /></td>
                             </tr>
                             <tr>
@@ -212,6 +213,7 @@
                         As faces do colchão possui dureza diferente:
                         <select class="controlador" name="faces">
                             <option>@Model.faces</option>
+                            <option value="NA">NA</option>
                             <option value="Sim"> Sim </option>
                             <option value="Não"> Não </option>
                         </select>

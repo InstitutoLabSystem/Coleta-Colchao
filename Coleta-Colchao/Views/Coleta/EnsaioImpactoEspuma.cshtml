@@ -80,7 +80,7 @@
                         <table class="tables table-bordered border-secondary  table-sm">
                             <tr>
                                 <td class="fundo-tabela"> Data de início </td>
-                                <td> <input type="date" class="form-control" style=" width:150px;" asp-for="data_ini_ens" /> </td>
+                                <td> <input type="date" class="form-control" style=" width:150px;" asp-for="data_ini" readonly/> </td>
                                 <td class="fundo-tabela"> Hora de início: </td>
                                 <td>   <input class="form-control" type="time" asp-for="hora_inic" /> </td>
                                 <td class="fundo-tabela"> Temperatura mínima: </td>
@@ -88,7 +88,7 @@
                             </tr>
                             <tr>
                                 <td class="fundo-tabela"> Data de término: </td>
-                                <td> <input type="date" class="form-control" style=" width:150px;" asp-for="data_term_ens" /> </td>
+                                <td> <input type="date" class="form-control" style=" width:150px;" asp-for="data_term" readonly/> </td>
                                 <td class="fundo-tabela"> Hora do término: </td>
                                 <td>   <input class="form-control" type="time" asp-for="hora_term" /> </td>
                                 <td class="fundo-tabela"> Temperatura máxima: </td>
@@ -535,7 +535,7 @@
                         <table class="tables table-bordered border-secondary  table-sm">
                             <tr>
                                 <td class="fundo-tabela"> Data de início </td>
-                                <td> <input type="text" class="form-control" style=" width:150px;" asp-for="data_ini_ens" value="@Model.data_ini_ens" /> </td>
+                                <td> <input type="text" class="form-control" style=" width:150px;" asp-for="data_ini" value="@Model.data_ini" readonly/> </td>
                                 <td class="fundo-tabela"> Hora de início: </td>
                                 <td>   <input class="form-control" type="time" asp-for="hora_inic" /> </td>
                                 <td class="fundo-tabela"> Temperatura mínima: </td>
@@ -543,7 +543,7 @@
                             </tr>
                             <tr>
                                 <td class="fundo-tabela"> Data de término: </td>
-                                <td> <input type="text" class="form-control" style=" width:150px;" asp-for="data_term_ens" value="@Model.data_term" /> </td>
+                                <td> <input type="text" class="form-control" style=" width:150px;" asp-for="data_term" value="@Model.data_term" readonly/> </td>
                                 <td class="fundo-tabela"> Hora do término: </td>
                                 <td>   <input class="form-control" type="time" asp-for="hora_term" /> </td>
                                 <td class="fundo-tabela"> Temperatura máxima: </td>

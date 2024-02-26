@@ -48,6 +48,17 @@
                 </thead>
             </table>
 
+            <table class="tables table-bordered border-secondary  table-sm">
+                <tr>
+                    <td>Temperatura Inicial (°C) :</td>
+                    <td><input class="form-control" type="text" asp-for="temp_ini" /></td>
+                    <td>Temperatura Final (°C) :</td>
+                    <td><input class="form-control" type="text" asp-for="temp_term" /></td>
+                </tr>
+            </table>
+            <br />
+
+
             <table class="tables table-bordered border-secondary  ">
                 <tr>
                     <td rowspan="17">Item</td>
@@ -73,7 +84,7 @@
                         <table class="tables table-bordered border-secondary ">
                             <tr>
                                 <td class="fundo-tabela">Data De Inicio:</td>
-                                <td><input class="form-control" type="date" asp-for="data_ini_ens" /></td>
+                                <td><input class="form-control" type="date" asp-for="data_ini" readonly /></td>
 
                                 <td class="fundo-tabela">Hora De Inicio: </td>
                                 <td><input class="form-control" type="time" asp-for="hora_ini" /></td>
@@ -84,7 +95,7 @@
                             </tr>
                             <tr>
                                 <td class="fundo-tabela">Data De Término:</td>
-                                <td><input class="form-control" type="date" asp-for="data_term_ens" /></td>
+                                <td><input class="form-control" type="date" asp-for="data_term" readonly /></td>
 
                                 <td class="fundo-tabela">Hora De Término: </td>
                                 <td><input class="form-control" type="time" asp-for="hora_term" /></td>
@@ -196,6 +207,15 @@
                     </tr>
                 </thead>
             </table>
+            <table class="tables table-bordered border-secondary  table-sm">
+                <tr>
+                    <td>Temperatura Inicial (°C) :</td>
+                    <td><input class="form-control" type="text" asp-for="temp_ini" /></td>
+                    <td>Temperatura Final (°C) :</td>
+                    <td><input class="form-control" type="text" asp-for="temp_term" /></td>
+                </tr>
+            </table>
+            <br />
 
             <table class="tables table-bordered border-secondary  ">
                 <tr>
@@ -222,7 +242,7 @@
                         <table class="tables table-bordered border-secondary ">
                             <tr>
                                 <td class="fundo-tabela">Data De Inicio:</td>
-                                <td><input class="form-control" type="text" asp-for="data_ini_ens" value="@Model.data_ini_ens" style="width:200px;" /></td>
+                                <td><input class="form-control" type="text" asp-for="data_ini" value="@Model.data_ini" style="width:200px;" readonly /></td>
 
                                 <td class="fundo-tabela">Hora De Inicio: </td>
                                 <td><input class="form-control" type="time" asp-for="hora_ini" /></td>
@@ -233,7 +253,7 @@
                             </tr>
                             <tr>
                                 <td class="fundo-tabela">Data De Término:</td>
-                                <td><input class="form-control" type="text" asp-for="data_term_ens" value="@Model.data_term_ens" style="width:200px;" /></td>
+                                <td><input class="form-control" type="text" asp-for="data_term" value="@Model.data_term" style="width:200px;" readonly/></td>
 
                                 <td class="fundo-tabela">Hora De Término: </td>
                                 <td><input class="form-control" type="time" asp-for="hora_term" /></td>

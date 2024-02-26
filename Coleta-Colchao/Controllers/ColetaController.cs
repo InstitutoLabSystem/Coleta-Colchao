@@ -7,6 +7,7 @@ using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using Microsoft.EntityFrameworkCore.Migrations.Operations;
 using Microsoft.EntityFrameworkCore.Storage;
 using Microsoft.VisualBasic;
+using NuGet.Versioning;
 using System.Data.Entity;
 using System.Data.Entity.Core.Mapping;
 using System.Data.Entity.Core.Objects.DataClasses;
@@ -1291,8 +1292,7 @@ namespace Coleta_Colchao.Controllers
                 {
                     DateOnly data_ini = salvarDados.data_ini;
                     DateOnly data_term = salvarDados.data_term;
-                    float temp_ini = salvarDados.temp_ini;
-                    float temp_term = salvarDados.temp_term;
+
                     int quant_face = salvarDados.quant_face;
                     int velo_face_1 = salvarDados.velo_face_1;
                     int quant_face_1 = salvarDados.quant_face_1;
@@ -1307,8 +1307,6 @@ namespace Coleta_Colchao.Controllers
                         orcamento = orcamento,
                         data_ini = data_ini,
                         data_term = data_term,
-                        temp_ini = temp_ini,
-                        temp_term = temp_term,
                         quant_face = quant_face,
                         velo_face_1 = velo_face_1,
                         quant_face_1 = quant_face_1,
@@ -1326,8 +1324,6 @@ namespace Coleta_Colchao.Controllers
                 {
                     editarDados.data_ini = salvarDados.data_ini;
                     editarDados.data_term = salvarDados.data_term;
-                    editarDados.temp_ini = salvarDados.temp_ini;
-                    editarDados.temp_term = salvarDados.temp_term;
                     editarDados.quant_face = salvarDados.quant_face;
                     editarDados.velo_face_1 = salvarDados.velo_face_1;
                     editarDados.quant_face_1 = salvarDados.quant_face_1;
@@ -1386,16 +1382,17 @@ namespace Coleta_Colchao.Controllers
                     string tipo_espuma_8 = salvarDados.tipo_espuma_8;
                     string tipo_espuma_9 = salvarDados.tipo_espuma_9;
                     string tipo_espuma_10 = salvarDados.tipo_espuma_10;
-                    string esp_tipo_esp_1 = salvarDados.esp_tipo_esp_1;
-                    string esp_tipo_esp_2 = salvarDados.esp_tipo_esp_2;
-                    string esp_tipo_esp_3 = salvarDados.esp_tipo_esp_3;
-                    string esp_tipo_esp_4 = salvarDados.esp_tipo_esp_4;
-                    string esp_tipo_esp_5 = salvarDados.esp_tipo_esp_5;
-                    string esp_tipo_esp_6 = salvarDados.esp_tipo_esp_6;
-                    string esp_tipo_esp_7 = salvarDados.esp_tipo_esp_7;
-                    string esp_tipo_esp_8 = salvarDados.esp_tipo_esp_8;
-                    string esp_tipo_esp_9 = salvarDados.esp_tipo_esp_9;
-                    string esp_tipo_esp_10 = salvarDados.esp_tipo_esp_10;
+                    float esp_tipo_esp_1 = salvarDados.esp_tipo_esp_1;
+                    float esp_tipo_esp_2 = salvarDados.esp_tipo_esp_2;
+                    float esp_tipo_esp_3 = salvarDados.esp_tipo_esp_3;
+                    float esp_tipo_esp_4 = salvarDados.esp_tipo_esp_4;
+                    float esp_tipo_esp_5 = salvarDados.esp_tipo_esp_5;
+                    float esp_tipo_esp_6 = salvarDados.esp_tipo_esp_6;
+                    float esp_tipo_esp_7 = salvarDados.esp_tipo_esp_7;
+                    float esp_tipo_esp_8 = salvarDados.esp_tipo_esp_8;
+                    float esp_tipo_esp_9 = salvarDados.esp_tipo_esp_9;
+                    float esp_tipo_esp_10 = salvarDados.esp_tipo_esp_10;
+                    string conformidade = string.Empty;
 
 
 
@@ -1452,6 +1449,30 @@ namespace Coleta_Colchao.Controllers
                         conform_altura = "NC";
                     }
 
+                    //conforme ou nao conform,e de metallse e estofamento.
+                    if (tipo_espuma_1 == "Espuma do Matelassê" || tipo_espuma_2 == "Espuma do Matelassê" || tipo_espuma_3 == "Espuma do Matelassê" || tipo_espuma_4 == "Espuma do Matelassê" || tipo_espuma_5 == "Espuma do Matelassê" || tipo_espuma_6 == "Espuma do Matelassê" || tipo_espuma_7 == "Espuma do Matelassê" || tipo_espuma_8 == "Espuma do Matelassê" || tipo_espuma_9 == "Espuma do Matelassê" || tipo_espuma_10 == "Espuma do Matelassê")
+                    {
+                        if (esp_tipo_esp_1 != 0 && esp_tipo_esp_1 <= 10 || esp_tipo_esp_2 != 0 && esp_tipo_esp_2 <= 10 || esp_tipo_esp_3 != 0 && esp_tipo_esp_3 <= 10 || esp_tipo_esp_4 != 0 && esp_tipo_esp_4 <= 10 || esp_tipo_esp_5 != 0 && esp_tipo_esp_5 <= 10 || esp_tipo_esp_6 != 0 && esp_tipo_esp_6 <= 10 || esp_tipo_esp_7 != 0 && esp_tipo_esp_7 <= 10 || esp_tipo_esp_8 != 0 && esp_tipo_esp_8 <= 10 || esp_tipo_esp_9 != 0 && esp_tipo_esp_9 <= 10)
+                        {
+                            conformidade = "NC";
+                        }
+                        else
+                        {
+                            conformidade = "C";
+                        }
+                    }
+                    else
+                    {
+                        if (esp_tipo_esp_1 != 0 && esp_tipo_esp_1 <= 20 || esp_tipo_esp_2 != 0 && esp_tipo_esp_2 <= 20 || esp_tipo_esp_3 != 0 && esp_tipo_esp_3 <= 20 || esp_tipo_esp_4 != 0 && esp_tipo_esp_4 <= 20 || esp_tipo_esp_5 != 0 && esp_tipo_esp_5 <= 20 || esp_tipo_esp_6 != 0 && esp_tipo_esp_6 <= 20 || esp_tipo_esp_7 != 0 && esp_tipo_esp_7 <= 20 || esp_tipo_esp_8 != 0 && esp_tipo_esp_8 <= 20 || esp_tipo_esp_9 != 0 && esp_tipo_esp_9 <= 20)
+                        {
+                            conformidade = "NC";
+                        }
+                        else
+                        {
+                            conformidade = "C";
+                        }
+                    }
+
                     //armazenando no banco.
                     var registro = new ColetaModel.Ensaio7_2
                     {
@@ -1499,6 +1520,7 @@ namespace Coleta_Colchao.Controllers
                         esp_tipo_esp_8 = esp_tipo_esp_8,
                         esp_tipo_esp_9 = esp_tipo_esp_9,
                         esp_tipo_esp_10 = esp_tipo_esp_10,
+                        conformidade = conformidade
                     };
 
                     _context.Add(registro);
@@ -1605,12 +1627,38 @@ namespace Coleta_Colchao.Controllers
                         conform_altura = "NC";
                     }
 
+                    //conforme ou nao conform,e de metallse e estofamento.
+                    if (editarDados.tipo_espuma_1 == "Espuma do Matelassê" || editarDados.tipo_espuma_2 == "Espuma do Matelassê" || editarDados.tipo_espuma_3 == "Espuma do Matelassê" || editarDados.tipo_espuma_4 == "Espuma do Matelassê" || editarDados.tipo_espuma_5 == "Espuma do Matelassê" || editarDados.tipo_espuma_6 == "Espuma do Matelassê" || editarDados.tipo_espuma_7 == "Espuma do Matelassê" || editarDados.tipo_espuma_8 == "Espuma do Matelassê" || editarDados.tipo_espuma_9 == "Espuma do Matelassê" || editarDados.tipo_espuma_10 == "Espuma do Matelassê")
+                    {
+                        if (editarDados.esp_tipo_esp_1 != 0 && editarDados.esp_tipo_esp_1 <= 10 || editarDados.esp_tipo_esp_2 != 0 && editarDados.esp_tipo_esp_2 <= 10 || editarDados.esp_tipo_esp_3 != 0 && editarDados.esp_tipo_esp_3 <= 10 || editarDados.esp_tipo_esp_4 != 0 && editarDados.esp_tipo_esp_4 <= 10 || editarDados.esp_tipo_esp_5 != 0 && editarDados.esp_tipo_esp_5 <= 10 || editarDados.esp_tipo_esp_6 != 0 && editarDados.esp_tipo_esp_6 <= 10 || editarDados.esp_tipo_esp_7 != 0 && editarDados.esp_tipo_esp_7 <= 10 || editarDados.esp_tipo_esp_8 != 0 && editarDados.esp_tipo_esp_8 <= 10 || editarDados.esp_tipo_esp_9 != 0 && editarDados.esp_tipo_esp_9 <= 10)
+                        {
+                            editarDados.conformidade = "NC";
+                        }
+                        else
+                        {
+                            editarDados.conformidade = "C";
+                        }
+                    }
+                    else
+                    {
+                        if (editarDados.esp_tipo_esp_1 != 0 && editarDados.esp_tipo_esp_1 <= 20 || editarDados.esp_tipo_esp_2 != 0 && editarDados.esp_tipo_esp_2 <= 20 || editarDados.esp_tipo_esp_3 != 0 && editarDados.esp_tipo_esp_3 <= 20 || editarDados.esp_tipo_esp_4 != 0 && editarDados.esp_tipo_esp_4 <= 20 || editarDados.esp_tipo_esp_5 != 0 && editarDados.esp_tipo_esp_5 <= 20 || editarDados.esp_tipo_esp_6 != 0 && editarDados.esp_tipo_esp_6 <= 20 || editarDados.esp_tipo_esp_7 != 0 && editarDados.esp_tipo_esp_7 <= 20 || editarDados.esp_tipo_esp_8 != 0 && editarDados.esp_tipo_esp_8 <= 20 || editarDados.esp_tipo_esp_9 != 0 && editarDados.esp_tipo_esp_9 <= 20)
+                        {
+                            editarDados.conformidade = "NC";
+                        }
+                        else
+                        {
+                            editarDados.conformidade = "C";
+                        }
+                    }
+
                     editarDados.conforme_comprimento = conforme_comprimento;
                     editarDados.conforme_largura = conform_largura;
                     editarDados.conforme_altura = conform_altura;
                     editarDados.alt_media = media_altura;
                     editarDados.com_media = media_comprimeto;
                     editarDados.larg_media = media_largura;
+
+
 
                     _context.Update(editarDados);
                     await _context.SaveChangesAsync();
@@ -2172,6 +2220,8 @@ namespace Coleta_Colchao.Controllers
 
                     editarDados.reves_cm_dois = (editarDados.reves_mm_dois / 10);
 
+
+
                     await _context.SaveChangesAsync();
                     TempData["Mensagem"] = "Dados Editado Com Sucesso";
                     return RedirectToAction(nameof(EnsaioEspuma4_1), "Coleta", new { os, orcamento });
@@ -2522,7 +2572,7 @@ namespace Coleta_Colchao.Controllers
                         resultado_calculo_duplicado = float.Parse(conv_resultado_calculo_duplicado);
                     }
 
-                    if(rasgo == "Sim" ||  quebra == "Sim")
+                    if (rasgo == "Sim" || quebra == "Sim")
                     {
                         conforme = "NC";
                     }
@@ -3273,13 +3323,13 @@ namespace Coleta_Colchao.Controllers
                     else
                     {
                         float conv_altura_letra = float.Parse(editarDados.altura_letra);
-                        if (conv_altura_letra <= 2.5)
+                        if (conv_altura_letra >= 2.5)
                         {
-                            editarDados.conforme_requisitos_4 = "NC";
+                            editarDados.conforme_requisitos_4 = "C";
                         }
                         else
                         {
-                            editarDados.conforme_requisitos_4 = "C";
+                            editarDados.conforme_requisitos_4 = "NC";
                         }
                     }
 
@@ -3685,10 +3735,12 @@ namespace Coleta_Colchao.Controllers
                     string rasgo_ponto_c = dados.rasgo_ponto_c;
                     string rompimento_ponto_c = dados.rompimento_ponto_c;
                     string prejudique_ponto_c = dados.prejudique_ponto_c;
+                    string temp_ini = dados.temp_ini;
+                    string temp_term = dados.temp_term;
 
 
                     //realizando se esta conforme ou nao conforme
-                    if (ruptura_ponto_a == "Não" && afundamento_ponto_a == "Não" && rasgo_ponto_a == "Não" && rompimento_ponto_a == "Não" && prejudique_ponto_a == "Não")
+                    if (suportou_ponto_a == "Sim" && ruptura_ponto_a == "Não" && afundamento_ponto_a == "Não" && rasgo_ponto_a == "Não" && rompimento_ponto_a == "Não" && prejudique_ponto_a == "Não")
                     {
                         dados.conforme_a = "C";
                     }
@@ -3698,7 +3750,7 @@ namespace Coleta_Colchao.Controllers
                     }
 
                     //realizando se esta conforme ou nao conforme
-                    if (ruptura_ponto_b == "Não" && afundamento_ponto_b == "Não" && rasgo_ponto_b == "Não" && rompimento_ponto_b == "Não" && prejudique_ponto_b == "Não")
+                    if (suportou_ponto_b == "Sim" && ruptura_ponto_b == "Não" && afundamento_ponto_b == "Não" && rasgo_ponto_b == "Não" && rompimento_ponto_b == "Não" && prejudique_ponto_b == "Não")
                     {
                         dados.conforme_b = "C";
                     }
@@ -3708,7 +3760,7 @@ namespace Coleta_Colchao.Controllers
                     }
 
                     //realizando se esta conforme ou nao conforme
-                    if (ruptura_ponto_c == "Não" && afundamento_ponto_c == "Não" && rasgo_ponto_c == "Não" && rompimento_ponto_c == "Não" && prejudique_ponto_c == "Não")
+                    if (suportou_ponto_c == "Sim" &&  ruptura_ponto_c == "Não" && afundamento_ponto_c == "Não" && rasgo_ponto_c == "Não" && rompimento_ponto_c == "Não" && prejudique_ponto_c == "Não")
                     {
                         dados.conforme_c = "C";
                     }
@@ -3763,9 +3815,11 @@ namespace Coleta_Colchao.Controllers
                     editarRegistro.rasgo_ponto_c = dados.rasgo_ponto_c;
                     editarRegistro.rompimento_ponto_c = dados.rompimento_ponto_c;
                     editarRegistro.prejudique_ponto_c = dados.prejudique_ponto_c;
+                    editarRegistro.temp_ini = dados.temp_ini;
+                    editarRegistro.temp_term = dados.temp_term;
 
                     //realizando se esta conforme ou nao conforme
-                    if (editarRegistro.ruptura_ponto_a == "Não" && editarRegistro.afundamento_ponto_a == "Não" && editarRegistro.rasgo_ponto_a == "Não" && editarRegistro.rompimento_ponto_a == "Não" && editarRegistro.prejudique_ponto_a == "Não")
+                    if (editarRegistro.suportou_ponto_a == "Sim" &&  editarRegistro.ruptura_ponto_a == "Não" && editarRegistro.afundamento_ponto_a == "Não" && editarRegistro.rasgo_ponto_a == "Não" && editarRegistro.rompimento_ponto_a == "Não" && editarRegistro.prejudique_ponto_a == "Não")
                     {
                         editarRegistro.conforme_a = "C";
                     }
@@ -3775,7 +3829,7 @@ namespace Coleta_Colchao.Controllers
                     }
 
                     //realizando se esta conforme ou nao conforme
-                    if (editarRegistro.ruptura_ponto_b == "Não" && editarRegistro.afundamento_ponto_b == "Não" && editarRegistro.rasgo_ponto_b == "Não" && editarRegistro.rompimento_ponto_b == "Não" && editarRegistro.prejudique_ponto_b == "Não")
+                    if (editarRegistro.suportou_ponto_b == "Sim" &&  editarRegistro.ruptura_ponto_b == "Não" && editarRegistro.afundamento_ponto_b == "Não" && editarRegistro.rasgo_ponto_b == "Não" && editarRegistro.rompimento_ponto_b == "Não" && editarRegistro.prejudique_ponto_b == "Não")
                     {
                         editarRegistro.conforme_b = "C";
                     }
@@ -3785,7 +3839,7 @@ namespace Coleta_Colchao.Controllers
                     }
 
                     //realizando se esta conforme ou nao conforme
-                    if (editarRegistro.ruptura_ponto_c == "Não" && editarRegistro.afundamento_ponto_c == "Não" && editarRegistro.rasgo_ponto_c == "Não" && editarRegistro.rompimento_ponto_c == "Não" && editarRegistro.prejudique_ponto_c == "Não")
+                    if (editarRegistro.suportou_ponto_c == "Sim" && editarRegistro.ruptura_ponto_c == "Não" && editarRegistro.afundamento_ponto_c == "Não" && editarRegistro.rasgo_ponto_c == "Não" && editarRegistro.rompimento_ponto_c == "Não" && editarRegistro.prejudique_ponto_c == "Não")
                     {
                         editarRegistro.conforme_c = "C";
                     }
@@ -3972,8 +4026,6 @@ namespace Coleta_Colchao.Controllers
                     //recebendo os valores do html.
                     DateOnly data_ini = salvarDados.data_ini;
                     DateOnly data_term = salvarDados.data_term;
-                    DateOnly data_ini_ens = salvarDados.data_ini_ens;
-                    DateOnly data_term_ens = salvarDados.data_term_ens;
                     TimeOnly hora_inic = salvarDados.hora_inic;
                     TimeOnly hora_term = salvarDados.hora_term;
                     string tem_min = salvarDados.tem_min;
@@ -4005,6 +4057,8 @@ namespace Coleta_Colchao.Controllers
                     string rasgo_dois = salvarDados.rasgo_dois;
                     string rompimento_dois = salvarDados.rompimento_dois;
                     string prejudique_dois = salvarDados.prejudique_dois;
+                    string temp_ini = salvarDados.temp_ini;
+                    string temp_term = salvarDados.temp_term;
 
                     //realizando conforme e nao conforme
                     if (impac_um_a == "Sim" && impac_um_b == "Sim" && impac_um_c == "Sim" && impac_um_d == "Sim" && impac_um_g == "Sim" && impac_um_i == "Sim" && impac_um_j == "Sim")
@@ -4057,8 +4111,6 @@ namespace Coleta_Colchao.Controllers
                     //editando os valores no html
                     editarRegistro.data_ini = salvarDados.data_ini;
                     editarRegistro.data_term = salvarDados.data_term;
-                    editarRegistro.data_ini_ens = salvarDados.data_ini_ens;
-                    editarRegistro.data_term_ens = salvarDados.data_term_ens;
                     editarRegistro.hora_inic = salvarDados.hora_inic;
                     editarRegistro.hora_term = salvarDados.hora_term;
                     editarRegistro.tem_min = salvarDados.tem_min;
@@ -4090,6 +4142,9 @@ namespace Coleta_Colchao.Controllers
                     editarRegistro.rasgo_dois = salvarDados.rasgo_dois;
                     editarRegistro.rompimento_dois = salvarDados.rompimento_dois;
                     editarRegistro.prejudique_dois = salvarDados.prejudique_dois;
+                    editarRegistro.temp_ini = salvarDados.temp_ini;
+                    editarRegistro.temp_term = salvarDados.temp_term;
+
 
                     //realizando conforme e nao conforme
                     if (editarRegistro.impac_um_a == "Sim" && editarRegistro.impac_um_b == "Sim" && editarRegistro.impac_um_c == "Sim" && editarRegistro.impac_um_d == "Sim" && editarRegistro.impac_um_g == "Sim" && editarRegistro.impac_um_i == "Sim" && editarRegistro.impac_um_j == "Sim")
@@ -4154,8 +4209,6 @@ namespace Coleta_Colchao.Controllers
                     //recebendo os valores do html.
                     DateOnly data_ini = salvarDados.data_ini;
                     DateOnly data_term = salvarDados.data_term;
-                    DateOnly data_ini_ens = salvarDados.data_ini_ens;
-                    DateOnly data_term_ens = salvarDados.data_term_ens;
                     TimeOnly hora_inic = salvarDados.hora_inic;
                     TimeOnly hora_term = salvarDados.hora_term;
                     string tem_min = salvarDados.tem_min;
@@ -4238,8 +4291,6 @@ namespace Coleta_Colchao.Controllers
                     //editando os valores no html
                     editarRegistro.data_ini = salvarDados.data_ini;
                     editarRegistro.data_term = salvarDados.data_term;
-                    editarRegistro.data_ini_ens = salvarDados.data_ini_ens;
-                    editarRegistro.data_term_ens = salvarDados.data_term_ens;
                     editarRegistro.hora_inic = salvarDados.hora_inic;
                     editarRegistro.hora_term = salvarDados.hora_term;
                     editarRegistro.tem_min = salvarDados.tem_min;
@@ -4333,9 +4384,7 @@ namespace Coleta_Colchao.Controllers
                 {
                     //recebendo os valores do html.
                     DateOnly data_ini = salvarDados.data_ini;
-                    DateOnly data_term = salvarDados.data_term;
-                    DateOnly data_ini_ens = salvarDados.data_ini_ens;
-                    DateOnly data_term_ens = salvarDados.data_term_ens;
+                    DateOnly data_term = salvarDados.data_term;              
                     TimeOnly hora_ini = salvarDados.hora_ini;
                     TimeOnly hora_term = salvarDados.hora_term;
                     string temp_max = salvarDados.temp_max;
@@ -4344,6 +4393,8 @@ namespace Coleta_Colchao.Controllers
                     string ruptura = salvarDados.ruptura;
                     string quebra = salvarDados.quebra;
                     string prejudicou = salvarDados.prejudicou;
+                    string temp_ini = salvarDados.temp_ini;
+                    string temp_term = salvarDados.temp_term;
 
                     if (ruptura == "Não" && quebra == "Não" && prejudicou == "Não")
                     {
@@ -4364,8 +4415,6 @@ namespace Coleta_Colchao.Controllers
                 {
                     editarRegistro.data_ini = salvarDados.data_ini;
                     editarRegistro.data_term = salvarDados.data_term;
-                    editarRegistro.data_ini_ens = salvarDados.data_ini_ens;
-                    editarRegistro.data_term_ens = salvarDados.data_term_ens;
                     editarRegistro.hora_ini = salvarDados.hora_ini;
                     editarRegistro.hora_term = salvarDados.hora_term;
                     editarRegistro.temp_max = salvarDados.temp_max;
@@ -4374,6 +4423,8 @@ namespace Coleta_Colchao.Controllers
                     editarRegistro.ruptura = salvarDados.ruptura;
                     editarRegistro.quebra = salvarDados.quebra;
                     editarRegistro.prejudicou = salvarDados.prejudicou;
+                    editarRegistro.temp_ini = salvarDados.temp_ini;
+                    editarRegistro.temp_term = salvarDados.temp_term;
 
                     if (editarRegistro.ruptura == "Não" && editarRegistro.quebra == "Não" && editarRegistro.prejudicou == "Não")
                     {

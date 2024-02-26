@@ -259,8 +259,6 @@ namespace Coleta_Colchao.Models
             public string orcamento { get; set; }
             public DateOnly data_ini { get; set; }
             public DateOnly data_term { get; set; }
-            public float temp_ini { get; set; }
-            public float temp_term { get; set; }
             public int quant_face { get; set; }
             public int velo_face_1 { get; set; }
             public int quant_face_1 { get; set; }
@@ -309,16 +307,17 @@ namespace Coleta_Colchao.Models
             public string? tipo_espuma_8 { get; set; }
             public string? tipo_espuma_9 { get; set; }
             public string? tipo_espuma_10 { get; set; }
-            public string? esp_tipo_esp_1 { get; set; }
-            public string? esp_tipo_esp_2 { get; set; }
-            public string? esp_tipo_esp_3 { get; set; }
-            public string? esp_tipo_esp_4 { get; set; }
-            public string? esp_tipo_esp_5 { get; set; }
-            public string? esp_tipo_esp_6 { get; set; }
-            public string? esp_tipo_esp_7 { get; set; }
-            public string? esp_tipo_esp_8 { get; set; }
-            public string? esp_tipo_esp_9 { get; set; }
-            public string? esp_tipo_esp_10 { get; set; }
+            public float esp_tipo_esp_1 { get; set; }
+            public float esp_tipo_esp_2 { get; set; }
+            public float esp_tipo_esp_3 { get; set; }
+            public float esp_tipo_esp_4 { get; set; }
+            public float esp_tipo_esp_5 { get; set; }
+            public float esp_tipo_esp_6 { get; set; }
+            public  float esp_tipo_esp_7 { get; set; }
+            public  float esp_tipo_esp_8 { get; set; }
+            public  float esp_tipo_esp_9 { get; set; }
+            public  float esp_tipo_esp_10 { get; set; }
+            public string? conformidade { get; set; }
             public string? executor { get; set; }
             public string? auxiliar { get; set; }
         }
@@ -651,8 +650,7 @@ namespace Coleta_Colchao.Models
             public DateOnly data_inicio { get; set; }
 
             public DateOnly data_termi { get; set; }
-            public DateOnly data_inicio_durab { get; set; }
-            public DateOnly data_term_durab { get; set; }
+          
 
             public TimeOnly hora_inicio { get; set; }
 
@@ -686,6 +684,9 @@ namespace Coleta_Colchao.Models
             public string? conforme_c { get; set; }
             public string? executor { get; set; }
             public string? auxiliar { get; set; }
+            public string? temp_ini { get; set; }
+            public string? temp_term { get; set; }
+
 
         }
 
@@ -697,8 +698,6 @@ namespace Coleta_Colchao.Models
             public string orcamento { get; set; }
             public DateOnly data_ini { get; set; }
             public DateOnly data_term { get; set; }
-            public DateOnly data_ini_ens { get; set; }
-            public DateOnly data_term_ens { get; set; }
             public TimeOnly hora_inic { get; set; }
             public TimeOnly hora_term { get; set; }
             public string? tem_min { get; set; }
@@ -734,6 +733,8 @@ namespace Coleta_Colchao.Models
             public string? confome_ponto_b { get; set; }
             public string? conforme_um { get; set; }
             public string? conforme_dois { get; set; }
+            public string? temp_ini { get; set; }
+            public string? temp_term { get; set; }
             public string? executor { get; set; }
             public string? auxiliar { get; set; }
 
@@ -747,8 +748,7 @@ namespace Coleta_Colchao.Models
             public string orcamento { get; set; }
             public DateOnly data_ini { get; set; }
             public DateOnly data_term { get; set; }
-            public DateOnly data_ini_ens { get; set; }
-            public DateOnly data_term_ens { get; set; }
+           
             public TimeOnly hora_ini { get; set; }
             public TimeOnly hora_term { get; set; }
             public string? temp_max { get; set; }
@@ -758,6 +758,9 @@ namespace Coleta_Colchao.Models
             public string? quebra { get; set; }
             public string? prejudicou { get; set; }
             public string? conforme { get; set; }
+            public string? temp_ini { get; set; }
+            public string? temp_term { get; set; }
+
             public string? auxiliar { get; set; }
             public string? executor { get; set; }
         }

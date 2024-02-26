@@ -19,7 +19,7 @@
             border-radius: 5px;
             box-sizing: border-box;
             height: 40px;
-            text-align:center;
+            text-align: center;
         }
     </style>
 </head>
@@ -47,15 +47,6 @@
                     </tr>
                 </thead>
             </table>
-
-            <table class="tables table-bordered border-secondary  table-sm">
-                <tr>
-                    <td>Temperatura Inicial (°C) :</td>
-                    <td><input class="form-control" type="text" name="temp_ini" /></td>
-                    <td>Temperatura Final (°C) :</td>
-                    <td><input class="form-control" type="text" name="temp_term" /></td>
-                </tr>
-            </table>
             <br />
             <table class="tables table-bordered border-secondary  table-sm">
                 <tr class="fundo-tabela">
@@ -68,28 +59,28 @@
                     <td>
                         <b>Pré - Rolagem:</b> Antes de serem efetuadas as inspeções e medições iniciais, deve ser realizada uma pré-rolagem com o rolo nas duas faces do colchão por uma frequência de 50 ciclos (cada face utilizável).
                     </td>
-                    
-                </tr>
-                <tr>
-                    <td>
-                        Quantidade De faces utilizadas:
-                        <select name="quant_face">
-                            <option>1</option>
-                            <option>2</option>
-                        </select>
-                    </td>
 
                 </tr>
                 <tr>
                     <td>
+                        Quantidade De faces utilizadas:
+                        <select name="quant_face" id="quantidade_face">
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                        </select>
+                    </td>
+
+                </tr>
+                <tr id="face_1">
+                    <td>
                         1º Face:
-                        Velocidade do ciclos : <input type="text" name="velo_face_1"/>
+                        Velocidade do ciclos : <input type="text" name="velo_face_1" />
 
                         Quantidade de ciclos : <input type="text" name="quant_face_1" />
 
                     </td>
                 </tr>
-                <tr>
+                <tr id="face_2">
                     <td>
                         2º Face:
                         Velocidade do ciclos : <input type="text" name="velo_face_2" />
@@ -123,41 +114,32 @@
                     </tr>
                 </thead>
             </table>
-
-            <table class="tables table-bordered border-secondary  table-sm">
-                <tr>
-                    <td>Temperatura Inicial (°C) :</td>
-                    <td><input class="form-control" type="text" name="temp_ini" value="@Model.temp_ini" /></td>
-                    <td>Temperatura Final (°C) :</td>
-                    <td><input class="form-control" type="text" name="temp_term" value="@Model.temp_term" /></td>
-                </tr>
-            </table>
             <br />
             <table class="tables table-bordered border-secondary  table-sm">
                 <tr class="fundo-tabela">
                     <td>Item</td>
                     <td>Descrição</td>
-                  
+
                 </tr>
                 <tr>
                     <td rowspan="4">7.1</td>
                     <td colspan="2">
                         <b>Pré - Rolagem:</b> Antes de serem efetuadas as inspeções e medições iniciais, deve ser realizada uma pré-rolagem com o rolo nas duas faces do colchão por uma frequência de 50 ciclos (cada face utilizável).
                     </td>
-                    
+
                 </tr>
                 <tr>
                     <td colspan="2">
                         Quantidade De faces utilizadas:
-                        <select name="quant_face">
-                            <option>1</option>
-                            <option>2</option>
+                        <select name="quant_face" id="quantidade_face">
+                            <option value="1">1</option>
+                            <option value="2">2</option>
                         </select>
                     </td>
 
                 </tr>
                 <tr>
-                    <td colspan="2">
+                    <td colspan="2" id="face_1">
                         1º Face:
                         Velocidade do ciclos : <input type="text" name="velo_face_1" value="@Model.velo_face_1" />
 
@@ -165,13 +147,17 @@
 
                     </td>
                 </tr>
-                <tr>
-                    <td colspan="2">
-                        2º Face:
-                        Velocidade do ciclos : <input type="text" name="velo_face_2" value="@Model.velo_face_2" />
-                        Quantidade de ciclos :  <input type="text" name="quant_face_2" value="@Model.quant_face_2" />
-                    </td>
-                </tr>
+                @if (Model.velo_face_2 != 0)
+                {
+                    <tr>
+
+                        <td colspan="2" id="face_2">
+                            2º Face:
+                            Velocidade do ciclos : <input type="text" name="velo_face_2" id="velo_face_2" value="@Model.velo_face_2" />
+                            Quantidade de ciclos :  <input type="text" name="quant_face_2" id="quant_face_2" value="@Model.quant_face_2" />
+                        </td>
+                    </tr>
+                }
             </table>
             <br />
             <div class="d-grid gap-2 d-flex justify-content-center">
@@ -186,13 +172,40 @@
         </script>
     }
     <script>
+        var quantidade_face = document.getElementById("quantidade_face");
+
+        var face_1 = document.getElementById("face_1");
+        var face_2 = document.getElementById("face_2");
+
+        face_2.style.display = 'none';
+        quantidade_face.addEventListener('change', function () {
+            var face_total = quantidade_face.value;
+
+            var face_1 = document.getElementById("face_1");
+            var face_2 = document.getElementById("face_2");
+
+            face_2.style.display = 'none';
+            face_1.style.display = 'none';
+
+            // Mostrar as trs com base no valor selecionado
+            if (face_total === '2') {
+                face_1.style.display = 'table-row';
+                face_2.style.display = 'table-row';
+            }
+            if (face_total === '1') {
+                face_1.style.display = 'table-row';
+                face_2.style.display = 'none';
+            }
+        });
+
         document.addEventListener("keydown", function (e) {
             if (e.keyCode === 13) {
 
                 e.preventDefault();
-
             }
         });
+
+
     </script>
 </body>
 </html>
