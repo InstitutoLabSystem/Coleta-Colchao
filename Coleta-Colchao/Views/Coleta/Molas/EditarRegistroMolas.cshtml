@@ -160,11 +160,12 @@
                         <tr>
                             <td> Quantidade de Molejo </td>
                             <td colspan="3">
-                                <select class="form-control" name="quant_molejo">
+                                <input class="form-control" name="quant_molejo" id="quant_molejo" value="@Model[i].quant_molejo" readonly />
+                               @*  <select class="form-control" name="quant_molejo">
                                     <option selected> @Model[i].quant_molejo </option>
                                     <option value="1"> 1 </option>
                                     <option value="2"> 2 </option>
-                                </select>
+                                </select> *@
                             </td>
                         </tr>
                         <tr>
@@ -304,10 +305,29 @@
         </script>
     }
 
-
     <script>
         document.addEventListener("DOMContentLoaded", function () {
             var selectQuantMolas = document.querySelector('select[name="tipo_molejo"]');
+            var quant_molejo = document.getElementById("quant_molejo");
+
+            var selectedValue = selectQuantMolas.value;
+            var trFornecedor = document.querySelector('.fornecedor');
+            var trMolejo = document.querySelector('.molejo');
+            var trQuantMolas = document.querySelector('.quant_molas');
+            var trBitola = document.querySelector('.bitola');
+
+            if (selectedValue == 'Conforto'){
+                trFornecedor.style.display = 'table-row';
+                trMolejo.style.display = 'table-row';
+                trQuantMolas.style.display = 'table-row';
+                trBitola.style.display = 'table-row';
+            }
+
+            if (selectedValue === 'Conforto') {
+                quant_molejo.value = 2;
+            } else {
+                quant_molejo.value = 1;
+            }
 
             selectQuantMolas.addEventListener('change', function () {
                 var selectedValue = selectQuantMolas.value;
@@ -323,11 +343,17 @@
                 trBitola.style.display = 'none';
 
                 // Mostrar as trs com base no valor selecionado
-                if (selectedValue === 'Conforto') {
+                if (selectedValue == 'Conforto') {
                     trFornecedor.style.display = 'table-row';
                     trMolejo.style.display = 'table-row';
                     trQuantMolas.style.display = 'table-row';
                     trBitola.style.display = 'table-row';
+                }
+
+                if (selectedValue === 'Conforto') {
+                    quant_molejo.value = 2;
+                } else {
+                    quant_molejo.value = 1;
                 }
             });
         });

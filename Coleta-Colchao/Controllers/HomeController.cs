@@ -51,7 +51,7 @@ namespace Coleta_Colchao.Controllers
                              join hc in _bancoContext.Wmoddetprod
                              on c.CodigoEnsaio equals hc.codmaster
                              where p.OS == os
-                             orderby hc.codigo
+                             orderby hc.descricao
                              select new HomeModel.Resposta
                              {
                                  orcamento = p.Orcamento,

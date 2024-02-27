@@ -155,11 +155,12 @@
                 <tr>
                     <td> Quantidade de Molejo </td>
                     <td colspan="3">
-                        <select class="form-control" name="quant_molejo">
+                        <input class="form-control" name="quant_molejo" id="quant_molejo" readonly />
+                      @*   <select class="form-control" name="quant_molejo" id="quant_molejo">
                             <option selected> --- </option>
                             <option value="1"> 1 </option>
                             <option value="2"> 2 </option>
-                        </select>
+                        </select> *@
                     </td>
                 </tr>
                 <tr>
@@ -302,14 +303,24 @@
     <script>
         document.addEventListener("DOMContentLoaded", function () {
             var selectQuantMolas = document.querySelector('select[name="tipo_molejo"]');
+            var quant_molejo = document.getElementById("quant_molejo");
+            var selectedValue = selectQuantMolas.value;
 
-            selectQuantMolas.addEventListener('change', function () {
+            if (selectedValue === 'Conforto') {
+                quant_molejo.value = 2;
+            } else {
+                quant_molejo.value = 1;
+            }
+
+            selectQuantMolas.addEventListener('change', function () {             
                 var selectedValue = selectQuantMolas.value;
 
                 var trFornecedor = document.querySelector('.fornecedor');
                 var trMolejo = document.querySelector('.molejo');
                 var trQuantMolas = document.querySelector('.quant_molas');
                 var trBitola = document.querySelector('.bitola');
+
+                var quant_molejo = document.getElementById("quant_molejo");
 
                 trFornecedor.style.display = 'none';
                 trMolejo.style.display = 'none';
@@ -322,7 +333,17 @@
                     trMolejo.style.display = 'table-row';
                     trQuantMolas.style.display = 'table-row';
                     trBitola.style.display = 'table-row';
+                  
                 }
+
+                if (selectedValue === 'Conforto') {
+                    quant_molejo.value = 2;
+                }else{
+                    quant_molejo.value = 1;
+                }
+
+
+
             });
         });
         document.addEventListener("keydown", function (e) {
