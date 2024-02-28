@@ -317,7 +317,14 @@ namespace Coleta_Colchao.Models
             public  float esp_tipo_esp_8 { get; set; }
             public  float esp_tipo_esp_9 { get; set; }
             public  float esp_tipo_esp_10 { get; set; }
+            public string? tem_metalasse { get; set; }
+            public string? total_metalasse { get; set; }
+            public string? mate_tipo_espuma_1 { get; set; }
+            public float mata_esp_tipo_esp_1 { get; set; }
+            public string? mate_tipo_espuma_2 { get; set; }
+            public float mata_esp_tipo_esp_2 { get; set; }
             public string? conformidade { get; set; }
+            public string? conformidade_mat { get; set; }
             public string? executor { get; set; }
             public string? auxiliar { get; set; }
         }

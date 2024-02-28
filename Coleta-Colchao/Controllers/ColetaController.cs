@@ -1345,7 +1345,7 @@ namespace Coleta_Colchao.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> SalvarEnsaio7_2(string os, string orcamento, [Bind("data_ini,data_term,temp_ini,temp_term,comp_med_1,comp_med_2,comp_med_3,comp_espe,larg_med_1,larg_med_2,larg_med_3,larg_espe,alt_med_1,alt_med_2,alt_med_3,alt_espe,tipo_espuma_1,tipo_espuma_2,tipo_espuma_3,tipo_espuma_4,tipo_espuma_5,tipo_espuma_6,tipo_espuma_7,tipo_espuma_8,tipo_espuma_9,tipo_espuma_10,esp_tipo_esp_1,esp_tipo_esp_2,esp_tipo_esp_3,esp_tipo_esp_4,esp_tipo_esp_5,esp_tipo_esp_6,esp_tipo_esp_7,esp_tipo_esp_8,esp_tipo_esp_9,esp_tipo_esp_10,executor,auxiliar")] ColetaModel.Ensaio7_2 salvarDados)
+        public async Task<IActionResult> SalvarEnsaio7_2(string os, string orcamento, [Bind("data_ini,data_term,temp_ini,temp_term,comp_med_1,comp_med_2,comp_med_3,comp_espe,larg_med_1,larg_med_2,larg_med_3,larg_espe,alt_med_1,alt_med_2,alt_med_3,alt_espe,tipo_espuma_1,tipo_espuma_2,tipo_espuma_3,tipo_espuma_4,tipo_espuma_5,tipo_espuma_6,tipo_espuma_7,tipo_espuma_8,tipo_espuma_9,tipo_espuma_10,esp_tipo_esp_1,esp_tipo_esp_2,esp_tipo_esp_3,esp_tipo_esp_4,esp_tipo_esp_5,esp_tipo_esp_6,esp_tipo_esp_7,esp_tipo_esp_8,esp_tipo_esp_9,esp_tipo_esp_10,tem_metalasse,total_metalasse,mate_tipo_espuma_1,mata_esp_tipo_esp_1,mate_tipo_espuma_2,mata_esp_tipo_esp_2,executor,auxiliar")] ColetaModel.Ensaio7_2 salvarDados)
         {
             try
             {
@@ -1392,7 +1392,14 @@ namespace Coleta_Colchao.Controllers
                     float esp_tipo_esp_8 = salvarDados.esp_tipo_esp_8;
                     float esp_tipo_esp_9 = salvarDados.esp_tipo_esp_9;
                     float esp_tipo_esp_10 = salvarDados.esp_tipo_esp_10;
+                    string tem_metalasse = salvarDados.tem_metalasse;
+                    string total_metalasse = salvarDados.total_metalasse;
+                    string mate_tipo_espuma_1 = salvarDados.mate_tipo_espuma_1;
+                    float mata_esp_tipo_esp_1 = salvarDados.mata_esp_tipo_esp_1;
+                    string mate_tipo_espuma_2 = salvarDados.mate_tipo_espuma_2;
+                    float mata_esp_tipo_esp_2 = salvarDados.mata_esp_tipo_esp_2;
                     string conformidade = string.Empty;
+                    string conformidade_mat = string.Empty;
 
 
 
@@ -1449,30 +1456,25 @@ namespace Coleta_Colchao.Controllers
                         conform_altura = "NC";
                     }
 
-                    //conforme ou nao conform,e de metallse e estofamento.
-                    if (tipo_espuma_1 == "Espuma do Matelassê" || tipo_espuma_2 == "Espuma do Matelassê" || tipo_espuma_3 == "Espuma do Matelassê" || tipo_espuma_4 == "Espuma do Matelassê" || tipo_espuma_5 == "Espuma do Matelassê" || tipo_espuma_6 == "Espuma do Matelassê" || tipo_espuma_7 == "Espuma do Matelassê" || tipo_espuma_8 == "Espuma do Matelassê" || tipo_espuma_9 == "Espuma do Matelassê" || tipo_espuma_10 == "Espuma do Matelassê")
+                    //conforme ou nao conform,estofamento.
+
+                    if (esp_tipo_esp_1 != 0 && esp_tipo_esp_1 <= 19 || esp_tipo_esp_2 != 0 && esp_tipo_esp_2 <= 19 || esp_tipo_esp_3 != 0 && esp_tipo_esp_3 <= 19 || esp_tipo_esp_4 != 0 && esp_tipo_esp_4 <= 19 || esp_tipo_esp_5 != 0 && esp_tipo_esp_5 <= 19 || esp_tipo_esp_6 != 0 && esp_tipo_esp_6 <= 20 || esp_tipo_esp_7 != 0 && esp_tipo_esp_7 <= 19 || esp_tipo_esp_8 != 0 && esp_tipo_esp_8 <= 19 || esp_tipo_esp_9 != 0 && esp_tipo_esp_9 <= 19)
                     {
-                        if (esp_tipo_esp_1 != 0 && esp_tipo_esp_1 <= 10 || esp_tipo_esp_2 != 0 && esp_tipo_esp_2 <= 10 || esp_tipo_esp_3 != 0 && esp_tipo_esp_3 <= 10 || esp_tipo_esp_4 != 0 && esp_tipo_esp_4 <= 10 || esp_tipo_esp_5 != 0 && esp_tipo_esp_5 <= 10 || esp_tipo_esp_6 != 0 && esp_tipo_esp_6 <= 10 || esp_tipo_esp_7 != 0 && esp_tipo_esp_7 <= 10 || esp_tipo_esp_8 != 0 && esp_tipo_esp_8 <= 10 || esp_tipo_esp_9 != 0 && esp_tipo_esp_9 <= 10)
-                        {
-                            conformidade = "NC";
-                        }
-                        else
-                        {
-                            conformidade = "C";
-                        }
+                        conformidade = "NC";
                     }
                     else
                     {
-                        if (esp_tipo_esp_1 != 0 && esp_tipo_esp_1 <= 20 || esp_tipo_esp_2 != 0 && esp_tipo_esp_2 <= 20 || esp_tipo_esp_3 != 0 && esp_tipo_esp_3 <= 20 || esp_tipo_esp_4 != 0 && esp_tipo_esp_4 <= 20 || esp_tipo_esp_5 != 0 && esp_tipo_esp_5 <= 20 || esp_tipo_esp_6 != 0 && esp_tipo_esp_6 <= 20 || esp_tipo_esp_7 != 0 && esp_tipo_esp_7 <= 20 || esp_tipo_esp_8 != 0 && esp_tipo_esp_8 <= 20 || esp_tipo_esp_9 != 0 && esp_tipo_esp_9 <= 20)
-                        {
-                            conformidade = "NC";
-                        }
-                        else
-                        {
-                            conformidade = "C";
-                        }
+                        conformidade = "C";
                     }
-
+                    //conforme ou nao conform,metalasse.
+                    if (mata_esp_tipo_esp_1 != 0 && mata_esp_tipo_esp_1 > 9 || mata_esp_tipo_esp_2 != 0 && mata_esp_tipo_esp_2 > 9)
+                    {
+                        conformidade_mat = "C";
+                    }
+                    else
+                    {
+                        conformidade_mat = "NC";
+                    }
                     //armazenando no banco.
                     var registro = new ColetaModel.Ensaio7_2
                     {
@@ -1520,8 +1522,15 @@ namespace Coleta_Colchao.Controllers
                         esp_tipo_esp_8 = esp_tipo_esp_8,
                         esp_tipo_esp_9 = esp_tipo_esp_9,
                         esp_tipo_esp_10 = esp_tipo_esp_10,
-                        conformidade = conformidade
-                    };
+                        tem_metalasse = tem_metalasse,
+                        total_metalasse = total_metalasse,
+                        mate_tipo_espuma_1 = mate_tipo_espuma_1,
+                        mata_esp_tipo_esp_1 = mata_esp_tipo_esp_1,
+                        mate_tipo_espuma_2 = mate_tipo_espuma_2,
+                        mata_esp_tipo_esp_2 = mata_esp_tipo_esp_2,
+                        conformidade = conformidade,
+                        conformidade_mat = conformidade_mat
+                };
 
                     _context.Add(registro);
                     await _context.SaveChangesAsync();
@@ -1568,6 +1577,12 @@ namespace Coleta_Colchao.Controllers
                     editarDados.esp_tipo_esp_8 = salvarDados.esp_tipo_esp_8;
                     editarDados.esp_tipo_esp_9 = salvarDados.esp_tipo_esp_9;
                     editarDados.esp_tipo_esp_10 = salvarDados.esp_tipo_esp_10;
+                    editarDados.tem_metalasse = salvarDados.tem_metalasse;
+                    editarDados.total_metalasse = salvarDados.total_metalasse;
+                    editarDados.mate_tipo_espuma_1 = salvarDados.mate_tipo_espuma_1;
+                    editarDados.mata_esp_tipo_esp_1 = salvarDados.mata_esp_tipo_esp_1;
+                    editarDados.mate_tipo_espuma_2 = salvarDados.mate_tipo_espuma_2;
+                    editarDados.mata_esp_tipo_esp_2 = salvarDados.mata_esp_tipo_esp_2;
 
 
 
@@ -1627,28 +1642,24 @@ namespace Coleta_Colchao.Controllers
                         conform_altura = "NC";
                     }
 
-                    //conforme ou nao conform,e de metallse e estofamento.
-                    if (editarDados.tipo_espuma_1 == "Espuma do Matelassê" || editarDados.tipo_espuma_2 == "Espuma do Matelassê" || editarDados.tipo_espuma_3 == "Espuma do Matelassê" || editarDados.tipo_espuma_4 == "Espuma do Matelassê" || editarDados.tipo_espuma_5 == "Espuma do Matelassê" || editarDados.tipo_espuma_6 == "Espuma do Matelassê" || editarDados.tipo_espuma_7 == "Espuma do Matelassê" || editarDados.tipo_espuma_8 == "Espuma do Matelassê" || editarDados.tipo_espuma_9 == "Espuma do Matelassê" || editarDados.tipo_espuma_10 == "Espuma do Matelassê")
+                    //conforme ou nao conform,estofamento.
+
+                    if (editarDados.esp_tipo_esp_1 != 0 && editarDados.esp_tipo_esp_1 <= 19 || editarDados.esp_tipo_esp_2 != 0 && editarDados.esp_tipo_esp_2 <= 19 || editarDados.esp_tipo_esp_3 != 0 && editarDados.esp_tipo_esp_3 <= 19 || editarDados.esp_tipo_esp_4 != 0 && editarDados.esp_tipo_esp_4 <= 19 || editarDados.esp_tipo_esp_5 != 0 && editarDados.esp_tipo_esp_5 <= 19 || editarDados.esp_tipo_esp_6 != 0 && editarDados.esp_tipo_esp_6 <= 19 || editarDados.esp_tipo_esp_7 != 0 && editarDados.esp_tipo_esp_7 <= 19 || editarDados.esp_tipo_esp_8 != 0 && editarDados.esp_tipo_esp_8 <= 19 || editarDados.esp_tipo_esp_9 != 0 && editarDados.esp_tipo_esp_9 <= 19)
                     {
-                        if (editarDados.esp_tipo_esp_1 != 0 && editarDados.esp_tipo_esp_1 <= 10 || editarDados.esp_tipo_esp_2 != 0 && editarDados.esp_tipo_esp_2 <= 10 || editarDados.esp_tipo_esp_3 != 0 && editarDados.esp_tipo_esp_3 <= 10 || editarDados.esp_tipo_esp_4 != 0 && editarDados.esp_tipo_esp_4 <= 10 || editarDados.esp_tipo_esp_5 != 0 && editarDados.esp_tipo_esp_5 <= 10 || editarDados.esp_tipo_esp_6 != 0 && editarDados.esp_tipo_esp_6 <= 10 || editarDados.esp_tipo_esp_7 != 0 && editarDados.esp_tipo_esp_7 <= 10 || editarDados.esp_tipo_esp_8 != 0 && editarDados.esp_tipo_esp_8 <= 10 || editarDados.esp_tipo_esp_9 != 0 && editarDados.esp_tipo_esp_9 <= 10)
-                        {
-                            editarDados.conformidade = "NC";
-                        }
-                        else
-                        {
-                            editarDados.conformidade = "C";
-                        }
+                        editarDados.conformidade = "NC";
                     }
                     else
                     {
-                        if (editarDados.esp_tipo_esp_1 != 0 && editarDados.esp_tipo_esp_1 <= 20 || editarDados.esp_tipo_esp_2 != 0 && editarDados.esp_tipo_esp_2 <= 20 || editarDados.esp_tipo_esp_3 != 0 && editarDados.esp_tipo_esp_3 <= 20 || editarDados.esp_tipo_esp_4 != 0 && editarDados.esp_tipo_esp_4 <= 20 || editarDados.esp_tipo_esp_5 != 0 && editarDados.esp_tipo_esp_5 <= 20 || editarDados.esp_tipo_esp_6 != 0 && editarDados.esp_tipo_esp_6 <= 20 || editarDados.esp_tipo_esp_7 != 0 && editarDados.esp_tipo_esp_7 <= 20 || editarDados.esp_tipo_esp_8 != 0 && editarDados.esp_tipo_esp_8 <= 20 || editarDados.esp_tipo_esp_9 != 0 && editarDados.esp_tipo_esp_9 <= 20)
-                        {
-                            editarDados.conformidade = "NC";
-                        }
-                        else
-                        {
-                            editarDados.conformidade = "C";
-                        }
+                        editarDados.conformidade = "C";
+                    }
+                    //conforme ou nao conform,metalasse.
+                    if (editarDados.mata_esp_tipo_esp_1 != 0 && editarDados.mata_esp_tipo_esp_1 <= 9 || editarDados.mata_esp_tipo_esp_2 != 0 && editarDados.mata_esp_tipo_esp_2 <= 9)
+                    {
+                        editarDados.conformidade_mat = "NC";
+                    }
+                    else
+                    {
+                        editarDados.conformidade_mat = "C";
                     }
 
                     editarDados.conforme_comprimento = conforme_comprimento;
@@ -3760,7 +3771,7 @@ namespace Coleta_Colchao.Controllers
                     }
 
                     //realizando se esta conforme ou nao conforme
-                    if (suportou_ponto_c == "Sim" &&  ruptura_ponto_c == "Não" && afundamento_ponto_c == "Não" && rasgo_ponto_c == "Não" && rompimento_ponto_c == "Não" && prejudique_ponto_c == "Não")
+                    if (suportou_ponto_c == "Sim" && ruptura_ponto_c == "Não" && afundamento_ponto_c == "Não" && rasgo_ponto_c == "Não" && rompimento_ponto_c == "Não" && prejudique_ponto_c == "Não")
                     {
                         dados.conforme_c = "C";
                     }
@@ -3819,7 +3830,7 @@ namespace Coleta_Colchao.Controllers
                     editarRegistro.temp_term = dados.temp_term;
 
                     //realizando se esta conforme ou nao conforme
-                    if (editarRegistro.suportou_ponto_a == "Sim" &&  editarRegistro.ruptura_ponto_a == "Não" && editarRegistro.afundamento_ponto_a == "Não" && editarRegistro.rasgo_ponto_a == "Não" && editarRegistro.rompimento_ponto_a == "Não" && editarRegistro.prejudique_ponto_a == "Não")
+                    if (editarRegistro.suportou_ponto_a == "Sim" && editarRegistro.ruptura_ponto_a == "Não" && editarRegistro.afundamento_ponto_a == "Não" && editarRegistro.rasgo_ponto_a == "Não" && editarRegistro.rompimento_ponto_a == "Não" && editarRegistro.prejudique_ponto_a == "Não")
                     {
                         editarRegistro.conforme_a = "C";
                     }
@@ -3829,7 +3840,7 @@ namespace Coleta_Colchao.Controllers
                     }
 
                     //realizando se esta conforme ou nao conforme
-                    if (editarRegistro.suportou_ponto_b == "Sim" &&  editarRegistro.ruptura_ponto_b == "Não" && editarRegistro.afundamento_ponto_b == "Não" && editarRegistro.rasgo_ponto_b == "Não" && editarRegistro.rompimento_ponto_b == "Não" && editarRegistro.prejudique_ponto_b == "Não")
+                    if (editarRegistro.suportou_ponto_b == "Sim" && editarRegistro.ruptura_ponto_b == "Não" && editarRegistro.afundamento_ponto_b == "Não" && editarRegistro.rasgo_ponto_b == "Não" && editarRegistro.rompimento_ponto_b == "Não" && editarRegistro.prejudique_ponto_b == "Não")
                     {
                         editarRegistro.conforme_b = "C";
                     }
@@ -4384,7 +4395,7 @@ namespace Coleta_Colchao.Controllers
                 {
                     //recebendo os valores do html.
                     DateOnly data_ini = salvarDados.data_ini;
-                    DateOnly data_term = salvarDados.data_term;              
+                    DateOnly data_term = salvarDados.data_term;
                     TimeOnly hora_ini = salvarDados.hora_ini;
                     TimeOnly hora_term = salvarDados.hora_term;
                     string temp_max = salvarDados.temp_max;
