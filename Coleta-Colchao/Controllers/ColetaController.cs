@@ -1530,7 +1530,7 @@ namespace Coleta_Colchao.Controllers
                         mata_esp_tipo_esp_2 = mata_esp_tipo_esp_2,
                         conformidade = conformidade,
                         conformidade_mat = conformidade_mat
-                };
+                    };
 
                     _context.Add(registro);
                     await _context.SaveChangesAsync();
@@ -3064,7 +3064,29 @@ namespace Coleta_Colchao.Controllers
 
                     if (aviso_esclarecimento == "Não" || possui_mais_laminas == "Não" || contem_advertencia == "Não" || negrito == "Não" || caixa_alta == "Não" || contem_advertencia_mat == "Não" || negrito_mat == "Não")
                     {
+                        if (altura_letra == null)
+                        {
+                            altura_letra = "0";
+                        }
                         float conv_altura_letra = float.Parse(altura_letra);
+
+                        if (conv_altura_letra >= 2.5)
+                        {
+                            conforme_requisitos_4 = "C";
+                        }
+                        else
+                        {
+                            conforme_requisitos_4 = "NC";
+                        }
+                    }
+                    else
+                    {
+                        if (altura_letra == null)
+                        {
+                            altura_letra = "0";
+                        }
+                        float conv_altura_letra = float.Parse(altura_letra);
+
                         if (conv_altura_letra >= 2.5)
                         {
                             conforme_requisitos_4 = "C";
@@ -3074,22 +3096,15 @@ namespace Coleta_Colchao.Controllers
                             conforme_requisitos_4 = "NC";
                         }
 
-                    }
-                    else
-                    {
-                        float conv_altura_letra = float.Parse(altura_letra);
-                        if (conv_altura_letra >= 2.5)
-                        {
-                            conforme_requisitos_4 = "C";
-                        }
-                        else
-                        {
-                            conforme_requisitos_4 = "NC";
-                        }
+
 
                     }
                     if (contem_advertencia_mat == "Sim" || negrito_mat == "Sim" || caixa_alta_mat == "Sim")
                     {
+                        if (altura_letra_mat == null)
+                        {
+                            altura_letra_mat = "0";
+                        }
 
                         float conv_altura_letra_mat = float.Parse(altura_letra_mat);
                         if (conv_altura_letra_mat >= 5)
@@ -3103,6 +3118,10 @@ namespace Coleta_Colchao.Controllers
                     }
                     else
                     {
+                        if (altura_letra_mat == null)
+                        {
+                            altura_letra_mat = "0";
+                        }
                         float conv_altura_letra_mat = float.Parse(altura_letra_mat);
                         if (conv_altura_letra_mat >= 5)
                         {
@@ -3117,6 +3136,10 @@ namespace Coleta_Colchao.Controllers
 
                     if (contem_advertencia_6_2 == "Sim" || negrito6_2 == "Sim" || caixa_alta_6_2 == "Sim")
                     {
+                        if (altura_letra_6_2 == null)
+                        {
+                            altura_letra_6_2 = "0";
+                        }
                         float conv_altura_letra_6_2 = float.Parse(altura_letra_6_2);
                         if (conv_altura_letra_6_2 >= 5)
                         {
@@ -3129,7 +3152,12 @@ namespace Coleta_Colchao.Controllers
                     }
                     else
                     {
+                        if (altura_letra_6_2 == null)
+                        {
+                            altura_letra_6_2 = "0";
+                        }
                         float conv_altura_letra_6_2 = float.Parse(altura_letra_6_2);
+
                         if (conv_altura_letra_6_2 >= 5)
                         {
                             conforme_6_2 = "C";
@@ -3138,6 +3166,7 @@ namespace Coleta_Colchao.Controllers
                         {
                             conforme_6_2 = "NC";
                         }
+
                     }
 
 
@@ -3321,6 +3350,7 @@ namespace Coleta_Colchao.Controllers
 
                     if (editarDados.aviso_esclarecimento == "Não" || editarDados.possui_mais_laminas == "Não" || editarDados.contem_advertencia == "Não" || editarDados.negrito == "Não" || editarDados.caixa_alta == "Não" || editarDados.contem_advertencia_mat == "Não" || editarDados.negrito_mat == "Não")
                     {
+                       
                         float conv_altura_letra = float.Parse(editarDados.altura_letra);
                         if (conv_altura_letra <= 2.5)
                         {

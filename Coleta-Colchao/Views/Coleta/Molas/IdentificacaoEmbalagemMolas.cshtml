@@ -355,9 +355,7 @@
                     <td>
                         s)  Caso o colchão seja embalado com material plástico, a embalagem deve ser visivelmente marcada,  em  letras  não  inferiores  a  5  mm  de  altura  e  com  destaque  em  negrito,  com  o seguinte  aviso: <b>“PARA  EVITAR  O  PERIGO  DE  ASFIXIA,  MANTER  ESTA  EMBALAGEM  PLÁSTICA FORA DO ALCANCE DE CRIANÇAS”</b> .
                     </td>
-                    <td rowspan="4">
-                        conforme
-                    </td>
+
                 </tr>
                 <tr>
                     <td>
@@ -388,30 +386,29 @@
                         </p>
                     </td>
                 </tr>
-                <tr>
-                    <td class="fundo-tabela">
-                        6.1 - Instruções de uso
-                    </td>
-                    <td rowspan="8" class="conformidade"></td>
-                </tr>
-                <tr>
-                    <td>
-                        Os colchões de molas devem ser providos de manual de instruções contendo as seguintes informações:
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        Contém instruções de uso:
-                        <select class="controlador" name="contem_instru_uso">
-                            <option selected value="---"> --- </option>
-                            <option value="Sim"> Sim </option>
-                            <option value="Não"> Não </option>
-                        </select>
-                    </td>
-                </tr>
                 @if (ViewBag.manual != "Não")
                 {
-
+                    <tr>
+                        <td class="fundo-tabela">
+                            6.1 - Instruções de uso
+                        </td>
+                        <td rowspan="8" class="conformidade"></td>
+                    </tr>
+                    <tr>
+                        <td>
+                            Os colchões de molas devem ser providos de manual de instruções contendo as seguintes informações:
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            Contém instruções de uso:
+                            <select class="controlador" name="contem_instru_uso">
+                                <option selected value="---"> --- </option>
+                                <option value="Sim"> Sim </option>
+                                <option value="Não"> Não </option>
+                            </select>
+                        </td>
+                    </tr>
                     <tr>
                         <td>
                             a) Orientações sobre o uso e manutenção do produto:
@@ -442,41 +439,42 @@
                             </select>
                         </td>
                     </tr>
-                    <tr class="fundo-tabela">
-                        <td>
-                            6.2 - As instruções de uso devem conter o seguinte texto: “IMPORTANTE LER COM ATENÇÃO E GUARDAR PARA EVENTUAIS CONSULTAS”, em letras não inferiores a 5 mm de altura e com destaque em negrito.
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <p>
-                                Contém a advertência :
-                                <select class="controlador" name="contem_advertencia_6_2">
-                                    <option selected value="---"> --- </option>
-                                    <option value="Sim"> Sim </option>
-                                    <option value="Não"> Não </option>
-                                </select>
-                            </p>
-                            <p> Altura da letra: <input class="controlador" type="text" name="altura_letra_6_2" /></p>
-                            <p>
-                                Está em negrito :
-                                <select class="controlador" name="negrito6_2">
-                                    <option selected value="---"> --- </option>
-                                    <option value="Sim"> Sim </option>
-                                    <option value="Não"> Não </option>
-                                </select>
-                            </p>
-                            <p>
-                                Esta em caixa alta :
-                                <select class="controlador" name="caixa_alta_6_2">
-                                    <option selected value="---"> --- </option>
-                                    <option value="Sim"> Sim </option>
-                                    <option value="Não"> Não </option>
-                                </select>
-                            </p>
-                        </td>
-                    </tr>
                 }
+
+                <tr class="fundo-tabela">
+                    <td>
+                        6.2 - As instruções de uso devem conter o seguinte texto: “IMPORTANTE LER COM ATENÇÃO E GUARDAR PARA EVENTUAIS CONSULTAS”, em letras não inferiores a 5 mm de altura e com destaque em negrito.
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <p>
+                            Contém a advertência :
+                            <select class="controlador" name="contem_advertencia_6_2">
+                                <option selected value="---"> --- </option>
+                                <option value="Sim"> Sim </option>
+                                <option value="Não"> Não </option>
+                            </select>
+                        </p>
+                        <p> Altura da letra: <input class="controlador" type="text" name="altura_letra_6_2" /></p>
+                        <p>
+                            Está em negrito :
+                            <select class="controlador" name="negrito6_2">
+                                <option selected value="---"> --- </option>
+                                <option value="Sim"> Sim </option>
+                                <option value="Não"> Não </option>
+                            </select>
+                        </p>
+                        <p>
+                            Esta em caixa alta :
+                            <select class="controlador" name="caixa_alta_6_2">
+                                <option selected value="---"> --- </option>
+                                <option value="Sim"> Sim </option>
+                                <option value="Não"> Não </option>
+                            </select>
+                        </p>
+                    </td>
+                </tr>
                 <tr>
                     <td class="fundo-tabela">
                         Embalagem
@@ -807,7 +805,7 @@
                             <option value="Não"> Não </option>
                         </select>
                     </td>
-                    <td rowspan="4" class="conformidade">@Model.conforme_requisitos_4</td>
+                    <td rowspan="2" class="conformidade">@Model.conforme_requisitos_4</td>
                 </tr>
                 @if (ViewBag.latex != "Não")
                 {
@@ -901,30 +899,31 @@
                         </p>
                     </td>
                 </tr>
-                <tr>
-                    <td class="fundo-tabela">
-                        6.1 - Instruções de uso
-                    </td>
-                    <td rowspan="6" class="conformidade">@Model.conforme_6_1</td>
-                </tr>
-                <tr>
-                    <td>
-                        Os colchões de molas devem ser providos de manual de instruções contendo as seguintes informações:
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        Contém instruções de uso:
-                        <select class="controlador" name="contem_instru_uso">
-                            <option selected> @Model.contem_instru_uso</option>
-                            <option value="---"> --- </option>
-                            <option value="Sim"> Sim </option>
-                            <option value="Não"> Não </option>
-                        </select>
-                    </td>
-                </tr>
                 @if (ViewBag.manual != "Não")
                 {
+                    <tr>
+                        <td class="fundo-tabela">
+                            6.1 - Instruções de uso
+                        </td>
+                        <td rowspan="6" class="conformidade">@Model.conforme_6_1</td>
+                    </tr>
+                    <tr>
+                        <td>
+                            Os colchões de molas devem ser providos de manual de instruções contendo as seguintes informações:
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            Contém instruções de uso:
+                            <select class="controlador" name="contem_instru_uso">
+                                <option selected> @Model.contem_instru_uso</option>
+                                <option value="---"> --- </option>
+                                <option value="Sim"> Sim </option>
+                                <option value="Não"> Não </option>
+                            </select>
+                        </td>
+                    </tr>
+
                     <tr>
                         <td>
                             a) Orientações sobre o uso e manutenção do produto:
@@ -958,45 +957,46 @@
                             </select>
                         </td>
                     </tr>
-                    <tr >
-                        <td class="fundo-tabela">
-                            6.2 - As instruções de uso devem conter o seguinte texto: “IMPORTANTE LER COM ATENÇÃO E GUARDAR PARA EVENTUAIS CONSULTAS”, em letras não inferiores a 5 mm de altura e com destaque em negrito.
-                        </td>
-                        <td rowspan="2">@Model.conforme_6_2</td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <p>
-                                Contém a advertência :
-                                <select class="controlador" name="contem_advertencia_6_2">
-                                    <option selected> @Model.contem_advertencia_6_2</option>
-                                    <option value="---"> --- </option>
-                                    <option value="Sim"> Sim </option>
-                                    <option value="Não"> Não </option>
-                                </select>
-                            </p>
-                            <p> Altura da letra: <input class="controlador" type="text" name="altura_letra_6_2" value="@Model.altura_letra_6_2" /></p>
-                            <p>
-                                Está em negrito :
-                                <select class="controlador" name="negrito6_2">
-                                    <option selected> @Model.negrito6_2</option>
-                                    <option value="---"> --- </option>
-                                    <option value="Sim"> Sim </option>
-                                    <option value="Não"> Não </option>
-                                </select>
-                            </p>
-                            <p>
-                                Esta em caixa alta :
-                                <select class="controlador" name="caixa_alta_6_2">
-                                    <option selected> @Model.caixa_alta_6_2</option>
-                                    <option value="---"> --- </option>
-                                    <option value="Sim"> Sim </option>
-                                    <option value="Não"> Não </option>
-                                </select>
-                            </p>
-                        </td>
-                    </tr>
                 }
+                <tr>
+                    <td class="fundo-tabela">
+                        6.2 - As instruções de uso devem conter o seguinte texto: “IMPORTANTE LER COM ATENÇÃO E GUARDAR PARA EVENTUAIS CONSULTAS”, em letras não inferiores a 5 mm de altura e com destaque em negrito.
+                    </td>
+                    <td rowspan="2">@Model.conforme_6_2</td>
+                </tr>
+                <tr>
+                    <td>
+                        <p>
+                            Contém a advertência :
+                            <select class="controlador" name="contem_advertencia_6_2">
+                                <option selected> @Model.contem_advertencia_6_2</option>
+                                <option value="---"> --- </option>
+                                <option value="Sim"> Sim </option>
+                                <option value="Não"> Não </option>
+                            </select>
+                        </p>
+                        <p> Altura da letra: <input class="controlador" type="text" name="altura_letra_6_2" value="@Model.altura_letra_6_2" /></p>
+                        <p>
+                            Está em negrito :
+                            <select class="controlador" name="negrito6_2">
+                                <option selected> @Model.negrito6_2</option>
+                                <option value="---"> --- </option>
+                                <option value="Sim"> Sim </option>
+                                <option value="Não"> Não </option>
+                            </select>
+                        </p>
+                        <p>
+                            Esta em caixa alta :
+                            <select class="controlador" name="caixa_alta_6_2">
+                                <option selected> @Model.caixa_alta_6_2</option>
+                                <option value="---"> --- </option>
+                                <option value="Sim"> Sim </option>
+                                <option value="Não"> Não </option>
+                            </select>
+                        </p>
+                    </td>
+                </tr>
+
                 <tr>
                     <td class="fundo-tabela">
                         Embalagem
