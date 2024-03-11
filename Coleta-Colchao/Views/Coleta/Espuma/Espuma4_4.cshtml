@@ -53,12 +53,13 @@
                     <td>
                         Não é permitido utilizar cascas superiores e/ou inferiores no sentido horizontal do colchão.
                     </td>
-                    <td rowspan="4"> NA </td>
+                    <td rowspan="4">  </td>
                 </tr>
                 <tr>
                     <td>
                         Utilizam cascas superiores no sentido da horizontal do colchão?
                         <select class="controlador" asp-for="superior_horizontal">
+                            <option>---</option>
                             <option value="Sim">Sim</option>
                             <option value="Não">Não</option>
                         </select>
@@ -68,6 +69,7 @@
                     <td>
                         Utilizam cascas inferiores no sentido da horizontal do colchão?
                         <select class="controlador" asp-for="inferior_horizontal">
+                            <option>---</option>
                             <option value="Sim">Sim</option>
                             <option value="Não">Não</option>
                         </select>
@@ -112,12 +114,13 @@
                     <td>
                         Não é permitido utilizar cascas superiores e/ou inferiores no sentido horizontal do colchão.
                     </td>
-                    <td rowspan="4"> NA </td>
+                    <td rowspan="4"> </td>
                 </tr>
                 <tr>
                     <td>
                         Utilizam cascas superiores no sentido da horizontal do colchão?
                         <select class="controlador" asp-for="superior_horizontal">
+                            <option>@Model.superior_horizontal</option>
                             <option value="Sim">Sim</option>
                             <option value="Não">Não</option>
                         </select>
@@ -127,6 +130,7 @@
                     <td>
                         Utilizam cascas inferiores no sentido da horizontal do colchão?
                         <select class="controlador" asp-for="inferior_horizontal">
+                            <option>@Model.inferior_horizontal</option>
                             <option value="Sim">Sim</option>
                             <option value="Não">Não</option>
                         </select>
@@ -147,6 +151,15 @@
 
         </script>
     }
+    <script>
+        document.addEventListener("keydown", function (e) {
+            if (e.keyCode === 13) {
+
+                e.preventDefault();
+
+            }
+        });
+    </script>
 </body>
 </html>
 

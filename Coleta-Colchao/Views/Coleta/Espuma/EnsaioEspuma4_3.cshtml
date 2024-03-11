@@ -42,17 +42,9 @@
                 </thead>
             </table>
 
-            <table class="tables table-bordered border-secondary  table-sm">
-                <tr>
-                    <td>Temperatura Inicial:</td>
-                    <td><input class="form-control" type="text" name="temp_ini" /></td>
-                    <td>Temperatura Final:</td>
-                    <td><input class="form-control" type="text" name="temp_fim" /></td>
-                </tr>
-            </table>
             <br />
 
-            <table class="tables table-bordered border-secondary  table-sm">
+            <table class="tables table-bordered border-secondary  table-sm" >
                 <tr class="fundo-tabela">
                     <td>Item</td>
                     <td>Descrição</td>
@@ -68,14 +60,14 @@
                         <strong> Colchão tipo simples </strong> <br /> <br />
                         A lâmina colada sobre a lâmina central deve ser composta de uma única peça. <br />
                         A lâmina central é composta por um uúnica peça?
-                        <select class="form-control" name="lamina_central">
-                            <option selected> --- </option>
+                        <select class="form-control" name="lamina_central" id="tem_colchao">
+                            <option> --- </option>
                             <option> Sim </option>
                             <option> Não </option>
                         </select> <br /> <br />
                     </td>
                 </tr>
-                <tr>
+                <tr id="tabela">
                     <td class="fundo-tabela"> Colagem horizontal com peça inteira </td>
                 </tr>
                 <tr>
@@ -122,8 +114,8 @@
                 </tr>
             </table>
 
-            <table class="tables table-bordered border-secondary  table-sm">
-                <tr>
+            <table class="tables table-bordered border-secondary  table-sm tabela" class="tabela">
+                <tr id="tabela">
                     <td rowspan="12"> 4.3</td>
                     <td class="fundo-tabela"> Colchão tipo composto </td>
                     <td rowspan="12"> NA </td>
@@ -139,7 +131,7 @@
                             <option> Não </option>
                         </select> <br /> <br />
 
-                        <table class="tables table-bordered border-secondary  table-sm">
+                        <table class="tables table-bordered border-secondary  table-sm ">
                             <tr>
                                 <td class="fundo-tabela"> Espessura da lâmina </td>
                                 <td> <input class="form-control" type="text" name="esp_lamina_um" /> </td>
@@ -263,106 +255,12 @@
 
                 </tr>
             </table>
+            <br />
+            <div class="d-grid gap-2 d-flex justify-content-center">
+                <button type="submit" value="SalvarEspuma4_3" class="btn btn-danger">Salvar Coleta </button>
+            </div>
 
-            <table class="tables table-bordered border-secondary  table-sm">
 
-                <tr>
-                    <td rowspan="12"> 4.3</td>
-                    <td class="fundo-tabela"> Cascas </td>
-                    <td rowspan="12"> NA </td>
-                </tr>
-                <tr>
-                    <td>
-                        Não é permitido utilizar cascas superiores e/ou inferiores no sentido horizontal do colchão. <br /> <br />
-                        Utilizam cascas superiores no sentido da horizontal do colchão?
-                        <select class="form-control" name="cascas_superiores">
-                            <option selected> --- </option>
-                            <option> Sim </option>
-                            <option> Não </option>
-                        </select> <br /> <br />
-                        Utilizam cascas inferiores no sentido da horizontal do colchão?
-                        <select class="form-control" name="cascas_inferiores">
-                            <option selected> --- </option>
-                            <option> Sim </option>
-                            <option> Não </option>
-                        </select> <br /> <br />
-                    </td>
-                </tr>
-
-            </table>
-
-            @* inicio de outras tabelas *@
-            <table class="tables table-bordered border-secondary  table-sm">
-                <tr class="fundo-tabela">
-                    <td colspan=" 4">
-                        Instrumento(s)/Dispositivo(s)/Equipamento(s) Utilizado(s) que Requer(em) Calibração
-                    </td>
-                </tr>
-                <tr>
-                    <td>Código(s)</td>
-                    <td>Descrição(ões)</td>
-                    <td>Certificado(s)</td>
-                    <td>validade(s)</td>
-                </tr>
-            </table>
-            <table class="tables table-bordered border-secondary  table-sm">
-                <tr class="fundo-tabela">
-                    <td colspan=" 4">
-                        Dispositivo(s)/Equipamento(s) Utilizado(s) que Não Requer(em) Calibração
-                    </td>
-                </tr>
-                <tr>
-                    <td>Código(s)</td>
-                    <td>Descrição(ões)</td>
-                    <td>Certificado(s)</td>
-                    <td>validade(s)</td>
-                </tr>
-            </table>
-            <table class="tables table-bordered border-secondary  table-sm">
-                <tr class="fundo-tabela">
-                    <td colspan=" 4">
-                        Matéria(s)-Prima(s) Utilizada(s)
-                    </td>
-                </tr>
-                <tr>
-                    <td>Código(s)</td>
-                    <td>Descrição(ões)</td>
-                    <td>Certificado(s)</td>
-                    <td>validade(s)</td>
-                </tr>
-            </table>
-            <table class="tables table-bordered border-secondary  table-sm">
-                <tr class="fundo-tabela">
-                    <td colspan=" 4">
-                        Observações
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <textarea class="form-control w-100 mr-2 input" name="observacoes">
-
-                                </textarea>
-                    </td>
-                </tr>
-            </table>
-            <table class="tables table-bordered border-secondary  table-sm">
-                <tr class="fundo-tabela">
-                    <td colspan="4">
-                        Nome(s) do(s) Executador(es)
-                    </td>
-                </tr>
-                <tr>
-                    <td><input type="text" class="form-control" name="executador_um" /></td>
-                    <td><input type="text" class="form-control" name="executador_dois" /></td>
-                    <td><input type="text" class="form-control" name="executador_tres" /></td>
-                    <td><input type="text" class="form-control" name="executador_quat" /></td>
-                </tr>
-                <tr>
-                    <td colspan="4">
-                        <button type="submit" value="SalvarEspuma4_3" class="btn btn-danger">Salvar Coleta </button>
-                    </td>
-                </tr>
-            </table>
         }
         else
         {
@@ -386,14 +284,6 @@
                 </thead>
             </table>
 
-            <table class="tables table-bordered border-secondary  table-sm">
-                <tr>
-                    <td>Temperatura Inicial:</td>
-                    <td><input class="form-control" type="text" name="temp_ini" value="@Model.temp_ini" /></td>
-                    <td>Temperatura Final:</td>
-                    <td><input class="form-control" type="text" name="temp_fim" value="@Model.temp_fim" /></td>
-                </tr>
-            </table>
             <br />
 
             <table class="tables table-bordered border-secondary  table-sm">
@@ -611,107 +501,31 @@
 
                 </tr>
             </table>
+            <br />
+            <div class="d-grid gap-2 d-flex justify-content-center">
+                <button type="submit" value="SalvarEspuma4_3" class="btn btn-danger">Editar Coleta </button>
+            </div>
 
-            <table class="tables table-bordered border-secondary  table-sm">
-
-                <tr>
-                    <td rowspan="12"> 4.3</td>
-                    <td class="fundo-tabela"> Cascas </td>
-                    <td rowspan="12"> NA </td>
-                </tr>
-                <tr>
-                    <td>
-                        Não é permitido utilizar cascas superiores e/ou inferiores no sentido horizontal do colchão. <br /> <br />
-                        Utilizam cascas superiores no sentido da horizontal do colchão?
-                        <select class="form-control" name="cascas_superiores">
-                            <option selected> @Model.cascas_superiores </option>
-                            <option> Sim </option>
-                            <option> Não </option>
-                        </select> <br /> <br />
-                        Utilizam cascas inferiores no sentido da horizontal do colchão?
-                        <select class="form-control" name="cascas_inferiores">
-                            <option selected> @Model.cascas_inferiores </option>
-                            <option> Sim </option>
-                            <option> Não </option>
-                        </select> <br /> <br />
-                    </td>
-                </tr>
-
-            </table>
-
-            @* inicio de outras tabelas *@
-            <table class="tables table-bordered border-secondary  table-sm">
-                <tr class="fundo-tabela">
-                    <td colspan=" 4">
-                        Instrumento(s)/Dispositivo(s)/Equipamento(s) Utilizado(s) que Requer(em) Calibração
-                    </td>
-                </tr>
-                <tr>
-                    <td>Código(s)</td>
-                    <td>Descrição(ões)</td>
-                    <td>Certificado(s)</td>
-                    <td>validade(s)</td>
-                </tr>
-            </table>
-            <table class="tables table-bordered border-secondary  table-sm">
-                <tr class="fundo-tabela">
-                    <td colspan=" 4">
-                        Dispositivo(s)/Equipamento(s) Utilizado(s) que Não Requer(em) Calibração
-                    </td>
-                </tr>
-                <tr>
-                    <td>Código(s)</td>
-                    <td>Descrição(ões)</td>
-                    <td>Certificado(s)</td>
-                    <td>validade(s)</td>
-                </tr>
-            </table>
-            <table class="tables table-bordered border-secondary  table-sm">
-                <tr class="fundo-tabela">
-                    <td colspan=" 4">
-                        Matéria(s)-Prima(s) Utilizada(s)
-                    </td>
-                </tr>
-                <tr>
-                    <td>Código(s)</td>
-                    <td>Descrição(ões)</td>
-                    <td>Certificado(s)</td>
-                    <td>validade(s)</td>
-                </tr>
-            </table>
-            <table class="tables table-bordered border-secondary  table-sm">
-                <tr class="fundo-tabela">
-                    <td colspan=" 4">
-                        Observações
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <input class="form-control w-100 mr-2 input" name="observacoes" value="@Model.observacoes" />
-
-                    </td>
-                </tr>
-            </table>
-            <table class="tables table-bordered border-secondary  table-sm">
-                <tr class="fundo-tabela">
-                    <td colspan="4">
-                        Nome(s) do(s) Executador(es)
-                    </td>
-                </tr>
-                <tr>
-                    <td><input type="text" class="form-control" name="executador_um" value="@Model.executador_um" /></td>
-                    <td><input type="text" class="form-control" name="executador_dois" value="@Model.executador_dois" /></td>
-                    <td><input type="text" class="form-control" name="executador_tres" value="@Model.executador_tres" /></td>
-                    <td><input type="text" class="form-control" name="executador_quat" value="@Model.executador_quat" /></td>
-                </tr>
-                <tr>
-                    <td colspan="4">
-                        <button type="submit" value="SalvarEspuma4_3" class="btn btn-success"> Editar </button>
-                    </td>
-                </tr>
-            </table>
         }
     </form>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            var tem_colchao = document.getElementById("tem_colchao");
+
+
+            tem_colchao.addEventListener('change', function () {
+                var dados = tem_colchao.value
+                var tabelaa = document.getElementById("tabela");
+                if (dados == "Não") {         
+                    tabelaa.style.display = 'none';
+                }else{
+                    tabelaa.style.display = 'table-row';
+                }
+            });
+        });
+    </script>
+
 </body>
 </html>
 
@@ -724,4 +538,13 @@
     </script>
 }
 
+<script>
+    document.addEventListener("keydown", function (e) {
+        if (e.keyCode === 13) {
+
+            e.preventDefault();
+
+        }
+    });
+</script>
 

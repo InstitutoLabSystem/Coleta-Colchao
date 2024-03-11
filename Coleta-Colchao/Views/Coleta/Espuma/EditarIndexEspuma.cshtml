@@ -84,7 +84,13 @@
                         </select>
                     </td>
                     <td> Local da realização dos ensaios : </td>
-                    <td colspan="2"> <input class="form-control" type="text" asp-for="realizacao_ensaios" /> </td>
+                    <td>
+                        <select class="form-control" asp-for="realizacao_ensaios">
+                            <option>---</option>
+                            <option value="Instalação permanente">Instalação permanente</option>
+                            <option value="Instalação do cliente">Instalação do cliente</option>
+                        </select>
+                    </td>
                 </tr>
                 <tr>
                     <td> Quantidade recebida : </td>
@@ -96,7 +102,7 @@
                     <td> Data de realização dos ensaios: </td>
                     <td> Ínicio: </td>
                     <td> <input class="form-control" type="date" asp-for="data_realizacao_ini" /> </td>
-                    <td> Término :  </td>
+                    <td> Término:  </td>
                     <td> <input class="form-control" type="date" asp-for="data_realizacao_term" /> </td>
                 </tr>
             </table>
@@ -475,6 +481,13 @@
     }
 
     <script>
+        document.addEventListener("keydown", function (e) {
+            if (e.keyCode === 13) {
+
+                e.preventDefault();
+
+            }
+        });
         document.addEventListener("DOMContentLoaded", function () {
 
             var selectQuantMolas = document.querySelector('select[name="quant_laminas"]');
@@ -632,6 +645,15 @@
 
         </script>
     }
+    <script>
+        document.addEventListener("keydown", function (e) {
+            if (e.keyCode === 13) {
+
+                e.preventDefault();
+
+            }
+        });
+    </script>
 
 </body>
 </html>

@@ -1704,8 +1704,6 @@ namespace Coleta_Colchao.Controllers
                     //recebendo os valores do html.
                     DateOnly data_ini = salvar.data_ini;
                     DateOnly data_term = salvar.data_term;
-                    string temp_ini = salvar.temp_ini;
-                    string temp_fim = salvar.temp_fim;
                     string dimensao_temp = salvar.dimensao_temp;
                     string comprimento_result = string.Empty;
                     float comprimento_um = salvar.comprimento_um;
@@ -1916,8 +1914,7 @@ namespace Coleta_Colchao.Controllers
                         orcamento = orcamento,
                         data_ini = data_ini,
                         data_term = data_term,
-                        temp_ini = temp_ini,
-                        temp_fim = temp_fim,
+                    
                         dimensao_temp = dimensao_temp,
                         comprimento_um = comprimento_um,
                         comprimento_dois = comprimento_um,
@@ -2030,8 +2027,7 @@ namespace Coleta_Colchao.Controllers
                     //editando os valores.
                     editarDados.data_ini = salvar.data_ini;
                     editarDados.data_term = salvar.data_term;
-                    editarDados.temp_ini = salvar.temp_ini;
-                    editarDados.temp_fim = salvar.temp_fim;
+                 
                     editarDados.dimensao_temp = salvar.dimensao_temp;
                     editarDados.comprimento_result = salvar.comprimento_result;
                     editarDados.comprimento_um = salvar.comprimento_um;
@@ -2795,8 +2791,6 @@ namespace Coleta_Colchao.Controllers
                     //recebendo os valores recebidos do html..
                     DateOnly data_ini = salvar.data_ini;
                     DateOnly data_term = salvar.data_term;
-                    var temp_ini = salvar.temp_ini;
-                    var temp_fim = salvar.temp_fim;
                     var lamina_central = salvar.lamina_central;
                     var quant_colagens = salvar.quant_colagens;
                     var colagens_densidade = salvar.colagens_densidade;
@@ -2830,22 +2824,14 @@ namespace Coleta_Colchao.Controllers
                     var quant_colagens_cinco = salvar.quant_colagens_cinco;
                     var espessura_lamina = salvar.espessura_lamina;
                     var adesivo = salvar.adesivo;
-                    var cascas_superiores = salvar.cascas_superiores;
-                    var cascas_inferiores = salvar.cascas_inferiores;
-                    var observacoes = salvar.observacoes;
-                    var executador_um = salvar.executador_um;
-                    var executador_dois = salvar.executador_dois;
-                    var executador_tres = salvar.executador_tres;
-                    var executador_quat = salvar.executador_quat;
+     
 
                     var salvardados = new ColetaModel.Espuma4_3
                     {
                         os = os,
                         orcamento = orcamento,
                         data_ini = data_ini,
-                        data_term = data_term,
-                        temp_ini = temp_ini,
-                        temp_fim = temp_fim,
+                        data_term = data_term,      
                         lamina_central = lamina_central,
                         quant_colagens = quant_colagens,
                         colagens_densidade = colagens_densidade,
@@ -2879,13 +2865,7 @@ namespace Coleta_Colchao.Controllers
                         quant_colagens_cinco = quant_colagens_cinco,
                         espessura_lamina = espessura_lamina,
                         adesivo = adesivo,
-                        cascas_superiores = cascas_superiores,
-                        cascas_inferiores = cascas_inferiores,
-                        observacoes = observacoes,
-                        executador_um = executador_um,
-                        executador_dois = executador_dois,
-                        executador_tres = executador_tres,
-                        executador_quat = executador_quat,
+                   
 
                     };
                     _context.Add(salvardados);
@@ -2897,8 +2877,6 @@ namespace Coleta_Colchao.Controllers
                 {
                     editarDados.data_ini = salvar.data_ini;
                     editarDados.data_term = salvar.data_term;
-                    editarDados.temp_ini = salvar.temp_ini;
-                    editarDados.temp_fim = salvar.temp_fim;
                     editarDados.lamina_central = salvar.lamina_central;
                     editarDados.quant_colagens = salvar.quant_colagens;
                     editarDados.colagens_densidade = salvar.colagens_densidade;
@@ -2932,13 +2910,7 @@ namespace Coleta_Colchao.Controllers
                     editarDados.quant_colagens_cinco = salvar.quant_colagens_cinco;
                     editarDados.espessura_lamina = salvar.espessura_lamina;
                     editarDados.adesivo = salvar.adesivo;
-                    editarDados.cascas_superiores = salvar.cascas_superiores;
-                    editarDados.cascas_inferiores = salvar.cascas_inferiores;
-                    editarDados.observacoes = salvar.observacoes;
-                    editarDados.executador_um = salvar.executador_um;
-                    editarDados.executador_dois = salvar.executador_dois;
-                    editarDados.executador_tres = salvar.executador_tres;
-                    editarDados.executador_quat = salvar.executador_quat;
+               
 
                     _context.Update(editarDados);
                     await _context.SaveChangesAsync();

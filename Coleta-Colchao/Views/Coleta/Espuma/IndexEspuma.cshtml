@@ -81,12 +81,19 @@
                     <td> Contém Lacre : </td>
                     <td>
                         <select class="form-control" asp-for="lacre">
+                            <option>---</option>
                             <option value="Sim">Sim</option>
                             <option value="Não">Não</option>
                         </select>
                     </td>
                     <td> Local da realização dos ensaios : </td>
-                    <td colspan="2"> <input class="form-control" type="text" asp-for="realizacao_ensaios" /> </td>
+                    <td colspan="2">
+                        <select class="form-control" asp-for="realizacao_ensaios">
+                            <option>---</option>
+                            <option value="Instalação permanente">Instalação permanente</option>
+                            <option value="Instalação do cliente">Instalação do cliente</option>
+                        </select>
+                    </td>
                 </tr>
                 <tr>
                     <td> Quantidade recebida : </td>
@@ -98,7 +105,7 @@
                     <td> Data de realização dos ensaios: </td>
                     <td> Ínicio: </td>
                     <td> <input class="form-control" type="date" asp-for="data_realizacao_ini" /> </td>
-                    <td> Término :  </td>
+                    <td> Término:  </td>
                     <td> <input class="form-control" type="date" asp-for="data_realizacao_term" /> </td>
                 </tr>
             </table>
@@ -129,6 +136,7 @@
                     <td colspan="3">
                         @*                         <input class="form-control" type="text" name="estruturs" /> @*@
                         <select class="form-control" asp-for="clasi_produto">
+                            <option>---</option>
                             <option value="Simples">Simples</option>
                             <option value="Composto">Composto</option>
                         </select>
@@ -140,6 +148,7 @@
                     <td colspan="3">
                         @*                         <input class="form-control" type="text" name="estruturs" /> @*@
                         <select class="form-control" asp-for="tipo_colchao">
+                            <option>---</option>
                             <option value="Colchão De Espuma">Colchão De Espuma</option>
                             <option value="Colchonete">Colchonete</option>
                             <option value="Colchão Infantil">Colchão Infantil</option>
@@ -154,6 +163,7 @@
                     <td> Uso </td>
                     <td colspan="3">
                         <select class="form-control" asp-for="uso">
+                            <option>---</option>
                             <option value="Geral">Geral</option>
                             <option value="Infantil">Infantil</option>
                             <option value="Hospitalar">Hospitalar</option>
@@ -176,7 +186,7 @@
                     </td>
                 </tr>
                 <tr id="tipo_espuma">
-                    <td >Tipo Da Espuma</td>
+                    <td>Tipo Da Espuma</td>
                     <td colspan="3">
                         <select class="form-control" asp-for="tipo_espuma">
                             <option></option>
@@ -190,7 +200,7 @@
                     </td>
                 </tr>
                 <tr id="tipo_espuma_2">
-                    <td >Tipo Da Espuma</td>
+                    <td>Tipo Da Espuma</td>
                     <td colspan="3">
                         <select class="form-control" asp-for="tipo_espuma_2">
                             <option></option>
@@ -204,7 +214,7 @@
                     </td>
                 </tr>
                 <tr id="tipo_espuma_3">
-                    <td >Tipo Da Espuma</td>
+                    <td>Tipo Da Espuma</td>
                     <td colspan="3">
                         <select class="form-control" asp-for="tipo_espuma_3">
                             <option></option>
@@ -218,7 +228,7 @@
                     </td>
                 </tr>
                 <tr id="tipo_espuma_4">
-                    <td >Tipo Da Espuma</td>
+                    <td>Tipo Da Espuma</td>
                     <td colspan="3">
                         <select class="form-control" asp-for="tipo_espuma_4">
                             <option></option>
@@ -232,7 +242,7 @@
                     </td>
                 </tr>
                 <tr id="tipo_espuma_5">
-                    <td >Tipo Da Espuma</td>
+                    <td>Tipo Da Espuma</td>
                     <td colspan="3">
                         <select class="form-control" asp-for="tipo_espuma_5">
                             <option></option>
@@ -280,7 +290,7 @@
                     <td>Possui Revestimento</td>
                     <td colspan="3">
                         <select class="form-control" asp-for="revestimento">
-
+                            <option>---</option>
                             <option value="Sim">Sim</option>
                             <option value="Não">Não</option>
                         </select>
@@ -290,6 +300,8 @@
                     <td>Outros Materiais</td>
                     <td colspan="3">
                         <select class="form-control" asp-for="outros_materia">
+                            <option>---</option>
+                            <option value="NA">NA</option>
                             <option value="Couvin">Couvin</option>
                             <option value="Plástico">Plástico</option>
                             <option value="Lâmina  Latex">Lâmina  Latex</option>
@@ -316,18 +328,18 @@
 
             var selectQuantMolas = document.querySelector('select[name="quant_laminas"]');
 
-              var tipo_espuma = document.getElementById("tipo_espuma");
-                var tipo_espuma_2 = document.getElementById("tipo_espuma_2");
-                var tipo_espuma_3 = document.getElementById("tipo_espuma_3");
-                var tipo_espuma_4 = document.getElementById("tipo_espuma_4");
-                var tipo_espuma_5 = document.getElementById("tipo_espuma_5");
+            var tipo_espuma = document.getElementById("tipo_espuma");
+            var tipo_espuma_2 = document.getElementById("tipo_espuma_2");
+            var tipo_espuma_3 = document.getElementById("tipo_espuma_3");
+            var tipo_espuma_4 = document.getElementById("tipo_espuma_4");
+            var tipo_espuma_5 = document.getElementById("tipo_espuma_5");
 
-                tipo_espuma.style.display = 'none';
-                tipo_espuma_2.style.display = 'none';
-                tipo_espuma_3.style.display = 'none';
-                tipo_espuma_4.style.display = 'none';
-                tipo_espuma_5.style.display = 'none';
-                tipo_espuma_5.style.display = 'none';
+            tipo_espuma.style.display = 'none';
+            tipo_espuma_2.style.display = 'none';
+            tipo_espuma_3.style.display = 'none';
+            tipo_espuma_4.style.display = 'none';
+            tipo_espuma_5.style.display = 'none';
+            tipo_espuma_5.style.display = 'none';
 
             selectQuantMolas.addEventListener('change', function () {
                 var selectedValue = selectQuantMolas.value;
@@ -344,7 +356,7 @@
                 trDensidade4.style.display = 'none';
                 trDensidade5.style.display = 'none';
 
-              
+
 
                 // Mostrar as trs com base no valor selecionado
                 if (selectedValue === '1') {
@@ -398,5 +410,14 @@
 
         </script>
     }
+    <script>
+        document.addEventListener("keydown", function (e) {
+            if (e.keyCode === 13) {
+
+                e.preventDefault();
+
+            }
+        });
+    </script>
 </body>
 </html>
