@@ -83,7 +83,8 @@ namespace Coleta_Colchao.Models
             public string? densidade_4 { get; set; }
             public string? densidade_5 { get; set; }
             public string? revestimento { get; set; }
-            public string? outros_materia { get; set; }
+            public string? anti_reflexo { get; set; }
+        public string? outros_materia { get; set; }
 
 
         }
@@ -183,7 +184,7 @@ namespace Coleta_Colchao.Models
             public string? col_tipo_dois { get; set; }
             public float col_lamina_dois { get; set; }
             public float col_especificado_dois { get; set; }
-            public float col_resul_dois { get; set; }
+            public string? col_resul_dois { get; set; }
             public string? esp_resul_final { get; set; }
             public string? reves_tipo_um { get; set; }
             public float reves_lamina_um { get; set; }
@@ -564,8 +565,7 @@ namespace Coleta_Colchao.Models
             public string orcamento { get; set; }
             public DateOnly data_ini { get; set; }
             public DateOnly data_term { get; set; }
-            public string? temp_ini { get; set; }
-            public string? temp_fim { get; set; }
+
             public string? etiquieta_um { get; set; }
             public string? fixacao { get; set; }
             public string? material { get; set; }
@@ -630,6 +630,8 @@ namespace Coleta_Colchao.Models
             public string? latex { get; set; }
             public string? embalagem_uni { get; set; }
             public string? embalagem_protecao { get; set; }
+            public string? visualizacao { get; set; }
+            public string? lingua_portuguesa { get; set; }
             public string? observacao { get; set; }
             public string? executador_um { get; set; }
             public string? executador_dois { get; set; }
@@ -773,6 +775,7 @@ namespace Coleta_Colchao.Models
             public DateOnly data_term { get; set; }
             public string? superior_horizontal { get; set; }
             public string? inferior_horizontal { get; set; }
+            public string? conforme { get; set; }
             public string? executor { get; set; }
             public string? auxiliar { get; set; }
         }

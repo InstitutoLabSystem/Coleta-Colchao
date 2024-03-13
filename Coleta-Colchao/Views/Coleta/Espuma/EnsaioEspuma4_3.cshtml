@@ -44,7 +44,7 @@
 
             <br />
 
-            <table class="tables table-bordered border-secondary  table-sm" >
+            <table class="tables table-bordered border-secondary  table-sm">
                 <tr class="fundo-tabela">
                     <td>Item</td>
                     <td>Descrição</td>
@@ -53,7 +53,7 @@
                 <tr>
                     <td rowspan="12"> 4.3</td>
                     <td class="fundo-tabela"> Colagens permitidas </td>
-                    <td rowspan="12"> NA </td>
+                    <td rowspan="12">  </td>
                 </tr>
                 <tr>
                     <td>
@@ -67,10 +67,10 @@
                         </select> <br /> <br />
                     </td>
                 </tr>
-                <tr id="tabela">
+                <tr id="colagem" class="colagem">
                     <td class="fundo-tabela"> Colagem horizontal com peça inteira </td>
                 </tr>
-                <tr>
+                <tr id="colagem" class="colagem">
                     <td>
                         Pode haver no máximo duas colagens na horizontal, de mesma densidade. <br /> <br />
                         Quantidades de colagens   <input class="form-control" type="text" name="quant_colagens" /> <br /> <br />
@@ -93,12 +93,12 @@
 
                     </td>
                 </tr>
-                <tr>
+                <tr class="vertical">
                     <td class="fundo-tabela">
                         Colagem vertical na largura
                     </td>
                 </tr>
-                <tr>
+                <tr class="vertical">
                     <td>
                         Pode haver somente uma colagem no sentido da largura, com distância máxima de 40 cm da extremidade do colchão. <br /> <br />
                         Quantidades de colagens <input class="form-control" type="text" name="quant_colagens_dois" /> <br /> <br />
@@ -114,13 +114,13 @@
                 </tr>
             </table>
 
-            <table class="tables table-bordered border-secondary  table-sm tabela" class="tabela">
-                <tr id="tabela">
+            <table class="tables table-bordered border-secondary  table-sm tabela">
+                <tr class="colcao_composto">
                     <td rowspan="12"> 4.3</td>
                     <td class="fundo-tabela"> Colchão tipo composto </td>
                     <td rowspan="12"> NA </td>
                 </tr>
-                <tr>
+                <tr class="colcao_composto">
                     <td>
                         <strong> Colagem horizontal </strong> <br /> <br />
                         As colagens horizontais devem ocorrer entre as espumas de características diferentes, porém com espessura mínima de 3 cm.<br /> <br />
@@ -167,12 +167,12 @@
                         </table>
                     </td>
                 </tr>
-                <tr>
+                <tr class="colagem_largura">
                     <td class="fundo-tabela">
                         <strong> Colagem na largura </strong>
                     </td>
                 </tr>
-                <tr>
+                <tr class="colagem_largura">
                     <td>
                         Pode haver somente uma colagem no sentido da largura, com distância máxima de 40 cm da extremidade do colchão. <br /> <br />
                         Quantidades de colagens <input class="form-control" type="text" name="quant_colagens_tres" /> <br /> <br />
@@ -181,11 +181,11 @@
 
                     </td>
                 </tr>
-                <tr>
+                <tr class="colchao_comprimento">
                     <td class="fundo-tabela">
                         <strong> Colagem no comprimento </strong>
                     </td>
-                <tr>
+                <tr class="colchao_comprimento">
                     <td>
                         Pode ser utilizada uma colagem no sentido do comprimento, somente para colchão de casal,
                         utilizando-se espumas convecionais de densidades distintas, desde que não haja colagem na largura.
@@ -229,16 +229,20 @@
                         </select> <br /> <br />
                     </td>
                 </tr>
-                <tr>
+                <tr class="colchonete">
                     <td class="fundo-tabela"> Colchonete </td>
                 </tr>
-                <tr>
+                <tr class="colchonete">
                     <td>
                         Somente é permitada uma colagem na horizontal com espessura mínima de 3 cm. <br /> <br />
                         Quantidades de colagens  <input class="form-control" type="text" name="quant_colagens_cinco" /> <br /> <br />
                         Espessura da lâmina <input class="form-control" type="text" name="espessura_lamina" /> <br /> <br />
                     </td>
                 </tr>
+
+            </table>
+            <br />
+            <table class="tables table-bordered border-secondary  table-sm tabela">
                 <tr>
                     <td class="fundo-tabela"> Colagem com adesivos á base de solventes aromáticos </td>
                 </tr>
@@ -255,7 +259,6 @@
 
                 </tr>
             </table>
-            <br />
             <div class="d-grid gap-2 d-flex justify-content-center">
                 <button type="submit" value="SalvarEspuma4_3" class="btn btn-danger">Salvar Coleta </button>
             </div>
@@ -516,11 +519,58 @@
 
             tem_colchao.addEventListener('change', function () {
                 var dados = tem_colchao.value
-                var tabelaa = document.getElementById("tabela");
-                if (dados == "Não") {         
-                    tabelaa.style.display = 'none';
-                }else{
-                    tabelaa.style.display = 'table-row';
+                var colagem = document.getElementsByClassName("colagem");
+                var vertical = document.getElementsByClassName("vertical");
+                var colchao_composto = document.getElementsByClassName("colcao_composto");
+                var colchao_largura = document.getElementsByClassName("colagem_largura");
+                var colchao_comprimento = document.getElementsByClassName("colchao_comprimento");
+                var colchonete = document.getElementsByClassName("colchonete");
+
+
+                for (var i = 0; i < colagem.length; i++) {
+                    if (dados == "Não") {
+                        colagem[i].style.display = 'none';
+                    } else {
+                        colagem[i].style.display = 'table-row';
+                    }
+                }
+
+                for (var i = 0; i < vertical.length; i++) {
+                    if (dados == "Não") {
+                        vertical[i].style.display = 'none';
+                    } else {
+                        vertical[i].style.display = 'table-row';
+                    }
+                }
+
+                for (var i = 0; i < colchao_composto.length; i++) {
+                    if (dados == "Não") {
+                        colchao_composto[i].style.display = 'none';
+                    } else {
+                        colchao_composto[i].style.display = 'table-row';
+                    }
+                }
+                for (var i = 0; i < colchao_largura.length; i++) {
+                    if (dados == "Não") {
+                        colchao_largura[i].style.display = 'none';
+                    } else {
+                        colchao_largura[i].style.display = 'table-row';
+                    }
+                }
+
+                for (var i = 0; i < colchao_comprimento.length; i++) {
+                    if (dados == "Não") {
+                        colchao_comprimento[i].style.display = 'none';
+                    } else {
+                        colchao_comprimento[i].style.display = 'table-row';
+                    }
+                }
+                for (var i = 0; i < colchonete.length; i++) {
+                    if (dados == "Não") {
+                        colchonete[i].style.display = 'none';
+                    } else {
+                        colchonete[i].style.display = 'table-row';
+                    }
                 }
             });
         });

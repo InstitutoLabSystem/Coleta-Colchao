@@ -166,6 +166,8 @@ namespace Coleta_Colchao.Controllers
                 ViewBag.os = os;
                 ViewBag.orcamento = orcamento;
                 ViewBag.outrosMateriais = visualizarDados.outros_materia;
+                ViewBag.antiReflexo = visualizarDados.anti_reflexo;
+                ViewBag.tipoColchao = visualizarDados.tipo_colchao;
                 return View("Espuma/IdentificacaoEmbalagem", dados);
             }
             else
@@ -173,6 +175,8 @@ namespace Coleta_Colchao.Controllers
                 ViewBag.os = os;
                 ViewBag.orcamento = orcamento;
                 ViewBag.outrosMateriais = visualizarDados.outros_materia;
+                ViewBag.antiReflexo = visualizarDados.anti_reflexo;
+                ViewBag.tipoColchao = visualizarDados.tipo_colchao;
                 return View("Espuma/IdentificacaoEmbalagem");
             }
         }
@@ -826,6 +830,7 @@ namespace Coleta_Colchao.Controllers
                 string revestimento = salvarDados.revestimento;
                 string outros_materia = salvarDados.outros_materia;
 
+
                 _context.regtro_colchao_espuma.Add(salvarDados);
                 await _context.SaveChangesAsync();
                 TempData["Mensagem"] = "Dados Salvo Com Sucesso";
@@ -874,6 +879,7 @@ namespace Coleta_Colchao.Controllers
                     editarDados.densidade_5 = salvarDados.densidade_5;
                     editarDados.revestimento = salvarDados.revestimento;
                     editarDados.outros_materia = salvarDados.outros_materia;
+                    editarDados.anti_reflexo = salvarDados.anti_reflexo;
 
                     _context.regtro_colchao_espuma.Update(editarDados);
                     await _context.SaveChangesAsync();
@@ -1811,7 +1817,6 @@ namespace Coleta_Colchao.Controllers
                     float lamina_comp_oito = salvar.lamina_comp_oito;
                     float lamina_comp_nove = salvar.lamina_comp_nove;
                     float lamina_media_tres = ((lamina_comp_sete + lamina_comp_oito + lamina_comp_nove) / 3);
-
                     string lamina_tipo_tres = salvar.lamina_tipo_tres;
                     float lamina_min_tres = salvar.lamina_min_tres;
                     float lamina_max_tres = salvar.lamina_max_tres;
@@ -1890,7 +1895,7 @@ namespace Coleta_Colchao.Controllers
                     string col_tipo_dois = salvar.col_tipo_dois;
                     float col_lamina_dois = salvar.col_lamina_dois;
                     float col_especificado_dois = salvar.col_especificado_dois;
-                    float col_resul_dois = salvar.col_resul_dois;
+                    string col_resul_dois = salvar.col_resul_dois;
 
                     string reves_tipo_um = salvar.reves_tipo_um;
                     float reves_lamina_um = salvar.reves_lamina_um;
@@ -3439,7 +3444,7 @@ namespace Coleta_Colchao.Controllers
         public async Task<IActionResult> EspumaIdentificacaoEmbalagem(string os, string orcamento, [Bind("data_ini,data_term,temp_ini,temp_fim,etiquieta_um,etiquieta_um,fixacao,material,area_um,area_dois,area_result,etiquieta_dois,marca,dimensoes,info_altura,medidas,colchoes,tipo_colchao," +
             "letras,altura_letra_um,negrito_um,caixa_alta_um,coloracao_um,classificacao,uso,composicao,tipo_espuma,densidade_nominal,espessura_mad,comp_revestimento,data_fabricacao,pais_fabricacao,cuidados,aviso_um,altura_letra_dois,negrito_dois,caixa_alta_dois,coloracao_dois,esclarecimento_um," +
             "altura_letra_tres,negrito_tres,caixa_alta_tres,coloracao_eti,esclarecimento_dois,altura_letra_quat,negrito_quat,caixa_alta_quat,coloracao_quat,colchao_infantil,embalagem_colchao,aviso_embalagem_um,altura_letra_cinco,negrito_cinco,caixa_alta_cinco,coloracao_cinco,aviso_odor,aviso_embalagem_dois,altura_letra_seis,negrito_seis," +
-            "caixa_alta_seis,coloracao_seis,dec_voluntaria,texto_negrito,identificacao,identificacao_dois,desc_lamina,latex,embalagem_uni,embalagem_protecao,observacao,executador_um,executador_dois,executador_tres,executador_quat")] ColetaModel.Espuma_identificacao_embalagem salvar)
+            "caixa_alta_seis,coloracao_seis,dec_voluntaria,texto_negrito,identificacao,identificacao_dois,desc_lamina,latex,embalagem_uni,embalagem_protecao,observacao,visualizacao,lingua_portuguesa,executador_um,executador_dois,executador_tres,executador_quat")] ColetaModel.Espuma_identificacao_embalagem salvar)
         {
 
             try
@@ -3451,8 +3456,6 @@ namespace Coleta_Colchao.Controllers
                     //recebendo os valores do html
                     DateOnly data_ini = salvar.data_ini;
                     DateOnly data_term = salvar.data_term;
-                    string temp_ini = salvar.temp_ini;
-                    string temp_fim = salvar.temp_fim;
                     string etiquieta_um = salvar.etiquieta_um;
                     string fixacao = salvar.fixacao;
                     string material = salvar.material;
@@ -3524,6 +3527,8 @@ namespace Coleta_Colchao.Controllers
                     string embalagem_uni = salvar.embalagem_uni;
                     string embalagem_protecao = salvar.embalagem_protecao;
                     string observacao = salvar.observacao;
+                    string visualizacao = salvar.visualizacao;
+                    string lingua_portuguesa = salvar.lingua_portuguesa;
                     string executador_um = salvar.executador_um;
                     string executador_dois = salvar.executador_dois;
                     string executador_tres = salvar.executador_tres;
@@ -3536,8 +3541,6 @@ namespace Coleta_Colchao.Controllers
                         orcamento = orcamento,
                         data_ini = data_ini,
                         data_term = data_term,
-                        temp_ini = temp_ini,
-                        temp_fim = temp_fim,
                         etiquieta_um = etiquieta_um,
                         fixacao = fixacao,
                         material = material,
@@ -3603,6 +3606,8 @@ namespace Coleta_Colchao.Controllers
                         embalagem_uni = embalagem_uni,
                         embalagem_protecao = embalagem_protecao,
                         observacao = observacao,
+                        visualizacao = visualizacao,
+                        lingua_portuguesa = lingua_portuguesa,
                         executador_um = executador_um,
                         executador_dois = executador_dois,
                         executador_tres = executador_tres,
@@ -3621,8 +3626,6 @@ namespace Coleta_Colchao.Controllers
 
                     editarDados.data_ini = salvar.data_ini;
                     editarDados.data_term = salvar.data_term;
-                    editarDados.temp_ini = salvar.temp_ini;
-                    editarDados.temp_fim = salvar.temp_fim;
                     editarDados.etiquieta_um = salvar.etiquieta_um;
                     editarDados.fixacao = salvar.fixacao;
                     editarDados.material = salvar.material;
@@ -3692,6 +3695,8 @@ namespace Coleta_Colchao.Controllers
                     editarDados.embalagem_uni = salvar.embalagem_uni;
                     editarDados.embalagem_protecao = salvar.embalagem_protecao;
                     editarDados.observacao = salvar.observacao;
+                    editarDados.visualizacao = salvar.visualizacao;
+                    editarDados.lingua_portuguesa = salvar.lingua_portuguesa;
                     editarDados.executador_um = salvar.executador_um;
                     editarDados.executador_dois = salvar.executador_dois;
                     editarDados.executador_tres = salvar.executador_tres;
@@ -4471,6 +4476,15 @@ namespace Coleta_Colchao.Controllers
                 var editarDados = _context.ensaio_espuma_item_4_4.Where(x => x.os == os && x.orcamento == orcamento).FirstOrDefault();
                 if (editarDados == null)
                 {
+                    if (salvarDados.superior_horizontal == "Não" && salvarDados.inferior_horizontal == "Não")
+                    {
+                        salvarDados.conforme = "C";
+                    }
+                    else
+                    {
+                        salvarDados.conforme = "NC";
+                    }
+
                     _context.ensaio_espuma_item_4_4.Add(salvarDados);
                     await _context.SaveChangesAsync();
                     TempData["Mensagem"] = "Dados Salvo com sucesso.";
@@ -4482,6 +4496,15 @@ namespace Coleta_Colchao.Controllers
                     editarDados.data_term = salvarDados.data_term;
                     editarDados.superior_horizontal = salvarDados.superior_horizontal;
                     editarDados.inferior_horizontal = salvarDados.inferior_horizontal;
+
+                    if (editarDados.superior_horizontal == "Não" && editarDados.inferior_horizontal == "Não")
+                    {
+                        editarDados.conforme = "C";
+                    }
+                    else
+                    {
+                        editarDados.conforme = "NC";
+                    }
 
                     _context.Update(editarDados);
                     await _context.SaveChangesAsync();
