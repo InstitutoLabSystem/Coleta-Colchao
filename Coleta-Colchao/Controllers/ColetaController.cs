@@ -143,17 +143,20 @@ namespace Coleta_Colchao.Controllers
 
         public IActionResult EnsaioEspuma4_3(string os, string orcamento)
         {
+            var Inicial = _context.regtro_colchao_espuma.Where(x => x.os == os && x.orcamento == orcamento).FirstOrDefault();
             var dados = _context.ensaio_espuma4_3.Where(x => x.os == os && x.orcamento == orcamento).FirstOrDefault();
             if (dados != null)
             {
                 ViewBag.os = os;
                 ViewBag.orcamento = orcamento;
+                ViewBag.infantil = Inicial.tipo_colchao;
                 return View("Espuma/EnsaioEspuma4_3", dados);
             }
             else
             {
                 ViewBag.os = os;
                 ViewBag.orcamento = orcamento;
+                ViewBag.infantil = Inicial.tipo_colchao;
                 return View("Espuma/EnsaioEspuma4_3");
             }
         }
@@ -2785,7 +2788,7 @@ namespace Coleta_Colchao.Controllers
         [HttpPost]
         public async Task<IActionResult> SalvarEspuma4_3(string os, string orcamento, [Bind("data_ini,data_term,temp_ini,temp_fim,lamina_central,quant_colagens,colagens_densidade,espessura_nominal,espessura_central,porcentagem_enc,lamina_menor_esp,quant_colagens_dois," +
             "distancia_um,distancia_dois,colagens_comp,espuma,esp_lamina_um,esp_lamina_dois,esp_lamina_tres,esp_lamina_quat,esp_lamina_cinco,esp_lamina_seis,esp_lamina_sete,esp_lamina_oito,quant_colagens_tres,distancia_tres,distancia_quat,colchao_casal,colagem_comp,espuma_conv,espuma_densidade," +
-            "colagem_largura,quant_colagens_quat,localidade,quant_colagens_cinco,espessura_lamina,adesivo,cascas_superiores,cascas_inferiores,observacoes,executador_um,executador_dois,executador_tres,executador_quat")] ColetaModel.Espuma4_3 salvar)
+            "colagem_largura,quant_colagens_quat,localidade,quant_colagens_cinco,espessura_lamina,adesivo,tipo_ensaio")] ColetaModel.Espuma4_3 salvar)
         {
             try
             {
@@ -2829,7 +2832,9 @@ namespace Coleta_Colchao.Controllers
                     var quant_colagens_cinco = salvar.quant_colagens_cinco;
                     var espessura_lamina = salvar.espessura_lamina;
                     var adesivo = salvar.adesivo;
-     
+                    string tipo_ensaio = salvar.tipo_ensaio;
+
+
 
                     var salvardados = new ColetaModel.Espuma4_3
                     {
@@ -2870,7 +2875,8 @@ namespace Coleta_Colchao.Controllers
                         quant_colagens_cinco = quant_colagens_cinco,
                         espessura_lamina = espessura_lamina,
                         adesivo = adesivo,
-                   
+                        tipo_ensaio = tipo_ensaio
+
 
                     };
                     _context.Add(salvardados);
@@ -2915,7 +2921,9 @@ namespace Coleta_Colchao.Controllers
                     editarDados.quant_colagens_cinco = salvar.quant_colagens_cinco;
                     editarDados.espessura_lamina = salvar.espessura_lamina;
                     editarDados.adesivo = salvar.adesivo;
-               
+                    editarDados.tipo_ensaio = salvar.tipo_ensaio;
+
+
 
                     _context.Update(editarDados);
                     await _context.SaveChangesAsync();

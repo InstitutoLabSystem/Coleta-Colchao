@@ -30,7 +30,6 @@
             color: white;
         }
 
-
     </style>
 
 </head>
@@ -46,24 +45,24 @@
                             <input type="text" class="form-control col-md-12 " placeholder="Digite a Ordem De Serviço" aria-label="Recipient's username" aria-describedby="basic-addon2" name="os">
                             <div class="input-group-append  col-md-1">
                                 <button class="btn btn-primary " type="submit"> Pesquisar </button>
-                            </div>    
+                            </div>
                             @if (Model != null)
                             {
                                 <div class="input-group-append  col-sm-1 ml-3">
                                     <a role="button" target="_blank" class="btn btn-secondary" asp-controller="Coleta" asp-action="EnviarFotos" asp-route-os="@ViewBag.os" asp-route-orcamento="@ViewBag.orcamento">Imagens</a>
                                 </div>
                             }
-                        </div>       
+                        </div>
                     </div>
                 </div>
             </div>
         </form>
 
-     
+
 
         @if (Model != null)
         {
-           
+
             <div class="custom-container-wrapper mb-3">
                 <div class="form-row mt-4">
                     <table class="tables table-bordered table-striped  table-sm">
@@ -288,6 +287,23 @@
                                         </td>
                                     }
                                 }
+
+
+                                @if (Model[i].codigo == "DURCCH000000002")
+                                {
+                                    @if (ViewBag.Ensaio == "Espuma")
+
+                                    {
+                                        <td>
+                                            <a role="button" target="_blank" class="btn btn-success" asp-controller="Coleta" asp-action="EnsaioBaseEstruturaDurabi" asp-route-os="@Model[i].OS" asp-route-orcamento="@Model[i].orcamento">Abrir</a>
+                                        </td>
+                                        <td>
+                                            <a role="button" target="_blank" class="btn btn-success" asp-controller="Coleta" asp-action="EditarIndexEspuma" asp-route-os="@ViewBag.os" asp-route-orcamento="@ViewBag.orcamento">Informações</a>
+                                        </td>
+                                    }
+
+                                }
+
                                 @if (Model[i].codigo == "DNSCCH002000001")
                                 {
                                     @if (ViewBag.ensaio == "Molas")

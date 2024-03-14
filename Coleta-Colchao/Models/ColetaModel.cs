@@ -516,12 +516,14 @@ namespace Coleta_Colchao.Models
         public class Espuma4_3
         {
             [Key]
+            public int Id { get; set; }
             public string os { get; set; }
             public string orcamento { get; set; }
             public DateOnly data_ini { get; set; }
             public DateOnly data_term { get; set; }
 
             public string? lamina_central { get; set; }
+            public string? tipo_ensaio { get; set; }
             public string? quant_colagens { get; set; }
             public string? colagens_densidade { get; set; }
             public string? espessura_nominal { get; set; }
@@ -554,7 +556,7 @@ namespace Coleta_Colchao.Models
             public string? quant_colagens_cinco { get; set; }
             public string? espessura_lamina { get; set; }
             public string? adesivo { get; set; }
-
+           
         }
 
 

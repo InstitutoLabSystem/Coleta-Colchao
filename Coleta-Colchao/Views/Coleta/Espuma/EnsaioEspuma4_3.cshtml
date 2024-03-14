@@ -67,6 +67,20 @@
                         </select> <br /> <br />
                     </td>
                 </tr>
+                <tr>
+                    <td>
+                        Escolha o ensaio:
+                        <select class="form-control" id="tipo_ensaio" name="tipo_ensaio">
+                            <option> --- </option>
+                            <option>Colagem horizontal com peça inteira</option>
+                            <option>Colagem vertical na largura</option>
+                            <option>Colchão tipo composto</option>
+                            <option>Colagem na largura</option>
+                            <option>Colagem no comprimento</option>
+                            <option>Colchonete</option>
+                        </select>
+                    </td>
+                </tr>
                 <tr id="colagem" class="colagem">
                     <td class="fundo-tabela"> Colagem horizontal com peça inteira </td>
                 </tr>
@@ -242,28 +256,28 @@
 
             </table>
             <br />
-            <table class="tables table-bordered border-secondary  table-sm tabela">
-                <tr>
-                    <td class="fundo-tabela"> Colagem com adesivos á base de solventes aromáticos </td>
-                </tr>
-                <tr>
-                    <td>
-                        Não é permitido o uso de adesviso à base de solventes aromáticos em colchão infantil. <br /> <br />
-                        Possui adesivos à base de solventes aromáticos?
-                        <select class="form-control" name="adesivo">
-                            <option selected> --- </option>
-                            <option> Sim </option>
-                            <option> Não </option>
-                        </select> <br /> <br />
-                    </td>
-
-                </tr>
-            </table>
+            @if (ViewBag.infantil != "Colchão Infantil")
+            {
+                <table class="tables table-bordered border-secondary  table-sm tabela">
+                    <tr>
+                        <td class="fundo-tabela"> Colagem com adesivos á base de solventes aromáticos </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            Não é permitido o uso de adesviso à base de solventes aromáticos em colchão infantil. <br /> <br />
+                            Possui adesivos à base de solventes aromáticos?
+                            <select class="form-control" name="adesivo">
+                                <option selected> --- </option>
+                                <option> Sim </option>
+                                <option> Não </option>
+                            </select> <br /> <br />
+                        </td>
+                    </tr>
+                </table>
+            }
             <div class="d-grid gap-2 d-flex justify-content-center">
                 <button type="submit" value="SalvarEspuma4_3" class="btn btn-danger">Salvar Coleta </button>
             </div>
-
-
         }
         else
         {
@@ -304,7 +318,7 @@
                     <td>
                         <strong> Colchão tipo simples </strong> <br /> <br />
                         A lâmina colada sobre a lâmina central deve ser composta de uma única peça. <br />
-                        A lâmina central é composta por um uúnica peça?
+                        A lâmina central é composta por um única peça?
                         <select class="form-control" name="lamina_central">
                             <option selected> @Model.lamina_central </option>
                             <option> Sim </option>
@@ -313,212 +327,399 @@
                     </td>
                 </tr>
                 <tr>
-                    <td class="fundo-tabela"> Colagem horizontal com peça inteira </td>
-                </tr>
-                <tr>
                     <td>
-                        Pode haver no máximo duas colagens na horizontal, de mesma densidade. <br /> <br />
-                        Quantidades de colagens   <input class="form-control" type="text" name="quant_colagens" value="@Model.quant_colagens" /> <br /> <br />
-                        As colagens são de mesmas densidades
-                        <select class="form-control" name="colagens_densidade">
-                            <option selected> @Model.colagens_densidade </option>
-                            <option> Sim </option>
-                            <option> Não </option>
-                        </select> <br /> <br />
-                        A lâmina central deve ter no mínimo 50%  da espessura nominal do produto sem o revestimento <br /> <br />
-                        Espessura nominal do produto sem o revestimento
-                        <input class="form-control" type="text" name="espessura_nominal" value="@Model.espessura_nominal" /> <br /> <br />
-                        Espessura da lâmina central encontrado
-                        <input class="form-control" type="text" name="espessura_central" value="@Model.espessura_central" /> <br /> <br />
-                        Porcentagem encontrada
-                        <input class="form-control" type="text" name="porcentagem_enc" value="@Model.porcentagem_enc" /> <br /> <br />
-                        A menor lâmina do colchão ou colchonete deve ter no mínimo 3 cm de espessura.  <br /> <br />
-                        Espessura da menor lâmina
-                        <input class="form-control" type="text" name="lamina_menor_esp" value="@Model.lamina_menor_esp" /> <br /> <br />
+                        Escolha o ensaio:
+                        <select class="form-control" id="tipo_ensaio" name="tipo_ensaio">
+                            <option>@Model.tipo_ensaio</option>
+                            <option>Colagem horizontal com peça inteira</option>
+                            <option>Colagem vertical na largura</option>
+                            <option>Colchão tipo composto</option>
+                            <option>Colagem na largura</option>
+                            <option>Colagem no comprimento</option>
+                            <option>Colchonete</option>
+                        </select>
+                    </td>
+                </tr>
+                @if (Model.tipo_ensaio == "Colagem horizontal com peça inteira")
+                {
+                    <tr>
+                        <td class="fundo-tabela"> Colagem horizontal com peça inteira </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            Pode haver no máximo duas colagens na horizontal, de mesma densidade. <br /> <br />
+                            Quantidades de colagens   <input class="form-control" type="text" name="quant_colagens" value="@Model.quant_colagens" /> <br /> <br />
+                            As colagens são de mesmas densidades
+                            <select class="form-control" name="colagens_densidade">
+                                <option selected> @Model.colagens_densidade </option>
+                                <option> Sim </option>
+                                <option> Não </option>
+                            </select> <br /> <br />
+                            A lâmina central deve ter no mínimo 50%  da espessura nominal do produto sem o revestimento <br /> <br />
+                            Espessura nominal do produto sem o revestimento
+                            <input class="form-control" type="text" name="espessura_nominal" value="@Model.espessura_nominal" /> <br /> <br />
+                            Espessura da lâmina central encontrado
+                            <input class="form-control" type="text" name="espessura_central" value="@Model.espessura_central" /> <br /> <br />
+                            Porcentagem encontrada
+                            <input class="form-control" type="text" name="porcentagem_enc" value="@Model.porcentagem_enc" /> <br /> <br />
+                            A menor lâmina do colchão ou colchonete deve ter no mínimo 3 cm de espessura.  <br /> <br />
+                            Espessura da menor lâmina
+                            <input class="form-control" type="text" name="lamina_menor_esp" value="@Model.lamina_menor_esp" /> <br /> <br />
 
-                    </td>
-                </tr>
-                <tr>
-                    <td class="fundo-tabela">
-                        Colagem vertical na largura
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        Pode haver somente uma colagem no sentido da largura, com distância máxima de 40 cm da extremidade do colchão. <br /> <br />
-                        Quantidades de colagens
-                        <input class="form-control" type="text" name="quant_colagens_dois" value="@Model.quant_colagens_dois" /> <br /> <br />
-                        Distância da extremidade do colchão
-                        <input class="form-control" type="text" name="distancia_um" value="@Model.distancia_um" /> <br /> <br />
-                        Distância da extremidade do colchão
-                        <input class="form-control" type="text" name="distancia_dois" value="@Model.distancia_dois" /> <br /> <br />
-                        Não é permitido utilizar colagens no sentido do comprimento. <br /> <br />
-                        Possui colagens do sentido do comprimento?
-                        <select class="form-control" name="colagens_comp">
-                            <option selected> @Model.colagens_comp </option>
-                            <option> Sim </option>
-                            <option> Não </option>
-                        </select> <br /> <br />
-                    </td>
-                </tr>
+                        </td>
+                    </tr>
+                }
+                @if (Model.tipo_ensaio == "Colagem vertical na largura")
+                {
+                    <tr>
+                        <td class="fundo-tabela">
+                            Colagem vertical na largura
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            Pode haver somente uma colagem no sentido da largura, com distância máxima de 40 cm da extremidade do colchão. <br /> <br />
+                            Quantidades de colagens
+                            <input class="form-control" type="text" name="quant_colagens_dois" value="@Model.quant_colagens_dois" /> <br /> <br />
+                            Distância da extremidade do colchão
+                            <input class="form-control" type="text" name="distancia_um" value="@Model.distancia_um" /> <br /> <br />
+                            Distância da extremidade do colchão
+                            <input class="form-control" type="text" name="distancia_dois" value="@Model.distancia_dois" /> <br /> <br />
+                            Não é permitido utilizar colagens no sentido do comprimento. <br /> <br />
+                            Possui colagens do sentido do comprimento?
+                            <select class="form-control" name="colagens_comp">
+                                <option selected> @Model.colagens_comp </option>
+                                <option> Sim </option>
+                                <option> Não </option>
+                            </select> <br /> <br />
+                        </td>
+                    </tr>
+                }
             </table>
+
 
             <table class="tables table-bordered border-secondary  table-sm">
-                <tr>
-                    <td rowspan="12"> 4.3</td>
-                    <td class="fundo-tabela"> Colchão tipo composto </td>
-                    <td rowspan="12"> NA </td>
-                </tr>
-                <tr>
-                    <td>
-                        <strong> Colagem horizontal </strong> <br /> <br />
-                        As colagens horizontais devem ocorrer entre as espumas de características diferentes, porém com espessura mínima de 3 cm.<br /> <br />
-                        Ocorrem entre as espumas de características diferente?
-                        <select class="form-control" name="espuma">
-                            <option selected> @Model.espuma </option>
-                            <option> Sim </option>
-                            <option> Não </option>
-                        </select> <br /> <br />
+                @if (Model.tipo_ensaio == "Colchão tipo composto")
+                {
+                    <tr>
+                        <td rowspan="12"> 4.3</td>
+                        <td class="fundo-tabela"> Colchão tipo composto </td>
+                        <td rowspan="12"> NA </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <strong> Colagem horizontal </strong> <br /> <br />
+                            As colagens horizontais devem ocorrer entre as espumas de características diferentes, porém com espessura mínima de 3 cm.<br /> <br />
+                            Ocorrem entre as espumas de características diferente?
+                            <select class="form-control" name="espuma">
+                                <option selected> @Model.espuma </option>
+                                <option> Sim </option>
+                                <option> Não </option>
+                            </select> <br /> <br />
 
-                        <table class="tables table-bordered border-secondary  table-sm">
-                            <tr>
-                                <td class="fundo-tabela"> Espessura da lâmina </td>
-                                <td> <input class="form-control" type="text" name="esp_lamina_um" value="@Model.esp_lamina_um" /> </td>
-                            </tr>
-                            <tr>
-                                <td class="fundo-tabela"> Espessura da lâmina </td>
-                                <td> <input class="form-control" type="text" name="esp_lamina_dois" value="@Model.esp_lamina_dois" /> </td>
-                            </tr>
-                            <tr>
-                                <td class="fundo-tabela"> Espessura da lâmina </td>
-                                <td> <input class="form-control" type="text" name="esp_lamina_tres" value="@Model.esp_lamina_tres" /> </td>
-                            </tr>
-                            <tr>
-                                <td class="fundo-tabela"> Espessura da lâmina </td>
-                                <td> <input class="form-control" type="text" name="esp_lamina_quat" value="@Model.esp_lamina_quat" /> </td>
-                            </tr>
-                            <tr>
-                                <td class="fundo-tabela"> Espessura da lâmina </td>
-                                <td> <input class="form-control" type="text" name="esp_lamina_cinco" value="@Model.esp_lamina_cinco" /> </td>
-                            </tr>
-                            <tr>
-                                <td class="fundo-tabela"> Espessura da lâmina </td>
-                                <td> <input class="form-control" type="text" name="esp_lamina_seis" value="@Model.esp_lamina_seis" /> </td>
-                            </tr>
-                            <tr>
-                                <td class="fundo-tabela"> Espessura da lâmina </td>
-                                <td> <input class="form-control" type="text" name="esp_lamina_sete" value="@Model.esp_lamina_sete" /> </td>
-                            </tr>
-                            <tr>
-                                <td class="fundo-tabela"> Espessura da lâmina </td>
-                                <td> <input class="form-control" type="text" name="esp_lamina_oito" value="@Model.esp_lamina_oito" /> </td>
-                            </tr>
-                        </table>
-                    </td>
-                </tr>
-                <tr>
-                    <td class="fundo-tabela">
-                        <strong> Colagem na largura </strong>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        Pode haver somente uma colagem no sentido da largura, com distância máxima de 40 cm da extremidade do colchão. <br /> <br />
-                        Quantidades de colagens <input class="form-control" type="text" name="quant_colagens_tres" value="@Model.quant_colagens_tres" /> <br /> <br />
-                        Distância da extremidade do colchão <input class="form-control" type="text" name="distancia_tres" value="@Model.distancia_tres" /> <br /> <br />
-                        Distância da extremidade do colchão  <input class="form-control" type="text" name="distancia_quat" value="@Model.distancia_quat" /> <br /> <br />
+                            <table class="tables table-bordered border-secondary  table-sm">
+                                <tr>
+                                    <td class="fundo-tabela"> Espessura da lâmina </td>
+                                    <td> <input class="form-control" type="text" name="esp_lamina_um" value="@Model.esp_lamina_um" /> </td>
+                                </tr>
+                                <tr>
+                                    <td class="fundo-tabela"> Espessura da lâmina </td>
+                                    <td> <input class="form-control" type="text" name="esp_lamina_dois" value="@Model.esp_lamina_dois" /> </td>
+                                </tr>
+                                <tr>
+                                    <td class="fundo-tabela"> Espessura da lâmina </td>
+                                    <td> <input class="form-control" type="text" name="esp_lamina_tres" value="@Model.esp_lamina_tres" /> </td>
+                                </tr>
+                                <tr>
+                                    <td class="fundo-tabela"> Espessura da lâmina </td>
+                                    <td> <input class="form-control" type="text" name="esp_lamina_quat" value="@Model.esp_lamina_quat" /> </td>
+                                </tr>
+                                <tr>
+                                    <td class="fundo-tabela"> Espessura da lâmina </td>
+                                    <td> <input class="form-control" type="text" name="esp_lamina_cinco" value="@Model.esp_lamina_cinco" /> </td>
+                                </tr>
+                                <tr>
+                                    <td class="fundo-tabela"> Espessura da lâmina </td>
+                                    <td> <input class="form-control" type="text" name="esp_lamina_seis" value="@Model.esp_lamina_seis" /> </td>
+                                </tr>
+                                <tr>
+                                    <td class="fundo-tabela"> Espessura da lâmina </td>
+                                    <td> <input class="form-control" type="text" name="esp_lamina_sete" value="@Model.esp_lamina_sete" /> </td>
+                                </tr>
+                                <tr>
+                                    <td class="fundo-tabela"> Espessura da lâmina </td>
+                                    <td> <input class="form-control" type="text" name="esp_lamina_oito" value="@Model.esp_lamina_oito" /> </td>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+                }
+                @if (Model.tipo_ensaio == "Colagem na largura")
+                {
+                    <tr>
+                        <td class="fundo-tabela">
+                            <strong> Colagem na largura </strong>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            Pode haver somente uma colagem no sentido da largura, com distância máxima de 40 cm da extremidade do colchão. <br /> <br />
+                            Quantidades de colagens <input class="form-control" type="text" name="quant_colagens_tres" value="@Model.quant_colagens_tres" /> <br /> <br />
+                            Distância da extremidade do colchão <input class="form-control" type="text" name="distancia_tres" value="@Model.distancia_tres" /> <br /> <br />
+                            Distância da extremidade do colchão  <input class="form-control" type="text" name="distancia_quat" value="@Model.distancia_quat" /> <br /> <br />
 
-                    </td>
-                </tr>
-                <tr>
-                    <td class="fundo-tabela">
-                        <strong> Colagem no comprimento </strong>
-                    </td>
-                <tr>
-                    <td>
-                        Pode ser utilizada uma colagem no sentido do comprimento, somente para colchão de casal,
-                        utilizando-se espumas convecionais de densidades distintas, desde que não haja colagem na largura.
-                        Esta colagem deve ser localizada no centro do colchão. <br /> <br />
-                        O colchão é de casal
-                        <select class="form-control" name="colchao_casal">
-                            <option selected> @Model.colchao_casal </option>
-                            <option> Sim </option>
-                            <option> Não </option>
-                        </select> <br /> <br />
-                        Possuí colagem no sentido do comprimento?
-                        <select class="form-control" name="colagem_comp">
-                            <option selected> @Model.colagem_comp </option>
-                            <option> Sim </option>
-                            <option> Não </option>
-                        </select> <br /> <br />
-                        A espuma é convencional
-                        <select class="form-control" name="espuma_conv">
-                            <option selected> @Model.espuma_conv </option>
-                            <option> Sim </option>
-                            <option> Não </option>
-                        </select> <br /> <br />
-                        As espumas possuem densidades distintas
-                        <select class="form-control" name="espuma_densidade">
-                            <option selected> @Model.espuma_densidade </option>
-                            <option> Sim </option>
-                            <option> Não </option>
-                        </select> <br /> <br />
-                        Possui colagem na largura
-                        <select class="form-control" name="colagem_largura">
-                            <option selected> @Model.colagem_largura </option>
-                            <option> Sim </option>
-                            <option> Não </option>
-                        </select> <br /> <br />
-                        Quantidades de colagens <input class="form-control" type="text" name="quant_colagens_quat" value="@Model.quant_colagens_quat" /> <br /> <br />
-                        A colagem está localizada no centro do colchão?
-                        <select class="form-control" name="localidade">
-                            <option selected> @Model.localidade </option>
-                            <option> Sim </option>
-                            <option> Não </option>
-                        </select> <br /> <br />
-                    </td>
-                </tr>
-                <tr>
-                    <td class="fundo-tabela"> Colchonete </td>
-                </tr>
-                <tr>
-                    <td>
-                        Somente é permitada uma colagem na horizontal com espessura mínima de 3 cm. <br /> <br />
-                        Quantidades de colagens  <input class="form-control" type="text" name="quant_colagens_cinco" value="@Model.quant_colagens_cinco" /> <br /> <br />
-                        Espessura da lâmina <input class="form-control" type="text" name="espessura_lamina" value="@Model.espessura_lamina" /> <br /> <br />
-                    </td>
-                </tr>
-                <tr>
-                    <td class="fundo-tabela"> Colagem com adesivos á base de solventes aromáticos </td>
-                </tr>
-                <tr>
-                    <td>
-                        Não é permitido o uso de adesviso à base de solventes aromáticos em colchão infantil. <br /> <br />
-                        Possui adesivos à base de solventes aromáticos?
-                        <select class="form-control" name="adesivo" value="@Model.adesivo">
-                            <option selected> @Model.adesivo </option>
-                            <option> Sim </option>
-                            <option> Não </option>
-                        </select> <br /> <br />
-                    </td>
-
-                </tr>
+                        </td>
+                    </tr>
+                }
+                @if (Model.tipo_ensaio == "Colagem no comprimento")
+                {
+                    <tr>
+                        <td class="fundo-tabela">
+                            <strong> Colagem no comprimento </strong>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            Pode ser utilizada uma colagem no sentido do comprimento, somente para colchão de casal,
+                            utilizando-se espumas convecionais de densidades distintas, desde que não haja colagem na largura.
+                            Esta colagem deve ser localizada no centro do colchão. <br /> <br />
+                            O colchão é de casal
+                            <select class="form-control" name="colchao_casal">
+                                <option selected> @Model.colchao_casal </option>
+                                <option> Sim </option>
+                                <option> Não </option>
+                            </select> <br /> <br />
+                            Possuí colagem no sentido do comprimento?
+                            <select class="form-control" name="colagem_comp">
+                                <option selected> @Model.colagem_comp </option>
+                                <option> Sim </option>
+                                <option> Não </option>
+                            </select> <br /> <br />
+                            A espuma é convencional
+                            <select class="form-control" name="espuma_conv">
+                                <option selected> @Model.espuma_conv </option>
+                                <option> Sim </option>
+                                <option> Não </option>
+                            </select> <br /> <br />
+                            As espumas possuem densidades distintas
+                            <select class="form-control" name="espuma_densidade">
+                                <option selected> @Model.espuma_densidade </option>
+                                <option> Sim </option>
+                                <option> Não </option>
+                            </select> <br /> <br />
+                            Possui colagem na largura
+                            <select class="form-control" name="colagem_largura">
+                                <option selected> @Model.colagem_largura </option>
+                                <option> Sim </option>
+                                <option> Não </option>
+                            </select> <br /> <br />
+                            Quantidades de colagens <input class="form-control" type="text" name="quant_colagens_quat" value="@Model.quant_colagens_quat" /> <br /> <br />
+                            A colagem está localizada no centro do colchão?
+                            <select class="form-control" name="localidade">
+                                <option selected> @Model.localidade </option>
+                                <option> Sim </option>
+                                <option> Não </option>
+                            </select> <br /> <br />
+                        </td>
+                    </tr>
+                }
+                @if (Model.tipo_ensaio == "Colchonete")
+                {
+                    <tr>
+                        <td class="fundo-tabela"> Colchonete </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            Somente é permitada uma colagem na horizontal com espessura mínima de 3 cm. <br /> <br />
+                            Quantidades de colagens  <input class="form-control" type="text" name="quant_colagens_cinco" value="@Model.quant_colagens_cinco" /> <br /> <br />
+                            Espessura da lâmina <input class="form-control" type="text" name="espessura_lamina" value="@Model.espessura_lamina" /> <br /> <br />
+                        </td>
+                    </tr>
+                }
             </table>
+            <br />
+            @if (ViewBag.infantil != "Colchão Infantil")
+            {
+                <table class="tables table-bordered border-secondary  table-sm">
+                    <tr>
+                        <td class="fundo-tabela"> Colagem com adesivos á base de solventes aromáticos </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            Não é permitido o uso de adesviso à base de solventes aromáticos em colchão infantil. <br /> <br />
+                            Possui adesivos à base de solventes aromáticos?
+                            <select class="form-control" name="adesivo" value="@Model.adesivo">
+                                <option selected> @Model.adesivo </option>
+                                <option> Sim </option>
+                                <option> Não </option>
+                            </select> <br /> <br />
+                        </td>
+                    </tr>
+                </table>
+            }
             <br />
             <div class="d-grid gap-2 d-flex justify-content-center">
                 <button type="submit" value="SalvarEspuma4_3" class="btn btn-danger">Editar Coleta </button>
             </div>
-
         }
     </form>
 
     <script>
+        var colagem = document.getElementsByClassName("colagem");
+        var vertical = document.getElementsByClassName("vertical");
+        var colchao_composto = document.getElementsByClassName("colcao_composto");
+        var colchao_largura = document.getElementsByClassName("colagem_largura");
+        var colchao_comprimento = document.getElementsByClassName("colchao_comprimento");
+        var colchonete = document.getElementsByClassName("colchonete");
+
+        var tem_colchao = document.getElementById("tem_colchao");
+        var dados = tem_colchao.value
+
+        console.log(dados);
+
+        for (var i = 0; i < colagem.length; i++) {
+            if (dados == "Não" || dados == "---") {
+                colagem[i].style.display = 'none';
+            } else {
+                colagem[i].style.display = 'table-row';
+            }
+        }
+        for (var i = 0; i < vertical.length; i++) {
+            if (dados == "Não" || dados == "---") {
+                vertical[i].style.display = 'none';
+            } else {
+                vertical[i].style.display = 'table-row';
+            }
+        }
+
+        for (var i = 0; i < colchao_composto.length; i++) {
+            if (dados == "Não" || dados == "---") {
+                colchao_composto[i].style.display = 'none';
+            } else {
+                colchao_composto[i].style.display = 'table-row';
+            }
+        }
+        for (var i = 0; i < colchao_largura.length; i++) {
+            if (dados == "Não" || dados == "---") {
+                colchao_largura[i].style.display = 'none';
+            } else {
+                colchao_largura[i].style.display = 'table-row';
+            }
+        }
+
+        for (var i = 0; i < colchao_comprimento.length; i++) {
+            if (dados == "Não" || dados == "---") {
+                colchao_comprimento[i].style.display = 'none';
+            } else {
+                colchao_comprimento[i].style.display = 'table-row';
+            }
+        }
+        for (var i = 0; i < colchonete.length; i++) {
+            if (dados == "Não" || dados == "---") {
+                colchonete[i].style.display = 'none';
+            } else {
+                colchonete[i].style.display = 'table-row';
+            }
+        }
+
         document.addEventListener("DOMContentLoaded", function () {
             var tem_colchao = document.getElementById("tem_colchao");
+            var tipo_ensaio = document.getElementById("tipo_ensaio");
+            var dados = tem_colchao.value
 
+            tipo_ensaio.addEventListener('change', function () {
+
+                var colagem = document.getElementsByClassName("colagem");
+                var vertical = document.getElementsByClassName("vertical");
+                var colchao_composto = document.getElementsByClassName("colcao_composto");
+                var colchao_largura = document.getElementsByClassName("colagem_largura");
+                var colchao_comprimento = document.getElementsByClassName("colchao_comprimento");
+                var colchonete = document.getElementsByClassName("colchonete");
+                var tipo_ensaio_value = tipo_ensaio.value
+                console.log(tipo_ensaio_value);
+
+                for (var i = 0; i < colagem.length; i++) {
+                    if (dados == "Não" || dados == "---") {
+                        colagem[i].style.display = 'none';
+                    } else {
+                        colagem[i].style.display = 'table-row';
+                    }
+                    if (tipo_ensaio_value == "Colagem horizontal com peça inteira") {
+                        colagem[i].style.display = 'table-row';
+                    } else {
+                        colagem[i].style.display = 'none';
+                    }
+                }
+
+                for (var i = 0; i < vertical.length; i++) {
+                    if (dados == "Não" || dados == "---") {
+                        vertical[i].style.display = 'none';
+                    } else {
+                        vertical[i].style.display = 'table-row';
+                    }
+                    if (tipo_ensaio_value == "Colagem vertical na largura") {
+                        vertical[i].style.display = 'table-row';
+                    } else {
+                        vertical[i].style.display = 'none';
+                    }
+                }
+
+                for (var i = 0; i < colchao_composto.length; i++) {
+                    if (dados == "Não" || dados == "---") {
+                        colchao_composto[i].style.display = 'none';
+                    } else {
+                        colchao_composto[i].style.display = 'table-row';
+                    }
+                    if (tipo_ensaio_value == "Colchão tipo composto") {
+                        colchao_composto[i].style.display = 'table-row';
+                    } else {
+                        colchao_composto[i].style.display = 'none';
+                    }
+                }
+
+                for (var i = 0; i < colchao_largura.length; i++) {
+                    if (dados == "Não" || dados == "---") {
+                        colchao_largura[i].style.display = 'none';
+                    } else {
+                        colchao_largura[i].style.display = 'table-row';
+                    }
+                    if (tipo_ensaio_value == "Colagem na largura") {
+                        colchao_largura[i].style.display = 'table-row';
+                    } else {
+                        colchao_largura[i].style.display = 'none';
+                    }
+                }
+                for (var i = 0; i < colchao_comprimento.length; i++) {
+                    if (dados == "Não" || dados == "---") {
+                        colchao_comprimento[i].style.display = 'none';
+                    } else {
+                        colchao_comprimento[i].style.display = 'table-row';
+                    }
+                    if (tipo_ensaio_value == "Colagem no comprimento") {
+                        colchao_comprimento[i].style.display = 'table-row';
+                    } else {
+                        colchao_comprimento[i].style.display = 'none';
+                    }
+                }
+
+                for (var i = 0; i < colchonete.length; i++) {
+                    if (dados == "Não" || dados == "---") {
+                        colchonete[i].style.display = 'none';
+                    } else {
+                        colchonete[i].style.display = 'table-row';
+                    }
+                    if (tipo_ensaio_value == "Colchonete") {
+                        colchonete[i].style.display = 'table-row';
+                    } else {
+                        colchonete[i].style.display = 'none';
+                    }
+                }
+
+            });
 
             tem_colchao.addEventListener('change', function () {
                 var dados = tem_colchao.value
+
                 var colagem = document.getElementsByClassName("colagem");
                 var vertical = document.getElementsByClassName("vertical");
                 var colchao_composto = document.getElementsByClassName("colcao_composto");
@@ -528,51 +729,40 @@
 
 
                 for (var i = 0; i < colagem.length; i++) {
-                    if (dados == "Não") {
+                    if (dados == "Não" || dados == "---" || dados == "Sim") {
                         colagem[i].style.display = 'none';
-                    } else {
-                        colagem[i].style.display = 'table-row';
-                    }
+                    } 
                 }
 
                 for (var i = 0; i < vertical.length; i++) {
-                    if (dados == "Não") {
+                    if (dados == "Não" || dados == "---" || dados == "Sim") {
                         vertical[i].style.display = 'none';
-                    } else {
-                        vertical[i].style.display = 'table-row';
-                    }
+                    } 
                 }
 
                 for (var i = 0; i < colchao_composto.length; i++) {
-                    if (dados == "Não") {
+                    if (dados == "Não" || dados == "---" || dados == "Sim") {
                         colchao_composto[i].style.display = 'none';
-                    } else {
-                        colchao_composto[i].style.display = 'table-row';
-                    }
+                    } 
                 }
                 for (var i = 0; i < colchao_largura.length; i++) {
-                    if (dados == "Não") {
+                    if (dados == "Não" || dados == "---" || dados == "Sim") {
                         colchao_largura[i].style.display = 'none';
-                    } else {
-                        colchao_largura[i].style.display = 'table-row';
-                    }
+                    } 
                 }
 
                 for (var i = 0; i < colchao_comprimento.length; i++) {
-                    if (dados == "Não") {
+                    if (dados == "Não" || dados == "---" || dados == "Sim") {
                         colchao_comprimento[i].style.display = 'none';
-                    } else {
-                        colchao_comprimento[i].style.display = 'table-row';
-                    }
+                    } 
                 }
                 for (var i = 0; i < colchonete.length; i++) {
-                    if (dados == "Não") {
+                    if (dados == "Não" || dados == "---" || dados == "Sim") {
                         colchonete[i].style.display = 'none';
-                    } else {
-                        colchonete[i].style.display = 'table-row';
-                    }
+                    } 
                 }
             });
+
         });
     </script>
 
