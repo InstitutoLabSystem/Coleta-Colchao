@@ -639,6 +639,13 @@ namespace Coleta_Colchao.Models
             public string? executador_dois { get; set; }
             public string? executador_tres { get; set; }
             public string? executador_quat { get; set; }
+            public string? conforme_inicial { get; set; }
+            public string? conforme_letras { get; set; }
+            public string? conforme_letras_dois { get; set; }
+            public string? conforme_infantil { get; set; }
+            public string? conforme_2_14_2 { get; set; }
+            public string? conforme_2_14_3 { get; set; }
+            public string? conforme6_2 { get; set; }
 
         }
 

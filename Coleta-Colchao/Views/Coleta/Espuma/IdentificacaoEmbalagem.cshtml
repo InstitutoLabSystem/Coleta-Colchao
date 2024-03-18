@@ -15,10 +15,11 @@
     <link rel="stylesheet" href="~/css/coleta.css" asp-append-version="true" />
     <title>Coleta</title>
     <style>
-        input{
-            text-align:center;
+        input {
+            text-align: center;
         }
-        select{
+
+        select {
             text-align: center;
         }
     </style>
@@ -60,7 +61,7 @@
                 <tr>
                     <td rowspan="45"> 2 </td>
                     <td class="fundo-tabela"> Identificação </td>
-                    <td rowspan="9"> conforme 1  </td>
+                    <td rowspan="9">   </td>
                 </tr>
                 <tr>
                     <td>
@@ -143,7 +144,7 @@
                             <option> Não </option>
                         </select>
                     </td>
-                    <td rowspan="12"> conforme2 </td>
+                    <td rowspan="12"> </td>
                 </tr>
                 <tr>
                     <td>
@@ -172,15 +173,15 @@
                 {
                     <tr>
                         <td>
-                        Nota c.1) No caso de colchão box conjugado (unibox), deve ser incluída a informação da altura do produto sem os pés,
-                        como também da altura dos pés isoladamente.
-                        <select class="controlador" name="info_altura">
-                            <option selected> --- </option>
-                            <option> Sim </option>
-                            <option> Não </option>
-                        </select>
-                    </td>
-                </tr>
+                            Nota c.1) No caso de colchão box conjugado (unibox), deve ser incluída a informação da altura do produto sem os pés,
+                            como também da altura dos pés isoladamente.
+                            <select class="controlador" name="info_altura">
+                                <option selected> --- </option>
+                                <option> Sim </option>
+                                <option> Não </option>
+                            </select>
+                        </td>
+                    </tr>
                 }
                 <tr>
                     <td>
@@ -197,16 +198,16 @@
                 {
                     <tr>
                         <td>
-                        Nota c.3) No caso de colchões e colchonetes antirrefluxo, as dimensões devem ser declaradas da seguinte forma:
-                        altura menor /altura maior, comprimento, largura, nesta ordem:
+                            Nota c.3) No caso de colchões e colchonetes antirrefluxo, as dimensões devem ser declaradas da seguinte forma:
+                            altura menor /altura maior, comprimento, largura, nesta ordem:
 
-                        <select class="controlador" name="colchoes">
-                            <option selected> --- </option>
-                            <option> Sim </option>
-                            <option> Não </option>
-                        </select>
-                    </td>
-                </tr>
+                            <select class="controlador" name="colchoes">
+                                <option selected> --- </option>
+                                <option> Sim </option>
+                                <option> Não </option>
+                            </select>
+                        </td>
+                    </tr>
                 }
                 <tr>
                     <td>
@@ -313,6 +314,7 @@
                             <option> Não </option>
                         </select>
                     </td>
+                    <td rowspan="14"></td>
                 </tr>
                 <tr>
                     <td>
@@ -325,8 +327,10 @@
                         </select>
                     </td>
                 </tr>
-                <tr>
-                    <td>
+                @if (ViewBag.tipLamina == "Colchão misto")
+                {
+                    <tr>
+                        <td>
                         j) Espessura da madeira/compensado/chapa dura/ou outro material com funções similares,
                         incluindo identificação inequívoca destes materiais, para o caso de colchão misto;
                         <select class="controlador" name="espessura_mad">
@@ -336,6 +340,7 @@
                         </select>
                     </td>
                 </tr>
+                }
                 <tr>
                     <td>
                         k) Composição do revestimento: tecido (composição percentual); espuma (densidade) e outros materiais <br /> <br />
@@ -491,7 +496,7 @@
                         </table>
                     </td>
                 </tr>
-                @if (ViewBag.outrosMateriais == "Couvin" || ViewBag.outrosMateriais == "Plástico")
+                @if (ViewBag.outrosMateriais == "Couvin" || ViewBag.outrosMateriais == "Plástico" || ViewBag.outrosMateriais == "Napa")
                 {
                     <tr>
                         <td>
@@ -551,81 +556,8 @@
                         </table>
                     </td>
                 </tr>
-                <tr>
-                    <td>
-                        2.11  Colchão infantil é aquele destinado, exclusivamente, para utilização em berços.
-                        <br /><br /><select class="controlador" name="colchao_infantil">
-                            <option selected> --- </option>
-                            <option> Sim </option>
-                            <option> Não </option>
-                        </select>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        2.11.1  A  embalagem  do  colchão  infantil  deve  apresentar  o  seguinte  aviso:
-                        “ATENÇÃO:  DEVEM, OBRIGATORIAMENTE, SER OBSERVADAS AS RESTRIÇÕES QUANTO ÀS DIMENSÕES DESTE COLCHÃO CONSTANTES
-                        NAS  INSTRUÇÕES  DE  USO  DO  BERÇO  EM  QUE  SERÁ  UTILIZADO.  AS  DIMENSÕES ESPECIFICADAS  PELO  FABRICANTE  DO  BERÇO
-                        NÃO  PODEM  PERMITIR  A  FORMAÇÃO  DE  ESPAÇO MAIOR QUE 30,0 mm (3,0 cm) ENTRE AS LATERAIS OU EXTREMIDADES DO BERÇO E O COLCHÃO.”
-                        <br /><br /><select class="controlador" name="embalagem_colchao">
-                            <option selected> --- </option>
-                            <option> Sim </option>
-                            <option> Não </option>
-                        </select>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        2.11.2  O  aviso  na  embalagem  deve  ser  apresentado  em  letras  não  inferiores  a  20  mm
-                        de  altura, em negrito, caixa alta e em coloração que se destaque da cor de fundo da embalagem
-                        <br /><br /><select class="controlador" name="aviso_embalagem_um">
-                            <option selected> --- </option>
-                            <option> Sim </option>
-                            <option> Não </option>
-                        </select>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <table class="tables table-bordered border-secondary  table-sm">
-                            <tr>
-                                <td class="fundo-tabela"> Altura da letra </td>
-                                <td> <input class="form-control" type="text" name="altura_letra_cinco" /> </td>
-                            </tr>
-                            <tr>
-                                <td class="fundo-tabela"> Está em negrito </td>
-                                <td>
-                                    <select class="form-control" name="negrito_cinco">
-                                        <option selected> --- </option>
-                                        <option> Sim </option>
-                                        <option> Não </option>
-                                    </select>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td class="fundo-tabela"> Está em caixa alta </td>
-                                <td>
-                                    <select class="form-control" name="caixa_alta_cinco">
-                                        <option selected> --- </option>
-                                        <option> Sim </option>
-                                        <option> Não </option>
-                                    </select>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td class="fundo-tabela"> Está em coloração que se destaque da cor do fundo da etiqueta </td>
-                                <td>
-                                    <select class="form-control" name="coloracao_cinco">
-                                        <option selected> --- </option>
-                                        <option> Sim </option>
-                                        <option> Não </option>
-                                    </select>
-                                </td>
-                            </tr>
-                        </table>
-                    </td>
-                </tr>
             </table>
+
 
             <table class="tables table-bordered border-secondary  table-sm">
                 <tr class="fundo-tabela">
@@ -634,130 +566,211 @@
                     <td>Resultado</td>
                 </tr>
                 <tr>
-                    <td rowspan="12"> 2 </td>
+                    <td rowspan="20"> 2 </td>
                     <td class="fundo-tabela"> Identificação </td>
-                    <td rowspan="12"> NA </td>
+                   
                 </tr>
-                <tr>
-                    <td>
-                        2.12  Para  os  colchões  e  colchonetes  que  apresentem  resíduos  das  matérias  primas  ou  adesivos, não  nocivos,  entretanto  com  odor  característico
-                        persistente,  a  embalagem  deve  apresentar  o seguinte aviso:  “ATENÇÃO: ESTE PRODUTO PERMANECEU EM LOCAL AREJADO PARA DISSIPAÇÃO DOS VAPORES VOLÁTEIS,
-                        ANTES DE SER EMBALADO. AINDA ASSIM, RECOMENDA-SE QUE DESEMBALE O PRODUTO E DEIXE-O POR (X HORAS) EM LOCAL AREJADO, ANTES DO USO".
-                        <select class="controlador" name="aviso_odor">
-                            <option selected> --- </option>
-                            <option> Sim </option>
-                            <option> Não </option>
-                        </select>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        2.12.1  O  aviso  na  embalagem  deve  ser  apresentado  em  letras  não  inferiores  a  20  mm  de  altura,
-                        em negrito, caixa alta e em coloração que se destaque da cor de fundo da embalagem
-                        <select class="controlador" name="aviso_embalagem_dois">
-                            <option selected>---</option>
-                            <option> Sim </option>
-                            <option> Não </option>
-                        </select>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <table class="tables table-bordered border-secondary  table-sm">
-                            <tr>
-                                <td class="fundo-tabela"> Altura da letra </td>
-                                <td> <input class="form-control" type="text" name="altura_letra_seis" /> </td>
-                            </tr>
-                            <tr>
-                                <td class="fundo-tabela"> Está em negrito </td>
-                                <td>
-                                    <select class="form-control" name="negrito_seis">
-                                        <option selected> --- </option>
-                                        <option> Sim </option>
-                                        <option> Não </option>
-                                    </select>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td class="fundo-tabela"> Está em caixa alta </td>
-                                <td>
-                                    <select class="form-control" name="caixa_alta_seis">
-                                        <option selected> --- </option>
-                                        <option> Sim </option>
-                                        <option> Não </option>
-                                    </select>
-                                </td>
-                            </tr>
-                        </table>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
+                @if (ViewBag.tipLamina == "Colchão infantil")
+                {
+                    <tr>
+                        <td>
+                            2.11  Colchão infantil é aquele destinado, exclusivamente, para utilização em berços.
+                            <br /><br /><select class="controlador" name="colchao_infantil">
+                                <option selected> --- </option>
+                                <option> Sim </option>
+                                <option> Não </option>
+                            </select>
+                        </td>
+                        <td rowspan="20"></td>
+                    </tr>
+                    <tr>
+                        <td>
+                            2.11.1  A  embalagem  do  colchão  infantil  deve  apresentar  o  seguinte  aviso:
+                            “ATENÇÃO:  DEVEM, OBRIGATORIAMENTE, SER OBSERVADAS AS RESTRIÇÕES QUANTO ÀS DIMENSÕES DESTE COLCHÃO CONSTANTES
+                            NAS  INSTRUÇÕES  DE  USO  DO  BERÇO  EM  QUE  SERÁ  UTILIZADO.  AS  DIMENSÕES ESPECIFICADAS  PELO  FABRICANTE  DO  BERÇO
+                            NÃO  PODEM  PERMITIR  A  FORMAÇÃO  DE  ESPAÇO MAIOR QUE 30,0 mm (3,0 cm) ENTRE AS LATERAIS OU EXTREMIDADES DO BERÇO E O COLCHÃO.”
+                            <br /><br /><select class="controlador" name="embalagem_colchao">
+                                <option selected> --- </option>
+                                <option> Sim </option>
+                                <option> Não </option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            2.11.2  O  aviso  na  embalagem  deve  ser  apresentado  em  letras  não  inferiores  a  20  mm
+                            de  altura, em negrito, caixa alta e em coloração que se destaque da cor de fundo da embalagem
+                            <br /><br /><select class="controlador" name="aviso_embalagem_um">
+                                <option selected> --- </option>
+                                <option> Sim </option>
+                                <option> Não </option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <table class="tables table-bordered border-secondary  table-sm">
+                                <tr>
+                                    <td class="fundo-tabela"> Altura da letra </td>
+                                    <td> <input class="form-control" type="text" name="altura_letra_cinco" /> </td>
+                                </tr>
+                                <tr>
+                                    <td class="fundo-tabela"> Está em negrito </td>
+                                    <td>
+                                        <select class="form-control" name="negrito_cinco">
+                                            <option selected> --- </option>
+                                            <option> Sim </option>
+                                            <option> Não </option>
+                                        </select>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="fundo-tabela"> Está em caixa alta </td>
+                                    <td>
+                                        <select class="form-control" name="caixa_alta_cinco">
+                                            <option selected> --- </option>
+                                            <option> Sim </option>
+                                            <option> Não </option>
+                                        </select>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="fundo-tabela"> Está em coloração que se destaque da cor do fundo da etiqueta </td>
+                                    <td>
+                                        <select class="form-control" name="coloracao_cinco">
+                                            <option selected> --- </option>
+                                            <option> Sim </option>
+                                            <option> Não </option>
+                                        </select>
+                                    </td>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            2.12  Para  os  colchões  e  colchonetes  que  apresentem  resíduos  das  matérias  primas  ou  adesivos, não  nocivos,  entretanto  com  odor  característico
+                            persistente,  a  embalagem  deve  apresentar  o seguinte aviso:  “ATENÇÃO: ESTE PRODUTO PERMANECEU EM LOCAL AREJADO PARA DISSIPAÇÃO DOS VAPORES VOLÁTEIS,
+                            ANTES DE SER EMBALADO. AINDA ASSIM, RECOMENDA-SE QUE DESEMBALE O PRODUTO E DEIXE-O POR (X HORAS) EM LOCAL AREJADO, ANTES DO USO".
+                            <select class="controlador" name="aviso_odor">
+                                <option selected> --- </option>
+                                <option> Sim </option>
+                                <option> Não </option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            2.12.1  O  aviso  na  embalagem  deve  ser  apresentado  em  letras  não  inferiores  a  20  mm  de  altura,
+                            em negrito, caixa alta e em coloração que se destaque da cor de fundo da embalagem
+                            <select class="controlador" name="aviso_embalagem_dois">
+                                <option selected>---</option>
+                                <option> Sim </option>
+                                <option> Não </option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <table class="tables table-bordered border-secondary  table-sm">
+                                <tr>
+                                    <td class="fundo-tabela"> Altura da letra </td>
+                                    <td> <input class="form-control" type="text" name="altura_letra_seis" /> </td>
+                                </tr>
+                                <tr>
+                                    <td class="fundo-tabela"> Está em negrito </td>
+                                    <td>
+                                        <select class="form-control" name="negrito_seis">
+                                            <option selected> --- </option>
+                                            <option> Sim </option>
+                                            <option> Não </option>
+                                        </select>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="fundo-tabela"> Está em caixa alta </td>
+                                    <td>
+                                        <select class="form-control" name="caixa_alta_seis">
+                                            <option selected> --- </option>
+                                            <option> Sim </option>
+                                            <option> Não </option>
+                                        </select>
+                                    </td>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
 
-                        Está em coloração que se destaque da cor do fundo da etiqueta:
-                        <input class="controlador" type="text" name="coloracao_seis" />
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        2.13  No  caso  de  declaração  voluntária  do fornecedor  sobre  funcionalidades  dos  colchões  mistos,
-                        as instruções de uso ou de informações ao usuário (manual do produto) devem incluir o seguinte texto:
-                        “As  características  sobre  as  funcionalidades  descritas  a  seguir  não  foram  avaliadas  pelo processo de certificação do produto.”<br /> <br />
-                        <select class="controlador" name="dec_voluntaria">
-                            <option selected> --- </option>
-                            <option> Sim </option>
-                            <option> Não </option>
-                        </select>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        2.13.1 O texto deve ser em negrito, com o mesmo formato e tamanho de letra da utilizada ndescrição
-                        e em todos os locais onde se descrevam tais funcionalidades.
-                        <select class="controlador" name="texto_negrito">
-                            <option selected> --- </option>
-                            <option> Sim </option>
-                            <option> Não </option>
-                        </select>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        2.14 Não  é  permitida  a  identificação  de  qualquer  família,  marca,  modelo  ou  nome  de  colchão ou colchonete,
-                        da utilização de quaisquer termos e características diferentes dos de sua constituição real.
-                        <select class="controlador" name="identificacao">
-                            <option selected> --- </option>
-                            <option> Sim </option>
-                            <option> Não </option>
-                        </select>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        2.14.1 É proibido identificar qualquer família, marca, modelo ou nome de colchão ou colchonete  com  numeral  cardinal  e/ou  ordinal,
-                        acompanhado  ou  não  da  letra  “D”,  divergente da(s)  densidade(s)  nominal(is)  apresentada(s)  pela(s)  lâmina(s)  de  espuma(s)
-                        que  constitui(em)  o colchão  ou  colchonete,  exceto  quando  o  numeral  apresentar  mais  que  4  (dígitos),
-                        evitando qualquer  confusão  quanto  à  densidade  do  colchão,  ou  ao  atendimento  a  normas  de  gestão consagradas.
-                        <select class="contralador" name="identificacao_dois">
-                            <option selected> --- </option>
-                            <option> Sim </option>
-                            <option> Não </option>
-                        </select>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        2.14.2 O requisito estabelecido no subitem anterior aplica-se, também, aos colchões compostos  e/ou  mistos,
-                        cujo  conjunto  de  lâminas  e  estrutura  podem  apresentar  características equivalentes  a  um  colchão  simples  com  densidade  nominal  superior.
-                        Nestes  casos,  todas  as lâminas  de  espuma  devem  ter  suas  densidades  nominais  e  espessuras  devidamente  descritas, individualmente,
-                        na  etiqueta  do  colchão,  não  sendo  possível,  na  designação  do  produto,  dar destaque à densidade específica de uma determinada lâmina.
-                        <select class="controlador" name="desc_lamina">
-                            <option selected> --- </option>
-                            <option> Sim </option>
-                            <option> Não </option>
-                        </select> <br /> <br />
-                    </td>
-                </tr>
+                            Está em coloração que se destaque da cor do fundo da etiqueta:
+                            <input class="controlador" type="text" name="coloracao_seis" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            2.13  No  caso  de  declaração  voluntária  do fornecedor  sobre  funcionalidades  dos  colchões  mistos,
+                            as instruções de uso ou de informações ao usuário (manual do produto) devem incluir o seguinte texto:
+                            “As  características  sobre  as  funcionalidades  descritas  a  seguir  não  foram  avaliadas  pelo processo de certificação do produto.”<br /> <br />
+                            <select class="controlador" name="dec_voluntaria">
+                                <option selected> --- </option>
+                                <option> Sim </option>
+                                <option> Não </option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            2.13.1 O texto deve ser em negrito, com o mesmo formato e tamanho de letra da utilizada ndescrição
+                            e em todos os locais onde se descrevam tais funcionalidades.
+                            <select class="controlador" name="texto_negrito">
+                                <option selected> --- </option>
+                                <option> Sim </option>
+                                <option> Não </option>
+                            </select>
+                        </td>
+                    </tr>                 
+                        <tr>
+                            <td>
+                            2.14 Não  é  permitida  a  identificação  de  qualquer  família,  marca,  modelo  ou  nome  de  colchão ou colchonete,
+                            da utilização de quaisquer termos e características diferentes dos de sua constituição real.
+                            <select class="controlador" name="identificacao">
+                                <option selected> --- </option>
+                                <option> Sim </option>
+                                <option> Não </option>
+                            </select>
+                        </td>
+                    </tr>             
+                    <tr>
+                        <td>
+                            2.14.1 É proibido identificar qualquer família, marca, modelo ou nome de colchão ou colchonete  com  numeral  cardinal  e/ou  ordinal,
+                            acompanhado  ou  não  da  letra  “D”,  divergente da(s)  densidade(s)  nominal(is)  apresentada(s)  pela(s)  lâmina(s)  de  espuma(s)
+                            que  constitui(em)  o colchão  ou  colchonete,  exceto  quando  o  numeral  apresentar  mais  que  4  (dígitos),
+                            evitando qualquer  confusão  quanto  à  densidade  do  colchão,  ou  ao  atendimento  a  normas  de  gestão consagradas.
+                            <select class="contralador" name="identificacao_dois">
+                                <option selected> --- </option>
+                                <option> Sim </option>
+                                <option> Não </option>
+                            </select>
+                        </td>
+                    </tr>
+                }
+                @if (ViewBag.tipLamina == "Colchão misto" || ViewBag.tipLamina == "Composto")
+                {
+                    <tr>
+                        <td>
+                            2.14.2 O requisito estabelecido no subitem anterior aplica-se, também, aos colchões compostos  e/ou  mistos,
+                            cujo  conjunto  de  lâminas  e  estrutura  podem  apresentar  características equivalentes  a  um  colchão  simples  com  densidade  nominal  superior.
+                            Nestes  casos,  todas  as lâminas  de  espuma  devem  ter  suas  densidades  nominais  e  espessuras  devidamente  descritas, individualmente,
+                            na  etiqueta  do  colchão,  não  sendo  possível,  na  designação  do  produto,  dar destaque à densidade específica de uma determinada lâmina.
+                            <select class="controlador" name="desc_lamina">
+                                <option selected> --- </option>
+                                <option> Sim </option>
+                                <option> Não </option>
+                            </select> <br /> <br />
+                        </td>
+                    </tr>
+                }
                 @if (ViewBag.outrosMateriais == "Lâmina  Latex")
                 {
                     <tr>
@@ -772,15 +785,15 @@
                         </td>
                     </tr>
                 }
-
             </table>
+
             <br />
 
             <table class="tables table-bordered border-secondary  table-sm">
                 <tr>
                     <td rowspan="12"> 6.2 </td>
                     <td class="fundo-tabela"> Embalagem</td>
-                    <td rowspan="12"> NA </td>
+                    <td rowspan="12"></td>
                 </tr>
                 <tr>
                     <td>
@@ -914,7 +927,7 @@
                 <tr>
                     <td rowspan="45"> 2 </td>
                     <td class="fundo-tabela"> Identificação </td>
-                    <td rowspan="16">  </td>
+                    <td rowspan="9"> @Model.conforme_inicial </td>
                 </tr>
                 <tr>
                     <td>
@@ -997,6 +1010,7 @@
                             <option> Não </option>
                         </select>
                     </td>
+                    <td rowspan="12"> @Model.conforme_letras </td>
                 </tr>
                 <tr>
                     <td>
@@ -1025,15 +1039,15 @@
                 {
                     <tr>
                         <td>
-                        Nota c.1) No caso de colchão box conjugado (unibox), deve ser incluída a informação da altura do produto sem os pés,
-                        como também da altura dos pés isoladamente.
-                        <select class="controlador" name="info_altura">
-                            <option selected>@Model.info_altura </option>
-                            <option> Sim </option>
-                            <option> Não </option>
-                        </select>
-                    </td>
-                </tr>
+                            Nota c.1) No caso de colchão box conjugado (unibox), deve ser incluída a informação da altura do produto sem os pés,
+                            como também da altura dos pés isoladamente.
+                            <select class="controlador" name="info_altura">
+                                <option selected>@Model.info_altura </option>
+                                <option> Sim </option>
+                                <option> Não </option>
+                            </select>
+                        </td>
+                    </tr>
                 }
                 <tr>
                     <td>
@@ -1050,16 +1064,16 @@
                 {
                     <tr>
                         <td>
-                        Nota c.3) No caso de colchões e colchonetes antirrefluxo, as dimensões devem ser declaradas da seguinte forma:
-                        altura menor /altura maior, comprimento, largura, nesta ordem:
+                            Nota c.3) No caso de colchões e colchonetes antirrefluxo, as dimensões devem ser declaradas da seguinte forma:
+                            altura menor /altura maior, comprimento, largura, nesta ordem:
 
-                        <select class="controlador" name="colchoes">
-                            <option selected> @Model.colchoes </option>
-                            <option> Sim </option>
-                            <option> Não </option>
-                        </select>
-                    </td>
-                </tr>
+                            <select class="controlador" name="colchoes">
+                                <option selected> @Model.colchoes </option>
+                                <option> Sim </option>
+                                <option> Não </option>
+                            </select>
+                        </td>
+                    </tr>
                 }
                 <tr>
                     <td>
@@ -1178,17 +1192,20 @@
                         </select>
                     </td>
                 </tr>
-                <tr>
-                    <td>
-                        j) Espessura da madeira/compensado/chapa dura/ou outro material com funções similares,
-                        incluindo identificação inequívoca destes materiais, para o caso de colchão misto;
-                        <select class="controlador" name="espessura_mad">
-                            <option selected> @Model.espessura_mad </option>
-                            <option> Sim </option>
-                            <option> Não </option>
-                        </select>
-                    </td>
-                </tr>
+                @if (ViewBag.tipLamina == "Colchão misto")
+                {
+                    <tr>
+                        <td>
+                            j) Espessura da madeira/compensado/chapa dura/ou outro material com funções similares,
+                            incluindo identificação inequívoca destes materiais, para o caso de colchão misto;
+                            <select class="controlador" name="espessura_mad">
+                                <option selected> @Model.espessura_mad </option>
+                                <option> Sim </option>
+                                <option> Não </option>
+                            </select>
+                        </td>
+                    </tr>
+                }
                 <tr>
                     <td>
                         k) Composição do revestimento: tecido (composição percentual); espuma (densidade) e outros materiais <br /> <br />
@@ -1344,7 +1361,7 @@
                         </table>
                     </td>
                 </tr>
-                @if (ViewBag.outrosMateriais == "Couvin" || ViewBag.outrosMateriais == "Plástico")
+                @if (ViewBag.outrosMateriais == "Couvin" || ViewBag.outrosMateriais == "Plástico" || ViewBag.outrosMateriais == "Napa")
                 {
                     <tr>
                         <td>
@@ -1404,80 +1421,7 @@
                         </table>
                     </td>
                 </tr>
-                <tr>
-                    <td>
-                        2.11  Colchão infantil é aquele destinado, exclusivamente, para utilização em berços.
-                        <br /><br /><select class="controlador" name="colchao_infantil">
-                            <option selected> @Model.colchao_infantil </option>
-                            <option> Sim </option>
-                            <option> Não </option>
-                        </select>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        2.11.1  A  embalagem  do  colchão  infantil  deve  apresentar  o  seguinte  aviso:
-                        “ATENÇÃO:  DEVEM, OBRIGATORIAMENTE, SER OBSERVADAS AS RESTRIÇÕES QUANTO ÀS DIMENSÕES DESTE COLCHÃO CONSTANTES
-                        NAS  INSTRUÇÕES  DE  USO  DO  BERÇO  EM  QUE  SERÁ  UTILIZADO.  AS  DIMENSÕES ESPECIFICADAS  PELO  FABRICANTE  DO  BERÇO
-                        NÃO  PODEM  PERMITIR  A  FORMAÇÃO  DE  ESPAÇO MAIOR QUE 30,0 mm (3,0 cm) ENTRE AS LATERAIS OU EXTREMIDADES DO BERÇO E O COLCHÃO.”
-                        <br /><br /><select class="controlador" name="embalagem_colchao">
-                            <option selected> @Model.embalagem_colchao </option>
-                            <option> Sim </option>
-                            <option> Não </option>
-                        </select>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        2.11.2  O  aviso  na  embalagem  deve  ser  apresentado  em  letras  não  inferiores  a  20  mm
-                        de  altura, em negrito, caixa alta e em coloração que se destaque da cor de fundo da embalagem
-                        <select class="controlador" name="aviso_embalagem_um">
-                            <option selected> @Model.aviso_embalagem_um </option>
-                            <option> Sim </option>
-                            <option> Não </option>
-                        </select>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <table class="tables table-bordered border-secondary  table-sm">
-                            <tr>
-                                <td class="fundo-tabela"> Altura da letra </td>
-                                <td> <input class="form-control" type="text" name="altura_letra_cinco" value="@Model.altura_letra_cinco" /> </td>
-                            </tr>
-                            <tr>
-                                <td class="fundo-tabela"> Está em negrito </td>
-                                <td>
-                                    <select class="form-control" name="negrito_cinco">
-                                        <option selected> @Model.negrito_cinco </option>
-                                        <option> Sim </option>
-                                        <option> Não </option>
-                                    </select>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td class="fundo-tabela"> Está em caixa alta </td>
-                                <td>
-                                    <select class="form-control" name="caixa_alta_cinco">
-                                        <option selected> @Model.caixa_alta_cinco </option>
-                                        <option> Sim </option>
-                                        <option> Não </option>
-                                    </select>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td class="fundo-tabela"> Está em coloração que se destaque da cor do fundo da etiqueta </td>
-                                <td>
-                                    <select class="form-control" name="coloracao_cinco">
-                                        <option selected> @Model.coloracao_cinco </option>
-                                        <option> Sim </option>
-                                        <option> Não </option>
-                                    </select>
-                                </td>
-                            </tr>
-                        </table>
-                    </td>
-                </tr>
+
             </table>
 
             <table class="tables table-bordered border-secondary  table-sm">
@@ -1487,130 +1431,212 @@
                     <td>Resultado</td>
                 </tr>
                 <tr>
-                    <td rowspan="12"> 2 </td>
+                    <td rowspan="20"> 2 </td>
                     <td class="fundo-tabela"> Identificação </td>
-                    <td rowspan="12"> NA </td>
+                    
                 </tr>
-                <tr>
-                    <td>
-                        2.12  Para  os  colchões  e  colchonetes  que  apresentem  resíduos  das  matérias  primas  ou  adesivos, não  nocivos,  entretanto  com  odor  característico
-                        persistente,  a  embalagem  deve  apresentar  o seguinte aviso:  “ATENÇÃO: ESTE PRODUTO PERMANECEU EM LOCAL AREJADO PARA DISSIPAÇÃO DOS VAPORES VOLÁTEIS,
-                        ANTES DE SER EMBALADO. AINDA ASSIM, RECOMENDA-SE QUE DESEMBALE O PRODUTO E DEIXE-O POR (X HORAS) EM LOCAL AREJADO, ANTES DO USO".
-                        <select class="controlador" name="aviso_odor">
-                            <option selected> @Model.aviso_odor </option>
-                            <option> Sim </option>
-                            <option> Não </option>
-                        </select>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        2.12.1  O  aviso  na  embalagem  deve  ser  apresentado  em  letras  não  inferiores  a  20  mm  de  altura,
-                        em negrito, caixa alta e em coloração que se destaque da cor de fundo da embalagem
-                        <select class="controlador" name="aviso_embalagem_dois">
-                            <option selected>@Model.aviso_embalagem_dois</option>
-                            <option> Sim </option>
-                            <option> Não </option>
-                        </select>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <table class="tables table-bordered border-secondary  table-sm">
-                            <tr>
-                                <td class="fundo-tabela"> Altura da letra </td>
-                                <td> <input class="form-control" type="text" name="altura_letra_seis" value="@Model.altura_letra_seis" /> </td>
-                            </tr>
-                            <tr>
-                                <td class="fundo-tabela"> Está em negrito </td>
-                                <td>
-                                    <select class="form-control" name="negrito_seis">
-                                        <option selected> @Model.negrito_seis </option>
-                                        <option> Sim </option>
-                                        <option> Não </option>
-                                    </select>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td class="fundo-tabela"> Está em caixa alta </td>
-                                <td>
-                                    <select class="form-control" name="caixa_alta_seis">
-                                        <option selected> @Model.caixa_alta_seis </option>
-                                        <option> Sim </option>
-                                        <option> Não </option>
-                                    </select>
-                                </td>
-                            </tr>
-                        </table>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
+                @if (ViewBag.tipLamina == "Colchão infantil")
+                {
+                    <tr>
+                        <td>
+                            2.11  Colchão infantil é aquele destinado, exclusivamente, para utilização em berços.
+                            <br /><br /><select class="controlador" name="colchao_infantil">
+                                <option selected> @Model.colchao_infantil </option>
+                                <option> Sim </option>
+                                <option> Não </option>
+                            </select>
+                        </td>
+                        <td rowspan="20"> @Model.conforme_infantil </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            2.11.1  A  embalagem  do  colchão  infantil  deve  apresentar  o  seguinte  aviso:
+                            “ATENÇÃO:  DEVEM, OBRIGATORIAMENTE, SER OBSERVADAS AS RESTRIÇÕES QUANTO ÀS DIMENSÕES DESTE COLCHÃO CONSTANTES
+                            NAS  INSTRUÇÕES  DE  USO  DO  BERÇO  EM  QUE  SERÁ  UTILIZADO.  AS  DIMENSÕES ESPECIFICADAS  PELO  FABRICANTE  DO  BERÇO
+                            NÃO  PODEM  PERMITIR  A  FORMAÇÃO  DE  ESPAÇO MAIOR QUE 30,0 mm (3,0 cm) ENTRE AS LATERAIS OU EXTREMIDADES DO BERÇO E O COLCHÃO.”
+                            <br /><br /><select class="controlador" name="embalagem_colchao">
+                                <option selected> @Model.embalagem_colchao </option>
+                                <option> Sim </option>
+                                <option> Não </option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            2.11.2  O  aviso  na  embalagem  deve  ser  apresentado  em  letras  não  inferiores  a  20  mm
+                            de  altura, em negrito, caixa alta e em coloração que se destaque da cor de fundo da embalagem
+                            <select class="controlador" name="aviso_embalagem_um">
+                                <option selected> @Model.aviso_embalagem_um </option>
+                                <option> Sim </option>
+                                <option> Não </option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <table class="tables table-bordered border-secondary  table-sm">
+                                <tr>
+                                    <td class="fundo-tabela"> Altura da letra </td>
+                                    <td> <input class="form-control" type="text" name="altura_letra_cinco" value="@Model.altura_letra_cinco" /> </td>
+                                </tr>
+                                <tr>
+                                    <td class="fundo-tabela"> Está em negrito </td>
+                                    <td>
+                                        <select class="form-control" name="negrito_cinco">
+                                            <option selected> @Model.negrito_cinco </option>
+                                            <option> Sim </option>
+                                            <option> Não </option>
+                                        </select>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="fundo-tabela"> Está em caixa alta </td>
+                                    <td>
+                                        <select class="form-control" name="caixa_alta_cinco">
+                                            <option selected> @Model.caixa_alta_cinco </option>
+                                            <option> Sim </option>
+                                            <option> Não </option>
+                                        </select>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="fundo-tabela"> Está em coloração que se destaque da cor do fundo da etiqueta </td>
+                                    <td>
+                                        <select class="form-control" name="coloracao_cinco">
+                                            <option selected> @Model.coloracao_cinco </option>
+                                            <option> Sim </option>
+                                            <option> Não </option>
+                                        </select>
+                                    </td>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            2.12  Para  os  colchões  e  colchonetes  que  apresentem  resíduos  das  matérias  primas  ou  adesivos, não  nocivos,  entretanto  com  odor  característico
+                            persistente,  a  embalagem  deve  apresentar  o seguinte aviso:  “ATENÇÃO: ESTE PRODUTO PERMANECEU EM LOCAL AREJADO PARA DISSIPAÇÃO DOS VAPORES VOLÁTEIS,
+                            ANTES DE SER EMBALADO. AINDA ASSIM, RECOMENDA-SE QUE DESEMBALE O PRODUTO E DEIXE-O POR (X HORAS) EM LOCAL AREJADO, ANTES DO USO".
+                            <select class="controlador" name="aviso_odor">
+                                <option selected> @Model.aviso_odor </option>
+                                <option> Sim </option>
+                                <option> Não </option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            2.12.1  O  aviso  na  embalagem  deve  ser  apresentado  em  letras  não  inferiores  a  20  mm  de  altura,
+                            em negrito, caixa alta e em coloração que se destaque da cor de fundo da embalagem
+                            <select class="controlador" name="aviso_embalagem_dois">
+                                <option selected>@Model.aviso_embalagem_dois</option>
+                                <option> Sim </option>
+                                <option> Não </option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <table class="tables table-bordered border-secondary  table-sm">
+                                <tr>
+                                    <td class="fundo-tabela"> Altura da letra </td>
+                                    <td> <input class="form-control" type="text" name="altura_letra_seis" value="@Model.altura_letra_seis" /> </td>
+                                </tr>
+                                <tr>
+                                    <td class="fundo-tabela"> Está em negrito </td>
+                                    <td>
+                                        <select class="form-control" name="negrito_seis">
+                                            <option selected> @Model.negrito_seis </option>
+                                            <option> Sim </option>
+                                            <option> Não </option>
+                                        </select>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="fundo-tabela"> Está em caixa alta </td>
+                                    <td>
+                                        <select class="form-control" name="caixa_alta_seis">
+                                            <option selected> @Model.caixa_alta_seis </option>
+                                            <option> Sim </option>
+                                            <option> Não </option>
+                                        </select>
+                                    </td>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
 
-                        Está em coloração que se destaque da cor do fundo da etiqueta:
-                        <input class="controlador" type="text" name="coloracao_seis" value="@Model.coloracao_seis" />
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        2.13  No  caso  de  declaração  voluntária  do fornecedor  sobre  funcionalidades  dos  colchões  mistos,
-                        as instruções de uso ou de informações ao usuário (manual do produto) devem incluir o seguinte texto:
-                        “As  características  sobre  as  funcionalidades  descritas  a  seguir  não  foram  avaliadas  pelo processo de certificação do produto.”<br /> <br />
-                        <select class="controlador" name="dec_voluntaria">
-                            <option selected> @Model.dec_voluntaria </option>
-                            <option> Sim </option>
-                            <option> Não </option>
-                        </select>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        2.13.1 O texto deve ser em negrito, com o mesmo formato e tamanho de letra da utilizada ndescrição
-                        e em todos os locais onde se descrevam tais funcionalidades.
-                        <select class="controlador" name="texto_negrito">
-                            <option selected> @Model.texto_negrito </option>
-                            <option> Sim </option>
-                            <option> Não </option>
-                        </select>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        2.14 Não  é  permitida  a  identificação  de  qualquer  família,  marca,  modelo  ou  nome  de  colchão ou colchonete,
-                        da utilização de quaisquer termos e características diferentes dos de sua constituição real.
-                        <select class="controlador" name="identificacao">
-                            <option selected> @Model.identificacao </option>
-                            <option> Sim </option>
-                            <option> Não </option>
-                        </select>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        2.14.1 É proibido identificar qualquer família, marca, modelo ou nome de colchão ou colchonete  com  numeral  cardinal  e/ou  ordinal,
-                        acompanhado  ou  não  da  letra  “D”,  divergente da(s)  densidade(s)  nominal(is)  apresentada(s)  pela(s)  lâmina(s)  de  espuma(s)
-                        que  constitui(em)  o colchão  ou  colchonete,  exceto  quando  o  numeral  apresentar  mais  que  4  (dígitos),
-                        evitando qualquer  confusão  quanto  à  densidade  do  colchão,  ou  ao  atendimento  a  normas  de  gestão consagradas.
-                        <select class="contralador" name="identificacao_dois">
-                            <option selected> @Model.identificacao_dois </option>
-                            <option> Sim </option>
-                            <option> Não </option>
-                        </select>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        2.14.2 O requisito estabelecido no subitem anterior aplica-se, também, aos colchões compostos  e/ou  mistos,
-                        cujo  conjunto  de  lâminas  e  estrutura  podem  apresentar  características equivalentes  a  um  colchão  simples  com  densidade  nominal  superior.
-                        Nestes  casos,  todas  as lâminas  de  espuma  devem  ter  suas  densidades  nominais  e  espessuras  devidamente  descritas, individualmente,
-                        na  etiqueta  do  colchão,  não  sendo  possível,  na  designação  do  produto,  dar destaque à densidade específica de uma determinada lâmina.
-                        <select class="controlador" name="desc_lamina">
-                            <option selected> @Model.desc_lamina </option>
-                            <option> Sim </option>
-                            <option> Não </option>
-                        </select> <br /> <br />
-                    </td>
-                </tr>
+                            Está em coloração que se destaque da cor do fundo da etiqueta:
+                            <input class="controlador" type="text" name="coloracao_seis" value="@Model.coloracao_seis" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            2.13  No  caso  de  declaração  voluntária  do fornecedor  sobre  funcionalidades  dos  colchões  mistos,
+                            as instruções de uso ou de informações ao usuário (manual do produto) devem incluir o seguinte texto:
+                            “As  características  sobre  as  funcionalidades  descritas  a  seguir  não  foram  avaliadas  pelo processo de certificação do produto.”<br /> <br />
+                            <select class="controlador" name="dec_voluntaria">
+                                <option selected> @Model.dec_voluntaria </option>
+                                <option> Sim </option>
+                                <option> Não </option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            2.13.1 O texto deve ser em negrito, com o mesmo formato e tamanho de letra da utilizada ndescrição
+                            e em todos os locais onde se descrevam tais funcionalidades.
+                            <select class="controlador" name="texto_negrito">
+                                <option selected> @Model.texto_negrito </option>
+                                <option> Sim </option>
+                                <option> Não </option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            2.14 Não  é  permitida  a  identificação  de  qualquer  família,  marca,  modelo  ou  nome  de  colchão ou colchonete,
+                            da utilização de quaisquer termos e características diferentes dos de sua constituição real.
+                            <select class="controlador" name="identificacao">
+                                <option selected> @Model.identificacao </option>
+                                <option> Sim </option>
+                                <option> Não </option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            2.14.1 É proibido identificar qualquer família, marca, modelo ou nome de colchão ou colchonete  com  numeral  cardinal  e/ou  ordinal,
+                            acompanhado  ou  não  da  letra  “D”,  divergente da(s)  densidade(s)  nominal(is)  apresentada(s)  pela(s)  lâmina(s)  de  espuma(s)
+                            que  constitui(em)  o colchão  ou  colchonete,  exceto  quando  o  numeral  apresentar  mais  que  4  (dígitos),
+                            evitando qualquer  confusão  quanto  à  densidade  do  colchão,  ou  ao  atendimento  a  normas  de  gestão consagradas.
+                            <select class="contralador" name="identificacao_dois">
+                                <option selected> @Model.identificacao_dois </option>
+                                <option> Sim </option>
+                                <option> Não </option>
+                            </select>
+                        </td>
+                    </tr>
+                }
+                @if (ViewBag.tipLamina == "Colchão misto" || ViewBag.tipLamina == "Composto")
+                {
+
+                    <tr>
+                        <td>
+                            2.14.2 O requisito estabelecido no subitem anterior aplica-se, também, aos colchões compostos  e/ou  mistos,
+                            cujo  conjunto  de  lâminas  e  estrutura  podem  apresentar  características equivalentes  a  um  colchão  simples  com  densidade  nominal  superior.
+                            Nestes  casos,  todas  as lâminas  de  espuma  devem  ter  suas  densidades  nominais  e  espessuras  devidamente  descritas, individualmente,
+                            na  etiqueta  do  colchão,  não  sendo  possível,  na  designação  do  produto,  dar destaque à densidade específica de uma determinada lâmina.
+                            <select class="controlador" name="desc_lamina">
+                                <option selected> @Model.desc_lamina </option>
+                                <option> Sim </option>
+                                <option> Não </option>
+                            </select> <br /> <br />
+                        </td>
+                    </tr>
+                }
                 @if (ViewBag.outrosMateriais == "Lâmina  Latex")
                 {
                     <tr>
@@ -1625,15 +1651,13 @@
                         </td>
                     </tr>
                 }
-
             </table>
             <br />
-
             <table class="tables table-bordered border-secondary  table-sm">
                 <tr>
                     <td rowspan="12"> 6.2 </td>
                     <td class="fundo-tabela"> Embalagem</td>
-                    <td rowspan="12"> NA </td>
+                    <td rowspan="12"> @Model.conforme6_2 </td>
                 </tr>
                 <tr>
                     <td>
@@ -1644,8 +1668,6 @@
                             <option> Sim </option>
                             <option> Não </option>
                         </select>
-
-
                     </td>
                 </tr>
                 <tr>
@@ -1661,19 +1683,19 @@
             </table>
 
             @* inicio de outras tabelas *@
-       @*      <table class="tables table-bordered border-secondary  table-sm">
-                <tr class="fundo-tabela">
-                    <td colspan=" 4">
-                        Instrumento(s)/Dispositivo(s)/Equipamento(s) Utilizado(s) que Requer(em) Calibração
-                    </td>
-                </tr>
-                <tr>
-                    <td>Código(s)</td>
-                    <td>Descrição(ões)</td>
-                    <td>Certificado(s)</td>
-                    <td>validade(s)</td>
-                </tr>
-            </table> *@
+            @*      <table class="tables table-bordered border-secondary  table-sm">
+        <tr class="fundo-tabela">
+        <td colspan=" 4">
+        Instrumento(s)/Dispositivo(s)/Equipamento(s) Utilizado(s) que Requer(em) Calibração
+        </td>
+        </tr>
+        <tr>
+        <td>Código(s)</td>
+        <td>Descrição(ões)</td>
+        <td>Certificado(s)</td>
+        <td>validade(s)</td>
+        </tr>
+        </table> *@
             @*   <table class="tables table-bordered border-secondary  table-sm">
         <tr class="fundo-tabela">
         <td colspan=" 4">
