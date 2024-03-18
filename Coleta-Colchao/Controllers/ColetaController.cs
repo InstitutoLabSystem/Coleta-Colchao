@@ -2219,13 +2219,21 @@ namespace Coleta_Colchao.Controllers
 
 
                     editarDados.esp_tipo_um = salvar.esp_tipo_um;
-                    editarDados.esp_lamina_um = salvar.esp_lamina_um;
+
+                    //realizando calculo do lamina um
+                    editarDados.esp_lamina_um = editarDados.altura_media;
+                    editarDados.esp_especificado_um = editarDados.esp_lamina_um / 3;
+
                     editarDados.esp_especificado_um = salvar.esp_especificado_um;
                     editarDados.esp_mm_um = salvar.esp_mm_um;
 
                     editarDados.esp_cm_um = (editarDados.esp_mm_um / 10);
                     editarDados.esp_tipo_dois = salvar.esp_tipo_dois;
-                    editarDados.esp_lamina_dois = salvar.esp_lamina_dois;
+
+                    //realizando calculo do lamina dois
+                    editarDados.esp_lamina_dois = editarDados.altura_media;
+                    editarDados.esp_especificado_dois = editarDados.esp_lamina_dois / 3;
+
                     editarDados.esp_especificado_dois = salvar.esp_especificado_dois;
                     editarDados.esp_mm_dois = salvar.esp_mm_dois;
                     editarDados.esp_cm_dois = (editarDados.esp_mm_dois / 10);
