@@ -1709,7 +1709,7 @@ namespace Coleta_Colchao.Controllers
           "lamina_esp_um,lamina_comp_dois,lamina_comp_tres,lamina_media_um,lamina_tipo_um,lamina_min_um,lamina_max_um,lamina_resul_um,lamina_dois,lamina_comp_quat,lamina_esp_dois, lamina_comp_cinco,lamina_comp_seis,lamina_media_dois,lamina_tipo_dois," +
           "lamina_min_dois,lamina_max_dois,lamina_resul_dois,lamina_tres,lamina_comp_sete,lamina_esp_tres,lamina_comp_oito,lamina_comp_nove,lamina_media_tres,lamina_tipo_tres,lamina_min_tres,lamina_max_tres,lamina_resul_tres,lamina_quat,lamina_comp_dez,lamina_esp_quat," +
           "lamina_comp_onze,lamina_comp_doze,lamina_media_quat,lamina_tipo_quat,lamina_min_quat,lamina_max_quat,lamina_resul_quat,lamina_cinco,lamina_comp_treze,lamina_esp_cinco,lamina_comp_quatorze,lamina_comp_quinze,lamina_media_cinco,lamina_tipo_cinco," +
-          "lamina_min_cinco,lamina_max_cinco,lamina_resul_cinco,esp_tipo_um,esp_lamina_um,esp_especificado_um,esp_mm_um,esp_cm_um,esp_tipo_dois,esp_lamina_dois,esp_especificado_dois,esp_mm_dois,esp_cm_dois,col_tipo_um,col_especificado_um,col_encontrado_um,col_resul_um," +
+          "lamina_min_cinco,lamina_max_cinco,lamina_resul_cinco,esp_tipo_um,esp_mm_um,esp_cm_um,esp_tipo_dois,esp_mm_dois,esp_cm_dois,col_tipo_um,col_especificado_um,col_encontrado_um,col_resul_um," +
           "col_tipo_dois,col_lamina_dois,col_especificado_dois,col_resul_dois,reves_tipo_um,reves_lamina_um,reves_especificado_um,reves_mm_um,reves_cm_um,reves_tipo_dois,reves_lamina_dois,reves_especificado_dois,reves_mm_dois,reves_cm_dois,temp_repouso,lamina_media_um")] ColetaModel.EspumaUm salvar)
         {
             try
@@ -1891,6 +1891,9 @@ namespace Coleta_Colchao.Controllers
                     float esp_especificado_um = salvar.esp_especificado_um;
                     float esp_mm_um = salvar.esp_mm_um;
                     float esp_cm_um = esp_mm_um / 10;
+                    //realizando calculo do lamina um
+                    esp_lamina_um = altura_media;
+                    esp_especificado_um = esp_lamina_um / 3;
 
                     string esp_tipo_dois = salvar.esp_tipo_dois;
 
@@ -1898,6 +1901,10 @@ namespace Coleta_Colchao.Controllers
                     float esp_especificado_dois = salvar.esp_especificado_dois;
                     float esp_mm_dois = salvar.esp_mm_dois;
                     float esp_cm_dois = esp_mm_dois / 10;
+
+                    //ralizando calculo do lamina dois
+                    esp_lamina_dois = altura_media;
+                    esp_especificado_dois = esp_lamina_um / 3;
 
                     string col_tipo_um = salvar.col_tipo_um;
                     float col_especificado_um = salvar.col_especificado_um;
@@ -1932,7 +1939,6 @@ namespace Coleta_Colchao.Controllers
                         orcamento = orcamento,
                         data_ini = data_ini,
                         data_term = data_term,
-
                         dimensao_temp = dimensao_temp,
                         comprimento_um = comprimento_um,
                         comprimento_dois = comprimento_um,
@@ -3903,10 +3909,6 @@ namespace Coleta_Colchao.Controllers
                     {
                         conforme6_2 = "NC";
                     }
-
-
-
-
 
 
                     editarDados.etiquieta_dois = salvar.etiquieta_dois;

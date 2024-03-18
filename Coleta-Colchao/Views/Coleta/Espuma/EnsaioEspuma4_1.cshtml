@@ -1198,7 +1198,7 @@
                                 <tr>
                                     <td>1º </td>
                                     <td><input class="form-control" type="text" name="lamina_comp_quat" /></td>
-                                    <td rowspan="3"><input class="form-control" type="text" style="width:100%;height:200px;" name="lamina_esp_dois" /> </td>
+                                    @* <td rowspan="3"><input class="form-control" type="text" style="width:100%;height:200px;" name="lamina_esp_dois" /> </td> *@
                                 </tr>
                                 <tr>
                                     <td>2º </td>
@@ -1505,7 +1505,7 @@
                                     <td colspan="2" rowspan="1" class="fundo-tabela"> Espessura encontrada (cm)</td>
                                 </tr>
                                 <tr>
-                                    <td class="fundo-tabela">  Lâmina </td>
+                                    <td class="fundo-tabela">  Altura do colchão </td>
                                     <td class="fundo-tabela"> Especificado </td>
                                     <td class="fundo-tabela"> mm </td>
                                     <td class="fundo-tabela"> cm </td>
@@ -1520,8 +1520,8 @@
                                             <option> Composto </option>
                                         </select>
                                     </td>
-                                    <td><input class="form-control" type="text" name="esp_lamina_um" /></td>
-                                    <td><input class="form-control" type="text" name="esp_especificado_um" /></td>
+                                    <td><input class="form-control" type="text" name="esp_lamina_um" readonly/></td>
+                                    <td><input class="form-control" type="text" name="esp_especificado_um" readonly /></td>
                                     <td><input class="form-control" type="text" name="esp_mm_um" /></td>
                                     <td><input class="form-control" type="text" name="esp_cm_um" readonly /></td>
                                 </tr>
@@ -1534,7 +1534,7 @@
                                     <td colspan="2" rowspan="1" class="fundo-tabela"> Espessura encontrada (cm)</td>
                                 </tr>
                                 <tr>
-                                    <td class="fundo-tabela">  Lâmina </td>
+                                    <td class="fundo-tabela">  Altura do colchão </td>
                                     <td class="fundo-tabela"> Especificado </td>
                                     <td class="fundo-tabela"> mm </td>
                                     <td class="fundo-tabela"> cm </td>
@@ -1548,8 +1548,8 @@
                                             <option> Colchão misto </option>
                                         </select>
                                     </td>
-                                    <td><input class="form-control" type="text" name="esp_lamina_dois" /></td>
-                                    <td><input class="form-control" type="text" name="esp_especificado_dois" /></td>
+                                    <td><input class="form-control" type="text" name="esp_lamina_dois" readonly/></td>
+                                    <td><input class="form-control" type="text" name="esp_especificado_dois" readonly /></td>
                                     <td><input class="form-control" type="text" name="esp_mm_dois" /></td>
                                     <td><input class="form-control" type="text" name="esp_cm_dois" readonly /></td>
                                 </tr>
@@ -3216,7 +3216,7 @@
                         </td>
                     </tr>
                 }
-                @if (ViewBag.tipoColchao == "Colchão Infantil" || ViewBag.tipoColchao == "Colchão Misto")
+                @if (ViewBag.tipoColchao == "Colchão De Espuma" || ViewBag.tipoColchao == "Colchão Misto")
                 {
 
 
@@ -3231,7 +3231,7 @@
                                     <td colspan="2" rowspan="1" class="fundo-tabela"> Espessura encontrada (cm)</td>
                                 </tr>
                                 <tr>
-                                    <td class="fundo-tabela">  Lâmina </td>
+                                    <td class="fundo-tabela">  Altura do colchão </td>
                                     <td class="fundo-tabela"> Especificado </td>
                                     <td class="fundo-tabela"> mm </td>
                                     <td class="fundo-tabela"> cm </td>
@@ -3246,8 +3246,8 @@
                                             <option> Composto </option>
                                         </select>
                                     </td>
-                                    <td><input class="form-control" type="text" name="esp_lamina_um" value="@Model.esp_lamina_um" /></td>
-                                    <td><input class="form-control" type="text" name="esp_especificado_um" value="@Model.esp_especificado_um" /></td>
+                                    <td><input class="form-control" type="text" name="esp_lamina_um" value="@Model.esp_lamina_um" readonly/></td>
+                                    <td><input class="form-control" type="text" name="esp_especificado_um" value="@Model.esp_especificado_um" readonly /></td>
                                     <td><input class="form-control" type="text" name="esp_mm_um" value="@Model.esp_mm_um" /></td>
                                     <td><input class="form-control" type="text" name="esp_cm_um" readonly value="@Model.esp_cm_um" /></td>
                                 </tr>
@@ -3263,7 +3263,7 @@
                                     <td colspan="2" rowspan="1" class="fundo-tabela"> Espessura encontrada (cm)</td>
                                 </tr>
                                 <tr>
-                                    <td class="fundo-tabela">  Lâmina </td>
+                                    <td class="fundo-tabela">  Altura do colchão </td>
                                     <td class="fundo-tabela"> Especificado </td>
                                     <td class="fundo-tabela"> mm </td>
                                     <td class="fundo-tabela"> cm </td>
@@ -3277,8 +3277,8 @@
                                             <option> Colchão misto </option>
                                         </select>
                                     </td>
-                                    <td><input class="form-control" type="text" name="esp_lamina_dois" value="@Model.esp_lamina_dois" /></td>
-                                    <td><input class="form-control" type="text" name="esp_especificado_dois" value="@Model.esp_especificado_dois" /></td>
+                                    <td><input class="form-control" type="text" name="esp_lamina_dois" value="@Model.esp_lamina_dois" readonly /></td>
+                                    <td><input class="form-control" type="text" name="esp_especificado_dois" value="@Model.esp_especificado_dois" readonly /></td>
                                     <td><input class="form-control" type="text" name="esp_mm_dois" value="@Model.esp_mm_dois" /></td>
                                     <td><input class="form-control" type="text" name="esp_cm_dois" readonly value="@Model.esp_cm_dois" /></td>
                                 </tr>
