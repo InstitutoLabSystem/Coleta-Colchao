@@ -80,7 +80,7 @@
                         <table class="tables table-bordered border-secondary  table-sm">
                             <tr>
                                 <td class="fundo-tabela"> Data de início </td>
-                                <td> <input type="date" class="form-control" style=" width:150px;" asp-for="data_ini" readonly/> </td>
+                                <td> <input type="date" class="form-control" style=" width:150px;" asp-for="data_ini" readonly /> </td>
                                 <td class="fundo-tabela"> Hora de início: </td>
                                 <td>   <input class="form-control" type="time" asp-for="hora_inic" /> </td>
                                 <td class="fundo-tabela"> Temperatura mínima: </td>
@@ -88,7 +88,7 @@
                             </tr>
                             <tr>
                                 <td class="fundo-tabela"> Data de término: </td>
-                                <td> <input type="date" class="form-control" style=" width:150px;" asp-for="data_term" readonly/> </td>
+                                <td> <input type="date" class="form-control" style=" width:150px;" asp-for="data_term" readonly /> </td>
                                 <td class="fundo-tabela"> Hora do término: </td>
                                 <td>   <input class="form-control" type="time" asp-for="hora_term" /> </td>
                                 <td class="fundo-tabela"> Temperatura máxima: </td>
@@ -535,7 +535,7 @@
                         <table class="tables table-bordered border-secondary  table-sm">
                             <tr>
                                 <td class="fundo-tabela"> Data de início </td>
-                                <td> <input type="text" class="form-control" style=" width:150px;" asp-for="data_ini" value="@Model.data_ini" readonly/> </td>
+                                <td> <input type="text" class="form-control" style=" width:150px;" asp-for="data_ini" value="@Model.data_ini" readonly /> </td>
                                 <td class="fundo-tabela"> Hora de início: </td>
                                 <td>   <input class="form-control" type="time" asp-for="hora_inic" /> </td>
                                 <td class="fundo-tabela"> Temperatura mínima: </td>
@@ -543,7 +543,7 @@
                             </tr>
                             <tr>
                                 <td class="fundo-tabela"> Data de término: </td>
-                                <td> <input type="text" class="form-control" style=" width:150px;" asp-for="data_term" value="@Model.data_term" readonly/> </td>
+                                <td> <input type="text" class="form-control" style=" width:150px;" asp-for="data_term" value="@Model.data_term" readonly /> </td>
                                 <td class="fundo-tabela"> Hora do término: </td>
                                 <td>   <input class="form-control" type="time" asp-for="hora_term" /> </td>
                                 <td class="fundo-tabela"> Temperatura máxima: </td>
@@ -1016,134 +1016,125 @@
             alert('@Html.Raw(TempData["Mensagem"])');
         </script>
     }
-    @*   <script>
-    document.addEventListener("DOMContentLoaded", function () {
-    //REALIZANDO OS CALCULOS PAR AMOSTRAR NO COMPRIMENTO E LARGURA DAS TABELAS
-    var com_base = document.getElementById("com_base");
-    var valor_com_base = com_base.value;
-
-
-    var larg_base = document.getElementById("larg_base");
-    var valor_larg_base = larg_base.value;
-
-    if (valor_larg_base <= 1150) {
-    console.log("entrou no if");
-    //realizando comprimento da tabela < 1150, comprimento primeiro.
-    var ponto_b_um = document.getElementById("comp_ponto_b_um");
-    console.log(ponto_b_um)
-    ponto_b_um.value = valor_com_base / 2;
-
-    var ponto_a_um = document.getElementById("comp_ponto_a_um");
-    ponto_a_um.value = ponto_b_um.value - 150;
-
-    var ponto_c_um = document.getElementById("comp_ponto_c_um");
-    ponto_c_um.value = ponto_b_um.value / 2;
-
-    var ponto_d_um = document.getElementById("comp_ponto_d_um");
-    ponto_d_um.value = ponto_b_um.value;
-
-    var ponto_g_um = document.getElementById("comp_ponto_g_um");
-    ponto_g_um.value = ponto_b_um.value - 150;
-
-    var ponto_i_um = document.getElementById("comp_ponto_i_um");
-    ponto_i_um.value = ponto_g_um.value;
-
-    var ponto_j_um = document.getElementById("comp_ponto_j_um");
-    ponto_j_um.value = ponto_g_um.value;
-
-    // largura da tabala <1150
-    var larg_ponto_a_um = document.getElementById("larg_ponto_a_um");
-    larg_ponto_a_um.value = valor_larg_base / 2;
-
-    var larg_ponto_b_um = document.getElementById("larg_ponto_b_um");
-    larg_ponto_b_um.value = larg_ponto_a_um.value;
-
-
-    var larg_ponto_d_um = document.getElementById("larg_ponto_d_um");
-    larg_ponto_d_um.value = larg_ponto_a_um.value - 150;
-
-    var larg_ponto_c_um = document.getElementById("larg_ponto_c_um");
-    larg_ponto_c_um.value = larg_ponto_d_um.value;
-
-    var larg_ponto_g_um = document.getElementById("larg_ponto_g_um");
-    larg_ponto_g_um.value = larg_ponto_b_um.value;
-
-    var larg_ponto_i_um = document.getElementById("larg_ponto_i_um");
-    larg_ponto_i_um.value = larg_ponto_d_um.value;
-
-    var larg_ponto_j_um = document.getElementById("larg_ponto_j_um");
-    larg_ponto_j_um.value = larg_ponto_d_um.value;
-
-    }
-
-    if (valor_larg_base > 1150) {
-    console.log("entrou no else");
-    //realizando a tabela que é maior que >1150
-    //pegando o comprimento primeiro
-
-    var ponto_b_dois = document.getElementById("comp_ponto_b_dois");
-    console.log(ponto_b_dois);
-    console.log(valor_com_base);
-    ponto_b_dois.value = valor_com_base / 2;
-
-    var ponto_a_dois = document.getElementById("comp_ponto_a_dois");
-    ponto_a_dois.value = ponto_b_dois.value - 150;
-
-    var ponto_c_dois = document.getElementById("comp_ponto_c_dois");
-    ponto_c_dois.value = ponto_b_dois.value / 2;
-
-    var ponto_d_dois = document.getElementById("comp_ponto_d_dois");
-    ponto_d_dois.value = ponto_b_dois.value;
-
-    var ponto_g_dois = document.getElementById("comp_ponto_g_dois");
-    ponto_g_dois.value = ponto_b_dois.value - 150;
-
-    var ponto_i_dois = document.getElementById("comp_ponto_i_dois");
-    ponto_i_dois.value = ponto_g_dois.value;
-
-    var ponto_j_dois = document.getElementById("comp_ponto_j_dois");
-    ponto_j_dois.value = ponto_g_dois.value;
-
-    // realizando logica com a largura agora.
-    var larg_ponto_a_dois = document.getElementById("larg_ponto_a_dois");
-    larg_ponto_a_dois.value = valor_larg_base / 2;
-
-    var larg_ponto_b_dois = document.getElementById("larg_ponto_b_dois");
-    larg_ponto_b_dois.value = larg_ponto_a_dois.value;
-
-
-    var larg_ponto_d_dois = document.getElementById("larg_ponto_d_dois");
-    larg_ponto_d_dois.value = larg_ponto_a_dois.value - 150;
-
-    var larg_ponto_c_dois = document.getElementById("larg_ponto_c_dois");
-    larg_ponto_c_dois.value = larg_ponto_d_dois.value;
-
-    var larg_ponto_g_dois = document.getElementById("larg_ponto_g_dois");
-    larg_ponto_g_dois.value = larg_ponto_b_dois.value;
-
-    var larg_ponto_i_dois = document.getElementById("larg_ponto_i_dois");
-    larg_ponto_i_dois.value = larg_ponto_d_dois.value;
-
-    var larg_ponto_j_dois = document.getElementById("larg_ponto_j_dois");
-    larg_ponto_j_dois.value = larg_ponto_d_dois.value;
-    }
-
-
-
-
-
-
-
-    });
-    </script> *@
     <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            //REALIZANDO OS CALCULOS PAR AMOSTRAR NO COMPRIMENTO E LARGURA DAS TABELAS
+            var com_base = document.getElementById("com_base");
+            var valor_com_base = com_base.value;
+
+
+            var larg_base = document.getElementById("larg_base");
+            var valor_larg_base = larg_base.value;
+
+            if (valor_larg_base <= 1150) {
+                console.log("entrou no if");
+                //realizando comprimento da tabela < 1150, comprimento primeiro.
+                var ponto_b_um = document.getElementById("comp_ponto_b_um");
+                console.log(ponto_b_um)
+                ponto_b_um.value = valor_com_base / 2;
+
+                var ponto_a_um = document.getElementById("comp_ponto_a_um");
+                ponto_a_um.value = ponto_b_um.value - 150;
+
+                var ponto_c_um = document.getElementById("comp_ponto_c_um");
+                ponto_c_um.value = ponto_b_um.value / 2;
+
+                var ponto_d_um = document.getElementById("comp_ponto_d_um");
+                ponto_d_um.value = ponto_b_um.value;
+
+                var ponto_g_um = document.getElementById("comp_ponto_g_um");
+                ponto_g_um.value = ponto_b_um.value - 150;
+
+                var ponto_i_um = document.getElementById("comp_ponto_i_um");
+                ponto_i_um.value = ponto_g_um.value;
+
+                var ponto_j_um = document.getElementById("comp_ponto_j_um");
+                ponto_j_um.value = ponto_g_um.value;
+
+                // largura da tabala <1150
+                var larg_ponto_a_um = document.getElementById("larg_ponto_a_um");
+                larg_ponto_a_um.value = valor_larg_base / 2;
+
+                var larg_ponto_b_um = document.getElementById("larg_ponto_b_um");
+                larg_ponto_b_um.value = larg_ponto_a_um.value;
+
+
+                var larg_ponto_d_um = document.getElementById("larg_ponto_d_um");
+                larg_ponto_d_um.value = larg_ponto_a_um.value - 150;
+
+                var larg_ponto_c_um = document.getElementById("larg_ponto_c_um");
+                larg_ponto_c_um.value = larg_ponto_d_um.value;
+
+                var larg_ponto_g_um = document.getElementById("larg_ponto_g_um");
+                larg_ponto_g_um.value = larg_ponto_b_um.value;
+
+                var larg_ponto_i_um = document.getElementById("larg_ponto_i_um");
+                larg_ponto_i_um.value = larg_ponto_d_um.value;
+
+                var larg_ponto_j_um = document.getElementById("larg_ponto_j_um");
+                larg_ponto_j_um.value = larg_ponto_d_um.value;
+
+            }
+
+            if (valor_larg_base > 1150) {
+                console.log("entrou no else");
+                //realizando a tabela que é maior que >1150
+                //pegando o comprimento primeiro
+
+                var ponto_b_dois = document.getElementById("comp_ponto_b_dois");
+                console.log(ponto_b_dois);
+                console.log(valor_com_base);
+                ponto_b_dois.value = valor_com_base / 2;
+
+                var ponto_a_dois = document.getElementById("comp_ponto_a_dois");
+                ponto_a_dois.value = ponto_b_dois.value - 150;
+
+                var ponto_c_dois = document.getElementById("comp_ponto_c_dois");
+                ponto_c_dois.value = ponto_b_dois.value / 2;
+
+                var ponto_d_dois = document.getElementById("comp_ponto_d_dois");
+                ponto_d_dois.value = ponto_b_dois.value;
+
+                var ponto_g_dois = document.getElementById("comp_ponto_g_dois");
+                ponto_g_dois.value = ponto_b_dois.value - 150;
+
+                var ponto_i_dois = document.getElementById("comp_ponto_i_dois");
+                ponto_i_dois.value = ponto_g_dois.value;
+
+                var ponto_j_dois = document.getElementById("comp_ponto_j_dois");
+                ponto_j_dois.value = ponto_g_dois.value;
+
+                // realizando logica com a largura agora.
+                var larg_ponto_a_dois = document.getElementById("larg_ponto_a_dois");
+                larg_ponto_a_dois.value = valor_larg_base / 2;
+
+                var larg_ponto_b_dois = document.getElementById("larg_ponto_b_dois");
+                larg_ponto_b_dois.value = larg_ponto_a_dois.value;
+
+
+                var larg_ponto_d_dois = document.getElementById("larg_ponto_d_dois");
+                larg_ponto_d_dois.value = larg_ponto_a_dois.value - 150;
+
+                var larg_ponto_c_dois = document.getElementById("larg_ponto_c_dois");
+                larg_ponto_c_dois.value = larg_ponto_d_dois.value;
+
+                var larg_ponto_g_dois = document.getElementById("larg_ponto_g_dois");
+                larg_ponto_g_dois.value = larg_ponto_b_dois.value;
+
+                var larg_ponto_i_dois = document.getElementById("larg_ponto_i_dois");
+                larg_ponto_i_dois.value = larg_ponto_d_dois.value;
+
+                var larg_ponto_j_dois = document.getElementById("larg_ponto_j_dois");
+                larg_ponto_j_dois.value = larg_ponto_d_dois.value;
+            }
+        });
         document.addEventListener("keydown", function (e) {
             if (e.keyCode === 13) {
-
                 e.preventDefault();
-
             }
         });
     </script>
+      
+
 </body>
 </html>

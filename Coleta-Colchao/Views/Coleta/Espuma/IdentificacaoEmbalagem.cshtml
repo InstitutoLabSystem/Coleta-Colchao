@@ -397,15 +397,15 @@
                             </select>
                         </td>
                     </tr>
-                }
-                <tr>
-                    <td>
-                        Nota:  O  aviso  de  atenção  deve  ser  apresentado  em  letras  não  inferiores  a  3  mm  de  altura,
-                        em negrito, caixa alta e em coloração que se destaque da cor de fundo da etiqueta.
-                    </td>
-                </tr>
-                <tr>
-                    <td>
+
+                    <tr>
+                        <td>
+                            Nota:  O  aviso  de  atenção  deve  ser  apresentado  em  letras  não  inferiores  a  3  mm  de  altura,
+                            em negrito, caixa alta e em coloração que se destaque da cor de fundo da etiqueta.
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
                         <table class="tables table-bordered border-secondary  table-sm">
                             <tr>
                                 <td class="fundo-tabela"> Altura da letra </td>
@@ -434,6 +434,7 @@
                         </table>
                     </td>
                 </tr>
+                }
 
                 @if (ViewBag.outrosMateriais == "Lâmina  Latex" || ViewBag.outrosMateriais == "Lâmina Rabatan" || ViewBag.outrosMateriais == "Etil vinil acetato(EVA)")
                 {
@@ -449,15 +450,15 @@
                             </select>
                         </td>
                     </tr>
-                }
-                <tr>
-                    <td>
-                        Nota: O aviso de esclarecimento deve ser em negrito, em letras com o mesmo formato e tamanho da utilizada na descrição das lâminas
 
-                    </td>
-                </tr>
-                <tr>
-                    <td>
+                    <tr>
+                        <td>
+                            Nota: O aviso de esclarecimento deve ser em negrito, em letras com o mesmo formato e tamanho da utilizada na descrição das lâminas
+
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
                         <table class="tables table-bordered border-secondary  table-sm">
                             <tr>
                                 <td class="fundo-tabela"> Altura da letra </td>
@@ -496,6 +497,7 @@
                         </table>
                     </td>
                 </tr>
+                }
                 @if (ViewBag.outrosMateriais == "Couvin" || ViewBag.outrosMateriais == "Plástico" || ViewBag.outrosMateriais == "Napa")
                 {
                     <tr>
@@ -558,7 +560,8 @@
                 </tr>
             </table>
 
-
+            @if (ViewBag.tipLamina == "Colchão infantil")
+            {
             <table class="tables table-bordered border-secondary  table-sm">
                 <tr class="fundo-tabela">
                     <td>Item</td>
@@ -570,8 +573,7 @@
                     <td class="fundo-tabela"> Identificação </td>
                    
                 </tr>
-                @if (ViewBag.tipLamina == "Colchão infantil")
-                {
+                
                     <tr>
                         <td>
                             2.11  Colchão infantil é aquele destinado, exclusivamente, para utilização em berços.
@@ -754,9 +756,16 @@
                             </select>
                         </td>
                     </tr>
+                    </table>
                 }
                 @if (ViewBag.tipLamina == "Colchão misto" || ViewBag.tipLamina == "Composto")
                 {
+                <table class="tables table-bordered border-secondary  table-sm">
+                    <tr class="fundo-tabela">
+                        <td>Item</td>
+                        <td>Descrição</td>
+                        <td>Resultado</td>
+                    </tr>
                     <tr>
                         <td>
                             2.14.2 O requisito estabelecido no subitem anterior aplica-se, também, aos colchões compostos  e/ou  mistos,
@@ -770,9 +779,16 @@
                             </select> <br /> <br />
                         </td>
                     </tr>
+                    </table>
                 }
                 @if (ViewBag.outrosMateriais == "Lâmina  Latex")
                 {
+                <table class="tables table-bordered border-secondary  table-sm">
+                    <tr class="fundo-tabela">
+                        <td>Item</td>
+                        <td>Descrição</td>
+                        <td>Resultado</td>
+                    </tr>
                     <tr>
                         <td>
                             2.14.3 É  proibido  utilizar  de  nomenclatura  com  o  termo  “látex”  para  identificar  qualquer família, marca,
@@ -783,10 +799,10 @@
                                 <option> Não </option>
                             </select>
                         </td>
+                      
                     </tr>
+                </table>
                 }
-            </table>
-
             <br />
 
             <table class="tables table-bordered border-secondary  table-sm">
@@ -1262,7 +1278,7 @@
                             </select>
                         </td>
                     </tr>
-                }
+                
                 <tr>
                     <td>
                         Nota:  O  aviso  de  atenção  deve  ser  apresentado  em  letras  não  inferiores  a  3  mm  de  altura,
@@ -1299,6 +1315,7 @@
                         </table>
                     </td>
                 </tr>
+                }
 
                 @if (ViewBag.outrosMateriais == "Lâmina  Latex" || ViewBag.outrosMateriais == "Lâmina Rabatan" || ViewBag.outrosMateriais == "Etil vinil acetato(EVA)")
                 {
@@ -1314,7 +1331,7 @@
                             </select>
                         </td>
                     </tr>
-                }
+                
                 <tr>
                     <td>
                         Nota: O aviso de esclarecimento deve ser em negrito, em letras com o mesmo formato e tamanho da utilizada na descrição das lâminas
@@ -1361,6 +1378,7 @@
                         </table>
                     </td>
                 </tr>
+                }
                 @if (ViewBag.outrosMateriais == "Couvin" || ViewBag.outrosMateriais == "Plástico" || ViewBag.outrosMateriais == "Napa")
                 {
                     <tr>
@@ -1374,13 +1392,14 @@
                             </select>
                         </td>
                     </tr>
-                }
+                
                 <tr>
                     <td>
                         Nota - O aviso de esclarecimento deve ser apresentado em letras não inferiores a 3 mm de altura, em negrito,
                         caixa alta e em coloração que se destaque da cor de fundo da etiqueta.
                     </td>
                 </tr>
+                }
                 <tr>
                     <td>
                         <table class="tables table-bordered border-secondary  table-sm">
@@ -1424,6 +1443,8 @@
 
             </table>
 
+            @if (ViewBag.tipLamina == "Colchão infantil")
+            {
             <table class="tables table-bordered border-secondary  table-sm">
                 <tr class="fundo-tabela">
                     <td>Item</td>
@@ -1435,8 +1456,7 @@
                     <td class="fundo-tabela"> Identificação </td>
                     
                 </tr>
-                @if (ViewBag.tipLamina == "Colchão infantil")
-                {
+               
                     <tr>
                         <td>
                             2.11  Colchão infantil é aquele destinado, exclusivamente, para utilização em berços.
@@ -1619,9 +1639,18 @@
                             </select>
                         </td>
                     </tr>
+                    </table>
                 }
+
+
                 @if (ViewBag.tipLamina == "Colchão misto" || ViewBag.tipLamina == "Composto")
                 {
+                <table class="tables table-bordered border-secondary  table-sm">
+                    <tr class="fundo-tabela">
+                        <td>Item</td>
+                        <td>Descrição</td>
+                        <td>Resultado</td>
+                    </tr>
 
                     <tr>
                         <td>
@@ -1635,10 +1664,18 @@
                                 <option> Não </option>
                             </select> <br /> <br />
                         </td>
+                        <td>@Model.conforme_2_14_2</td>
                     </tr>
+                    </table>
                 }
                 @if (ViewBag.outrosMateriais == "Lâmina  Latex")
                 {
+                <table class="tables table-bordered border-secondary  table-sm">
+                    <tr class="fundo-tabela">
+                        <td>Item</td>
+                        <td>Descrição</td>
+                        <td>Resultado</td>
+                    </tr>
                     <tr>
                         <td>
                             2.14.3 É  proibido  utilizar  de  nomenclatura  com  o  termo  “látex”  para  identificar  qualquer família, marca,
@@ -1649,9 +1686,10 @@
                                 <option> Não </option>
                             </select>
                         </td>
+                        <td>@Model.conforme_2_14_3</td>
                     </tr>
+                </table>
                 }
-            </table>
             <br />
             <table class="tables table-bordered border-secondary  table-sm">
                 <tr>
