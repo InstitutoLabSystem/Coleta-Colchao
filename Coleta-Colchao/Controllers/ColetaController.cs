@@ -1898,7 +1898,7 @@ namespace Coleta_Colchao.Controllers
                     float esp_cm_um = esp_mm_um / 10;
                     //realizando calculo do lamina um
                     esp_lamina_um = altura_media;
-                    esp_especificado_um = (float)Math.Round(esp_lamina_um / 3 , 2);
+                    esp_especificado_um = (float)Math.Round(esp_lamina_um / 3, 2);
 
                     string esp_tipo_dois = salvar.esp_tipo_dois;
 
@@ -2227,7 +2227,7 @@ namespace Coleta_Colchao.Controllers
 
                     //realizando calculo do lamina um
                     editarDados.esp_lamina_um = editarDados.altura_media;
-                    editarDados.esp_especificado_um = (float)Math.Round(editarDados.esp_lamina_um / 3 , 2);
+                    editarDados.esp_especificado_um = (float)Math.Round(editarDados.esp_lamina_um / 3, 2);
 
                     editarDados.esp_mm_um = salvar.esp_mm_um;
 
@@ -3596,7 +3596,7 @@ namespace Coleta_Colchao.Controllers
                     }
 
                     //conformidade das perguntas de A ate G
-                    if (etiquieta_dois == "Sim" && marca == "Sim" && dimensoes == "Sim" && medidas == "Sim" && tipo_colchao == "Sim" && colchoes == "Sim" && letras == "Sim" && negrito_um == "Sim" && caixa_alta_um == "Sim" && coloracao_um == "Sim" && classificacao == "Sim" && uso == "Sim" && composicao == "Sim")
+                    if (etiquieta_dois == "Sim" && marca == "Sim" && dimensoes == "Sim" && medidas == "Sim" && tipo_colchao == "Sim" && colchoes == "Sim" && letras == "Sim" && negrito_um == "Sim" && caixa_alta_um == "Sim" && coloracao_um == "Sim" && classificacao == "Sim" && uso == "Sim" && composicao == "Sim" && info_altura == "---" || info_altura == "Sim" && colchoes == "Sim" || colchoes == "---")
                     {
                         conforme_letras = "C";
                     }
@@ -3606,7 +3606,7 @@ namespace Coleta_Colchao.Controllers
                     }
 
                     //conformidade dos restante das perguntas..
-                    if (tipo_espuma == "Sim" && densidade_nominal == "Sim" && comp_revestimento == "Sim" && data_fabricacao == "Sim" && pais_fabricacao == "Sim" && cuidados == "Sim" && negrito_dois == "Sim" && caixa_alta_dois == "Sim" && negrito_tres == "Sim" && caixa_alta_tres == "Sim" && coloracao_eti == "Sim" && negrito_quat == "Sim" && caixa_alta_quat == "Sim" && coloracao_quat == "Sim")
+                    if (tipo_espuma == "Sim" && densidade_nominal == "Sim" && comp_revestimento == "Sim" && data_fabricacao == "Sim" && pais_fabricacao == "Sim" && cuidados == "Sim" && negrito_dois == "Sim" && caixa_alta_dois == "Sim" && negrito_tres == "Sim" && caixa_alta_tres == "Sim" && coloracao_eti == "Sim" && negrito_quat == "Sim" && caixa_alta_quat == "Sim" && coloracao_quat == "Sim" && espessura_mad == "Sim" || espessura_mad == "---" && aviso_um == "Sim" || aviso_um == "---" && negrito_dois == "Sim" || negrito_dois == "---" && caixa_alta_dois == "Sim" || caixa_alta_dois == "---" && esclarecimento_um == "Sim" || esclarecimento_um == "---" && negrito_tres == "Sim" || negrito_tres == "---" && caixa_alta_tres == "Sim" || caixa_alta_tres == "---" && coloracao_eti == "Sim" || coloracao_eti == "---" && esclarecimento_dois == "Sim" || esclarecimento_dois == "---")
                     {
                         if (int.Parse(altura_letra_dois) >= 3 && int.Parse(altura_letra_tres) >= 3 && int.Parse(altura_letra_quat) >= 3)
                         {
@@ -3828,7 +3828,7 @@ namespace Coleta_Colchao.Controllers
                     }
 
                     //conformidade das perguntas de A ate G
-                    if (editarDados.etiquieta_dois == "Sim" && editarDados.marca == "Sim" && editarDados.dimensoes == "Sim" && editarDados.medidas == "Sim" && editarDados.tipo_colchao == "Sim" && editarDados.colchoes == "Sim" && editarDados.letras == "Sim" && editarDados.negrito_um == "Sim" && editarDados.caixa_alta_um == "Sim" && editarDados.coloracao_um == "Sim" && editarDados.classificacao == "Sim" && editarDados.uso == "Sim" && editarDados.composicao == "Sim")
+                    if (editarDados.etiquieta_dois == "Sim" && editarDados.marca == "Sim" && editarDados.dimensoes == "Sim" && editarDados.medidas == "Sim" && editarDados.tipo_colchao == "Sim" && editarDados.colchoes == "Sim" && editarDados.letras == "Sim" && editarDados.negrito_um == "Sim" && editarDados.caixa_alta_um == "Sim" && editarDados.coloracao_um == "Sim" && editarDados.classificacao == "Sim" && editarDados.uso == "Sim" && editarDados.composicao == "Sim" && editarDados.info_altura == "---" || editarDados.info_altura == "Sim" && editarDados.colchoes == "Sim" || editarDados.colchoes == "---")
                     {
                         conforme_letras = "C";
                     }
@@ -3838,7 +3838,7 @@ namespace Coleta_Colchao.Controllers
                     }
 
                     //conformidade dos restante das perguntas..
-                    if (editarDados.tipo_espuma == "Sim" && editarDados.densidade_nominal == "Sim" && editarDados.comp_revestimento == "Sim" && editarDados.data_fabricacao == "Sim" && editarDados.pais_fabricacao == "Sim" && editarDados.cuidados == "Sim" && editarDados.negrito_dois == "Sim" && editarDados.caixa_alta_dois == "Sim" && editarDados.negrito_tres == "Sim" && editarDados.caixa_alta_tres == "Sim" && editarDados.coloracao_eti == "Sim" && editarDados.negrito_quat == "Sim" && editarDados.caixa_alta_quat == "Sim" && editarDados.coloracao_quat == "Sim")
+                    if (editarDados.tipo_espuma == "Sim" && editarDados.densidade_nominal == "Sim" && editarDados.comp_revestimento == "Sim" && editarDados.data_fabricacao == "Sim" && editarDados.pais_fabricacao == "Sim" && editarDados.cuidados == "Sim" && editarDados.negrito_dois == "Sim" && editarDados.caixa_alta_dois == "Sim" && editarDados.negrito_tres == "Sim" && editarDados.caixa_alta_tres == "Sim" && editarDados.coloracao_eti == "Sim" && editarDados.negrito_quat == "Sim" && editarDados.caixa_alta_quat == "Sim" && editarDados.coloracao_quat == "Sim" && editarDados.espessura_mad == "Sim" || editarDados.espessura_mad == "---" && editarDados.aviso_um == "Sim" || editarDados.aviso_um == "---" && editarDados.negrito_dois == "Sim" || editarDados.negrito_dois == "---" && editarDados.caixa_alta_dois == "Sim" || editarDados.caixa_alta_dois == "---" && editarDados.esclarecimento_um == "Sim" || editarDados.esclarecimento_um == "---" && editarDados.negrito_tres == "Sim" || editarDados.negrito_tres == "---" && editarDados.caixa_alta_tres == "Sim" || editarDados.caixa_alta_tres == "---" && editarDados.coloracao_eti == "Sim" || editarDados.coloracao_eti == "---" && editarDados.esclarecimento_dois == "Sim" || editarDados.esclarecimento_dois == "---")
                     {
                         if (int.Parse(editarDados.altura_letra_dois) >= 3 && int.Parse(editarDados.altura_letra_tres) >= 3 && int.Parse(editarDados.altura_letra_quat) >= 3)
                         {
@@ -3990,7 +3990,7 @@ namespace Coleta_Colchao.Controllers
                     editarDados.conforme_infantil = conforme_infantil;
                     editarDados.conforme_2_14_2 = conforme2_14_2;
                     editarDados.conforme_2_14_3 = conforme2_14_3;
-                    editarDados.conforme6_2  = conforme6_2;
+                    editarDados.conforme6_2 = conforme6_2;
                     editarDados.executador_dois = salvar.executador_dois;
                     editarDados.executador_tres = salvar.executador_tres;
                     editarDados.executador_quat = salvar.executador_quat;
