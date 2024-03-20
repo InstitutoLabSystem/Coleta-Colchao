@@ -14,11 +14,11 @@ namespace Coleta_Colchao
 
             builder.Services.AddDbContext<BancoContext>
              (options => options.UseMySql(
-                 "server=novolab.c82dqw5tullb.sa-east-1.rds.amazonaws.com;user id=sistema;password=7847awse;database=labdados",
+                 "server=novolab.c82dqw5tullb.sa-east-1.rds.amazonaws.com;user id=Sistemas;password=#7847awsE2024;database=labdados",
                  Microsoft.EntityFrameworkCore.ServerVersion.Parse("13.2.0-mysql")));
             builder.Services.AddDbContext<ColchaoContext>
              (options => options.UseMySql(
-                 "server=novolab.c82dqw5tullb.sa-east-1.rds.amazonaws.com;user id=sistema;password=7847awse;database=colchao",
+                 "server=novolab.c82dqw5tullb.sa-east-1.rds.amazonaws.com;user id=Sistemas;password=#7847awsE2024;database=colchao",
                  Microsoft.EntityFrameworkCore.ServerVersion.Parse("13.2.0-mysql")));
 
             // Add services to the container.
