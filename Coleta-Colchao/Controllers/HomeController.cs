@@ -117,11 +117,28 @@ namespace Coleta_Colchao.Controllers
                         return View("Index", dados);
                     }
 
-                    if(buscarLamina != null)
+                    if (buscarLamina != null)
                     {
                         ViewBag.os = os;
                         ViewBag.orcamento = dados.First().orcamento;
                         ViewBag.ensaio = "Laminas";
+
+                        //codigos dos ensaios do colchao, para trazer todas os referente ao ensaio de colchao.
+                        var codigosLaminas = new List<string> { "DNSCCH002000001", "DPCCCH002000001", "FDGCCH002000001", "FTCCCH002000001", "IDTCCH001000001", "QUICCH002000001", "RSLCCH002000001" };
+
+                        ViewBag.ContemOs = (from p in _bancoContext.programacao_lab_ensaios
+                                            join c in _bancoContext.ordemservicocotacaoitem_hc_copylab
+                                            on new { Orcamento = p.Orcamento, Item = p.Item } equals new { Orcamento = c.orcamento, Item = c.Item.ToString() }
+                                            join hc in _bancoContext.Wmoddetprod
+                                            on c.CodigoEnsaio equals hc.codmaster
+                                            where p.Orcamento == dados.First().orcamento && codigosLaminas.Contains(hc.codigo)
+                                            orderby hc.descricao
+                                            select new
+                                            {
+                                                hc.codigo,
+                                                p.OS,
+                                            }).ToList().Distinct();
+
                         return View("Index", dados);
                     }
                     return View("Index");

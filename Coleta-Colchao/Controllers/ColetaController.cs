@@ -3596,7 +3596,7 @@ namespace Coleta_Colchao.Controllers
                     }
 
                     //conformidade das perguntas de A ate G
-                    if (etiquieta_dois == "Sim" && marca == "Sim" && dimensoes == "Sim" && medidas == "Sim" && tipo_colchao == "Sim" && colchoes == "Sim" && letras == "Sim" && negrito_um == "Sim" && caixa_alta_um == "Sim" && coloracao_um == "Sim" && classificacao == "Sim" && uso == "Sim" && composicao == "Sim" && info_altura == "---" || info_altura == "Sim" && colchoes == "Sim" || colchoes == "---")
+                    if (etiquieta_dois == "Sim" && marca == "Sim" && dimensoes == "Sim" && medidas == "Sim" && tipo_colchao == "Sim" && colchoes == "Sim" && letras == "Sim" && negrito_um == "Sim" && caixa_alta_um == "Sim" && coloracao_um == "Sim" && classificacao == "Sim" && uso == "Sim" && composicao == "Sim" && info_altura == null || info_altura == "Sim" && colchoes == "Sim" || colchoes == null)
                     {
                         conforme_letras = "C";
                     }
@@ -3606,7 +3606,7 @@ namespace Coleta_Colchao.Controllers
                     }
 
                     //conformidade dos restante das perguntas..
-                    if (tipo_espuma == "Sim" && densidade_nominal == "Sim" && comp_revestimento == "Sim" && data_fabricacao == "Sim" && pais_fabricacao == "Sim" && cuidados == "Sim" && negrito_dois == "Sim" && caixa_alta_dois == "Sim" && negrito_tres == "Sim" && caixa_alta_tres == "Sim" && coloracao_eti == "Sim" && negrito_quat == "Sim" && caixa_alta_quat == "Sim" && coloracao_quat == "Sim" && espessura_mad == "Sim" || espessura_mad == "---" && aviso_um == "Sim" || aviso_um == "---" && negrito_dois == "Sim" || negrito_dois == "---" && caixa_alta_dois == "Sim" || caixa_alta_dois == "---" && esclarecimento_um == "Sim" || esclarecimento_um == "---" && negrito_tres == "Sim" || negrito_tres == "---" && caixa_alta_tres == "Sim" || caixa_alta_tres == "---" && coloracao_eti == "Sim" || coloracao_eti == "---" && esclarecimento_dois == "Sim" || esclarecimento_dois == "---")
+                    if (tipo_espuma == "Sim" && densidade_nominal == "Sim" && comp_revestimento == "Sim" && data_fabricacao == "Sim" && pais_fabricacao == "Sim" && cuidados == "Sim" && negrito_dois == "Sim" && caixa_alta_dois == "Sim" && negrito_tres == "Sim" && caixa_alta_tres == "Sim" && coloracao_eti == "Sim" && negrito_quat == "Sim" && caixa_alta_quat == "Sim" && coloracao_quat == "Sim" && espessura_mad == "Sim" || espessura_mad == null && aviso_um == "Sim" || aviso_um == null && negrito_dois == "Sim" || negrito_dois == null && caixa_alta_dois == "Sim" || caixa_alta_dois == null && esclarecimento_um == "Sim" || esclarecimento_um == null && negrito_tres == "Sim" || negrito_tres == null && caixa_alta_tres == "Sim" || caixa_alta_tres == null && coloracao_eti == "Sim" || coloracao_eti == null && esclarecimento_dois == "Sim" || esclarecimento_dois == null)
                     {
                         if (int.Parse(altura_letra_dois) >= 3 && int.Parse(altura_letra_tres) >= 3 && int.Parse(altura_letra_quat) >= 3)
                         {
@@ -3828,7 +3828,7 @@ namespace Coleta_Colchao.Controllers
                     }
 
                     //conformidade das perguntas de A ate G
-                    if (editarDados.etiquieta_dois == "Sim" && editarDados.marca == "Sim" && editarDados.dimensoes == "Sim" && editarDados.medidas == "Sim" && editarDados.tipo_colchao == "Sim" && editarDados.colchoes == "Sim" && editarDados.letras == "Sim" && editarDados.negrito_um == "Sim" && editarDados.caixa_alta_um == "Sim" && editarDados.coloracao_um == "Sim" && editarDados.classificacao == "Sim" && editarDados.uso == "Sim" && editarDados.composicao == "Sim" && editarDados.info_altura == "---" || editarDados.info_altura == "Sim" && editarDados.colchoes == "Sim" || editarDados.colchoes == "---")
+                    if (editarDados.etiquieta_dois == "Sim" && editarDados.marca == "Sim" && editarDados.dimensoes == "Sim" && editarDados.medidas == "Sim" && editarDados.tipo_colchao == "Sim" && editarDados.colchoes == "Sim" && editarDados.letras == "Sim" && editarDados.negrito_um == "Sim" && editarDados.caixa_alta_um == "Sim" && editarDados.coloracao_um == "Sim" && editarDados.classificacao == "Sim" && editarDados.uso == "Sim" && editarDados.composicao == null && editarDados.info_altura == null || editarDados.info_altura == "Sim" && editarDados.colchoes == "Sim" || editarDados.colchoes == null)
                     {
                         conforme_letras = "C";
                     }
@@ -3838,9 +3838,9 @@ namespace Coleta_Colchao.Controllers
                     }
 
                     //conformidade dos restante das perguntas..
-                    if (editarDados.tipo_espuma == "Sim" && editarDados.densidade_nominal == "Sim" && editarDados.comp_revestimento == "Sim" && editarDados.data_fabricacao == "Sim" && editarDados.pais_fabricacao == "Sim" && editarDados.cuidados == "Sim" && editarDados.negrito_dois == "Sim" && editarDados.caixa_alta_dois == "Sim" && editarDados.negrito_tres == "Sim" && editarDados.caixa_alta_tres == "Sim" && editarDados.coloracao_eti == "Sim" && editarDados.negrito_quat == "Sim" && editarDados.caixa_alta_quat == "Sim" && editarDados.coloracao_quat == "Sim" && editarDados.espessura_mad == "Sim" || editarDados.espessura_mad == "---" && editarDados.aviso_um == "Sim" || editarDados.aviso_um == "---" && editarDados.negrito_dois == "Sim" || editarDados.negrito_dois == "---" && editarDados.caixa_alta_dois == "Sim" || editarDados.caixa_alta_dois == "---" && editarDados.esclarecimento_um == "Sim" || editarDados.esclarecimento_um == "---" && editarDados.negrito_tres == "Sim" || editarDados.negrito_tres == "---" && editarDados.caixa_alta_tres == "Sim" || editarDados.caixa_alta_tres == "---" && editarDados.coloracao_eti == "Sim" || editarDados.coloracao_eti == "---" && editarDados.esclarecimento_dois == "Sim" || editarDados.esclarecimento_dois == "---")
+                    if (editarDados.tipo_espuma == "Sim" && editarDados.densidade_nominal == "Sim" && editarDados.comp_revestimento == "Sim" && editarDados.data_fabricacao == "Sim" && editarDados.pais_fabricacao == "Sim" && editarDados.cuidados == "Sim" && editarDados.negrito_dois == "Sim" && editarDados.caixa_alta_dois == "Sim" && editarDados.negrito_tres == "Sim" && editarDados.caixa_alta_tres == "Sim" && editarDados.coloracao_eti == "Sim" && editarDados.negrito_quat == "Sim" && editarDados.caixa_alta_quat == "Sim" && editarDados.coloracao_quat == "Sim" && editarDados.espessura_mad == "Sim" || editarDados.espessura_mad == null && editarDados.aviso_um == "Sim" || editarDados.aviso_um == "---" && editarDados.negrito_dois == "Sim" || editarDados.negrito_dois == null && editarDados.caixa_alta_dois == "Sim" || editarDados.caixa_alta_dois == null && editarDados.esclarecimento_um == "Sim" || editarDados.esclarecimento_um == null && editarDados.negrito_tres == "Sim" || editarDados.negrito_tres == null && editarDados.caixa_alta_tres == "Sim" || editarDados.caixa_alta_tres == null && editarDados.coloracao_eti == "Sim" || editarDados.coloracao_eti == null && editarDados.esclarecimento_dois == "Sim" || editarDados.esclarecimento_dois == null)
                     {
-                        if (int.Parse(editarDados.altura_letra_dois) >= 3 && int.Parse(editarDados.altura_letra_tres) >= 3 && int.Parse(editarDados.altura_letra_quat) >= 3)
+                        if(editarDados.altura_letra_dois == null || editarDados.altura_letra_tres == null || editarDados.altura_letra_quat == null)
                         {
                             conforme_letras_dois = "C";
                         }
@@ -3848,6 +3848,11 @@ namespace Coleta_Colchao.Controllers
                         {
                             conforme_letras_dois = "NC";
                         }
+                        //if (int.Parse(editarDados.altura_letra_dois) >= 3 && int.Parse(editarDados.altura_letra_tres) >= 3  && int.Parse(editarDados.altura_letra_quat) >= 3)
+                        //{
+                        //    conforme_letras_dois = "C";
+                        //}
+
                     }
                     else
                     {
