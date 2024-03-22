@@ -789,13 +789,7 @@ namespace Coleta_Colchao.Controllers
                     Editardados.tipo_cert = dados.tipo_cert;
                     Editardados.modelo_cert = dados.modelo_cert;
                     Editardados.tipo_proc = dados.tipo_proc;
-                    Editardados.Ensaio_resiliencia = dados.Ensaio_resiliencia;
-                    Editardados.Ensaio_DPC = dados.Ensaio_DPC;
-                    Editardados.Ensaio_FI = dados.Ensaio_FI;
-                    Editardados.Ensaio_FC = dados.Ensaio_FC;
-                    Editardados.Ensaio_fadiga = dados.Ensaio_fadiga;
-                    Editardados.Ensaio_teor = dados.Ensaio_teor;
-                    Editardados.Ensaio_pos_fadiga = dados.Ensaio_pos_fadiga;
+               
 
 
                     _context.regtro_colchao_lamina.Update(dados);
