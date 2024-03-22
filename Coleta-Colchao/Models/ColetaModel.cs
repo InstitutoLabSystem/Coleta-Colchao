@@ -832,14 +832,6 @@ namespace Coleta_Colchao.Models
             public string? modelo_cert { get; set; }
             public string? tipo_proc { get; set; }
             public string? produto { get; set; }
-            public int Ensaio_resiliencia { get; set; }
-            public int Ensaio_DPC { get; set; }
-            public int Ensaio_FI { get; set; }
-            public int Ensaio_FC { get; set; }
-            public int Ensaio_fadiga { get; set; }
-            public int Ensaio_teor { get; set; }
-            public int Ensaio_pos_fadiga { get; set; }
-            public int Ensaio_Densidade { get; set; }
             public string? status { get; set; }
         }
 
