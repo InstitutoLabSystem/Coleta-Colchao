@@ -628,15 +628,6 @@ namespace Coleta_Colchao.Controllers
                 return View("Laminas/LaminaF_I", dados);
             }
         }
-        public IActionResult RealizarEnsaios(string os, string orcamento, string ensaio)
-        {
-            var dados = _context.regtro_colchao_lamina.Where(x => x.os == os && x.orcamento == orcamento).FirstOrDefault();
-
-            ViewBag.os = os;
-            ViewBag.orcamento = orcamento;
-            ViewBag.ensaio = ensaio;
-            return View("Laminas/RealizarEnsaios", dados);
-        }
 
         public IActionResult FatorConforto(string os, string orcamento, string ensaio)
         {
