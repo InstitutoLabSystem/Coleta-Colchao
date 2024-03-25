@@ -840,7 +840,6 @@ namespace Coleta_Colchao.Models
             public int Id { get; set; }
             public string orcamento { get; set; }
             public string os { get; set; }
-            public int item { get; set; }
             public DateOnly data_ini { get; set; }
             public DateOnly data_term { get; set; }
             public string? tipo_espuma { get; set; }
@@ -925,7 +924,6 @@ namespace Coleta_Colchao.Models
             public int Id { get; set; }
             public string orcamento { get; set; }
             public string os { get; set; }
-            public int item { get; set; }
             public DateOnly data_ini { get; set; }
             public DateOnly data_term { get; set; }
             public string? tipo_espuma { get; set; }
@@ -957,7 +955,6 @@ namespace Coleta_Colchao.Models
             public int Id { get; set; }
             public string orcamento { get; set; }
             public string os { get; set; }
-            public int item { get; set; }
             public DateOnly data_ini { get; set; }
             public DateOnly date_term { get; set; }
             public float lar_amostra_um_um { get; set; }
@@ -1214,7 +1211,6 @@ namespace Coleta_Colchao.Models
             public int Id { get; set; }
             public string orcamento { get; set; }
             public string os { get; set; }
-            public int item { get; set; }
             public DateOnly data_ini { get; set; }
             public DateOnly data_term { get; set; }
             public float lar_amostra_um_um { get; set; }
@@ -1335,7 +1331,6 @@ namespace Coleta_Colchao.Models
             public int Id { get; set; }
             public string orcamento { get; set; }
             public string os { get; set; }
-            public int item { get; set; }
             public DateOnly data_ini { get; set; }
             public DateOnly data_term { get; set; }
             public string? tipo_espuma { get; set; }

@@ -507,124 +507,112 @@ namespace Coleta_Colchao.Controllers
             return View("Molas/IdentificacaoEmbalagem2");
         }
 
-        public IActionResult LaminaDeterminacaoDensidade(string os, string orcamento, int item)
+        public IActionResult LaminaDeterminacaoDensidade(string os, string orcamento)
         {
-            var dados = _context.lamina_determinacao_densidade.Where(x => x.os == os && x.orcamento == orcamento && x.item == item).FirstOrDefault();
+            var dados = _context.lamina_determinacao_densidade.Where(x => x.os == os && x.orcamento == orcamento).FirstOrDefault();
             if (dados == null)
             {
                 ViewBag.os = os;
                 ViewBag.orcamento = orcamento;
-                ViewBag.item = item;
                 return View("Laminas/LaminaDeterminacaoDensidade");
             }
             else
             {
                 ViewBag.os = os;
                 ViewBag.orcamento = orcamento;
-                ViewBag.item = item;
                 return View("Laminas/LaminaDeterminacaoDensidade", dados);
             }
 
         }
 
-        public IActionResult LamindaDeterminacaoResiliencia(string os, string orcamento, int item)
+        public IActionResult LamindaDeterminacaoResiliencia(string os, string orcamento)
         {
-            var dados = _context.lamina_resiliencia.Where(x => x.os == os && x.orcamento == orcamento && x.item == item).FirstOrDefault();
+            var dados = _context.lamina_resiliencia.Where(x => x.os == os && x.orcamento == orcamento).FirstOrDefault();
 
             if (dados == null)
             {
                 ViewBag.os = os;
                 ViewBag.orcamento = orcamento;
-                ViewBag.item = item;
                 return View("Laminas/LamindaDeterminacaoResiliencia");
             }
             else
             {
                 ViewBag.os = os;
                 ViewBag.orcamento = orcamento;
-                ViewBag.item = item;
                 return View("Laminas/LamindaDeterminacaoResiliencia", dados);
             }
 
         }
-        public IActionResult LaminaDPC(string os, string orcamento, int item)
+        public IActionResult LaminaDPC(string os, string orcamento)
         {
-            var dados = _context.lamina_dpc.Where(x => x.os == os && x.orcamento == orcamento && x.item == item).FirstOrDefault();
+            var dados = _context.lamina_dpc.Where(x => x.os == os && x.orcamento == orcamento).FirstOrDefault();
             if (dados == null)
             {
                 ViewBag.os = os;
                 ViewBag.orcamento = orcamento;
-                ViewBag.item = item;
                 return View("Laminas/LaminaDPC");
             }
             else
             {
                 ViewBag.os = os;
                 ViewBag.orcamento = orcamento;
-                ViewBag.item = item;
                 return View("Laminas/LaminaDPC", dados);
             }
         }
 
-        public IActionResult LaminaFadiga(string os, string orcamento, int item)
+        public IActionResult LaminaFadiga(string os, string orcamento)
         {
-            var dados = _context.lamina_fadiga_dinamica.Where(x => x.os == os && x.orcamento == orcamento && x.item == item).FirstOrDefault();
+            var dados = _context.lamina_fadiga_dinamica.Where(x => x.os == os && x.orcamento == orcamento).FirstOrDefault();
             if (dados == null)
             {
                 ViewBag.os = os;
                 ViewBag.orcamento = orcamento;
-                ViewBag.item = item;
                 return View("Laminas/LaminaFadiga");
             }
             else
             {
                 ViewBag.os = os;
                 ViewBag.orcamento = orcamento;
-                ViewBag.item = item;
                 return View("Laminas/LaminaFadiga", dados);
             }
 
         }
-        public IActionResult LaminaPFI(string os, string orcamento, int item)
+        public IActionResult LaminaPFI(string os, string orcamento)
         {
-            var buscarFi = _context.lamina_fi.Where(x => x.os == os && x.orcamento == orcamento && x.item == item).FirstOrDefault();
+            var buscarFi = _context.lamina_fi.Where(x => x.os == os && x.orcamento == orcamento).FirstOrDefault();
             if (buscarFi == null)
             {
                 TempData["Mensagem"] = "ATENÇÃO!! REALIZE O ENSAIO DE F.I PRIMEIRO PARA REALIZAR O ENSAIO DE P.F.I";
             }
 
-            var dados = _context.lamina_pfi.Where(x => x.os == os && x.orcamento == orcamento && x.item == item).FirstOrDefault();
+            var dados = _context.lamina_pfi.Where(x => x.os == os && x.orcamento == orcamento).FirstOrDefault();
             if (dados == null)
             {
                 ViewBag.os = os;
                 ViewBag.orcamento = orcamento;
-                ViewBag.item = item;
                 return View("Laminas/LaminaPFI");
             }
             else
             {
                 ViewBag.os = os;
                 ViewBag.orcamento = orcamento;
-                ViewBag.item = item;
                 return View("Laminas/LaminaPFI", dados);
             }
 
         }
-        public IActionResult LaminaF_I(string os, string orcamento, int item)
+        public IActionResult LaminaF_I(string os, string orcamento)
         {
-            var dados = _context.lamina_fi.Where(x => x.os == os && x.orcamento == orcamento && x.item == item).FirstOrDefault();
+            var dados = _context.lamina_fi.Where(x => x.os == os && x.orcamento == orcamento).FirstOrDefault();
             if (dados == null)
             {
                 ViewBag.os = os;
                 ViewBag.orcamento = orcamento;
-                ViewBag.item = item;
                 return View("Laminas/LaminaF_I");
             }
             else
             {
                 ViewBag.os = os;
-                ViewBag.orcamento = orcamento;
-                ViewBag.item = item;
+                ViewBag.orcamento = orcamento;            
                 return View("Laminas/LaminaF_I", dados);
             }
         }
@@ -633,10 +621,21 @@ namespace Coleta_Colchao.Controllers
         {
             var dados = _context.regtro_colchao_lamina.Where(x => x.os == os && x.orcamento == orcamento).FirstOrDefault();
 
-            ViewBag.os = os;
-            ViewBag.orcamento = orcamento;
-            ViewBag.ensaio = ensaio;
-            return View("Laminas/FatorConforto", dados);
+            if(dados == null)
+            {
+                ViewBag.os = os;
+                ViewBag.orcamento = orcamento;
+                ViewBag.ensaio = ensaio;
+                return View("Laminas/FatorConforto");
+            }
+            else
+            {
+                ViewBag.os = os;
+                ViewBag.orcamento = orcamento;
+                ViewBag.ensaio = ensaio;
+                return View("Laminas/FatorConforto", dados);
+            }
+        
         }
 
         public IActionResult EnviarFotos(string os, string orcamento)
@@ -4851,11 +4850,11 @@ namespace Coleta_Colchao.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> SalvarDeterminacaoDensidade(string os, string orcamento, int item, ColetaModel.SalvarLaminaDeterminacaoDensidade salvarDados)
+        public async Task<IActionResult> SalvarDeterminacaoDensidade(string os, string orcamento, ColetaModel.SalvarLaminaDeterminacaoDensidade salvarDados)
         {
             try
             {
-                var editarDados = _context.lamina_determinacao_densidade.Where(x => x.os == os && x.orcamento == orcamento && x.item == item).FirstOrDefault();
+                var editarDados = _context.lamina_determinacao_densidade.Where(x => x.os == os && x.orcamento == orcamento).FirstOrDefault();
                 if (editarDados == null)
                 {
                     //realizando calculo da media das amostras..
@@ -4913,7 +4912,7 @@ namespace Coleta_Colchao.Controllers
                     await _context.SaveChangesAsync();
 
                     TempData["Mensagem"] = "Dados salvo com sucesso.";
-                    return RedirectToAction("LaminaDeterminacaoDensidade", "Coleta", new { os, orcamento, item });
+                    return RedirectToAction("LaminaDeterminacaoDensidade", "Coleta", new { os, orcamento });
                 }
                 else
                 {
@@ -5016,7 +5015,7 @@ namespace Coleta_Colchao.Controllers
                     await _context.SaveChangesAsync();
 
                     TempData["Mensagem"] = "Dados Editado com sucesso.";
-                    return RedirectToAction("LaminaDeterminacaoDensidade", "Coleta", new { os, orcamento, item });
+                    return RedirectToAction("LaminaDeterminacaoDensidade", "Coleta", new { os, orcamento});
 
                 }
             }
@@ -5027,11 +5026,11 @@ namespace Coleta_Colchao.Controllers
             }
         }
         [HttpPost]
-        public async Task<IActionResult> SalvarLaminaResiliencia(string os, string orcamento, int item, ColetaModel.LaminaResiliencia salvarDados)
+        public async Task<IActionResult> SalvarLaminaResiliencia(string os, string orcamento, ColetaModel.LaminaResiliencia salvarDados)
         {
             try
             {
-                var editarDados = _context.lamina_resiliencia.Where(x => x.os == os && x.orcamento == orcamento && x.item == item).FirstOrDefault();
+                var editarDados = _context.lamina_resiliencia.Where(x => x.os == os && x.orcamento == orcamento).FirstOrDefault();
 
                 if (editarDados == null)
                 {
@@ -5053,7 +5052,7 @@ namespace Coleta_Colchao.Controllers
                     _context.lamina_resiliencia.Add(salvarDados);
                     await _context.SaveChangesAsync();
                     TempData["Mensagem"] = "Dados gravado com sucesso.";
-                    return RedirectToAction("LamindaDeterminacaoResiliencia", "Coleta", new { os, orcamento, item });
+                    return RedirectToAction("LamindaDeterminacaoResiliencia", "Coleta", new { os, orcamento});
                 }
                 else
                 {
@@ -5090,7 +5089,7 @@ namespace Coleta_Colchao.Controllers
                     _context.lamina_resiliencia.Update(editarDados);
                     await _context.SaveChangesAsync();
                     TempData["Mensagem"] = "Dados editado com sucesso.";
-                    return RedirectToAction("LamindaDeterminacaoResiliencia", "Coleta", new { os, orcamento, item });
+                    return RedirectToAction("LamindaDeterminacaoResiliencia", "Coleta", new { os, orcamento});
                 }
             }
             catch (Exception ex)
@@ -5100,11 +5099,11 @@ namespace Coleta_Colchao.Controllers
             }
         }
         [HttpPost]
-        public async Task<IActionResult> salvarDPC(string os, string orcamento, int item, ColetaModel.LaminaDPC salvarDados)
+        public async Task<IActionResult> salvarDPC(string os, string orcamento, ColetaModel.LaminaDPC salvarDados)
         {
             try
             {
-                var editarDados = _context.lamina_dpc.Where(x => x.os == os && x.orcamento == orcamento && x.item == item).FirstOrDefault();
+                var editarDados = _context.lamina_dpc.Where(x => x.os == os && x.orcamento == orcamento).FirstOrDefault();
                 if (editarDados == null)
                 {
                     //realizando os calculos de media de largura, compri, e espessura inicial.
@@ -5204,7 +5203,7 @@ namespace Coleta_Colchao.Controllers
                     await _context.SaveChangesAsync();
 
                     TempData["Mensagem"] = "Dados Salvo com sucesso.";
-                    return RedirectToAction("LaminaDPC", "Coleta", new { os, orcamento, item });
+                    return RedirectToAction("LaminaDPC", "Coleta", new { os, orcamento });
                 }
                 else
                 {
@@ -5399,7 +5398,7 @@ namespace Coleta_Colchao.Controllers
                     _context.lamina_dpc.Update(editarDados);
                     await _context.SaveChangesAsync();
                     TempData["Mensagem"] = "Dados Editado com sucesso.";
-                    return RedirectToAction("LaminaDPC", "Coleta", new { os, orcamento, item });
+                    return RedirectToAction("LaminaDPC", "Coleta", new { os, orcamento});
                 }
 
             }
@@ -5678,11 +5677,11 @@ namespace Coleta_Colchao.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> SalvarLaminaFadiga(string os, string orcamento, int item, ColetaModel.LaminaFadigaRotativa salvarDados)
+        public async Task<IActionResult> SalvarLaminaFadiga(string os, string orcamento, ColetaModel.LaminaFadigaRotativa salvarDados)
         {
             try
             {
-                var editarDados = _context.lamina_fadiga_dinamica.Where(x => x.os == os && x.orcamento == orcamento && x.item == item).FirstOrDefault();
+                var editarDados = _context.lamina_fadiga_dinamica.Where(x => x.os == os && x.orcamento == orcamento).FirstOrDefault();
                 if (editarDados == null)
                 {
                     //realizando o calculo de media...
@@ -5753,7 +5752,7 @@ namespace Coleta_Colchao.Controllers
                     _context.lamina_fadiga_dinamica.Add(salvarDados);
                     await _context.SaveChangesAsync();
                     TempData["Mensagem"] = "Dados Salvo com sucesso.";
-                    return RedirectToAction("LaminaFadiga", "Coleta", new { os, orcamento, item });
+                    return RedirectToAction("LaminaFadiga", "Coleta", new { os, orcamento});
                 }
                 else
                 {
@@ -5900,7 +5899,7 @@ namespace Coleta_Colchao.Controllers
                     _context.lamina_fadiga_dinamica.Update(editarDados);
                     await _context.SaveChangesAsync();
                     TempData["Mensagem"] = "Dados Editado com sucesso.";
-                    return RedirectToAction("LaminaFadiga", "Coleta", new { os, orcamento, item });
+                    return RedirectToAction("LaminaFadiga", "Coleta", new { os, orcamento});
                 }
             }
             catch (Exception ex)
@@ -5909,11 +5908,11 @@ namespace Coleta_Colchao.Controllers
                 throw;
             }
         }
-        public async Task<IActionResult> SalvarLaminaPFI(string os, string orcamento, int item, ColetaModel.LaminaPFI salvarDados)
+        public async Task<IActionResult> SalvarLaminaPFI(string os, string orcamento, ColetaModel.LaminaPFI salvarDados)
         {
             try
             {
-                var editarDados = _context.lamina_pfi.Where(x => x.os == os && x.orcamento == orcamento && x.item == item).FirstOrDefault();
+                var editarDados = _context.lamina_pfi.Where(x => x.os == os && x.orcamento == orcamento).FirstOrDefault();
                 if (editarDados == null)
                 {
 
@@ -6000,11 +5999,11 @@ namespace Coleta_Colchao.Controllers
                     salvarDados.forca_ind_enc_65 = salvarDados.media_65_comp;
 
                     //inicio de calculos de pfi..
-                    var buscarFi = _context.lamina_fi.Where(x => x.os == os && x.orcamento == orcamento && x.item == item).FirstOrDefault();
+                    var buscarFi = _context.lamina_fi.Where(x => x.os == os && x.orcamento == orcamento).FirstOrDefault();
                     if (buscarFi == null)
                     {
                         TempData["Mensagem"] = "ATENÇÃO ENSAIO DE F.I NÃO REALIZADO!!!!! REALIZE PRIMEIRO O ENSAIO DE F.I PARA CONTINUAR ESSE ENSAIO";
-                        return RedirectToAction(nameof(LaminaPFI), "Coleta", new { os, orcamento, item });
+                        return RedirectToAction(nameof(LaminaPFI), "Coleta", new { os, orcamento});
                     }
 
                     salvarDados.pfi_25_um = buscarFi.forca_esp_25;
@@ -6035,7 +6034,7 @@ namespace Coleta_Colchao.Controllers
                     await _context.SaveChangesAsync();
 
                     TempData["Mensagem"] = "Dados Salvo com sucesso.";
-                    return RedirectToAction("LaminaPFI", "Coleta", new { os, orcamento, item });
+                    return RedirectToAction("LaminaPFI", "Coleta", new { os, orcamento });
                 }
                 else
                 {
@@ -6195,12 +6194,12 @@ namespace Coleta_Colchao.Controllers
 
 
                     //calculos de pfi.
-                    var buscarFi = _context.lamina_fi.Where(x => x.os == os && x.orcamento == orcamento && x.item == item).FirstOrDefault();
+                    var buscarFi = _context.lamina_fi.Where(x => x.os == os && x.orcamento == orcamento).FirstOrDefault();
 
                     if (buscarFi == null)
                     {
                         TempData["Mensagem"] = "Erro ao editar dados";
-                        return RedirectToAction(nameof(LaminaPFI), "Coleta", new { os, orcamento, item });
+                        return RedirectToAction(nameof(LaminaPFI), "Coleta", new { os, orcamento });
                     }
 
                     editarDados.pfi_25_um = buscarFi.forca_esp_25;
@@ -6224,7 +6223,7 @@ namespace Coleta_Colchao.Controllers
                     _context.lamina_pfi.Update(editarDados);
                     await _context.SaveChangesAsync();
                     TempData["Mensagem"] = "Dados Editado com sucesso.";
-                    return RedirectToAction("LaminaPFI", "Coleta", new { os, orcamento, item });
+                    return RedirectToAction("LaminaPFI", "Coleta", new { os, orcamento });
                 }
             }
             catch (Exception ex)
