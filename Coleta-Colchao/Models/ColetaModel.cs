@@ -84,7 +84,7 @@ namespace Coleta_Colchao.Models
             public string? densidade_5 { get; set; }
             public string? revestimento { get; set; }
             public string? anti_reflexo { get; set; }
-        public string? outros_materia { get; set; }
+            public string? outros_materia { get; set; }
 
 
         }
@@ -556,7 +556,7 @@ namespace Coleta_Colchao.Models
             public string? quant_colagens_cinco { get; set; }
             public string? espessura_lamina { get; set; }
             public string? adesivo { get; set; }
-           
+
         }
 
 
@@ -842,6 +842,7 @@ namespace Coleta_Colchao.Models
             public string os { get; set; }
             public DateOnly data_ini { get; set; }
             public DateOnly data_term { get; set; }
+            public int densidade { get; set; }
             public string? tipo_espuma { get; set; }
             public float lar_amostra_um_um { get; set; }
             public float lar_amostra_um_dois { get; set; }
@@ -916,6 +917,9 @@ namespace Coleta_Colchao.Models
             public float dr_tres_dois { get; set; }
             public float dr_resul_tres { get; set; }
             public float dr_media { get; set; }
+            public float maxima_densidade { get; set; }
+            public float minima_densidade { get; set; }
+            public string? conforme { get; set; }
         }
 
         public class LaminaResiliencia
@@ -927,6 +931,7 @@ namespace Coleta_Colchao.Models
             public DateOnly data_ini { get; set; }
             public DateOnly data_term { get; set; }
             public string? tipo_espuma { get; set; }
+            public int densidade { get; set; }
             public float resil_amostra_um_um { get; set; }
             public float resil_amostra_um_dois { get; set; }
             public float resil_amostra_um_tres { get; set; }
@@ -947,6 +952,7 @@ namespace Coleta_Colchao.Models
             public float media_res_tres { get; set; }
             public float resiliencia_esp { get; set; }
             public float resiliencia_enc { get; set; }
+            public string? conforme { get; set; }
         }
 
         public class LaminaDPC
@@ -1075,6 +1081,9 @@ namespace Coleta_Colchao.Models
             public float especificada { get; set; }
             public float encontrada { get; set; }
             public string? tipo_espuma { get; set; }
+            public int densidade { get; set; }
+            public string? conforme { get; set; }
+
 
         }
 
@@ -1084,7 +1093,6 @@ namespace Coleta_Colchao.Models
             public int Id { get; set; }
             public string orcamento { get; set; }
             public string os { get; set; }
-            public int item { get; set; }
             public DateOnly data_ini { get; set; }
             public DateOnly data_term { get; set; }
             public string? tipo_espuma { get; set; }

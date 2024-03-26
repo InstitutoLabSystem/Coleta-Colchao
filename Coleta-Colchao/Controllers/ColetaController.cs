@@ -612,7 +612,7 @@ namespace Coleta_Colchao.Controllers
             else
             {
                 ViewBag.os = os;
-                ViewBag.orcamento = orcamento;            
+                ViewBag.orcamento = orcamento;
                 return View("Laminas/LaminaF_I", dados);
             }
         }
@@ -621,7 +621,7 @@ namespace Coleta_Colchao.Controllers
         {
             var dados = _context.regtro_colchao_lamina.Where(x => x.os == os && x.orcamento == orcamento).FirstOrDefault();
 
-            if(dados == null)
+            if (dados == null)
             {
                 ViewBag.os = os;
                 ViewBag.orcamento = orcamento;
@@ -635,7 +635,7 @@ namespace Coleta_Colchao.Controllers
                 ViewBag.ensaio = ensaio;
                 return View("Laminas/FatorConforto", dados);
             }
-        
+
         }
 
         public IActionResult EnviarFotos(string os, string orcamento)
@@ -779,7 +779,7 @@ namespace Coleta_Colchao.Controllers
                     Editardados.tipo_cert = dados.tipo_cert;
                     Editardados.modelo_cert = dados.modelo_cert;
                     Editardados.tipo_proc = dados.tipo_proc;
-               
+
 
 
                     _context.regtro_colchao_lamina.Update(dados);
@@ -3824,7 +3824,7 @@ namespace Coleta_Colchao.Controllers
                     //conformidade dos restante das perguntas..
                     if (editarDados.tipo_espuma == "Sim" && editarDados.densidade_nominal == "Sim" && editarDados.comp_revestimento == "Sim" && editarDados.data_fabricacao == "Sim" && editarDados.pais_fabricacao == "Sim" && editarDados.cuidados == "Sim" && editarDados.negrito_dois == "Sim" && editarDados.caixa_alta_dois == "Sim" && editarDados.negrito_tres == "Sim" && editarDados.caixa_alta_tres == "Sim" && editarDados.coloracao_eti == "Sim" && editarDados.negrito_quat == "Sim" && editarDados.caixa_alta_quat == "Sim" && editarDados.coloracao_quat == "Sim" && editarDados.espessura_mad == "Sim" || editarDados.espessura_mad == null && editarDados.aviso_um == "Sim" || editarDados.aviso_um == "---" && editarDados.negrito_dois == "Sim" || editarDados.negrito_dois == null && editarDados.caixa_alta_dois == "Sim" || editarDados.caixa_alta_dois == null && editarDados.esclarecimento_um == "Sim" || editarDados.esclarecimento_um == null && editarDados.negrito_tres == "Sim" || editarDados.negrito_tres == null && editarDados.caixa_alta_tres == "Sim" || editarDados.caixa_alta_tres == null && editarDados.coloracao_eti == "Sim" || editarDados.coloracao_eti == null && editarDados.esclarecimento_dois == "Sim" || editarDados.esclarecimento_dois == null)
                     {
-                        if(editarDados.altura_letra_dois == null || editarDados.altura_letra_tres == null || editarDados.altura_letra_quat == null)
+                        if (editarDados.altura_letra_dois == null || editarDados.altura_letra_tres == null || editarDados.altura_letra_quat == null)
                         {
                             conforme_letras_dois = "C";
                         }
@@ -4891,6 +4891,9 @@ namespace Coleta_Colchao.Controllers
                     float vol_calc_amostra_um = ((media_amostra_um * media_comp_um * media_esp_um) / 1000);
                     float vol_calc_amostra_dois = ((media_amostra_dois * media_comp_dois * media_esp_dois) / 1000);
                     float vol_calc_amostra_tres = ((media_amostra_tres * media_comp_tres * media_esp_tres) / 1000);
+                    salvarDados.calc_amostra_um = vol_calc_amostra_um;
+                    salvarDados.calc_amostra_dois = vol_calc_amostra_dois;
+                    salvarDados.calc_amostra_tres = vol_calc_amostra_tres;
                     //final do calculo..
 
                     //inicio calculo dr..
@@ -4907,6 +4910,22 @@ namespace Coleta_Colchao.Controllers
                     salvarDados.dr_resul_tres = ((salvarDados.dr_tres_um / salvarDados.dr_tres_dois) * 1000);
 
                     salvarDados.dr_media = ((salvarDados.dr_resul_um + salvarDados.dr_resul_dois + salvarDados.dr_resul_tres) / 3);
+
+                    //float inverter_densidade = (salvarDados.densidade * 10) / 100;
+                    float densidade_resultado = ((salvarDados.densidade * 10) / 100) + salvarDados.densidade;
+                    float densidade_resultado_dois = (((salvarDados.densidade * 10) / 100) - salvarDados.densidade) * -1;
+
+                    if (salvarDados.dr_media >= densidade_resultado_dois && salvarDados.dr_media <= densidade_resultado)
+                    {
+                        salvarDados.conforme = "C";
+                    }
+                    else
+                    {
+                        salvarDados.conforme = "NC";
+                    }
+                    //salvando minimo e maximo da densidade.
+                    salvarDados.maxima_densidade = densidade_resultado;
+                    salvarDados.minima_densidade = densidade_resultado_dois;
 
                     _context.lamina_determinacao_densidade.Add(salvarDados);
                     await _context.SaveChangesAsync();
@@ -4972,6 +4991,7 @@ namespace Coleta_Colchao.Controllers
                     editarDados.esp_amostra_tres_seis = salvarDados.esp_amostra_tres_seis;
                     editarDados.esp_amostra_tres_sete = salvarDados.esp_amostra_tres_sete;
                     editarDados.esp_amostra_tres_oito = salvarDados.esp_amostra_tres_oito;
+                    editarDados.densidade = salvarDados.densidade;
 
                     //atualizando a media de cada valor, encontrado.
                     editarDados.lar_media_um = ((editarDados.lar_amostra_um_um + salvarDados.lar_amostra_um_dois + editarDados.lar_amostra_um_tres + editarDados.lar_amostra_um_quatro) / 4);
@@ -5010,12 +5030,29 @@ namespace Coleta_Colchao.Controllers
 
                     editarDados.dr_media = ((editarDados.dr_resul_um + editarDados.dr_resul_dois + editarDados.dr_resul_tres) / 3);
 
+                    //float inverter_densidade = (salvarDados.densidade * 10) / 100;
+                    float densidade_resultado = ((editarDados.densidade * 10) / 100) + editarDados.densidade;
+                    float densidade_resultado_dois = (((editarDados.densidade * 10) / 100) - editarDados.densidade) * -1;
+
+                    if (editarDados.dr_media >= densidade_resultado_dois && editarDados.dr_media <= densidade_resultado)
+                    {
+                        editarDados.conforme = "C";
+                    }
+                    else
+                    {
+                        editarDados.conforme = "NC";
+
+                    }
+
+                    //salvando minimo e maximo da densidade.
+                    editarDados.maxima_densidade = densidade_resultado;
+                    editarDados.minima_densidade = densidade_resultado_dois;
 
                     _context.lamina_determinacao_densidade.Update(editarDados);
                     await _context.SaveChangesAsync();
 
                     TempData["Mensagem"] = "Dados Editado com sucesso.";
-                    return RedirectToAction("LaminaDeterminacaoDensidade", "Coleta", new { os, orcamento});
+                    return RedirectToAction("LaminaDeterminacaoDensidade", "Coleta", new { os, orcamento });
 
                 }
             }
@@ -5049,10 +5086,19 @@ namespace Coleta_Colchao.Controllers
 
                     salvarDados.resiliencia_enc = ((salvarDados.media_res_um + salvarDados.media_res_dois + salvarDados.media_res_tres) / 3);
 
+                    if (salvarDados.resiliencia_enc < salvarDados.resiliencia_esp)
+                    {
+                        salvarDados.conforme = "NC";
+                    }
+                    else
+                    {
+                        salvarDados.conforme = "C";
+                    }
+
                     _context.lamina_resiliencia.Add(salvarDados);
                     await _context.SaveChangesAsync();
                     TempData["Mensagem"] = "Dados gravado com sucesso.";
-                    return RedirectToAction("LamindaDeterminacaoResiliencia", "Coleta", new { os, orcamento});
+                    return RedirectToAction("LamindaDeterminacaoResiliencia", "Coleta", new { os, orcamento });
                 }
                 else
                 {
@@ -5060,6 +5106,8 @@ namespace Coleta_Colchao.Controllers
                     editarDados.tipo_espuma = salvarDados.tipo_espuma;
                     editarDados.data_ini = salvarDados.data_ini;
                     editarDados.data_term = salvarDados.data_term;
+                    editarDados.densidade = salvarDados.densidade;
+                    editarDados.tipo_espuma = salvarDados.tipo_espuma;
                     editarDados.resil_amostra_um_dois = salvarDados.resil_amostra_um_dois;
                     editarDados.resil_amostra_um_um = salvarDados.resil_amostra_um_um;
                     editarDados.resil_amostra_um_tres = salvarDados.resil_amostra_um_tres;
@@ -5069,6 +5117,7 @@ namespace Coleta_Colchao.Controllers
                     editarDados.resil_amostra_tres_um = salvarDados.resil_amostra_tres_um;
                     editarDados.resil_amostra_tres_dois = salvarDados.resil_amostra_tres_dois;
                     editarDados.resil_amostra_tres_tres = salvarDados.resil_amostra_tres_tres;
+                    editarDados.resiliencia_esp = salvarDados.resiliencia_esp;
 
                     //realizando calculos necessarios, convertendo direto para 2 casas decimais dps da virgula... convertendo para string e float a mesmo tempo.
                     editarDados.varia_amostra_um_um = float.Parse((((editarDados.resil_amostra_um_dois - editarDados.resil_amostra_um_um) / editarDados.resil_amostra_um_um) * 100).ToString("N2"));
@@ -5086,10 +5135,20 @@ namespace Coleta_Colchao.Controllers
                     editarDados.resiliencia_esp = salvarDados.resiliencia_esp;
                     editarDados.resiliencia_enc = ((editarDados.media_res_um + editarDados.media_res_dois + editarDados.media_res_tres) / 3);
 
+
+                    if (editarDados.resiliencia_enc < editarDados.resiliencia_esp)
+                    {
+                        editarDados.conforme = "NC";
+                    }
+                    else
+                    {
+                        editarDados.conforme = "C";
+                    }
+
                     _context.lamina_resiliencia.Update(editarDados);
                     await _context.SaveChangesAsync();
                     TempData["Mensagem"] = "Dados editado com sucesso.";
-                    return RedirectToAction("LamindaDeterminacaoResiliencia", "Coleta", new { os, orcamento});
+                    return RedirectToAction("LamindaDeterminacaoResiliencia", "Coleta", new { os, orcamento });
                 }
             }
             catch (Exception ex)
@@ -5199,6 +5258,16 @@ namespace Coleta_Colchao.Controllers
                     float dpc_encntrado = ((media_dpc_um + media_dpc_tres + media_dpc_tres) / 3);
                     salvarDados.encontrada = dpc_encntrado;
 
+                    //conformidade.
+                    if (salvarDados.encontrada > salvarDados.especificada)
+                    {
+                        salvarDados.conforme = "NC";
+                    }
+                    else
+                    {
+                        salvarDados.conforme = "C";
+                    }
+
                     _context.lamina_dpc.Add(salvarDados);
                     await _context.SaveChangesAsync();
 
@@ -5210,6 +5279,8 @@ namespace Coleta_Colchao.Controllers
                     //inico de editar os dados.
                     editarDados.data_ini = salvarDados.data_ini;
                     editarDados.date_term = salvarDados.date_term;
+                    editarDados.densidade = salvarDados.densidade;
+                    editarDados.tipo_espuma = salvarDados.tipo_espuma;
 
                     //recebendo os valores de cada tabela para guardar.
                     editarDados.lar_amostra_um_um = salvarDados.lar_amostra_um_um;
@@ -5394,11 +5465,12 @@ namespace Coleta_Colchao.Controllers
 
                     float dpc_encntrado = ((media_dpc_um + media_dpc_tres + media_dpc_tres) / 3);
                     editarDados.encontrada = dpc_encntrado;
+                    editarDados.especificada = salvarDados.especificada;
 
                     _context.lamina_dpc.Update(editarDados);
                     await _context.SaveChangesAsync();
                     TempData["Mensagem"] = "Dados Editado com sucesso.";
-                    return RedirectToAction("LaminaDPC", "Coleta", new { os, orcamento});
+                    return RedirectToAction("LaminaDPC", "Coleta", new { os, orcamento });
                 }
 
             }
@@ -5414,7 +5486,7 @@ namespace Coleta_Colchao.Controllers
         {
             try
             {
-                var editarDados = _context.lamina_fi.Where(x => x.os == os && x.orcamento == orcamento && x.item == item).FirstOrDefault();
+                var editarDados = _context.lamina_fi.Where(x => x.os == os && x.orcamento == orcamento).FirstOrDefault();
                 if (editarDados == null)
                 {
                     //realizando os calculos de media de largura, comp, e espessura...
@@ -5752,7 +5824,7 @@ namespace Coleta_Colchao.Controllers
                     _context.lamina_fadiga_dinamica.Add(salvarDados);
                     await _context.SaveChangesAsync();
                     TempData["Mensagem"] = "Dados Salvo com sucesso.";
-                    return RedirectToAction("LaminaFadiga", "Coleta", new { os, orcamento});
+                    return RedirectToAction("LaminaFadiga", "Coleta", new { os, orcamento });
                 }
                 else
                 {
@@ -5899,7 +5971,7 @@ namespace Coleta_Colchao.Controllers
                     _context.lamina_fadiga_dinamica.Update(editarDados);
                     await _context.SaveChangesAsync();
                     TempData["Mensagem"] = "Dados Editado com sucesso.";
-                    return RedirectToAction("LaminaFadiga", "Coleta", new { os, orcamento});
+                    return RedirectToAction("LaminaFadiga", "Coleta", new { os, orcamento });
                 }
             }
             catch (Exception ex)
@@ -6003,7 +6075,7 @@ namespace Coleta_Colchao.Controllers
                     if (buscarFi == null)
                     {
                         TempData["Mensagem"] = "ATENÇÃO ENSAIO DE F.I NÃO REALIZADO!!!!! REALIZE PRIMEIRO O ENSAIO DE F.I PARA CONTINUAR ESSE ENSAIO";
-                        return RedirectToAction(nameof(LaminaPFI), "Coleta", new { os, orcamento});
+                        return RedirectToAction(nameof(LaminaPFI), "Coleta", new { os, orcamento });
                     }
 
                     salvarDados.pfi_25_um = buscarFi.forca_esp_25;

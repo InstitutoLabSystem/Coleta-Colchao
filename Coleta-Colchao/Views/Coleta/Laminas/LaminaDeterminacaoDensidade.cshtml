@@ -30,7 +30,7 @@
     </style>
 </head>
 <body>
-    <form asp-controller="Coleta" asp-action="SalvarDeterminacaoDensidade" asp-route-os="@ViewBag.os" asp-route-orcamento="@ViewBag.orcamento" asp-route-item="@ViewBag.item">
+    <form asp-controller="Coleta" asp-action="SalvarDeterminacaoDensidade" asp-route-os="@ViewBag.os" asp-route-orcamento="@ViewBag.orcamento">
         <table class="tables table-bordered border-secondary  table-sm">
             <thead>
                 <tr>
@@ -74,7 +74,16 @@
                 <td>
                     Determinação da Densidade
                 </td>
-                <td rowspan="15">RESULTADO</td>
+                @if (Model == null)
+                {
+                    <td rowspan="15"></td>
+                }
+                else
+                {
+
+                    <td rowspan="15">@Model.conforme</td>
+                }
+
             </tr>
             <tr>
                 <td>
@@ -90,8 +99,21 @@
                 <td>
                     <table class="tables table-bordered border-secondary  table-sm">
                         <tr>
+                            <td class="fundo-tabela">Densidade (kg/m³)</td>
+                            <td><input type="text" class="form-control" asp-for="densidade" /></td>
                             <td class="fundo-tabela">Tipo Espuma</td>
-                            <td colspan="3"><input type="text" class="form-control" asp-for="tipo_espuma" /></td>
+                            <td colspan="3">
+                                <select asp-for="tipo_espuma" class="form-control">
+                                    <option value="Convencional">Convencional</option>
+                                    <option value="Alta resiliência">Alta resiliência</option>
+                                    <option value="Macia">Macia</option>
+                                    <option value="Hipermacia">Hipermacia</option>
+                                    <option value="Visco elástica">Visco elástica</option>
+                                    <option value="Aglomerado">Aglomerado</option>
+                                    <option value="Látex">Látex</option>
+                                    <option value="Rabatan">Rabatan</option>
+                                </select>
+                            </td>
                         </tr>
                         <tr class="fundo-tabela">
                             <td rowspan="6">---</td>
@@ -326,5 +348,15 @@
             alert('@Html.Raw(TempData["Mensagem"])');
         </script>
     }
+
+    <script>
+        document.addEventListener("keydown", function (e) {
+            if (e.keyCode === 13) {
+
+                e.preventDefault();
+
+            }
+        });
+    </script>
 </body>
 </html>

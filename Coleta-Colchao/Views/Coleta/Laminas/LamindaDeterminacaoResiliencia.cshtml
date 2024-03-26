@@ -17,13 +17,13 @@
     <title>Determinação Resiliencia</title>
     <style>
         /*    .controlador-conforme {
-            padding: 5px;
-            border-color: gray;
-            border-radius: 5px;
-            box-sizing: border-box;
-            height: 500px;
-            width: 100px;
-            } */
+                                                            padding: 5px;
+                                                            border-color: gray;
+                                                            border-radius: 5px;
+                                                            box-sizing: border-box;
+                                                            height: 500px;
+                                                            width: 100px;
+                                                            } */
 
         input {
             text-align: center;
@@ -75,7 +75,15 @@
                 <td>
                     <b>Determinação da Resiliência</b>
                 </td>
-                <td rowspan="10">Resultado</td>
+                @if (Model == null)
+                {
+                    <td rowspan="15"></td>
+                }
+                else
+                {
+
+                    <td rowspan="15">@Model.conforme</td>
+                }
             </tr>
             <tr>
                 <td>
@@ -91,8 +99,22 @@
                 <td>
                     <table class="tables table-bordered border-secondary  table-sm">
                         <tr>
+                            <td class="fundo-tabela">Densidade (kg/m³)</td>
+                            <td><input type="text" class="form-control" asp-for="densidade" id="densidade" /></td>
                             <td class="fundo-tabela">Tipo Espuma</td>
-                            <td colspan="3"><input type="text" class="form-control" asp-for="tipo_espuma" /></td>
+                            <td colspan="3">
+                                <select asp-for="tipo_espuma" class="form-control" id="tipo_espuma">
+                                    <option value="---">---</option>
+                                    <option value="Convencional">Convencional</option>
+                                    <option value="Alta resiliência">Alta resiliência</option>
+                                    <option value="Macia">Macia</option>
+                                    <option value="Hipermacia">Hipermacia</option>
+                                    <option value="Visco elástica">Visco elástica</option>
+                                    <option value="Aglomerado">Aglomerado</option>
+                                    <option value="Látex">Látex</option>
+                                    <option value="Rabatan">Rabatan</option>
+                                </select>
+                            </td>
                         </tr>
                         <tr class="fundo-tabela">
                             <td>1º Amostra </td>
@@ -224,7 +246,7 @@
             </tr>
             <tr>
                 <td>
-                    Resiliência especificada % <input type="text" class="controlador" asp-for="resiliencia_esp" />
+                    Resiliência especificada % <input type="text" class="controlador" asp-for="resiliencia_esp" id="especificado" readonly />
                 </td>
             </tr>
             <tr>
@@ -247,6 +269,89 @@
         }
 
     </form>
+    <script>
+        document.addEventListener("keydown", function (e) {
+            if (e.keyCode === 13) {
+                e.preventDefault();
+            }
+        });
+    </script>
+    <script>
+        const tipo_espuma = document.getElementById("tipo_espuma");
+        const densidade = document.getElementById("densidade");
+        var especificado = document.getElementById("especificado");
+
+        tipo_espuma.addEventListener('change', function () {
+            mostrarResultados(tipo_espuma.value, densidade.value);
+        });
+
+        densidade.addEventListener('input', function () {
+            console.log(densidade.value);
+            mostrarResultados(tipo_espuma.value, densidade.value);
+        });
+
+        function mostrarResultados(opcaoSelecionada, valorDigitado) {
+            let resultado = '';
+            if (opcaoSelecionada === 'Convencional') {
+                if (valorDigitado == '20' || valorDigitado == '18') {
+                    especificado.value = 30;
+                } else if (valorDigitado == '23' || valorDigitado == '26' || valorDigitado == '28' || valorDigitado == '33') {
+                    especificado.value = 35;
+                } else if (valorDigitado == '40' || valorDigitado == '45') {
+                    especificado.value = 40;
+                } else {
+                    especificado.value = "Não há especificado na tabela";
+                }
+
+            } else if (opcaoSelecionada === 'Hipermacia') {
+                if (valorDigitado == '20' || valorDigitado == '24' || valorDigitado == '29' || valorDigitado == '35') {
+                    especificado.value = 30;
+                }
+                else {
+                    especificado.value = "Não há especificado na tabela";
+                }
+            } else if (opcaoSelecionada === 'Macia') {
+                if (valorDigitado == '20' || valorDigitado == '24') {
+                    especificado.value = 35;
+                } else if (valorDigitado == '29') {
+                    especificado.value = 40;
+                } else if (valorDigitado >= '35') {
+                    especificado.value = 45;
+                }
+                else {
+                    especificado.value = "Não há especificado na tabela";
+                }
+            } else if (opcaoSelecionada === 'Aglomerado') {
+                if (valorDigitado >= '65') {
+                    especificado.value = 25;
+                }
+                else {
+                    especificado.value = "Não há especificado na tabela";
+                }
+            }
+            else if (opcaoSelecionada === 'Alta resiliência') {
+                if (valorDigitado >= '35') {
+                    especificado.value = 55;
+                }
+                else {
+                    especificado.value = "Não há especificado na tabela";
+                }
+            } else if (opcaoSelecionada === 'Visco elástica') {
+                if (valorDigitado >= '30') {
+                    especificado.value = 15;
+                }
+                else {
+                    especificado.value = "Não há especificado na tabela";
+                }
+            }
+            // Atualiza o conteúdo da div de resultados
+
+            console.log(especificado.value);
+        }
+        mostrarResultados(tipo_espuma.value, densidade.value);
+
+
+    </script>
     @if (TempData.ContainsKey("Mensagem"))
     {
         <script>
