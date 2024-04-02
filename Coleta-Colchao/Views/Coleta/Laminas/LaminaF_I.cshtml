@@ -89,9 +89,24 @@
                 <td>
                     <table class="tables table-bordered border-secondary  table-sm">
                         <tr>
+                        <tr>
+                            <td class="fundo-tabela">Densidade (kg/m³)</td>
+                            <td><input type="text" class="form-control" asp-for="densidade" id="densidade" /></td>
                             <td class="fundo-tabela">Tipo Espuma</td>
-                            <td colspan="3"><input type="text" class="form-control" asp-for="tipo_espuma" /></td>
+                            <td colspan="3">
+                                <select asp-for="tipo_espuma" class="form-control" id="tipo_espuma">
+                                    <option value="Convencional">Convencional</option>
+                                    <option value="Alta resiliência">Alta resiliência</option>
+                                    <option value="Macia">Macia</option>
+                                    <option value="Hipermacia">Hipermacia</option>
+                                    <option value="Visco elástica">Visco elástica</option>
+                                    <option value="Aglomerado">Aglomerado</option>
+                                    <option value="Látex">Látex</option>
+                                    <option value="Rabatan">Rabatan</option>
+                                </select>
+                            </td>
                         </tr>
+                      
                         <tr class="fundo-tabela">
                             <td rowspan="6">---</td>
                             <td> Amostra 1º</td>
@@ -266,7 +281,7 @@
                         <tr>
                             <td class="fundo-tabela">
                                 Pré Carga (N)
-                                 <td><input type="text" class="form-control" asp-for="pre_carga"/>
+                                 <td><input type="text" class="form-control" asp-for="pre_carga" value="5" readonly/>
                             </td>
                         </tr>
                     </table>
@@ -284,7 +299,7 @@
                             <td class="fundo-tabela">
                                 Amostra 1 - Redução %
                             </td>
-                            <td><input type="text" class="form-control" asp-for="reducao_porc_um" /></td>
+                            <td><input type="text" class="form-control" asp-for="reducao_porc_um" value="70" readonly/></td>
                             <td class="fundo-tabela">Redução (mm)</td>
                             <td><input type="text" class="form-control" readonly asp-for="reducao_um" /></td>
                         </tr>
@@ -292,7 +307,7 @@
                             <td class="fundo-tabela">
                                 Amostra 2 - Redução %
                             </td>
-                            <td><input type="text" class="form-control" asp-for="reducao_porc_dois" /></td>
+                            <td><input type="text" class="form-control" asp-for="reducao_porc_dois" value="70" readonly /></td>
                             <td class="fundo-tabela">Redução (mm)</td>
                             <td><input type="text" class="form-control" readonly asp-for="reducao_dois" /></td>
                         </tr>
@@ -300,7 +315,7 @@
                             <td class="fundo-tabela">
                                 Amostra 3 - Redução %
                             </td>
-                            <td><input type="text" class="form-control" asp-for="reducao_porc_tres" /></td>
+                            <td><input type="text" class="form-control" asp-for="reducao_porc_tres" value="70" readonly /></td>
                             <td class="fundo-tabela">Redução (mm)</td>
                             <td><input type="text" class="form-control" readonly asp-for="reducao_tres" /></td>
                         </tr>
@@ -349,27 +364,27 @@
                             <td>
                                 1°
                             </td>
-                            <td><input type="text" class="form-control" asp-for="comp_25_um"/></td>
+                            <td><input type="text" class="form-control" asp-for="comp_25_um" value="25" readonly/></td>
                             <td><input type="text" class="form-control" readonly asp-for="reducao_25_um"/></td>
-                            <td><input type="text" class="form-control" asp-for="temp_25_um"/></td>
+                            <td><input type="text" class="form-control" asp-for="temp_25_um" value="30" readonly /></td>
                             <td><input type="text" class="form-control" asp-for="fi_25_um"/></td>
                         </tr>
                         <tr>
                             <td>
                                 2°
                             </td>
-                            <td><input type="text" class="form-control" asp-for="comp_25_dois" /></td>
+                            <td><input type="text" class="form-control" asp-for="comp_25_dois" value="25" readonly /></td>
                             <td><input type="text" class="form-control" readonly asp-for="reducao_25_dois"/></td>
-                            <td><input type="text" class="form-control" asp-for="temp_25_dois" /></td>
+                            <td><input type="text" class="form-control" asp-for="temp_25_dois" value="30" readonly /></td>
                             <td><input type="text" class="form-control" asp-for="fi_25_dois" /></td>
                         </tr>
                         <tr>
                             <td>
                                 3°
                             </td>
-                            <td><input type="text" class="form-control" asp-for="comp_25_tres" /></td>
+                            <td><input type="text" class="form-control" asp-for="comp_25_tres" value="25" readonly /></td>
                             <td><input type="text" class="form-control" readonly asp-for="reducao_25_tres" /></td>
-                            <td><input type="text" class="form-control" asp-for="temp_25_tres" /></td>
+                            <td><input type="text" class="form-control" asp-for="temp_25_tres" value="30" readonly /></td>
                             <td><input type="text" class="form-control" asp-for="fi_25_tres" /></td>
                         </tr>
                         <tr>
@@ -403,27 +418,27 @@
                             <td>
                                 1°
                             </td>
-                            <td><input type="text" class="form-control" asp-for="comp_40_um" /></td>
+                            <td><input type="text" class="form-control" asp-for="comp_40_um" value="40" readonly /></td>
                             <td><input type="text" class="form-control" readonly asp-for="reducao_40_um" /></td>
-                            <td><input type="text" class="form-control" asp-for="temp_40_um"/></td>
+                            <td><input type="text" class="form-control" asp-for="temp_40_um" value="30" readonly /></td>
                             <td><input type="text" class="form-control" asp-for="fi_40_um"/></td>
                         </tr>
                         <tr>
                             <td>
                                 2°
                             </td>
-                            <td><input type="text" class="form-control" asp-for="comp_40_dois" /></td>
+                            <td><input type="text" class="form-control" asp-for="comp_40_dois" value="40" readonly /></td>
                             <td><input type="text" class="form-control" readonly asp-for="reducao_40_dois" /></td>
-                            <td><input type="text" class="form-control" asp-for="temp_40_dois" /></td>
+                            <td><input type="text" class="form-control" asp-for="temp_40_dois" value="30" readonly /></td>
                             <td><input type="text" class="form-control" asp-for="fi_40_dois" /></td>
                         </tr>
                         <tr>
                             <td>
                                 3°
                             </td>
-                            <td><input type="text" class="form-control" asp-for="comp_40_tres" /></td>
+                            <td><input type="text" class="form-control" asp-for="comp_40_tres" value="40" readonly /></td>
                             <td><input type="text" class="form-control" readonly asp-for="reducao_40_tres" /></td>
-                            <td><input type="text" class="form-control" asp-for="temp_40_tres" /></td>
+                            <td><input type="text" class="form-control" asp-for="temp_40_tres" value="30" readonly /></td>
                             <td><input type="text" class="form-control" asp-for="fi_40_tres" /></td>
                         </tr>
                         <tr>
@@ -457,27 +472,27 @@
                             <td>
                                 1°
                             </td>
-                            <td><input type="text" class="form-control" asp-for="comp_65_um"/></td>
+                            <td><input type="text" class="form-control" asp-for="comp_65_um" value="65" readonly /></td>
                             <td><input type="text" class="form-control" readonly asp-for="reducao_65_um"/></td>
-                            <td><input type="text" class="form-control" asp-for="temp_65_um"/></td>
+                            <td><input type="text" class="form-control" asp-for="temp_65_um" value="30" readonly /></td>
                             <td><input type="text" class="form-control" asp-for="fi_65_um"/></td>
                         </tr>
                         <tr>
                             <td>
                                 2°
                             </td>
-                            <td><input type="text" class="form-control" asp-for="comp_65_dois" /></td>
+                            <td><input type="text" class="form-control" asp-for="comp_65_dois" value="65" readonly /></td>
                             <td><input type="text" class="form-control" readonly asp-for="reducao_65_dois" /></td>
-                            <td><input type="text" class="form-control" asp-for="temp_65_dois" /></td>
+                            <td><input type="text" class="form-control" asp-for="temp_65_dois" value="30" readonly /></td>
                             <td><input type="text" class="form-control" asp-for="fi_65_dois" /></td>
                         </tr>
                         <tr>
                             <td>
                                 3°
                             </td>
-                            <td><input type="text" class="form-control" asp-for="comp_65_tres" /></td>
+                            <td><input type="text" class="form-control" asp-for="comp_65_tres" value="65" readonly /></td>
                             <td><input type="text" class="form-control" readonly asp-for="reducao_65_tres" /></td>
-                            <td><input type="text" class="form-control" asp-for="temp_65_tres" /></td>
+                            <td><input type="text" class="form-control" asp-for="temp_65_tres" value="30" readonly /></td>
                             <td><input type="text" class="form-control" asp-for="fi_65_tres" /></td>
                         </tr>
                         <tr>
@@ -504,17 +519,17 @@
                         </tr>
                         <tr>
                             <td>25%</td>
-                            <td><input type="text" class="form-control" asp-for="forca_esp_25" /></td>
+                            <td><input type="text" class="form-control" asp-for="forca_esp_25" value="-" readonly/></td>
                             <td><input type="text" class="form-control" readonly asp-for="fator_ind_25" /></td>
                         </tr>
                         <tr>
                             <td>40%</td>
-                            <td><input type="text" class="form-control" asp-for="forca_esp_40" /></td>
+                            <td><input type="text" class="form-control" asp-for="forca_esp_40" id="especificado" /></td>
                             <td><input type="text" class="form-control" readonly asp-for="fator_ind_40" /></td>
                         </tr>
                         <tr>
                             <td>65%</td>
-                            <td><input type="text" class="form-control"  asp-for="forca_esp_65" /></td>
+                            <td><input type="text" class="form-control" asp-for="forca_esp_65" value="-" readonly /></td>
                             <td><input type="text" class="form-control" readonly asp-for="fator_ind_65" /></td>
                         </tr>
                     </table>
@@ -536,6 +551,97 @@
         }
 
     </form>
+    <script>
+        const tipo_espuma = document.getElementById("tipo_espuma");
+        const densidade = document.getElementById("densidade");
+        var especificado = document.getElementById("especificado");
+
+        tipo_espuma.addEventListener('change', function () {
+            mostrarResultados(tipo_espuma.value, densidade.value);
+        });
+
+        densidade.addEventListener('input', function () {
+            console.log(densidade.value);
+            mostrarResultados(tipo_espuma.value, densidade.value);
+        });
+
+        function mostrarResultados(opcaoSelecionada, valorDigitado) {
+            let resultado = '';
+            if (opcaoSelecionada === 'Convencional') {
+                if (valorDigitado == '20') {
+                    especificado.value = 80;
+                } else if (valorDigitado == '18') {
+                    especificado.value = 95;
+                } else if (valorDigitado == '23') {
+                    especificado.value = 110;
+                } else if (valorDigitado == '26') {
+                    especificado.value = 130;
+                } else if (valorDigitado == '28') {
+                    especificado.value = 145;
+                }
+                else if (valorDigitado == '33') {
+                    especificado.value = 165;
+                }
+                else if (valorDigitado == '40') {
+                    especificado.value = 185;
+                }
+                else if (valorDigitado == '200') {
+                    especificado.value = 165;
+                }
+                else {
+                    especificado.value = "Não há especificado na tabela";
+                }
+
+            } else if (opcaoSelecionada === 'Hipermacia') {
+                if (valorDigitado == '20' || valorDigitado == '24') {
+                    especificado.value = 35;
+                }
+                else if (valorDigitado == '29') {
+                    especificado.value = 50;
+                }
+                else if (valorDigitado >= '35') {
+                    especificado.value = 150;
+                }
+                else {
+                    especificado.value = "Não há especificado na tabela";
+                }
+            } else if (opcaoSelecionada === 'Macia') {
+                if (valorDigitado == '20') {
+                    especificado.value = 95;
+                } else if (valorDigitado == '24') {
+                    especificado.value = 130;
+                } else if (valorDigitado > '20') {
+                    especificado.value = 165;
+                } else if (valorDigitado >= '35') {
+                    especificado.value = 200;
+                }
+                else {
+                    especificado.value = "Não há especificado na tabela";
+                }
+            } else if (opcaoSelecionada === 'Aglomerado') {
+                if (valorDigitado >= '65') {
+                    especificado.value = 35;
+                }
+                else {
+                    especificado.value = "Não há especificado na tabela";
+                }
+            }
+             else if (opcaoSelecionada === 'Visco elástica') {
+                if (valorDigitado >= '30') {
+                    especificado.value = 25;
+                }
+                else {
+                    especificado.value = "Não há especificado na tabela";
+                }
+            }
+            // Atualiza o conteúdo da div de resultados
+
+            console.log(especificado.value);
+        }
+        mostrarResultados(tipo_espuma.value, densidade.value);
+
+
+    </script>
     @if (TempData.ContainsKey("Mensagem"))
     {
         <script>

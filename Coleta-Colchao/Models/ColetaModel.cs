@@ -1096,6 +1096,7 @@ namespace Coleta_Colchao.Models
             public DateOnly data_ini { get; set; }
             public DateOnly data_term { get; set; }
             public string? tipo_espuma { get; set; }
+            public int densidade { get; set; }
             public float lar_amostra_um_um { get; set; }
             public float lar_amostra_um_dois { get; set; }
             public float lar_amostra_um_tres { get; set; }

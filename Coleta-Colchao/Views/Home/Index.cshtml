@@ -190,7 +190,7 @@
                                     else if (ViewBag.ensaio == "Laminas")
                                     {
                                         <td>
-                                            <a role="button" target="_blank" class="btn btn-success" asp-controller="Coleta" asp-action="LaminaF_I" asp-route-os="@ViewBag.o" asp-route-orcamento="@ViewBag.orcamento" asp-route-ensaio="FI">Abrir</a>
+                                            <a role="button" target="_blank" class="btn btn-success" asp-controller="Coleta" asp-action="LaminaF_I" asp-route-os="@ViewBag.os" asp-route-orcamento="@ViewBag.orcamento">Abrir</a>
                                         </td>
                                         <td>
                                             <a role="button" target="_blank" class="btn btn-success" asp-controller="Coleta" asp-action="EditarLamina" asp-route-os="@ViewBag.os" asp-route-orcamento="@ViewBag.orcamento">Informações</a>
@@ -347,7 +347,7 @@
                                     else if (ViewBag.ensaio == "Laminas")
                                     {
                                         <td>
-                                            <a role="button" target="_blank" class="btn btn-success" asp-controller="Coleta" asp-action="LaminaDeterminacaoDensidade" asp-route-os="@ViewBag.os" asp-route-orcamento="@ViewBag.orcamento" asp-route-ensaio="DeterminacaoDensidade">Abrir</a>
+                                            <a role="button" target="_blank" class="btn btn-success" asp-controller="Coleta" asp-action="LaminaDeterminacaoDensidade" asp-route-os="@ViewBag.os" asp-route-orcamento="@ViewBag.orcamento">Abrir</a>
                                         </td>
                                         <td>
                                             <a role="button" target="_blank" class="btn btn-success" asp-controller="Coleta" asp-action="EditarLamina" asp-route-os="@ViewBag.os" asp-route-orcamento="@ViewBag.orcamento">Informações</a>
@@ -359,7 +359,7 @@
                                 @if (Model[i].codigo == "DPCCCH002000001")
                                 {
                                     <td>
-                                        <a role="button" target="_blank" class="btn btn-success" asp-controller="Coleta" asp-action="LaminaDPC" asp-route-os="@ViewBag.os" asp-route-orcamento="@ViewBag.os" asp-route-ensaio="DPC">Abrir</a>
+                                        <a role="button" target="_blank" class="btn btn-success" asp-controller="Coleta" asp-action="LaminaDPC" asp-route-os="@ViewBag.os" asp-route-orcamento="@ViewBag.os">Abrir</a>
                                     </td>
                                     <td>
                                         <a role="button" target="_blank" class="btn btn-success" asp-controller="Coleta" asp-action="EditarLamina" asp-route-os="@ViewBag.os" asp-route-orcamento="@ViewBag.orcamento">Informações</a>
@@ -368,7 +368,7 @@
                                 @if (Model[i].codigo == "QUICCH002000001")
                                 {
                                     <td>
-                                        <a role="button" target="_blank" class="btn btn-success" asp-controller="Coleta" asp-action="LaminaPFI" asp-route-os="@ViewBag.os" asp-route-orcamento="@ViewBag.orcamento" asp-route-ensaio="PFI">Abrir</a>
+                                        <a role="button" target="_blank" class="btn btn-success" asp-controller="Coleta" asp-action="LaminaPFI" asp-route-os="@ViewBag.os" asp-route-orcamento="@ViewBag.orcamento">Abrir</a>
                                     </td>
                                     <td>
                                         <a role="button" target="_blank" class="btn btn-success" asp-controller="Coleta" asp-action="EditarLamina" asp-route-os="@ViewBag.os" asp-route-orcamento="@ViewBag.orcamento">Informações</a>
@@ -377,7 +377,7 @@
                                 @if (Model[i].codigo == "RSLCCH002000001")
                                 {
                                     <td>
-                                        <a role="button" target="_blank" class="btn btn-success" asp-controller="Coleta" asp-action="LamindaDeterminacaoResiliencia" asp-route-os="@ViewBag.os" asp-route-orcamento="@ViewBag.orcamento" asp-route-ensaio="DR">Abrir</a>
+                                        <a role="button" target="_blank" class="btn btn-success" asp-controller="Coleta" asp-action="LamindaDeterminacaoResiliencia" asp-route-os="@ViewBag.os" asp-route-orcamento="@ViewBag.orcamento">Abrir</a>
                                     </td>
                                     <td>
                                         <a role="button" target="_blank" class="btn btn-success" asp-controller="Coleta" asp-action="EditarLamina" asp-route-os="@ViewBag.os" asp-route-orcamento="@ViewBag.orcamento">Informações</a>
@@ -386,7 +386,7 @@
                                 @if (Model[i].codigo == "FDGCCH002000001")
                                 {
                                     <td>
-                                        <a role="button" target="_blank" class="btn btn-success" asp-controller="Coleta" asp-action="LaminaFadiga" asp-route-os="@ViewBag.os" asp-route-orcamento="@ViewBag.orcamento" asp-route-ensaio="Fadiga">Abrir</a>
+                                        <a role="button" target="_blank" class="btn btn-success" asp-controller="Coleta" asp-action="LaminaFadiga" asp-route-os="@ViewBag.os" asp-route-orcamento="@ViewBag.orcamento">Abrir</a>
                                     </td>
                                     <td>
                                         <a role="button" target="_blank" class="btn btn-success" asp-controller="Coleta" asp-action="EditarLamina" asp-route-os="@ViewBag.os" asp-route-orcamento="@ViewBag.orcamento">Informações</a>
@@ -395,7 +395,7 @@
                                 @if (Model[i].codigo == "FTCCCH002000001")
                                 {
                                     <td>
-                                        <a role="button" target="_blank" class="btn btn-success" asp-controller="Coleta" asp-action="FatorConforto" asp-route-os="@ViewBag.os" asp-route-orcamento="@ViewBag.orcamento" asp-route-ensaio="FC">Abrir</a>
+                                        <a role="button" target="_blank" class="btn btn-success" asp-controller="Coleta" asp-action="FatorConforto" asp-route-os="@ViewBag.os" asp-route-orcamento="@ViewBag.orcamento">Abrir</a>
                                     </td>
                                     <td>
                                         <a role="button" target="_blank" class="btn btn-success" asp-controller="Coleta" asp-action="EditarLamina" asp-route-os="@ViewBag.os" asp-route-orcamento="@ViewBag.orcamento">Informações</a>
