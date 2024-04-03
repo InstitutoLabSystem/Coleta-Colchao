@@ -89,7 +89,13 @@
                                 </select>
                             </td>
                             <td> Local da realizaçãp dos ensaios : </td>
-                            <td colspan="2"> <input class="form-control" type="text" name="realizacao_ensaios" value="@Model[i].realizacao_ensaios" /> </td>
+                            <td colspan="2">
+                                <select class="form-control" name="realizacao_ensaios">
+                                    <option>@Model[i].realizacao_ensaios</option>
+                                    <option value="Instalação permanente">Instalação permanente</option>
+                                    <option value="Instalação do cliente">Instalação do cliente</option>
+                                </select>
+                            </td>
                         </tr>
                         <tr>
                             <td> Quantidade recebida : </td>
@@ -154,11 +160,12 @@
                         <tr>
                             <td> Quantidade de Molejo </td>
                             <td colspan="3">
-                                <select class="form-control" name="quant_molejo">
-                                    <option selected> --- </option>
+                                <input class="form-control" name="quant_molejo" id="quant_molejo" value="@Model[i].quant_molejo" readonly />
+                               @*  <select class="form-control" name="quant_molejo">
+                                    <option selected> @Model[i].quant_molejo </option>
                                     <option value="1"> 1 </option>
                                     <option value="2"> 2 </option>
-                                </select>
+                                </select> *@
                             </td>
                         </tr>
                         <tr>
@@ -190,7 +197,7 @@
                         <tr>
                             <td> Nome do Molejo </td>
                             <td colspan="2">
-                                <select class="form-control" name="nome_molejo_um">
+                                <select class="form-control" name="nome_molejo_dois">
                                     <option value="@Model[i].nome_molejo_dois" selected> @Model[i].nome_molejo_dois</option>
                                     <option value="Bonell">Bonell</option>
                                     <option value="Mola ensacada">Mola ensacada</option>
@@ -298,10 +305,29 @@
         </script>
     }
 
-
     <script>
         document.addEventListener("DOMContentLoaded", function () {
             var selectQuantMolas = document.querySelector('select[name="tipo_molejo"]');
+            var quant_molejo = document.getElementById("quant_molejo");
+
+            var selectedValue = selectQuantMolas.value;
+            var trFornecedor = document.querySelector('.fornecedor');
+            var trMolejo = document.querySelector('.molejo');
+            var trQuantMolas = document.querySelector('.quant_molas');
+            var trBitola = document.querySelector('.bitola');
+
+            if (selectedValue == 'Conforto'){
+                trFornecedor.style.display = 'table-row';
+                trMolejo.style.display = 'table-row';
+                trQuantMolas.style.display = 'table-row';
+                trBitola.style.display = 'table-row';
+            }
+
+            if (selectedValue === 'Conforto') {
+                quant_molejo.value = 2;
+            } else {
+                quant_molejo.value = 1;
+            }
 
             selectQuantMolas.addEventListener('change', function () {
                 var selectedValue = selectQuantMolas.value;
@@ -317,13 +343,26 @@
                 trBitola.style.display = 'none';
 
                 // Mostrar as trs com base no valor selecionado
-                if (selectedValue === 'Conforto') {
+                if (selectedValue == 'Conforto') {
                     trFornecedor.style.display = 'table-row';
                     trMolejo.style.display = 'table-row';
                     trQuantMolas.style.display = 'table-row';
                     trBitola.style.display = 'table-row';
                 }
+
+                if (selectedValue === 'Conforto') {
+                    quant_molejo.value = 2;
+                } else {
+                    quant_molejo.value = 1;
+                }
             });
+        });
+        document.addEventListener("keydown", function (e) {
+            if (e.keyCode === 13) {
+
+                e.preventDefault();
+
+            }
         });
     </script>
 

@@ -51,15 +51,6 @@
                     </tr>
                 </thead>
             </table>
-
-            <table class="tables table-bordered border-secondary  table-sm">
-                <tr>
-                    <td class="fundo-tabela">Temperatura Inicial:</td>
-                    <td><input class="form-control" type="text" /></td>
-                    <td class="fundo-tabela">Temperatura Final:</td>
-                    <td><input class="form-control" type="text" /></td>
-                </tr>
-            </table>
             <br />
             <table class="tables table-bordered border-secondary  table-sm">
                 <tr>
@@ -241,15 +232,6 @@
                     </tr>
                 </thead>
             </table>
-
-            <table class="tables table-bordered border-secondary  table-sm">
-                <tr>
-                    <td class="fundo-tabela">Temperatura Inicial:</td>
-                    <td><input class="form-control" type="text" /></td>
-                    <td class="fundo-tabela">Temperatura Final:</td>
-                    <td><input class="form-control" type="text" /></td>
-                </tr>
-            </table>
             <br />
             <table class="tables table-bordered border-secondary  table-sm">
                 <tr>
@@ -417,5 +399,15 @@
             alert('@Html.Raw(TempData["Mensagem"])');
         </script>
     }
+
+    <script>
+        document.addEventListener("keydown", function (e) {
+            if (e.keyCode === 13) {
+
+                e.preventDefault();
+
+            }
+        });
+    </script>
 </body>
 </html>

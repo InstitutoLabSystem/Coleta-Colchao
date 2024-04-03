@@ -37,7 +37,7 @@
                     </tr>
                     <tr>
                         <td colspan="4">Ensaio Em Bases</td>
-                        <td rowspan="2"> os aqui</td>
+                        <td rowspan="2"> @ViewBag.os</td>
                     </tr>
                     <tr>
                         <td class="fundo-tabela">Inicio:</td>
@@ -48,11 +48,21 @@
                 </thead>
             </table>
 
+            <table class="tables table-bordered border-secondary  table-sm">
+                <tr>
+                    <td>Temperatura Inicial (°C) :</td>
+                    <td><input class="form-control" type="text" asp-for="temp_ini" /></td>
+                    <td>Temperatura Final (°C) :</td>
+                    <td><input class="form-control" type="text" asp-for="temp_term" /></td>
+                </tr>
+            </table>
+            <br />
+
+
             <table class="tables table-bordered border-secondary  ">
                 <tr>
                     <td rowspan="17">Item</td>
                     <td class="fundo-tabela">Descrição</td>
-                    <td rowspan="2">Resultado</td>
                 </tr>
                 <tr class="fundo-tabela">
                     <td>
@@ -74,7 +84,7 @@
                         <table class="tables table-bordered border-secondary ">
                             <tr>
                                 <td class="fundo-tabela">Data De Inicio:</td>
-                                <td><input class="form-control" type="date" asp-for="data_ini_ens" /></td>
+                                <td><input class="form-control" type="date" asp-for="data_ini" readonly /></td>
 
                                 <td class="fundo-tabela">Hora De Inicio: </td>
                                 <td><input class="form-control" type="time" asp-for="hora_ini" /></td>
@@ -85,7 +95,7 @@
                             </tr>
                             <tr>
                                 <td class="fundo-tabela">Data De Término:</td>
-                                <td><input class="form-control" type="date" asp-for="data_term_ens" /></td>
+                                <td><input class="form-control" type="date" asp-for="data_term" readonly /></td>
 
                                 <td class="fundo-tabela">Hora De Término: </td>
                                 <td><input class="form-control" type="time" asp-for="hora_term" /></td>
@@ -187,7 +197,7 @@
                     </tr>
                     <tr>
                         <td colspan="4">Ensaio Em Bases</td>
-                        <td rowspan="2"> os aqui</td>
+                        <td rowspan="2"> @ViewBag.os</td>
                     </tr>
                     <tr>
                         <td class="fundo-tabela">Inicio:</td>
@@ -197,23 +207,31 @@
                     </tr>
                 </thead>
             </table>
+            <table class="tables table-bordered border-secondary  table-sm">
+                <tr>
+                    <td>Temperatura Inicial (°C) :</td>
+                    <td><input class="form-control" type="text" asp-for="temp_ini" /></td>
+                    <td>Temperatura Final (°C) :</td>
+                    <td><input class="form-control" type="text" asp-for="temp_term" /></td>
+                </tr>
+            </table>
+            <br />
 
             <table class="tables table-bordered border-secondary  ">
                 <tr>
                     <td rowspan="17">Item</td>
-                    <td class="fundo-tabela">Descrição</td>
-                    <td rowspan="2">Resultado</td>
+                    <td colspan="3" class="fundo-tabela">Descrição</td>
                 </tr>
                 <tr class="fundo-tabela">
-                    <td>
+                    <td colspan="3">
                         Ensaio a ser realizado: DIN EN 747-2:2015 - Furniture - Bunk beds and high beds - Part 2: Test methods (includes Amendment A1:2015)
                     </td>
                 </tr>
                 <tr>
-                    <td colspan="2">Ensaio de durabilidade na estrutura</td>
+                    <td colspan="3">Ensaio de durabilidade na estrutura</td>
                 </tr>
                 <tr>
-                    <td colspan="2">
+                    <td colspan="3">
                         <p>
                             O ensaio deve ser realizado sobcondições climáticas com temperatura de ( 20 ± 5 ) °C
                         </p>
@@ -224,7 +242,7 @@
                         <table class="tables table-bordered border-secondary ">
                             <tr>
                                 <td class="fundo-tabela">Data De Inicio:</td>
-                                <td><input class="form-control" type="text" asp-for="data_ini_ens" value="@Model.data_ini_ens" style="width:200px;" /></td>
+                                <td><input class="form-control" type="text" asp-for="data_ini" value="@Model.data_ini" style="width:200px;" readonly /></td>
 
                                 <td class="fundo-tabela">Hora De Inicio: </td>
                                 <td><input class="form-control" type="time" asp-for="hora_ini" /></td>
@@ -235,7 +253,7 @@
                             </tr>
                             <tr>
                                 <td class="fundo-tabela">Data De Término:</td>
-                                <td><input class="form-control" type="text" asp-for="data_term_ens" value="@Model.data_term_ens" style="width:200px;" /></td>
+                                <td><input class="form-control" type="text" asp-for="data_term" value="@Model.data_term" style="width:200px;" readonly/></td>
 
                                 <td class="fundo-tabela">Hora De Término: </td>
                                 <td><input class="form-control" type="time" asp-for="hora_term" /></td>
@@ -248,28 +266,28 @@
                     </td>
                 </tr>
                 <tr class="fundo-tabela">
-                    <td colspan="2">
+                    <td colspan="3">
                         Posicionar a base em uma superfície plana e rígida e aplicar uma força vertical para baixo de 1400 N e mantê-la por (10 ± 1) s no(s) ponto(s) que apresentem sinais de fragilidade.
                     </td>
                 </tr>
                 <tr class="fundo-tabela">
-                    <td colspan="2">
+                    <td colspan="3">
                         Posicionar uma massa de 75 kg no centro da estrutura e aplicar uma força lateral de 300 N durante 10000 ciclos.
                     </td>
                 </tr>
                 <tr>
-                    <td colspan="2">
+                    <td colspan="3">
                         Massa Aplicada (kg): <input type="text" class="controlador" disabled value="75" />
                     </td>
                 </tr>
                 <tr>
-                    <td colspan="2"> Força Aplicada (N): <input type="text" class="controlador" disabled value="300" /></td>
+                    <td colspan="3"> Força Aplicada (N): <input type="text" class="controlador" disabled value="300" /></td>
                 </tr>
                 <tr>
-                    <td colspan="2"> Velocidade Do Ciclo (CPM): <input class="controlador" type="text" disabled value="12" />  </td>
+                    <td colspan="3"> Velocidade Do Ciclo (CPM): <input class="controlador" type="text" disabled value="12" />  </td>
                 </tr>
                 <tr>
-                    <td colspan="2">Quantidade De Ciclos: <input class="controlador" type="text" disabled value="10000" /></td>
+                    <td colspan="3">Quantidade De Ciclos: <input class="controlador" type="text" disabled value="10000" /></td>
 
                 </tr>
                 <tr>
@@ -281,14 +299,23 @@
                             <option value="Não">Não</option>
                         </select>
                     </td>
+                    @if (Model.suportou == "Sim")
+                    {
+                        <td colspan="2">C</td>
+                    }
+                    else
+                    {
+                        <td colspan="2">NC</td>
+                    }
+
                 </tr>
                 <tr class="fundo-tabela">
-                    <td colspan="2">
+                    <td colspan="3">
                         Caso a amostra não suporte o número de ciclos,  verificar se apresenta algum defeito conforme citado abaixo:
                     </td>
                 </tr>
                 <tr>
-                    <td>
+                    <td colspan="2">
                         Houve Ruptura Da Estrutura :
                         <select class="controlador" asp-for="ruptura">
                             <option value="---">---</option>
@@ -333,6 +360,15 @@
             alert('@Html.Raw(TempData["Mensagem"])');
         </script>
     }
+    <script>
+        document.addEventListener("keydown", function (e) {
+            if (e.keyCode === 13) {
+
+                e.preventDefault();
+
+            }
+        });
+    </script>
 </body>
 </html>
 

@@ -9,7 +9,7 @@ using Coleta_Colchao.Data;
 
 namespace Coleta_Colchao.Controllers
 {
-  
+
     public class AcessController : Controller
     {
         private readonly ILogger<AcessController> _logger;
@@ -30,7 +30,7 @@ namespace Coleta_Colchao.Controllers
             return View();
         }
 
-       
+
 
         [HttpPost]
         public async Task<IActionResult> Login([Bind("Nome_Usuario, Senha_Usuario")] AcessModel.Usuario modelLogin)
@@ -63,7 +63,7 @@ namespace Coleta_Colchao.Controllers
                     {
                         if (pegarValores.Nome_Usuario == Nome_Usuario && pegarValores.Senha_Usuario == Senha_Usuario)
                         {
-                            if (pegarValores.setor == "TI" && pegarValores.cargo == "TI")
+                            if (pegarValores.setor == "TI" || pegarValores.setor == "Lab2" || pegarValores.Nome_Usuario == "WESLLEY NUNES")
                             {
                                 List<Claim> claims = new List<Claim>()
                                 {
@@ -84,14 +84,12 @@ namespace Coleta_Colchao.Controllers
                                 TempData["Mensagem"] = "Logado Com Sucesso";
                                 await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, new ClaimsPrincipal(claimsIdenty), properties);
                                 return RedirectToAction("Index", "Home");
-
                             }
                             else
                             {
                                 TempData["Mensagem"] = "Usuário não tem permissão";
                                 return View("Login", "Acess");
                             }
-
                         }
                     }
                     else

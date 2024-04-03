@@ -252,7 +252,7 @@
                                         <td><input class="form-control" type="text" name="valor_enc_aco" value="@Model.valor_enc_aco" /></td>
                                         <td>
                                             <select name="man_parale_aco" class="form-control">
-                                                <option selected>@Model.valor_enc_aco</option>
+                                                <option selected>@Model.man_parale_aco</option>
                                                 <option value="Sim">Sim</option>
                                                 <option value="Não">Não</option>
                                             </select>
@@ -541,6 +541,13 @@
 
             }
         }
+        document.addEventListener("keydown", function (e) {
+            if (e.keyCode === 13) {
+
+                e.preventDefault();
+
+            }
+        });
     </script>
 </body>
 </html>
