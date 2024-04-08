@@ -87,8 +87,22 @@
                 <td>
                     <table class="tables table-bordered border-secondary  table-sm">
                         <tr>
+                        <tr>
+                            <td class="fundo-tabela">Densidade (kg/m³)</td>
+                            <td><input type="text" class="form-control" asp-for="densidade" id="densidade" /></td>
                             <td class="fundo-tabela">Tipo Espuma</td>
-                            <td colspan="3"><input type="text" class="form-control" asp-for="tipo_espuma" /></td>
+                            <td colspan="3">
+                                <select asp-for="tipo_espuma" class="form-control" id="tipo_espuma">
+                                    <option value="Convencional">Convencional</option>
+                                    <option value="Alta resiliência">Alta resiliência</option>
+                                    <option value="Macia">Macia</option>
+                                    <option value="Hipermacia">Hipermacia</option>
+                                    <option value="Visco elástica">Visco elástica</option>
+                                    <option value="Aglomerado">Aglomerado</option>
+                                    <option value="Látex">Látex</option>
+                                    <option value="Rabatan">Rabatan</option>
+                                </select>
+                            </td>
                         </tr>
                         <tr class="fundo-tabela">
                             <td rowspan="6">---</td>
@@ -266,31 +280,33 @@
 
                 <td>
                     <div class="form-check">
-                        <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                        <label class="form-check-label" for="flexCheckDefault">
+
+                        <input class="form-check-input" type="checkbox" id="checkbox">
+                        <label class="form-check-label" for="checkbox">
                             <b>Espuma aglomerado</b> - Fator De compressão (50 ± 5) %
-                        </label>
-                    </div>
+                        </label> 
+                    </div> 
                     <br />
                     <div class="form-check">
-                        <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                        <label class="form-check-label" for="flexCheckDefault">
+
+                        <input class="form-check-input" type="checkbox" id="checkbox2">
+                        <label class="form-check-label" for="checkbox2">
                             <b>Espuma Flexivel</b> - Fator De compressão (70 ± 5) %
-                        </label>
-                    </div>
+                        </label> 
+                   </div> 
 
                 </td>
             </tr>
             <tr>
-                <td>Amosta 1: Quantidade De Ciclos aplicados:  <input type="text" class="controlador" style="width:100px;" asp-for="ciclos_um" /></td>
+                <td>Amosta 1: Quantidade De Ciclos aplicados:  <input type="text" class="controlador" style="width:100px;" asp-for="ciclos_um" value="8000" /></td>
 
             </tr>
             <tr>
-                <td>Amosta 2: Quantidade De Ciclos aplicados:  <input type="text" class="controlador" style="width:100px;" asp-for="ciclos_dois" /></td>
+                <td>Amosta 2: Quantidade De Ciclos aplicados:  <input type="text" class="controlador" style="width:100px;" asp-for="ciclos_dois" value="8000" /></td>
 
             </tr>
             <tr>
-                <td>Amosta 3: Quantidade De Ciclos aplicados:  <input type="text" class="controlador" style="width:100px;" asp-for="ciclos_tres" /></td>
+                <td>Amosta 3: Quantidade De Ciclos aplicados:  <input type="text" class="controlador" style="width:100px;" asp-for="ciclos_tres" value="8000" /></td>
 
             </tr>
             <tr>
@@ -389,6 +405,7 @@
             </tr>
         </table>
         <br />
+        
         @if (Model == null)
         {
             <div class="d-grid gap-2 d-flex justify-content-center">
@@ -408,5 +425,34 @@
             alert('@Html.Raw(TempData["Mensagem"])');
         </script>
     }
+
+    <script>
+        const tipo_espuma = document.getElementById("tipo_espuma");
+        const densidade = document.getElementById("densidade");
+        var checkbox = document.getElementById('checkbox');
+        var checkbox2 = document.getElementById('checkbox2');
+        var teste = tipo_espuma.value;
+
+
+        tipo_espuma.addEventListener('change', function () {
+            ativarCheckbox(tipo_espuma.value);
+        });
+        function ativarCheckbox(opcaoSelecionada) {
+            if (opcaoSelecionada === "Aglomerado") {
+                checkbox.checked = true;
+                checkbox2.checked = false;
+            }
+            else {
+                checkbox.checked = false;
+                checkbox2.checked = true;
+            }
+            
+            console.log(checkbox.checked);
+            console.log(checkbox2.checked);
+        }
+        ativarCheckbox(tipo_espuma.value);
+        console.log(teste);
+    
+    </script>
 </body>
 </html>

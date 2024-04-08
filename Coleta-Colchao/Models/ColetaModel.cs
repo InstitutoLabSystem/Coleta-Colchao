@@ -1332,6 +1332,8 @@ namespace Coleta_Colchao.Models
             public float pe_especificado { get; set; }
             public float pe_encontrado { get; set; }
             public string? tipo_espuma { get; set; }
+            public int densidade { get; set; }
+
         }
 
         public class LaminaPFI
