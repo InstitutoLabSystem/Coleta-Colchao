@@ -485,7 +485,8 @@
                 </td>
             </tr>
             <tr>
-                <td> D.P.C especificada % <input type="text" class="controlador" asp-for="especificada" id="especificado" readonly /></td>
+
+                <td> D.P.C especificada %  <input id="tamanho" class="controlador" style="width:80px" readonly /> : <input type="text" class="controlador" asp-for="especificada" id="especificado" readonly /></td>
             </tr>
             <tr>
                 <td> D.P.C encontrada % <input type="text" class="controlador" disabled asp-for="encontrada" /></td>
@@ -525,6 +526,7 @@
         const tipo_espuma = document.getElementById("tipo_espuma");
         const densidade = document.getElementById("densidade");
         var especificado = document.getElementById("especificado");
+        var tamanho = document.getElementById("tamanho");
         var reducao = document.getElementById("reducao");
 
         tipo_espuma.addEventListener('change', function () {
@@ -541,8 +543,11 @@
             if (opcaoSelecionada === 'Convencional') {
                 if (valorDigitado == '20' || valorDigitado == '23' || valorDigitado == '26') {
                     especificado.value = 10;
+                    tamanho.value = 'Max';
                 } else if (valorDigitado == '28' || valorDigitado == '33' || valorDigitado == '40' || valorDigitado == '45') {
                     especificado.value = 8;
+                    tamanho.value = 'Max';
+
                 } else {
                     especificado.value = "Não há especificado na tabela";
                 }
@@ -551,6 +556,8 @@
             } else if (opcaoSelecionada === 'Hipermacia') {
                 if (valorDigitado == '20' || valorDigitado == '24' || valorDigitado == '29' || valorDigitado >= '35') {
                     especificado.value = 15;
+                    tamanho.value = 'Max';
+
                 }
                 else {
                     especificado.value = "Não há especificado na tabela";
@@ -559,10 +566,16 @@
             } else if (opcaoSelecionada === 'Macia') {
                 if (valorDigitado == '20' || valorDigitado == '24') {
                     especificado.value = 12;
+                    tamanho.value = 'Max';
+
                 } else if (valorDigitado == '29') {
                     especificado.value = 10;
+                    tamanho.value = 'Max';
+
                 } else if (valorDigitado >= '35') {
                     especificado.value = 10;
+                    tamanho.value = 'Max';
+
                 }
                 else {
                     especificado.value = "Não há especificado na tabela";
@@ -571,15 +584,21 @@
             } else if (opcaoSelecionada === 'Aglomerado') {
                 if (valorDigitado >= '65') {
                     especificado.value = 25;
+                    tamanho.value = 'Max';
+
                 }
                 else {
                     especificado.value = "Não há especificado na tabela";
                 }
                 reducao.value = 90;
+                tamanho.value = 'Max';
+
             }
             else if (opcaoSelecionada === 'Alta resiliência') {
                 if (valorDigitado >= '35') {
                     especificado.value = 10;
+                    tamanho.value = 'Max';
+
                 }
                 else {
                     especificado.value = "Não há especificado na tabela";
@@ -587,11 +606,14 @@
             } else if (opcaoSelecionada === 'Visco elástica') {
                 if (valorDigitado >= '30') {
                     especificado.value = 10;
+                    tamanho.value = 'Max';
                 }
                 else {
                     especificado.value = "Não há especificado na tabela";
                 }
                 reducao.value = 90;
+                tamanho.value = 'Max';
+
             }
             // Atualiza o conteúdo da div de resultados
         }

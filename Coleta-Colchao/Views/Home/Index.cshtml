@@ -111,21 +111,60 @@
                         @for (var i = 0; i < Model.Count; i++)
                         {
                             <tr>
-                                <td>
-                                    @Model[i].OS
-                                </td>
-                                <td>
-                                    @Model[i].orcamento
-                                </td>
-                                <td>
-                                    @Model[i].descricao
-                                </td>
-                                <td>
-                                    ANDAMENTO
-                                </td>
-                                <td>
-                                    @Model[i].ProdEnsaiado
-                                </td>
+                                @if (@Model[i].descricao == "  |  FATOR DE CONFORTO")
+                                {
+                                    <td style="display:none;"></td>
+                                }
+                                else
+                                {
+                                    <td>
+                                        @Model[i].OS
+                                    </td>
+                                }
+                                @if (@Model[i].descricao == "  |  FATOR DE CONFORTO")
+                                {
+                                    <td style="display:none;"></td>
+                                }
+                                else
+                                {
+                                    <td>
+                                        @Model[i].orcamento
+                                    </td>
+                                }
+
+                                @if (@Model[i].descricao == "5.6 I DETERMINAÇÃO DO TEOR DE CINZAS")
+                                {
+                                    <td>5.6 I DETERMINAÇÃO DA FORÇA DE INDENTAÇÃO (P.F.I) - (ABNT NBR 9176)</td>
+                                }
+                                else if (@Model[i].descricao == "  |  FATOR DE CONFORTO")
+                                {
+                                    <td style="display:none;"></td>
+                                }
+                                else
+                                {
+                                    <td> @Model[i].descricao </td>
+                                }
+
+                                @if (@Model[i].descricao == "  |  FATOR DE CONFORTO")
+                                {
+                                    <td style="display:none;"></td>
+                                }else{
+                                    <td>
+                                        ANDAMENTO
+                                    </td>
+                                }
+
+                                @if (@Model[i].descricao == "  |  FATOR DE CONFORTO")
+                                {
+                                    <td style="display:none;"></td>
+                                }
+                                else
+                                {
+                                    <td>
+                                        @Model[i].ProdEnsaiado
+                                    </td>
+                                }
+ 
                                 @if (Model[i].codigo == "BOPCCH001000001")
                                 {
                                     <td>
@@ -392,15 +431,15 @@
                                         <a role="button" target="_blank" class="btn btn-success" asp-controller="Coleta" asp-action="EditarLamina" asp-route-os="@ViewBag.os" asp-route-orcamento="@ViewBag.orcamento">Informações</a>
                                     </td>
                                 }
-                                @if (Model[i].codigo == "FTCCCH002000001")
-                                {
-                                    <td>
-                                        <a role="button" target="_blank" class="btn btn-success" asp-controller="Coleta" asp-action="FatorConforto" asp-route-os="@ViewBag.os" asp-route-orcamento="@ViewBag.orcamento">Abrir</a>
-                                    </td>
-                                    <td>
-                                        <a role="button" target="_blank" class="btn btn-success" asp-controller="Coleta" asp-action="EditarLamina" asp-route-os="@ViewBag.os" asp-route-orcamento="@ViewBag.orcamento">Informações</a>
-                                    </td>
-                                }
+                                @*   @if (Model[i].codigo == "FTCCCH002000001")
+                        {
+                        <td>
+                        <a role="button" target="_blank" class="btn btn-success" asp-controller="Coleta" asp-action="FatorConforto" asp-route-os="@ViewBag.os" asp-route-orcamento="@ViewBag.orcamento">Abrir</a>
+                        </td>
+                        <td>
+                        <a role="button" target="_blank" class="btn btn-success" asp-controller="Coleta" asp-action="EditarLamina" asp-route-os="@ViewBag.os" asp-route-orcamento="@ViewBag.orcamento">Informações</a>
+                        </td>
+                        } *@
 
                             </tr>
                         }

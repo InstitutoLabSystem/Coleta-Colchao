@@ -1212,6 +1212,10 @@ namespace Coleta_Colchao.Models
             public float reducao_porc_dois { get; set; }
             public float reducao_porc_tres { get; set; }
             public int tempo_espera { get; set; }
+            public float conforto_65 { get; set; }
+            public float conforto_25 { get; set; }
+            public float media_conforto { get; set; }
+            public string? fc_especificado { get; set; }
         }
 
         public class LaminaFadigaRotativa
@@ -1345,6 +1349,7 @@ namespace Coleta_Colchao.Models
             public DateOnly data_ini { get; set; }
             public DateOnly data_term { get; set; }
             public string? tipo_espuma { get; set; }
+            public int densidade { get; set; }
             public float lar_amostra_um_um { get; set; }
             public float lar_amostra_um_dois { get; set; }
             public float lar_amostra_um_tres { get; set; }
@@ -1468,5 +1473,6 @@ namespace Coleta_Colchao.Models
             public float pfi_65_encontrada { get; set; }
             public float media_espessura_total { get; set; }
         }
+        
     }
 }

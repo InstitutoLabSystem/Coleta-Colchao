@@ -16,13 +16,13 @@
     <title>Coleta F.I</title>
     <style>
         /* .controlador-conforme {
-                                            padding: 5px;
-                                            border-color: gray;
-                                            border-radius: 5px;
-                                            box-sizing: border-box;
-                                            height: 500px;
-                                            width: 100px;
-                                            } */
+                                                                    padding: 5px;
+                                                                    border-color: gray;
+                                                                    border-radius: 5px;
+                                                                    box-sizing: border-box;
+                                                                    height: 500px;
+                                                                    width: 100px;
+                                                                    } */
 
         input {
             text-align: center;
@@ -539,6 +539,29 @@
             </tr>
         </table>
         <br />
+        <table class="tables table-bordered border-secondary  table-sm">
+            <tr>
+                <td class="fundo-tabela">
+                    Fator de conforto (F.C)
+                </td>
+                <td rowspan="5">Resultado</td>
+            </tr>
+            <tr>
+                <td>
+                    Para o cálculo do fator de conforto utiliza-se a seguinte equação:
+                </td>
+            </tr>
+            <tr>
+                <td>F.C : Força de Indentação a 65% ÷  Força de Indentação a 25% </td>
+            </tr>
+
+            <tr>
+                <td>F.C : <input type="text" class="controlador" style="width:100px;" asp-for="conforto_65" readonly /> ÷  <input type="text" class="controlador" style="width:100px;" asp-for="conforto_25" readonly />  = <input type="text" class="controlador" readonly style="width:100px;" readonly asp-for="media_conforto" /></td>
+            </tr>
+            <tr>
+                <td>F.C ESPECIFICADO : <input id="tamanho" class="controlador" style="width:80px" readonly /> : <input type="text" class="controlador" id="conforto" style="width:200px;" asp-for="fc_especificado" readonly> </td>
+            </tr>
+        </table>
         @if (Model == null)
         {
             <div class="d-grid gap-2 d-flex justify-content-center">
@@ -560,7 +583,10 @@
         var reducao2 = document.getElementById("reducao2");
         var reducao3 = document.getElementById("reducao3");
         var condicao = document.getElementById("condicao");
+        var condicao = document.getElementById("condicao");
+        var tamanho = document.getElementById("tamanho");
         var especificado = document.getElementById("especificado");
+        var conforto = document.getElementById("conforto");
 
         tipo_espuma.addEventListener('change', function () {
             mostrarResultados(tipo_espuma.value, densidade.value);
@@ -577,23 +603,39 @@
 
                 if (valorDigitado == '20') {
                     especificado.value = 80;
+                    conforto.value = 2, 0;
+                    tamanho.value = 'Min';
+                    console.log(especificado.value);
                 } else if (valorDigitado == '18') {
                     especificado.value = 95;
+                    conforto.value = 2, 0;
+                    tamanho.value = 'Min';
                 } else if (valorDigitado == '23') {
                     especificado.value = 110;
+                    conforto.value = 2, 1;
+                    tamanho.value = 'Min';
                 } else if (valorDigitado == '26') {
                     especificado.value = 130;
+                    conforto.value = 2, 1;
+                    tamanho.value = 'Min';
                 } else if (valorDigitado == '28') {
                     especificado.value = 145;
+                    conforto.value = 2, 2;
+                    tamanho.value = 'Min';
                 }
                 else if (valorDigitado == '33') {
                     especificado.value = 165;
+                    conforto.value = 2, 2;
+                    tamanho.value = 'Min';
                 }
                 else if (valorDigitado == '40') {
                     especificado.value = 185;
+                    conforto.value = 2, 2;
+                    tamanho.value = 'Min';
                 }
                 else if (valorDigitado == '200') {
                     especificado.value = 165;
+                    tamanho.value = 'Min';
                 }
                 else {
                     especificado.value = "Não há especificado na tabela";
@@ -602,12 +644,15 @@
             } else if (opcaoSelecionada === 'Hipermacia') {
                 if (valorDigitado == '20' || valorDigitado == '24') {
                     especificado.value = 35;
+                    tamanho.value = 'Max';
+
                 }
                 else if (valorDigitado == '29') {
                     especificado.value = 50;
                 }
                 else if (valorDigitado >= '35') {
                     especificado.value = 150;
+                    tamanho.value = 'Max';
                 }
                 else {
                     especificado.value = "Não há especificado na tabela";
@@ -615,12 +660,16 @@
             } else if (opcaoSelecionada === 'Macia') {
                 if (valorDigitado == '20') {
                     especificado.value = 95;
+                    tamanho.value = 'Max';
                 } else if (valorDigitado == '24') {
                     especificado.value = 130;
+                    tamanho.value = 'Max';
                 } else if (valorDigitado > '20') {
                     especificado.value = 165;
+                    tamanho.value = 'Max';
                 } else if (valorDigitado >= '35') {
                     especificado.value = 200;
+                    tamanho.value = 'Max';
                 }
                 else {
                     especificado.value = "Não há especificado na tabela";
@@ -628,6 +677,7 @@
             } else if (opcaoSelecionada === 'Aglomerado') {
                 if (valorDigitado >= '65') {
                     especificado.value = 35;
+                    tamanho.value = 'Max';
                 }
                 else {
                     reducao.value = 50;
@@ -637,6 +687,8 @@
             else if (opcaoSelecionada === 'Visco elástica') {
                 if (valorDigitado >= '30') {
                     especificado.value = 25;
+                    conforto.value = 10;
+                    tamanho.value = 'Min';
                 }
                 else {
                     especificado.value = "Não há especificado na tabela";
@@ -647,26 +699,34 @@
             }
             else if (opcaoSelecionada === 'Rabatan') {
                 especificado.value = "Não há especificado na tabela";
+            } else if (opcaoSelecionada === 'Alta resiliência') {
+                if (valorDigitado >= '30') {
+                    conforto.value = 2, 3;
+                    tamanho.value = 'Min';
+                }
             }
-                // Alteração de retornos
-                if (opcaoSelecionada === "Aglomerado") {
-                    reducao.value = 50;
-                    reducao2.value = 50;
-                    reducao3.value = 50;
-                } else {
-                    reducao.value = 70;
-                    reducao2.value = 70;
-                    reducao3.value = 70;
-                }
-                if (opcaoSelecionada === 'Visco elástica') {
-                    condicao.value = "Sim";
-                } else {
-                    condicao.value = "Não";
-                }
+            // Alteração de retornos
+            if (opcaoSelecionada === "Aglomerado") {
+                reducao.value = 50;
+                reducao2.value = 50;
+                reducao3.value = 50;
+            } else {
+                reducao.value = 70;
+                reducao2.value = 70;
+                reducao3.value = 70;
+            }
+            if (opcaoSelecionada === 'Visco elástica') {
+                condicao.value = "Sim";
+            } else {
+                condicao.value = "Não";
+            }
             // Atualiza o conteúdo da div de resultados
-                console.log(especificado.value);
-            }
-            mostrarResultados(tipo_espuma.value, densidade.value);
+
+        }
+
+
+
+        mostrarResultados(tipo_espuma.value, densidade.value);
 
 
     </script>
@@ -676,5 +736,12 @@
             alert('@Html.Raw(TempData["Mensagem"])');
         </script>
     }
+    <script>
+        document.addEventListener("keydown", function (e) {
+            if (e.keyCode === 13) {
+                e.preventDefault();
+            }
+        });
+    </script>
 </body>
 </html>

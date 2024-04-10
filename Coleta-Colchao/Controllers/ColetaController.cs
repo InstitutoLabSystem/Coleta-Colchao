@@ -563,8 +563,97 @@ namespace Coleta_Colchao.Controllers
         public IActionResult LaminaFadiga(string os, string orcamento)
         {
             var dados = _context.lamina_fadiga_dinamica.Where(x => x.os == os && x.orcamento == orcamento).FirstOrDefault();
+
+            //buscar resultados para inserir na tabela do ensaio atraves da view bag.
+            var buscarFI = _context.lamina_fi.Where(x => x.os == os && x.orcamento == orcamento).FirstOrDefault();
+
             if (dados == null)
             {
+                //viewbags para buscar os dados da tabela.
+                //largura.
+                ViewBag.lar_amostra_um_um = buscarFI.lar_amostra_um_um;
+                ViewBag.lar_amostra_um_dois = buscarFI.lar_amostra_um_dois;
+                ViewBag.lar_amostra_um_tres = buscarFI.lar_amostra_um_tres;
+                ViewBag.lar_amostra_um_quatro = buscarFI.lar_amostra_um_quatro;
+
+                ViewBag.lar_amostra_dois_um = buscarFI.lar_amostra_dois_um;
+                ViewBag.lar_amostra_dois_dois = buscarFI.lar_amostra_dois_dois;
+                ViewBag.lar_amostra_dois_tres = buscarFI.lar_amostra_dois_tres;
+                ViewBag.lar_amostra_dois_quatro = buscarFI.lar_amostra_dois_quatro;
+
+                ViewBag.lar_amostra_tres_um = buscarFI.lar_amostra_um_tres;
+                ViewBag.lar_amostra_tres_dois = buscarFI.lar_amostra_tres_dois;
+                ViewBag.lar_amostra_tres_tres = buscarFI.lar_amostra_tres_tres;
+                ViewBag.lar_amostra_tres_quatro = buscarFI.lar_amostra_tres_quatro;
+
+                ViewBag.lar_media_um = buscarFI.lar_media_um;
+                ViewBag.lar_media_dois = buscarFI.lar_media_dois;
+                ViewBag.lar_media_tres = buscarFI.lar_media_tres;
+                //comprimento.
+                ViewBag.comp_amostra_um_um = buscarFI.comp_amostra_um_um;
+                ViewBag.comp_amostra_um_dois = buscarFI.comp_amostra_um_dois;
+                ViewBag.comp_amostra_um_tres = buscarFI.comp_amostra_um_tres;
+                ViewBag.comp_amostra_um_quatro = buscarFI.comp_amostra_um_quatro;
+
+                ViewBag.comp_amostra_dois_um = buscarFI.comp_amostra_dois_um;
+                ViewBag.comp_amostra_dois_dois = buscarFI.comp_amostra_dois_dois;
+                ViewBag.comp_amostra_dois_tres = buscarFI.comp_amostra_dois_tres;
+                ViewBag.comp_amostra_dois_quatro = buscarFI.comp_amostra_dois_quatro;
+
+                ViewBag.comp_amostra_tres_um = buscarFI.comp_amostra_tres_um;
+                ViewBag.comp_amostra_tres_dois = buscarFI.comp_amostra_tres_dois;
+                ViewBag.comp_amostra_tres_tres = buscarFI.comp_amostra_tres_tres;
+                ViewBag.comp_amostra_tres_quatro = buscarFI.comp_amostra_tres_quatro;
+
+                ViewBag.comp_media_um = buscarFI.comp_media_um;
+                ViewBag.comp_media_dois = buscarFI.comp_media_dois;
+                ViewBag.comp_media_tres = buscarFI.comp_media_tres;
+                //espessura inicial
+                ViewBag.esp_ini_amostra_um_um = buscarFI.esp_ini_amostra_um_um;
+                ViewBag.esp_ini_amostra_um_dois = buscarFI.esp_ini_amostra_um_dois;
+                ViewBag.esp_ini_amostra_um_tres = buscarFI.esp_ini_amostra_um_tres;
+                ViewBag.esp_ini_amostra_um_quatro = buscarFI.esp_ini_amostra_um_quatro;
+                ViewBag.esp_ini_amostra_um_cinco = buscarFI.esp_ini_amostra_um_cinco;
+                ViewBag.esp_ini_amostra_um_seis = buscarFI.esp_ini_amostra_um_seis;
+                ViewBag.esp_ini_amostra_um_sete = buscarFI.esp_ini_amostra_um_sete;
+                ViewBag.esp_ini_amostra_um_oito = buscarFI.esp_ini_amostra_um_oito;
+
+                ViewBag.esp_ini_amostra_dois_um = buscarFI.esp_ini_amostra_dois_um;
+                ViewBag.esp_ini_amostra_dois_dois = buscarFI.esp_ini_amostra_dois_dois;
+                ViewBag.esp_ini_amostra_dois_tres = buscarFI.esp_ini_amostra_dois_tres;
+                ViewBag.esp_ini_amostra_dois_quatro = buscarFI.esp_ini_amostra_dois_quatro;
+                ViewBag.esp_ini_amostra_dois_cinco = buscarFI.esp_ini_amostra_dois_cinco;
+                ViewBag.esp_ini_amostra_dois_seis = buscarFI.esp_ini_amostra_dois_seis;
+                ViewBag.esp_ini_amostra_dois_sete = buscarFI.esp_ini_amostra_dois_sete;
+                ViewBag.esp_ini_amostra_dois_oito = buscarFI.esp_ini_amostra_dois_oito;
+
+                ViewBag.esp_ini_amostra_dois_um = buscarFI.esp_ini_amostra_dois_um;
+                ViewBag.esp_ini_amostra_dois_dois = buscarFI.esp_ini_amostra_dois_dois;
+                ViewBag.esp_ini_amostra_dois_tres = buscarFI.esp_ini_amostra_dois_tres;
+                ViewBag.esp_ini_amostra_dois_quatro = buscarFI.esp_ini_amostra_dois_quatro;
+                ViewBag.esp_ini_amostra_dois_cinco = buscarFI.esp_ini_amostra_dois_cinco;
+                ViewBag.esp_ini_amostra_dois_seis = buscarFI.esp_ini_amostra_dois_seis;
+                ViewBag.esp_ini_amostra_dois_sete = buscarFI.esp_ini_amostra_dois_sete;
+                ViewBag.esp_ini_amostra_dois_oito = buscarFI.esp_ini_amostra_dois_oito;
+
+                ViewBag.esp_ini_amostra_tres_um = buscarFI.esp_ini_amostra_tres_um;
+                ViewBag.esp_ini_amostra_tres_dois = buscarFI.esp_ini_amostra_tres_dois;
+                ViewBag.esp_ini_amostra_tres_tres = buscarFI.esp_ini_amostra_tres_tres;
+                ViewBag.esp_ini_amostra_tres_quatro = buscarFI.esp_ini_amostra_tres_quatro;
+                ViewBag.esp_ini_amostra_tres_cinco = buscarFI.esp_ini_amostra_tres_cinco;
+                ViewBag.esp_ini_amostra_tres_seis = buscarFI.esp_ini_amostra_tres_seis;
+                ViewBag.esp_ini_amostra_tres_sete = buscarFI.esp_ini_amostra_tres_sete;
+                ViewBag.esp_ini_amostra_tres_oito = buscarFI.esp_ini_amostra_tres_oito;
+
+                ViewBag.esp_media_um = buscarFI.esp_media_um;
+                ViewBag.esp_media_dois = buscarFI.esp_media_dois;
+                ViewBag.esp_media_tres = buscarFI.esp_media_tres;
+                //media espessura
+                ViewBag.media_espessura_um  = buscarFI.media_espessura_um;
+                ViewBag.media_espessura_dois = buscarFI.media_espessura_dois;
+                ViewBag.media_espessura_tres = buscarFI.media_espessura_tres;
+
+
                 ViewBag.os = os;
                 ViewBag.orcamento = orcamento;
                 return View("Laminas/LaminaFadiga");
@@ -580,14 +669,90 @@ namespace Coleta_Colchao.Controllers
         public IActionResult LaminaPFI(string os, string orcamento)
         {
             var buscarFi = _context.lamina_fi.Where(x => x.os == os && x.orcamento == orcamento).FirstOrDefault();
+            var buscarFadiga = _context.lamina_fadiga_dinamica.Where(x => x.os == os && x.orcamento == orcamento).FirstOrDefault();
             if (buscarFi == null)
             {
                 TempData["Mensagem"] = "ATENÇÃO!! REALIZE O ENSAIO DE F.I PRIMEIRO PARA REALIZAR O ENSAIO DE P.F.I";
+                return RedirectToAction("Laminas/LaminaPFI" , new {os, orcamento});
             }
 
             var dados = _context.lamina_pfi.Where(x => x.os == os && x.orcamento == orcamento).FirstOrDefault();
             if (dados == null)
             {
+                //recebendo os valores para mostrar na tela quando for nullo, 
+                  //largura.
+                ViewBag.lar_amostra_um_um = buscarFi.lar_amostra_um_um;
+                ViewBag.lar_amostra_um_dois = buscarFi.lar_amostra_um_dois;
+                ViewBag.lar_amostra_um_tres = buscarFi.lar_amostra_um_tres;
+                ViewBag.lar_amostra_um_quatro = buscarFi.lar_amostra_um_quatro;
+
+                ViewBag.lar_amostra_dois_um = buscarFi.lar_amostra_dois_um;
+                ViewBag.lar_amostra_dois_dois = buscarFi.lar_amostra_dois_dois;
+                ViewBag.lar_amostra_dois_tres = buscarFi.lar_amostra_dois_tres;
+                ViewBag.lar_amostra_dois_quatro = buscarFi.lar_amostra_dois_quatro;
+
+                ViewBag.lar_amostra_tres_um = buscarFi.lar_amostra_um_tres;
+                ViewBag.lar_amostra_tres_dois = buscarFi.lar_amostra_tres_dois;
+                ViewBag.lar_amostra_tres_tres = buscarFi.lar_amostra_tres_tres;
+                ViewBag.lar_amostra_tres_quatro = buscarFi.lar_amostra_tres_quatro;
+
+                ViewBag.lar_media_um = buscarFi.lar_media_um;
+                ViewBag.lar_media_dois =buscarFi.lar_media_dois;
+                ViewBag.lar_media_tres = buscarFi.lar_media_tres;
+                //comprimento.
+                ViewBag.comp_amostra_um_um =buscarFi.comp_amostra_um_um;
+                ViewBag.comp_amostra_um_dois =buscarFi.comp_amostra_um_dois;
+                ViewBag.comp_amostra_um_tres =buscarFi.comp_amostra_um_tres;
+                ViewBag.comp_amostra_um_quatro =buscarFi.comp_amostra_um_quatro;
+
+                ViewBag.comp_amostra_dois_um =buscarFi.comp_amostra_dois_um;
+                ViewBag.comp_amostra_dois_dois =buscarFi.comp_amostra_dois_dois;
+                ViewBag.comp_amostra_dois_tres =buscarFi.comp_amostra_dois_tres;
+                ViewBag.comp_amostra_dois_quatro =buscarFi.comp_amostra_dois_quatro;
+
+                ViewBag.comp_amostra_tres_um =buscarFi.comp_amostra_tres_um;
+                ViewBag.comp_amostra_tres_dois =buscarFi.comp_amostra_tres_dois;
+                ViewBag.comp_amostra_tres_tres =buscarFi.comp_amostra_tres_tres;
+                ViewBag.comp_amostra_tres_quatro =buscarFi.comp_amostra_tres_quatro;
+
+                ViewBag.comp_media_um =buscarFi.comp_media_um;
+                ViewBag.comp_media_dois =buscarFi.comp_media_dois;
+                ViewBag.comp_media_tres =buscarFi.comp_media_tres;
+                //espessura final para jogar na tabela.
+
+                ViewBag.esp_final_amostra_um_um = buscarFadiga.esp_final_amostra_um_um;
+                ViewBag.esp_final_amostra_um_dois = buscarFadiga.esp_final_amostra_um_dois;
+                ViewBag.esp_final_amostra_um_tres = buscarFadiga.esp_final_amostra_um_tres;
+                ViewBag.esp_final_amostra_um_quatro = buscarFadiga.esp_final_amostra_um_quatro;
+                ViewBag.esp_final_amostra_um_cinco = buscarFadiga.esp_final_amostra_um_cinco;
+                ViewBag.esp_final_amostra_um_seis = buscarFadiga.esp_final_amostra_um_seis;
+                ViewBag.esp_final_amostra_um_sete = buscarFadiga.esp_final_amostra_um_sete;
+                ViewBag.esp_final_amostra_um_oito = buscarFadiga.esp_final_amostra_um_oito;
+
+                ViewBag.esp_final_amostra_dois_um = buscarFadiga.esp_final_amostra_dois_um;
+                ViewBag.esp_final_amostra_dois_dois = buscarFadiga.esp_final_amostra_dois_dois;
+                ViewBag.esp_final_amostra_dois_tres = buscarFadiga.esp_final_amostra_dois_tres;
+                ViewBag.esp_final_amostra_dois_quatro = buscarFadiga.esp_final_amostra_dois_quatro;
+                ViewBag.esp_final_amostra_dois_cinco = buscarFadiga.esp_final_amostra_dois_cinco;
+                ViewBag.esp_final_amostra_dois_seis = buscarFadiga.esp_final_amostra_dois_seis;
+                ViewBag.esp_final_amostra_dois_sete = buscarFadiga.esp_final_amostra_dois_sete;
+                ViewBag.esp_final_amostra_dois_oito = buscarFadiga.esp_final_amostra_dois_oito;
+
+                ViewBag.esp_final_amostra_tres_um = buscarFadiga.esp_final_amostra_tres_um;
+                ViewBag.esp_final_amostra_tres_dois = buscarFadiga.esp_final_amostra_tres_dois;
+                ViewBag.esp_final_amostra_tres_tres = buscarFadiga.esp_final_amostra_tres_tres;
+                ViewBag.esp_final_amostra_tres_quatro = buscarFadiga.esp_final_amostra_tres_quatro;
+                ViewBag.esp_final_amostra_tres_cinco = buscarFadiga.esp_final_amostra_tres_cinco;
+                ViewBag.esp_final_amostra_tres_seis = buscarFadiga.esp_final_amostra_tres_seis;
+                ViewBag.esp_final_amostra_tres_sete = buscarFadiga.esp_final_amostra_tres_sete;
+                ViewBag.esp_final_amostra_tres_oito = buscarFadiga.esp_final_amostra_tres_oito;
+
+                ViewBag.media_esp_fin_um = buscarFadiga.media_esp_fin_um;
+                ViewBag.media_esp_fin_dois = buscarFadiga.media_esp_fin_dois;
+                ViewBag.media_esp_fin_tres = buscarFadiga.media_esp_fin_tres;
+
+
+
                 ViewBag.os = os;
                 ViewBag.orcamento = orcamento;
                 return View("Laminas/LaminaPFI");
@@ -615,27 +780,6 @@ namespace Coleta_Colchao.Controllers
                 ViewBag.orcamento = orcamento;
                 return View("Laminas/LaminaF_I", dados);
             }
-        }
-
-        public IActionResult FatorConforto(string os, string orcamento, string ensaio)
-        {
-            var dados = _context.regtro_colchao_lamina.Where(x => x.os == os && x.orcamento == orcamento).FirstOrDefault();
-
-            if (dados == null)
-            {
-                ViewBag.os = os;
-                ViewBag.orcamento = orcamento;
-                ViewBag.ensaio = ensaio;
-                return View("Laminas/FatorConforto");
-            }
-            else
-            {
-                ViewBag.os = os;
-                ViewBag.orcamento = orcamento;
-                ViewBag.ensaio = ensaio;
-                return View("Laminas/FatorConforto", dados);
-            }
-
         }
 
         public IActionResult EnviarFotos(string os, string orcamento)
@@ -5574,6 +5718,13 @@ namespace Coleta_Colchao.Controllers
                     salvarDados.fator_ind_40 = media_geral_40;
                     salvarDados.fator_ind_25 = media_geral_25;
 
+                    //fator conforto
+                    salvarDados.conforto_65 = (int)salvarDados.media_65;
+                    salvarDados.conforto_25 = (int)salvarDados.media_25;
+
+                    salvarDados.media_conforto = (salvarDados.conforto_65 / salvarDados.conforto_25);
+
+
                     _context.lamina_fi.Add(salvarDados);
                     await _context.SaveChangesAsync();
                     TempData["Mensagem"] = "Dados salvo com sucesso.";
@@ -5735,6 +5886,13 @@ namespace Coleta_Colchao.Controllers
                     editarDados.fator_ind_40 = editarDados.media_40;
                     editarDados.fator_ind_65 = editarDados.media_65;
 
+                    //conforto
+                    editarDados.conforto_65 = (int)salvarDados.media_65;
+                    editarDados.conforto_25 = (int)salvarDados.media_25;
+
+                    editarDados.media_conforto = (editarDados.conforto_65 / editarDados.conforto_25);
+
+
                     _context.lamina_fi.Update(editarDados);
                     await _context.SaveChangesAsync();
                     TempData["Mensagem"] = "Dados Editado com sucesso.";
@@ -5805,17 +5963,17 @@ namespace Coleta_Colchao.Controllers
                     //CALCULO DE PERDA DE ESPESSURA.
                     salvarDados.pe_um_um = salvarDados.media_espessura_um;
                     salvarDados.pe_um_dois = salvarDados.media_esp_fin_um;
-                    salvarDados.pe_um_tres = salvarDados.media_esp_fin_um;
+                    //salvarDados.pe_um_tres = salvarDados.media_esp_fin_um;
                     salvarDados.pe_media_um = (((salvarDados.pe_um_um - salvarDados.pe_um_dois) / salvarDados.pe_um_tres) * 100);
 
                     salvarDados.pe_dois_um = salvarDados.media_espessura_dois;
                     salvarDados.pe_dois_dois = salvarDados.media_esp_fin_dois;
-                    salvarDados.pe_dois_tres = salvarDados.media_esp_fin_dois;
+                    //salvarDados.pe_dois_tres = salvarDados.media_esp_fin_dois;
                     salvarDados.pe_media_dois = (((salvarDados.pe_dois_um - salvarDados.pe_dois_dois) / salvarDados.pe_dois_tres) * 100);
 
                     salvarDados.pe_tres_um = salvarDados.media_espessura_tres;
                     salvarDados.pe_tres_dois = salvarDados.media_esp_fin_tres;
-                    salvarDados.pe_tres_tres = salvarDados.media_esp_fin_dois;
+                    //salvarDados.pe_tres_tres = salvarDados.media_esp_fin_dois;
                     salvarDados.pe_media_tres = (((salvarDados.pe_tres_um - salvarDados.pe_tres_dois) / salvarDados.pe_tres_tres) * 100);
 
                     //pe_especificado resultado.
@@ -5948,6 +6106,9 @@ namespace Coleta_Colchao.Controllers
                     editarDados.media_esp_fin_dois = ((editarDados.esp_final_amostra_dois_um + editarDados.esp_final_amostra_dois_dois + editarDados.esp_final_amostra_dois_tres + editarDados.esp_final_amostra_dois_quatro + editarDados.esp_final_amostra_dois_cinco + editarDados.esp_final_amostra_dois_seis + editarDados.esp_final_amostra_dois_sete + editarDados.esp_final_amostra_dois_oito) / 8);
                     editarDados.media_esp_fin_tres = ((editarDados.esp_final_amostra_tres_um + editarDados.esp_final_amostra_tres_dois + editarDados.esp_final_amostra_tres_tres + editarDados.esp_final_amostra_tres_quatro + editarDados.esp_final_amostra_tres_cinco + editarDados.esp_final_amostra_tres_seis + editarDados.esp_final_amostra_tres_sete + editarDados.esp_final_amostra_tres_oito) / 8);
 
+                    editarDados.tempo_rep_esp_um = salvarDados.tempo_rep_esp_um;
+                    editarDados.tempo_rep_esp_dois = salvarDados.tempo_rep_esp_dois;
+                    editarDados.tempo_rep_esp_tres = salvarDados.tempo_rep_esp_tres;
 
                     //calculo de perda de espessura..
                     editarDados.pe_um_um = editarDados.media_espessura_um;

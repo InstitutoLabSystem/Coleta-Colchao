@@ -246,7 +246,7 @@
             </tr>
             <tr>
                 <td>
-                    Resiliência especificada % <input type="text" class="controlador" asp-for="resiliencia_esp" id="especificado" readonly />
+                    Resiliência especificada % <input id="tamanho" class="controlador" style="width:80px" readonly/> : <input type="text" class="controlador" asp-for="resiliencia_esp" id="especificado" readonly />
                 </td>
             </tr>
             <tr>
@@ -279,6 +279,7 @@
     <script>
         const tipo_espuma = document.getElementById("tipo_espuma");
         const densidade = document.getElementById("densidade");
+        const tamanho = document.getElementById("tamanho");
         var especificado = document.getElementById("especificado");
 
         tipo_espuma.addEventListener('change', function () {
@@ -295,10 +296,16 @@
             if (opcaoSelecionada === 'Convencional') {
                 if (valorDigitado == '20' || valorDigitado == '18') {
                     especificado.value = 30;
+                    tamanho.value = 'Min';
+
                 } else if (valorDigitado == '23' || valorDigitado == '26' || valorDigitado == '28' || valorDigitado == '33') {
                     especificado.value = 35;
+                    tamanho.value = 'Min';
+
                 } else if (valorDigitado == '40' || valorDigitado == '45') {
                     especificado.value = 40;
+                    tamanho.value = 'Min';
+
                 } else {
                     especificado.value = "Não há especificado na tabela";
                 }
@@ -306,6 +313,8 @@
             } else if (opcaoSelecionada === 'Hipermacia') {
                 if (valorDigitado == '20' || valorDigitado == '24' || valorDigitado == '29' || valorDigitado == '35') {
                     especificado.value = 30;
+                    tamanho.value = 'Min';
+
                 }
                 else {
                     especificado.value = "Não há especificado na tabela";
@@ -313,10 +322,16 @@
             } else if (opcaoSelecionada === 'Macia') {
                 if (valorDigitado == '20' || valorDigitado == '24') {
                     especificado.value = 35;
+                    tamanho.value = 'Min';
+
                 } else if (valorDigitado == '29') {
                     especificado.value = 40;
+                    tamanho.value = 'Min';
+
                 } else if (valorDigitado >= '35') {
                     especificado.value = 45;
+                    tamanho.value = 'Min';
+
                 }
                 else {
                     especificado.value = "Não há especificado na tabela";
@@ -324,6 +339,7 @@
             } else if (opcaoSelecionada === 'Aglomerado') {
                 if (valorDigitado >= '65') {
                     especificado.value = 25;
+                    tamanho.value = 'Min';
                 }
                 else {
                     especificado.value = "Não há especificado na tabela";
@@ -332,6 +348,8 @@
             else if (opcaoSelecionada === 'Alta resiliência') {
                 if (valorDigitado >= '35') {
                     especificado.value = 55;
+                    tamanho.value = 'Min';
+
                 }
                 else {
                     especificado.value = "Não há especificado na tabela";
@@ -339,6 +357,7 @@
             } else if (opcaoSelecionada === 'Visco elástica') {
                 if (valorDigitado >= '30') {
                     especificado.value = 15;
+                    tamanho.value = 'Max';
                 }
                 else {
                     especificado.value = "Não há especificado na tabela";
