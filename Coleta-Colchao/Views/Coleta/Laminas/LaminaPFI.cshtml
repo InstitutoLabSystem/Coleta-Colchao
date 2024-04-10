@@ -16,14 +16,14 @@
     <title>DETERMINAÇÃO DO TEOR DE CINZAS</title>
     <style>
         /*  .controlador-conforme {
-                                                                                            padding: 5px;
-                                                                                            border-color: gray;
-                                                                                            border-radius: 5px;
-                                                                                            box-sizing: border-box;
-                                                                                            height: 500px;
-                                                                                            width: 100px;
-                                                                                            }
-                                                                                         */
+                                                                                                    padding: 5px;
+                                                                                                    border-color: gray;
+                                                                                                    border-radius: 5px;
+                                                                                                    box-sizing: border-box;
+                                                                                                    height: 500px;
+                                                                                                    width: 100px;
+                                                                                                    }
+                                                                                                 */
         input {
             text-align: center;
         }
@@ -414,7 +414,7 @@
                 @if (Model == null)
                 {
                     <td><input type="text" class="form-control" asp-for="esp_ini_amostra_um_oito" value="@ViewBag.esp_final_amostra_um_oito" /></td>
-                    <td><input type="text" class="form-control" asp-for="esp_ini_amostra_dois_oito" value="@ViewBag.esp_final_amostra_dois_oito"/></td>
+                    <td><input type="text" class="form-control" asp-for="esp_ini_amostra_dois_oito" value="@ViewBag.esp_final_amostra_dois_oito" /></td>
                     <td><input type="text" class="form-control" asp-for="esp_ini_amostra_tres_oito" value="@ViewBag.esp_final_amostra_tres_oito" /></td>
                 }
                 else
@@ -426,11 +426,11 @@
 
             </tr>
             <tr>
-                @if(Model == null)
+                @if (Model == null)
                 {
-                     <td>Media:</td>
+                    <td>Media:</td>
                     <td><input type="text" class="form-control" readonly asp-for="esp_media_um" value="@ViewBag.media_esp_fin_um" /></td>
-                <td><input type="text" class="form-control" readonly asp-for="esp_media_dois" value="@ViewBag.media_esp_fin_dois"/></td>
+                    <td><input type="text" class="form-control" readonly asp-for="esp_media_dois" value="@ViewBag.media_esp_fin_dois" /></td>
                     <td><input type="text" class="form-control" readonly asp-for="esp_media_tres" value="@ViewBag.media_esp_fin_tres" /></td>
                 }
                 else
@@ -440,7 +440,7 @@
                     <td><input type="text" class="form-control" readonly asp-for="esp_media_dois" /></td>
                     <td><input type="text" class="form-control" readonly asp-for="esp_media_tres" /></td>
                 }
-               
+
             </tr>
         </table>
         <table class="tables table-bordered border-secondary  table-sm">
@@ -678,7 +678,15 @@
             <td>
                 <b> Perda de força de indentação.</b>
             </td>
-            <td rowspan="10">Resultado</td>
+            @if(Model == null)
+            {
+                <td rowspan="10"></td>
+            }
+            else
+            {
+                <td rowspan="10">@Model.conforme</td>
+            }
+            
         </tr>
         <tr>
             <td>
@@ -695,7 +703,7 @@
                         <td class="fundo-tabela">
                             P.F.I : - 25% Especificada
                         </td>
-                        <td><input type="text" class="form-control" asp-for="pfi_25_especificada" /> </td>
+                        <td><input type="text" class="form-control" asp-for="pfi_25_especificada" value="-" readonly /> </td>
                     </tr>
                     <tr>
                         <td class="fundo-tabela">P.F.I : - 25% Encontrada </td>
@@ -714,7 +722,7 @@
                         <td class="fundo-tabela">
                             P.F.I : - 40% Especificada
                         </td>
-                        <td><input type="text" class="form-control" asp-for="pfi_40_especificada" /> </td>
+                        <td><input type="text" class="form-control" asp-for="pfi_40_especificada" id="especificado" /> </td>
                     </tr>
                     <tr>
                         <td class="fundo-tabela">P.F.I : - 40% Encontrado </td>
@@ -733,7 +741,7 @@
                         <td class="fundo-tabela">
                             P.F.I : - 65% Especificada
                         </td>
-                        <td><input type="text" class="form-control" asp-for="pfi_65_especificada" /> </td>
+                        <td><input type="text" class="form-control" asp-for="pfi_65_especificada" value="-" readonly /> </td>
                     </tr>
                     <tr>
                         <td class="fundo-tabela">P.F.I : - 65% Encontrada </td>
@@ -764,6 +772,128 @@
             alert('@Html.Raw(TempData["Mensagem"])');
         </script>
     }
+
+    <script>
+        const tipo_espuma = document.getElementById("tipo_espuma");
+        const densidade = document.getElementById("densidade");
+        // var tamanho = document.getElementById("tamanho");
+        var especificado = document.getElementById("especificado");
+        var conforto = document.getElementById("conforto");
+
+        tipo_espuma.addEventListener('change', function () {
+            mostrarResultados(tipo_espuma.value, densidade.value);
+        });
+
+        densidade.addEventListener('input', function () {
+            console.log(densidade.value);
+            mostrarResultados(tipo_espuma.value, densidade.value);
+        });
+
+        function mostrarResultados(opcaoSelecionada, valorDigitado) {
+            let resultado = '';
+            if (opcaoSelecionada === 'Convencional') {
+
+                if (valorDigitado == '20') {
+                    especificado.value = 1;
+                    // conforto.value = 2, 0;
+                    // tamanho.value = 'Min';
+                    console.log(especificado.value);
+                } else if (valorDigitado == '18') {
+                    especificado.value = 1;
+                    // conforto.value = 2, 0;
+                    // tamanho.value = 'Min';
+                } else if (valorDigitado == '23') {
+                    especificado.value = 1;
+                    // conforto.value = 2, 1;
+                    // tamanho.value = 'Min';
+                } else if (valorDigitado == '26') {
+                    especificado.value = 1;
+                    // conforto.value = 2, 1;
+                    // tamanho.value = 'Min';
+                } else if (valorDigitado == '28') {
+                    especificado.value = 1;
+                    // conforto.value = 2, 2;
+                    // tamanho.value = 'Min';
+                }
+                else if (valorDigitado == '33') {
+                    especificado.value = 1;
+                    // conforto.value = 2, 2;
+                    // tamanho.value = 'Min';
+                }
+                else if (valorDigitado == '40') {
+                    especificado.value = 1;
+                    // conforto.value = 2, 2;
+                    // tamanho.value = 'Min';
+                }
+                else if (valorDigitado == '45') {
+                    especificado.value = 1;
+                    // especificado.value = 165;
+                    // tamanho.value = 'Min';
+                }
+                else {
+                    especificado.value = "Não há especificado na tabela";
+                }
+
+            } else if (opcaoSelecionada === 'Hipermacia') {
+                if (valorDigitado == '20' || valorDigitado == '24') {
+                    especificado.value = 1;
+                    // tamanho.value = 'Max';
+
+                }
+                else if (valorDigitado == '29') {
+                    especificado.value = 1;
+                }
+                else if (valorDigitado >= '35') {
+                    especificado.value = 1;
+                    // tamanho.value = 'Max';
+                }
+                else {
+                    especificado.value = "Não há especificado na tabela";
+                }
+            } else if (opcaoSelecionada === 'Macia') {
+                if (valorDigitado == '20') {
+                    especificado.value = 1;
+                    // tamanho.value = 'Max';
+                } else if (valorDigitado == '24') {
+                    especificado.value = 1;
+                    // tamanho.value = 'Max';
+                } else if (valorDigitado > '20') {
+                    especificado.value = 1;
+                    // tamanho.value = 'Max';
+                } else if (valorDigitado >= '35') {
+                    especificado.value = 1;
+                    // tamanho.value = 'Max';
+                }
+                else {
+                    especificado.value = "Não há especificado na tabela";
+                }
+            }
+            else if (opcaoSelecionada === 'Visco elástica') {
+                if (valorDigitado >= '30') {
+                    especificado.value = 1;
+                    // tamanho.value = 'Min';
+                }
+                else {
+                    especificado.value = "Não há especificado na tabela";
+                }
+            }
+            else if (opcaoSelecionada === 'Alta resiliência') {
+                if (valorDigitado >= '30') {
+                    especificado.value = 1;
+                    // tamanho.value = 'Min';
+                }
+                else {
+                    especificado.value = "Não há especificado na tabela";
+                }
+            }else{
+                especificado.value = "Não há especificado na tabela";
+            }
+            // Atualiza o conteúdo da div de resultados
+        }
+        mostrarResultados(tipo_espuma.value, densidade.value);
+
+
+    </script>
     <script>
         document.addEventListener("keydown", function (e) {
             if (e.keyCode === 13) {

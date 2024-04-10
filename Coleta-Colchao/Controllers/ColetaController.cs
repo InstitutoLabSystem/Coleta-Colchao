@@ -649,7 +649,7 @@ namespace Coleta_Colchao.Controllers
                 ViewBag.esp_media_dois = buscarFI.esp_media_dois;
                 ViewBag.esp_media_tres = buscarFI.esp_media_tres;
                 //media espessura
-                ViewBag.media_espessura_um  = buscarFI.media_espessura_um;
+                ViewBag.media_espessura_um = buscarFI.media_espessura_um;
                 ViewBag.media_espessura_dois = buscarFI.media_espessura_dois;
                 ViewBag.media_espessura_tres = buscarFI.media_espessura_tres;
 
@@ -673,14 +673,14 @@ namespace Coleta_Colchao.Controllers
             if (buscarFi == null)
             {
                 TempData["Mensagem"] = "ATENÇÃO!! REALIZE O ENSAIO DE F.I PRIMEIRO PARA REALIZAR O ENSAIO DE P.F.I";
-                return RedirectToAction("Laminas/LaminaPFI" , new {os, orcamento});
+                return RedirectToAction("Laminas/LaminaPFI", new { os, orcamento });
             }
 
             var dados = _context.lamina_pfi.Where(x => x.os == os && x.orcamento == orcamento).FirstOrDefault();
             if (dados == null)
             {
                 //recebendo os valores para mostrar na tela quando for nullo, 
-                  //largura.
+                //largura.
                 ViewBag.lar_amostra_um_um = buscarFi.lar_amostra_um_um;
                 ViewBag.lar_amostra_um_dois = buscarFi.lar_amostra_um_dois;
                 ViewBag.lar_amostra_um_tres = buscarFi.lar_amostra_um_tres;
@@ -697,27 +697,27 @@ namespace Coleta_Colchao.Controllers
                 ViewBag.lar_amostra_tres_quatro = buscarFi.lar_amostra_tres_quatro;
 
                 ViewBag.lar_media_um = buscarFi.lar_media_um;
-                ViewBag.lar_media_dois =buscarFi.lar_media_dois;
+                ViewBag.lar_media_dois = buscarFi.lar_media_dois;
                 ViewBag.lar_media_tres = buscarFi.lar_media_tres;
                 //comprimento.
-                ViewBag.comp_amostra_um_um =buscarFi.comp_amostra_um_um;
-                ViewBag.comp_amostra_um_dois =buscarFi.comp_amostra_um_dois;
-                ViewBag.comp_amostra_um_tres =buscarFi.comp_amostra_um_tres;
-                ViewBag.comp_amostra_um_quatro =buscarFi.comp_amostra_um_quatro;
+                ViewBag.comp_amostra_um_um = buscarFi.comp_amostra_um_um;
+                ViewBag.comp_amostra_um_dois = buscarFi.comp_amostra_um_dois;
+                ViewBag.comp_amostra_um_tres = buscarFi.comp_amostra_um_tres;
+                ViewBag.comp_amostra_um_quatro = buscarFi.comp_amostra_um_quatro;
 
-                ViewBag.comp_amostra_dois_um =buscarFi.comp_amostra_dois_um;
-                ViewBag.comp_amostra_dois_dois =buscarFi.comp_amostra_dois_dois;
-                ViewBag.comp_amostra_dois_tres =buscarFi.comp_amostra_dois_tres;
-                ViewBag.comp_amostra_dois_quatro =buscarFi.comp_amostra_dois_quatro;
+                ViewBag.comp_amostra_dois_um = buscarFi.comp_amostra_dois_um;
+                ViewBag.comp_amostra_dois_dois = buscarFi.comp_amostra_dois_dois;
+                ViewBag.comp_amostra_dois_tres = buscarFi.comp_amostra_dois_tres;
+                ViewBag.comp_amostra_dois_quatro = buscarFi.comp_amostra_dois_quatro;
 
-                ViewBag.comp_amostra_tres_um =buscarFi.comp_amostra_tres_um;
-                ViewBag.comp_amostra_tres_dois =buscarFi.comp_amostra_tres_dois;
-                ViewBag.comp_amostra_tres_tres =buscarFi.comp_amostra_tres_tres;
-                ViewBag.comp_amostra_tres_quatro =buscarFi.comp_amostra_tres_quatro;
+                ViewBag.comp_amostra_tres_um = buscarFi.comp_amostra_tres_um;
+                ViewBag.comp_amostra_tres_dois = buscarFi.comp_amostra_tres_dois;
+                ViewBag.comp_amostra_tres_tres = buscarFi.comp_amostra_tres_tres;
+                ViewBag.comp_amostra_tres_quatro = buscarFi.comp_amostra_tres_quatro;
 
-                ViewBag.comp_media_um =buscarFi.comp_media_um;
-                ViewBag.comp_media_dois =buscarFi.comp_media_dois;
-                ViewBag.comp_media_tres =buscarFi.comp_media_tres;
+                ViewBag.comp_media_um = buscarFi.comp_media_um;
+                ViewBag.comp_media_dois = buscarFi.comp_media_dois;
+                ViewBag.comp_media_tres = buscarFi.comp_media_tres;
                 //espessura final para jogar na tabela.
 
                 ViewBag.esp_final_amostra_um_um = buscarFadiga.esp_final_amostra_um_um;
@@ -5230,9 +5230,155 @@ namespace Coleta_Colchao.Controllers
 
                     salvarDados.resiliencia_enc = ((salvarDados.media_res_um + salvarDados.media_res_dois + salvarDados.media_res_tres) / 3);
 
-                    if (salvarDados.resiliencia_enc < salvarDados.resiliencia_esp)
+                    //conformes
+                    if (salvarDados.tipo_espuma == "Convencional")
                     {
-                        salvarDados.conforme = "NC";
+                        if (salvarDados.densidade == 18 || salvarDados.densidade == 20)
+                        {
+                            //minimo 30
+                            if (salvarDados.resiliencia_enc >= salvarDados.resiliencia_esp)
+                            {
+                                salvarDados.conforme = "C";
+                            }
+                            else
+                            {
+                                salvarDados.conforme = "NC";
+                            }
+                        }
+                        else if (salvarDados.densidade == 23 || salvarDados.densidade == 26 || salvarDados.densidade == 28 || salvarDados.densidade == 33)
+                        {
+                            //minimo  35
+                            if (salvarDados.resiliencia_enc >= salvarDados.resiliencia_esp)
+                            {
+                                salvarDados.conforme = "C";
+                            }
+                            else
+                            {
+                                salvarDados.conforme = "NC";
+                            }
+                        }
+                        else if (salvarDados.densidade == 40 || salvarDados.densidade == 45)
+                        {
+                            //minimo  40 
+                            if (salvarDados.resiliencia_enc >= salvarDados.resiliencia_esp)
+                            {
+                                salvarDados.conforme = "C";
+                            }
+                            else
+                            {
+                                salvarDados.conforme = "NC";
+                            }
+                        }
+                        else
+                        {
+                            salvarDados.conforme = "C";
+                        }
+                    }
+                    else if (salvarDados.tipo_espuma == "Hipermacia")
+                    {
+                        if (salvarDados.densidade == 20 || salvarDados.densidade == 24 || salvarDados.densidade == 29 || salvarDados.densidade >= 35)
+                        {
+                            //minimo 30 
+                            if (salvarDados.resiliencia_enc >= salvarDados.resiliencia_esp)
+                            {
+                                salvarDados.conforme = "C";
+                            }
+                            else
+                            {
+                                salvarDados.conforme = "NC";
+                            }
+                        }
+                        else
+                        {
+                            salvarDados.conforme = "C";
+                        }
+                    }
+                    else if (salvarDados.tipo_espuma == "Macia")
+                    {
+                        if (salvarDados.densidade == 20 || salvarDados.densidade == 24)
+                        {
+                            //minimo 35
+                            if (salvarDados.resiliencia_enc >= salvarDados.resiliencia_esp)
+                            {
+                                salvarDados.conforme = "C";
+                            }
+                            else
+                            {
+                                salvarDados.conforme = "NC";
+                            }
+                        }
+                        else if (salvarDados.densidade >= 35)
+                        {
+                            if (salvarDados.resiliencia_enc >= salvarDados.resiliencia_esp)
+                            {
+                                salvarDados.conforme = "C";
+                            }
+                            else
+                            {
+                                salvarDados.conforme = "C";
+                            }
+                        }
+                        else
+                        {
+                            salvarDados.conforme = "C";
+                        }
+                    }
+                    else if (salvarDados.tipo_espuma == "Aglomerado")
+                    {
+                        if (salvarDados.densidade >= 65)
+                        {
+                            //minimo 25
+                            if (salvarDados.resiliencia_enc >= salvarDados.resiliencia_esp)
+                            {
+                                salvarDados.conforme = "C";
+                            }
+                            else
+                            {
+                                salvarDados.conforme = "NC";
+                            }
+                        }
+                        else
+                        {
+                            salvarDados.conforme = "C";
+                        }
+                    }
+                    else if (salvarDados.tipo_espuma == "Alta resiliência")
+                    {
+                        if (salvarDados.densidade >= 30)
+                        {
+                            //minimo 55
+                            if (salvarDados.resiliencia_enc >= salvarDados.resiliencia_esp)
+                            {
+                                salvarDados.conforme = "C";
+                            }
+                            else
+                            {
+                                salvarDados.conforme = "NC";
+                            }
+                        }
+                        else
+                        {
+                            salvarDados.conforme = "C";
+                        }
+                    }
+                    else if (salvarDados.tipo_espuma == "Visco elástica")
+                    {
+                        if (salvarDados.densidade >= 30)
+                        {
+                            //maxima 15
+                            if (salvarDados.resiliencia_enc <= salvarDados.resiliencia_esp)
+                            {
+                                salvarDados.conforme = "C";
+                            }
+                            else
+                            {
+                                salvarDados.conforme = "NC";
+                            }
+                        }
+                        else
+                        {
+                            salvarDados.conforme = "C";
+                        }
                     }
                     else
                     {
@@ -5279,10 +5425,155 @@ namespace Coleta_Colchao.Controllers
                     editarDados.resiliencia_esp = salvarDados.resiliencia_esp;
                     editarDados.resiliencia_enc = ((editarDados.media_res_um + editarDados.media_res_dois + editarDados.media_res_tres) / 3);
 
-
-                    if (editarDados.resiliencia_enc < editarDados.resiliencia_esp)
+                    //conformes
+                    if (editarDados.tipo_espuma == "Convencional")
                     {
-                        editarDados.conforme = "NC";
+                        if (editarDados.densidade == 18 || editarDados.densidade == 20)
+                        {
+                            //minimo 30
+                            if (editarDados.resiliencia_enc >= editarDados.resiliencia_esp)
+                            {
+                                editarDados.conforme = "C";
+                            }
+                            else
+                            {
+                                editarDados.conforme = "NC";
+                            }
+                        }
+                        else if (editarDados.densidade == 23 || editarDados.densidade == 26 || editarDados.densidade == 28 || editarDados.densidade == 33)
+                        {
+                            //minimo  35
+                            if (editarDados.resiliencia_enc >= editarDados.resiliencia_esp)
+                            {
+                                editarDados.conforme = "C";
+                            }
+                            else
+                            {
+                                editarDados.conforme = "NC";
+                            }
+                        }
+                        else if (editarDados.densidade == 40 || editarDados.densidade == 45)
+                        {
+                            //minimo  40 
+                            if (editarDados.resiliencia_enc >= editarDados.resiliencia_esp)
+                            {
+                                editarDados.conforme = "C";
+                            }
+                            else
+                            {
+                                editarDados.conforme = "NC";
+                            }
+                        }
+                        else
+                        {
+                            editarDados.conforme = "C";
+                        }
+                    }
+                    else if (editarDados.tipo_espuma == "Hipermacia")
+                    {
+                        if (editarDados.densidade == 20 || editarDados.densidade == 24 || editarDados.densidade == 29 || editarDados.densidade >= 35)
+                        {
+                            //minimo 30 
+                            if (editarDados.resiliencia_enc >= editarDados.resiliencia_esp)
+                            {
+                                editarDados.conforme = "C";
+                            }
+                            else
+                            {
+                                editarDados.conforme = "NC";
+                            }
+                        }
+                        else
+                        {
+                            editarDados.conforme = "C";
+                        }
+                    }
+                    else if (editarDados.tipo_espuma == "Macia")
+                    {
+                        if (editarDados.densidade == 20 || editarDados.densidade == 24)
+                        {
+                            //minimo 35
+                            if (editarDados.resiliencia_enc >= editarDados.resiliencia_esp)
+                            {
+                                editarDados.conforme = "C";
+                            }
+                            else
+                            {
+                                editarDados.conforme = "NC";
+                            }
+                        }
+                        else if (editarDados.densidade >= 35)
+                        {
+                            if (editarDados.resiliencia_enc >= editarDados.resiliencia_esp)
+                            {
+                                editarDados.conforme = "C";
+                            }
+                            else
+                            {
+                                editarDados.conforme = "C";
+                            }
+                        }
+                        else
+                        {
+                            editarDados.conforme = "C";
+                        }
+                    }
+                    else if (editarDados.tipo_espuma == "Aglomerado")
+                    {
+                        if (editarDados.densidade >= 65)
+                        {
+                            //minimo 25
+                            if (editarDados.resiliencia_enc >= editarDados.resiliencia_esp)
+                            {
+                                editarDados.conforme = "C";
+                            }
+                            else
+                            {
+                                editarDados.conforme = "NC";
+                            }
+                        }
+                        else
+                        {
+                            editarDados.conforme = "C";
+                        }
+                    }
+                    else if (editarDados.tipo_espuma == "Alta resiliência")
+                    {
+                        if (editarDados.densidade >= 30)
+                        {
+                            //minimo 55
+                            if (editarDados.resiliencia_enc >= editarDados.resiliencia_esp)
+                            {
+                                editarDados.conforme = "C";
+                            }
+                            else
+                            {
+                                editarDados.conforme = "NC";
+                            }
+                        }
+                        else
+                        {
+                            editarDados.conforme = "C";
+                        }
+                    }
+                    else if (editarDados.tipo_espuma == "Visco elástica")
+                    {
+                        if (editarDados.densidade >= 30)
+                        {
+                            //maxima 15
+                            if (editarDados.resiliencia_enc <= editarDados.resiliencia_esp)
+                            {
+                                editarDados.conforme = "C";
+                            }
+                            else
+                            {
+                                editarDados.conforme = "NC";
+                            }
+                        }
+                        else
+                        {
+                            editarDados.conforme = "C";
+                        }
                     }
                     else
                     {
@@ -5400,12 +5691,171 @@ namespace Coleta_Colchao.Controllers
                     salvarDados.vari_amsotra_tres = float.Parse(variacao_tres.ToString("N2"));
 
                     float dpc_encntrado = ((media_dpc_um + media_dpc_tres + media_dpc_tres) / 3);
-                    salvarDados.encontrada = dpc_encntrado;
+                    //salvarDados.encontrada = dpc_encntrado;
 
                     //conformidade.
-                    if (salvarDados.encontrada > salvarDados.especificada)
+                    //conformes
+                    if (salvarDados.tipo_espuma == "Convencional")
                     {
-                        salvarDados.conforme = "NC";
+                        if (salvarDados.densidade == 18)
+                        {
+                            //maximo 12
+                            if (salvarDados.encontrada <= salvarDados.especificada)
+                            {
+                                salvarDados.conforme = "C";
+                            }
+                            else
+                            {
+                                salvarDados.conforme = "NC";
+                            }
+                        }
+                        else if (salvarDados.densidade == 23 || salvarDados.densidade == 26 || salvarDados.densidade == 23)
+                        {
+                            //maximo 10
+                            if (salvarDados.encontrada <= salvarDados.especificada)
+                            {
+                                salvarDados.conforme = "C";
+                            }
+                            else
+                            {
+                                salvarDados.conforme = "NC";
+                            }
+                        }
+                        else if (salvarDados.densidade == 28 || salvarDados.densidade == 33 || salvarDados.densidade == 40 || salvarDados.densidade == 45)
+                        {
+                            //maximo 8
+                            if (salvarDados.encontrada <= salvarDados.especificada)
+                            {
+                                salvarDados.conforme = "C";
+                            }
+                            else
+                            {
+                                salvarDados.conforme = "NC";
+                            }
+                        }
+                        else
+                        {
+                            salvarDados.conforme = "C";
+                        }
+                    }
+                    else if (salvarDados.tipo_espuma == "Hipermacia")
+                    {
+                        if (salvarDados.densidade == 20 || salvarDados.densidade == 24 || salvarDados.densidade == 29 || salvarDados.densidade >= 35)
+                        {
+                            //maximo 15
+                            if (salvarDados.encontrada <= salvarDados.especificada)
+                            {
+                                salvarDados.conforme = "C";
+                            }
+                            else
+                            {
+                                salvarDados.conforme = "NC";
+                            }
+                        }
+                        else
+                        {
+                            salvarDados.conforme = "C";
+                        }
+                    }
+                    else if (salvarDados.tipo_espuma == "Macia")
+                    {
+                        if (salvarDados.densidade == 20 || salvarDados.densidade == 24)
+                        {
+                            //maximo 12
+                            if (salvarDados.encontrada <= salvarDados.especificada)
+                            {
+                                salvarDados.conforme = "C";
+                            }
+                            else
+                            {
+                                salvarDados.conforme = "NC";
+                            }
+                        }
+                        else if (salvarDados.densidade >= 35)
+                        {
+                            //maximo 10
+                            if (salvarDados.encontrada <= salvarDados.especificada)
+                            {
+                                salvarDados.conforme = "C";
+                            }
+                            else
+                            {
+                                salvarDados.conforme = "C";
+                            }
+                        }
+                        else if (salvarDados.densidade == 29)
+                        {
+                            //maximo 10
+                            if (salvarDados.encontrada <= salvarDados.especificada)
+                            {
+                                salvarDados.conforme = "C";
+                            }
+                            else
+                            {
+                                salvarDados.conforme = "C";
+                            }
+                        }
+                        else
+                        {
+                            salvarDados.conforme = "C";
+                        }
+                    }
+                    else if (salvarDados.tipo_espuma == "Aglomerado")
+                    {
+                        if (salvarDados.densidade >= 65)
+                        {
+                            //maximo 25
+                            if (salvarDados.encontrada <= salvarDados.especificada)
+                            {
+                                salvarDados.conforme = "C";
+                            }
+                            else
+                            {
+                                salvarDados.conforme = "NC";
+                            }
+                        }
+                        else
+                        {
+                            salvarDados.conforme = "C";
+                        }
+                    }
+                    else if (salvarDados.tipo_espuma == "Alta resiliência")
+                    {
+                        if (salvarDados.densidade >= 30)
+                        {
+                            //maximoo 10
+                            if (salvarDados.encontrada <= salvarDados.especificada)
+                            {
+                                salvarDados.conforme = "C";
+                            }
+                            else
+                            {
+                                salvarDados.conforme = "NC";
+                            }
+                        }
+                        else
+                        {
+                            salvarDados.conforme = "C";
+                        }
+                    }
+                    else if (salvarDados.tipo_espuma == "Visco elástica")
+                    {
+                        if (salvarDados.densidade >= 30)
+                        {
+                            //maxima 10
+                            if (salvarDados.encontrada <= salvarDados.especificada)
+                            {
+                                salvarDados.conforme = "C";
+                            }
+                            else
+                            {
+                                salvarDados.conforme = "NC";
+                            }
+                        }
+                        else
+                        {
+                            salvarDados.conforme = "C";
+                        }
                     }
                     else
                     {
@@ -5607,9 +6057,178 @@ namespace Coleta_Colchao.Controllers
                     float variacao_tres = (((media_dpc_tres - media_dpc_um) / media_dpc_um) * 100) * -1;
                     editarDados.vari_amsotra_tres = float.Parse(variacao_tres.ToString("N2"));
 
-                    float dpc_encntrado = ((media_dpc_um + media_dpc_tres + media_dpc_tres) / 3);
-                    editarDados.encontrada = dpc_encntrado;
+                    //float dpc_encntrado = ((media_dpc_um + media_dpc_tres + media_dpc_tres) / 3);
+                    //editarDados.encontrada = dpc_encntrado;
+                    editarDados.encontrada = salvarDados.encontrada;
                     editarDados.especificada = salvarDados.especificada;
+
+                    //conformes
+                    if (editarDados.tipo_espuma == "Convencional")
+                    {
+                        if (editarDados.densidade == 18)
+                        {
+                            //maximo 12
+                            if (editarDados.encontrada <= editarDados.especificada)
+                            {
+                                editarDados.conforme = "C";
+                            }
+                            else
+                            {
+                                editarDados.conforme = "NC";
+                            }
+                        }
+                        else if (editarDados.densidade == 23 || editarDados.densidade == 26 || editarDados.densidade == 23)
+                        {
+                            //maximo 10
+                            if (editarDados.encontrada <= editarDados.especificada)
+                            {
+                                editarDados.conforme = "C";
+                            }
+                            else
+                            {
+                                editarDados.conforme = "NC";
+                            }
+                        }
+                        else if (editarDados.densidade == 28 || editarDados.densidade == 33 || editarDados.densidade == 40 || salvarDados.densidade == 45)
+                        {
+                            //maximo 8
+                            if (editarDados.encontrada <= editarDados.especificada)
+                            {
+                                editarDados.conforme = "C";
+                            }
+                            else
+                            {
+                                editarDados.conforme = "NC";
+                            }
+                        }
+                        else
+                        {
+                            editarDados.conforme = "C";
+                        }
+                    }
+                    else if (editarDados.tipo_espuma == "Hipermacia")
+                    {
+                        if (editarDados.densidade == 20 || editarDados.densidade == 24 || editarDados.densidade == 29 || salvarDados.densidade >= 35)
+                        {
+                            //maximo 15
+                            if (editarDados.encontrada <= editarDados.especificada)
+                            {
+                                editarDados.conforme = "C";
+                            }
+                            else
+                            {
+                                editarDados.conforme = "NC";
+                            }
+                        }
+                        else
+                        {
+                            editarDados.conforme = "C";
+                        }
+                    }
+                    else if (editarDados.tipo_espuma == "Macia")
+                    {
+                        if (editarDados.densidade == 20 || editarDados.densidade == 24)
+                        {
+                            //maximo 12
+                            if (editarDados.encontrada <= editarDados.especificada)
+                            {
+                                editarDados.conforme = "C";
+                            }
+                            else
+                            {
+                                editarDados.conforme = "NC";
+                            }
+                        }
+                        else if (editarDados.densidade >= 35)
+                        {
+                            //maximo 10
+                            if (editarDados.encontrada <= editarDados.especificada)
+                            {
+                                editarDados.conforme = "C";
+                            }
+                            else
+                            {
+                                editarDados.conforme = "C";
+                            }
+                        }
+                        else if (editarDados.densidade == 29)
+                        {
+                            //maximo 10
+                            if (editarDados.encontrada <= editarDados.especificada)
+                            {
+                                editarDados.conforme = "C";
+                            }
+                            else
+                            {
+                                editarDados.conforme = "C";
+                            }
+                        }
+                        else
+                        {
+                            editarDados.conforme = "C";
+                        }
+                    }
+                    else if (editarDados.tipo_espuma == "Aglomerado")
+                    {
+                        if (editarDados.densidade >= 65)
+                        {
+                            //maximo 25
+                            if (editarDados.encontrada <= editarDados.especificada)
+                            {
+                                editarDados.conforme = "C";
+                            }
+                            else
+                            {
+                                editarDados.conforme = "NC";
+                            }
+                        }
+                        else
+                        {
+                            editarDados.conforme = "C";
+                        }
+                    }
+                    else if (editarDados.tipo_espuma == "Alta resiliência")
+                    {
+                        if (editarDados.densidade >= 30)
+                        {
+                            //maximoo 10
+                            if (editarDados.encontrada <= editarDados.especificada)
+                            {
+                                editarDados.conforme = "C";
+                            }
+                            else
+                            {
+                                editarDados.conforme = "NC";
+                            }
+                        }
+                        else
+                        {
+                            editarDados.conforme = "C";
+                        }
+                    }
+                    else if (editarDados.tipo_espuma == "Visco elástica")
+                    {
+                        if (editarDados.densidade >= 30)
+                        {
+                            //maxima 10
+                            if (editarDados.encontrada <= editarDados.especificada)
+                            {
+                                editarDados.conforme = "C";
+                            }
+                            else
+                            {
+                                editarDados.conforme = "NC";
+                            }
+                        }
+                        else
+                        {
+                            editarDados.conforme = "C";
+                        }
+                    }
+                    else
+                    {
+                        editarDados.conforme = "C";
+                    }
 
                     _context.lamina_dpc.Update(editarDados);
                     await _context.SaveChangesAsync();
@@ -5724,6 +6343,325 @@ namespace Coleta_Colchao.Controllers
 
                     salvarDados.media_conforto = (salvarDados.conforto_65 / salvarDados.conforto_25);
 
+                    //realizando logica para saber se esta conforme ou nao conforme.
+                    if (salvarDados.tipo_espuma == "Convencional")
+                    {
+                        if (salvarDados.densidade == 18)
+                        {
+                            //minimo 80 aqui
+                            if (salvarDados.fator_ind_40 >= salvarDados.forca_esp_40)
+                            {
+                                salvarDados.conforme = "C";
+                            }
+                            else
+                            {
+                                salvarDados.conforme = "NC";
+                            }
+                        }
+                        else if (salvarDados.densidade == 20)
+                        {
+                            //minimo 95 aqui
+                            if (salvarDados.fator_ind_40 >= salvarDados.forca_esp_40)
+                            {
+                                salvarDados.conforme = "C";
+                            }
+                            else
+                            {
+                                salvarDados.conforme = "NC";
+                            }
+                        }
+                        else if (salvarDados.densidade == 23)
+                        {
+                            //minimo 110
+                            if (salvarDados.fator_ind_40 >= salvarDados.forca_esp_40)
+                            {
+                                salvarDados.conforme = "C";
+                            }
+                            else
+                            {
+                                salvarDados.conforme = "NC";
+                            }
+                        }
+                        else if (salvarDados.densidade == 26)
+                        {
+                            //minimo 130
+                            if (salvarDados.fator_ind_40 >= salvarDados.forca_esp_40)
+                            {
+                                salvarDados.conforme = "C";
+                            }
+                            else
+                            {
+                                salvarDados.conforme = "NC";
+                            }
+                        }
+                        else if (salvarDados.densidade == 28)
+                        {
+                            //minimo 145
+                            if (salvarDados.fator_ind_40 >= salvarDados.forca_esp_40)
+                            {
+                                salvarDados.conforme = "C";
+                            }
+                            else
+                            {
+                                salvarDados.conforme = "NC";
+                            }
+                        }
+                        else if (salvarDados.densidade == 33)
+                        {
+                            //minimo 165
+                            if (salvarDados.fator_ind_40 >= salvarDados.forca_esp_40)
+                            {
+                                salvarDados.conforme = "C";
+                            }
+                            else
+                            {
+                                salvarDados.conforme = "NC";
+                            }
+                        }
+                        else if (salvarDados.densidade == 40)
+                        {
+                            //minimo 185
+                            if (salvarDados.fator_ind_40 >= salvarDados.forca_esp_40)
+                            {
+                                salvarDados.conforme = "C";
+                            }
+                            else
+                            {
+                                salvarDados.conforme = "NC";
+                            }
+                        }
+                        else if (salvarDados.densidade == 45)
+                        {
+                            //minimo 200
+                            if (salvarDados.fator_ind_40 >= salvarDados.forca_esp_40)
+                            {
+                                salvarDados.conforme = "C";
+                            }
+                            else
+                            {
+                                salvarDados.conforme = "NC";
+                            }
+                        }
+                        else
+                        {
+                            salvarDados.conforme = "C";
+                        }
+                    }
+                    else if (salvarDados.tipo_espuma == "Hipermacia")
+                    {
+                        if (salvarDados.densidade == 20 || salvarDados.densidade == 24)
+                        {
+                            //maximo 50
+                            if (salvarDados.fator_ind_40 <= salvarDados.forca_esp_40)
+                            {
+                                salvarDados.conforme = "C";
+                            }
+                            else
+                            {
+                                salvarDados.conforme = "NC";
+                            }
+                        }
+                        else if (salvarDados.densidade == 29)
+                        {
+                            //maximo 50
+                            if (salvarDados.fator_ind_40 <= salvarDados.forca_esp_40)
+                            {
+                                salvarDados.conforme = "C";
+                            }
+                            else
+                            {
+                                salvarDados.conforme = "NC";
+                            }
+                        }
+                        else if (salvarDados.densidade >= 35)
+                        {
+                            //maximo 150
+                            if (salvarDados.fator_ind_40 <= salvarDados.forca_esp_40)
+                            {
+                                salvarDados.conforme = "C";
+                            }
+                            else
+                            {
+                                salvarDados.conforme = "NC";
+                            }
+                        }
+                        else
+                        {
+                            salvarDados.conforme = "C";
+                        }
+                    }
+                    else if (salvarDados.tipo_espuma == "Macia")
+                    {
+                        if (salvarDados.densidade == 20)
+                        {
+                            //maximo 95
+                            if (salvarDados.fator_ind_40 <= salvarDados.forca_esp_40)
+                            {
+                                salvarDados.conforme = "C";
+                            }
+                            else
+                            {
+                                salvarDados.conforme = "NC";
+                            }
+                        }
+                        else if (salvarDados.densidade == 24)
+                        {
+                            //maximo 130
+                            if (salvarDados.fator_ind_40 <= salvarDados.forca_esp_40)
+                            {
+                                salvarDados.conforme = "C";
+                            }
+                            else
+                            {
+                                salvarDados.conforme = "NC";
+                            }
+                        }
+                        else if (salvarDados.densidade == 20)
+                        {
+                            //maximo 165
+                            if (salvarDados.fator_ind_40 <= salvarDados.forca_esp_40)
+                            {
+                                salvarDados.conforme = "C";
+                            }
+                            else
+                            {
+                                salvarDados.conforme = "NC";
+                            }
+                        }
+                        else if (salvarDados.densidade >= 35)
+                        {
+                            //maximo 200
+                            if (salvarDados.fator_ind_40 <= salvarDados.forca_esp_40)
+                            {
+                                salvarDados.conforme = "C";
+                            }
+                            else
+                            {
+                                salvarDados.conforme = "NC";
+                            }
+                        }
+                        else
+                        {
+                            salvarDados.conforme = "C";
+                        }
+                    }
+                    else if (salvarDados.tipo_espuma == "Aglomerado")
+                    {
+                        if (salvarDados.densidade >= 65)
+                        {
+                            //maximo 35
+                            if (salvarDados.fator_ind_40 <= salvarDados.forca_esp_40)
+                            {
+                                salvarDados.conforme = "C";
+                            }
+                            else
+                            {
+                                salvarDados.conforme = "NC";
+                            }
+                        }
+                        else
+                        {
+                            salvarDados.conforme = "C";
+                        }
+                    }
+                    else if (salvarDados.tipo_espuma == "Visco elástica")
+                    {
+                        if (salvarDados.densidade >= 30)
+                        {
+                            //minimo 25
+                            if (salvarDados.fator_ind_40 >= salvarDados.forca_esp_40)
+                            {
+                                salvarDados.conforme = "C";
+                            }
+                            else
+                            {
+                                salvarDados.conforme = "NC";
+                            }
+                        }
+                        else
+                        {
+                            salvarDados.conforme = "C";
+                        }
+                    }
+
+                    // conformidade fator conforto
+                    if (salvarDados.tipo_espuma == "Convencional")
+                    {
+                        if (salvarDados.densidade == 18 || salvarDados.densidade == 20)
+                        {
+                            //minimo 2,0
+                            if (salvarDados.media_conforto >= float.Parse(salvarDados.fc_especificado))
+                            {
+                                salvarDados.conforme_conforto = "C";
+                            }
+                            else
+                            {
+                                salvarDados.conforme_conforto = "NC";
+                            }
+                        }
+                        else if (salvarDados.densidade == 23 || salvarDados.densidade == 26)
+                        {
+                            //minimo  2,1
+                            if (salvarDados.media_conforto >= float.Parse(salvarDados.fc_especificado))
+                            {
+                                salvarDados.conforme_conforto = "C";
+                            }
+                            else
+                            {
+                                salvarDados.conforme_conforto = "NC";
+                            }
+                        }
+                        else if (salvarDados.densidade == 28 || salvarDados.densidade == 33 || salvarDados.densidade == 40 || salvarDados.densidade == 45)
+                        {
+                            //minimo  2,2
+                            if (salvarDados.media_conforto >= float.Parse(salvarDados.fc_especificado))
+                            {
+                                salvarDados.conforme_conforto = "C";
+                            }
+                            else
+                            {
+                                salvarDados.conforme_conforto = "NC";
+                            }
+                        }
+                    }
+                    else if (salvarDados.tipo_espuma == "Alta resiliência")
+                    {
+                        if (salvarDados.densidade >= 30)
+                        {
+                            //minimo 2,3
+                            if (salvarDados.media_conforto >= float.Parse(salvarDados.fc_especificado))
+                            {
+                                salvarDados.conforme_conforto = "C";
+                            }
+                            else
+                            {
+                                salvarDados.conforme_conforto = "NC";
+                            }
+                        }
+                    }
+                    else if (salvarDados.tipo_espuma == "Visco elástica")
+                    {
+                        if (salvarDados.densidade >= 30)
+                        {
+                            //minimo 10
+                            if (salvarDados.media_conforto >= float.Parse(salvarDados.fc_especificado))
+                            {
+                                salvarDados.conforme_conforto = "C";
+                            }
+                            else
+                            {
+                                salvarDados.conforme_conforto = "NC";
+                            }
+                        }
+                        else
+                        {
+                            salvarDados.conforme_conforto = "C";
+                        }
+                    }
+                    else
+                    {
+                        salvarDados.conforme_conforto = "C";
+                    }
 
                     _context.lamina_fi.Add(salvarDados);
                     await _context.SaveChangesAsync();
@@ -5892,6 +6830,334 @@ namespace Coleta_Colchao.Controllers
 
                     editarDados.media_conforto = (editarDados.conforto_65 / editarDados.conforto_25);
 
+                    //realizando logica para saber se esta conforme ou nao conforme.
+                    editarDados.tipo_espuma = salvarDados.tipo_espuma;
+                    editarDados.densidade = salvarDados.densidade;
+                    editarDados.fc_especificado = salvarDados.fc_especificado;
+
+                    if (editarDados.tipo_espuma == "Convencional")
+                    {
+                        if (editarDados.densidade == 18)
+                        {
+                            //minimo 80 aqui
+                            if (editarDados.fator_ind_40 >= editarDados.forca_esp_40)
+                            {
+                                editarDados.conforme = "C";
+                            }
+                            else
+                            {
+                                editarDados.conforme = "NC";
+                            }
+                        }
+                        else if (editarDados.densidade == 20)
+                        {
+                            //minimo 95 aqui
+                            if (editarDados.fator_ind_40 >= editarDados.forca_esp_40)
+                            {
+                                editarDados.conforme = "C";
+                            }
+                            else
+                            {
+                                editarDados.conforme = "NC";
+                            }
+                        }
+                        else if (editarDados.densidade == 23)
+                        {
+                            //minimo 110
+                            if (editarDados.fator_ind_40 >= editarDados.forca_esp_40)
+                            {
+                                editarDados.conforme = "C";
+                            }
+                            else
+                            {
+                                editarDados.conforme = "NC";
+                            }
+                        }
+                        else if (editarDados.densidade == 26)
+                        {
+                            //minimo 130
+                            if (editarDados.fator_ind_40 >= editarDados.forca_esp_40)
+                            {
+                                editarDados.conforme = "C";
+                            }
+                            else
+                            {
+                                editarDados.conforme = "NC";
+                            }
+                        }
+                        else if (editarDados.densidade == 28)
+                        {
+                            //minimo 145
+                            if (editarDados.fator_ind_40 >= editarDados.forca_esp_40)
+                            {
+                                editarDados.conforme = "C";
+                            }
+                            else
+                            {
+                                editarDados.conforme = "NC";
+                            }
+                        }
+                        else if (editarDados.densidade == 33)
+                        {
+                            //minimo 165
+                            if (editarDados.fator_ind_40 >= editarDados.forca_esp_40)
+                            {
+                                editarDados.conforme = "C";
+                            }
+                            else
+                            {
+                                editarDados.conforme = "NC";
+                            }
+                        }
+                        else if (editarDados.densidade == 40)
+                        {
+                            //minimo 185
+                            if (editarDados.fator_ind_40 >= editarDados.forca_esp_40)
+                            {
+                                editarDados.conforme = "C";
+                            }
+                            else
+                            {
+                                editarDados.conforme = "NC";
+                            }
+                        }
+                        else if (editarDados.densidade == 45)
+                        {
+                            //minimo 200
+                            if (editarDados.fator_ind_40 >= editarDados.forca_esp_40)
+                            {
+                                editarDados.conforme = "C";
+                            }
+                            else
+                            {
+                                editarDados.conforme = "NC";
+                            }
+                        }
+                        else
+                        {
+                            editarDados.conforme = "C";
+                        }
+                    }
+                    else if (editarDados.tipo_espuma == "Hipermacia")
+                    {
+                        if (editarDados.densidade == 20 || editarDados.densidade == 24)
+                        {
+                            //maximo 50
+                            if (editarDados.fator_ind_40 <= editarDados.forca_esp_40)
+                            {
+                                editarDados.conforme = "C";
+                            }
+                            else
+                            {
+                                editarDados.conforme = "NC";
+                            }
+                        }
+                        else if (editarDados.densidade == 29)
+                        {
+                            //maximo 50
+                            if (editarDados.fator_ind_40 <= editarDados.forca_esp_40)
+                            {
+                                editarDados.conforme = "C";
+                            }
+                            else
+                            {
+                                editarDados.conforme = "NC";
+                            }
+                        }
+                        else if (editarDados.densidade >= 35)
+                        {
+                            //maximo 150
+                            if (editarDados.fator_ind_40 <= editarDados.forca_esp_40)
+                            {
+                                editarDados.conforme = "C";
+                            }
+                            else
+                            {
+                                editarDados.conforme = "NC";
+                            }
+                        }
+                        else
+                        {
+                            editarDados.conforme = "C";
+                        }
+                    }
+                    else if (editarDados.tipo_espuma == "Macia")
+                    {
+                        if (editarDados.densidade == 20)
+                        {
+                            //maximo 95
+                            if (editarDados.fator_ind_40 <= editarDados.forca_esp_40)
+                            {
+                                editarDados.conforme = "C";
+                            }
+                            else
+                            {
+                                editarDados.conforme = "NC";
+                            }
+                        }
+                        else if (editarDados.densidade == 24)
+                        {
+                            //maximo 130
+                            if (editarDados.fator_ind_40 <= editarDados.forca_esp_40)
+                            {
+                                editarDados.conforme = "C";
+                            }
+                            else
+                            {
+                                editarDados.conforme = "NC";
+                            }
+                        }
+                        else if (editarDados.densidade == 20)
+                        {
+                            //maximo 165
+                            if (editarDados.fator_ind_40 <= editarDados.forca_esp_40)
+                            {
+                                editarDados.conforme = "C";
+                            }
+                            else
+                            {
+                                editarDados.conforme = "NC";
+                            }
+                        }
+                        else if (editarDados.densidade >= 35)
+                        {
+                            //maximo 200
+                            if (editarDados.fator_ind_40 <= editarDados.forca_esp_40)
+                            {
+                                editarDados.conforme = "C";
+                            }
+                            else
+                            {
+                                editarDados.conforme = "NC";
+                            }
+                        }
+                        else
+                        {
+                            editarDados.conforme = "C";
+                        }
+                    }
+                    else if (editarDados.tipo_espuma == "Aglomerado")
+                    {
+                        if (editarDados.densidade >= 65)
+                        {
+                            //maximo 35
+                            if (editarDados.fator_ind_40 <= editarDados.forca_esp_40)
+                            {
+                                editarDados.conforme = "C";
+                            }
+                            else
+                            {
+                                editarDados.conforme = "NC";
+                            }
+                        }
+                        else
+                        {
+                            editarDados.conforme = "C";
+                        }
+                    }
+                    else if (editarDados.tipo_espuma == "Visco elástica")
+                    {
+                        if (editarDados.densidade >= 30)
+                        {
+                            //minimo 25
+                            if (editarDados.fator_ind_40 >= editarDados.forca_esp_40)
+                            {
+                                editarDados.conforme = "C";
+                            }
+                            else
+                            {
+                                editarDados.conforme = "NC";
+                            }
+                        }
+                        else
+                        {
+                            editarDados.conforme = "C";
+                        }
+                    }
+                    else
+                    {
+                        editarDados.conforme = "C";
+                    }
+
+                    // conformidade fator conforto
+                    if (editarDados.tipo_espuma == "Convencional")
+                    {
+                        if (editarDados.densidade == 18 || editarDados.densidade == 20)
+                        {
+                            //minimo 2,0
+                            if (editarDados.media_conforto >= float.Parse(editarDados.fc_especificado))
+                            {
+                                editarDados.conforme_conforto = "C";
+                            }
+                            else
+                            {
+                                editarDados.conforme_conforto = "NC";
+                            }
+                        }
+                        else if (editarDados.densidade == 23 || editarDados.densidade == 26)
+                        {
+                            //minimo  2,1
+                            if (editarDados.media_conforto >= float.Parse(editarDados.fc_especificado))
+                            {
+                                editarDados.conforme_conforto = "C";
+                            }
+                            else
+                            {
+                                editarDados.conforme_conforto = "NC";
+                            }
+                        }
+                        else if (editarDados.densidade == 28 || editarDados.densidade == 33 || editarDados.densidade == 40 || editarDados.densidade == 45)
+                        {
+                            //minimo  2,2
+                            if (editarDados.media_conforto >= float.Parse(salvarDados.fc_especificado))
+                            {
+                                editarDados.conforme_conforto = "C";
+                            }
+                            else
+                            {
+                                editarDados.conforme_conforto = "NC";
+                            }
+                        }
+                    }
+                    else if (editarDados.tipo_espuma == "Alta resiliência")
+                    {
+                        if (editarDados.densidade >= 30)
+                        {
+                            //minimo 2,3
+                            if (editarDados.media_conforto >= float.Parse(editarDados.fc_especificado))
+                            {
+                                editarDados.conforme_conforto = "C";
+                            }
+                            else
+                            {
+                                editarDados.conforme_conforto = "NC";
+                            }
+                        }
+                    }
+                    else if (editarDados.tipo_espuma == "Visco elástica")
+                    {
+                        if (editarDados.densidade >= 30)
+                        {
+                            //minimo 10
+                            if (editarDados.media_conforto >= float.Parse(editarDados.fc_especificado))
+                            {
+                                editarDados.conforme_conforto = "C";
+                            }
+                            else
+                            {
+                                editarDados.conforme_conforto = "NC";
+                            }
+                        }
+                        else
+                        {
+                            editarDados.conforme_conforto = "C";
+                        }
+                    }
+                    else
+                    {
+                        editarDados.conforme_conforto = "C";
+                    }
+
 
                     _context.lamina_fi.Update(editarDados);
                     await _context.SaveChangesAsync();
@@ -5979,6 +7245,97 @@ namespace Coleta_Colchao.Controllers
                     //pe_especificado resultado.
                     salvarDados.pe_encontrado = ((salvarDados.pe_media_um + salvarDados.pe_media_dois + salvarDados.pe_media_tres) / 3);
 
+                    //realizando logica para saber se esta conforme ou nao conforme.
+                    if (salvarDados.tipo_espuma == "Convencional")
+                    {
+                        if (salvarDados.densidade == 18)
+                        {
+                            //maximo 8 aqui
+                            if (salvarDados.pe_encontrado <= salvarDados.pe_especificado)
+                            {
+                                salvarDados.conforme = "C";
+                            }
+                            else
+                            {
+                                salvarDados.conforme = "NC";
+                            }
+                        }
+                        else if (salvarDados.densidade == 20)
+                        {
+                            //maximo 6aqui
+                            if (salvarDados.pe_encontrado <= salvarDados.pe_especificado)
+                            {
+                                salvarDados.conforme = "C";
+                            }
+                            else
+                            {
+                                salvarDados.conforme = "NC";
+                            }
+                        }
+                        else if (salvarDados.densidade == 23 || salvarDados.densidade == 26 || salvarDados.densidade == 28)
+                        {
+                            //maximo 5
+                            if (salvarDados.pe_encontrado <= salvarDados.pe_especificado)
+                            {
+                                salvarDados.conforme = "C";
+                            }
+                            else
+                            {
+                                salvarDados.conforme = "NC";
+                            }
+                        }
+                        else if (salvarDados.densidade == 33 || salvarDados.densidade == 40 || salvarDados.densidade == 45)
+                        {
+                            //maximo 4
+                            if (salvarDados.pe_encontrado <= salvarDados.pe_especificado)
+                            {
+                                salvarDados.conforme = "C";
+                            }
+                            else
+                            {
+                                salvarDados.conforme = "NC";
+                            }
+                        }
+                    }
+                    else if (salvarDados.tipo_espuma == "Aglomerado")
+                    {
+                        if (salvarDados.densidade >= 65)
+                        {
+                            //maximo 10
+                            if (salvarDados.pe_encontrado <= salvarDados.pe_especificado)
+                            {
+                                salvarDados.conforme = "C";
+                            }
+                            else
+                            {
+                                salvarDados.conforme = "NC";
+                            }
+                        }
+                        else
+                        {
+                            salvarDados.conforme = "C";
+                        }
+                    }
+                    else if (salvarDados.tipo_espuma == "Alta resiliência")
+                    {
+                        if (salvarDados.densidade >= 30)
+                        {
+                            //minimo 5
+                            if (salvarDados.pe_encontrado <= salvarDados.pe_especificado)
+                            {
+                                salvarDados.conforme = "C";
+                            }
+                            else
+                            {
+                                salvarDados.conforme = "NC";
+                            }
+                        }
+                        else
+                        {
+                            salvarDados.conforme = "C";
+                        }
+                    }
+
                     _context.lamina_fadiga_dinamica.Add(salvarDados);
                     await _context.SaveChangesAsync();
                     TempData["Mensagem"] = "Dados Salvo com sucesso.";
@@ -5988,6 +7345,8 @@ namespace Coleta_Colchao.Controllers
                 {
                     editarDados.data_ini = salvarDados.data_ini;
                     editarDados.data_term = salvarDados.data_term;
+                    editarDados.tipo_espuma = salvarDados.tipo_espuma;
+                    editarDados.densidade = salvarDados.densidade;
                     //editando os valores de largura.
 
                     editarDados.lar_amostra_um_um = salvarDados.lar_amostra_um_um;
@@ -6129,6 +7488,97 @@ namespace Coleta_Colchao.Controllers
                     editarDados.pe_especificado = salvarDados.pe_especificado;
                     editarDados.pe_encontrado = ((editarDados.pe_media_um + editarDados.pe_media_dois + editarDados.pe_media_tres) / 3);
 
+                    //realizando logica para saber se esta conforme ou nao conforme.
+                    if (editarDados.tipo_espuma == "Convencional")
+                    {
+                        if (editarDados.densidade == 18)
+                        {
+                            //maximo 8 aqui
+                            if (editarDados.pe_encontrado <= editarDados.pe_especificado)
+                            {
+                                editarDados.conforme = "C";
+                            }
+                            else
+                            {
+                                editarDados.conforme = "NC";
+                            }
+                        }
+                        else if (editarDados.densidade == 20)
+                        {
+                            //maximo 6aqui
+                            if (editarDados.pe_encontrado <= editarDados.pe_especificado)
+                            {
+                                editarDados.conforme = "C";
+                            }
+                            else
+                            {
+                                editarDados.conforme = "NC";
+                            }
+                        }
+                        else if (editarDados.densidade == 23 || editarDados.densidade == 26 || editarDados.densidade == 28)
+                        {
+                            //maximo 5
+                            if (editarDados.pe_encontrado <= editarDados.pe_especificado)
+                            {
+                                editarDados.conforme = "C";
+                            }
+                            else
+                            {
+                                editarDados.conforme = "NC";
+                            }
+                        }
+                        else if (editarDados.densidade == 33 || editarDados.densidade == 40 || editarDados.densidade == 45)
+                        {
+                            //maximo 4
+                            if (editarDados.pe_encontrado <= editarDados.pe_especificado)
+                            {
+                                editarDados.conforme = "C";
+                            }
+                            else
+                            {
+                                editarDados.conforme = "NC";
+                            }
+                        }
+                    }
+                    else if (editarDados.tipo_espuma == "Aglomerado")
+                    {
+                        if (editarDados.densidade >= 65)
+                        {
+                            //maximo 10
+                            if (editarDados.pe_encontrado <= editarDados.pe_especificado)
+                            {
+                                editarDados.conforme = "C";
+                            }
+                            else
+                            {
+                                editarDados.conforme = "NC";
+                            }
+                        }
+                        else
+                        {
+                            editarDados.conforme = "C";
+                        }
+                    }
+                    else if (editarDados.tipo_espuma == "Alta resiliência")
+                    {
+                        if (editarDados.densidade >= 30)
+                        {
+                            //minimo 5
+                            if (editarDados.pe_encontrado <= editarDados.pe_especificado)
+                            {
+                                editarDados.conforme = "C";
+                            }
+                            else
+                            {
+                                editarDados.conforme = "NC";
+                            }
+                        }
+                        else
+                        {
+                            editarDados.conforme = "C";
+                        }
+                    }
+
                     _context.lamina_fadiga_dinamica.Update(editarDados);
                     await _context.SaveChangesAsync();
                     TempData["Mensagem"] = "Dados Editado com sucesso.";
@@ -6141,6 +7591,8 @@ namespace Coleta_Colchao.Controllers
                 throw;
             }
         }
+
+        [HttpPost]
         public async Task<IActionResult> SalvarLaminaPFI(string os, string orcamento, ColetaModel.LaminaPFI salvarDados)
         {
             try
@@ -6227,9 +7679,9 @@ namespace Coleta_Colchao.Controllers
                     salvarDados.media_65_comp = media_red_total_65;
 
                     //força encontrada de indentação..
-                    salvarDados.forca_ind_enc_25 = salvarDados.media_25_comp;
+                    //salvarDados.forca_ind_enc_25 = salvarDados.media_25_comp;
                     salvarDados.forca_ind_enc_40 = salvarDados.media_40_comp;
-                    salvarDados.forca_ind_enc_65 = salvarDados.media_65_comp;
+                    //salvarDados.forca_ind_enc_65 = salvarDados.media_65_comp;
 
                     //inicio de calculos de pfi..
                     var buscarFi = _context.lamina_fi.Where(x => x.os == os && x.orcamento == orcamento).FirstOrDefault();
@@ -6239,7 +7691,7 @@ namespace Coleta_Colchao.Controllers
                         return RedirectToAction(nameof(LaminaPFI), "Coleta", new { os, orcamento });
                     }
 
-                    salvarDados.pfi_25_um = buscarFi.forca_esp_25;
+                    salvarDados.pfi_25_um = buscarFi.fator_ind_25;
                     salvarDados.pfi_25_dois = salvarDados.forca_ind_enc_25;
                     salvarDados.pfi_25_tres = salvarDados.pfi_25_um;
 
@@ -6247,7 +7699,7 @@ namespace Coleta_Colchao.Controllers
                     salvarDados.pfi_25_encontrada = pfi_25_encontrada;
 
                     //pfi de 40%.
-                    salvarDados.pfi_40_um = buscarFi.forca_esp_40;
+                    salvarDados.pfi_40_um = buscarFi.fator_ind_40;
                     salvarDados.pfi_40_dois = salvarDados.forca_ind_enc_40;
                     salvarDados.pfi_40_tres = salvarDados.pfi_40_um;
 
@@ -6255,13 +7707,127 @@ namespace Coleta_Colchao.Controllers
                     salvarDados.pfi_40_encontrada = pfi_40_encotrada;
 
                     //pfi de 65%..
-                    salvarDados.pfi_65_um = buscarFi.forca_esp_65;
+                    salvarDados.pfi_65_um = buscarFi.fator_ind_65;
                     salvarDados.pfi_65_dois = salvarDados.forca_ind_enc_65;
                     salvarDados.pfi_65_tres = salvarDados.pfi_65_um;
 
                     float pfi_65_encotrada = (((salvarDados.pfi_65_um - salvarDados.pfi_65_dois) / salvarDados.pfi_65_tres) * 100);
                     salvarDados.pfi_65_encontrada = pfi_65_encotrada;
 
+
+
+                    // conformidades.
+                    if (salvarDados.tipo_espuma == "Convencional")
+                    {
+                        if (salvarDados.densidade == 18 || salvarDados.densidade == 20 || salvarDados.densidade == 23 || salvarDados.densidade == 26 || salvarDados.densidade == 28 || salvarDados.densidade == 33 || salvarDados.densidade == 40 || salvarDados.densidade == 45)
+                        {
+                            //maximo 1
+                            if (salvarDados.pfi_40_encontrada <= salvarDados.pfi_40_especificada)
+                            {
+                                salvarDados.conforme = "C";
+                            }
+                            else
+                            {
+                                salvarDados.conforme = "NC";
+                            }
+                        }
+                        else
+                        {
+                            salvarDados.conforme = "C";
+                        }
+                    }
+                    else if (salvarDados.tipo_espuma == "Hipermacia")
+                    {
+                        if (salvarDados.densidade == 20 || salvarDados.densidade == 24 || salvarDados.densidade == 29 || salvarDados.densidade >= 35)
+                        {
+                            //maximo 1
+                            if (salvarDados.pfi_40_encontrada <= salvarDados.pfi_40_especificada)
+                            {
+                                salvarDados.conforme = "C";
+                            }
+                            else
+                            {
+                                salvarDados.conforme = "NC";
+                            }
+                        }
+                        else
+                        {
+                            salvarDados.conforme = "C";
+                        }
+                    }
+                    else if (salvarDados.tipo_espuma == "Macia")
+                    {
+                        if (salvarDados.densidade == 20 || salvarDados.densidade == 24 || salvarDados.densidade == 29)
+                        {
+                            //maximo 1
+                            if (salvarDados.pfi_40_encontrada <= salvarDados.pfi_40_especificada)
+                            {
+                                salvarDados.conforme = "C";
+                            }
+                            else
+                            {
+                                salvarDados.conforme = "NC";
+                            }
+                        }
+                        else if (salvarDados.densidade >= 35)
+                        {
+                            //maximo 1
+                            if (salvarDados.pfi_40_encontrada <= salvarDados.pfi_40_especificada)
+                            {
+                                salvarDados.conforme = "C";
+                            }
+                            else
+                            {
+                                salvarDados.conforme = "C";
+                            }
+                        }
+                        else
+                        {
+                            salvarDados.conforme = "C";
+                        }
+                    }
+                    else if (salvarDados.tipo_espuma == "Alta resiliência")
+                    {
+                        if (salvarDados.densidade >= 30)
+                        {
+                            //maximoo 1
+                            if (salvarDados.pfi_40_encontrada <= salvarDados.pfi_40_especificada)
+                            {
+                                salvarDados.conforme = "C";
+                            }
+                            else
+                            {
+                                salvarDados.conforme = "NC";
+                            }
+                        }
+                        else
+                        {
+                            salvarDados.conforme = "C";
+                        }
+                    }
+                    else if (salvarDados.tipo_espuma == "Visco elástica")
+                    {
+                        if (salvarDados.densidade >= 30)
+                        {
+                            //maxima 1
+                            if (salvarDados.pfi_40_encontrada <= salvarDados.pfi_40_especificada)
+                            {
+                                salvarDados.conforme = "C";
+                            }
+                            else
+                            {
+                                salvarDados.conforme = "NC";
+                            }
+                        }
+                        else
+                        {
+                            salvarDados.conforme = "C";
+                        }
+                    }
+                    else
+                    {
+                        salvarDados.conforme = "C";
+                    }
 
                     _context.lamina_pfi.Add(salvarDados);
                     await _context.SaveChangesAsync();
@@ -6421,9 +7987,9 @@ namespace Coleta_Colchao.Controllers
                     editarDados.forca_ind_esp_25 = salvarDados.forca_ind_esp_25;
                     editarDados.forca_ind_esp_65 = salvarDados.forca_ind_esp_25;
 
-                    editarDados.forca_ind_enc_25 = editarDados.media_25_comp;
+                    //editarDados.forca_ind_enc_25 = editarDados.media_25_comp;
                     editarDados.forca_ind_enc_40 = editarDados.media_40_comp;
-                    editarDados.forca_ind_enc_65 = editarDados.media_65_comp;
+                    //editarDados.forca_ind_enc_65 = editarDados.media_65_comp;
 
 
                     //calculos de pfi.
@@ -6452,6 +8018,120 @@ namespace Coleta_Colchao.Controllers
                     editarDados.pfi_65_tres = editarDados.pfi_65_tres;
                     editarDados.pfi_65_especificada = salvarDados.pfi_65_especificada;
                     editarDados.pfi_65_encontrada = (((editarDados.pfi_65_um - editarDados.pfi_65_dois) / editarDados.pfi_65_tres) * 100);
+
+                    // conformidades.
+                    if (editarDados.tipo_espuma == "Convencional")
+                    {
+                        if (editarDados.densidade == 18 || editarDados.densidade == 20 || editarDados.densidade == 23 || salvarDados.densidade == 26 || salvarDados.densidade == 28 || salvarDados.densidade == 33 || salvarDados.densidade == 40 || salvarDados.densidade == 45)
+                        {
+                            //maximo 1
+                            if (editarDados.pfi_40_encontrada <= editarDados.pfi_40_especificada)
+                            {
+                                editarDados.conforme = "C";
+                            }
+                            else
+                            {
+                                editarDados.conforme = "NC";
+                            }
+                        }
+                        else
+                        {
+                            editarDados.conforme = "C";
+                        }
+                    }
+                    else if (editarDados.tipo_espuma == "Hipermacia")
+                    {
+                        if (editarDados.densidade == 20 || editarDados.densidade == 24 || editarDados.densidade == 29 || salvarDados.densidade >= 35)
+                        {
+                            //maximo 1
+                            if (editarDados.pfi_40_encontrada <= editarDados.pfi_40_especificada)
+                            {
+                                editarDados.conforme = "C";
+                            }
+                            else
+                            {
+                                editarDados.conforme = "NC";
+                            }
+                        }
+                        else
+                        {
+                            editarDados.conforme = "C";
+                        }
+                    }
+                    else if (editarDados.tipo_espuma == "Macia")
+                    {
+                        if (editarDados.densidade == 20 || editarDados.densidade == 24 || editarDados.densidade == 29)
+                        {
+                            //maximo 1
+                            if (editarDados.pfi_40_encontrada <= editarDados.pfi_40_especificada)
+                            {
+                                editarDados.conforme = "C";
+                            }
+                            else
+                            {
+                                editarDados.conforme = "NC";
+                            }
+                        }
+                        else if (editarDados.densidade >= 35)
+                        {
+                            //maximo 1
+                            if (editarDados.pfi_40_encontrada <= editarDados.pfi_40_especificada)
+                            {
+                                editarDados.conforme = "C";
+                            }
+                            else
+                            {
+                                editarDados.conforme = "C";
+                            }
+                        }
+                        else
+                        {
+                            editarDados.conforme = "C";
+                        }
+                    }
+                    else if (editarDados.tipo_espuma == "Alta resiliência")
+                    {
+                        if (editarDados.densidade >= 30)
+                        {
+                            //maximoo 1
+                            if (editarDados.pfi_40_encontrada <= editarDados.pfi_40_especificada)
+                            {
+                                editarDados.conforme = "C";
+                            }
+                            else
+                            {
+                                editarDados.conforme = "NC";
+                            }
+                        }
+                        else
+                        {
+                            editarDados.conforme = "C";
+                        }
+                    }
+                    else if (editarDados.tipo_espuma == "Visco elástica")
+                    {
+                        if (editarDados.densidade >= 30)
+                        {
+                            //maxima 1
+                            if (editarDados.pfi_40_encontrada <= editarDados.pfi_40_especificada)
+                            {
+                                editarDados.conforme = "C";
+                            }
+                            else
+                            {
+                                editarDados.conforme = "NC";
+                            }
+                        }
+                        else
+                        {
+                            editarDados.conforme = "C";
+                        }
+                    }
+                    else
+                    {
+                        editarDados.conforme = "C";
+                    }
+
 
                     _context.lamina_pfi.Update(editarDados);
                     await _context.SaveChangesAsync();

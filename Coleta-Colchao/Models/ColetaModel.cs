@@ -1216,6 +1216,8 @@ namespace Coleta_Colchao.Models
             public float conforto_25 { get; set; }
             public float media_conforto { get; set; }
             public string? fc_especificado { get; set; }
+            public string? conforme { get; set; }
+            public string? conforme_conforto { get; set; }
         }
 
         public class LaminaFadigaRotativa
@@ -1337,6 +1339,7 @@ namespace Coleta_Colchao.Models
             public float pe_encontrado { get; set; }
             public string? tipo_espuma { get; set; }
             public int densidade { get; set; }
+            public string? conforme { get; set; }
 
         }
 
@@ -1459,7 +1462,7 @@ namespace Coleta_Colchao.Models
             public float pfi_25_um { get; set; }
             public float pfi_25_dois { get; set; }
             public float pfi_25_tres { get; set; }
-            public int pfi_25_especificada { get; set; }
+            public string? pfi_25_especificada { get; set; }
             public float pfi_25_encontrada { get; set; }
             public float pfi_40_um { get; set; }
             public float pfi_40_dois { get; set; }
@@ -1469,9 +1472,10 @@ namespace Coleta_Colchao.Models
             public float pfi_65_um { get; set; }
             public float pfi_65_dois { get; set; }
             public float pfi_65_tres { get; set; }
-            public int pfi_65_especificada { get; set; }
+            public string? pfi_65_especificada { get; set; }
             public float pfi_65_encontrada { get; set; }
             public float media_espessura_total { get; set; }
+            public string? conforme { get; set; }
         }
         
     }

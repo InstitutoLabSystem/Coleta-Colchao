@@ -16,13 +16,13 @@
     <title>Coleta F.I</title>
     <style>
         /* .controlador-conforme {
-                                                                    padding: 5px;
-                                                                    border-color: gray;
-                                                                    border-radius: 5px;
-                                                                    box-sizing: border-box;
-                                                                    height: 500px;
-                                                                    width: 100px;
-                                                                    } */
+                                                                            padding: 5px;
+                                                                            border-color: gray;
+                                                                            border-radius: 5px;
+                                                                            box-sizing: border-box;
+                                                                            height: 500px;
+                                                                            width: 100px;
+                                                                            } */
 
         input {
             text-align: center;
@@ -77,7 +77,14 @@
                         Determinação da força de indentação
                     </b>
                 </td>
-                <td rowspan="18">RESULTADO</td>
+                @if (Model == null)
+                {
+                    <td rowspan="18"></td>
+                }
+                else
+                {
+                    <td rowspan="18">@Model.conforme</td>
+                }
             </tr>
 
             <tr>
@@ -544,7 +551,15 @@
                 <td class="fundo-tabela">
                     Fator de conforto (F.C)
                 </td>
-                <td rowspan="5">Resultado</td>
+                @if (Model == null)
+                {
+                    <td rowspan="5"></td>
+                }
+                else
+                {
+                    <td rowspan="5">@Model.conforme_conforto</td>
+                }
+
             </tr>
             <tr>
                 <td>
@@ -602,12 +617,12 @@
             if (opcaoSelecionada === 'Convencional') {
 
                 if (valorDigitado == '20') {
-                    especificado.value = 80;
+                    especificado.value = 95;
                     conforto.value = 2, 0;
                     tamanho.value = 'Min';
                     console.log(especificado.value);
                 } else if (valorDigitado == '18') {
-                    especificado.value = 95;
+                    especificado.value = 80;
                     conforto.value = 2, 0;
                     tamanho.value = 'Min';
                 } else if (valorDigitado == '23') {

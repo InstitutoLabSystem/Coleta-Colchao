@@ -16,13 +16,13 @@
     <title>FADIGA DINÂMICA</title>
     <style>
         /*    .controlador-conforme {
-                                                                                                                                                                                                    padding: 5px;
-                                                                                                                                                                                                    border-color: gray;
-                                                                                                                                                                                                    border-radius: 5px;
-                                                                                                                                                                                                    box-sizing: border-box;
-                                                                                                                                                                                                    height: 500px;
-                                                                                                                                                                                                    width: 100px;
-                                                                                                                                                                                                    } */
+                                                                                                                                                                                                                    padding: 5px;
+                                                                                                                                                                                                                    border-color: gray;
+                                                                                                                                                                                                                    border-radius: 5px;
+                                                                                                                                                                                                                    box-sizing: border-box;
+                                                                                                                                                                                                                    height: 500px;
+                                                                                                                                                                                                                    width: 100px;
+                                                                                                                                                                                                                    } */
 
         input {
             text-align: center;
@@ -75,7 +75,14 @@
                 <td>
                     <b>Determinação da Fadiga Dinâmica</b>
                 </td>
-                <td rowspan="40">RESULTADO</td>
+                @if (Model == null)
+                {
+                    <td rowspan="40"></td>
+                }
+                else
+                {
+                    <td rowspan="40">@Model.conforme</td>
+                }
             </tr>
 
             <tr>
