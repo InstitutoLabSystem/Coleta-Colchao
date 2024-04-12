@@ -16,13 +16,13 @@
     <title>FADIGA DINÂMICA</title>
     <style>
         /*    .controlador-conforme {
-                                                                                                                                                                                                                    padding: 5px;
-                                                                                                                                                                                                                    border-color: gray;
-                                                                                                                                                                                                                    border-radius: 5px;
-                                                                                                                                                                                                                    box-sizing: border-box;
-                                                                                                                                                                                                                    height: 500px;
-                                                                                                                                                                                                                    width: 100px;
-                                                                                                                                                                                                                    } */
+                                                                                                                                                                                                                                    padding: 5px;
+                                                                                                                                                                                                                                    border-color: gray;
+                                                                                                                                                                                                                                    border-radius: 5px;
+                                                                                                                                                                                                                                    box-sizing: border-box;
+                                                                                                                                                                                                                                    height: 500px;
+                                                                                                                                                                                                                                    width: 100px;
+                                                                                                                                                                                                                                    } */
 
         input {
             text-align: center;
@@ -628,7 +628,7 @@
 
             </tr>
             <tr>
-                <td> P.E especificada % <input id="tamanho" class="controlador" style="width:80px" id="tamanho" readonly /> : <input type="text" class="controlador" asp-for="pe_especificado" id="especificado" readonly /></td>
+                <td> P.E especificada % <input id="tamanho" class="controlador" style="width:80px" id="tamanho" readonly asp-for="min_max" /> : <input type="text" class="controlador" asp-for="pe_especificado" id="especificado" readonly /></td>
             </tr>
             <tr>
                 <td> P.E encontrada % <input type="text" class="controlador" disabled asp-for="pe_encontrado" /></td>
@@ -729,7 +729,7 @@
                     especificado.value = 4;
                     tamanho.value = 'Max';
                 }
-                else if (valorDigitado == '200') {
+                else if (valorDigitado == '45') {
                     especificado.value = 4;
                     tamanho.value = 'Max';
                 }
@@ -763,6 +763,6 @@
         mostrarResultados(tipo_espuma_2.value, densidade.value);
 
     </script>
-
+  
 </body>
 </html>

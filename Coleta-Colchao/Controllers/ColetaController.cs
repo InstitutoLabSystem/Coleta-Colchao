@@ -5424,6 +5424,7 @@ namespace Coleta_Colchao.Controllers
 
                     editarDados.resiliencia_esp = salvarDados.resiliencia_esp;
                     editarDados.resiliencia_enc = ((editarDados.media_res_um + editarDados.media_res_dois + editarDados.media_res_tres) / 3);
+                    editarDados.min_max = salvarDados.min_max;
 
                     //conformes
                     if (editarDados.tipo_espuma == "Convencional")
@@ -7487,6 +7488,7 @@ namespace Coleta_Colchao.Controllers
 
                     editarDados.pe_especificado = salvarDados.pe_especificado;
                     editarDados.pe_encontrado = ((editarDados.pe_media_um + editarDados.pe_media_dois + editarDados.pe_media_tres) / 3);
+                    editarDados.min_max = salvarDados.min_max;
 
                     //realizando logica para saber se esta conforme ou nao conforme.
                     if (editarDados.tipo_espuma == "Convencional")
