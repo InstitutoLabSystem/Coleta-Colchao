@@ -46,7 +46,7 @@ namespace Coleta_Colchao.Models
             public string? latex { get; set; }
             public string? napa_cou_plas { get; set; }
             public string? manual { get; set; }
-            public string? status { get; set; }
+            public string? andamento { get; set; }
 
         }
 
@@ -85,6 +85,8 @@ namespace Coleta_Colchao.Models
             public string? revestimento { get; set; }
             public string? anti_reflexo { get; set; }
             public string? outros_materia { get; set; }
+            public string? andamento { get; set; }
+
 
 
         }
@@ -832,7 +834,7 @@ namespace Coleta_Colchao.Models
             public string? modelo_cert { get; set; }
             public string? tipo_proc { get; set; }
             public string? produto { get; set; }
-            public string? status { get; set; }
+            public string? andamento { get; set; }
         }
 
         public class SalvarLaminaDeterminacaoDensidade

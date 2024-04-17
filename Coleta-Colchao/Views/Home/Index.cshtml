@@ -103,7 +103,7 @@
                             <td>OS</td>
                             <td>ORCAMENTO</td>
                             <td>DESCRIÇÃO</td>
-                            <td>STATUS</td>
+                            @* <td>STATUS</td> *@
                             <td>PRODUTO ENSAIADO</td>
                             <td>ENSAIO</td>
                             <td>INFORMAÇÕES</td>
@@ -148,11 +148,12 @@
                                 @if (@Model[i].descricao == "  |  FATOR DE CONFORTO")
                                 {
                                     <td style="display:none;"></td>
-                                }else{
+                                }
+                               @*  else{
                                     <td>
                                         ANDAMENTO
                                     </td>
-                                }
+                                } *@
 
                                 @if (@Model[i].descricao == "  |  FATOR DE CONFORTO")
                                 {

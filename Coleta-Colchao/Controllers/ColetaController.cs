@@ -871,6 +871,7 @@ namespace Coleta_Colchao.Controllers
                     latex = latex,
                     napa_cou_plas = napa_cou_plas,
                     manual = manual,
+                    andamento = "Andamento"
 
                 };
 
@@ -891,6 +892,7 @@ namespace Coleta_Colchao.Controllers
         {
             try
             {
+                salvar.andamento = "Andamento";
                 _context.regtro_colchao_lamina.Add(salvar);
                 await _context.SaveChangesAsync();
                 TempData["Mensagem"] = "Dados Salvo Com Sucesso";
@@ -975,6 +977,7 @@ namespace Coleta_Colchao.Controllers
                 string densidade_5 = salvarDados.densidade_1;
                 string revestimento = salvarDados.revestimento;
                 string outros_materia = salvarDados.outros_materia;
+                salvarDados.andamento = "Andamento";
 
 
                 _context.regtro_colchao_espuma.Add(salvarDados);

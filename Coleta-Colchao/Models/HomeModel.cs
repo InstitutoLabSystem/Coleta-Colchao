@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using Microsoft.EntityFrameworkCore;
+using System.ComponentModel.DataAnnotations;
 
 namespace Coleta_Colchao.Models
 {
@@ -44,6 +45,15 @@ namespace Coleta_Colchao.Models
             public string ano { get; set; }
             public int Rev { get; set; }
             public string Solicitante { get; set; }
+        }
+
+        [Keyless]
+        public class OrdemServicoLaboratorio
+        {
+            public string OS { get; set; }
+            public string orcamento { get; set; }
+            public string? Laboratorio { get; set; }
+            public DateOnly DataSaidaAmReceb { get; set; }
         }
 
         public class Resposta
