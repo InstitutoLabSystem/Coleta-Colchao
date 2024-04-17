@@ -648,8 +648,9 @@
                     conforto.value = 2, 2;
                     tamanho.value = 'Min';
                 }
-                else if (valorDigitado == '200') {
-                    especificado.value = 165;
+                else if (valorDigitado == '45') {
+                    especificado.value = 200;
+                    conforto.value = 2, 2;
                     tamanho.value = 'Min';
                 }
                 else {
@@ -672,6 +673,7 @@
                 else {
                     especificado.value = "Não há especificado na tabela";
                 }
+                conforto.value = "Não há especificado na tabela";
             } else if (opcaoSelecionada === 'Macia') {
                 if (valorDigitado == '20') {
                     especificado.value = 95;
@@ -679,7 +681,7 @@
                 } else if (valorDigitado == '24') {
                     especificado.value = 130;
                     tamanho.value = 'Max';
-                } else if (valorDigitado > '20') {
+                } else if (valorDigitado == '20') {
                     especificado.value = 165;
                     tamanho.value = 'Max';
                 } else if (valorDigitado >= '35') {
@@ -689,6 +691,7 @@
                 else {
                     especificado.value = "Não há especificado na tabela";
                 }
+                conforto.value = "Não há especificado na tabela";
             } else if (opcaoSelecionada === 'Aglomerado') {
                 if (valorDigitado >= '65') {
                     especificado.value = 35;
@@ -698,6 +701,7 @@
                     reducao.value = 50;
                     especificado.value = "Não há especificado na tabela";
                 }
+                conforto.value = "Não há especificado na tabela";
             }
             else if (opcaoSelecionada === 'Visco elástica') {
                 if (valorDigitado >= '30') {
@@ -711,14 +715,17 @@
             }
             else if (opcaoSelecionada === 'Látex') {
                 especificado.value = "Não há especificado na tabela";
+                conforto.value = "Não há especificado na tabela";
             }
             else if (opcaoSelecionada === 'Rabatan') {
                 especificado.value = "Não há especificado na tabela";
+                conforto.value = "Não há especificado na tabela";
             } else if (opcaoSelecionada === 'Alta resiliência') {
                 if (valorDigitado >= '30') {
-                    conforto.value = 2, 3;
+                    conforto.value = 2,3;
                     tamanho.value = 'Min';
                 }
+                especificado.value = "Não há especificado na tabela";
             }
             // Alteração de retornos
             if (opcaoSelecionada === "Aglomerado") {

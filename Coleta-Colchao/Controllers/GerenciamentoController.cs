@@ -39,57 +39,71 @@ namespace Coleta_Colchao.Controllers
             return View(dados);
         }
 
-        public async Task<IActionResult> buscarGerenciamento(string ensaio)
+        public IActionResult Espuma()
         {
-            if (ensaio == "1")
+            return View();
+        }
+
+        public async Task<IActionResult> buscarGerenciamentoMolas(string ensaio)
+        {
+            try
             {
-                //quando coleta nao esta iniciado
-                var subQuery = (from colchao_os in _context.regtro_colchao
+                if (ensaio == "Não iniciado")
+                {
+                    //quando coleta nao esta iniciado
+                    var subQuery = (from colchao_os in _context.regtro_colchao
                                     where colchao_os.andamento != "Andamento" && colchao_os.andamento != "Finalizado"
                                     select colchao_os.os
+                                    ).ToList();
+
+                    var dados = (from lab_os in _bancoContext.ordemservico_laboratorio
+                                 where lab_os.Laboratorio == "Colchão" && !subQuery.Contains(lab_os.OS) && lab_os.DataSaidaAmReceb > new DateOnly(2024, 4, 10)
+                                 select new Gerenciamento
+                                 {
+                                     os = lab_os.OS,
+                                     orcamento = lab_os.orcamento,
+                                     andamento = "Não Iniciado",
+                                 }
                                 ).ToList();
 
-                var dados = (from lab_os in _bancoContext.ordemservico_laboratorio
-                                where lab_os.Laboratorio == "Colchão" && !subQuery.Contains(lab_os.OS) && lab_os.DataSaidaAmReceb > new DateOnly(2024,4,10)
-                                select new Gerenciamento
-                                {
-                                    os = lab_os.OS,
-                                    orcamento = lab_os.orcamento,
-                                }
-                            ).ToList();
 
+                    return View("Molas", dados);
 
-                return View("Molas", dados);
+                }
+                else if (ensaio == "Andamento")
+                {
+                    //quando coleta esta andamento
+                    var dados = (from molas in _context.regtro_colchao
+                                 where molas.andamento == "Andamento"
+                                 select new Gerenciamento
+                                 {
+                                     Id = molas.Id,
+                                     os = molas.os,
+                                     orcamento = molas.orcamento,
+                                     andamento = molas.andamento,
+                                 }).ToList();
+                    return View("Molas", dados);
+                }
+                else
+                {
+                    //quando esta finalizada.
+                    var dados = (from molas in _context.regtro_colchao
+                                 where molas.andamento == "Finalizado"
+                                 select new Gerenciamento
+                                 {
+                                     Id = molas.Id,
+                                     os = molas.os,
+                                     orcamento = molas.orcamento,
+                                     andamento = molas.andamento,
+                                 }).ToList();
 
+                    return View("Molas", dados);
+                }
             }
-            else if (ensaio == "2")
+            catch (Exception ex)
             {
-                //quando coleta esta andamento
-                var dados = (from molas in _context.regtro_colchao
-                             where molas.andamento == "Andamento"
-                             select new Gerenciamento
-                             {
-                                 Id = molas.Id,
-                                 os = molas.os,
-                                 orcamento = molas.orcamento,
-                                 andamento = molas.andamento,
-                             }).ToList();
-                return View("Molas", dados);
-            }
-            else
-            {
-                //quando esta finalizada.
-                var dados = (from molas in _context.regtro_colchao
-                             where molas.andamento == "Finalizado"
-                             select new Gerenciamento
-                             {
-                                 Id = molas.Id,
-                                 os = molas.os,
-                                 orcamento = molas.orcamento,
-                                 andamento = molas.andamento,
-                             }).ToList();
-
-                return View("Molas", dados);
+                _logger.LogError(ex, "Error", ex.Message);
+                throw;
             }
         }
     }

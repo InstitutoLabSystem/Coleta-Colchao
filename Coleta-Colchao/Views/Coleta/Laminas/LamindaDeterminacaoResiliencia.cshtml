@@ -311,7 +311,7 @@
                 }
 
             } else if (opcaoSelecionada === 'Hipermacia') {
-                if (valorDigitado == '20' || valorDigitado == '24' || valorDigitado == '29' || valorDigitado == '35') {
+                if (valorDigitado == '20' || valorDigitado == '24' || valorDigitado == '29' || valorDigitado >= '35') {
                     especificado.value = 30;
                     tamanho.value = 'Min';
 
@@ -346,7 +346,7 @@
                 }
             }
             else if (opcaoSelecionada === 'Alta resiliência') {
-                if (valorDigitado >= '35') {
+                if (valorDigitado >= '30') {
                     especificado.value = 55;
                     tamanho.value = 'Min';
 

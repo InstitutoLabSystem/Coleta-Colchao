@@ -16,14 +16,14 @@
     <title>Ensaio Lamina P.F.I</title>
     <style>
         /*  .controlador-conforme {
-                                                                                                    padding: 5px;
-                                                                                                    border-color: gray;
-                                                                                                    border-radius: 5px;
-                                                                                                    box-sizing: border-box;
-                                                                                                    height: 500px;
-                                                                                                    width: 100px;
-                                                                                                    }
-                                                                                                 */
+                                                                                                            padding: 5px;
+                                                                                                            border-color: gray;
+                                                                                                            border-radius: 5px;
+                                                                                                            box-sizing: border-box;
+                                                                                                            height: 500px;
+                                                                                                            width: 100px;
+                                                                                                            }
+                                                                                                         */
         input {
             text-align: center;
         }
@@ -678,7 +678,7 @@
             <td>
                 <b> Perda de força de indentação.</b>
             </td>
-            @if(Model == null)
+            @if (Model == null)
             {
                 <td rowspan="10"></td>
             }
@@ -686,7 +686,7 @@
             {
                 <td rowspan="10">@Model.conforme</td>
             }
-            
+
         </tr>
         <tr>
             <td>
@@ -794,39 +794,39 @@
             if (opcaoSelecionada === 'Convencional') {
 
                 if (valorDigitado == '20') {
-                    especificado.value = 1;
+                    especificado.value = 27;
                     // conforto.value = 2, 0;
                     // tamanho.value = 'Min';
                     console.log(especificado.value);
                 } else if (valorDigitado == '18') {
-                    especificado.value = 1;
+                    especificado.value = 32;
                     // conforto.value = 2, 0;
                     // tamanho.value = 'Min';
                 } else if (valorDigitado == '23') {
-                    especificado.value = 1;
+                    especificado.value = 27;
                     // conforto.value = 2, 1;
                     // tamanho.value = 'Min';
                 } else if (valorDigitado == '26') {
-                    especificado.value = 1;
+                    especificado.value = 27;
                     // conforto.value = 2, 1;
                     // tamanho.value = 'Min';
                 } else if (valorDigitado == '28') {
-                    especificado.value = 1;
+                    especificado.value = 27;
                     // conforto.value = 2, 2;
                     // tamanho.value = 'Min';
                 }
                 else if (valorDigitado == '33') {
-                    especificado.value = 1;
+                    especificado.value = 23;
                     // conforto.value = 2, 2;
                     // tamanho.value = 'Min';
                 }
                 else if (valorDigitado == '40') {
-                    especificado.value = 1;
+                    especificado.value = 23;
                     // conforto.value = 2, 2;
                     // tamanho.value = 'Min';
                 }
                 else if (valorDigitado == '45') {
-                    especificado.value = 1;
+                    especificado.value = 23;
                     // especificado.value = 165;
                     // tamanho.value = 'Min';
                 }
@@ -834,44 +834,10 @@
                     especificado.value = "Não há especificado na tabela";
                 }
 
-            } else if (opcaoSelecionada === 'Hipermacia') {
-                if (valorDigitado == '20' || valorDigitado == '24') {
-                    especificado.value = 1;
+            } else if (opcaoSelecionada === 'Aglomerado') {
+                if (valorDigitado >= '65') {
+                    especificado.value = 35;
                     // tamanho.value = 'Max';
-
-                }
-                else if (valorDigitado == '29') {
-                    especificado.value = 1;
-                }
-                else if (valorDigitado >= '35') {
-                    especificado.value = 1;
-                    // tamanho.value = 'Max';
-                }
-                else {
-                    especificado.value = "Não há especificado na tabela";
-                }
-            } else if (opcaoSelecionada === 'Macia') {
-                if (valorDigitado == '20') {
-                    especificado.value = 1;
-                    // tamanho.value = 'Max';
-                } else if (valorDigitado == '24') {
-                    especificado.value = 1;
-                    // tamanho.value = 'Max';
-                } else if (valorDigitado > '20') {
-                    especificado.value = 1;
-                    // tamanho.value = 'Max';
-                } else if (valorDigitado >= '35') {
-                    especificado.value = 1;
-                    // tamanho.value = 'Max';
-                }
-                else {
-                    especificado.value = "Não há especificado na tabela";
-                }
-            }
-            else if (opcaoSelecionada === 'Visco elástica') {
-                if (valorDigitado >= '30') {
-                    especificado.value = 1;
-                    // tamanho.value = 'Min';
                 }
                 else {
                     especificado.value = "Não há especificado na tabela";
@@ -879,13 +845,13 @@
             }
             else if (opcaoSelecionada === 'Alta resiliência') {
                 if (valorDigitado >= '30') {
-                    especificado.value = 1;
+                    especificado.value = 20;
                     // tamanho.value = 'Min';
                 }
                 else {
                     especificado.value = "Não há especificado na tabela";
                 }
-            }else{
+            } else {
                 especificado.value = "Não há especificado na tabela";
             }
             // Atualiza o conteúdo da div de resultados
