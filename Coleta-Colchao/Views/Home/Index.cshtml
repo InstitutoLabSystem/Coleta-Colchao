@@ -100,7 +100,7 @@
                         </tr>
 
                         <tr class="fundo-tabela">
-                            <td>OS</td>
+                            <td colspan="2">OS</td>
                             <td>ORCAMENTO</td>
                             <td>DESCRIÇÃO</td>
                             @* <td>STATUS</td> *@
@@ -117,7 +117,7 @@
                                 }
                                 else
                                 {
-                                    <td>
+                                    <td colspan="2">
                                         @Model[i].OS
                                     </td>
                                 }
@@ -142,18 +142,18 @@
                                 }
                                 else
                                 {
-                                    <td> @Model[i].descricao </td>
+                                    <td > @Model[i].descricao </td>
                                 }
 
                                 @if (@Model[i].descricao == "  |  FATOR DE CONFORTO")
                                 {
                                     <td style="display:none;"></td>
                                 }
-                               @*  else{
-                                    <td>
-                                        ANDAMENTO
-                                    </td>
-                                } *@
+                                @*  else{
+                        <td>
+                        ANDAMENTO
+                        </td>
+                        } *@
 
                                 @if (@Model[i].descricao == "  |  FATOR DE CONFORTO")
                                 {
@@ -165,7 +165,7 @@
                                         @Model[i].ProdEnsaiado
                                     </td>
                                 }
- 
+
                                 @if (Model[i].codigo == "BOPCCH001000001")
                                 {
                                     <td>

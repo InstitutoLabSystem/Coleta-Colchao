@@ -106,9 +106,9 @@
                     <td>
                         Houve rasgos ou engarçamentos no revestimento?:
                         <select class="controlador" name="rasgo">
-                            <option selected>---</option>
-                            <option value="Sim">Sim</option>
-                            <option value="Não">Não</option>
+                            <option value="NA" selected>---</option>
+                            <option value="C">C</option>
+                            <option value="NC">NC</option>
                         </select>
                     </td>
                 </tr>
@@ -116,9 +116,9 @@
                     <td>
                         Houve quebra de molas no molejo?:
                         <select class="controlador" name="quebra">
-                            <option selected>---</option>
-                            <option value="Sim">Sim</option>
-                            <option value="Não">Não</option>
+                            <option value="NA" selected>---</option>
+                            <option value="C">C</option>
+                            <option value="NC">NC</option>
                         </select>
                     </td>
                 </tr>
@@ -225,8 +225,9 @@
                         Houve rasgos ou engarçamentos no revestimento?:
                         <select class="controlador" name="rasgo">
                             <option selected>@Model.rasgo</option>
-                            <option value="Sim">Sim</option>
-                            <option value="Não">Não</option>
+                            <option value="NA">---</option>
+                            <option value="C">C</option>
+                            <option value="NC">NC</option>
                         </select>
                     </td>
                 </tr>
@@ -235,8 +236,9 @@
                         Houve quebra de molas no molejo?:
                         <select class="controlador" name="quebra">
                             <option selected>@Model.quebra</option>
-                            <option value="Sim">Sim</option>
-                            <option value="Não">Não</option>
+                            <option value="NA">---</option>
+                            <option value="C">C</option>
+                            <option value="NC">NC</option>
                         </select>
                     </td>
                 </tr>

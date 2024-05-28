@@ -47,7 +47,7 @@ namespace Coleta_Colchao.Controllers
                     var Nome_Usuario = modelLogin.Nome_Usuario.ToUpper();
                     var Senha_Usuario = modelLogin.Senha_Usuario.ToUpper();
 
-                    var pegarValores = _bancoContext.usuario_copy
+                    var pegarValores = _bancoContext.usuario
                     .Where(u => u.Nome_Usuario == Nome_Usuario)
                     .Select(u => new
                     {

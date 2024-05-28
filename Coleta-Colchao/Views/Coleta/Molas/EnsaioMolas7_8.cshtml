@@ -184,9 +184,9 @@
                     <td>
                         Apresentou trincas:
                         <select class="areaProva" name="trincas">
-                            <option selected> --- </option>
-                            <option> Sim </option>
-                            <option> Não </option>
+                            <option value="NA" selected> --- </option>
+                            <option value="C"> C </option>
+                            <option value="NC"> NC </option>
                         </select>
                     </td>
                 </tr>
@@ -194,9 +194,9 @@
                     <td>
                         Apresentou rompimentos:
                         <select class="areaProva" name="rompimentos">
-                            <option selected> --- </option>
-                            <option> Sim </option>
-                            <option> Não </option>
+                            <option value="NA" selected> --- </option>
+                            <option value="C"> C </option>
+                            <option value="NC"> NC </option>
                         </select>
 
                     </td>
@@ -349,8 +349,9 @@
                         Apresentou trincas:
                         <select class="areaProva" name="trincas">
                             <option selected> @Model.trincas </option>
-                            <option> Sim </option>
-                            <option> Não </option>
+                            <option value="NA" > --- </option>
+                            <option value="C"> C </option>
+                            <option value="NC"> NC </option>
                         </select>
                     </td>
                 </tr>
@@ -359,8 +360,9 @@
                         Apresentou rompimentos:
                         <select class="areaProva" name="rompimentos">
                             <option selected> @Model.rompimentos </option>
-                            <option> Sim </option>
-                            <option> Não </option>
+                            <option value="NA"> --- </option>
+                            <option value="C"> C </option>
+                            <option value="NC"> NC </option>
                         </select>
 
                     </td>
