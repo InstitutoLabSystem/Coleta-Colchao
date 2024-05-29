@@ -456,17 +456,14 @@ namespace Coleta_Colchao.Models
             public string orcamento { get; set; }
             public DateOnly data_ini { get; set; }
             public DateOnly data_term { get; set; }
-            public string? etiqueta_ident { get; set; }
-            public string? revest_permanente { get; set; }
-            public string? etiqueta_duravel_indele { get; set; }
-            public string? face_superior { get; set; }
-            public string? visualizacao { get; set; }
+
             public string? lingua_portuguesa { get; set; }
 
             public float area_etiqueta_1 { get; set; }
             public float area_etiqueta_2 { get; set; }
             public float area_etiqueta_media { get; set; }
             public string? cnpj_cpf { get; set; }
+            public string? cnpj_cpf_2 { get; set; }
             public string? marca_modelo { get; set; }
             public string? dimensoes_prod { get; set; }
             public string? informada_altura { get; set; }
@@ -482,33 +479,22 @@ namespace Coleta_Colchao.Models
             public string? cuidado_minimos { get; set; }
             public string? aviso_esclarecimento { get; set; }
             public string? possui_mais_laminas { get; set; }
-            public string? contem_advertencia { get; set; }
+            public string? conforme_r { get; set; }
             public string? altura_letra { get; set; }
             public string? negrito { get; set; }
-            public string? caixa_alta { get; set; }
-            public string? contem_advertencia_mat { get; set; }
+            public string? conforme_s { get; set; }
             public string? altura_letra_mat { get; set; }
-            public string? negrito_mat { get; set; }
             public string? caixa_alta_mat { get; set; }
             public string? contem_instru_uso { get; set; }
             public string? orientacoes { get; set; }
             public string? alerta_consumidor { get; set; }
             public string? desenho_esquematico { get; set; }
-            public string? contem_advertencia_6_2 { get; set; }
             public string? altura_letra_6_2 { get; set; }
-            public string? negrito6_2 { get; set; }
             public string? caixa_alta_6_2 { get; set; }
             public string? embalagem_unitaria { get; set; }
-            public string? embalagem_garante { get; set; }
-            public string? conforme_requisitos { get; set; }
-            public string? conforme_requisitos_2 { get; set; }
-            public string? conforme_requisitos_3 { get; set; }
-            public string? conforme_requisitos_4 { get; set; }
-            public string? conforme_requisitos_5 { get; set; }
-            public string? conforme_6_1 { get; set; }
+            public string? colchao_disponivel { get; set; }
+            public string? fixada { get; set; }
             public string? conforme_6_2 { get; set; }
-            public string? conforme_embalagem { get; set; }
-
             public string? executador { get; set; }
             public string? auxiliar { get; set; }
         }
@@ -1483,6 +1469,6 @@ namespace Coleta_Colchao.Models
             public float media_espessura_total { get; set; }
             public string? conforme { get; set; }
         }
-        
+
     }
 }

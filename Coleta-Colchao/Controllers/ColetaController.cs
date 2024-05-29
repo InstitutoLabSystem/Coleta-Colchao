@@ -3097,7 +3097,7 @@ namespace Coleta_Colchao.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> SalvarEmbalagensMolas(string os, string orcamento, [Bind("data_ini,data_term,etiqueta_ident,revest_permanente,etiqueta_duravel_indele,face_superior,visualizacao,lingua_portuguesa,area_etiqueta_1,area_etiqueta_2,cnpj_cpf,marca_modelo,dimensoes_prod,informada_altura,composicoes,tipo_molejo,contem_borda,densidade_espuma,composi_revestimento,data_fabricacao,ident_lote,pais_origem,codigo_barras,cuidado_minimos,aviso_esclarecimento,possui_mais_laminas,contem_advertencia,altura_letra,negrito,caixa_alta,contem_advertencia_mat,altura_letra_mat,negrito_mat,caixa_alta_mat,contem_instru_uso,orientacoes,alerta_consumidor,desenho_esquematico,contem_advertencia_6_2,altura_letra_6_2,negrito6_2,caixa_alta_6_2,embalagem_unitaria,embalagem_garante")] ColetaModel.EnsaioIdentificacaoEmbalagem salvarDados)
+        public async Task<IActionResult> SalvarEmbalagensMolas(string os, string orcamento, [Bind("data_ini,data_term,etiqueta_ident,revest_permanente,etiqueta_duravel_indele,face_superior,visualizacao,lingua_portuguesa,area_etiqueta_1,area_etiqueta_2,cnpj_cpf,cnpj_cpf_2,marca_modelo,dimensoes_prod,informada_altura,composicoes,tipo_molejo,contem_borda,densidade_espuma,composi_revestimento,data_fabricacao,ident_lote,pais_origem,codigo_barras,cuidado_minimos,aviso_esclarecimento,possui_mais_laminas,conforme_r,contem_advertencia,altura_letra,negrito,conforme_s,caixa_alta,contem_advertencia_mat,altura_letra_mat,negrito_mat,caixa_alta_mat,contem_instru_uso,orientacoes,alerta_consumidor,desenho_esquematico,contem_advertencia_6_2,altura_letra_6_2,negrito6_2,caixa_alta_6_2,embalagem_unitaria,embalagem_garante,colchao_disponivel,fixada,conforme_6_2")] ColetaModel.EnsaioIdentificacaoEmbalagem salvarDados)
         {
             try
             {
@@ -3107,15 +3107,11 @@ namespace Coleta_Colchao.Controllers
                     //recebendo os valores do html
                     DateOnly data_ini = salvarDados.data_ini;
                     DateOnly data_term = salvarDados.data_term;
-                    string etiqueta_ident = salvarDados.etiqueta_ident;
-                    string revest_permanente = salvarDados.revest_permanente;
-                    string etiqueta_duravel_indele = salvarDados.etiqueta_duravel_indele;
-                    string face_superior = salvarDados.face_superior;
-                    string visualizacao = salvarDados.visualizacao;
                     string lingua_portuguesa = salvarDados.lingua_portuguesa;
                     float area_etiqueta_1 = salvarDados.area_etiqueta_1;
                     float area_etiqueta_2 = salvarDados.area_etiqueta_2;
                     string cnpj_cpf = salvarDados.cnpj_cpf;
+                    string cnpj_cpf_2 = salvarDados.cnpj_cpf_2;
                     string marca_modelo = salvarDados.marca_modelo;
                     string dimensoes_prod = salvarDados.dimensoes_prod;
                     string informada_altura = salvarDados.informada_altura;
@@ -3131,205 +3127,195 @@ namespace Coleta_Colchao.Controllers
                     string cuidado_minimos = salvarDados.cuidado_minimos;
                     string aviso_esclarecimento = salvarDados.aviso_esclarecimento;
                     string possui_mais_laminas = salvarDados.possui_mais_laminas;
-                    string contem_advertencia = salvarDados.contem_advertencia;
+                    string conforme_r = salvarDados.conforme_r;
                     string altura_letra = salvarDados.altura_letra;
                     string negrito = salvarDados.negrito;
-                    string caixa_alta = salvarDados.caixa_alta;
-                    string contem_advertencia_mat = salvarDados.contem_advertencia_mat;
+                    string conforme_s = salvarDados.conforme_s;
                     string altura_letra_mat = salvarDados.altura_letra_mat;
-                    string negrito_mat = salvarDados.negrito_mat;
                     string caixa_alta_mat = salvarDados.caixa_alta_mat;
                     string contem_instru_uso = salvarDados.contem_instru_uso;
                     string orientacoes = salvarDados.orientacoes;
                     string alerta_consumidor = salvarDados.alerta_consumidor;
                     string desenho_esquematico = salvarDados.desenho_esquematico;
-                    string contem_advertencia_6_2 = salvarDados.contem_advertencia_6_2;
                     string altura_letra_6_2 = salvarDados.altura_letra_6_2;
-                    string negrito6_2 = salvarDados.negrito6_2;
                     string caixa_alta_6_2 = salvarDados.caixa_alta_6_2;
                     string embalagem_unitaria = salvarDados.embalagem_unitaria;
-                    string embalagem_garante = salvarDados.embalagem_garante;
-                    string conforme_requisitos = string.Empty;
-                    string conforme_requisitos_2 = string.Empty;
-                    string conforme_requisitos_3 = string.Empty;
-                    string conforme_requisitos_4 = string.Empty;
-                    string conforme_requisitos_5 = string.Empty;
-                    string conforme_6_1 = string.Empty;
-                    string conforme_6_2 = string.Empty;
-                    string conforme_embalagem = string.Empty;
+                    string colchao_disponivel = salvarDados.colchao_disponivel;
+                    string fixada = salvarDados.fixada;
+                    string conforme6_2 = salvarDados.conforme_6_2;
 
                     // realizando calculo necessario.
                     float calc_media = area_etiqueta_1 * area_etiqueta_2;
 
                     //VERIFICANDO SE COLETA ESTA CONFORME OU NC DE CADA CAMPO
-                    if (etiqueta_ident == "NC" || revest_permanente == "NC" || etiqueta_duravel_indele == "NC" || face_superior == "NC" || visualizacao == "NC" || lingua_portuguesa == "NC")
-                    {
+                    //if (etiqueta_ident == "NC" || revest_permanente == "NC" || etiqueta_duravel_indele == "NC" || face_superior == "NC" || visualizacao == "NC" || lingua_portuguesa == "NC")
+                    //{
 
-                        if (calc_media >= 150)
-                        {
-                            conforme_requisitos = "NC";
-                        }
-                        else
-                        {
-                            conforme_requisitos = "C";
-                        }
-                    }
-                    else
-                    {
-                        if (calc_media <= 150)
-                        {
-                            conforme_requisitos = "C";
-                        }
-                        else
-                        {
-                            conforme_requisitos = "NC";
-                        }
-                    }
+                    //    if (calc_media >= 150)
+                    //    {
+                    //        conforme_requisitos = "NC";
+                    //    }
+                    //    else
+                    //    {
+                    //        conforme_requisitos = "C";
+                    //    }
+                    //}
+                    //else
+                    //{
+                    //    if (calc_media <= 150)
+                    //    {
+                    //        conforme_requisitos = "C";
+                    //    }
+                    //    else
+                    //    {
+                    //        conforme_requisitos = "NC";
+                    //    }
+                    //}
 
-                    if (cnpj_cpf == "NC" || marca_modelo == "NC" || dimensoes_prod == "NC")
-                    {
-                        conforme_requisitos_2 = "NC";
-                    }
-                    else
-                    {
-                        conforme_requisitos_2 = "C";
+                    //if (cnpj_cpf == "NC" || marca_modelo == "NC" || dimensoes_prod == "NC")
+                    //{
+                    //    conforme_requisitos_2 = "NC";
+                    //}
+                    //else
+                    //{
+                    //    conforme_requisitos_2 = "C";
 
-                    }
+                    //}
 
-                    if (informada_altura == "NC" || composicoes == "NC" || contem_borda == "NC" || densidade_espuma == "NC" || composi_revestimento == "NC" || data_fabricacao == "NC" || ident_lote == "NC" || pais_origem == "NC" || codigo_barras == "NC" || cuidado_minimos == "NC")
-                    {
-                        conforme_requisitos_3 = "NC";
-                    }
-                    else
-                    {
-                        conforme_requisitos_3 = "C";
-                    }
+                    //if (informada_altura == "NC" || composicoes == "NC" || contem_borda == "NC" || densidade_espuma == "NC" || composi_revestimento == "NC" || data_fabricacao == "NC" || ident_lote == "NC" || pais_origem == "NC" || codigo_barras == "NC" || cuidado_minimos == "NC")
+                    //{
+                    //    conforme_requisitos_3 = "NC";
+                    //}
+                    //else
+                    //{
+                    //    conforme_requisitos_3 = "C";
+                    //}
 
-                    if (aviso_esclarecimento == "NC" || possui_mais_laminas == "NC" || contem_advertencia == "NC" || negrito == "NC" || caixa_alta == "NC" || contem_advertencia_mat == "NC" || negrito_mat == "NC")
-                    {
-                        if (altura_letra == null)
-                        {
-                            altura_letra = "0";
-                        }
-                        float conv_altura_letra = float.Parse(altura_letra);
+                    //if (aviso_esclarecimento == "NC" || possui_mais_laminas == "NC" || contem_advertencia == "NC" || negrito == "NC" || caixa_alta == "NC" || contem_advertencia_mat == "NC" || negrito_mat == "NC")
+                    //{
+                    //    if (altura_letra == null)
+                    //    {
+                    //        altura_letra = "0";
+                    //    }
+                    //    float conv_altura_letra = float.Parse(altura_letra);
 
-                        if (conv_altura_letra >= 2.5)
-                        {
-                            conforme_requisitos_4 = "C";
-                        }
-                        else
-                        {
-                            conforme_requisitos_4 = "NC";
-                        }
-                    }
-                    else
-                    {
-                        if (altura_letra == null)
-                        {
-                            altura_letra = "0";
-                        }
-                        float conv_altura_letra = float.Parse(altura_letra);
+                    //    if (conv_altura_letra >= 2.5)
+                    //    {
+                    //        conforme_requisitos_4 = "C";
+                    //    }
+                    //    else
+                    //    {
+                    //        conforme_requisitos_4 = "NC";
+                    //    }
+                    //}
+                    //else
+                    //{
+                    //    if (altura_letra == null)
+                    //    {
+                    //        altura_letra = "0";
+                    //    }
+                    //    float conv_altura_letra = float.Parse(altura_letra);
 
-                        if (conv_altura_letra >= 2.5)
-                        {
-                            conforme_requisitos_4 = "C";
-                        }
-                        else
-                        {
-                            conforme_requisitos_4 = "NC";
-                        }
-
-
-
-                    }
-                    if (contem_advertencia_mat == "C" || negrito_mat == "C" || caixa_alta_mat == "C")
-                    {
-                        if (altura_letra_mat == null)
-                        {
-                            altura_letra_mat = "0";
-                        }
-
-                        float conv_altura_letra_mat = float.Parse(altura_letra_mat);
-                        if (conv_altura_letra_mat >= 5)
-                        {
-                            conforme_requisitos_5 = "C";
-                        }
-                        else
-                        {
-                            conforme_requisitos_5 = "NC";
-                        }
-                    }
-                    else
-                    {
-                        if (altura_letra_mat == null)
-                        {
-                            altura_letra_mat = "0";
-                        }
-                        float conv_altura_letra_mat = float.Parse(altura_letra_mat);
-                        if (conv_altura_letra_mat >= 5)
-                        {
-                            conforme_requisitos_5 = "C";
-                        }
-                        else
-                        {
-                            conforme_requisitos_5 = "NC";
-                        }
-                    }
+                    //    if (conv_altura_letra >= 2.5)
+                    //    {
+                    //        conforme_requisitos_4 = "C";
+                    //    }
+                    //    else
+                    //    {
+                    //        conforme_requisitos_4 = "NC";
+                    //    }
 
 
-                    if (contem_advertencia_6_2 == "C" || negrito6_2 == "C" || caixa_alta_6_2 == "C")
-                    {
-                        if (altura_letra_6_2 == null)
-                        {
-                            altura_letra_6_2 = "0";
-                        }
-                        float conv_altura_letra_6_2 = float.Parse(altura_letra_6_2);
-                        if (conv_altura_letra_6_2 >= 5)
-                        {
-                            conforme_6_2 = "C";
-                        }
-                        else
-                        {
-                            conforme_6_2 = "NC";
-                        }
-                    }
-                    else
-                    {
-                        if (altura_letra_6_2 == null)
-                        {
-                            altura_letra_6_2 = "0";
-                        }
-                        float conv_altura_letra_6_2 = float.Parse(altura_letra_6_2);
 
-                        if (conv_altura_letra_6_2 >= 5)
-                        {
-                            conforme_6_2 = "C";
-                        }
-                        else
-                        {
-                            conforme_6_2 = "NC";
-                        }
+                    //}
+                    //if (contem_advertencia_mat == "C" || negrito_mat == "C" || caixa_alta_mat == "C")
+                    //{
+                    //    if (altura_letra_mat == null)
+                    //    {
+                    //        altura_letra_mat = "0";
+                    //    }
 
-                    }
+                    //    float conv_altura_letra_mat = float.Parse(altura_letra_mat);
+                    //    if (conv_altura_letra_mat >= 5)
+                    //    {
+                    //        conforme_requisitos_5 = "C";
+                    //    }
+                    //    else
+                    //    {
+                    //        conforme_requisitos_5 = "NC";
+                    //    }
+                    //}
+                    //else
+                    //{
+                    //    if (altura_letra_mat == null)
+                    //    {
+                    //        altura_letra_mat = "0";
+                    //    }
+                    //    float conv_altura_letra_mat = float.Parse(altura_letra_mat);
+                    //    if (conv_altura_letra_mat >= 5)
+                    //    {
+                    //        conforme_requisitos_5 = "C";
+                    //    }
+                    //    else
+                    //    {
+                    //        conforme_requisitos_5 = "NC";
+                    //    }
+                    //}
 
 
-                    if (contem_instru_uso == "NC" || orientacoes == "NC" || alerta_consumidor == "NC" || desenho_esquematico == "NC" || contem_advertencia_6_2 == "NC" || altura_letra_6_2 == "NC" || negrito6_2 == "NC" || caixa_alta_6_2 == "NC")
-                    {
-                        conforme_6_1 = "NC";
-                    }
-                    else
-                    {
-                        conforme_6_1 = "C";
-                    }
+                    //if (contem_advertencia_6_2 == "C" || negrito6_2 == "C" || caixa_alta_6_2 == "C")
+                    //{
+                    //    if (altura_letra_6_2 == null)
+                    //    {
+                    //        altura_letra_6_2 = "0";
+                    //    }
+                    //    float conv_altura_letra_6_2 = float.Parse(altura_letra_6_2);
+                    //    if (conv_altura_letra_6_2 >= 5)
+                    //    {
+                    //        conforme_6_2 = "C";
+                    //    }
+                    //    else
+                    //    {
+                    //        conforme_6_2 = "NC";
+                    //    }
+                    //}
+                    //else
+                    //{
+                    //    if (altura_letra_6_2 == null)
+                    //    {
+                    //        altura_letra_6_2 = "0";
+                    //    }
+                    //    float conv_altura_letra_6_2 = float.Parse(altura_letra_6_2);
 
-                    if (embalagem_garante == "NC" || embalagem_unitaria == "NC")
-                    {
-                        conforme_embalagem = "NC";
-                    }
-                    else
-                    {
-                        conforme_embalagem = "C";
-                    }
+                    //    if (conv_altura_letra_6_2 >= 5)
+                    //    {
+                    //        conforme_6_2 = "C";
+                    //    }
+                    //    else
+                    //    {
+                    //        conforme_6_2 = "NC";
+                    //    }
+
+                    //}
+
+
+                    //if (contem_instru_uso == "NC" || orientacoes == "NC" || alerta_consumidor == "NC" || desenho_esquematico == "NC" || contem_advertencia_6_2 == "NC" || altura_letra_6_2 == "NC" || negrito6_2 == "NC" || caixa_alta_6_2 == "NC")
+                    //{
+                    //    conforme_6_1 = "NC";
+                    //}
+                    //else
+                    //{
+                    //    conforme_6_1 = "C";
+                    //}
+
+                    //if (embalagem_garante == "NC" || embalagem_unitaria == "NC")
+                    //{
+                    //    conforme_embalagem = "NC";
+                    //}
+                    //else
+                    //{
+                    //    conforme_embalagem = "C";
+                    //}
                     //termino das verificações de conformidade.
 
 
@@ -3339,16 +3325,12 @@ namespace Coleta_Colchao.Controllers
                         orcamento = orcamento,
                         data_ini = data_ini,
                         data_term = data_term,
-                        etiqueta_ident = etiqueta_ident,
-                        revest_permanente = revest_permanente,
-                        etiqueta_duravel_indele = etiqueta_duravel_indele,
-                        face_superior = face_superior,
-                        visualizacao = visualizacao,
                         lingua_portuguesa = lingua_portuguesa,
                         area_etiqueta_1 = area_etiqueta_1,
                         area_etiqueta_2 = area_etiqueta_2,
                         area_etiqueta_media = calc_media,
                         cnpj_cpf = cnpj_cpf,
+                        cnpj_cpf_2 = cnpj_cpf_2,
                         marca_modelo = marca_modelo,
                         dimensoes_prod = salvarDados.dimensoes_prod,
                         informada_altura = informada_altura,
@@ -3364,31 +3346,23 @@ namespace Coleta_Colchao.Controllers
                         cuidado_minimos = cuidado_minimos,
                         aviso_esclarecimento = aviso_esclarecimento,
                         possui_mais_laminas = possui_mais_laminas,
-                        contem_advertencia = contem_advertencia,
+                        conforme_r = conforme_r,
                         altura_letra = altura_letra,
                         negrito = negrito,
-                        caixa_alta = caixa_alta,
-                        contem_advertencia_mat = contem_advertencia_mat,
+                        conforme_s = conforme_s,
                         altura_letra_mat = altura_letra_mat,
-                        negrito_mat = negrito_mat,
                         caixa_alta_mat = caixa_alta_mat,
                         contem_instru_uso = contem_instru_uso,
                         orientacoes = orientacoes,
                         alerta_consumidor = alerta_consumidor,
                         desenho_esquematico = desenho_esquematico,
-                        contem_advertencia_6_2 = contem_advertencia_6_2,
                         altura_letra_6_2 = altura_letra_6_2,
-                        negrito6_2 = negrito6_2,
                         caixa_alta_6_2 = caixa_alta_6_2,
                         embalagem_unitaria = embalagem_unitaria,
-                        embalagem_garante = embalagem_garante,
-                        conforme_requisitos = conforme_requisitos,
-                        conforme_requisitos_2 = conforme_requisitos_2,
-                        conforme_requisitos_3 = conforme_requisitos_3,
-                        conforme_requisitos_4 = conforme_requisitos_4,
-                        conforme_requisitos_5 = conforme_requisitos_5,
-                        conforme_6_1 = conforme_6_1,
-                        conforme_embalagem = conforme_embalagem,
+                       colchao_disponivel = colchao_disponivel,
+                        fixada = fixada,
+                        conforme_6_2 = conforme6_2
+
                     };
 
                     //salvando no banco
@@ -3402,11 +3376,6 @@ namespace Coleta_Colchao.Controllers
                     //editando os valores no html..
                     editarDados.data_ini = salvarDados.data_ini;
                     editarDados.data_term = salvarDados.data_term;
-                    editarDados.etiqueta_ident = salvarDados.etiqueta_ident;
-                    editarDados.revest_permanente = salvarDados.revest_permanente;
-                    editarDados.etiqueta_duravel_indele = salvarDados.etiqueta_duravel_indele;
-                    editarDados.face_superior = salvarDados.face_superior;
-                    editarDados.visualizacao = salvarDados.visualizacao;
                     editarDados.lingua_portuguesa = salvarDados.lingua_portuguesa;
                     editarDados.area_etiqueta_1 = salvarDados.area_etiqueta_1;
                     editarDados.area_etiqueta_2 = salvarDados.area_etiqueta_2;
@@ -3426,165 +3395,158 @@ namespace Coleta_Colchao.Controllers
                     editarDados.cuidado_minimos = salvarDados.cuidado_minimos;
                     editarDados.aviso_esclarecimento = salvarDados.aviso_esclarecimento;
                     editarDados.possui_mais_laminas = salvarDados.possui_mais_laminas;
-                    editarDados.contem_advertencia = salvarDados.contem_advertencia;
                     editarDados.altura_letra = salvarDados.altura_letra;
                     editarDados.negrito = salvarDados.negrito;
-                    editarDados.caixa_alta = salvarDados.caixa_alta;
-                    editarDados.contem_advertencia_mat = salvarDados.contem_advertencia_mat;
                     editarDados.altura_letra_mat = salvarDados.altura_letra_mat;
-                    editarDados.negrito_mat = salvarDados.negrito_mat;
                     editarDados.caixa_alta_mat = salvarDados.caixa_alta_mat;
                     editarDados.contem_instru_uso = salvarDados.contem_instru_uso;
                     editarDados.orientacoes = salvarDados.orientacoes;
                     editarDados.alerta_consumidor = salvarDados.alerta_consumidor;
                     editarDados.desenho_esquematico = salvarDados.desenho_esquematico;
-                    editarDados.contem_advertencia_6_2 = salvarDados.contem_advertencia_6_2;
                     editarDados.altura_letra_6_2 = salvarDados.altura_letra_6_2;
-                    editarDados.negrito6_2 = salvarDados.negrito6_2;
                     editarDados.caixa_alta_6_2 = salvarDados.caixa_alta_6_2;
-                    editarDados.embalagem_unitaria = salvarDados.embalagem_unitaria;
-                    editarDados.embalagem_garante = salvarDados.embalagem_garante;
+
 
                     //realizando contas necessarias.
                     float calc_media = editarDados.area_etiqueta_1 * editarDados.area_etiqueta_2;
 
                     //VERIFICANDO SE COLETA ESTA CONFORME OU NC DE CADA CAMPO
-                    if (editarDados.etiqueta_ident == "NC" || editarDados.revest_permanente == "NC" || editarDados.etiqueta_duravel_indele == "NC" || editarDados.face_superior == "NC" || editarDados.visualizacao == "NC" || editarDados.lingua_portuguesa == "NC")
-                    {
-                        if (calc_media <= 150)
-                        {
-                            editarDados.conforme_requisitos = "NC";
-                        }
-                        else
-                        {
-                            editarDados.conforme_requisitos = "C";
-                        }
-                    }
-                    else
-                    {
-                        if (calc_media <= 150)
-                        {
-                            editarDados.conforme_requisitos = "C";
-                        }
-                        else
-                        {
-                            editarDados.conforme_requisitos = "NC";
-                        }
-                    }
+                    //if (editarDados.etiqueta_ident == "NC" || editarDados.revest_permanente == "NC" || editarDados.etiqueta_duravel_indele == "NC" || editarDados.face_superior == "NC" || editarDados.visualizacao == "NC" || editarDados.lingua_portuguesa == "NC")
+                    //{
+                    //    if (calc_media <= 150)
+                    //    {
+                    //        editarDados.conforme_requisitos = "NC";
+                    //    }
+                    //    else
+                    //    {
+                    //        editarDados.conforme_requisitos = "C";
+                    //    }
+                    //}
+                    //else
+                    //{
+                    //    if (calc_media <= 150)
+                    //    {
+                    //        editarDados.conforme_requisitos = "C";
+                    //    }
+                    //    else
+                    //    {
+                    //        editarDados.conforme_requisitos = "NC";
+                    //    }
+                    //}
 
-                    if (editarDados.cnpj_cpf == "NC" || editarDados.marca_modelo == "NC" || editarDados.dimensoes_prod == "NC")
-                    {
-                        editarDados.conforme_requisitos_2 = "NC";
-                    }
-                    else
-                    {
-                        editarDados.conforme_requisitos_2 = "C";
+                    //if (editarDados.cnpj_cpf == "NC" || editarDados.marca_modelo == "NC" || editarDados.dimensoes_prod == "NC")
+                    //{
+                    //    editarDados.conforme_requisitos_2 = "NC";
+                    //}
+                    //else
+                    //{
+                    //    editarDados.conforme_requisitos_2 = "C";
 
-                    }
+                    //}
 
-                    if (editarDados.informada_altura == "NC" || editarDados.composicoes == "NC" || editarDados.contem_borda == "NC" || editarDados.densidade_espuma == "NC" || editarDados.composi_revestimento == "NC" || editarDados.data_fabricacao == "NC" || editarDados.ident_lote == "NC" || editarDados.pais_origem == "NC" || editarDados.codigo_barras == "NC" || editarDados.cuidado_minimos == "NC")
-                    {
-                        editarDados.conforme_requisitos_3 = "NC";
-                    }
-                    else
-                    {
-                        editarDados.conforme_requisitos_3 = "C";
-                    }
+                    //if (editarDados.informada_altura == "NC" || editarDados.composicoes == "NC" || editarDados.contem_borda == "NC" || editarDados.densidade_espuma == "NC" || editarDados.composi_revestimento == "NC" || editarDados.data_fabricacao == "NC" || editarDados.ident_lote == "NC" || editarDados.pais_origem == "NC" || editarDados.codigo_barras == "NC" || editarDados.cuidado_minimos == "NC")
+                    //{
+                    //    editarDados.conforme_requisitos_3 = "NC";
+                    //}
+                    //else
+                    //{
+                    //    editarDados.conforme_requisitos_3 = "C";
+                    //}
 
-                    if (editarDados.aviso_esclarecimento == "NC" || editarDados.possui_mais_laminas == "NC" || editarDados.contem_advertencia == "NC" || editarDados.negrito == "NC" || editarDados.caixa_alta == "NC" || editarDados.contem_advertencia_mat == "NC" || editarDados.negrito_mat == "NC")
-                    {
+                    //if (editarDados.aviso_esclarecimento == "NC" || editarDados.possui_mais_laminas == "NC" || editarDados.contem_advertencia == "NC" || editarDados.negrito == "NC" || editarDados.caixa_alta == "NC" || editarDados.contem_advertencia_mat == "NC" || editarDados.negrito_mat == "NC")
+                    //{
 
-                        float conv_altura_letra = float.Parse(editarDados.altura_letra);
-                        if (conv_altura_letra <= 2.5)
-                        {
-                            editarDados.conforme_requisitos_4 = "NC";
-                        }
-                        else
-                        {
-                            editarDados.conforme_requisitos_4 = "C";
-                        }
-                    }
-                    else
-                    {
-                        float conv_altura_letra = float.Parse(editarDados.altura_letra);
-                        if (conv_altura_letra >= 2.5)
-                        {
-                            editarDados.conforme_requisitos_4 = "C";
-                        }
-                        else
-                        {
-                            editarDados.conforme_requisitos_4 = "NC";
-                        }
-                    }
+                    //    float conv_altura_letra = float.Parse(editarDados.altura_letra);
+                    //    if (conv_altura_letra <= 2.5)
+                    //    {
+                    //        editarDados.conforme_requisitos_4 = "NC";
+                    //    }
+                    //    else
+                    //    {
+                    //        editarDados.conforme_requisitos_4 = "C";
+                    //    }
+                    //}
+                    //else
+                    //{
+                    //    float conv_altura_letra = float.Parse(editarDados.altura_letra);
+                    //    if (conv_altura_letra >= 2.5)
+                    //    {
+                    //        editarDados.conforme_requisitos_4 = "C";
+                    //    }
+                    //    else
+                    //    {
+                    //        editarDados.conforme_requisitos_4 = "NC";
+                    //    }
+                    //}
 
-                    if (editarDados.contem_advertencia_mat == "C" || editarDados.negrito_mat == "C" || editarDados.caixa_alta_mat == "C")
-                    {
+                    //if (editarDados.contem_advertencia_mat == "C" || editarDados.negrito_mat == "C" || editarDados.caixa_alta_mat == "C")
+                    //{
 
-                        float conv_altura_letra_mat = float.Parse(editarDados.altura_letra_mat);
-                        if (conv_altura_letra_mat >= 5)
-                        {
-                            editarDados.conforme_requisitos_5 = "C";
-                        }
-                        else
-                        {
-                            editarDados.conforme_requisitos_5 = "NC";
-                        }
-                    }
-                    else
-                    {
-                        float conv_altura_letra_mat = float.Parse(editarDados.altura_letra_mat);
-                        if (conv_altura_letra_mat >= 5)
-                        {
-                            editarDados.conforme_requisitos_5 = "C";
-                        }
-                        else
-                        {
-                            editarDados.conforme_requisitos_5 = "NC";
-                        }
-                    }
+                    //    float conv_altura_letra_mat = float.Parse(editarDados.altura_letra_mat);
+                    //    if (conv_altura_letra_mat >= 5)
+                    //    {
+                    //        editarDados.conforme_requisitos_5 = "C";
+                    //    }
+                    //    else
+                    //    {
+                    //        editarDados.conforme_requisitos_5 = "NC";
+                    //    }
+                    //}
+                    //else
+                    //{
+                    //    float conv_altura_letra_mat = float.Parse(editarDados.altura_letra_mat);
+                    //    if (conv_altura_letra_mat >= 5)
+                    //    {
+                    //        editarDados.conforme_requisitos_5 = "C";
+                    //    }
+                    //    else
+                    //    {
+                    //        editarDados.conforme_requisitos_5 = "NC";
+                    //    }
+                    //}
 
-                    if (editarDados.contem_instru_uso == "NC" || editarDados.orientacoes == "NC" || editarDados.alerta_consumidor == "NC" || editarDados.desenho_esquematico == "NC" || editarDados.contem_advertencia_6_2 == "NC" || editarDados.altura_letra_6_2 == "NC" || editarDados.negrito6_2 == "NC" || editarDados.caixa_alta_6_2 == "NC")
-                    {
-                        editarDados.conforme_6_1 = "NC";
-                    }
-                    else
-                    {
-                        editarDados.conforme_6_1 = "C";
-                    }
+                    //if (editarDados.contem_instru_uso == "NC" || editarDados.orientacoes == "NC" || editarDados.alerta_consumidor == "NC" || editarDados.desenho_esquematico == "NC" || editarDados.contem_advertencia_6_2 == "NC" || editarDados.altura_letra_6_2 == "NC" || editarDados.negrito6_2 == "NC" || editarDados.caixa_alta_6_2 == "NC")
+                    //{
+                    //    editarDados.conforme_6_1 = "NC";
+                    //}
+                    //else
+                    //{
+                    //    editarDados.conforme_6_1 = "C";
+                    //}
 
-                    if (editarDados.contem_advertencia_6_2 == "C" || editarDados.negrito6_2 == "C" || editarDados.caixa_alta_6_2 == "C")
-                    {
-                        float conv_altura_letra_6_2 = float.Parse(editarDados.altura_letra_6_2);
-                        if (conv_altura_letra_6_2 >= 5)
-                        {
-                            editarDados.conforme_6_2 = "C";
-                        }
-                        else
-                        {
-                            editarDados.conforme_6_2 = "NC";
-                        }
-                    }
-                    else
-                    {
-                        float conv_altura_letra_6_2 = float.Parse(editarDados.altura_letra_6_2);
-                        if (conv_altura_letra_6_2 >= 5)
-                        {
-                            editarDados.conforme_6_2 = "C";
-                        }
-                        else
-                        {
-                            editarDados.conforme_6_2 = "NC";
-                        }
-                    }
+                    //if (editarDados.contem_advertencia_6_2 == "C" || editarDados.negrito6_2 == "C" || editarDados.caixa_alta_6_2 == "C")
+                    //{
+                    //    float conv_altura_letra_6_2 = float.Parse(editarDados.altura_letra_6_2);
+                    //    if (conv_altura_letra_6_2 >= 5)
+                    //    {
+                    //        editarDados.conforme_6_2 = "C";
+                    //    }
+                    //    else
+                    //    {
+                    //        editarDados.conforme_6_2 = "NC";
+                    //    }
+                    //}
+                    //else
+                    //{
+                    //    float conv_altura_letra_6_2 = float.Parse(editarDados.altura_letra_6_2);
+                    //    if (conv_altura_letra_6_2 >= 5)
+                    //    {
+                    //        editarDados.conforme_6_2 = "C";
+                    //    }
+                    //    else
+                    //    {
+                    //        editarDados.conforme_6_2 = "NC";
+                    //    }
+                    //}
 
-                    if (editarDados.embalagem_garante == "NC" || editarDados.embalagem_unitaria == "NC")
-                    {
-                        editarDados.conforme_embalagem = "NC";
-                    }
-                    else
-                    {
-                        editarDados.conforme_embalagem = "C";
-                    }
+                    //if (editarDados.embalagem_garante == "NC" || editarDados.embalagem_unitaria == "NC")
+                    //{
+                    //    editarDados.conforme_embalagem = "NC";
+                    //}
+                    //else
+                    //{
+                    //    editarDados.conforme_embalagem = "C";
+                    //}
                     //termino das verificações de conformidade.
 
 
