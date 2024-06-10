@@ -567,6 +567,12 @@ namespace Coleta_Colchao.Controllers
             //buscar resultados para inserir na tabela do ensaio atraves da view bag.
             var buscarFI = _context.lamina_fi.Where(x => x.os == os && x.orcamento == orcamento).FirstOrDefault();
 
+            if (buscarFI == null)
+            {
+                TempData["Mensagem"] = "ATENÇÃO!! REALIZE O ENSAIO DE F.I PRIMEIRO PARA REALIZAR O ENSAIO DE FADIGA, ESTAMOS TE REDIRICIONANDO PARA A PAGINA.";
+                return RedirectToAction(nameof(LaminaF_I),"Coleta", new { os, orcamento });
+            }
+
             if (dados == null)
             {
                 //viewbags para buscar os dados da tabela.
@@ -672,8 +678,14 @@ namespace Coleta_Colchao.Controllers
             var buscarFadiga = _context.lamina_fadiga_dinamica.Where(x => x.os == os && x.orcamento == orcamento).FirstOrDefault();
             if (buscarFi == null)
             {
-                TempData["Mensagem"] = "ATENÇÃO!! REALIZE O ENSAIO DE F.I PRIMEIRO PARA REALIZAR O ENSAIO DE P.F.I";
-                return RedirectToAction("Laminas/LaminaPFI", new { os, orcamento });
+                TempData["Mensagem"] = "ATENÇÃO!! REALIZE O ENSAIO DE F.I PRIMEIRO PARA REALIZAR O ENSAIO DE FADIGA, ESTAMOS TE REDIRICIONANDO PARA A PAGINA.";
+                return RedirectToAction(nameof(LaminaF_I), "Coleta", new { os, orcamento });
+            }
+
+            if (buscarFadiga == null)
+            {
+                TempData["Mensagem"] = "ATENÇÃO!! REALIZE O ENSAIO DE FADIGA PRIMEIRO PARA REALIZAR O ENSAIO DE FADIGA, ESTAMOS TE REDIRICIONANDO PARA A PAGINA.";
+                return RedirectToAction(nameof(LaminaFadiga), "Coleta", new { os, orcamento });
             }
 
             var dados = _context.lamina_pfi.Where(x => x.os == os && x.orcamento == orcamento).FirstOrDefault();
@@ -3359,7 +3371,7 @@ namespace Coleta_Colchao.Controllers
                         altura_letra_6_2 = altura_letra_6_2,
                         caixa_alta_6_2 = caixa_alta_6_2,
                         embalagem_unitaria = embalagem_unitaria,
-                       colchao_disponivel = colchao_disponivel,
+                        colchao_disponivel = colchao_disponivel,
                         fixada = fixada,
                         conforme_6_2 = conforme6_2
 
