@@ -570,7 +570,7 @@ namespace Coleta_Colchao.Controllers
             if (buscarFI == null)
             {
                 TempData["Mensagem"] = "ATENÇÃO!! REALIZE O ENSAIO DE F.I PRIMEIRO PARA REALIZAR O ENSAIO DE FADIGA, ESTAMOS TE REDIRICIONANDO PARA A PAGINA.";
-                return RedirectToAction(nameof(LaminaF_I),"Coleta", new { os, orcamento });
+                return RedirectToAction(nameof(LaminaF_I), "Coleta", new { os, orcamento });
             }
 
             if (dados == null)
@@ -4120,7 +4120,7 @@ namespace Coleta_Colchao.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> salvarBaseDurabilidade(string os, string orcamento, ColetaModel.EnsaioBaseDurabilidade dados)
+        public async Task<IActionResult> salvarBaseDurabilidade(string os, string orcamento, string ensaio, ColetaModel.EnsaioBaseDurabilidade dados)
         {
             try
             {
@@ -4160,10 +4160,15 @@ namespace Coleta_Colchao.Controllers
                     string temp_term = dados.temp_term;
 
 
+
                     //realizando se esta conforme ou nao conforme
-                    if (suportou_ponto_a == "C" && ruptura_ponto_a == "NC" && afundamento_ponto_a == "NC" && rasgo_ponto_a == "NC" && rompimento_ponto_a == "NC" && prejudique_ponto_a == "NC")
+                    if (suportou_ponto_a == "Sim" && ruptura_ponto_a == "Não" && afundamento_ponto_a == "Não" && rasgo_ponto_a == "Não" && rompimento_ponto_a == "Não" && prejudique_ponto_a == "Não")
                     {
                         dados.conforme_a = "C";
+                    }
+                    else if (suportou_ponto_a == "NA")
+                    {
+                        dados.conforme_a = "NA";
                     }
                     else
                     {
@@ -4171,40 +4176,40 @@ namespace Coleta_Colchao.Controllers
                     }
 
                     //realizando se esta conforme ou nao conforme
-                    if (suportou_ponto_b == "C" && ruptura_ponto_b == "NC" && afundamento_ponto_b == "NC" && rasgo_ponto_b == "NC" && rompimento_ponto_b == "NC" && prejudique_ponto_b == "NC")
+                    if (suportou_ponto_b == "Sim" && ruptura_ponto_b == "Não" && afundamento_ponto_b == "Não" && rasgo_ponto_b == "Não" && rompimento_ponto_b == "Não" && prejudique_ponto_b == "Não")
                     {
                         dados.conforme_b = "C";
                     }
+                    else if (suportou_ponto_b == "NA")
+                    {
+                        dados.conforme_b = "NA";
+                    }
                     else
                     {
+
                         dados.conforme_b = "NC";
                     }
 
                     //realizando se esta conforme ou nao conforme
-                    if (suportou_ponto_c == "C" && ruptura_ponto_c == "NC" && afundamento_ponto_c == "NC" && rasgo_ponto_c == "NC" && rompimento_ponto_c == "NC" && prejudique_ponto_c == "NC")
+                    if (suportou_ponto_c == "Sim" && ruptura_ponto_c == "Não" && afundamento_ponto_c == "Não" && rasgo_ponto_c == "Não" && rompimento_ponto_c == "Não" && prejudique_ponto_c == "Não")
                     {
                         dados.conforme_c = "C";
+                    }
+                    else if (suportou_ponto_c == "NA")
+                    {
+                        dados.conforme_c = "NA";
                     }
                     else
                     {
                         dados.conforme_c = "NC";
                     }
 
-
-
                     _context.Add(dados);
                     await _context.SaveChangesAsync();
 
                     TempData["Mensagem"] = "Dados salvo com sucesso.";
+                    return RedirectToAction("EnsaioDurabilidade", new { os, orcamento });
 
-                    if (ViewBag.ensaio == "Molas")
-                    {
-                        return RedirectToAction("EnsaioDurabilidade", new { os, orcamento });
-                    }
-                    else
-                    {
-                        return RedirectToAction("EnsaioDurabilidadeEspuma", new { os, orcamento });
-                    }
                 }
                 else
                 {
@@ -4240,7 +4245,7 @@ namespace Coleta_Colchao.Controllers
                     editarRegistro.temp_term = dados.temp_term;
 
                     //realizando se esta conforme ou nao conforme
-                    if (editarRegistro.suportou_ponto_a == "C" && editarRegistro.ruptura_ponto_a == "NC" && editarRegistro.afundamento_ponto_a == "NC" && editarRegistro.rasgo_ponto_a == "NC" && editarRegistro.rompimento_ponto_a == "NC" && editarRegistro.prejudique_ponto_a == "NC")
+                    if (editarRegistro.suportou_ponto_a == "Sim" && editarRegistro.ruptura_ponto_a == "Não" && editarRegistro.afundamento_ponto_a == "Não" && editarRegistro.rasgo_ponto_a == "Não" && editarRegistro.rompimento_ponto_a == "Não" && editarRegistro.prejudique_ponto_a == "Não")
                     {
                         editarRegistro.conforme_a = "C";
                     }
@@ -4250,7 +4255,7 @@ namespace Coleta_Colchao.Controllers
                     }
 
                     //realizando se esta conforme ou nao conforme
-                    if (editarRegistro.suportou_ponto_b == "C" && editarRegistro.ruptura_ponto_b == "NC" && editarRegistro.afundamento_ponto_b == "NC" && editarRegistro.rasgo_ponto_b == "NC" && editarRegistro.rompimento_ponto_b == "NC" && editarRegistro.prejudique_ponto_b == "NC")
+                    if (editarRegistro.suportou_ponto_b == "Sim" && editarRegistro.ruptura_ponto_b == "Não" && editarRegistro.afundamento_ponto_b == "Não" && editarRegistro.rasgo_ponto_b == "Não" && editarRegistro.rompimento_ponto_b == "Não" && editarRegistro.prejudique_ponto_b == "Não")
                     {
                         editarRegistro.conforme_b = "C";
                     }
@@ -4260,7 +4265,7 @@ namespace Coleta_Colchao.Controllers
                     }
 
                     //realizando se esta conforme ou nao conforme
-                    if (editarRegistro.suportou_ponto_c == "C" && editarRegistro.ruptura_ponto_c == "NC" && editarRegistro.afundamento_ponto_c == "NC" && editarRegistro.rasgo_ponto_c == "NC" && editarRegistro.rompimento_ponto_c == "NC" && editarRegistro.prejudique_ponto_c == "NC")
+                    if (editarRegistro.suportou_ponto_c == "Sim" && editarRegistro.ruptura_ponto_c == "Não" && editarRegistro.afundamento_ponto_c == "Não" && editarRegistro.rasgo_ponto_c == "Não" && editarRegistro.rompimento_ponto_c == "Não" && editarRegistro.prejudique_ponto_c == "Não")
                     {
                         editarRegistro.conforme_c = "C";
                     }
@@ -4270,10 +4275,8 @@ namespace Coleta_Colchao.Controllers
                     }
                     _context.Update(editarRegistro);
                     await _context.SaveChangesAsync();
-
                     TempData["Mensagem"] = "Dados Editado com sucesso.";
                     return RedirectToAction("EnsaioDurabilidade", new { os, orcamento });
-
                 }
             }
             catch (Exception ex)
@@ -4337,6 +4340,10 @@ namespace Coleta_Colchao.Controllers
                     {
                         dados.conforme_b = "C";
                     }
+                    else if (ruptura_ponto_b == "NA")
+                    {
+                        dados.conforme_b = "NA";
+                    }
                     else
                     {
                         dados.conforme_b = "NC";
@@ -4346,6 +4353,10 @@ namespace Coleta_Colchao.Controllers
                     if (ruptura_ponto_c == "Não" && afundamento_ponto_c == "Não" && rasgo_ponto_c == "Não" && rompimento_ponto_c == "Não" && prejudique_ponto_c == "Não")
                     {
                         dados.conforme_c = "C";
+                    }
+                    else if (ruptura_ponto_c == "NA")
+                    {
+                        dados.conforme_c = "NA";
                     }
                     else
                     {
@@ -4407,6 +4418,10 @@ namespace Coleta_Colchao.Controllers
                     {
                         editarRegistro.conforme_b = "C";
                     }
+                    else if (editarRegistro.ruptura_ponto_b == "NA")
+                    {
+                        editarRegistro.conforme_b = "NA";
+                    }
                     else
                     {
                         editarRegistro.conforme_b = "NC";
@@ -4417,6 +4432,10 @@ namespace Coleta_Colchao.Controllers
                     {
                         editarRegistro.conforme_c = "C";
                     }
+                    else if (editarRegistro.ruptura_ponto_c == "NA")
+                    {
+                        editarRegistro.conforme_c = "NA";
+                    }
                     else
                     {
                         editarRegistro.conforme_c = "NC";
@@ -4426,7 +4445,6 @@ namespace Coleta_Colchao.Controllers
 
                     TempData["Mensagem"] = "Dados Editado com sucesso.";
                     return RedirectToAction("EnsaioDurabilidadeEspuma", new { os, orcamento });
-
                 }
             }
             catch (Exception ex)
