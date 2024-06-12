@@ -1119,7 +1119,7 @@ namespace Coleta_Colchao.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> SalvarEnsaio4_3(string os, string orcamento, [Bind("borda_aco,borda_espuma,borda_aco_molejo,borda_espuma_molejo,data_ini,data_term,valor_enc_aco,valor_enc_espuma,valor_enc_aco_molejo,valor_enc_espuma_molejo,man_parale_aco,man_parale_espuma,man_parale_aco_molejo,man_parale_espuma_molejo")] ColetaModel.Ensaio4_3 salvarDados)
+        public async Task<IActionResult> SalvarEnsaio4_3(string os, string orcamento, [Bind("borda_aco,borda_espuma,borda_aco_molejo,borda_espuma_molejo,data_ini,data_term,valor_enc_aco,valor_enc_espuma,valor_enc_aco_molejo,valor_enc_espuma_molejo,man_parale_aco,man_parale_espuma,man_parale_aco_molejo,man_parale_espuma_molejo,pergunta_a,pergunta_b,pergunta_c,pergunta_d")] ColetaModel.Ensaio4_3 salvarDados)
         {
             try
             {
@@ -1142,6 +1142,10 @@ namespace Coleta_Colchao.Controllers
                     string man_parale_espuma_molejo = salvarDados.man_parale_espuma_molejo;
                     string man_parale_espuma = salvarDados.man_parale_espuma;
                     int contem_molejo;
+                    string pergunta_a = salvarDados.pergunta_a;
+                    string pergunta_b = salvarDados.pergunta_b;
+                    string pergunta_c = salvarDados.pergunta_c;
+                    string pergunta_d = salvarDados.pergunta_d;
 
                     if (borda_aco_molejo == "X" || borda_espuma_molejo == "X")
                     {
@@ -1169,7 +1173,11 @@ namespace Coleta_Colchao.Controllers
                         man_parale_aco_molejo = man_parale_aco_molejo,
                         man_parale_espuma_molejo = man_parale_espuma_molejo,
                         man_parale_espuma = man_parale_espuma,
-                        contem_molejo = contem_molejo
+                        contem_molejo = contem_molejo,
+                        pergunta_a = pergunta_a,
+                        pergunta_b = pergunta_b,
+                        pergunta_c = pergunta_c,
+                        pergunta_d = pergunta_d
                     };
 
                     _context.Add(registro);
@@ -1193,6 +1201,10 @@ namespace Coleta_Colchao.Controllers
                     dados.man_parale_aco_molejo = salvarDados.man_parale_aco_molejo;
                     dados.man_parale_espuma_molejo = salvarDados.man_parale_espuma_molejo;
                     dados.man_parale_espuma = salvarDados.man_parale_espuma;
+                    dados.pergunta_a = salvarDados.pergunta_a;
+                    dados.pergunta_b = salvarDados.pergunta_b;
+                    dados.pergunta_c = salvarDados.pergunta_c;
+                    dados.pergunta_d = salvarDados.pergunta_d;
                     int contem_molejo;
 
                     if (dados.borda_aco_molejo == "X" || dados.borda_espuma_molejo == "X")
@@ -4259,6 +4271,10 @@ namespace Coleta_Colchao.Controllers
                     {
                         editarRegistro.conforme_b = "C";
                     }
+                    else if (editarRegistro.suportou_ponto_b == "NA")
+                    {
+                        editarRegistro.conforme_b = "NA";
+                    }
                     else
                     {
                         editarRegistro.conforme_b = "NC";
@@ -4268,6 +4284,10 @@ namespace Coleta_Colchao.Controllers
                     if (editarRegistro.suportou_ponto_c == "Sim" && editarRegistro.ruptura_ponto_c == "Não" && editarRegistro.afundamento_ponto_c == "Não" && editarRegistro.rasgo_ponto_c == "Não" && editarRegistro.rompimento_ponto_c == "Não" && editarRegistro.prejudique_ponto_c == "Não")
                     {
                         editarRegistro.conforme_c = "C";
+                    }
+                    else if (editarRegistro.suportou_ponto_c == "NA")
+                    {
+                        editarRegistro.conforme_c = "NA";
                     }
                     else
                     {

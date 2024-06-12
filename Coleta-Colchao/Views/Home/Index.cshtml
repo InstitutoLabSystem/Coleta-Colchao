@@ -339,6 +339,7 @@
                                 {
                                     @if (ViewBag.Ensaio == "Molas")
                                     {
+
                                         <td>
                                             <a role="button" target="_blank" class="btn btn-success" asp-controller="Coleta" asp-action="EnsaioDurabilidade" asp-route-os="@Model[i].OS" asp-route-orcamento="@Model[i].orcamento">Abrir</a>
                                         </td>
@@ -361,7 +362,6 @@
                                 @if (Model[i].codigo == "DURCCH000000002")
                                 {
                                     @if (ViewBag.Ensaio == "Espuma")
-
                                     {
                                         <td>
                                             <a role="button" target="_blank" class="btn btn-success" asp-controller="Coleta" asp-action="EnsaioBaseEstruturaDurabi" asp-route-os="@Model[i].OS" asp-route-orcamento="@Model[i].orcamento">Abrir</a>
@@ -370,7 +370,15 @@
                                             <a role="button" target="_blank" class="btn btn-success" asp-controller="Coleta" asp-action="EditarIndexEspuma" asp-route-os="@ViewBag.os" asp-route-orcamento="@ViewBag.orcamento">Informações</a>
                                         </td>
                                     }
-
+                                    else
+                                    {
+                                        <td>
+                                            <a role="button" target="_blank" class="btn btn-success" asp-controller="Coleta" asp-action="EnsaioBaseEstruturaDurabi" asp-route-os="@Model[i].OS" asp-route-orcamento="@Model[i].orcamento">Abrir</a>
+                                        </td>
+                                        <td>
+                                            <a role="button" target="_blank" class="btn btn-success" asp-controller="Coleta" asp-action="EditarRegistroMolas" asp-route-os="@ViewBag.os" asp-route-orcamento="@ViewBag.orcamento">Informações</a>
+                                        </td>
+                                    }
                                 }
 
                                 @if (Model[i].codigo == "DNSCCH002000001")
@@ -444,7 +452,7 @@
 
                             </tr>
                         }
-                        @if (ViewBag.estrutura != null)
+                       @*  @if (ViewBag.estrutura != null)
                         {
                             @if (ViewBag.estrutura == "Box Conjugado" || ViewBag.estrutura == "Auxiliar")
                             {
@@ -504,7 +512,7 @@
                                     </td>
                                 </tr>
                             }
-                        }
+                        } *@
                     </table>
                 </div>
             </div>

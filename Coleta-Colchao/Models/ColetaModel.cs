@@ -226,6 +226,10 @@ namespace Coleta_Colchao.Models
             public string? man_parale_espuma_molejo { get; set; }
             public string? executor { get; set; }
             public int contem_molejo { get; set; }
+            public string? pergunta_a { get; set; }
+            public string? pergunta_b { get; set; }
+            public string? pergunta_c { get; set; }
+            public string? pergunta_d { get; set; }
         }
 
         public class Ensaio7_5
