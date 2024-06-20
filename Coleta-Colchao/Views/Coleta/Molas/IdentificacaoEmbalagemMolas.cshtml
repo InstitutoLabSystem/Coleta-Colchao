@@ -26,10 +26,9 @@
             background-repeat: no-repeat;
         }
 
-       .select-altura{
-           height:150px;
-       }
-
+        .select-altura {
+            height: 150px;
+        }
 
     </style>
 
@@ -223,7 +222,9 @@
                 </tr>
                 <tr>
                     <td class="fundo-tabela" colspan="2">
-                        <b>Observação:  Deve utilizar as unidades centímetro (cm) ou milímetro (mm) quando a medida tiver até 100 cm. Quando a medida for maior que 100 cm, ela deve ser expressa  em metros (m).</b>
+                        <b>Nota: A declaração das dimensões a que se refere a alínea e) do item 5.1.4 deste</b>
+                        <br /> <br />
+                        <b>Observação:  Regulamento deve utilizar as unidades centímetro (cm) ou milímetro (mm) quando a medida tiver até 100 cm. Quando a medida for maior que 100 cm, ela deve ser expressa em metros (m). .</b>
                     </td>
                 </tr>
                 <tr>
@@ -391,7 +392,7 @@
                         <td class="esquerda">
                             r)  Para  os  colchões de  molas  que  possuam  revestimentos  do tipo napa,  courvin,  plásticos e emborrachados,  aviso  de  esclarecimento,  em  letras  não  inferiores  a  2,5  mm    de  altura,  em negrito, caixa alta e em coloração que se destaque da cor de fundo da etiqueta, da seguinte forma:  <b>“O  REVESTIMENTO  NÃO  FOI  AVALIADO  PELO  PROCESSO  DE  CRTIFICAÇÃO  DO PRODUTO.”</b>
                         </td>
-                        <td rowspan="2" >
+                        <td rowspan="2">
                             <select class="form-select select-altura" name="conforme_r">
                                 <option selected value="NA"> --- </option>
                                 <option value="C"> C </option>
@@ -413,11 +414,12 @@
                             <p> Altura da letra: <input class="controlador" type="text" name="altura_letra" /></p>
                             <p>
                                 Incerteza (mm) :
-                                <select class="controlador" name="negrito">
+                                <input class="controlador" type="text" name="negrito" value="U = 0,52 mm" readonly/>
+                              @*   <select class="controlador" name="negrito">
                                     <option selected value="NA"> --- </option>
                                     <option value="C"> C </option>
                                     <option value="NC"> NC </option>
-                                </select>
+                                </select> *@
                             </p>
                             @*  <p>
                     Esta em caixa alta :
@@ -434,7 +436,7 @@
                     <td class="esquerda">
                         s)  Caso o colchão seja embalado com material plástico, a embalagem deve ser visivelmente marcada,  em  letras  não  inferiores  a  5  mm  de  altura  e  com  destaque  em  negrito,  com  o seguinte  aviso: <b>“PARA  EVITAR  O  PERIGO  DE  ASFIXIA,  MANTER  ESTA  EMBALAGEM  PLÁSTICA FORA DO ALCANCE DE CRIANÇAS”</b> .
                     </td>
-                    <td rowspan="2" >
+                    <td rowspan="2">
                         <select class="form-select  select-altura" name="conforme_s">
                             <option selected value="NA"> --- </option>
                             <option value="C"> C </option>
@@ -444,7 +446,7 @@
 
                 </tr>
                 <tr>
-                    <td class="esquerda"> 
+                    <td class="esquerda">
                         @*   <p>
                     Contém a advertência :
                     <select class="controlador" name="contem_advertencia_mat">
@@ -464,11 +466,12 @@
                     </p> *@
                         <p>
                             Incerteza (mm)  :
-                            <select class="controlador" name="caixa_alta_mat">
+                            <input class="controlador" type="text" name="caixa_alta_mat" value="U = 0,52 mm" readonly />
+                           @*  <select class="controlador" name="caixa_alta_mat">
                                 <option selected value="NA"> --- </option>
                                 <option value="C"> C </option>
                                 <option value="NC"> NC </option>
-                            </select>
+                            </select> *@
                         </p>
                     </td>
                 </tr>
@@ -567,11 +570,12 @@
                     </p> *@
                         <p>
                             Incerteza (mm) :
-                            <select class="controlador" name="caixa_alta_6_2">
+                            <input class="controlador" type="text" name="caixa_alta_6_2" value="U = 0,52 mm" />
+                           @*  <select class="controlador" name="caixa_alta_6_2">
                                 <option selected value="NA"> --- </option>
                                 <option value="C"> C </option>
                                 <option value="NC"> NC </option>
-                            </select>
+                            </select> *@
                         </p>
                     </td>
                 </tr>
@@ -808,7 +812,9 @@
                 </tr>
                 <tr>
                     <td class="fundo-tabela" colspan="2">
-                        <b>Observação:  Deve utilizar as unidades centímetro (cm) ou milímetro (mm) quando a medida tiver até 100 cm. Quando a medida for maior que 100 cm, ela deve ser expressa  em metros (m).</b>
+                        <b>Nota: A declaração das dimensões a que se refere a alínea e) do item 5.1.4 deste</b>
+                        <br /> <br />
+                        <b>Observação:  Regulamento deve utilizar as unidades centímetro (cm) ou milímetro (mm) quando a medida tiver até 100 cm. Quando a medida for maior que 100 cm, ela deve ser expressa em metros (m). </b>
                     </td>
                 </tr>
                 <tr>
@@ -1012,12 +1018,13 @@
                             <p> Altura da letra: <input class="controlador" type="text" name="altura_letra" value="@Model.altura_letra" /></p>
                             <p>
                                 Incerteza (mm) :
-                                <select class="controlador" name="negrito">
+                                <input class="controlador" type="text" name="negrito" value="U = 0,52 mm" readonly />
+                               @*  <select class="controlador" name="negrito">
                                     <option>@Model.negrito</option>
                                     <option value="NA"> --- </option>
                                     <option value="C"> C </option>
                                     <option value="NC"> NC </option>
-                                </select>
+                                </select> *@
                             </p>
                             @*  <p>
                     Esta em caixa alta :
@@ -1065,12 +1072,13 @@
                     </p> *@
                         <p>
                             Incerteza (mm)  :
-                            <select class="controlador" name="caixa_alta_mat">
+                            <input class="controlador" type="text" name="caixa_alta_mat" value="U = 0,52 mm" readonly />
+                         @*    <select class="controlador" name="caixa_alta_mat">
                                 <option> @Model.caixa_alta_mat </option>
                                 <option value="NA"> --- </option>
                                 <option value="C"> C </option>
                                 <option value="NC"> NC </option>
-                            </select>
+                            </select> *@
                         </p>
                     </td>
                 </tr>
@@ -1144,7 +1152,7 @@
                     <td class="fundo-tabela">
                         6.2 - As instruções de uso devem conter o seguinte texto: “IMPORTANTE LER COM ATENÇÃO E GUARDAR PARA EVENTUAIS CONSULTAS”, em letras não inferiores a 5 mm de altura e com destaque em negrito.
                     </td>
-                    <td rowspan="2" >
+                    <td rowspan="2">
                         <select class="form-select select-altura" name="conforme_6_2">
                             <option> @Model.conforme_6_2 </option>
                             <option value="NA"> --- </option>
@@ -1174,12 +1182,13 @@
                     </p> *@
                         <p>
                             Incerteza (mm) :
-                            <select class="controlador" name="caixa_alta_6_2">
+                            <input class="controlador" type="text" name="caixa_alta_6_2" value="@Model.caixa_alta_6_2" />
+                           @*  <select class="controlador" name="caixa_alta_6_2">
                                 <option> @Model.caixa_alta_6_2 </option>
                                 <option value="NA"> --- </option>
                                 <option value="C"> C </option>
                                 <option value="NC"> NC </option>
-                            </select>
+                            </select> *@
                         </p>
                     </td>
                 </tr>

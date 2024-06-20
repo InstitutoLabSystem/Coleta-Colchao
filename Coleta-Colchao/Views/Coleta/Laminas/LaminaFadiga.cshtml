@@ -16,13 +16,13 @@
     <title>FADIGA DINÂMICA</title>
     <style>
         /*    .controlador-conforme {
-                                                                                                                                                                                                                                    padding: 5px;
-                                                                                                                                                                                                                                    border-color: gray;
-                                                                                                                                                                                                                                    border-radius: 5px;
-                                                                                                                                                                                                                                    box-sizing: border-box;
-                                                                                                                                                                                                                                    height: 500px;
-                                                                                                                                                                                                                                    width: 100px;
-                                                                                                                                                                                                                                    } */
+                                                                                                                                                                                                                                            padding: 5px;
+                                                                                                                                                                                                                                            border-color: gray;
+                                                                                                                                                                                                                                            border-radius: 5px;
+                                                                                                                                                                                                                                            box-sizing: border-box;
+                                                                                                                                                                                                                                            height: 500px;
+                                                                                                                                                                                                                                            width: 100px;
+                                                                                                                                                                                                                                            } */
 
         input {
             text-align: center;
@@ -87,13 +87,68 @@
 
             <tr>
                 <td>
-                    Separar 3 corpos de prova e realizar as medições das seguintes dimesões: (Largura x comprimento x espessura)
+                    Separar 3 corpos de prova e realizar as medições das seguintes dimesões: (Largura 380 ±10mm x comprimento 380±10mm x altura 50±2mm).
                 </td>
             </tr>
             <tr>
                 <td>
                     <table class="tables table-bordered border-secondary  table-sm">
+
+                        <tr class="fundo-tabela">
+                            <td colspan="10">
+                                - Temperatura da execução do ensaio  (23 ± 2) °C, sem necessidade de controle de umidade.
+                            </td>
+                        </tr>
+                        <tr class="fundo-tabela">
+                            <td colspan="2">Data do acondicionamento</td>
+                            <td colspan="2">Horario do acondicionamento</td>
+                            <td colspan="2">Temperatura encontrada</td>
+                            <td colspan="2">umidade</td>
+                            <td colspan="2">IM</td>
+                        </tr>
                         <tr>
+                            <td>Inicio:</td>
+                            @if (Model == null)
+                            {
+                                <td><input asp-for="acond_inicio" class="form-control" type="date" /></td>
+                            }
+                            else
+                            {
+                                <td><input asp-for="acond_inicio" class="form-control" type="text" /></td>
+                            }
+                            <td>Inicio:</td>
+                            <td><input asp-for="hora_inicio" class="form-control" type="time" /></td>
+                            <td>Min:</td>
+                            <td><input asp-for="temp_inicio" class="form-control" /></td>
+                            <td>Inicio:</td>
+                            <td><input asp-for="umidade_inicio" class="form-control" /></td>
+                            <td rowspan="2"><input asp-for="im" class="form-control" style="height:80px;" /></td>
+                        </tr>
+                        <tr>
+
+                            <td>Final:</td>
+                            @if (Model == null)
+                            {
+                                <td><input asp-for="acond_final" class="form-control" type="date" /></td>
+                            }
+                            else
+                            {
+                                <td><input asp-for="acond_final" class="form-control" type="text" /></td>
+                            }
+                            <td>Final:</td>
+                            <td><input asp-for="hora_final" class="form-control" type="time" /></td>
+                            <td>Max:</td>
+                            <td><input asp-for="temp_final" class="form-control" /></td>
+                            <td>Final:</td>
+                            <td><input asp-for="umidade_final" class="form-control" /></td>
+                        </tr>
+                        <tr>
+                            <td colspan="4">Responsavel</td>
+                            <td colspan="5"><input asp-for="responsavel_cond" class="form-control" /></td>
+                        </tr>
+                    </table>
+                    <br />
+                    <table class="tables table-bordered border-secondary  table-sm">
                         <tr>
                             <td class="fundo-tabela">Densidade (kg/m³)</td>
                             <td><input type="text" class="form-control" asp-for="densidade" id="densidade" /></td>
@@ -111,184 +166,6 @@
                                 </select>
                             </td>
                         </tr>
-                        <tr class="fundo-tabela">
-                            <td rowspan="6">---</td>
-                            <td> Amostra 1º</td>
-                            <td> Amostra 2º</td>
-                            <td> Amostra 3º</td>
-                        </tr>
-                        <tr class="fundo-tabela">
-                            <td>Largura (mm)</td>
-                            <td>Largura (mm)</td>
-                            <td>Largura (mm)</td>
-                        </tr>
-                        <tr>
-                                @if (Model == null)
-                                {
-                                <td><input type="text" class="form-control" asp-for="lar_amostra_um_um" value="@ViewBag.lar_amostra_um_um" /></td>
-                                <td><input type="text" class="form-control" asp-for="lar_amostra_dois_um" value="@ViewBag.lar_amostra_dois_um" /></td>
-                                <td><input type="text" class="form-control" asp-for="lar_amostra_tres_um" value="@ViewBag.lar_amostra_tres_um" /></td>
-                                }
-                                else
-                                {
-
-                                }
-                        </tr>
-                        <tr>
-                                @if (Model == null)
-                                {
-                                <td><input type="text" class="form-control" asp-for="lar_amostra_um_dois" value="@ViewBag.lar_amostra_um_dois" /></td>
-                                <td><input type="text" class="form-control" asp-for="lar_amostra_dois_dois" value="@ViewBag.lar_amostra_dois_dois" /></td>
-                                <td><input type="text" class="form-control" asp-for="lar_amostra_tres_dois" value="@ViewBag.lar_amostra_tres_dois" /></td>
-                                }
-                                else
-                                {
-                                <td><input type="text" class="form-control" asp-for="lar_amostra_um_dois" /></td>
-                                <td><input type="text" class="form-control" asp-for="lar_amostra_dois_dois" /></td>
-                                <td><input type="text" class="form-control" asp-for="lar_amostra_tres_dois" /></td>
-                                }
-
-                        </tr>
-                        <tr>
-                                @if (Model == null)
-                                {
-                                <td><input type="text" class="form-control" asp-for="lar_amostra_um_tres" value="@ViewBag.lar_amostra_um_tres" /></td>
-                                <td><input type="text" class="form-control" asp-for="lar_amostra_dois_tres" value="@ViewBag.lar_amostra_dois_tres" /></td>
-                                <td><input type="text" class="form-control" asp-for="lar_amostra_tres_tres" value="@ViewBag.lar_amostra_tres_tres" /></td>
-                                }
-                                else
-                                {
-                                <td><input type="text" class="form-control" asp-for="lar_amostra_um_tres" /></td>
-                                <td><input type="text" class="form-control" asp-for="lar_amostra_dois_tres" /></td>
-                                <td><input type="text" class="form-control" asp-for="lar_amostra_tres_tres" /></td>
-                                }
-
-                        </tr>
-                        <tr>
-                                @if (Model == null)
-                                {
-                                <td><input type="text" class="form-control" asp-for="lar_amostra_um_quatro" value="@ViewBag.lar_amostra_um_quatro" /></td>
-                                <td><input type="text" class="form-control" asp-for="lar_amostra_dois_quatro" value="@ViewBag.lar_amostra_dois_quatro" /></td>
-                                <td><input type="text" class="form-control" asp-for="lar_amostra_tres_quatro" value="@ViewBag.lar_amostra_tres_quatro" /></td>
-                                }
-                                else
-                                {
-                                <td><input type="text" class="form-control" asp-for="lar_amostra_um_quatro" /></td>
-                                <td><input type="text" class="form-control" asp-for="lar_amostra_dois_quatro" /></td>
-                                <td><input type="text" class="form-control" asp-for="lar_amostra_tres_quatro" /></td>
-                                }
-
-                        </tr>
-                        <tr>
-                            <td>Media:</td>
-                                @if (Model == null)
-                                {
-                                <td><input type="text" class="form-control" readonly asp-for="lar_media_um" value="@ViewBag.lar_media_um" /></td>
-                                <td><input type="text" class="form-control" readonly asp-for="lar_media_dois" value="@ViewBag.lar_media_dois" /></td>
-                                <td><input type="text" class="form-control" readonly asp-for="lar_media_tres" value="@ViewBag.lar_media_tres" /></td>
-                                }
-                                else
-                                {
-                                <td><input type="text" class="form-control" readonly asp-for="lar_media_um" /></td>
-                                <td><input type="text" class="form-control" readonly asp-for="lar_media_dois" /></td>
-                                <td><input type="text" class="form-control" readonly asp-for="lar_media_tres" /></td>
-                                }
-                        </tr>
-                    </table>
-                    <br />
-                    <table class="tables table-bordered border-secondary  table-sm">
-
-                        <tr class="fundo-tabela">
-                            <td rowspan="6">---</td>
-                            <td> Amostra 1º</td>
-                            <td> Amostra 2º</td>
-                            <td> Amostra 3º</td>
-                        </tr>
-                        <tr class="fundo-tabela">
-                            <td>Comprimento (mm)</td>
-                            <td>Comprimento (mm)</td>
-                            <td>Comprimento (mm)</td>
-                        </tr>
-                        <tr>
-                            @if (Model == null)
-                            {
-                                <td><input type="text" class="form-control" asp-for="comp_amostra_um_um" value="@ViewBag.comp_amostra_um_um" /></td>
-                                <td><input type="text" class="form-control" asp-for="comp_amostra_dois_um" value="@ViewBag.comp_amostra_dois_um" /></td>
-                                <td><input type="text" class="form-control" asp-for="comp_amostra_tres_um" value="@ViewBag.comp_amostra_tres_um" /></td>
-                            }
-                            else
-                            {
-                                <td><input type="text" class="form-control" asp-for="comp_amostra_um_um" /></td>
-                                <td><input type="text" class="form-control" asp-for="comp_amostra_dois_um" /></td>
-                                <td><input type="text" class="form-control" asp-for="comp_amostra_tres_um" /></td>
-                            }
-
-                        </tr>
-                        <tr>
-                            @if (Model == null)
-                            {
-                                <td><input type="text" class="form-control" asp-for="comp_amostra_um_dois" value="@ViewBag.comp_amostra_um_dois" /></td>
-                                <td><input type="text" class="form-control" asp-for="comp_amostra_dois_dois" value="@ViewBag.comp_amostra_dois_dois" /></td>
-                                <td><input type="text" class="form-control" asp-for="comp_amostra_tres_dois" value="@ViewBag.comp_amostra_tres_dois" /></td>
-                            }
-                            else
-                            {
-                                <td><input type="text" class="form-control" asp-for="comp_amostra_um_dois" /></td>
-                                <td><input type="text" class="form-control" asp-for="comp_amostra_dois_dois" /></td>
-                                <td><input type="text" class="form-control" asp-for="comp_amostra_tres_dois" /></td>
-                            }
-
-                        </tr>
-                        <tr>
-                            @if (Model == null)
-                            {
-                                <td><input type="text" class="form-control" asp-for="comp_amostra_um_tres" value="@ViewBag.comp_amostra_um_tres" /></td>
-                                <td><input type="text" class="form-control" asp-for="comp_amostra_dois_tres" value="@ViewBag.comp_amostra_dois_tres" /></td>
-                                <td><input type="text" class="form-control" asp-for="comp_amostra_tres_tres" value="@ViewBag.comp_amostra_tres_tres" /></td>
-                            }
-                            else
-                            {
-                                <td><input type="text" class="form-control" asp-for="comp_amostra_um_tres" /></td>
-                                <td><input type="text" class="form-control" asp-for="comp_amostra_dois_tres" /></td>
-                                <td><input type="text" class="form-control" asp-for="comp_amostra_tres_tres" /></td>
-                            }
-
-                        </tr>
-                        <tr>
-                            @if (Model == null)
-                            {
-                                <td><input type="text" class="form-control" asp-for="comp_amostra_um_quatro" value="@ViewBag.comp_amostra_um_quatro" /></td>
-                                <td><input type="text" class="form-control" asp-for="comp_amostra_dois_quatro" value="@ViewBag.comp_amostra_dois_quatro" /></td>
-                                <td><input type="text" class="form-control" asp-for="comp_amostra_tres_quatro" value="@ViewBag.comp_amostra_tres_quatro" /></td>
-                            }
-                            else
-                            {
-                                <td><input type="text" class="form-control" asp-for="comp_amostra_um_quatro" /></td>
-                                <td><input type="text" class="form-control" asp-for="comp_amostra_dois_quatro" /></td>
-                                <td><input type="text" class="form-control" asp-for="comp_amostra_tres_quatro" /></td>
-                            }
-
-                        </tr>
-                        <tr>
-                            <td>Media:</td>
-                            @if (Model == null)
-                            {
-                                <td><input type="text" class="form-control" readonly asp-for="comp_media_um" value="@ViewBag.comp_media_um" /></td>
-                                <td><input type="text" class="form-control" readonly asp-for="comp_media_dois" value="@ViewBag.comp_media_dois" /></td>
-                                <td><input type="text" class="form-control" readonly asp-for="comp_media_tres" value="@ViewBag.comp_media_tres" /></td>
-                            }
-                            else
-                            {
-                                <td><input type="text" class="form-control" readonly asp-for="comp_media_um" /></td>
-                                <td><input type="text" class="form-control" readonly asp-for="comp_media_dois" /></td>
-                                <td><input type="text" class="form-control" readonly asp-for="comp_media_tres" /></td>
-                            }
-
-                        </tr>
-                    </table>
-                    <br />
-                    <table class="tables table-bordered border-secondary  table-sm">
-
                         <tr class="fundo-tabela">
                             <td rowspan="10">---</td>
                             <td> Amostra 1º</td>
@@ -425,15 +302,15 @@
                             <td>Media:</td>
                             @if (Model == null)
                             {
-                                <td><input type="text" class="form-control" readonly asp-for="comp_media_um" value="@ViewBag.esp_media_um" /></td>
-                                <td><input type="text" class="form-control" readonly asp-for="comp_media_dois" value="@ViewBag.esp_media_dois" /></td>
-                                <td><input type="text" class="form-control" readonly asp-for="comp_media_tres" value="@ViewBag.esp_media_tres" /></td>
+                                <td><input type="text" class="form-control" readonly asp-for="esp_ini_media_um" value="@ViewBag.esp_media_um" /></td>
+                                <td><input type="text" class="form-control" readonly asp-for="esp_ini_media_dois" value="@ViewBag.esp_media_dois" /></td>
+                                <td><input type="text" class="form-control" readonly asp-for="esp_ini_media_tres" value="@ViewBag.esp_media_tres" /></td>
                             }
                             else
                             {
-                                <td><input type="text" class="form-control" readonly asp-for="comp_media_um" /></td>
-                                <td><input type="text" class="form-control" readonly asp-for="comp_media_dois" /></td>
-                                <td><input type="text" class="form-control" readonly asp-for="comp_media_tres" /></td>
+                                <td><input type="text" class="form-control" readonly asp-for="esp_ini_media_um" /></td>
+                                <td><input type="text" class="form-control" readonly asp-for="esp_ini_media_dois" /></td>
+                                <td><input type="text" class="form-control" readonly asp-for="esp_ini_media_tres" /></td>
                             }
 
                         </tr>
@@ -502,14 +379,12 @@
             </tr>
             <tr>
                 <td>
-                    Após o término do ensaio, deixar as amostras repousar por um perído entre 10 minutos até 30 minutos e realizar a medição da espessura final e a força de Indetação.
-
+                    Após o término do ensaio, Deve-se retirar o corpo de prova do aparelho, e deixá-lo em repouso a (23 ± 2) °C por no mínimo 10 min e no máximo 30 min.
                 </td>
             </tr>
             <tr>
                 <td>
                     <table class="tables table-bordered border-secondary  table-sm">
-
                         <tr class="fundo-tabela">
                             <td rowspan="10">---</td>
                             <td> Amostra 1º</td>
@@ -763,6 +638,6 @@
         mostrarResultados(tipo_espuma_2.value, densidade.value);
 
     </script>
-  
+
 </body>
 </html>

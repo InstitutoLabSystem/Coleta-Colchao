@@ -89,7 +89,7 @@
                             <tr class="fundo-tabela">
                                 <td>Pontos De Medição</td>
                                 <td>Comprimento (cm)</td>
-                                <td class="teste">
+                                <td class="teste" colspan="4">
                                     Comprimento especificado (cm)
                                 </td>
                             </tr>
@@ -97,16 +97,16 @@
                                 <td>
                                     1°
                                 </td>
-                                <td>
+                                <td colspan="2">
                                     <input class="form-control" type="text" name="comp_med_1" />
                                 </td>
-                                <td class="altura-input-centralizar" rowspan="4"><input style="margin-top:20px;" class="form-control altura-input altura-inputs" type="text" name="comp_espe" /></td>
+                                <td class="altura-input-centralizar" rowspan="3" colspan="4"><input style="margin-top:20px; margin-bottom:20px;" class="form-control altura-input altura-inputs" type="text" name="comp_espe" value="@ViewBag.comprimento" readonly /></td>
                             </tr>
                             <tr>
                                 <td>
                                     2°
                                 </td>
-                                <td>
+                                <td colspan="2">
                                     <input class="form-control" type="text" name="comp_med_2" />
                                 </td>
                             </tr>
@@ -114,8 +114,20 @@
                                 <td>
                                     3°
                                 </td>
-                                <td>
+                                <td colspan="2">
                                     <input class="form-control" type="text" name="comp_med_3" />
+                                </td>
+                            </tr>
+                            <tr>
+                                @{
+                                    double minimo_comp = double.Parse(Convert.ToString(ViewBag.comprimento)) - 1.5;
+                                    double maximo_comp = double.Parse(Convert.ToString(ViewBag.comprimento)) + 1.5;
+                                }
+                                <td>Minimo:</td>
+                                <td>@minimo_comp</td>
+                                <td>Maximo:</td>
+                                <td>
+                                    @maximo_comp
                                 </td>
                             </tr>
                             <tr>
@@ -149,7 +161,7 @@
                             <tr class="fundo-tabela">
                                 <td>Pontos De Medição</td>
                                 <td>Largura (cm)</td>
-                                <td>
+                                <td colspan="2">
                                     Largura especificado (cm)
                                 </td>
                             </tr>
@@ -157,16 +169,16 @@
                                 <td>
                                     1°
                                 </td>
-                                <td>
+                                <td colspan="2">
                                     <input class="form-control" type="text" name="larg_med_1" />
                                 </td>
-                                <td class="altura-input-centralizar" rowspan="4"><input style="margin-top:20px;" class="form-control altura-input altura-inputs" type="text" name="larg_espe" /></td>
+                                <td class="altura-input-centralizar" rowspan="3"><input style="margin-top:20px; margin-bottom:20px;" class="form-control altura-input altura-inputs" type="text" name="larg_espe" value="@ViewBag.largura" readonly /></td>
                             </tr>
                             <tr>
-                                <td>
+                                <td >
                                     2°
                                 </td>
-                                <td>
+                                <td colspan="2">
                                     <input class="form-control" type="text" name="larg_med_2" />
                                 </td>
                             </tr>
@@ -174,8 +186,20 @@
                                 <td>
                                     3°
                                 </td>
-                                <td>
+                                <td colspan="2">
                                     <input class="form-control" type="text" name="larg_med_3" />
+                                </td>
+                            </tr>
+                            <tr>
+                                @{
+                                    double minimo_larg = double.Parse(Convert.ToString(ViewBag.largura)) - 1.5;
+                                    double maximo_larg = double.Parse(Convert.ToString(ViewBag.largura)) + 1.5;
+                                }
+                                <td>Minimo:</td>
+                                <td>@minimo_larg</td>
+                                <td>Maximo:</td>
+                                <td>
+                                    @maximo_larg
                                 </td>
                             </tr>
                             <tr>
@@ -208,7 +232,7 @@
                             <tr class="fundo-tabela">
                                 <td>Pontos De Medição</td>
                                 <td>Altura (cm)</td>
-                                <td>
+                                <td colspan="2">
                                     Altura especificado (cm)
                                 </td>
                             </tr>
@@ -216,25 +240,37 @@
                                 <td>
                                     1°
                                 </td>
-                                <td>
+                                <td colspan="2">
                                     <input class="form-control" type="text" name="alt_med_1" />
                                 </td>
-                                <td class="altura-input-centralizar" rowspan="4"><input style="margin-top:20px;" class="form-control altura-input altura-inputs" type="text" name="alt_espe" /></td>
+                                <td class="altura-input-centralizar" rowspan="3"><input style="margin-top:20px; margin-bottom:20px;" class="form-control altura-input altura-inputs" type="text" name="alt_espe" value="@ViewBag.altura" readonly /></td>
                             </tr>
                             <tr>
                                 <td>
                                     2°
                                 </td>
-                                <td>
+                                <td colspan="2">
                                     <input class="form-control" type="text" name="alt_med_2" />
                                 </td>
                             </tr>
                             <tr>
-                                <td>
+                                <td >
                                     3°
                                 </td>
-                                <td>
+                                <td colspan="2">
                                     <input class="form-control" type="text" name="alt_med_3" />
+                                </td>
+                            </tr>
+                            <tr>
+                                @{
+                                    double minimo_altura = double.Parse(Convert.ToString(ViewBag.altura)) - 1.5;
+                                    double maximo_altura = double.Parse(Convert.ToString(ViewBag.altura)) + 1.5;
+                                }
+                                <td>Minimo:</td>
+                                <td>@minimo_altura</td>
+                                <td>Maximo:</td>
+                                <td>
+                                    @maximo_altura
                                 </td>
                             </tr>
                             <tr>
@@ -251,60 +287,63 @@
                 </tr>
             </table>
             <br />
-            <table class="tables table-bordered border-secondary  table-sm">
-                <tr class="fundo-tabela">
-                    <td>Matelassê </td>
-                </tr>
-                <tr>
-                    <td>
-                        Existe Matelassê?
-                        <select id="tem_metalasse" name="tem_metalasse" class="controlador">
-                            <option>Escolha</option>
-                            <option value="Sim">Sim</option>
-                            <option value="Não">Não</option>
-                        </select>
-                    </td>
+            if (ViewBag.metalasse == "Sim")
+            {
+                <table class="tables table-bordered border-secondary  table-sm">
+                    <tr class="fundo-tabela">
+                        <td>Matelassê </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            Existe Matelassê?
+                            <select id="tem_metalasse" name="tem_metalasse" class="controlador">
+                                <option>Escolha</option>
+                                <option value="Sim">Sim</option>
+                                <option value="Não">Não</option>
+                            </select>
+                        </td>
 
-                </tr>
-                <tr id="tirar_quant_metalasse">
-                    <td>
-                        total Matelassê?
-                        <select name="total_metalasse" id="total_metalasse" class="controlador">
-                            <option value="1">1</option>
-                            <option value="2">2</option>
-                        </select>
-                    </td>
-                </tr>
-                <tr id="nao_tem_metalasse">
-                    <td>
-                        <table class="tables table-bordered border-secondary  table-sm">
-                            <tr class="fundo-tabela">
-                                <td>Tipo de espuma</td>
-                                <td>Espessura mínima especificada (mm)</td>
-                            </tr>
-                            <tr id="excluir_input_1">
-                                <td>
-                                    <select class="controlador" name="mate_tipo_espuma_1" style="width:300px;">
-                                        <option></option>
-                                        <option value="Espuma do Matelassê">Espuma do Matelassê </option>
-                                    </select>
-                                </td>
-                                <td><input class="form-control" type="text" name="mata_esp_tipo_esp_1" /></td>
-                            </tr>
-                            <tr id="excluir_input_2">
-                                <td>
-                                    <select class="controlador" name="mate_tipo_espuma_2" style="width:300px;">
-                                        <option></option>
-                                        <option value="Espuma do Matelassê">Espuma do Matelassê </option>
-                                    </select>
-                                </td>
-                                <td><input class="form-control" type="text" name="mata_esp_tipo_esp_2" /></td>
-                            </tr>
-                        </table>
-                    </td>
-                </tr>
-                <Br />
-            </table>
+                    </tr>
+                    <tr id="tirar_quant_metalasse">
+                        <td>
+                            total Matelassê?
+                            <select name="total_metalasse" id="total_metalasse" class="controlador">
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr id="nao_tem_metalasse">
+                        <td>
+                            <table class="tables table-bordered border-secondary  table-sm">
+                                <tr class="fundo-tabela">
+                                    <td>Tipo de espuma</td>
+                                    <td>Espessura mínima especificada (mm)</td>
+                                </tr>
+                                <tr id="excluir_input_1">
+                                    <td>
+                                        <select class="controlador" name="mate_tipo_espuma_1" style="width:300px;">
+                                            <option></option>
+                                            <option value="Espuma do Matelassê">Espuma do Matelassê </option>
+                                        </select>
+                                    </td>
+                                    <td><input class="form-control" type="text" name="mata_esp_tipo_esp_1" /></td>
+                                </tr>
+                                <tr id="excluir_input_2">
+                                    <td>
+                                        <select class="controlador" name="mate_tipo_espuma_2" style="width:300px;">
+                                            <option></option>
+                                            <option value="Espuma do Matelassê">Espuma do Matelassê </option>
+                                        </select>
+                                    </td>
+                                    <td><input class="form-control" type="text" name="mata_esp_tipo_esp_2" /></td>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+                    <Br />
+                </table>
+            }
             <br />
             <table class="tables table-bordered border-secondary  table-sm">
                 <tr class="fundo-tabela">
@@ -536,7 +575,7 @@
                             <tr class="fundo-tabela">
                                 <td>Pontos De Medição</td>
                                 <td>Comprimento (cm)</td>
-                                <td>
+                                <td colspan="2">
                                     Comprimento especificado (cm)
                                 </td>
                             </tr>
@@ -544,16 +583,16 @@
                                 <td>
                                     1°
                                 </td>
-                                <td>
+                                <td colspan="2">
                                     <input class="form-control" type="text" name="comp_med_1" value="@Model.comp_med_1" />
                                 </td>
-                                <td class="altura-input-centralizar" rowspan="4"><input style="margin-top:20px;" class="form-control altura-input altura-inputs" type="text" name="comp_espe" value="@Model.comp_espe" /></td>
+                                <td class="altura-input-centralizar" rowspan="3"><input style="margin-top:20px; margin-bottom:20px;" class="form-control altura-input altura-inputs" type="text" name="comp_espe" value="@Model.comp_espe" readonly /></td>
                             </tr>
                             <tr>
                                 <td>
                                     2°
                                 </td>
-                                <td>
+                                <td colspan="2">
                                     <input class="form-control" type="text" name="comp_med_2" value="@Model.comp_med_2" />
                                 </td>
                             </tr>
@@ -561,8 +600,20 @@
                                 <td>
                                     3°
                                 </td>
-                                <td>
+                                <td colspan="2">
                                     <input class="form-control" type="text" name="comp_med_3" value="@Model.comp_med_3" />
+                                </td>
+                            </tr>
+                            <tr>
+                                @{
+                                    double minimo_comp = double.Parse(Convert.ToString(ViewBag.comprimento)) - 1.5;
+                                    double maximo_comp = double.Parse(Convert.ToString(ViewBag.comprimento)) + 1.5;
+                                }
+                                <td>Minimo:</td>
+                                <td>@minimo_comp</td>
+                                <td>Maximo:</td>
+                                <td>
+                                    @maximo_comp
                                 </td>
                             </tr>
                             <tr>
@@ -596,7 +647,7 @@
                             <tr class="fundo-tabela">
                                 <td>Pontos De Medição</td>
                                 <td>Largura (cm)</td>
-                                <td>
+                                <td colspan="2">
                                     Largura especificado (cm)
                                 </td>
                             </tr>
@@ -604,16 +655,16 @@
                                 <td>
                                     1°
                                 </td>
-                                <td>
+                                <td colspan="2">
                                     <input class="form-control" type="text" name="larg_med_1" value="@Model.larg_med_1" />
                                 </td>
-                                <td class="altura-input-centralizar" rowspan="4"><input style="margin-top:20px;" class="form-control altura-input altura-inputs" type="text" name="larg_espe" value="@Model.larg_espe" /></td>
+                                <td class="altura-input-centralizar" rowspan="3"><input style="margin-top:20px; margin-bottom:20px;" class="form-control altura-input altura-inputs" type="text" name="larg_espe" value="@Model.larg_espe" readonly /></td>
                             </tr>
                             <tr>
                                 <td>
                                     2°
                                 </td>
-                                <td>
+                                <td colspan="2">
                                     <input class="form-control" type="text" name="larg_med_2" value="@Model.larg_med_2" />
                                 </td>
                             </tr>
@@ -621,8 +672,20 @@
                                 <td>
                                     3°
                                 </td>
-                                <td>
+                                <td colspan="2">
                                     <input class="form-control" type="text" name="larg_med_3" value="@Model.larg_med_3" />
+                                </td>
+                            </tr>
+                            <tr>
+                                @{
+                                    double minimo_larg = double.Parse(Convert.ToString(ViewBag.largura)) - 1.5;
+                                    double maximo_larg = double.Parse(Convert.ToString(ViewBag.largura)) + 1.5;
+                                }
+                                <td>Minimo:</td>
+                                <td>@minimo_larg</td>
+                                <td>Maximo:</td>
+                                <td>
+                                    @maximo_larg
                                 </td>
                             </tr>
                             <tr>
@@ -655,7 +718,7 @@
                             <tr class="fundo-tabela">
                                 <td>Pontos De Medição</td>
                                 <td>Altura (cm)</td>
-                                <td>
+                                <td colspan="2">
                                     Altura especificado (cm)
                                 </td>
                             </tr>
@@ -663,16 +726,16 @@
                                 <td>
                                     1°
                                 </td>
-                                <td>
+                                <td colspan ="2">
                                     <input class="form-control" type="text" name="alt_med_1" value="@Model.alt_med_1" />
                                 </td>
-                                <td class="altura-input-centralizar" rowspan="4"><input style="margin-top:20px;" class="form-control altura-input altura-inputs" type="text" name="alt_espe" value="@Model.alt_espe" /></td>
+                                <td class="altura-input-centralizar" rowspan="3"><input style="margin-top:20px; margin-bottom:20px;" class="form-control altura-input altura-inputs" type="text" name="alt_espe" value="@Model.alt_espe" readonly /></td>
                             </tr>
                             <tr>
                                 <td>
                                     2°
                                 </td>
-                                <td>
+                                <td colspan="2">
                                     <input class="form-control" type="text" name="alt_med_2" value="@Model.alt_med_2" />
                                 </td>
                             </tr>
@@ -680,8 +743,20 @@
                                 <td>
                                     3°
                                 </td>
-                                <td>
+                                <td colspan="2">
                                     <input class="form-control" type="text" name="alt_med_3" value="@Model.alt_med_3" />
+                                </td>
+                            </tr>
+                            <tr>
+                                @{
+                                    double minimo_altura = double.Parse(Convert.ToString(ViewBag.altura)) - 1.5;
+                                    double maximo_altura = double.Parse(Convert.ToString(ViewBag.altura)) + 1.5;
+                                }
+                                <td>Minimo:</td>
+                                <td>@minimo_altura</td>
+                                <td>Maximo:</td>
+                                <td>
+                                    @maximo_altura
                                 </td>
                             </tr>
                             <tr>
@@ -698,64 +773,68 @@
                 </tr>
             </table>
             <br />
-            <table class="tables table-bordered border-secondary  table-sm">
-                <tr class="fundo-tabela">
-                    <td>Matelassê </td>
-                </tr>
-                <tr>
-                    <td>
-                        Existe Matelassê?
-                        <select id="tem_metalasse" name="tem_metalasse" class="controlador">
-                            <option>@Model.tem_metalasse</option>
-                            <option value="Sim">Sim</option>
-                            <option value="Não">Não</option>
-                        </select>
-                    </td>
+            @if (ViewBag.metalasse == "Sim")
+            {
+                <table class="tables table-bordered border-secondary  table-sm">
+                    <tr class="fundo-tabela">
+                        <td>Matelassê </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            Existe Matelassê?
+                            <select id="tem_metalasse" name="tem_metalasse" class="controlador">
+                                <option>@Model.tem_metalasse</option>
+                                <option value="Sim">Sim</option>
+                                <option value="Não">Não</option>
+                            </select>
+                        </td>
 
-                </tr>
-                <tr id="tirar_quant_metalasse">
-                    <td>
-                        total Matelassê?
-                        <select name="total_metalasse" id="total_metalasse" class="controlador">
-                            <option value="1">1</option>
-                            <option value="2">2</option>
-                        </select>
-                    </td>
-                </tr>
-                <tr id="nao_tem_metalasse">
-                    <td>
-                        <table class="tables table-bordered border-secondary  table-sm">
-                            <tr class="fundo-tabela">
-                                <td>Tipo de espuma</td>
-                                <td>Espessura mínima especificada (mm)</td>
-                                <td>Resultado</td>
-                            </tr>
-                            <tr id="excluir_input_1">
-                                <td>
-                                    <select class="controlador" name="mate_tipo_espuma_1" style="width:300px;">
-                                        <option>@Model.mate_tipo_espuma_1</option>
-                                        <option value="Espuma do Matelassê">Espuma do Matelassê </option>
-                                    </select>
-                                </td>
-                                <td><input class="form-control" type="text" name="mata_esp_tipo_esp_1" value="@Model.mata_esp_tipo_esp_1" /></td>
-                                <td rowspan="2">@Model.conformidade_mat</td>
-                            </tr>
-                            @if(Model.mate_tipo_espuma_2 != null){
-                            <tr id="excluir_input_2">
-                                <td>
-                                    <select class="controlador" name="mate_tipo_espuma_2" style="width:300px;">
-                                        <option>@Model.mate_tipo_espuma_2</option>
-                                        <option value="Espuma do Matelassê">Espuma do Matelassê </option>
-                                    </select>
-                                </td>
-                                <td><input class="form-control" type="text" name="mata_esp_tipo_esp_2" value="@Model.mata_esp_tipo_esp_2" /></td>
-                            </tr>
-                            }
-                        </table>
-                    </td>
-                </tr>
-                <Br />
-            </table>
+                    </tr>
+                    <tr id="tirar_quant_metalasse">
+                        <td>
+                            total Matelassê?
+                            <select name="total_metalasse" id="total_metalasse" class="controlador">
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr id="nao_tem_metalasse">
+                        <td>
+                            <table class="tables table-bordered border-secondary  table-sm">
+                                <tr class="fundo-tabela">
+                                    <td>Tipo de espuma</td>
+                                    <td>Espessura mínima especificada (mm)</td>
+                                    <td>Resultado</td>
+                                </tr>
+                                <tr id="excluir_input_1">
+                                    <td>
+                                        <select class="controlador" name="mate_tipo_espuma_1" style="width:300px;">
+                                            <option>@Model.mate_tipo_espuma_1</option>
+                                            <option value="Espuma do Matelassê">Espuma do Matelassê </option>
+                                        </select>
+                                    </td>
+                                    <td><input class="form-control" type="text" name="mata_esp_tipo_esp_1" value="@Model.mata_esp_tipo_esp_1" /></td>
+                                    <td rowspan="2">@Model.conformidade_mat</td>
+                                </tr>
+                                @if (Model.mate_tipo_espuma_2 != null)
+                                {
+                                    <tr id="excluir_input_2">
+                                        <td>
+                                            <select class="controlador" name="mate_tipo_espuma_2" style="width:300px;">
+                                                <option>@Model.mate_tipo_espuma_2</option>
+                                                <option value="Espuma do Matelassê">Espuma do Matelassê </option>
+                                            </select>
+                                        </td>
+                                        <td><input class="form-control" type="text" name="mata_esp_tipo_esp_2" value="@Model.mata_esp_tipo_esp_2" /></td>
+                                    </tr>
+                                }
+                            </table>
+                        </td>
+                    </tr>
+                    <Br />
+                </table>
+            }
             <br />
             <table class="tables table-bordered border-secondary  table-sm">
                 <tr class="fundo-tabela">
@@ -1146,7 +1225,7 @@
             } else if (valorSelecionado === "2") {
                 inputs_adicionais_1.style.display = "table-row";
                 inputs_adicionais_2.style.display = "table-row";
-            } 
+            }
         });
     </script>
     <script>

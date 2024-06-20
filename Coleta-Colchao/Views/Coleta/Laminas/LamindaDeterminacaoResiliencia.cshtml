@@ -87,12 +87,70 @@
             </tr>
             <tr>
                 <td>
-                    Separar 3 corpos de prova e posiciona-lo na parte inferior do dispositivo.
+                    Separar 3 corpos de prova e realizar as medições das seguintes dimesões: (Largura 100 ±1mm x comprimento 100 ±1mm x espessura 50 ±1mm).
                 </td>
             </tr>
             <tr>
                 <td>
                     Deixar a esfera cair sobre a espuma de uma altura de 476 mm e verificar a % resilência.
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <table class="tables table-bordered border-secondary  table-sm">
+                        <tr class="fundo-tabela">
+                            <td colspan="10">
+                                 Precondicionamento do ensaio de (23±2) °C e umidade de (50±5) % por no minímo 12h
+                            </td>
+                        </tr>
+                        <tr class="fundo-tabela">
+                            <td colspan="2">Data do acondicionamento</td>
+                            <td colspan="2">Horario do acondicionamento</td>
+                            <td colspan="2">Temperatura encontrada</td>
+                            <td colspan="2">umidade</td>
+                            <td colspan="2">IM</td>
+                        </tr>
+                        <tr>
+                            <td>Inicio:</td>
+                            @if (Model == null)
+                            {
+                                <td><input asp-for="acond_inicio" class="form-control" type="date" /></td>
+                            }
+                            else
+                            {
+                                <td><input asp-for="acond_inicio" class="form-control" type="text" /></td>
+                            }
+                            <td>Inicio:</td>
+                            <td><input asp-for="hora_inicio" class="form-control" type="time" /></td>
+                            <td>Min:</td>
+                            <td><input asp-for="temp_inicio" class="form-control" /></td>
+                            <td>Inicio:</td>
+                            <td><input asp-for="umidade_inicio" class="form-control" /></td>
+                            <td rowspan="2"><input asp-for="im" class="form-control" style="height:80px;" /></td>
+                        </tr>
+                        <tr>
+
+                            <td>Final:</td>
+                            @if (Model == null)
+                            {
+                                <td><input asp-for="acond_final" class="form-control" type="date" /></td>
+                            }
+                            else
+                            {
+                                <td><input asp-for="acond_final" class="form-control" type="text" /></td>
+                            }
+                            <td>Final:</td>
+                            <td><input asp-for="hora_final" class="form-control" type="time" /></td>
+                            <td>Max:</td>
+                            <td><input asp-for="temp_final" class="form-control" /></td>
+                            <td>Final:</td>
+                            <td><input asp-for="umidade_final" class="form-control" /></td>
+                        </tr>
+                        <tr>
+                            <td colspan="4">Responsavel</td>
+                            <td colspan="5"><input asp-for="responsavel_cond" class="form-control" /></td>
+                        </tr>
+                    </table>
                 </td>
             </tr>
             <tr>

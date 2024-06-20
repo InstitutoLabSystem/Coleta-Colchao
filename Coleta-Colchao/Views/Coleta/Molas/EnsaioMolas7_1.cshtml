@@ -50,41 +50,39 @@
             <br />
             <table class="tables table-bordered border-secondary  table-sm">
                 <tr class="fundo-tabela">
-                    <td>Item</td>
-                    <td>Descrição</td>
-                    <td>Resultado</td>
+                    <td colspan="3">Descrição</td>
                 </tr>
                 <tr>
-                    <td rowspan="4">7.1</td>
-                    <td>
-                        <b>Pré - Rolagem:</b> Antes de serem efetuadas as inspeções e medições iniciais, deve ser realizada uma pré-rolagem com o rolo nas duas faces do colchão por uma frequência de 50 ciclos (cada face utilizável).
+                    <td colspan="3">
+                        <b>Pré - Rolagem:</b>
                     </td>
-
                 </tr>
                 <tr>
+                    <td colspan="3">
+                        <b>Especificado:</b>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="3">
+                        Antes de serrem efetuadas as inspeções e medições iniciais, deve ser realizada uma pré-rolagem com o rolo nas duas face do colchão por uma frequência de 50 ciclos ( cada face utilizável).
+                        Nota: O comprimento do percurso deve chegar até 10 cm da borda em ambos os lados do eixo de simetria longitudinal do colchão.
+                    </td>
+                </tr>
+                <tr>
+                    <td><b>Quantidade de ciclos:</b> @ViewBag.qtd_face</td>
+                    <td><b>Velocidade:</b> 47m/min. ±5m/min.</td>
+                </tr>
+                <tr>
+                    <td><b>Peso do Rolo: </b><input value="110 kg" readonly /></td>
+                </tr>
+                <tr>
+                    <td>O parâmetro de rolagem estão de acordo com especificado acima? </td>
                     <td>
-                        Quantidade De faces utilizadas:
-                        <select name="quant_face" id="quantidade_face">
-                            <option value="1">1</option>
-                            <option value="2">2</option>
+                        <select class="form-control" name="acordo">
+                            <option value="NA">NA</option>
+                            <option value="Sim">Sim</option>
+                            <option value="Não">Não</option>
                         </select>
-                    </td>
-
-                </tr>
-                <tr id="face_1">
-                    <td>
-                        1º Face:
-                        Velocidade do ciclos : <input type="text" name="velo_face_1" />
-
-                        Quantidade de ciclos : <input type="text" name="quant_face_1" />
-
-                    </td>
-                </tr>
-                <tr id="face_2">
-                    <td>
-                        2º Face:
-                        Velocidade do ciclos : <input type="text" name="velo_face_2" />
-                        Quantidade de ciclos :  <input type="text" name="quant_face_2" />
                     </td>
                 </tr>
             </table>
@@ -117,47 +115,42 @@
             <br />
             <table class="tables table-bordered border-secondary  table-sm">
                 <tr class="fundo-tabela">
-                    <td>Item</td>
-                    <td>Descrição</td>
-
+                    <td colspan="3">Descrição</td>
                 </tr>
                 <tr>
-                    <td rowspan="4">7.1</td>
-                    <td colspan="2">
-                        <b>Pré - Rolagem:</b> Antes de serem efetuadas as inspeções e medições iniciais, deve ser realizada uma pré-rolagem com o rolo nas duas faces do colchão por uma frequência de 50 ciclos (cada face utilizável).
+                    <td colspan="3">
+                        <b>Pré - Rolagem:</b>
                     </td>
-
                 </tr>
                 <tr>
-                    <td colspan="2">
-                        Quantidade De faces utilizadas:
-                        <select name="quant_face" id="quantidade_face">
-                            <option value="1">1</option>
-                            <option value="2">2</option>
+                    <td colspan="3">
+                        <b>Especificado:</b>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="3">
+                        Antes de serrem efetuadas as inspeções e medições iniciais, deve ser realizada uma pré-rolagem com o rolo nas duas face do colchão por uma frequência de 50 ciclos ( cada face utilizável).
+                        Nota: O comprimento do percurso deve chegar até 10 cm da borda em ambos os lados do eixo de simetria longitudinal do colchão.
+                    </td>
+                </tr>
+                <tr>
+                    <td><b>Quantidade de ciclos:</b> @ViewBag.qtd_face</td>
+                    <td><b>Velocidade:</b> 47m/min. ±5m/min.</td>
+                </tr>
+                <tr>
+                    <td><b>Peso do Rolo: </b><input value="110 kg" readonly /></td>
+                </tr>
+                <tr>
+                    <td>O parâmetro de rolagem estão de acordo com especificado acima? </td>
+                    <td>
+                        <select class="form-control" name="acordo">
+                            <option>@Model.acordo</option>
+                            <option value="NA">NA</option>
+                            <option value="Sim">Sim</option>
+                            <option value="Não">Não</option>
                         </select>
                     </td>
-
                 </tr>
-                <tr>
-                    <td colspan="2" id="face_1">
-                        1º Face:
-                        Velocidade do ciclos : <input type="text" name="velo_face_1" value="@Model.velo_face_1" />
-
-                        Quantidade de ciclos : <input type="text" name="quant_face_1" value="@Model.quant_face_1" />
-
-                    </td>
-                </tr>
-                @if (Model.velo_face_2 != 0)
-                {
-                    <tr>
-
-                        <td colspan="2" id="face_2">
-                            2º Face:
-                            Velocidade do ciclos : <input type="text" name="velo_face_2" id="velo_face_2" value="@Model.velo_face_2" />
-                            Quantidade de ciclos :  <input type="text" name="quant_face_2" id="quant_face_2" value="@Model.quant_face_2" />
-                        </td>
-                    </tr>
-                }
             </table>
             <br />
             <div class="d-grid gap-2 d-flex justify-content-center">

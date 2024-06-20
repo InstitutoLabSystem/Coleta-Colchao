@@ -42,6 +42,11 @@ namespace Coleta_Colchao.Models
             public string? bitola_arame_um { get; set; }
             public string? bitola_arame_dois { get; set; }
             public string? borda_peri { get; set; }
+            public string? metalasse { get; set; }
+            public string? qtd_face { get; set; }
+            public float comprimento { get; set; }
+            public float largura { get; set; }
+            public float altura { get; set; }
             public string? isolante { get; set; }
             public string? latex { get; set; }
             public string? napa_cou_plas { get; set; }
@@ -264,11 +269,7 @@ namespace Coleta_Colchao.Models
             public string orcamento { get; set; }
             public DateOnly data_ini { get; set; }
             public DateOnly data_term { get; set; }
-            public int quant_face { get; set; }
-            public int velo_face_1 { get; set; }
-            public int quant_face_1 { get; set; }
-            public int velo_face_2 { get; set; }
-            public int quant_face_2 { get; set; }
+            public string? acordo { get; set; }
             public string? executor { get; set; }
             public string? auxiliar { get; set; }
 
@@ -442,11 +443,13 @@ namespace Coleta_Colchao.Models
             public string orcamento { get; set; }
             public DateOnly data_ini { get; set; }
             public DateOnly data_term { get; set; }
-            public float bordas { get; set; }
-            public string faces_utilizadas { get; set; }
-            public string? rasgo { get; set; }
-            public string? quebra { get; set; }
-            public string? conforme { get; set; }
+            public string? pergunta_a { get; set; }
+            public string? pergunta_b { get; set; }
+            public string? pergunta_c { get; set; }
+            public string? pergunta_d { get; set; }
+            public string? pergunta_e { get; set; }
+            public string? material { get; set; }
+            public string? suportou { get; set; }
             public string? executador { get; set; }
             public string? auxiliar { get; set; }
         }
@@ -836,36 +839,16 @@ namespace Coleta_Colchao.Models
             public DateOnly data_term { get; set; }
             public int densidade { get; set; }
             public string? tipo_espuma { get; set; }
-            public float lar_amostra_um_um { get; set; }
-            public float lar_amostra_um_dois { get; set; }
-            public float lar_amostra_um_tres { get; set; }
-            public float lar_amostra_um_quatro { get; set; }
-            public float lar_amostra_dois_um { get; set; }
-            public float lar_amostra_dois_dois { get; set; }
-            public float lar_amostra_dois_tres { get; set; }
-            public float lar_amostra_dois_quatro { get; set; }
-            public float lar_amostra_tres_um { get; set; }
-            public float lar_amostra_tres_dois { get; set; }
-            public float lar_amostra_tres_tres { get; set; }
-            public float lar_amostra_tres_quatro { get; set; }
-            public float lar_media_um { get; set; }
-            public float lar_media_dois { get; set; }
-            public float lar_media_tres { get; set; }
-            public float comp_amostra_um_um { get; set; }
-            public float comp_amostra_um_dois { get; set; }
-            public float comp_amostra_um_tres { get; set; }
-            public float comp_amostra_um_quat { get; set; }
-            public float comp_amostra_dois_um { get; set; }
-            public float comp_amostra_dois_dois { get; set; }
-            public float comp_amostra_dois_tres { get; set; }
-            public float comp_amostra_dois_quat { get; set; }
-            public float comp_amostra_tres_um { get; set; }
-            public float comp_amostra_tres_dois { get; set; }
-            public float comp_amostra_tres_tres { get; set; }
-            public float comp_amostra_tres_quat { get; set; }
-            public float comp_media_um { get; set; }
-            public float comp_media_dois { get; set; }
-            public float comp_media_tres { get; set; }
+            public DateOnly acond_inicio { get; set; }
+            public DateOnly acond_final { get; set; }
+            public TimeOnly hora_inicio { get; set; }
+            public TimeOnly hora_final { get; set; }
+            public float temp_inicio { get; set; }
+            public float temp_final { get; set; }
+            public float umidade_inicio { get; set; }
+            public float umidade_final { get; set; }
+            public string? im { get; set; }
+            public string? responsavel_cond { get; set; }
             public float esp_amostra_um_um { get; set; }
             public float esp_amostra_um_dois { get; set; }
             public float esp_amostra_um_tres { get; set; }
@@ -946,6 +929,16 @@ namespace Coleta_Colchao.Models
             public float resiliencia_enc { get; set; }
             public string? min_max { get; set; }
             public string? conforme { get; set; }
+            public DateOnly acond_inicio { get; set; }
+            public DateOnly acond_final { get; set; }
+            public TimeOnly hora_inicio { get; set; }
+            public TimeOnly hora_final { get; set; }
+            public float temp_inicio { get; set; }
+            public float temp_final { get; set; }
+            public float umidade_inicio { get; set; }
+            public float umidade_final { get; set; }
+            public string? im { get; set; }
+            public string? responsavel_cond { get; set; }
         }
 
         public class LaminaDPC
@@ -956,36 +949,26 @@ namespace Coleta_Colchao.Models
             public string os { get; set; }
             public DateOnly data_ini { get; set; }
             public DateOnly date_term { get; set; }
-            public float lar_amostra_um_um { get; set; }
-            public float lar_amostra_um_dois { get; set; }
-            public float lar_amostra_um_tres { get; set; }
-            public float lar_amostra_um_quatro { get; set; }
-            public float lar_amostra_dois_um { get; set; }
-            public float lar_amostra_dois_dois { get; set; }
-            public float lar_amostra_dois_tres { get; set; }
-            public float lar_amostra_dois_quatro { get; set; }
-            public float lar_amostra_tres_um { get; set; }
-            public float lar_amostra_tres_dois { get; set; }
-            public float lar_amostra_tres_tres { get; set; }
-            public float lar_amostra_tres_quatro { get; set; }
-            public float lar_media_um { get; set; }
-            public float lar_media_dois { get; set; }
-            public float lar_media_tres { get; set; }
-            public float comp_amostra_um_um { get; set; }
-            public float comp_amostra_um_dois { get; set; }
-            public float comp_amostra_um_tres { get; set; }
-            public float comp_amostra_um_quatro { get; set; }
-            public float comp_amostra_dois_um { get; set; }
-            public float comp_amostra_dois_dois { get; set; }
-            public float comp_amostra_dois_tres { get; set; }
-            public float comp_amostra_dois_quatro { get; set; }
-            public float comp_amostra_tres_um { get; set; }
-            public float comp_amostra_tres_dois { get; set; }
-            public float comp_amostra_tres_tres { get; set; }
-            public float comp_amostra_tres_quatro { get; set; }
-            public float comp_media_um { get; set; }
-            public float comp_media_dois { get; set; }
-            public float comp_media_tres { get; set; }
+            public DateOnly acond_inicio { get; set; }
+            public DateOnly acond_final { get; set; }
+            public TimeOnly hora_inicio { get; set; }
+            public TimeOnly hora_final { get; set; }
+            public float temp_inicio { get; set; }
+            public float temp_final { get; set; }
+            public float umidade_inicio { get; set; }
+            public float umidade_final { get; set; }
+            public string? im { get; set; }
+            public string? responsavel_cond_um { get; set; }
+            public DateOnly acond_inicio_dois { get; set; }
+            public DateOnly acond_final_dois { get; set; }
+            public TimeOnly hora_inicio_dois { get; set; }
+            public TimeOnly hora_final_dois { get; set; }
+            public float temp_inicio_dois { get; set; }
+            public float temp_final_dois { get; set; }
+            public float umidade_inicio_dois { get; set; }
+            public float umidade_final_dois { get; set; }
+            public string? im_dois { get; set; }
+            public string? responsavel_cond_dois { get; set; }
             public float esp_ini_amostra_um_um { get; set; }
             public float esp_ini_amostra_um_dois { get; set; }
             public float esp_ini_amostra_um_tres { get; set; }
@@ -1091,36 +1074,7 @@ namespace Coleta_Colchao.Models
             public DateOnly data_term { get; set; }
             public string? tipo_espuma { get; set; }
             public int densidade { get; set; }
-            public float lar_amostra_um_um { get; set; }
-            public float lar_amostra_um_dois { get; set; }
-            public float lar_amostra_um_tres { get; set; }
-            public float lar_amostra_um_quatro { get; set; }
-            public float lar_amostra_dois_um { get; set; }
-            public float lar_amostra_dois_dois { get; set; }
-            public float lar_amostra_dois_tres { get; set; }
-            public float lar_amostra_dois_quatro { get; set; }
-            public float lar_amostra_tres_um { get; set; }
-            public float lar_amostra_tres_dois { get; set; }
-            public float lar_amostra_tres_tres { get; set; }
-            public float lar_amostra_tres_quatro { get; set; }
-            public float lar_media_um { get; set; }
-            public float lar_media_dois { get; set; }
-            public float lar_media_tres { get; set; }
-            public float comp_amostra_um_um { get; set; }
-            public float comp_amostra_um_dois { get; set; }
-            public float comp_amostra_um_tres { get; set; }
-            public float comp_amostra_um_quatro { get; set; }
-            public float comp_amostra_dois_um { get; set; }
-            public float comp_amostra_dois_dois { get; set; }
-            public float comp_amostra_dois_tres { get; set; }
-            public float comp_amostra_dois_quatro { get; set; }
-            public float comp_amostra_tres_um { get; set; }
-            public float comp_amostra_tres_dois { get; set; }
-            public float comp_amostra_tres_tres { get; set; }
-            public float comp_amostra_tres_quatro { get; set; }
-            public float comp_media_um { get; set; }
-            public float comp_media_dois { get; set; }
-            public float comp_media_tres { get; set; }
+
             public float esp_ini_amostra_um_um { get; set; }
             public float esp_ini_amostra_um_dois { get; set; }
             public float esp_ini_amostra_um_tres { get; set; }
@@ -1213,6 +1167,16 @@ namespace Coleta_Colchao.Models
             public string? conforme { get; set; }
             public string? conforme_conforto { get; set; }
             public string? min_max { get; set; }
+            public DateOnly acond_inicio { get; set; }
+            public DateOnly acond_final { get; set; }
+            public TimeOnly hora_inicio { get; set; }
+            public TimeOnly hora_final { get; set; }
+            public float temp_inicio { get; set; }
+            public float temp_final { get; set; }
+            public float umidade_inicio { get; set; }
+            public float umidade_final { get; set; }
+            public string? im { get; set; }
+            public string? responsavel_cond { get; set; }
         }
 
         public class LaminaFadigaRotativa
@@ -1223,36 +1187,16 @@ namespace Coleta_Colchao.Models
             public string os { get; set; }
             public DateOnly data_ini { get; set; }
             public DateOnly data_term { get; set; }
-            public float lar_amostra_um_um { get; set; }
-            public float lar_amostra_um_dois { get; set; }
-            public float lar_amostra_um_tres { get; set; }
-            public float lar_amostra_um_quatro { get; set; }
-            public float lar_amostra_dois_um { get; set; }
-            public float lar_amostra_dois_dois { get; set; }
-            public float lar_amostra_dois_tres { get; set; }
-            public float lar_amostra_dois_quatro { get; set; }
-            public float lar_amostra_tres_um { get; set; }
-            public float lar_amostra_tres_dois { get; set; }
-            public float lar_amostra_tres_tres { get; set; }
-            public float lar_amostra_tres_quatro { get; set; }
-            public float lar_media_um { get; set; }
-            public float lar_media_dois { get; set; }
-            public float lar_media_tres { get; set; }
-            public float comp_amostra_um_um { get; set; }
-            public float comp_amostra_um_dois { get; set; }
-            public float comp_amostra_um_tres { get; set; }
-            public float comp_amostra_um_quatro { get; set; }
-            public float comp_amostra_dois_um { get; set; }
-            public float comp_amostra_dois_dois { get; set; }
-            public float comp_amostra_dois_tres { get; set; }
-            public float comp_amostra_dois_quatro { get; set; }
-            public float comp_amostra_tres_um { get; set; }
-            public float comp_amostra_tres_dois { get; set; }
-            public float comp_amostra_tres_tres { get; set; }
-            public float comp_amostra_tres_quatro { get; set; }
-            public float comp_media_um { get; set; }
-            public float comp_media_dois { get; set; }
-            public float comp_media_tres { get; set; }
+            public DateOnly acond_inicio { get; set; }
+            public DateOnly acond_final { get; set; }
+            public TimeOnly hora_inicio { get; set; }
+            public TimeOnly hora_final { get; set; }
+            public float temp_inicio { get; set; }
+            public float temp_final { get; set; }
+            public float umidade_inicio { get; set; }
+            public float umidade_final { get; set; }
+            public string? im { get; set; }
+            public string? responsavel_cond { get; set; }
             public float esp_ini_amostra_um_um { get; set; }
             public float esp_ini_amostra_um_dois { get; set; }
             public float esp_ini_amostra_um_tres { get; set; }
@@ -1471,6 +1415,16 @@ namespace Coleta_Colchao.Models
             public string? pfi_65_especificada { get; set; }
             public float pfi_65_encontrada { get; set; }
             public float media_espessura_total { get; set; }
+            public DateOnly acond_inicio { get; set; }
+            public DateOnly acond_final { get; set; }
+            public TimeOnly hora_inicio { get; set; }
+            public TimeOnly hora_final { get; set; }
+            public float temp_inicio { get; set; }
+            public float temp_final { get; set; }
+            public float umidade_inicio { get; set; }
+            public float umidade_final { get; set; }
+            public string? im { get; set; }
+            public string? responsavel_cond { get; set; }
             public string? conforme { get; set; }
         }
 
