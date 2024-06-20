@@ -21,6 +21,15 @@
             height: 500px;
             width: 100px;
         }
+
+        .controlador {
+           /*  padding: 5px;
+            border-color: gray;
+            border-radius: 5px;
+            box-sizing: border-box;
+            height: 500px; */
+            width: 100px;
+        }
     </style>
 </head>
 <body>
@@ -29,8 +38,6 @@
     <form method="post" asp-controller="Coleta" asp-action="SalvarEnsaio4_3" asp-route-os="@ViewBag.os" asp-route-orcamento="@ViewBag.orcamento">
         @if (Model == null)
         {
-
-
             <table class="tables table-bordered border-secondary  table-sm">
                 <thead>
                     <tr>
@@ -54,29 +61,29 @@
             <table class="tables table-bordered border-secondary  table-sm">
                 <tr>
                     <td rowspan="14" class="itens">4.3</td>
-                    <td class="fundo-tabela">
+                    <td class="fundo-tabela" colspan="3">
                         <b>
                             Determinação da Deformação.
                         </b>
                     </td>
-                    <td rowspan="14">
-                        teste  <inpupt class="controlador-conforme" />
+                    <td rowspan="14" >
+                        <inpupt class="controlador-conforme" />
                     </td>
                 </tr>
                 <tr>
-                    <td colspan="1">
+                    <td colspan="2">
                         A borda perimetral de aço e/ou espuma deve manter seu paralelismo e perpendicularidade antes e após o ensaio de rolagem. Além de atender as especificações abaixo.
                     </td>
                 </tr>
                 <tr>
-                    <td>
+                    <td colspan="2">
                         <button type="button" class="btn btn-info" id="btn-aco" onclick="mostrarLinhaAco()">Aço</button>
                         <button type="button" class="btn btn-info" id="btn-espuma" onclick="mostrarLinhaEspuma()">Espuma</button>
                         <button type="button" class="btn btn-info" id="btn-espuma" onclick="mostrarTabelaMolejo()">Mais De Um Molejo</button>
                     </td>
                 </tr>
                 <tr class="tabela-toda">
-                    <td>
+                    <td colspan="2">
                         <table class="tables table-bordered border-secondary  table-sm" id="tabela">
                             <tr class="fundo-tabela borda">
                                 <td>Borda</td>
@@ -126,7 +133,7 @@
                                     </select>
                                 </td>
                             </tr>
-                            <tr class="linha-espuma" >
+                            <tr class="linha-espuma">
                                 <td>
                                     <select class="form-control" name="borda_espuma">
                                         <option value="---">---</option>
@@ -170,13 +177,55 @@
                     </td>
                 </tr>
                 <tr>
-                    <td>
+                    <td colspan="2">
                         Quando se for utilizado não tecido de fibras sintéticas, naturais e/ou artificiais, ela deve ter gramatura mínima de 100 g/m².
                     </td>
                 </tr>
-
+                <tr>
+                    <td>
+                       A) Apresentar paralelelismo e perpendicularidade, quando vista de cima;                    
+                    </td>
+                    <td>
+                        <select name="pergunta_a"  class="controlador">
+                            <option value="C">C</option>
+                            <option value="NC">NC</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        B) Ter largura maxima de 120,0 mm;
+                    </td>
+                    <td>
+                        <select name="pergunta_b" class="controlador">
+                            <option value="C">C</option>
+                            <option value="NC">NC</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        C) Não utilizar, para fins de sustentação ou outra função estrutural, qualquer componente;
+                    </td>
+                    <td>
+                        <select name="pergunta_c" class="controlador">
+                            <option value="C">C</option>
+                            <option value="NC">NC</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        D) Possuir características adqueadas ás funções de dar uniformidade e sustentação ao perímetro do molejo, podendo ser constituída de espuma, aço, ou outros materiais, conjuntamente ou não;
+                    </td>
+                    <td>
+                        <select name="pergunta_d" class="controlador">
+                            <option value="C">C</option>
+                            <option value="NC">NC</option>
+                        </select>
+                    </td>
+                </tr>
             </table>
-
             <br />
             <div class="d-grid gap-2 d-flex justify-content-center">
                 <button type="submit" class="btn btn-success btn btn-primary btn-md">Salvar</button>
@@ -209,7 +258,7 @@
             <table class="tables table-bordered border-secondary  table-sm ">
                 <tr>
                     <td rowspan="14" class="itens">4.3</td>
-                    <td class="fundo-tabela">
+                    <td class="fundo-tabela" colspan="3">
                         <b>
                             Determinação da Deformação.
                         </b>
@@ -219,12 +268,12 @@
                     </td>
                 </tr>
                 <tr>
-                    <td colspan="1">
+                    <td colspan="2">
                         A borda perimetral de aço e/ou espuma deve manter seu paralelismo e perpendicularidade antes e após o ensaio de rolagem. Além de atender as especificações abaixo.
                     </td>
                 </tr>
                 <tr>
-                    <td>
+                    <td colspan="3">
                         <table class="tables table-bordered border-secondary  table-sm">
                             <tr class="fundo-tabela borda">
                                 <td>Borda</td>
@@ -237,7 +286,7 @@
                                 @if (Model.borda_aco == "X")
                                 {
 
-                                    <tr class="linha-aco" >
+                                    <tr class="linha-aco">
                                         <td>
                                             <select class="form-control" name="borda_aco" style="width:100px;">
                                                 <option selected>@Model.borda_aco</option>
@@ -263,7 +312,7 @@
 
                                 @if (Model.borda_espuma == "X")
                                 {
-                                    <tr class="linha-espuma" >
+                                    <tr class="linha-espuma">
                                         <td>
                                             <select class="form-control" name="borda_espuma">
                                                 <option> @Model.borda_espuma</option>
@@ -296,7 +345,7 @@
                 {
                     <tr>
                         <td>
-                            <table class="tables table-bordered border-secondary table-sm"  id="molejo" name="molejo" value="1">
+                            <table class="tables table-bordered border-secondary table-sm" id="molejo" name="molejo" value="1">
                                 <tr class="fundo-tabela">
                                     <td>Borda</td>
                                     <td>Especificado</td>
@@ -411,11 +460,58 @@
                 }
                 @* final da tabela molejo *@
                 <tr>
-                    <td>
+                    <td colspan="3">
                         Quando se for utilizado não tecido de fibras sintéticas, naturais e/ou artificiais, ela deve ter gramatura mínima de 100 g/m².
                     </td>
                 </tr>
-
+                <tr>
+                    <td>
+                        A) Apresentar paralelelismo e perpendicularidade, quando vista de cima;
+                    </td>
+                    <td>
+                        <select name="pergunta_a" class="controlador">
+                            <option>@Model.pergunta_a</option>
+                            <option value="C">C</option>
+                            <option value="NC">NC</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        B) Ter largura maxima de 120,0 mm;
+                    </td>
+                    <td>
+                        <select name="pergunta_b" class="controlador">
+                            <option>@Model.pergunta_b</option>
+                            <option value="C">C</option>
+                            <option value="NC">NC</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        C) Não utilizar, para fins de sustentação ou outra função estrutural, qualquer componente;
+                    </td>
+                    <td>
+                        <select name="pergunta_c" class="controlador">
+                            <option>@Model.pergunta_c</option>
+                            <option value="C">C</option>
+                            <option value="NC">NC</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        D) Possuir características adqueadas ás funções de dar uniformidade e sustentação ao perímetro do molejo, podendo ser constituída de espuma, aço, ou outros materiais, conjuntamente ou não;
+                    </td>
+                    <td>
+                        <select name="pergunta_d" class="controlador">
+                            <option>@Model.pergunta_d</option>
+                            <option value="C">C</option>
+                            <option value="NC">NC</option>
+                        </select>
+                    </td>
+                </tr>
             </table>
             <br />
             <div class="d-grid gap-2 d-flex justify-content-center">
@@ -440,14 +536,14 @@
             if (condicaoEspecifica && condicaoEspecifica.value === 'else') {
                 tabelaToda.style.display = 'table-row'; // Mostra a tabela
             } else {
-                tabelaToda.style.display = 'none'; 
+                tabelaToda.style.display = 'none';
             }
 
         }
         document.addEventListener('DOMContentLoaded', function () {
             mostrarTabelas();
         });
-      
+
 
         function mostrarLinhaAco() {
             var tabelaToda = document.querySelector('.tabela-toda');

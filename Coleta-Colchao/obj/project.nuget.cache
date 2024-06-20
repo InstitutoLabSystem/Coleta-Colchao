@@ -1,6 +1,10 @@
 {
   "version": 2,
+<<<<<<< HEAD
   "dgSpecHash": "/1R3VmRaUXoa80lZ7sLI28AqwMmCuQ5YZiKfgYbisn1kVkx+n/G9sg7iYU9wYCPk9jwgSdHvuriWI5kXNukXCw==",
+=======
+  "dgSpecHash": "h4jwKPvBbDA=",
+>>>>>>> Molina
   "success": true,
   "projectFilePath": "C:\\xampp\\htdocs\\Coleta-Colchao\\Coleta-Colchao\\Coleta-Colchao.csproj",
   "expectedPackageFiles": [

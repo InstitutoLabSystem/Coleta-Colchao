@@ -28,6 +28,7 @@
     <form method="post" asp-controller="coleta" asp-action="salvarBaseDurabilidade" asp-route-os="@ViewBag.os" asp-route-orcamento="@ViewBag.orcamento">
         @if (Model == null)
         {
+
             <table class="tables table-bordered border-secondary  table-sm">
                 <input name="ensaio" type="hidden" value="@ViewBag.ensaio"/>
                 <thead>
@@ -163,8 +164,8 @@
                                     A amostra suportou numero dos ciclos:
                                     <select asp-for="suportou_ponto_a" class="controlador">
                                         <option value="NA">---</option>
-                                        <option value="C">C</option>
-                                        <option value="NC">NC</option>
+                                        <option value="Sim">Sim</option>
+                                        <option value="Não">Não</option>
                                     </select>
                                 </td>
                             </tr>
@@ -178,8 +179,8 @@
                                     Houve ruptura da estrutura:
                                     <select asp-for="ruptura_ponto_a" class="controlador">
                                         <option value="NA">---</option>
-                                        <option value="C">C</option>
-                                        <option value="NC">NC</option>
+                                        <option value="Sim">Sim</option>
+                                        <option value="Não">Não</option>
                                     </select>
                                 </td>
                             </tr>
@@ -188,8 +189,8 @@
                                     Houve afundamento da espuma:
                                     <select asp-for="afundamento_ponto_a" class="controlador">
                                         <option value="NA">---</option>
-                                        <option value="C">C</option>
-                                        <option value="NC">NC</option>
+                                        <option value="Sim">Sim</option>
+                                        <option value="Não">Não</option>
                                     </select>
                                 </td>
                             </tr>
@@ -198,8 +199,8 @@
                                     Houve rasgo no revestimento:
                                     <select asp-for="rasgo_ponto_a" class="controlador">
                                         <option value="NA">---</option>
-                                        <option value="C">C</option>
-                                        <option value="NC">NC</option>
+                                        <option value="Sim">Sim</option>
+                                        <option value="Não">Não</option>
                                     </select>
                                 </td>
                             </tr>
@@ -208,8 +209,8 @@
                                     Houve rompimento nos pés:
                                     <select asp-for="rompimento_ponto_a" class="controlador">
                                         <option value="NA">---</option>
-                                        <option value="C">C</option>
-                                        <option value="NC">NC</option>
+                                        <option value="Sim">Sim</option>
+                                        <option value="Não">Não</option>
                                     </select>
                                 </td>
                             </tr>
@@ -218,8 +219,8 @@
                                     Apresentou algo que prejudique o seu comprometimento de uso:
                                     <select asp-for="prejudique_ponto_a" class="controlador">
                                         <option value="NA">---</option>
-                                        <option value="C">C</option>
-                                        <option value="NC">NC</option>
+                                        <option value="Sim">Sim</option>
+                                        <option value="Não">Não</option>
                                     </select>
                                 </td>
                             </tr>
@@ -251,8 +252,8 @@
                                     A amostra suportou numero dos ciclos:
                                     <select asp-for="suportou_ponto_b" class="controlador">
                                         <option value="NA">---</option>
-                                        <option value="C">C</option>
-                                        <option value="NC">NC</option>
+                                        <option value="Sim">Sim</option>
+                                        <option value="Não">Não</option>
                                     </select>
                                 </td>
                             </tr>
@@ -266,8 +267,8 @@
                                     Houve ruptura da estrutura:
                                     <select asp-for="ruptura_ponto_b" class="controlador">
                                         <option value="NA">---</option>
-                                        <option value="C">C</option>
-                                        <option value="NC">NC</option>
+                                        <option value="Sim">Sim</option>
+                                        <option value="Não">Não</option>
                                     </select>
                                 </td>
                             </tr>
@@ -276,8 +277,8 @@
                                     Houve afundamento da espuma:
                                     <select asp-for="afundamento_ponto_b" class="controlador">
                                         <option value="NA">---</option>
-                                        <option value="C">C</option>
-                                        <option value="NC">NC</option>
+                                        <option value="Sim">Sim</option>
+                                        <option value="Não">Não</option>
                                     </select>
                                 </td>
                             </tr>
@@ -286,8 +287,8 @@
                                     Houve rasgo no revestimento:
                                     <select asp-for="rasgo_ponto_b" class="controlador">
                                         <option value="NA">---</option>
-                                        <option value="C">C</option>
-                                        <option value="NC">NC</option>
+                                        <option value="Sim">Sim</option>
+                                        <option value="Não">Não</option>
                                     </select>
                                 </td>
                             </tr>
@@ -296,8 +297,8 @@
                                     Houve rompimento nos pés:
                                     <select asp-for="rompimento_ponto_b" class="controlador">
                                         <option value="NA">---</option>
-                                        <option value="C">C</option>
-                                        <option value="NC">NC</option>
+                                        <option value="Sim">Sim</option>
+                                        <option value="Não">Não</option>
                                     </select>
                                 </td>
                             </tr>
@@ -306,8 +307,8 @@
                                     Apresentou algo que prejudique o seu comprometimento de uso:
                                     <select asp-for="prejudique_ponto_b" class="controlador">
                                         <option value="NA">---</option>
-                                        <option value="C">C</option>
-                                        <option value="NC">NC</option>
+                                        <option value="Sim">Sim</option>
+                                        <option value="Não">Não</option>
                                     </select>
                                 </td>
                             </tr>
@@ -339,8 +340,8 @@
                                     A amostra suportou numero dos ciclos:
                                     <select asp-for="suportou_ponto_c" class="controlador">
                                         <option value="NA">---</option>
-                                        <option value="C">C</option>
-                                        <option value="NC">NC</option>
+                                        <option value="Sim">Sim</option>
+                                        <option value="Não">Não</option>
                                     </select>
                                 </td>
                             </tr>
@@ -354,8 +355,8 @@
                                     Houve ruptura da estrutura:
                                     <select asp-for="ruptura_ponto_c" class="controlador">
                                         <option value="NA">---</option>
-                                        <option value="C">C</option>
-                                        <option value="NC">NC</option>
+                                        <option value="Sim">Sim</option>
+                                        <option value="Não">Não</option>
                                     </select>
                                 </td>
                             </tr>
@@ -364,8 +365,8 @@
                                     Houve afundamento da espuma:
                                     <select asp-for="afundamento_ponto_c" class="controlador">
                                         <option value="NA">---</option>
-                                        <option value="C">C</option>
-                                        <option value="NC">NC</option>
+                                        <option value="Sim">Sim</option>
+                                        <option value="Não">Não</option>
                                     </select>
                                 </td>
                             </tr>
@@ -374,8 +375,8 @@
                                     Houve rasgo no revestimento:
                                     <select asp-for="rasgo_ponto_c" class="controlador">
                                         <option value="NA">---</option>
-                                        <option value="C">C</option>
-                                        <option value="NC">NC</option>
+                                        <option value="Sim">Sim</option>
+                                        <option value="Não">Não</option>
                                     </select>
                                 </td>
                             </tr>
@@ -384,8 +385,8 @@
                                     Houve rompimento nos pés:
                                     <select asp-for="rompimento_ponto_c" class="controlador">
                                         <option value="NA">---</option>
-                                        <option value="C">C</option>
-                                        <option value="NC">NC</option>
+                                        <option value="Sim">Sim</option>
+                                        <option value="Não">Não</option>
                                     </select>
                                 </td>
                             </tr>
@@ -394,8 +395,8 @@
                                     Apresentou algo que prejudique o seu comprometimento de uso:
                                     <select asp-for="prejudique_ponto_c" class="controlador">
                                         <option value="NA">---</option>
-                                        <option value="C">C</option>
-                                        <option value="NC">NC</option>
+                                        <option value="Sim">Sim</option>
+                                        <option value="Não">Não</option>
                                     </select>
                                 </td>
                             </tr>
@@ -546,8 +547,8 @@
                                     A amostra suportou numero dos ciclos:
                                     <select asp-for="suportou_ponto_a" class="controlador">
                                         <option value="NA">---</option>
-                                        <option value="C">C</option>
-                                        <option value="NC">NC</option>
+                                        <option value="Sim">Sim</option>
+                                        <option value="Não">Não</option>
                                     </select>
                                 </td>
                             </tr>
@@ -561,8 +562,8 @@
                                     Houve ruptura da estrutura:
                                     <select asp-for="ruptura_ponto_a" class="controlador">
                                         <option value="NA">---</option>
-                                        <option value="C">C</option>
-                                        <option value="NC">NC</option>
+                                        <option value="Sim">Sim</option>
+                                        <option value="Não">Não</option>
                                     </select>
                                 </td>
                             </tr>
@@ -571,8 +572,8 @@
                                     Houve afundamento da espuma:
                                     <select asp-for="afundamento_ponto_a" class="controlador">
                                         <option value="NA">---</option>
-                                        <option value="C">C</option>
-                                        <option value="NC">NC</option>
+                                        <option value="Sim">Sim</option>
+                                        <option value="Não">Não</option>
                                     </select>
                                 </td>
                             </tr>
@@ -581,8 +582,8 @@
                                     Houve rasgo no revestimento:
                                     <select asp-for="rasgo_ponto_a" class="controlador">
                                         <option value="NA">---</option>
-                                        <option value="C">C</option>
-                                        <option value="NC">NC</option>
+                                        <option value="Sim">Sim</option>
+                                        <option value="Não">Não</option>
                                     </select>
                                 </td>
                             </tr>
@@ -591,8 +592,8 @@
                                     Houve rompimento nos pés:
                                     <select asp-for="rompimento_ponto_a" class="controlador">
                                         <option value="NA">---</option>
-                                        <option value="C">C</option>
-                                        <option value="NC">NC</option>
+                                        <option value="Sim">Sim</option>
+                                        <option value="Não">Não</option>
                                     </select>
                                 </td>
                             </tr>
@@ -601,8 +602,8 @@
                                     Apresentou algo que prejudique o seu comprometimento de uso:
                                     <select asp-for="prejudique_ponto_a" class="controlador">
                                         <option value="NA">---</option>
-                                        <option value="C">C</option>
-                                        <option value="NC">NC</option>
+                                        <option value="Sim">Sim</option>
+                                        <option value="Não">Não</option>
                                     </select>
                                 </td>
                             </tr>
@@ -634,8 +635,8 @@
                                     A amostra suportou numero dos ciclos:
                                     <select asp-for="suportou_ponto_b" class="controlador">
                                         <option value="NA">---</option>
-                                        <option value="C">C</option>
-                                        <option value="NC">NC</option>
+                                        <option value="Sim">Sim</option>
+                                        <option value="Não">Não</option>
                                     </select>
                                 </td>
                             </tr>
@@ -649,8 +650,8 @@
                                     Houve ruptura da estrutura:
                                     <select asp-for="ruptura_ponto_b" class="controlador">
                                         <option value="NA">---</option>
-                                        <option value="C">C</option>
-                                        <option value="NC">NC</option>
+                                        <option value="Sim">Sim</option>
+                                        <option value="Não">Não</option>
                                     </select>
                                 </td>
                             </tr>
@@ -659,8 +660,8 @@
                                     Houve afundamento da espuma:
                                     <select asp-for="afundamento_ponto_b" class="controlador">
                                         <option value="NA">---</option>
-                                        <option value="C">C</option>
-                                        <option value="NC">NC</option>
+                                        <option value="Sim">Sim</option>
+                                        <option value="Não">Não</option>
                                     </select>
                                 </td>
                             </tr>
@@ -669,8 +670,8 @@
                                     Houve rasgo no revestimento:
                                     <select asp-for="rasgo_ponto_b" class="controlador">
                                         <option value="NA">---</option>
-                                        <option value="C">C</option>
-                                        <option value="NC">NC</option>
+                                        <option value="Sim">Sim</option>
+                                        <option value="Não">Não</option>
                                     </select>
                                 </td>
                             </tr>
@@ -679,8 +680,8 @@
                                     Houve rompimento nos pés:
                                     <select asp-for="rompimento_ponto_b" class="controlador">
                                         <option value="NA">---</option>
-                                        <option value="C">C</option>
-                                        <option value="NC">NC</option>
+                                        <option value="Sim">Sim</option>
+                                        <option value="Não">Não</option>
                                     </select>
                                 </td>
                             </tr>
@@ -689,8 +690,8 @@
                                     Apresentou algo que prejudique o seu comprometimento de uso:
                                     <select asp-for="prejudique_ponto_b" class="controlador">
                                         <option value="NA">---</option>
-                                        <option value="C">C</option>
-                                        <option value="NC">NC</option>
+                                        <option value="Sim">Sim</option>
+                                        <option value="Não">Não</option>
                                     </select>
                                 </td>
                             </tr>
@@ -722,9 +723,10 @@
                                 <td>
                                     A amostra suportou numero dos ciclos:
                                     <select asp-for="suportou_ponto_c" class="controlador">
+                                        <option>@Model.suportou_ponto_c</option>
                                         <option value="NA">---</option>
-                                        <option value="C">C</option>
-                                        <option value="NC">NC</option>
+                                        <option value="Sim">Sim</option>
+                                        <option value="Não">Não</option>
                                     </select>
                                 </td>
                             </tr>
@@ -738,8 +740,8 @@
                                     Houve ruptura da estrutura:
                                     <select asp-for="ruptura_ponto_c" class="controlador">
                                         <option value="NA">---</option>
-                                        <option value="C">C</option>
-                                        <option value="NC">NC</option>
+                                        <option value="Sim">Sim</option>
+                                        <option value="Não">Não</option>
                                     </select>
                                 </td>
                             </tr>
@@ -748,8 +750,8 @@
                                     Houve afundamento da espuma:
                                     <select asp-for="afundamento_ponto_c" class="controlador">
                                         <option value="NA">---</option>
-                                        <option value="C">C</option>
-                                        <option value="NC">NC</option>
+                                        <option value="Sim">Sim</option>
+                                        <option value="Não">Não</option>
                                     </select>
                                 </td>
                             </tr>
@@ -758,8 +760,8 @@
                                     Houve rasgo no revestimento:
                                     <select asp-for="rasgo_ponto_c" class="controlador">
                                         <option value="NA">---</option>
-                                        <option value="C">C</option>
-                                        <option value="NC">NC</option>
+                                        <option value="Sim">Sim</option>
+                                        <option value="Não">Não</option>
                                     </select>
                                 </td>
                             </tr>
@@ -768,8 +770,8 @@
                                     Houve rompimento nos pés:
                                     <select asp-for="rompimento_ponto_c" class="controlador">
                                         <option value="NA">---</option>
-                                        <option value="C">C</option>
-                                        <option value="NC">NC</option>
+                                        <option value="Sim">Sim</option>
+                                        <option value="Não">Não</option>
                                     </select>
                                 </td>
                             </tr>
@@ -778,8 +780,8 @@
                                     Apresentou algo que prejudique o seu comprometimento de uso:
                                     <select asp-for="prejudique_ponto_c" class="controlador">
                                         <option value="NA">---</option>
-                                        <option value="C">C</option>
-                                        <option value="NC">NC</option>
+                                        <option value="Sim">Sim</option>
+                                        <option value="Não">Não</option>
                                     </select>
                                 </td>
                             </tr>

@@ -25,6 +25,10 @@
             height: 970px;
             width: 40px;
         }
+
+        .texto {
+            text-align: left;
+        }
     </style>
 
 </head>
@@ -55,80 +59,137 @@
             </table>
 
             <table class="tables table-bordered border-secondary  table-sm">
-                <tr>
-                    <td rowspan="12">7.3</td>
-                    <td class="fundo-tabela">
+                <tr class="fundo-tabela">
+                    <td colspan="3">
                         <b> Ensaio de Rolagem</b>
                     </td>
-                    <td rowspan="12"></td>
-
+                </tr>
+                <tr class="fundo-tabela">
+                    <td colspan="2" style="text-align:left;">Procedimento</td>
+                    <td>Resultado</td>
                 </tr>
                 <tr>
-                    <td>Posicionar o colchão no equipamento de Rolagem, de forma a não permitir o movimento horizontal durante o ensaio.</td>
+                    <td colspan="2"> Fixar o colchão no equipamento de rolagem, de forma a não permiti o movimento horizontal durante o ensaio;</td>
+                    <td rowspan="7">---</td>
                 </tr>
                 <tr>
-                    <td>Após posicionado o colchão ajustar o equipamento de modo que o percurso do rolo chegue até 10 cm das bordas. </td>
+                    <td colspan="2">Posicionar o rolo Longitudinal sobre o colchão, com distância entre as extremidade, para rola lateralmente;</td>
                 </tr>
                 <tr>
-                    <td>Distância das bordas(cm): <input class="controlador" type="text" name="bordas" />  </td>
+                    <td colspan="2">O comprimento do percurso deve chegar até 10 cm da borda em ambos os lados do eixo de simetria longitudinal </td>
                 </tr>
                 <tr>
-                    <td> Logo após, submeter o colchão a 50000 ciclos a uma frequência de (47 ± 5) m/min. </td>
+                    <td colspan="2">A frequência do movimento do  rolo deve ser de 47 m/min ± 5 m/min;</td>
                 </tr>
                 <tr>
-                    <td><b>Nota:</b> Caso o colchão possua duas faces utilizáveis, realizar 25000 ciclos em cada face.</td>
+                    <td colspan="2">A massa total a ser aplicada durante o ensaio deve ser de 110±1 kg </td>
                 </tr>
                 <tr>
+                    <td colspan="2">Em colchões utilizáveis em apenas 1 face, o ensaio deve ser realizado somente nesta face por um período de 50000 ciclos, </td>
+                </tr>
+                <tr>
+                    <td colspan="2">Em colchões de 2 face, o ensaio deve ser realizado somente nesta face por um período de 50000 ciclos,</td>
+                </tr>
+                <tr>
+                    <td class="fundo-tabela" colspan="3" style="text-align:left;">Ensaio:</td>
+                </tr>
+                @if (ViewBag.qtd_face == 1)
+                {
+                    <tr>
+                        <td>1 Face: 50.000 ciclos</td>
+                        <td>Ciclos atingidos</td>
+                        <td>---</td>
+                    </tr>
+                }
+                else
+                {
+                    <tr>
+                        <td>2 Face: 25.000 + 25.000 ciclos da primeira face</td>
+                        <td>Ciclos atingidos</td>
+                        <td>---</td>
+                    </tr>
+                }
+            </table>
+            <br />
+            <table class="tables table-bordered border-secondary  table-sm">
+                <tr class="fundo-tabela">
+                    <td>Critério de avaliação</td>
+                    <td rowspan="2">Resultado</td>
+                </tr>
+                <tr>
+                    <td>O colchão durante ou após ensaio não pode apresentar nenhuma das seguintes situações</td>
+                </tr>
+                <tr>
+                    <td class="texto">a) Deformações significativas, incluindo nos materiais utilizados na área de conforto e borda perimetral; </td>
                     <td>
-                        Quantidade De faces utilizadas:
-                        <select name="faces_utilizadas" class="controlador" id="faces_utilizadas" onchange="Mudar()">
-                            <option value="1" selected>1</option>
-                            <option value="2">2</option>
-                        </select>
-                    </td>
-                </tr>
-                <tr id="1_face">
-                    <td>
-                        1º Face:
-                        Velocidade do ciclos (Minutos) : <input class="controlador" style="width:200px; type="text" name="velocidade_face_1" value="47" disabled />
-                        Quantidade de ciclos : <input class="controlador" style="width:200px; type="text" name="quant_face_1" id="quant_face_1" disabled />
-
-                    </td>
-                </tr>
-                <tr id="2_face">
-                    <td>
-                        2º Face:
-                        Velocidade do ciclos : <input class="controlador" style="width:200px;" type="text" name="velocidade_face_2" value="47" disabled />
-                        Quantidade de ciclos : <input class="controlador" style="width:200px;" type="text" name="quant_face_2" id="quant_face_2" disabled />
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        Houve rasgos ou engarçamentos no revestimento?:
-                        <select class="controlador" name="rasgo">
-                            <option value="NA" selected>---</option>
+                        <select class="form-control" name="pergunta_a">
+                            <option value="NA">NA</option>
                             <option value="C">C</option>
                             <option value="NC">NC</option>
                         </select>
                     </td>
                 </tr>
                 <tr>
+                    <td class="texto">b) Cavidades (indentações) significativas; </td>
                     <td>
-                        Houve quebra de molas no molejo?:
-                        <select class="controlador" name="quebra">
-                            <option value="NA" selected>---</option>
+                        <select class="form-control" name="pergunta_b">
+                            <option value="NA">NA</option>
                             <option value="C">C</option>
                             <option value="NC">NC</option>
                         </select>
                     </td>
                 </tr>
                 <tr>
+                    <td class="texto">c) Danificações significativas na borda perimetral, que deve manter seu parelelismo e perpendicularidade; </td>
                     <td>
-                        <b>Nota:</b> Antes de serem realizadas inspeções e medições iniciais, deve deixar o colchão repousar por um período de 30 minutos a 90 minutos.
+                        <select class="form-control" name="pergunta_c">
+                            <option value="NA">NA</option>
+                            <option value="C">C</option>
+                            <option value="NC">NC</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="texto">d) Rasgos ou esgarçamentos no revestimento; </td>
+                    <td>
+                        <select class="form-control" name="pergunta_d">
+                            <option value="NA">NA</option>
+                            <option value="C">C</option>
+                            <option value="NC">NC</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="texto">e) Protrusão ou quebra das molas do molejo, deformações individuais das molas e deformações verticais e transversais do colchão de molas; </td>
+                    <td>
+                        <select class="form-control" name="pergunta_e">
+                            <option value="NA">NA</option>
+                            <option value="C">C</option>
+                            <option value="NC">NC</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="texto">  O material utilizado como isolante deve apresentar flexibilidade e resistência á perfuração e rasgo, mesmo após uso continuado de colchão de molas; </td>
+                    <td>
+                        <select class="form-control" name="material">
+                            <option value="NA">NA</option>
+                            <option value="C">C</option>
+                            <option value="NC">NC</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="texto">  O material suportou a ciclagem de 50000 ciclos para o colchão de 1 face; ou para colchões de 2 faces a ciclagem de 25000 em cada uma das faces; </td>
+                    <td>
+                        <select class="form-control" name="suportou">
+                            <option value="NA">NA</option>
+                            <option value="C">C</option>
+                            <option value="NC">NC</option>
+                        </select>
                     </td>
                 </tr>
             </table>
-            <br />
             <div class="d-grid gap-2 d-flex justify-content-center">
                 <button type="submit" class="btn btn-success btn btn-primary btn-md">Salvar</button>
             </div>
@@ -159,96 +220,144 @@
             </table>
 
             <table class="tables table-bordered border-secondary  table-sm">
-                <tr>
-                    <td rowspan="12">7.3</td>
-                    <td class="fundo-tabela">
+                <tr class="fundo-tabela">
+                    <td colspan="3">
                         <b> Ensaio de Rolagem</b>
                     </td>
-                    <td rowspan="12">@Model.conforme</td>
+                </tr>
+                <tr class="fundo-tabela">
+                    <td colspan="2" style="text-align:left;">Procedimento</td>
+                    <td>Resultado</td>
                 </tr>
                 <tr>
-                    <td>Posicionar o colchão no equipamento de Rolagem, de forma a não permitir o movimento horizontal durante o ensaio.</td>
+                    <td colspan="2"> Fixar o colchão no equipamento de rolagem, de forma a não permiti o movimento horizontal durante o ensaio;</td>
+                    <td rowspan="7">---</td>
                 </tr>
                 <tr>
-                    <td>Após posicionado o colchão ajustar o equipamento de modo que o percurso do rolo chegue até 10 cm das bordas. </td>
+                    <td colspan="2">Posicionar o rolo Longitudinal sobre o colchão, com distância entre as extremidade, para rola lateralmente;</td>
                 </tr>
                 <tr>
-                    <td>Distância das bordas(cm): <input class="controlador" type="text" value="@Model.bordas" name="bordas" />  </td>
+                    <td colspan="2">O comprimento do percurso deve chegar até 10 cm da borda em ambos os lados do eixo de simetria longitudinal </td>
                 </tr>
                 <tr>
-                    <td> Logo após, submeter o colchão a 50000 ciclos a uma frequência de (47 ± 5) m/min. </td>
+                    <td colspan="2">A frequência do movimento do  rolo deve ser de 47 m/min ± 5 m/min;</td>
                 </tr>
                 <tr>
-                    <td><b>Nota:</b> Caso o colchão possua duas faces utilizáveis, realizar 25000 ciclos em cada face.</td>
+                    <td colspan="2">A massa total a ser aplicada durante o ensaio deve ser de 110±1 kg </td>
                 </tr>
                 <tr>
-                    <td>
-                        Quantidade De faces utilizadas:
-                        <select name="faces_utilizadas" class="controlador" id="faces_utilizadas">
-                            <option selected>@Model.faces_utilizadas</option>
-                            <option value="1">1</option>
-                            <option value="2">2</option>
-                        </select>
-                    </td>
+                    <td colspan="2">Em colchões utilizáveis em apenas 1 face, o ensaio deve ser realizado somente nesta face por um período de 50000 ciclos, </td>
                 </tr>
-                @if (Model.faces_utilizadas == "1")
+                <tr>
+                    <td colspan="2">Em colchões de 2 face, o ensaio deve ser realizado somente nesta face por um período de 50000 ciclos,</td>
+                </tr>
+                <tr>
+                    <td class="fundo-tabela" colspan="3" style="text-align:left;">Ensaio:</td>
+                </tr>
+                @if (ViewBag.qtd_face == 1)
                 {
-                    <tr id="1_face">
-                        <td>
-                            1º Face:
-                            Velocidade do ciclos (Minutos) : <input class="controlador" style="width:200px; type="text" name="velocidade_face_1" value="47" disabled />
-                            Quantidade de ciclos : <input class="controlador" style="width:200px; type="text" name="quant_face_1" id="quant_face_1" disabled value="50000" />
-
-                        </td>
+                    <tr>
+                        <td>1 Face: 50.000 ciclos</td>
+                        <td>Ciclos atingidos</td>
+                        <td>---</td>
                     </tr>
                 }
                 else
                 {
-                    <tr id="1_face">
-                        <td>
-                            1º Face:
-                            Velocidade do ciclos (Minutos) : <input class="controlador" style="width:200px; type="text" value="47" disabled />
-                            Quantidade de ciclos : <input class="controlador" style="width:200px; type="text" id="quant_face_1" disabled value="25000" />
-
-                        </td>
-                    </tr>
-                    <tr id="2_face">
-                        <td>
-                            2º Face:
-                            Velocidade do ciclos : <input class="controlador" style="width:200px;" type="text" value="47" disabled />
-                            Quantidade de ciclos : <input class="controlador" style="width:200px;" type="text" id="quant_face_2" disabled value="25000" />
-                        </td>
+                    <tr>
+                        <td>2 Face: 25.000 + 25.000 ciclos da primeira face</td>
+                        <td>Ciclos atingidos</td>
+                        <td>---</td>
                     </tr>
                 }
+            </table>
+            <br />
+            <table class="tables table-bordered border-secondary  table-sm">
+                <tr class="fundo-tabela">
+                    <td>Critério de avaliação</td>
+                    <td rowspan="2">Resultado</td>
+                </tr>
                 <tr>
+                    <td>O colchão durante ou após ensaio não pode apresentar nenhuma das seguintes situações</td>
+                </tr>
+                <tr>
+                    <td class="texto">a) Deformações significativas, incluindo nos materiais utilizados na área de conforto e borda perimetral; </td>
                     <td>
-                        Houve rasgos ou engarçamentos no revestimento?:
-                        <select class="controlador" name="rasgo">
-                            <option selected>@Model.rasgo</option>
-                            <option value="NA">---</option>
+                        <select class="form-control" name="pergunta_a">
+                            <option>@Model.pergunta_a</option>
+                            <option value="NA">NA</option>
                             <option value="C">C</option>
                             <option value="NC">NC</option>
                         </select>
                     </td>
                 </tr>
                 <tr>
+                    <td class="texto">b) Cavidades (indentações) significativas; </td>
                     <td>
-                        Houve quebra de molas no molejo?:
-                        <select class="controlador" name="quebra">
-                            <option selected>@Model.quebra</option>
-                            <option value="NA">---</option>
+                        <select class="form-control" name="pergunta_b">
+                            <option>@Model.pergunta_b</option>
+                            <option value="NA">NA</option>
                             <option value="C">C</option>
                             <option value="NC">NC</option>
                         </select>
                     </td>
                 </tr>
                 <tr>
+                    <td class="texto">c) Danificações significativas na borda perimetral, que deve manter seu parelelismo e perpendicularidade; </td>
                     <td>
-                        <b>Nota:</b> Antes de serem realizadas inspeções e medições iniciais, deve deixar o colchão repousar por um período de 30 minutos a 90 minutos.
+                        <select class="form-control" name="pergunta_c">
+                            <option>@Model.pergunta_c</option>
+                            <option value="NA">NA</option>
+                            <option value="C">C</option>
+                            <option value="NC">NC</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="texto">d) Rasgos ou esgarçamentos no revestimento; </td>
+                    <td>
+                        <select class="form-control" name="pergunta_d">
+                            <option>@Model.pergunta_d</option>
+                            <option value="NA">NA</option>
+                            <option value="C">C</option>
+                            <option value="NC">NC</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="texto">e) Protrusão ou quebra das molas do molejo, deformações individuais das molas e deformações verticais e transversais do colchão de molas; </td>
+                    <td>
+                        <select class="form-control" name="pergunta_e">
+                            <option>@Model.pergunta_e</option>
+                            <option value="NA">NA</option>
+                            <option value="C">C</option>
+                            <option value="NC">NC</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="texto">  O material utilizado como isolante deve apresentar flexibilidade e resistência á perfuração e rasgo, mesmo após uso continuado de colchão de molas; </td>
+                    <td>
+                        <select class="form-control" name="material">
+                            <option>@Model.material</option>
+                            <option value="NA">NA</option>
+                            <option value="C">C</option>
+                            <option value="NC">NC</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="texto">  O material suportou a ciclagem de 50000 ciclos para o colchão de 1 face; ou para colchões de 2 faces a ciclagem de 25000 em cada uma das faces; </td>
+                    <td>
+                        <select class="form-control" name="suportou">
+                            <option>@Model.suportou</option>
+                            <option value="NA">NA</option>
+                            <option value="C">C</option>
+                            <option value="NC">NC</option>
+                        </select>
                     </td>
                 </tr>
             </table>
-            <br />
             <div class="d-grid gap-2 d-flex justify-content-center">
                 <button type="submit" class="btn btn-success btn btn-primary btn-md">Editar</button>
             </div>

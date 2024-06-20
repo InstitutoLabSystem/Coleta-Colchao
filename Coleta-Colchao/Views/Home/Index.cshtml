@@ -38,6 +38,18 @@
             margin-bottom: 10px;
         }
 
+        #pesquisa {
+            border-radius: 10px;
+            padding: 20px;
+        }
+
+        #botao-pesquisar {
+            border-radius: 10px;
+        }
+
+        #fonte{
+            font-family:Arial, sans-serif;
+        }
     </style>
 
 </head>
@@ -48,11 +60,11 @@
             <div class="container mt-4" style="text-align:center; align-items:center;">
                 <div class="row ">
                     <div>
-                        <h1 class="display-4 fw-bold ">COLETA COLCHÃO</h1>
+                        <h1 class="display-4 fw-bold " id="fonte">COLETA COLCHÃO</h1>
                         <div class="input-group ">
-                            <input type="text" class="form-control col-md-12 " placeholder="Digite a Ordem De Serviço" aria-label="Recipient's username" aria-describedby="basic-addon2" name="os">
+                            <input type="text" id="pesquisa" class="form-control col-md-12 " placeholder="Digite a Ordem De Serviço" aria-label="Recipient's username" aria-describedby="basic-addon2" name="os">
                             <div class="input-group-append  col-md-1">
-                                <button class="btn btn-primary " type="submit"> Pesquisar </button>
+                                <button class="btn btn-primary  " type="submit" id="botao-pesquisar"> Pesquisar </button>
                             </div>
                             @if (Model != null)
                             {
@@ -142,7 +154,7 @@
                                 }
                                 else
                                 {
-                                    <td > @Model[i].descricao </td>
+                                    <td> @Model[i].descricao </td>
                                 }
 
                                 @if (@Model[i].descricao == "  |  FATOR DE CONFORTO")
@@ -339,6 +351,7 @@
                                 {
                                     @if (ViewBag.Ensaio == "Molas")
                                     {
+
                                         <td>
                                             <a role="button" target="_blank" class="btn btn-success" asp-controller="Coleta" asp-action="EnsaioDurabilidade" asp-route-os="@Model[i].OS" asp-route-orcamento="@Model[i].orcamento">Abrir</a>
                                         </td>
@@ -361,7 +374,6 @@
                                 @if (Model[i].codigo == "DURCCH000000002")
                                 {
                                     @if (ViewBag.Ensaio == "Espuma")
-
                                     {
                                         <td>
                                             <a role="button" target="_blank" class="btn btn-success" asp-controller="Coleta" asp-action="EnsaioBaseEstruturaDurabi" asp-route-os="@Model[i].OS" asp-route-orcamento="@Model[i].orcamento">Abrir</a>
@@ -370,7 +382,15 @@
                                             <a role="button" target="_blank" class="btn btn-success" asp-controller="Coleta" asp-action="EditarIndexEspuma" asp-route-os="@ViewBag.os" asp-route-orcamento="@ViewBag.orcamento">Informações</a>
                                         </td>
                                     }
-
+                                    else
+                                    {
+                                        <td>
+                                            <a role="button" target="_blank" class="btn btn-success" asp-controller="Coleta" asp-action="EnsaioBaseEstruturaDurabi" asp-route-os="@Model[i].OS" asp-route-orcamento="@Model[i].orcamento">Abrir</a>
+                                        </td>
+                                        <td>
+                                            <a role="button" target="_blank" class="btn btn-success" asp-controller="Coleta" asp-action="EditarRegistroMolas" asp-route-os="@ViewBag.os" asp-route-orcamento="@ViewBag.orcamento">Informações</a>
+                                        </td>
+                                    }
                                 }
 
                                 @if (Model[i].codigo == "DNSCCH002000001")
@@ -444,67 +464,67 @@
 
                             </tr>
                         }
-                        @if (ViewBag.estrutura != null)
-                        {
-                            @if (ViewBag.estrutura == "Box Conjugado" || ViewBag.estrutura == "Auxiliar")
-                            {
-                                <tr class="fundo-tabela">
-                                    <td colspan="7">
-                                        Ensaio De Base
-                                    </td>
-                                </tr>
-                                <tr class="fundo-tabela">
+                        @*  @if (ViewBag.estrutura != null)
+                    {
+                    @if (ViewBag.estrutura == "Box Conjugado" || ViewBag.estrutura == "Auxiliar")
+                    {
+                    <tr class="fundo-tabela">
+                    <td colspan="7">
+                    Ensaio De Base
+                    </td>
+                    </tr>
+                    <tr class="fundo-tabela">
 
-                                    <td>OS</td>
-                                    <td>ORCAMENTO</td>
-                                    <td>DESCRIÇÃO</td>
-                                    <td>STATUS</td>
-                                    <td>PRODUTO ENSAIADO</td>
-                                    <td>ENSAIO</td>
-                                    <td>INFORMAÇÕES</td>
-                                </tr>
+                    <td>OS</td>
+                    <td>ORCAMENTO</td>
+                    <td>DESCRIÇÃO</td>
+                    <td>STATUS</td>
+                    <td>PRODUTO ENSAIADO</td>
+                    <td>ENSAIO</td>
+                    <td>INFORMAÇÕES</td>
+                    </tr>
 
-                                <tr>
-                                    <td>@ViewBag.os</td>
-                                    <td>@ViewBag.orcamento</td>
-                                    <td>Ensaio base Durabilidade</td>
-                                    <td>teste</td>
-                                    <td>Durabilidade</td>
-                                    <td>
-                                        <a role="button" target="_blank" class="btn btn-success" asp-controller="Coleta" asp-action="EnsaioDurabilidade" asp-route-os="@ViewBag.os" asp-route-orcamento="@ViewBag.orcamento">Abrir</a>
-                                    </td>
-                                    <td>
-                                        <a role="button" target="_blank" class="btn btn-success" asp-controller="Coleta" asp-action="EditarRegistroMolas" asp-route-os="@ViewBag.os" asp-route-orcamento="@ViewBag.orcamento">Informações</a>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>@ViewBag.os</td>
-                                    <td>@ViewBag.orcamento</td>
-                                    <td>Durabilidade Estrutura e Uniões </td>
-                                    <td>teste</td>
-                                    <td>Estrutura e Uniões</td>
-                                    <td>
-                                        <a role="button" target="_blank" class="btn btn-success" asp-controller="Coleta" asp-action="EnsaioBaseEstruturaDurabi" asp-route-os="@ViewBag.os" asp-route-orcamento="@ViewBag.orcamento">Abrir</a>
-                                    </td>
-                                    <td>
-                                        <a role="button" target="_blank" class="btn btn-success" asp-controller="Coleta" asp-action="EditarRegistroMolas" asp-route-os="@ViewBag.os" asp-route-orcamento="@ViewBag.orcamento">Informações</a>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>@ViewBag.os</td>
-                                    <td>@ViewBag.orcamento</td>
-                                    <td>Ensaio de Impacto Vertical</td>
-                                    <td>teste</td>
-                                    <td>Impacto Vertical</td>
-                                    <td>
-                                        <a role="button" target="_blank" class="btn btn-success" asp-controller="Coleta" asp-action="EnsaioImpacto" asp-route-os="@ViewBag.os" asp-route-orcamento="@ViewBag.orcamento">Abrir</a>
-                                    </td>
-                                    <td>
-                                        <a role="button" target="_blank" class="btn btn-success" asp-controller="Coleta" asp-action="EditarRegistroMolas" asp-route-os="@ViewBag.os" asp-route-orcamento="@ViewBag.orcamento">Informações</a>
-                                    </td>
-                                </tr>
-                            }
-                        }
+                    <tr>
+                    <td>@ViewBag.os</td>
+                    <td>@ViewBag.orcamento</td>
+                    <td>Ensaio base Durabilidade</td>
+                    <td>teste</td>
+                    <td>Durabilidade</td>
+                    <td>
+                    <a role="button" target="_blank" class="btn btn-success" asp-controller="Coleta" asp-action="EnsaioDurabilidade" asp-route-os="@ViewBag.os" asp-route-orcamento="@ViewBag.orcamento">Abrir</a>
+                    </td>
+                    <td>
+                    <a role="button" target="_blank" class="btn btn-success" asp-controller="Coleta" asp-action="EditarRegistroMolas" asp-route-os="@ViewBag.os" asp-route-orcamento="@ViewBag.orcamento">Informações</a>
+                    </td>
+                    </tr>
+                    <tr>
+                    <td>@ViewBag.os</td>
+                    <td>@ViewBag.orcamento</td>
+                    <td>Durabilidade Estrutura e Uniões </td>
+                    <td>teste</td>
+                    <td>Estrutura e Uniões</td>
+                    <td>
+                    <a role="button" target="_blank" class="btn btn-success" asp-controller="Coleta" asp-action="EnsaioBaseEstruturaDurabi" asp-route-os="@ViewBag.os" asp-route-orcamento="@ViewBag.orcamento">Abrir</a>
+                    </td>
+                    <td>
+                    <a role="button" target="_blank" class="btn btn-success" asp-controller="Coleta" asp-action="EditarRegistroMolas" asp-route-os="@ViewBag.os" asp-route-orcamento="@ViewBag.orcamento">Informações</a>
+                    </td>
+                    </tr>
+                    <tr>
+                    <td>@ViewBag.os</td>
+                    <td>@ViewBag.orcamento</td>
+                    <td>Ensaio de Impacto Vertical</td>
+                    <td>teste</td>
+                    <td>Impacto Vertical</td>
+                    <td>
+                    <a role="button" target="_blank" class="btn btn-success" asp-controller="Coleta" asp-action="EnsaioImpacto" asp-route-os="@ViewBag.os" asp-route-orcamento="@ViewBag.orcamento">Abrir</a>
+                    </td>
+                    <td>
+                    <a role="button" target="_blank" class="btn btn-success" asp-controller="Coleta" asp-action="EditarRegistroMolas" asp-route-os="@ViewBag.os" asp-route-orcamento="@ViewBag.orcamento">Informações</a>
+                    </td>
+                    </tr>
+                    }
+                    } *@
                     </table>
                 </div>
             </div>
