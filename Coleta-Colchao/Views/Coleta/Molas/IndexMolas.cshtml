@@ -76,7 +76,7 @@
                 </tr>
                 <tr>
                     <td> Ordem de serviço : </td>
-                    <td colspan="4"> <input class="form-control" type="text" value="@ViewBag.os" readonly name="os"/> </td>
+                    <td colspan="4"> <input class="form-control" type="text" value="@ViewBag.os" readonly name="os" /> </td>
                 </tr>
                 <tr>
                     <td> Contém Lacre : </td>
@@ -109,7 +109,25 @@
                     <td> <input class="form-control" type="date" name="data_realizacao_term" /> </td>
                 </tr>
             </table>
-
+            <table class="tables table-bordered border-secondary  table-sm">
+                <tr>
+                    <td colspan="5">Condicionamento da amostra (Quando aplicavel)</td>
+                </tr>
+                <tr>
+                    <td>Temperatura ambiente mín:</td>
+                    <td><input name="acond_min" class="form-control" /></td>
+                    <td style="width:50px;">º C</td>
+                    <td> Umidade relativa do ar mín:  </td>
+                    <td><input name="umidade_min" class="form-control" /></td>
+                </tr>
+                <tr>
+                    <td>Temperatura ambiente max:</td>
+                    <td><input name="acond_max" class="form-control" /></td>
+                    <td style="width:50px;">º C</td>
+                    <td> Umidade relativa do ar max:  </td>
+                    <td><input name="umidade_max" class="form-control" /></td>
+                </tr>
+            </table>
             <table class="tables table-bordered border-secondary  table-sm">
                 <tr>
                     <td> Número de processo </td>
@@ -156,10 +174,10 @@
                     <td> Quantidade de Molejo </td>
                     <td colspan="3">
                         <input class="form-control" name="quant_molejo" id="quant_molejo" readonly />
-                      @*   <select class="form-control" name="quant_molejo" id="quant_molejo">
-                            <option selected> --- </option>
-                            <option value="1"> 1 </option>
-                            <option value="2"> 2 </option>
+                        @*   <select class="form-control" name="quant_molejo" id="quant_molejo">
+                        <option selected> --- </option>
+                        <option value="1"> 1 </option>
+                        <option value="2"> 2 </option>
                         </select> *@
                     </td>
                 </tr>
@@ -275,7 +293,7 @@
                 <tr>
                     <td colspan="2">  Isolante </td>
                     <td colspan="3">
-                      @*   <input class="form-control" type="text" name="isolante" /> *@
+                        @*   <input class="form-control" type="text" name="isolante" /> *@
                         <select class="form-control" name="isolante">
                             <option value="NA">NA</option>
                             <option value="Sim">Sim</option>
@@ -348,7 +366,7 @@
                 quant_molejo.value = 1;
             }
 
-            selectQuantMolas.addEventListener('change', function () {             
+            selectQuantMolas.addEventListener('change', function () {
                 var selectedValue = selectQuantMolas.value;
 
                 var trFornecedor = document.querySelector('.fornecedor');
@@ -369,12 +387,12 @@
                     trMolejo.style.display = 'table-row';
                     trQuantMolas.style.display = 'table-row';
                     trBitola.style.display = 'table-row';
-                  
+
                 }
 
                 if (selectedValue === 'Conforto') {
                     quant_molejo.value = 2;
-                }else{
+                } else {
                     quant_molejo.value = 1;
                 }
 

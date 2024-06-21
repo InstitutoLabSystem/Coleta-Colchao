@@ -111,6 +111,25 @@
                             <td> <input class="form-control" type="text" name="data_realizacao_term" value="@Model[i].data_realizacao_term" /> </td>
                         </tr>
                     </table>
+                    <table class="tables table-bordered border-secondary  table-sm">
+                        <tr>
+                            <td colspan="5">Condicionamento da amostra (Quando aplicavel)</td>
+                        </tr>
+                        <tr>
+                            <td>Temperatura ambiente mín:</td>
+                            <td><input name="acond_min" class="form-control" value="@Model[i].acond_min" /></td>
+                            <td style="width:50px;">º C</td>
+                            <td> Umidade relativa do ar mín:  </td>
+                            <td><input name="umidade_min" class="form-control" value="@Model[i].umidade_min" /></td>
+                        </tr>
+                        <tr>
+                            <td>Temperatura ambiente max:</td>
+                            <td><input name="acond_max" class="form-control" value="@Model[i].acond_max" /></td>
+                            <td style="width:50px;">º C</td>
+                            <td> Umidade relativa do ar max:  </td>
+                            <td><input name="umidade_max" class="form-control" value="@Model[i].umidade_max" /></td>
+                        </tr>
+                    </table>
 
                     <table class="tables table-bordered border-secondary  table-sm">
                         <tr>

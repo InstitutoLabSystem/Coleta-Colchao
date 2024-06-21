@@ -52,7 +52,10 @@ namespace Coleta_Colchao.Models
             public string? napa_cou_plas { get; set; }
             public string? manual { get; set; }
             public string? andamento { get; set; }
-
+            public float acond_min { get; set; }
+            public float acond_max { get; set; }
+            public float umidade_min { get; set; }
+            public float umidade_max { get; set; }
         }
 
         public class RegistroEspuma
@@ -452,6 +455,14 @@ namespace Coleta_Colchao.Models
             public string? suportou { get; set; }
             public string? executador { get; set; }
             public string? auxiliar { get; set; }
+            public DateOnly acond_inicio { get; set; }
+            public DateOnly acond_final { get; set; }
+            public TimeOnly hora_inicio { get; set; }
+            public TimeOnly hora_final { get; set; }
+            public float temp_inicio { get; set; }
+            public float temp_final { get; set; }
+            public string? im { get; set; }
+            public string? responsavel_cond { get; set; }
         }
 
 
@@ -650,17 +661,14 @@ namespace Coleta_Colchao.Models
             public int Id { get; set; }
             public string os { get; set; }
             public string orcamento { get; set; }
-
             public DateOnly data_inicio { get; set; }
-
             public DateOnly data_termi { get; set; }
-
-
             public TimeOnly hora_inicio { get; set; }
-
             public TimeOnly hora_term { get; set; }
             public string? temp_min { get; set; }
             public string? temp_max { get; set; }
+            public string? responsavel_cond { get; set; }
+            public string? im { get; set; }
             public string? base_cama { get; set; }
             public string? angulo_encontrado { get; set; }
             public int distancia_ponto_a { get; set; }
@@ -702,10 +710,14 @@ namespace Coleta_Colchao.Models
             public string orcamento { get; set; }
             public DateOnly data_ini { get; set; }
             public DateOnly data_term { get; set; }
+            public DateOnly data_ini_ens { get; set; }
+            public DateOnly data_term_ens { get; set; }
             public TimeOnly hora_inic { get; set; }
             public TimeOnly hora_term { get; set; }
             public string? tem_min { get; set; }
             public string? tem_max { get; set; }
+            public string? im { get; set; }
+            public string? responsavel_cond { get; set; }
             public int comp_base { get; set; }
             public int larg_base { get; set; }
             public string? impac_um_a { get; set; }

@@ -363,7 +363,7 @@ namespace Coleta_Colchao.Controllers
         {
             //buscando altura, largura, e comprimento dos dados iniciais.
             var inicial = _context.regtro_colchao.Where(x => x.os == os && x.orcamento == orcamento).FirstOrDefault();
-            if(inicial != null)
+            if (inicial != null)
             {
                 ViewBag.altura = inicial.altura;
                 ViewBag.comprimento = inicial.comprimento;
@@ -816,7 +816,7 @@ namespace Coleta_Colchao.Controllers
 
         //INICIO DAS FUNÇÕES PARA SALVAR OS DADOS,
         [HttpPost]
-        public async Task<IActionResult> SalvarRegistroMolas(string os, string orcamento, [Bind("lacre,realizacao_ensaios,quant_recebida,quant_ensaiada,data_realizacao_ini,data_realizacao_term,num_proc,cod_ref,tipo_cert,modelo_cert,tipo_proc,produto,estrutura,tipo_molejo,quant_molejo,fornecedor_um,fornecedor_dois,nome_molejo_um,nome_molejo_dois,quant_media_um,quant_media_dois,bitola_arame_um,bitola_arame_dois,borda_peri,metalasse,qtd_face,comprimento,largura,altura,isolante,latex,napa_cou_plas,manual")] ColetaModel.Registro registro)
+        public async Task<IActionResult> SalvarRegistroMolas(string os, string orcamento, [Bind("lacre,realizacao_ensaios,quant_recebida,quant_ensaiada,data_realizacao_ini,data_realizacao_term,num_proc,cod_ref,tipo_cert,modelo_cert,tipo_proc,produto,estrutura,tipo_molejo,quant_molejo,fornecedor_um,fornecedor_dois,nome_molejo_um,nome_molejo_dois,quant_media_um,quant_media_dois,bitola_arame_um,bitola_arame_dois,borda_peri,metalasse,qtd_face,comprimento,largura,altura,isolante,latex,napa_cou_plas,manual,acond_min,acond_max,umidade_min,umidade_max")] ColetaModel.Registro registro)
         {
             try
             {
@@ -853,6 +853,10 @@ namespace Coleta_Colchao.Controllers
                 string latex = registro.latex;
                 string napa_cou_plas = registro.napa_cou_plas;
                 string manual = registro.manual;
+                float acond_min = registro.acond_min;
+                float acond_max = registro.acond_max;
+                float umidade_min = registro.umidade_min;
+                float umidade_max = registro.umidade_max;
 
 
                 var salvarRegistro = new ColetaModel.Registro
@@ -892,7 +896,11 @@ namespace Coleta_Colchao.Controllers
                     latex = latex,
                     napa_cou_plas = napa_cou_plas,
                     manual = manual,
-                    andamento = "Andamento"
+                    andamento = "Andamento",
+                    acond_min = acond_min,
+                    acond_max = acond_max,
+                    umidade_min = umidade_min,
+                    umidade_max = umidade_max,
                 };
 
                 _context.Add(salvarRegistro);
@@ -1070,7 +1078,7 @@ namespace Coleta_Colchao.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> EditarRegistroMolas(string os, string orcamento, [Bind("lacre,realizacao_ensaios,quant_recebida,quant_ensaiada,data_realizacao_ini,data_realizacao_term,num_proc,cod_ref,tipo_cert,modelo_cert,tipo_proc,produto,estrutura,tipo_molejo,quant_molejo,fornecedor_um,fornecedor_dois,nome_molejo_um,nome_molejo_dois,quant_media_um,quant_media_dois,bitola_arame_um,bitola_arame_dois,borda_peri,isolante,latex,napa_cou_plas,manual")] ColetaModel.Registro EditarRegistros)
+        public async Task<IActionResult> EditarRegistroMolas(string os, string orcamento, [Bind("lacre,realizacao_ensaios,quant_recebida,quant_ensaiada,data_realizacao_ini,data_realizacao_term,num_proc,cod_ref,tipo_cert,modelo_cert,tipo_proc,produto,estrutura,tipo_molejo,quant_molejo,fornecedor_um,fornecedor_dois,nome_molejo_um,nome_molejo_dois,quant_media_um,quant_media_dois,bitola_arame_um,bitola_arame_dois,borda_peri,isolante,latex,napa_cou_plas,manual,acond_min,acond_max,umidade_min,umidade_max")] ColetaModel.Registro EditarRegistros)
         {
             var editarValores = _context.regtro_colchao.Where(x => x.os == os && x.orcamento == orcamento).FirstOrDefault();
             try
@@ -1105,7 +1113,10 @@ namespace Coleta_Colchao.Controllers
                     editarValores.latex = EditarRegistros.latex;
                     editarValores.napa_cou_plas = EditarRegistros.napa_cou_plas;
                     editarValores.manual = EditarRegistros.manual;
-
+                    editarValores.acond_min = EditarRegistros.acond_min;
+                    editarValores.acond_max = EditarRegistros.acond_max;
+                    editarValores.umidade_min = EditarRegistros.umidade_min;
+                    editarValores.umidade_max = EditarRegistros.umidade_max;
 
                     _context.Update(editarValores);
                     await _context.SaveChangesAsync();
@@ -2884,7 +2895,7 @@ namespace Coleta_Colchao.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> SalvarEnsaio7_3(string os, string orcamento, [Bind("data_ini,data_term,pergunta_a,pergunta_b,pergunta_c,pergunta_d,pergunta_e,material,suportou")] ColetaModel.Ensaio7_3 salvarDados)
+        public async Task<IActionResult> SalvarEnsaio7_3(string os, string orcamento, [Bind("data_ini,data_term,pergunta_a,pergunta_b,pergunta_c,pergunta_d,pergunta_e,material,suportou,acond_inicio,acond_final,hora_inicio,hora_final,temp_inicio,temp_final,im,responsavel_cond")] ColetaModel.Ensaio7_3 salvarDados)
         {
             try
             {
@@ -2901,7 +2912,14 @@ namespace Coleta_Colchao.Controllers
                     string pergunta_e = salvarDados.pergunta_e;
                     string material = salvarDados.material;
                     string suportou = salvarDados.suportou;
-
+                    DateOnly acond_inicio = salvarDados.acond_inicio;
+                    DateOnly acond_final = salvarDados.acond_final;
+                    TimeOnly hora_inicio = salvarDados.hora_inicio;
+                    TimeOnly hora_final = salvarDados.hora_final;
+                    float temp_inicio = salvarDados.temp_inicio;
+                    float temp_final = salvarDados.temp_final;
+                    string im = salvarDados.im;
+                    string responsavel_cond = salvarDados.responsavel_cond;
 
                     var registro = new ColetaModel.Ensaio7_3
                     {
@@ -2915,7 +2933,16 @@ namespace Coleta_Colchao.Controllers
                         pergunta_d = pergunta_d,
                         pergunta_e = pergunta_e,
                         material = material,
-                        suportou = suportou
+                        suportou = suportou,
+                        acond_inicio = acond_inicio,
+                        acond_final = acond_final,
+                        hora_inicio = hora_inicio,
+                        hora_final = hora_final,
+                        temp_inicio = temp_inicio,
+                        temp_final = temp_final,
+
+                        im = salvarDados.im,
+                        responsavel_cond = salvarDados.responsavel_cond,
                     };
 
                     _context.Add(registro);
@@ -2935,6 +2962,14 @@ namespace Coleta_Colchao.Controllers
                     editarDados.pergunta_e = salvarDados.pergunta_e;
                     editarDados.material = salvarDados.material;
                     editarDados.suportou = salvarDados.suportou;
+                    editarDados.acond_inicio = salvarDados.acond_inicio;
+                    editarDados.acond_final = salvarDados.acond_final;
+                    editarDados.hora_inicio = salvarDados.hora_inicio;
+                    editarDados.hora_final = salvarDados.hora_final;
+                    editarDados.temp_inicio = salvarDados.temp_inicio;
+                    editarDados.temp_final = salvarDados.temp_final;
+                    editarDados.im = salvarDados.im;
+                    editarDados.responsavel_cond = salvarDados.responsavel_cond;
 
                     _context.Update(editarDados);
                     await _context.SaveChangesAsync();
@@ -4154,7 +4189,8 @@ namespace Coleta_Colchao.Controllers
                     string prejudique_ponto_c = dados.prejudique_ponto_c;
                     string temp_ini = dados.temp_ini;
                     string temp_term = dados.temp_term;
-
+                    string responsavel_cond = dados.responsavel_cond;
+                    string im = dados.im;
 
 
                     //realizando se esta conforme ou nao conforme
@@ -4239,6 +4275,8 @@ namespace Coleta_Colchao.Controllers
                     editarRegistro.prejudique_ponto_c = dados.prejudique_ponto_c;
                     editarRegistro.temp_ini = dados.temp_ini;
                     editarRegistro.temp_term = dados.temp_term;
+                    editarRegistro.responsavel_cond = dados.responsavel_cond;
+                    editarRegistro.im = dados.im;
 
                     //realizando se esta conforme ou nao conforme
                     if (editarRegistro.suportou_ponto_a == "Sim" && editarRegistro.ruptura_ponto_a == "Não" && editarRegistro.afundamento_ponto_a == "Não" && editarRegistro.rasgo_ponto_a == "Não" && editarRegistro.rompimento_ponto_a == "Não" && editarRegistro.prejudique_ponto_a == "Não")
@@ -4469,6 +4507,8 @@ namespace Coleta_Colchao.Controllers
                     //recebendo os valores do html.
                     DateOnly data_ini = salvarDados.data_ini;
                     DateOnly data_term = salvarDados.data_term;
+                    DateOnly data_ini_ens = salvarDados.data_ini_ens;
+                    DateOnly data_term_ens = salvarDados.data_term_ens;
                     TimeOnly hora_inic = salvarDados.hora_inic;
                     TimeOnly hora_term = salvarDados.hora_term;
                     string tem_min = salvarDados.tem_min;
@@ -4502,6 +4542,8 @@ namespace Coleta_Colchao.Controllers
                     string prejudique_dois = salvarDados.prejudique_dois;
                     string temp_ini = salvarDados.temp_ini;
                     string temp_term = salvarDados.temp_term;
+                    string im = salvarDados.im;
+                    string responsavel_cond = salvarDados.responsavel_cond;
 
                     //realizando conforme e nao conforme
                     if (impac_um_a == "Sim" && impac_um_b == "Sim" && impac_um_c == "Sim" && impac_um_d == "Sim" && impac_um_g == "Sim" && impac_um_i == "Sim" && impac_um_j == "Sim")
@@ -4554,6 +4596,8 @@ namespace Coleta_Colchao.Controllers
                     //editando os valores no html
                     editarRegistro.data_ini = salvarDados.data_ini;
                     editarRegistro.data_term = salvarDados.data_term;
+                    editarRegistro.data_ini_ens = salvarDados.data_ini_ens;
+                    editarRegistro.data_term_ens = salvarDados.data_term_ens;
                     editarRegistro.hora_inic = salvarDados.hora_inic;
                     editarRegistro.hora_term = salvarDados.hora_term;
                     editarRegistro.tem_min = salvarDados.tem_min;
@@ -4587,6 +4631,8 @@ namespace Coleta_Colchao.Controllers
                     editarRegistro.prejudique_dois = salvarDados.prejudique_dois;
                     editarRegistro.temp_ini = salvarDados.temp_ini;
                     editarRegistro.temp_term = salvarDados.temp_term;
+                    editarRegistro.im = salvarDados.im;
+                    editarRegistro.responsavel_cond = salvarDados.responsavel_cond;
 
 
                     //realizando conforme e nao conforme

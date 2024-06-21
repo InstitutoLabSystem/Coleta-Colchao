@@ -19,9 +19,9 @@
             text-align: center;
         }
 
-        .form-control {
-            width: 100px;
-        }
+        /*    .form-control {
+                    width: 100px;
+                } */
 
         select {
             text-align: center;
@@ -53,14 +53,14 @@
                     </tr>
                 </thead>
             </table>
-            <table class="tables table-bordered border-secondary  table-sm">
-                <tr>
-                    <td>Temperatura Inicial (°C) :</td>
-                    <td><input class="controlador" type="text" asp-for="temp_ini" style="width:100px;" /></td>
-                    <td>Temperatura Final (°C) :</td>
-                    <td><input class="controlador" type="text" asp-for="temp_term" style="width:100px;" /></td>
-                </tr>
-            </table>
+            @*             <table class="tables table-bordered border-secondary  table-sm">
+        <tr>
+        <td>Temperatura Inicial (°C) :</td>
+        <td><input class="controlador" type="text" asp-for="temp_ini" style="width:100px;" /></td>
+        <td>Temperatura Final (°C) :</td>
+        <td><input class="controlador" type="text" asp-for="temp_term" style="width:100px;" /></td>
+        </tr>
+        </table> *@
             <br />
 
             <table class="tables table-bordered border-secondary  table-sm">
@@ -87,22 +87,39 @@
                 <tr>
                     <td colspan="2">
                         <table class="tables table-bordered border-secondary  table-sm">
-                            <tr>
-                                <td class="fundo-tabela"> Data de início </td>
-                                <td> <input type="date" class="form-control" style=" width:150px;" asp-for="data_ini" readonly/> </td>
-                                <td class="fundo-tabela"> Hora de início: </td>
-                                <td>   <input class="form-control" type="time" asp-for="hora_inic" /> </td>
-                                <td class="fundo-tabela"> Temperatura mínima: </td>
-                                <td> <input class="form-control" type="text" style=" width:150px;" asp-for="tem_min" /> </td>
+                            <tr class="fundo-tabela">
+                                <td colspan="10">
+                                    Temperatura da execução do ensaio  (23 ± 2) °C, sem necessidade de controle de umidade.
+                                </td>
+                            </tr>
+                            <tr class="fundo-tabela">
+                                <td colspan="2">Data do acondicionamento</td>
+                                <td colspan="2">Horario do acondicionamento</td>
+                                <td colspan="2">Temperatura encontrada</td>
+                                <td colspan="2">IM</td>
                             </tr>
                             <tr>
-                                <td class="fundo-tabela"> Data de término: </td>
-                                <td> <input type="date" class="form-control" style=" width:150px;" asp-for="data_term" readonly/> </td>
-                                <td class="fundo-tabela"> Hora do término: </td>
-                                <td>   <input class="form-control" type="time" asp-for="hora_term" /> </td>
-                                <td class="fundo-tabela"> Temperatura máxima: </td>
-                                <td> <input class="form-control" type="text" style=" width:150px;" asp-for="tem_max" /> </td>
+                                <td> Início:</td>
+                                <td> <input class="form-control" type="date" asp-for="data_ini_ens" /> </td>
+                                <td>Início:</td>
+                                <td> <input class="form-control" type="time" asp-for="hora_inic" /> </td>
+                                <td> Mín:</td>
+                                <td> <input class="form-control" type="text" asp-for="tem_min" /> </td>
+                                <td rowspan="2"><input asp-for="im" class="form-control" style="height:80px;" /></td>
                             </tr>
+                            <tr>
+                                <td>Final:</td>
+                                <td><input class="form-control" type="date" asp-for="data_term_ens" /></td>
+                                <td>Final:</td>
+                                <td> <input class="form-control" type="time" asp-for="hora_term" /> </td>
+                                <td>Max:</td>
+                                <td> <input class="form-control" type="text" asp-for="tem_max" /> </td>
+                            </tr>
+                            <tr>
+                                <td colspan="4">Responsavel</td>
+                                <td colspan="5"><input asp-for="responsavel_cond" class="form-control" /></td>
+                            </tr>
+
                         </table>
                     </td>
                 </tr>
@@ -532,14 +549,14 @@
                 </thead>
             </table>
             <br />
-            <table class="tables table-bordered border-secondary  table-sm">
-                <tr>
-                    <td>Temperatura Inicial (°C) :</td>
-                    <td><input class="controlador" type="text" asp-for="temp_ini" style="width:100px;"/></td>
-                    <td>Temperatura Final (°C) :</td>
-                    <td><input class="controlador" type="text" asp-for="temp_term" style="width:100px;" /></td>
-                </tr>
-            </table>
+            @*        <table class="tables table-bordered border-secondary  table-sm">
+        <tr>
+        <td>Temperatura Inicial (°C) :</td>
+        <td><input class="controlador" type="text" asp-for="temp_ini" style="width:100px;" /></td>
+        <td>Temperatura Final (°C) :</td>
+        <td><input class="controlador" type="text" asp-for="temp_term" style="width:100px;" /></td>
+        </tr>
+        </table> *@
             <br />
 
             <table class="tables table-bordered border-secondary  table-sm">
@@ -566,21 +583,51 @@
                 <tr>
                     <td colspan="2">
                         <table class="tables table-bordered border-secondary  table-sm">
-                            <tr>
-                                <td class="fundo-tabela"> Data de início </td>
-                                <td> <input type="text" class="form-control" style=" width:150px;" asp-for="data_ini" value="@Model.data_ini" readonly /> </td>
-                                <td class="fundo-tabela"> Hora de início: </td>
-                                <td>   <input class="form-control" type="time" asp-for="hora_inic" /> </td>
-                                <td class="fundo-tabela"> Temperatura mínima: </td>
-                                <td> <input class="form-control" type="text" style=" width:150px;" asp-for="tem_min" /> </td>
+                            <tr class="fundo-tabela">
+                                <td colspan="10">
+                                    Temperatura da execução do ensaio  (23 ± 2) °C, sem necessidade de controle de umidade.
+                                </td>
+                            </tr>
+                            <tr class="fundo-tabela">
+                                <td colspan="2">Data do acondicionamento</td>
+                                <td colspan="2">Horario do acondicionamento</td>
+                                <td colspan="2">Temperatura encontrada</td>
+                                <td colspan="2">IM</td>
                             </tr>
                             <tr>
-                                <td class="fundo-tabela"> Data de término: </td>
-                                <td> <input type="text" class="form-control" style=" width:150px;" asp-for="data_term" value="@Model.data_term" readonly/> </td>
-                                <td class="fundo-tabela"> Hora do término: </td>
-                                <td>   <input class="form-control" type="time" asp-for="hora_term" /> </td>
-                                <td class="fundo-tabela"> Temperatura máxima: </td>
-                                <td> <input class="form-control" type="text" style=" width:150px;" asp-for="tem_max" /> </td>
+                                <td> Início:</td>
+                                @if (Model == null)
+                                {
+                                    <td><input class="form-control" type="date" asp-for="data_ini_ens" /></td>
+                                }
+                                else
+                                {
+                                    <td><input class="form-control" type="text" asp-for="data_ini_ens" /></td>
+                                }
+                                <td>Início:</td>
+                                <td> <input class="form-control" type="time" asp-for="hora_inic" /> </td>
+                                <td> Mín:</td>
+                                <td> <input class="form-control" type="text" asp-for="tem_min" /> </td>
+                                <td rowspan="2"><input asp-for="im" class="form-control" style="height:80px;" /></td>
+                            </tr>
+                            <tr>
+                                <td>Final:</td>
+                                @if (Model == null)
+                                {
+                                    <td><input class="form-control" type="date" asp-for="data_term_ens" /></td>
+                                }
+                                else
+                                {
+                                    <td><input class="form-control" type="text" asp-for="data_term_ens" /></td>
+                                }
+                                <td>Final:</td>
+                                <td> <input class="form-control" type="time" asp-for="hora_term" /> </td>
+                                <td>Max:</td>
+                                <td> <input class="form-control" type="text" asp-for="tem_max" /> </td>
+                            </tr>
+                            <tr>
+                                <td colspan="4">Responsavel</td>
+                                <td colspan="5"><input asp-for="responsavel_cond" class="form-control" /></td>
                             </tr>
                         </table>
                     </td>
@@ -1064,117 +1111,117 @@
         </script>
     }
     <script>
-            //REALIZANDO OS CALCULOS PAR AMOSTRAR NO COMPRIMENTO E LARGURA DAS TABELAS
-            var com_base = document.getElementById("com_base");
-            var valor_com_base = com_base.value;
-          
-
-            var larg_base = document.getElementById("larg_base");
-            var valor_larg_base = larg_base.value;
-
-            if (valor_larg_base <= 1150) {
-                console.log("entrou no if");
-                //realizando comprimento da tabela < 1150, comprimento primeiro.
-                var ponto_b_um = document.getElementById("comp_ponto_b_um");
-                console.log(ponto_b_um)
-                ponto_b_um.value = valor_com_base / 2;
-
-                var ponto_a_um = document.getElementById("comp_ponto_a_um");
-                ponto_a_um.value = ponto_b_um.value - 150;
-
-                var ponto_c_um = document.getElementById("comp_ponto_c_um");
-                ponto_c_um.value = ponto_b_um.value / 2;
-
-                var ponto_d_um = document.getElementById("comp_ponto_d_um");
-                ponto_d_um.value = ponto_b_um.value;
-
-                var ponto_g_um = document.getElementById("comp_ponto_g_um");
-                ponto_g_um.value = ponto_b_um.value - 150;
-
-                var ponto_i_um = document.getElementById("comp_ponto_i_um");
-                ponto_i_um.value = ponto_g_um.value;
-
-                var ponto_j_um = document.getElementById("comp_ponto_j_um");
-                ponto_j_um.value = ponto_g_um.value;
-
-                // largura da tabala <1150
-                var larg_ponto_a_um = document.getElementById("larg_ponto_a_um");
-                larg_ponto_a_um.value = valor_larg_base / 2;
-
-                var larg_ponto_b_um = document.getElementById("larg_ponto_b_um");
-                larg_ponto_b_um.value = larg_ponto_a_um.value;
+        //REALIZANDO OS CALCULOS PAR AMOSTRAR NO COMPRIMENTO E LARGURA DAS TABELAS
+        var com_base = document.getElementById("com_base");
+        var valor_com_base = com_base.value;
 
 
-                var larg_ponto_d_um = document.getElementById("larg_ponto_d_um");
-                larg_ponto_d_um.value = larg_ponto_a_um.value - 150;
+        var larg_base = document.getElementById("larg_base");
+        var valor_larg_base = larg_base.value;
 
-                var larg_ponto_c_um = document.getElementById("larg_ponto_c_um");
-                larg_ponto_c_um.value = larg_ponto_d_um.value;
+        if (valor_larg_base <= 1150) {
+            console.log("entrou no if");
+            //realizando comprimento da tabela < 1150, comprimento primeiro.
+            var ponto_b_um = document.getElementById("comp_ponto_b_um");
+            console.log(ponto_b_um)
+            ponto_b_um.value = valor_com_base / 2;
 
-                var larg_ponto_g_um = document.getElementById("larg_ponto_g_um");
-                larg_ponto_g_um.value = larg_ponto_b_um.value;
+            var ponto_a_um = document.getElementById("comp_ponto_a_um");
+            ponto_a_um.value = ponto_b_um.value - 150;
 
-                var larg_ponto_i_um = document.getElementById("larg_ponto_i_um");
-                larg_ponto_i_um.value = larg_ponto_d_um.value;
+            var ponto_c_um = document.getElementById("comp_ponto_c_um");
+            ponto_c_um.value = ponto_b_um.value / 2;
 
-                var larg_ponto_j_um = document.getElementById("larg_ponto_j_um");
-                larg_ponto_j_um.value = larg_ponto_d_um.value;
+            var ponto_d_um = document.getElementById("comp_ponto_d_um");
+            ponto_d_um.value = ponto_b_um.value;
 
-            } 
-            
-            if (valor_larg_base > 1150) {
-                //realizando a tabela que é maior que >1150
-                //pegando o comprimento primeiro
+            var ponto_g_um = document.getElementById("comp_ponto_g_um");
+            ponto_g_um.value = ponto_b_um.value - 150;
 
-                var ponto_b_dois = document.getElementById("comp_ponto_b_dois");
-           
-                ponto_b_dois.value = valor_com_base / 2;
+            var ponto_i_um = document.getElementById("comp_ponto_i_um");
+            ponto_i_um.value = ponto_g_um.value;
 
-                var ponto_a_dois = document.getElementById("comp_ponto_a_dois");
-                ponto_a_dois.value = ponto_b_dois.value - 150;
+            var ponto_j_um = document.getElementById("comp_ponto_j_um");
+            ponto_j_um.value = ponto_g_um.value;
 
-                var ponto_c_dois = document.getElementById("comp_ponto_c_dois");
-                ponto_c_dois.value = ponto_b_dois.value / 2;
+            // largura da tabala <1150
+            var larg_ponto_a_um = document.getElementById("larg_ponto_a_um");
+            larg_ponto_a_um.value = valor_larg_base / 2;
 
-                var ponto_d_dois = document.getElementById("comp_ponto_d_dois");
-                ponto_d_dois.value = ponto_b_dois.value;
+            var larg_ponto_b_um = document.getElementById("larg_ponto_b_um");
+            larg_ponto_b_um.value = larg_ponto_a_um.value;
 
-                var ponto_e_dois = document.getElementById("comp_ponto_e_dois");
-                ponto_e_dois.value = ponto_c_dois.value;
 
-                var ponto_g_dois = document.getElementById("comp_ponto_g_dois");
-                ponto_g_dois.value = ponto_b_dois.value - 150;
-                var ponto_i_dois = document.getElementById("comp_ponto_i_dois");
-                ponto_i_dois.value = ponto_g_dois.value;
+            var larg_ponto_d_um = document.getElementById("larg_ponto_d_um");
+            larg_ponto_d_um.value = larg_ponto_a_um.value - 150;
 
-                var ponto_j_dois = document.getElementById("comp_ponto_j_dois");
-                ponto_j_dois.value = ponto_g_dois.value;
+            var larg_ponto_c_um = document.getElementById("larg_ponto_c_um");
+            larg_ponto_c_um.value = larg_ponto_d_um.value;
 
-                // realizando logica com a largura agora.
-                var larg_ponto_a_dois = document.getElementById("larg_ponto_a_dois");
-                larg_ponto_a_dois.value = valor_larg_base / 2;
+            var larg_ponto_g_um = document.getElementById("larg_ponto_g_um");
+            larg_ponto_g_um.value = larg_ponto_b_um.value;
 
-                var larg_ponto_b_dois = document.getElementById("larg_ponto_b_dois");
-                larg_ponto_b_dois.value = larg_ponto_a_dois.value;
+            var larg_ponto_i_um = document.getElementById("larg_ponto_i_um");
+            larg_ponto_i_um.value = larg_ponto_d_um.value;
 
-                var larg_ponto_d_dois = document.getElementById("larg_ponto_d_dois");
-                larg_ponto_d_dois.value = larg_ponto_a_dois.value - 150;
+            var larg_ponto_j_um = document.getElementById("larg_ponto_j_um");
+            larg_ponto_j_um.value = larg_ponto_d_um.value;
 
-                var larg_ponto_e_dois = document.getElementById("larg_ponto_e_dois");
-                larg_ponto_e_dois.value = larg_ponto_d_dois.value;
+        }
 
-                var larg_ponto_c_dois = document.getElementById("larg_ponto_c_dois");
-                larg_ponto_c_dois.value = larg_ponto_d_dois.value;
+        if (valor_larg_base > 1150) {
+            //realizando a tabela que é maior que >1150
+            //pegando o comprimento primeiro
 
-                var larg_ponto_g_dois = document.getElementById("larg_ponto_g_dois");
-                larg_ponto_g_dois.value = larg_ponto_b_dois.value;
+            var ponto_b_dois = document.getElementById("comp_ponto_b_dois");
 
-                var larg_ponto_i_dois = document.getElementById("larg_ponto_i_dois");
-                larg_ponto_i_dois.value = larg_ponto_d_dois.value;
+            ponto_b_dois.value = valor_com_base / 2;
 
-                var larg_ponto_j_dois = document.getElementById("larg_ponto_j_dois");
-                larg_ponto_j_dois.value = larg_ponto_d_dois.value;
-            }
+            var ponto_a_dois = document.getElementById("comp_ponto_a_dois");
+            ponto_a_dois.value = ponto_b_dois.value - 150;
+
+            var ponto_c_dois = document.getElementById("comp_ponto_c_dois");
+            ponto_c_dois.value = ponto_b_dois.value / 2;
+
+            var ponto_d_dois = document.getElementById("comp_ponto_d_dois");
+            ponto_d_dois.value = ponto_b_dois.value;
+
+            var ponto_e_dois = document.getElementById("comp_ponto_e_dois");
+            ponto_e_dois.value = ponto_c_dois.value;
+
+            var ponto_g_dois = document.getElementById("comp_ponto_g_dois");
+            ponto_g_dois.value = ponto_b_dois.value - 150;
+            var ponto_i_dois = document.getElementById("comp_ponto_i_dois");
+            ponto_i_dois.value = ponto_g_dois.value;
+
+            var ponto_j_dois = document.getElementById("comp_ponto_j_dois");
+            ponto_j_dois.value = ponto_g_dois.value;
+
+            // realizando logica com a largura agora.
+            var larg_ponto_a_dois = document.getElementById("larg_ponto_a_dois");
+            larg_ponto_a_dois.value = valor_larg_base / 2;
+
+            var larg_ponto_b_dois = document.getElementById("larg_ponto_b_dois");
+            larg_ponto_b_dois.value = larg_ponto_a_dois.value;
+
+            var larg_ponto_d_dois = document.getElementById("larg_ponto_d_dois");
+            larg_ponto_d_dois.value = larg_ponto_a_dois.value - 150;
+
+            var larg_ponto_e_dois = document.getElementById("larg_ponto_e_dois");
+            larg_ponto_e_dois.value = larg_ponto_d_dois.value;
+
+            var larg_ponto_c_dois = document.getElementById("larg_ponto_c_dois");
+            larg_ponto_c_dois.value = larg_ponto_d_dois.value;
+
+            var larg_ponto_g_dois = document.getElementById("larg_ponto_g_dois");
+            larg_ponto_g_dois.value = larg_ponto_b_dois.value;
+
+            var larg_ponto_i_dois = document.getElementById("larg_ponto_i_dois");
+            larg_ponto_i_dois.value = larg_ponto_d_dois.value;
+
+            var larg_ponto_j_dois = document.getElementById("larg_ponto_j_dois");
+            larg_ponto_j_dois.value = larg_ponto_d_dois.value;
+        }
 
         document.addEventListener("keydown", function (e) {
             if (e.keyCode === 13) {
