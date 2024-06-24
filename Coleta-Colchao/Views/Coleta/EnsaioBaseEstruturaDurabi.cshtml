@@ -47,18 +47,7 @@
                     </tr>
                 </thead>
             </table>
-
-            <table class="tables table-bordered border-secondary  table-sm">
-                <tr>
-                    <td>Temperatura Inicial (°C) :</td>
-                    <td><input class="form-control" type="text" asp-for="temp_ini" /></td>
-                    <td>Temperatura Final (°C) :</td>
-                    <td><input class="form-control" type="text" asp-for="temp_term" /></td>
-                </tr>
-            </table>
             <br />
-
-
             <table class="tables table-bordered border-secondary  ">
                 <tr>
                     <td rowspan="17">Item</td>
@@ -81,29 +70,39 @@
                 </tr>
                 <tr>
                     <td colspan="2">
-                        <table class="tables table-bordered border-secondary ">
-                            <tr>
-                                <td class="fundo-tabela">Data De Inicio:</td>
-                                <td><input class="form-control" type="date" asp-for="data_ini" readonly /></td>
-
-                                <td class="fundo-tabela">Hora De Inicio: </td>
-                                <td><input class="form-control" type="time" asp-for="hora_ini" /></td>
-
-                                <td class="fundo-tabela">Temperatura Mínima:</td>
-                                <td><input class="form-control" type="text" style="width:100px;" asp-for="temp_min" /></td>
-
+                        <table class="tables table-bordered border-secondary  table-sm">
+                            <tr class="fundo-tabela">
+                                <td colspan="10">
+                                    Temperatura da execução do ensaio  (23 ± 2) °C, sem necessidade de controle de umidade.
+                                </td>
+                            </tr>
+                            <tr class="fundo-tabela">
+                                <td colspan="2">Data do acondicionamento</td>
+                                <td colspan="2">Horario do acondicionamento</td>
+                                <td colspan="2">Temperatura encontrada</td>
+                                <td colspan="2">IM</td>
                             </tr>
                             <tr>
-                                <td class="fundo-tabela">Data De Término:</td>
-                                <td><input class="form-control" type="date" asp-for="data_term" readonly /></td>
-
-                                <td class="fundo-tabela">Hora De Término: </td>
-                                <td><input class="form-control" type="time" asp-for="hora_term" /></td>
-
-                                <td class="fundo-tabela">Temperatura Máxima:</td>
-                                <td><input class="form-control" type="text" style="width:100px;" asp-for="temp_max" /></td>
+                                <td> Início:</td>
+                                <td> <input class="form-control" type="date" asp-for="data_ini_ens" /> </td>
+                                <td>Início:</td>
+                                <td> <input class="form-control" type="time" asp-for="hora_ini" /> </td>
+                                <td> Mín:</td>
+                                <td> <input class="form-control" type="text" asp-for="temp_min" /> </td>
+                                <td rowspan="2"><input asp-for="im" class="form-control" style="height:80px;" /></td>
                             </tr>
-
+                            <tr>
+                                <td>Final:</td>
+                                <td><input class="form-control" type="date" asp-for="data_term_ens" /></td>
+                                <td>Final:</td>
+                                <td> <input class="form-control" type="time" asp-for="hora_term" /> </td>
+                                <td>Max:</td>
+                                <td> <input class="form-control" type="text" asp-for="temp_max" /> </td>
+                            </tr>
+                            <tr>
+                                <td colspan="4">Responsavel</td>
+                                <td colspan="5"><input asp-for="responsavel_cond" class="form-control" /></td>
+                            </tr>
                         </table>
                     </td>
                 </tr>
@@ -206,14 +205,6 @@
                     </tr>
                 </thead>
             </table>
-            <table class="tables table-bordered border-secondary  table-sm">
-                <tr>
-                    <td>Temperatura Inicial (°C) :</td>
-                    <td><input class="form-control" type="text" asp-for="temp_ini" /></td>
-                    <td>Temperatura Final (°C) :</td>
-                    <td><input class="form-control" type="text" asp-for="temp_term" /></td>
-                </tr>
-            </table>
             <br />
 
             <table class="tables table-bordered border-secondary  ">
@@ -238,29 +229,53 @@
                 </tr>
                 <tr>
                     <td colspan="2">
-                        <table class="tables table-bordered border-secondary ">
-                            <tr>
-                                <td class="fundo-tabela">Data De Inicio:</td>
-                                <td><input class="form-control" type="text" asp-for="data_ini" value="@Model.data_ini" style="width:200px;" readonly /></td>
-
-                                <td class="fundo-tabela">Hora De Inicio: </td>
-                                <td><input class="form-control" type="time" asp-for="hora_ini" /></td>
-
-                                <td class="fundo-tabela">Temperatura Mínima:</td>
-                                <td><input class="form-control" type="text" style="width:100px;" asp-for="temp_min" /></td>
-
+                        <table class="tables table-bordered border-secondary  table-sm">
+                            <tr class="fundo-tabela">
+                                <td colspan="10">
+                                    Temperatura da execução do ensaio  (23 ± 2) °C, sem necessidade de controle de umidade.
+                                </td>
+                            </tr>
+                            <tr class="fundo-tabela">
+                                <td colspan="2">Data do acondicionamento</td>
+                                <td colspan="2">Horario do acondicionamento</td>
+                                <td colspan="2">Temperatura encontrada</td>
+                                <td colspan="2">IM</td>
                             </tr>
                             <tr>
-                                <td class="fundo-tabela">Data De Término:</td>
-                                <td><input class="form-control" type="text" asp-for="data_term" value="@Model.data_term" style="width:200px;" readonly/></td>
-
-                                <td class="fundo-tabela">Hora De Término: </td>
-                                <td><input class="form-control" type="time" asp-for="hora_term" /></td>
-
-                                <td class="fundo-tabela">Temperatura Máxima:</td>
-                                <td><input class="form-control" type="text" style="width:100px;" asp-for="temp_max" /></td>
+                                <td> Início:</td>
+                                @if (Model == null)
+                                {
+                                    <td> <input class="form-control" type="date" asp-for="data_ini_ens" /> </td>
+                                }
+                                else
+                                {
+                                    <td> <input class="form-control" type="text" asp-for="data_ini_ens" /> </td>
+                                }
+                                <td>Início:</td>
+                                <td> <input class="form-control" type="time" asp-for="hora_ini" /> </td>
+                                <td> Mín:</td>
+                                <td> <input class="form-control" type="text" asp-for="temp_min" /> </td>
+                                <td rowspan="2"><input asp-for="im" class="form-control" style="height:80px;" /></td>
                             </tr>
-
+                            <tr>
+                                <td>Final:</td>
+                                @if (Model == null)
+                                {
+                                    <td><input class="form-control" type="date" asp-for="data_term_ens" /></td>
+                                }
+                                else
+                                {
+                                    <td><input class="form-control" type="text" asp-for="data_term_ens" /></td>
+                                }
+                                <td>Final:</td>
+                                <td> <input class="form-control" type="time" asp-for="hora_term" /> </td>
+                                <td>Max:</td>
+                                <td> <input class="form-control" type="text" asp-for="temp_max" /> </td>
+                            </tr>
+                            <tr>
+                                <td colspan="4">Responsavel</td>
+                                <td colspan="5"><input asp-for="responsavel_cond" class="form-control" /></td>
+                            </tr>
                         </table>
                     </td>
                 </tr>

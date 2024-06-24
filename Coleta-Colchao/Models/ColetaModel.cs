@@ -764,11 +764,14 @@ namespace Coleta_Colchao.Models
             public string orcamento { get; set; }
             public DateOnly data_ini { get; set; }
             public DateOnly data_term { get; set; }
-
+            public DateOnly data_ini_ens { get; set; }
+            public DateOnly data_term_ens { get; set; }
             public TimeOnly hora_ini { get; set; }
             public TimeOnly hora_term { get; set; }
             public string? temp_max { get; set; }
             public string? temp_min { get; set; }
+            public string? im { get; set; }
+            public string? responsavel_cond { get; set; }
             public string? suportou { get; set; }
             public string? ruptura { get; set; }
             public string? quebra { get; set; }
