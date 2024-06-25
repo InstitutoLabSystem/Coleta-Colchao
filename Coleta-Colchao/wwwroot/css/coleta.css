@@ -14,6 +14,12 @@
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.3); /* Adiciona uma leve sombra */
 }
 
+.table-test {
+    text-align:center;
+    justify-content: center;
+    display: flex;
+}
+
 .fundo-tabela {
     background-color: #800000;
     color:white;

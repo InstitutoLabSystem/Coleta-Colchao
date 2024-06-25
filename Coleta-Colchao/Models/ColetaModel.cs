@@ -661,6 +661,8 @@ namespace Coleta_Colchao.Models
             public TimeOnly hora_term { get; set; }
             public string? temp_min { get; set; }
             public string? temp_max { get; set; }
+            public string? responsavel_cond { get; set; }
+            public string? im { get; set; }
             public string? base_cama { get; set; }
             public string? angulo_encontrado { get; set; }
             public int distancia_ponto_a { get; set; }
@@ -706,6 +708,8 @@ namespace Coleta_Colchao.Models
             public TimeOnly hora_term { get; set; }
             public string? tem_min { get; set; }
             public string? tem_max { get; set; }
+            public string? responsavel_cond { get; set; }
+            public string? im {  get; set; }    
             public int comp_base { get; set; }
             public int larg_base { get; set; }
             public string? impac_um_a { get; set; }
@@ -757,6 +761,8 @@ namespace Coleta_Colchao.Models
             public TimeOnly hora_term { get; set; }
             public string? temp_max { get; set; }
             public string? temp_min { get; set; }
+            public string? im { get; set; }
+            public string? responsavel_cond {  get; set; }
             public string? suportou { get; set; }
             public string? ruptura { get; set; }
             public string? quebra { get; set; }

@@ -1,10 +1,6 @@
 {
   "version": 2,
-<<<<<<< HEAD
-  "dgSpecHash": "/1R3VmRaUXoa80lZ7sLI28AqwMmCuQ5YZiKfgYbisn1kVkx+n/G9sg7iYU9wYCPk9jwgSdHvuriWI5kXNukXCw==",
-=======
-  "dgSpecHash": "h4jwKPvBbDA=",
->>>>>>> Molina
+  "dgSpecHash": "UGgmJL49xKU=",
   "success": true,
   "projectFilePath": "C:\\xampp\\htdocs\\Coleta-Colchao\\Coleta-Colchao\\Coleta-Colchao.csproj",
   "expectedPackageFiles": [
@@ -243,5 +239,12 @@
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder\\system.xml.readerwriter\\4.3.0\\system.xml.readerwriter.4.3.0.nupkg.sha512",
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder\\system.xml.xdocument\\4.3.0\\system.xml.xdocument.4.3.0.nupkg.sha512"
   ],
-  "logs": []
+  "logs": [
+    {
+      "code": "Undefined",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Problema ao ler o arquivo de cache C:\\xampp\\htdocs\\Coleta-Colchao\\Coleta-Colchao\\obj\\project.nuget.cache: Invalid property identifier character: <. Path 'version', line 3, position 0."
+    }
+  ]
 }

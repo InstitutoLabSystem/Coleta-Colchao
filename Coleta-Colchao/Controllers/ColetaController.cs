@@ -4130,6 +4130,8 @@ namespace Coleta_Colchao.Controllers
                     TimeOnly hora_term = dados.hora_term;
                     string temp_min = dados.temp_min;
                     string temp_max = dados.temp_max;
+                    string responsavel_cond = dados.responsavel_cond;
+                    string im = dados.im;
                     string base_cama = dados.base_cama;
                     string angulo_encontrado = dados.angulo_encontrado;
                     int distancia_ponto_a = dados.distancia_ponto_a;
@@ -4216,6 +4218,8 @@ namespace Coleta_Colchao.Controllers
                     editarRegistro.hora_term = dados.hora_term;
                     editarRegistro.temp_min = dados.temp_min;
                     editarRegistro.temp_max = dados.temp_max;
+                    editarRegistro.responsavel_cond = dados.responsavel_cond;
+                    editarRegistro.im = dados.im;
                     editarRegistro.base_cama = dados.base_cama;
                     editarRegistro.angulo_encontrado = dados.angulo_encontrado;
                     editarRegistro.distancia_ponto_a = dados.distancia_ponto_a;
@@ -4305,6 +4309,8 @@ namespace Coleta_Colchao.Controllers
                     TimeOnly hora_term = dados.hora_term;
                     string temp_min = dados.temp_min;
                     string temp_max = dados.temp_max;
+                    string responsavel_cond = dados.responsavel_cond;
+                    string im = dados.im;
                     string base_cama = dados.base_cama;
                     string angulo_encontrado = dados.angulo_encontrado;
                     int distancia_ponto_a = dados.distancia_ponto_a;
@@ -4385,6 +4391,8 @@ namespace Coleta_Colchao.Controllers
                     editarRegistro.hora_term = dados.hora_term;
                     editarRegistro.temp_min = dados.temp_min;
                     editarRegistro.temp_max = dados.temp_max;
+                    editarRegistro.responsavel_cond = dados.responsavel_cond;
+                    editarRegistro.im = dados.im;
                     editarRegistro.base_cama = dados.base_cama;
                     editarRegistro.angulo_encontrado = dados.angulo_encontrado;
                     editarRegistro.distancia_ponto_a = dados.distancia_ponto_a;
@@ -4656,6 +4664,8 @@ namespace Coleta_Colchao.Controllers
                     TimeOnly hora_term = salvarDados.hora_term;
                     string tem_min = salvarDados.tem_min;
                     string tem_max = salvarDados.tem_max;
+                    string responsavel_cond = salvarDados.responsavel_cond;
+                    string im = salvarDados.im;
                     int comp_base = salvarDados.comp_base;
                     int larg_base = salvarDados.larg_base;
                     string impac_um_a = salvarDados.impac_um_a;
@@ -4738,6 +4748,8 @@ namespace Coleta_Colchao.Controllers
                     editarRegistro.hora_term = salvarDados.hora_term;
                     editarRegistro.tem_min = salvarDados.tem_min;
                     editarRegistro.tem_max = salvarDados.tem_max;
+                    editarRegistro.responsavel_cond = salvarDados.responsavel_cond;
+                    editarRegistro.im = salvarDados.im;
                     editarRegistro.comp_base = salvarDados.comp_base;
                     editarRegistro.larg_base = salvarDados.larg_base;
                     editarRegistro.impac_um_a = salvarDados.impac_um_a;
@@ -4832,6 +4844,8 @@ namespace Coleta_Colchao.Controllers
                     TimeOnly hora_term = salvarDados.hora_term;
                     string temp_max = salvarDados.temp_max;
                     string temp_min = salvarDados.temp_min;
+                    string im = salvarDados.im;
+                    string responsavel_cond = salvarDados.responsavel_cond;
                     string suportou = salvarDados.suportou;
                     string ruptura = salvarDados.ruptura;
                     string quebra = salvarDados.quebra;
@@ -4862,6 +4876,8 @@ namespace Coleta_Colchao.Controllers
                     editarRegistro.hora_term = salvarDados.hora_term;
                     editarRegistro.temp_max = salvarDados.temp_max;
                     editarRegistro.temp_min = salvarDados.temp_min;
+                    editarRegistro.im = salvarDados.im;
+                    editarRegistro.responsavel_cond = salvarDados.responsavel_cond;
                     editarRegistro.suportou = salvarDados.suportou;
                     editarRegistro.ruptura = salvarDados.ruptura;
                     editarRegistro.quebra = salvarDados.quebra;
