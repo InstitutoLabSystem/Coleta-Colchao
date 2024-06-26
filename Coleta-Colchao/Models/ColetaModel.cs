@@ -704,6 +704,8 @@ namespace Coleta_Colchao.Models
             public string orcamento { get; set; }
             public DateOnly data_ini { get; set; }
             public DateOnly data_term { get; set; }
+            public DateOnly data_ini_ens { get; set; }
+            public DateOnly data_term_ens { get; set; }
             public TimeOnly hora_inic { get; set; }
             public TimeOnly hora_term { get; set; }
             public string? tem_min { get; set; }
