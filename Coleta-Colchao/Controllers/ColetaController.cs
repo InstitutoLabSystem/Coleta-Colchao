@@ -1070,7 +1070,7 @@ namespace Coleta_Colchao.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> EditarRegistroMolas(string os, string orcamento, [Bind("lacre,realizacao_ensaios,quant_recebida,quant_ensaiada,data_realizacao_ini,data_realizacao_term,num_proc,cod_ref,tipo_cert,modelo_cert,tipo_proc,produto,estrutura,tipo_molejo,quant_molejo,fornecedor_um,fornecedor_dois,nome_molejo_um,nome_molejo_dois,quant_media_um,quant_media_dois,bitola_arame_um,bitola_arame_dois,borda_peri,isolante,latex,napa_cou_plas,manual")] ColetaModel.Registro EditarRegistros)
+        public async Task<IActionResult> EditarRegistroMolas(string os, string orcamento, [Bind("lacre,realizacao_ensaios,quant_recebida,quant_ensaiada,data_realizacao_ini,data_realizacao_term,num_proc,cod_ref,tipo_cert,modelo_cert,tipo_proc,produto,estrutura,tipo_molejo,quant_molejo,fornecedor_um,fornecedor_dois,nome_molejo_um,nome_molejo_dois,quant_media_um,quant_media_dois,bitola_arame_um,bitola_arame_dois,borda_peri,qtd_face,comprimento,largura,altura,metalasse,isolante,latex,napa_cou_plas,manual")] ColetaModel.Registro EditarRegistros)
         {
             var editarValores = _context.regtro_colchao.Where(x => x.os == os && x.orcamento == orcamento).FirstOrDefault();
             try
@@ -1101,6 +1101,11 @@ namespace Coleta_Colchao.Controllers
                     editarValores.bitola_arame_um = EditarRegistros.bitola_arame_um;
                     editarValores.bitola_arame_dois = EditarRegistros.bitola_arame_dois;
                     editarValores.borda_peri = EditarRegistros.borda_peri;
+                    editarValores.qtd_face = EditarRegistros.qtd_face;
+                    editarValores.comprimento = EditarRegistros.comprimento;
+                    editarValores.altura = EditarRegistros.altura;
+                    editarValores.largura = EditarRegistros.largura;
+                    editarValores.metalasse = EditarRegistros.metalasse;
                     editarValores.isolante = EditarRegistros.isolante;
                     editarValores.latex = EditarRegistros.latex;
                     editarValores.napa_cou_plas = EditarRegistros.napa_cou_plas;
