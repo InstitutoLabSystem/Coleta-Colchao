@@ -110,37 +110,37 @@
                             <td>Inicio:</td>
                             @if (Model == null)
                             {
-                                <td><input asp-for="acond_inicio" class="form-control" type="date" /></td>
+                                <td><input asp-for="acond_inicio" class="form-control" type="date"  style="width:150px;"/></td>
                             }
                             else
                             {
-                                <td><input asp-for="acond_inicio" class="form-control" type="text" /></td>
+                                <td><input asp-for="acond_inicio" class="form-control" type="text" style="width:150px;" /></td>
                             }
                             <td>Inicio:</td>
-                            <td><input asp-for="hora_inicio" class="form-control" type="time" /></td>
+                            <td><input asp-for="hora_inicio" class="form-control" type="time" style="width:100px;" /></td>
                             <td>Min:</td>
-                            <td><input asp-for="temp_inicio" class="form-control" /></td>
+                            <td><input asp-for="temp_inicio" class="form-control" style="width:100px;" /></td>
                             <td>Inicio:</td>
-                            <td><input asp-for="umidade_inicio" class="form-control" /></td>
-                            <td rowspan="2"><input asp-for="im" class="form-control" style="height:80px;" /></td>
+                            <td><input asp-for="umidade_inicio" class="form-control" style="width:100px;" /></td>
+                            <td rowspan="2"><input asp-for="im" class="form-control" style="height:80px; width:100px;" /></td>
                         </tr>
                         <tr>
 
                             <td>Final:</td>
                             @if (Model == null)
                             {
-                                <td><input asp-for="acond_final" class="form-control" type="date" /></td>
+                                <td><input asp-for="acond_final" class="form-control" type="date"  style="width:150px;"/></td>
                             }
                             else
                             {
-                                <td><input asp-for="acond_final" class="form-control" type="text" /></td>
+                                <td><input asp-for="acond_final" class="form-control" type="text" style="width:150px;" /></td>
                             }
                             <td>Final:</td>
-                            <td><input asp-for="hora_final" class="form-control" type="time" /></td>
+                            <td><input asp-for="hora_final" class="form-control" type="time" style="width:100px;" /></td>
                             <td>Max:</td>
-                            <td><input asp-for="temp_final" class="form-control" /></td>
+                            <td><input asp-for="temp_final" class="form-control"  style="width:100px;"/></td>
                             <td>Final:</td>
-                            <td><input asp-for="umidade_final" class="form-control" /></td>
+                            <td><input asp-for="umidade_final" class="form-control" style="width:100px;" /></td>
                         </tr>
                         <tr>
                             <td colspan="4">Responsavel</td>
@@ -456,14 +456,14 @@
                 {
                     <td>
                         Amostra 1:
-                        P.E: <input type="text" class="controlador" style="width:100px;" asp-for="pe_um_um" readonly value="@ViewBag.media_espessura_um" /> - <input type="text" class="controlador" style="width:100px;" asp-for="pe_um_dois" readonly /> ÷ <input type="text" class="controlador" style="width:100px;" asp-for="pe_um_tres" value="@ViewBag.media_espessura_um" readonly /> x <input type="text" class="controlador" style="width:100px;" value="100" disabled />  = <input type="text" class="controlador" style="width:100px;" asp-for="pe_media_um" />
+                        P.E: <input type="text" class="controlador" style="width:100px;" asp-for="pe_um_um" readonly value="@ViewBag.media_espessura_um" /> - <input type="text" class="controlador" style="width:100px;" asp-for="pe_um_dois" readonly /> ÷ <input type="text" class="controlador" style="width:100px;" asp-for="pe_um_tres" value="@ViewBag.media_espessura_um" readonly /> x <input type="text" class="controlador" style="width:100px;" value="100" disabled />  = <input type="text" class="controlador" style="width:100px;" asp-for="pe_media_um" readonly/>
                     </td>
                 }
                 else
                 {
                     <td>
                         Amostra 1:
-                        P.E: <input type="text" class="controlador" style="width:100px;" asp-for="pe_um_um" readonly /> - <input type="text" class="controlador" style="width:100px;" asp-for="pe_um_dois" readonly /> ÷ <input type="text" class="controlador" style="width:100px;" asp-for="pe_um_tres" /> x <input type="text" class="controlador" style="width:100px;" value="100" disabled />  = <input type="text" class="controlador" style="width:100px;" asp-for="pe_media_um" />
+                        P.E: <input type="text" class="controlador" style="width:100px;" asp-for="pe_um_um" readonly /> - <input type="text" class="controlador" style="width:100px;" asp-for="pe_um_dois" readonly /> ÷ <input type="text" class="controlador" style="width:100px;" asp-for="pe_um_tres" /> x <input type="text" class="controlador" style="width:100px;" value="100" disabled />  = <input type="text" class="controlador" style="width:100px;" asp-for="pe_media_um" readonly />
                     </td>
                 }
 
@@ -473,14 +473,14 @@
                 {
                     <td>
                         Amostra 2:
-                        P.E: <input type="text" class="controlador" style="width:100px;" asp-for="pe_dois_um" value="@ViewBag.media_espessura_dois" /> - <input type="text" class="controlador" style="width:100px;" asp-for="pe_dois_dois" readonly /> ÷ <input type="text" class="controlador" style="width:100px;" asp-for="pe_dois_tres" value="@ViewBag.media_espessura_dois" /> x <input type="text" class="controlador" style="width:100px;" value="100" disabled />  = <input type="text" class="controlador" style="width:100px;" asp-for="pe_media_dois" />
+                        P.E: <input type="text" class="controlador" style="width:100px;" asp-for="pe_dois_um" value="@ViewBag.media_espessura_dois" /> - <input type="text" class="controlador" style="width:100px;" asp-for="pe_dois_dois" readonly /> ÷ <input type="text" class="controlador" style="width:100px;" asp-for="pe_dois_tres" value="@ViewBag.media_espessura_dois" /> x <input type="text" class="controlador" style="width:100px;" value="100" disabled />  = <input type="text" class="controlador" style="width:100px;" asp-for="pe_media_dois" readonly />
                     </td>
                 }
                 else
                 {
                     <td>
                         Amostra 2:
-                        P.E: <input type="text" class="controlador" style="width:100px;" asp-for="pe_dois_um" /> - <input type="text" class="controlador" style="width:100px;" asp-for="pe_dois_dois" readonly /> ÷ <input type="text" class="controlador" style="width:100px;" asp-for="pe_dois_tres" /> x <input type="text" class="controlador" style="width:100px;" value="100" disabled />  = <input type="text" class="controlador" style="width:100px;" asp-for="pe_media_dois" />
+                        P.E: <input type="text" class="controlador" style="width:100px;" asp-for="pe_dois_um" /> - <input type="text" class="controlador" style="width:100px;" asp-for="pe_dois_dois" readonly /> ÷ <input type="text" class="controlador" style="width:100px;" asp-for="pe_dois_tres" /> x <input type="text" class="controlador" style="width:100px;" value="100" disabled />  = <input type="text" class="controlador" style="width:100px;" asp-for="pe_media_dois" readonly />
                     </td>
                 }
 
@@ -490,14 +490,14 @@
                 {
                     <td>
                         Amostra 3:
-                        P.E: <input type="text" class="controlador" style="width:100px;" asp-for="pe_tres_um" value="@ViewBag.media_espessura_tres" /> - <input type="text" class="controlador" style="width:100px;" asp-for="pe_tres_dois" readonly /> ÷ <input type="text" class="controlador" style="width:100px;" asp-for="pe_tres_tres" value="@ViewBag.media_espessura_tres" /> x <input type="text" class="controlador" style="width:100px;" value="100" disabled />  = <input type="text" class="controlador" style="width:100px;" asp-for="pe_media_tres" />
+                        P.E: <input type="text" class="controlador" style="width:100px;" asp-for="pe_tres_um" value="@ViewBag.media_espessura_tres" /> - <input type="text" class="controlador" style="width:100px;" asp-for="pe_tres_dois" readonly /> ÷ <input type="text" class="controlador" style="width:100px;" asp-for="pe_tres_tres" value="@ViewBag.media_espessura_tres" /> x <input type="text" class="controlador" style="width:100px;" value="100" disabled />  = <input type="text" class="controlador" style="width:100px;" asp-for="pe_media_tres" readonly />
                     </td>
                 }
                 else
                 {
                     <td>
                         Amostra 3:
-                        P.E: <input type="text" class="controlador" style="width:100px;" asp-for="pe_tres_um" /> - <input type="text" class="controlador" style="width:100px;" asp-for="pe_tres_dois" readonly /> ÷ <input type="text" class="controlador" style="width:100px;" asp-for="pe_tres_tres" /> x <input type="text" class="controlador" style="width:100px;" value="100" disabled />  = <input type="text" class="controlador" style="width:100px;" asp-for="pe_media_tres" />
+                        P.E: <input type="text" class="controlador" style="width:100px;" asp-for="pe_tres_um" /> - <input type="text" class="controlador" style="width:100px;" asp-for="pe_tres_dois" readonly /> ÷ <input type="text" class="controlador" style="width:100px;" asp-for="pe_tres_tres" /> x <input type="text" class="controlador" style="width:100px;" value="100" disabled />  = <input type="text" class="controlador" style="width:100px;" asp-for="pe_media_tres" readonly />
                     </td>
                 }
 
