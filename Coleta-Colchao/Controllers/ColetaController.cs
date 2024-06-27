@@ -1152,7 +1152,7 @@ namespace Coleta_Colchao.Controllers
                     float valor_enc_espuma_molejo = salvarDados.valor_enc_espuma_molejo;
                     string man_parale_aco = salvarDados.man_parale_aco;
                     string man_parale_aco_molejo = salvarDados.man_parale_aco_molejo;
-                    string man_parale_espuma = salvarDados.man_parale_espuma;                    string man_parale_espuma_molejo = salvarDados.man_parale_espuma_molejo;
+                    string man_parale_espuma = salvarDados.man_parale_espuma; string man_parale_espuma_molejo = salvarDados.man_parale_espuma_molejo;
 
                     int contem_molejo;
                     string pergunta_a = salvarDados.pergunta_a;
@@ -5061,7 +5061,7 @@ namespace Coleta_Colchao.Controllers
                     salvarDados.dr_tres_dois = vol_calc_amostra_tres;
                     salvarDados.dr_resul_tres = ((salvarDados.dr_tres_um / salvarDados.dr_tres_dois) * 1000);
 
-                    salvarDados.dr_media = (float)Math.Round(((salvarDados.dr_resul_um + salvarDados.dr_resul_dois + salvarDados.dr_resul_tres) / 3),1);
+                    salvarDados.dr_media = (float)Math.Round(((salvarDados.dr_resul_um + salvarDados.dr_resul_dois + salvarDados.dr_resul_tres) / 3), 1);
 
                     //float inverter_densidade = (salvarDados.densidade * 10) / 100;
                     float densidade_resultado = ((salvarDados.densidade * 10) / 100) + salvarDados.densidade;
@@ -5203,7 +5203,7 @@ namespace Coleta_Colchao.Controllers
                     salvarDados.varia_amostra_tres_dois = (((salvarDados.resil_amostra_tres_tres - salvarDados.resil_amostra_tres_um) / salvarDados.resil_amostra_tres_um) * 100);
                     salvarDados.media_res_tres = ((salvarDados.resil_amostra_tres_um + salvarDados.resil_amostra_tres_dois + salvarDados.resil_amostra_tres_tres) / 3);
 
-                    salvarDados.resiliencia_enc = (float)Math.Round(((salvarDados.media_res_um + salvarDados.media_res_dois + salvarDados.media_res_tres) / 3),2);
+                    salvarDados.resiliencia_enc = (float)Math.Round(((salvarDados.media_res_um + salvarDados.media_res_dois + salvarDados.media_res_tres) / 3), 2);
 
                     //conformes
                     if (salvarDados.tipo_espuma == "Convencional")
@@ -5398,7 +5398,7 @@ namespace Coleta_Colchao.Controllers
                     editarDados.media_res_tres = ((editarDados.resil_amostra_tres_um + editarDados.resil_amostra_tres_dois + editarDados.resil_amostra_tres_tres) / 3);
 
                     editarDados.resiliencia_esp = salvarDados.resiliencia_esp;
-                    editarDados.resiliencia_enc = (float)Math.Round(((editarDados.media_res_um + editarDados.media_res_dois + editarDados.media_res_tres) / 3),2);
+                    editarDados.resiliencia_enc = (float)Math.Round(((editarDados.media_res_um + editarDados.media_res_dois + editarDados.media_res_tres) / 3), 2);
                     editarDados.min_max = salvarDados.min_max;
 
                     //conformes
@@ -5909,16 +5909,6 @@ namespace Coleta_Colchao.Controllers
                     //calculo de reducao
                     float reducao = salvarDados.reducao_porc;
                     float reducao_mm = ((media_espessura_total * reducao) / 100);
-
-                    //atulizando valores data, hora, temp,umidade.
-                    editarDados.ini_data = salvarDados.ini_data;
-                    editarDados.term_data = salvarDados.term_data;
-                    editarDados.ini_hora = salvarDados.ini_hora;
-                    editarDados.term_hora = salvarDados.term_hora;
-                    editarDados.temp_min = salvarDados.temp_min;
-                    editarDados.temp_max = salvarDados.temp_max;
-                    editarDados.umi_min = salvarDados.umi_min;
-                    editarDados.umi_max = salvarDados.umi_max;
 
                     //recebendo os dados de esp final..
                     editarDados.esp_fin_amostra_um_um = salvarDados.esp_fin_amostra_um_um;
@@ -7120,7 +7110,7 @@ namespace Coleta_Colchao.Controllers
                     salvarDados.pe_media_tres = (((salvarDados.pe_tres_um - salvarDados.pe_tres_dois) / salvarDados.pe_tres_tres) * 100);
 
                     //pe_especificado resultado.
-                    salvarDados.pe_encontrado = (float)Math.Round(((salvarDados.pe_media_um + salvarDados.pe_media_dois + salvarDados.pe_media_tres) / 3),1);
+                    salvarDados.pe_encontrado = (float)Math.Round(((salvarDados.pe_media_um + salvarDados.pe_media_dois + salvarDados.pe_media_tres) / 3), 1);
 
                     //realizando logica para saber se esta conforme ou nao conforme.
                     if (salvarDados.tipo_espuma == "Convencional")
@@ -7334,7 +7324,7 @@ namespace Coleta_Colchao.Controllers
                     editarDados.pe_media_tres = (((editarDados.pe_tres_um - editarDados.pe_tres_dois) / editarDados.pe_tres_tres) * 100);
 
                     editarDados.pe_especificado = salvarDados.pe_especificado;
-                    editarDados.pe_encontrado = (float)Math.Round(((editarDados.pe_media_um + editarDados.pe_media_dois + editarDados.pe_media_tres) / 3),1);
+                    editarDados.pe_encontrado = (float)Math.Round(((editarDados.pe_media_um + editarDados.pe_media_dois + editarDados.pe_media_tres) / 3), 1);
                     editarDados.min_max = salvarDados.min_max;
 
                     //realizando logica para saber se esta conforme ou nao conforme.

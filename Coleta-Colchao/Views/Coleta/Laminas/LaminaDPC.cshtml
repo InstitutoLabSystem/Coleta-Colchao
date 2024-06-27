@@ -116,30 +116,30 @@
                                 <td><input asp-for="acond_inicio" class="form-control" type="text" /></td>
                             }
                             <td>Inicio:</td>
-                            <td><input asp-for="hora_inicio" class="form-control" type="time" /></td>
+                            <td><input asp-for="hora_inicio" class="form-control" type="time" style="width:100px;" /></td>
                             <td>Min:</td>
-                            <td><input asp-for="temp_inicio" class="form-control" /></td>
+                            <td><input asp-for="temp_inicio" class="form-control" style="width:100px;" /></td>
                             <td>Inicio:</td>
-                            <td><input asp-for="umidade_inicio" class="form-control" /></td>
-                            <td rowspan="2"><input asp-for="im" class="form-control" style="height:80px;" /></td>
+                            <td><input asp-for="umidade_inicio" class="form-control" style="width:100px;" /></td>
+                            <td rowspan="2"><input asp-for="im" class="form-control" style="height:80px; width:100px" /></td>
                         </tr>
                         <tr>
 
                             <td>Final:</td>
                             @if (Model == null)
                             {
-                                <td><input asp-for="acond_final" class="form-control" type="date" /></td>
+                                <td><input asp-for="acond_final" class="form-control" type="date" style="width:110px;"/></td>
                             }
                             else
                             {
-                                <td><input asp-for="acond_final" class="form-control" type="text" /></td>
+                                <td><input asp-for="acond_final" class="form-control" type="text" style="width:110px;" /></td>
                             }
                             <td>Final:</td>
-                            <td><input asp-for="hora_final" class="form-control" type="time" /></td>
+                            <td><input asp-for="hora_final" class="form-control" type="time" style="width:100px;" /></td>
                             <td>Max:</td>
-                            <td><input asp-for="temp_final" class="form-control" /></td>
+                            <td><input asp-for="temp_final" class="form-control" style="width:100px;" /></td>
                             <td>Final:</td>
-                            <td><input asp-for="umidade_final" class="form-control" /></td>
+                            <td><input asp-for="umidade_final" class="form-control" style="width:100px;" /></td>
                         </tr>
                         <tr>
                             <td colspan="4">Responsavel</td>
@@ -164,41 +164,41 @@
                             <td>Inicio:</td>
                             @if (Model == null)
                             {
-                                <td><input asp-for="acond_inicio" class="form-control" type="date" /></td>
+                                <td><input asp-for="acond_inicio_dois" class="form-control" type="date" style="width:110px;" /></td>
                             }
                             else
                             {
-                                <td><input asp-for="acond_inicio" class="form-control" type="text" /></td>
+                                <td><input asp-for="acond_inicio_dois" class="form-control" type="text" style="width:110px;"></td>
                             }
                             <td>Inicio:</td>
-                            <td><input asp-for="hora_inicio" class="form-control" type="time" /></td>
+                            <td><input asp-for="hora_inicio_dois" class="form-control" type="time" style="width:100px;" /></td>
                             <td>Min:</td>
-                            <td><input asp-for="temp_inicio" class="form-control" /></td>
+                            <td><input asp-for="temp_inicio_dois" class="form-control" style="width:100px;" /></td>
                             <td>Inicio:</td>
-                            <td><input asp-for="umidade_inicio" class="form-control" /></td>
-                            <td rowspan="2"><input asp-for="im" class="form-control" style="height:80px;" /></td>
+                            <td><input asp-for="umidade_inicio_dois" class="form-control" style="width:100px;" /></td>
+                            <td rowspan="2"><input asp-for="im_dois" class="form-control" style="height:80px; width:100px;" /></td>
                         </tr>
                         <tr>
 
                             <td>Final:</td>
                             @if (Model == null)
                             {
-                                <td><input asp-for="acond_final" class="form-control" type="date" /></td>
+                                <td><input asp-for="acond_final_dois " class="form-control" type="date" style="width:110px;" /></td>
                             }
                             else
                             {
-                                <td><input asp-for="acond_final" class="form-control" type="text" /></td>
+                                <td><input asp-for="acond_final_dois " class="form-control" type="text" style="width:110px;" /></td>
                             }
                             <td>Final:</td>
-                            <td><input asp-for="hora_final" class="form-control" type="time" /></td>
+                            <td><input asp-for="hora_final_dois" class="form-control" type="time" style="width:100px;" /></td>
                             <td>Max:</td>
-                            <td><input asp-for="temp_final" class="form-control" /></td>
+                            <td><input asp-for="temp_final_dois" class="form-control" style="width:100px;" /></td>
                             <td>Final:</td>
-                            <td><input asp-for="umidade_final" class="form-control" /></td>
+                            <td><input asp-for="umidade_final_dois" class="form-control" style="width:100px;" /></td>
                         </tr>
                         <tr>
                             <td colspan="4">Responsavel</td>
-                            <td colspan="5"><input asp-for="responsavel_cond_um" class="form-control" /></td>
+                            <td colspan="5"><input asp-for="responsavel_cond_dois" class="form-control" /></td>
                         </tr>
                     </table>
                     <br />
@@ -382,7 +382,7 @@
                     </table>
                 </td>
             </tr>
-            <tr>
+   @*          <tr>
                 <td>
                     Após a compressão, colocar o dispositivo com as amostras dentro da estufa a uma temperatura de (70 ± 2) °C e umidade relativa (5 ± 1) % por 22 horas.
                 </td>
@@ -438,12 +438,12 @@
                         </tr>
                     </table>
                 </td>
-            </tr>
-            <tr>
+            </tr> *@
+       @*      <tr>
                 <td>
                     Nota: A estufa deve estar em um ambiente climatizado à temperatura de  (23 ± 2) °C e umidade relativa (50 ± 5) %  ou deve garantir a umidade relativa de (5 ± 1) % em seu interior.
                 </td>
-            </tr>
+            </tr> *@
             <tr>
                 <td>
                     Após o condicionamento deixar a amostra repousar por 30 minutos e medir a espessura final.

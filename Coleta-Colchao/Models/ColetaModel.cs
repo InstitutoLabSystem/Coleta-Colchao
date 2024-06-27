@@ -711,7 +711,7 @@ namespace Coleta_Colchao.Models
             public string? tem_min { get; set; }
             public string? tem_max { get; set; }
             public string? responsavel_cond { get; set; }
-            public string? im {  get; set; }    
+            public string? im { get; set; }
             public int comp_base { get; set; }
             public int larg_base { get; set; }
             public string? impac_um_a { get; set; }
@@ -764,7 +764,7 @@ namespace Coleta_Colchao.Models
             public string? temp_max { get; set; }
             public string? temp_min { get; set; }
             public string? im { get; set; }
-            public string? responsavel_cond {  get; set; }
+            public string? responsavel_cond { get; set; }
             public string? suportou { get; set; }
             public string? ruptura { get; set; }
             public string? quebra { get; set; }
@@ -1010,14 +1010,6 @@ namespace Coleta_Colchao.Models
             public float media_esp_amostra_tres { get; set; }
             public float reducao_porc { get; set; }
             public float reducao_mm { get; set; }
-            public DateOnly ini_data { get; set; }
-            public DateOnly term_data { get; set; }
-            public TimeOnly ini_hora { get; set; }
-            public TimeOnly term_hora { get; set; }
-            public float temp_min { get; set; }
-            public float temp_max { get; set; }
-            public int umi_min { get; set; }
-            public int umi_max { get; set; }
             public float esp_fin_amostra_um_um { get; set; }
             public float esp_fin_amostra_um_dois { get; set; }
             public float esp_fin_amostra_um_tres { get; set; }
