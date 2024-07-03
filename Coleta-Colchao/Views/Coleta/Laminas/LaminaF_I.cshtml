@@ -104,25 +104,23 @@
                             <td colspan="2">Data do acondicionamento</td>
                             <td colspan="2">Horario do acondicionamento</td>
                             <td colspan="2">Temperatura encontrada</td>
-                            <td colspan="2">umidade</td>
                             <td colspan="2">IM</td>
                         </tr>
                         <tr>
                             <td>Inicio:</td>
                             @if (Model == null)
                             {
-                                <td><input asp-for="acond_inicio" class="form-control" type="date" style="width:110px;" /></td>
+                                <td><input asp-for="acond_inicio" class="form-control" type="date" style="width:150px;" /></td>
                             }
                             else
                             {
-                                <td><input asp-for="acond_inicio" class="form-control" type="text" style="width:110px;" /></td>
+                                <td><input asp-for="acond_inicio" class="form-control" type="text" style="width:150px;" /></td>
                             }
                             <td>Inicio:</td>
                             <td><input asp-for="hora_inicio" class="form-control" type="time" style="width:100px;" /></td>
                             <td>Min:</td>
                             <td><input asp-for="temp_inicio" class="form-control" style="width:100px;" /></td>
-                            <td>Inicio:</td>
-                            <td><input asp-for="umidade_inicio" class="form-control" style="width:100px;" /></td>
+                            
                             <td rowspan="2"><input asp-for="im" class="form-control" style="height:80px; width:100px;" /></td>
                         </tr>
                         <tr>
@@ -130,18 +128,17 @@
                             <td>Final:</td>
                             @if (Model == null)
                             {
-                                <td><input asp-for="acond_final" class="form-control" type="date" style="width:110px;" /></td>
+                                <td><input asp-for="acond_final" class="form-control" type="date" style="width:150px;" /></td>
                             }
                             else
                             {
-                                <td><input asp-for="acond_final" class="form-control" type="text" style="width:110px;" /></td>
+                                <td><input asp-for="acond_final" class="form-control" type="text" style="width:150px;" /></td>
                             }
                             <td>Final:</td>
                             <td><input asp-for="hora_final" class="form-control" type="time" style="width:100px;" /></td>
                             <td>Max:</td>
                             <td><input asp-for="temp_final" class="form-control" style="width:100px;" /></td>
-                            <td>Final:</td>
-                            <td><input asp-for="umidade_final" class="form-control" style="width:100px;" /></td>
+                           
                         </tr>                     
                         <tr>
                             <td colspan="4">Responsavel</td>

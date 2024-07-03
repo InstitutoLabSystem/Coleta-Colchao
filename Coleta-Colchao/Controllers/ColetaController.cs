@@ -5051,7 +5051,7 @@ namespace Coleta_Colchao.Controllers
                     //inicio calculo dr..
                     salvarDados.dr_um_um = salvarDados.massa_um;
                     salvarDados.dr_um_dois = vol_calc_amostra_um;
-                    salvarDados.dr_resul_um = ((salvarDados.dr_um_um / salvarDados.dr_um_dois) * 1000);
+                    salvarDados.dr_resul_um = ((salvarDados.dr_um_um / salvarDados.dr_um_dois)) * 1000;
 
                     salvarDados.dr_dois_um = salvarDados.massa_dois;
                     salvarDados.dr_dois_dois = vol_calc_amostra_dois;
@@ -5097,7 +5097,6 @@ namespace Coleta_Colchao.Controllers
                     editarDados.hora_final = salvarDados.hora_final;
                     editarDados.temp_inicio = salvarDados.temp_inicio;
                     editarDados.temp_final = salvarDados.temp_final;
-                    editarDados.umidade_final = salvarDados.umidade_final;
                     editarDados.im = salvarDados.im;
                     editarDados.responsavel_cond = salvarDados.responsavel_cond;
 
@@ -5371,6 +5370,13 @@ namespace Coleta_Colchao.Controllers
                     editarDados.tipo_espuma = salvarDados.tipo_espuma;
                     editarDados.data_ini = salvarDados.data_ini;
                     editarDados.data_term = salvarDados.data_term;
+                    editarDados.acond_inicio = salvarDados.acond_inicio;
+                    editarDados.acond_final = salvarDados.acond_final;
+                    editarDados.hora_inicio = salvarDados.hora_inicio;
+                    editarDados.hora_final = salvarDados.hora_final;
+                    editarDados.temp_inicio = salvarDados.temp_inicio;
+                    editarDados.temp_final = salvarDados.temp_final;
+                    editarDados.responsavel_cond = salvarDados.responsavel_cond;
                     editarDados.densidade = salvarDados.densidade;
                     editarDados.tipo_espuma = salvarDados.tipo_espuma;
                     editarDados.resil_amostra_um_dois = salvarDados.resil_amostra_um_dois;
@@ -5602,6 +5608,7 @@ namespace Coleta_Colchao.Controllers
 
                     float reducao = salvarDados.reducao_porc;
                     float reducao_mm = ((media_espessura_total * reducao) / 100);
+                    salvarDados.reducao_mm = reducao_mm;
 
                     float media_esp_final_um = ((salvarDados.esp_fin_amostra_um_um + salvarDados.esp_fin_amostra_um_dois + salvarDados.esp_fin_amostra_um_tres + salvarDados.esp_fin_amostra_um_quatro + salvarDados.esp_fin_amostra_um_cinco + salvarDados.esp_fin_amostra_um_seis + salvarDados.esp_fin_amostra_um_sete + salvarDados.esp_fin_amostra_um_oito) / 8);
                     salvarDados.media_esp_fin_um = media_esp_final_um;
@@ -5649,8 +5656,9 @@ namespace Coleta_Colchao.Controllers
                     float variacao_tres = (((media_dpc_tres - media_dpc_um) / media_dpc_um) * 100) * -1;
                     salvarDados.vari_amsotra_tres = float.Parse(variacao_tres.ToString("N2"));
 
-                    float dpc_encntrado = ((media_dpc_um + media_dpc_tres + media_dpc_tres) / 3);
-                    //salvarDados.encontrada = dpc_encntrado;
+                    //float dpc_encntrado = ((media_dpc_um + media_dpc_tres + media_dpc_tres) / 3);
+                    float dpc_encntrado = ((media_dpc_tres + media_dpc_tres) / 2);
+                    salvarDados.encontrada = dpc_encntrado;
 
                     //conformidade.
                     //conformes
@@ -5840,9 +5848,7 @@ namespace Coleta_Colchao.Controllers
                     editarDados.hora_final = salvarDados.hora_final;
                     editarDados.temp_inicio = salvarDados.temp_inicio;
                     editarDados.temp_final = salvarDados.temp_final;
-                    editarDados.temp_final = salvarDados.temp_final;
-                    editarDados.umidade_inicio = salvarDados.umidade_inicio;
-                    editarDados.umidade_final = salvarDados.umidade_final;
+                    editarDados.temp_final = salvarDados.temp_final;                   
                     editarDados.im = salvarDados.im;
                     editarDados.responsavel_cond_um = salvarDados.responsavel_cond_um;
                     editarDados.acond_inicio_dois = salvarDados.acond_inicio_dois;
@@ -5909,6 +5915,7 @@ namespace Coleta_Colchao.Controllers
                     //calculo de reducao
                     float reducao = salvarDados.reducao_porc;
                     float reducao_mm = ((media_espessura_total * reducao) / 100);
+                    editarDados.reducao_mm = reducao_mm;
 
                     //recebendo os dados de esp final..
                     editarDados.esp_fin_amostra_um_um = salvarDados.esp_fin_amostra_um_um;
@@ -5985,6 +5992,7 @@ namespace Coleta_Colchao.Controllers
 
                     //float dpc_encntrado = ((media_dpc_um + media_dpc_tres + media_dpc_tres) / 3);
                     //editarDados.encontrada = dpc_encntrado;
+                    float dpc_encntrado = ((media_dpc_tres + media_dpc_tres) / 2);
                     editarDados.encontrada = salvarDados.encontrada;
                     editarDados.especificada = salvarDados.especificada;
 
@@ -6587,8 +6595,6 @@ namespace Coleta_Colchao.Controllers
                     editarDados.acond_final = salvarDados.acond_final;
                     editarDados.temp_inicio = salvarDados.temp_inicio;
                     editarDados.temp_final = salvarDados.temp_final;
-                    editarDados.umidade_inicio = salvarDados.umidade_inicio;
-                    editarDados.umidade_final = salvarDados.umidade_final;
                     editarDados.im = salvarDados.im;
 
 
@@ -7218,9 +7224,7 @@ namespace Coleta_Colchao.Controllers
                     editarDados.hora_inicio = salvarDados.hora_inicio;
                     editarDados.hora_final = salvarDados.hora_final;
                     editarDados.temp_inicio = salvarDados.temp_inicio;
-                    editarDados.temp_final = salvarDados.temp_final;
-                    editarDados.umidade_inicio = salvarDados.umidade_inicio;
-                    editarDados.umidade_final = salvarDados.umidade_final;
+                    editarDados.temp_final = salvarDados.temp_final;                 
                     editarDados.im = salvarDados.im;
                     editarDados.responsavel_cond = salvarDados.responsavel_cond;
 
@@ -7441,25 +7445,7 @@ namespace Coleta_Colchao.Controllers
                 {
 
                     //realizando media de largura, comprimento, e espessura.
-                    //largura.
-                    float lar_media_um = ((salvarDados.lar_amostra_um_um + salvarDados.lar_amostra_um_dois + salvarDados.lar_amostra_um_tres + salvarDados.lar_amostra_um_quatro) / 4);
-                    salvarDados.lar_media_um = lar_media_um;
-
-                    float lar_media_dois = ((salvarDados.lar_amostra_dois_um + salvarDados.lar_amostra_dois_dois + salvarDados.lar_amostra_dois_tres + salvarDados.lar_amostra_dois_quatro) / 4);
-                    salvarDados.lar_media_dois = lar_media_dois;
-
-                    float lar_media_tres = ((salvarDados.lar_amostra_tres_um + salvarDados.lar_amostra_tres_dois + salvarDados.lar_amostra_tres_tres + salvarDados.lar_amostra_tres_quatro) / 4);
-                    salvarDados.lar_media_tres = lar_media_tres;
-
-                    //comprimento.
-                    float comp_media_um = ((salvarDados.lar_amostra_um_um + salvarDados.lar_amostra_um_dois + salvarDados.lar_amostra_um_tres + salvarDados.lar_amostra_um_quatro) / 4);
-                    salvarDados.comp_media_um = comp_media_um;
-
-                    float comp_media_dois = ((salvarDados.lar_amostra_dois_um + salvarDados.lar_amostra_dois_dois + salvarDados.lar_amostra_dois_tres + salvarDados.lar_amostra_dois_quatro) / 4);
-                    salvarDados.comp_media_dois = comp_media_dois;
-
-                    float comp_media_tres = ((salvarDados.lar_amostra_tres_um + salvarDados.lar_amostra_tres_dois + salvarDados.lar_amostra_tres_tres + salvarDados.lar_amostra_tres_quatro) / 4);
-                    salvarDados.comp_media_tres = comp_media_tres;
+                   
 
                     //espessura.. 
                     float media_esp_um = ((salvarDados.esp_ini_amostra_um_um + salvarDados.esp_ini_amostra_um_dois + salvarDados.esp_ini_amostra_um_tres + salvarDados.esp_ini_amostra_um_quatro + salvarDados.esp_ini_amostra_um_cinco + salvarDados.esp_ini_amostra_um_seis + salvarDados.esp_ini_amostra_um_sete + salvarDados.esp_ini_amostra_um_oito) / 8);
@@ -7681,37 +7667,7 @@ namespace Coleta_Colchao.Controllers
                     editarDados.data_term = salvarDados.data_term;
                     editarDados.tipo_espuma = salvarDados.tipo_espuma;
 
-                    //editando os valores recebidos de largura,compriment e espessura.
-                    editarDados.lar_amostra_um_um = salvarDados.lar_amostra_um_um;
-                    editarDados.lar_amostra_um_dois = salvarDados.lar_amostra_um_dois;
-                    editarDados.lar_amostra_um_tres = salvarDados.lar_amostra_um_tres;
-                    editarDados.lar_amostra_um_quatro = salvarDados.lar_amostra_um_quatro;
-
-                    editarDados.lar_amostra_dois_um = salvarDados.lar_amostra_dois_um;
-                    editarDados.lar_amostra_dois_dois = salvarDados.lar_amostra_dois_dois;
-                    editarDados.lar_amostra_dois_tres = salvarDados.lar_amostra_dois_tres;
-                    editarDados.lar_amostra_dois_quatro = salvarDados.lar_amostra_dois_quatro;
-
-                    editarDados.lar_amostra_tres_um = salvarDados.lar_amostra_tres_um;
-                    editarDados.lar_amostra_tres_dois = salvarDados.lar_amostra_tres_dois;
-                    editarDados.lar_amostra_tres_tres = salvarDados.lar_amostra_tres_tres;
-                    editarDados.lar_amostra_tres_quatro = salvarDados.lar_amostra_tres_quatro;
-
-                    //comprimento..
-                    editarDados.comp_amostra_um_um = salvarDados.comp_amostra_um_um;
-                    editarDados.comp_amostra_um_dois = salvarDados.comp_amostra_um_dois;
-                    editarDados.comp_amostra_um_tres = salvarDados.comp_amostra_um_tres;
-                    editarDados.comp_amostra_um_quatro = salvarDados.comp_amostra_um_quatro;
-
-                    editarDados.comp_amostra_dois_um = salvarDados.comp_amostra_dois_um;
-                    editarDados.comp_amostra_dois_dois = salvarDados.comp_amostra_dois_dois;
-                    editarDados.comp_amostra_dois_tres = salvarDados.comp_amostra_dois_tres;
-                    editarDados.comp_amostra_dois_quatro = salvarDados.comp_amostra_dois_quatro;
-
-                    editarDados.comp_amostra_tres_um = salvarDados.comp_amostra_tres_um;
-                    editarDados.comp_amostra_tres_dois = salvarDados.comp_amostra_tres_dois;
-                    editarDados.comp_amostra_tres_tres = salvarDados.comp_amostra_tres_tres;
-                    editarDados.comp_amostra_tres_quatro = salvarDados.comp_amostra_tres_quatro;
+                    
 
                     //espessura...
                     editarDados.esp_ini_amostra_um_um = salvarDados.esp_ini_amostra_um_um;
@@ -7742,16 +7698,6 @@ namespace Coleta_Colchao.Controllers
                     editarDados.esp_ini_amostra_tres_oito = salvarDados.esp_ini_amostra_tres_oito;
 
                     //realizar calculos de media da tabela...
-
-                    //media de larg..
-                    editarDados.lar_media_um = ((editarDados.lar_amostra_um_um + editarDados.lar_amostra_um_dois + editarDados.lar_amostra_um_tres + editarDados.lar_amostra_um_quatro) / 4);
-                    editarDados.lar_media_dois = ((editarDados.lar_amostra_dois_um + editarDados.lar_amostra_dois_dois + editarDados.lar_amostra_dois_tres + editarDados.lar_amostra_dois_quatro) / 4);
-                    editarDados.lar_media_tres = ((salvarDados.lar_amostra_tres_um + editarDados.lar_amostra_tres_dois + editarDados.lar_amostra_tres_tres + editarDados.lar_amostra_tres_quatro) / 4);
-
-                    //media comp..
-                    editarDados.comp_media_um = ((editarDados.comp_amostra_um_um + editarDados.comp_amostra_um_dois + editarDados.comp_amostra_um_tres + editarDados.comp_amostra_um_quatro) / 4);
-                    editarDados.comp_media_dois = ((editarDados.comp_amostra_dois_um + editarDados.comp_amostra_dois_dois + editarDados.comp_amostra_dois_tres + editarDados.comp_amostra_dois_quatro) / 4);
-                    editarDados.comp_media_tres = ((editarDados.comp_amostra_tres_um + editarDados.comp_amostra_tres_dois + editarDados.comp_amostra_tres_tres + editarDados.comp_amostra_tres_quatro) / 4);
 
                     //media espessura.
                     editarDados.esp_media_um = ((editarDados.esp_ini_amostra_um_um + editarDados.esp_ini_amostra_um_dois + editarDados.esp_ini_amostra_um_tres + editarDados.esp_ini_amostra_um_quatro + editarDados.esp_ini_amostra_um_cinco + editarDados.esp_ini_amostra_um_seis + editarDados.esp_ini_amostra_um_sete + editarDados.esp_ini_amostra_um_oito) / 8);
