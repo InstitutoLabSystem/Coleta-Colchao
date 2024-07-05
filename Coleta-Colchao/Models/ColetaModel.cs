@@ -90,6 +90,9 @@ namespace Coleta_Colchao.Models
             public string? revestimento { get; set; }
             public string? anti_reflexo { get; set; }
             public string? outros_materia { get; set; }
+            public float comprimento { get; set; }
+            public float altura { get; set; }
+            public float largura { get; set; }
             public string? andamento { get; set; }
 
 
@@ -204,8 +207,6 @@ namespace Coleta_Colchao.Models
             public float reves_mm_dois { get; set; }
             public float reves_cm_dois { get; set; }
             public string? reves_resul_final { get; set; }
-
-
         }
 
 

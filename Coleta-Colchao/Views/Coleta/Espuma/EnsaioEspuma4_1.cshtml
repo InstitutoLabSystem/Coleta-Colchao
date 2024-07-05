@@ -98,8 +98,8 @@
                         <table class="tables table-bordered border-secondary  table-sm">
                             <tr class="fundo-tabela">
                                 <td>Pontos De Medição</td>
-                                <td>Comprimento (cm)</td>
-                                <td class="teste">
+                                <td colspan="2">Comprimento (cm)</td>
+                                <td class="teste" colspan="4">
                                     Comprimento especificado (cm)
                                 </td>
                             </tr>
@@ -107,16 +107,16 @@
                                 <td>
                                     1°
                                 </td>
-                                <td>
+                                <td colspan="2">
                                     <input class="form-control" type="text" name="comprimento_um" />
                                 </td>
-                                <td class="altura-input-centralizar" rowspan="4"><input style="margin-top:20px;" class="form-control altura-input altura-inputs" type="text" name="comprimento_esp" /></td>
+                                <td class="altura-input-centralizar" rowspan="3"><input style="margin-top:20px; margin-bottom:20px;  height:150px" class="form-control altura-input altura-inputs" type="text" name="comprimento_esp" value="@ViewBag.comprimento" readonly /></td>
                             </tr>
                             <tr>
                                 <td>
                                     2°
                                 </td>
-                                <td>
+                                <td colspan="2">
                                     <input class="form-control" type="text" name="comprimento_dois" />
                                 </td>
                             </tr>
@@ -124,8 +124,19 @@
                                 <td>
                                     3°
                                 </td>
-                                <td>
+                                <td colspan="2">
                                     <input class="form-control" type="text" name="comprimento_tres" />
+                                </td>
+                            </tr>
+                            <tr>
+                                @{
+                                    double minimo = ViewBag.comprimento - 1.5;
+                                    double maximo = ViewBag.comprimento + 1.5;
+                                }
+                                <td>Minimo:</td>
+                                <td>@minimo</td>
+                                <td>Maximo:</td>
+                                <td>@maximo
                                 </td>
                             </tr>
                             <tr>
@@ -158,8 +169,8 @@
                         <table class="tables table-bordered border-secondary  table-sm">
                             <tr class="fundo-tabela">
                                 <td>Pontos De Medição</td>
-                                <td>Largura (cm)</td>
-                                <td>
+                                <td colspan="2">Largura (cm)</td>
+                                <td colspan="4">
                                     Largura especificado (cm)
                                 </td>
                             </tr>
@@ -167,16 +178,16 @@
                                 <td>
                                     1°
                                 </td>
-                                <td>
+                                <td colspan="2">
                                     <input class="form-control" type="text" name="largura_um" />
                                 </td>
-                                <td class="altura-input-centralizar" rowspan="4"><input style="margin-top:20px;" class="form-control altura-input altura-inputs" type="text" name="largura_esp" /></td>
+                                <td class="altura-input-centralizar" rowspan="3"><input style="margin-top:20px; margin-bottom:20px;  height:150px" class="form-control altura-input altura-inputs" type="text" name="largura_esp" value="@ViewBag.largura" readonly /></td>
                             </tr>
                             <tr>
                                 <td>
                                     2°
                                 </td>
-                                <td>
+                                <td colspan="2">
                                     <input class="form-control" type="text" name="largura_dois" />
                                 </td>
                             </tr>
@@ -184,8 +195,20 @@
                                 <td>
                                     3°
                                 </td>
-                                <td>
+                                <td colspan="2">
                                     <input class="form-control" type="text" name="largura_tres" />
+                                </td>
+                            </tr>
+                            <tr>
+                                @{
+                                    double minimo_largura = Math.Round(ViewBag.largura - 1.5,2);
+                                    double maximo_largura = Math.Round(ViewBag.largura + 1.5,2);
+                                }
+                                <td>Minimo:</td>
+                                <td>@minimo_largura</td>
+                                <td>Maximo:</td>
+                                <td>
+                                    @maximo_largura
                                 </td>
                             </tr>
                             <tr>
@@ -217,25 +240,25 @@
                         <table class="tables table-bordered border-secondary  table-sm">
                             <tr class="fundo-tabela">
                                 <td>Pontos De Medição</td>
-                                <td>Altura (cm)</td>
-                                <td>
-                                    Altura especificado (cm)
+                                <td colspan="2">Altura (cm)</td>
+                                <td class="teste" colspan="4">
+                                    Altura (cm)
                                 </td>
                             </tr>
                             <tr>
                                 <td>
                                     1°
                                 </td>
-                                <td>
-                                    <input class="form-control" type="text" name="altura_um" v />
+                                <td colspan="2">
+                                    <input class="form-control" type="text" name="altura_um" />
                                 </td>
-                                <td class="altura-input-centralizar" rowspan="4"><input style="margin-top:20px;" class="form-control altura-input altura-inputs" type="text" name="altura_esp" /></td>
+                                <td class="altura-input-centralizar" rowspan="3" colspan="4"><input style="margin-top:20px; margin-bottom:20px;  height:150px" class="form-control altura-input altura-inputs" type="text" name="altura_esp" value="@ViewBag.altura" readonly /></td>
                             </tr>
                             <tr>
                                 <td>
                                     2°
                                 </td>
-                                <td>
+                                <td colspan="2">
                                     <input class="form-control" type="text" name="altura_dois" />
                                 </td>
                             </tr>
@@ -243,21 +266,29 @@
                                 <td>
                                     3°
                                 </td>
-                                <td>
+                                <td colspan="2">
                                     <input class="form-control" type="text" name="altura_tres" />
+                                </td>
+                            </tr>
+                            <tr>
+                                @{
+                                    double minimo_altura = Math.Round(ViewBag.altura - 0.5,2);
+                                    double maximo_altura = Math.Round(ViewBag.altura + 1.5,2);
+                                }
+                                <td>Minimo:</td>
+                                <td>@minimo_altura</td>
+                                <td>Maximo:</td>
+                                <td>
+                                    @maximo_altura
                                 </td>
                             </tr>
                             <tr>
                                 <td>Media:</td>
                                 <td colspan="3"><input class="form-control" readonly /></td>
                             </tr>
-
                         </table>
-                        <p>
-                            Nota: São adimitadas tolerâncias de ± 0,5 cm, ± 1,5 cm
-                        </p>
+                        <p> Nota: São adimitadas tolerâncias de ± 0,5 cm, ± 1,5 cm.</p>
                     </td>
-
                 </tr>
             </table>
             <br />
@@ -1520,7 +1551,7 @@
                                             <option> Composto </option>
                                         </select>
                                     </td>
-                                    <td><input class="form-control" type="text" name="esp_lamina_um" readonly/></td>
+                                    <td><input class="form-control" type="text" name="esp_lamina_um" readonly /></td>
                                     <td><input class="form-control" type="text" name="esp_especificado_um" readonly /></td>
                                     <td><input class="form-control" type="text" name="esp_mm_um" /></td>
                                     <td><input class="form-control" type="text" name="esp_cm_um" readonly /></td>
@@ -1548,7 +1579,7 @@
                                             <option> Colchão misto </option>
                                         </select>
                                     </td>
-                                    <td><input class="form-control" type="text" name="esp_lamina_dois" readonly/></td>
+                                    <td><input class="form-control" type="text" name="esp_lamina_dois" readonly /></td>
                                     <td><input class="form-control" type="text" name="esp_especificado_dois" readonly /></td>
                                     <td><input class="form-control" type="text" name="esp_mm_dois" /></td>
                                     <td><input class="form-control" type="text" name="esp_cm_dois" readonly /></td>
@@ -1763,8 +1794,8 @@
                         <table class="tables table-bordered border-secondary  table-sm">
                             <tr class="fundo-tabela">
                                 <td>Pontos De Medição</td>
-                                <td>Comprimento (cm)</td>
-                                <td class="teste">
+                                <td colspan="2">Comprimento (cm)</td>
+                                <td class="teste" colspan="4">
                                     Comprimento especificado (cm)
                                 </td>
                             </tr>
@@ -1772,30 +1803,42 @@
                                 <td>
                                     1°
                                 </td>
-                                <td>
+                                <td colspan="2">
                                     <input class="form-control" type="text" name="comprimento_um" value="@Model.comprimento_um" />
                                 </td>
-                                <td class="altura-input-centralizar" rowspan="4"><input style="margin-top:20px;" class="form-control altura-input altura-inputs" type="text" name="comprimento_esp" value="@Model.comprimento_esp" /></td>
+                                <td class="altura-input-centralizar" rowspan="3"><input style="margin-top:20px; margin-bottom:20px;  height:150px" class="form-control altura-input altura-inputs" type="text" name="comprimento_esp" value="@ViewBag.comprimento" readonly /></td>
                             </tr>
                             <tr>
                                 <td>
                                     2°
                                 </td>
-                                <td>
-                                    <input class="form-control" type="text" name="comprimento_dois" value="@Model.comprimento_dois" />
+                                <td colspan="2">
+                                    <input class="form-control" type="text" name="comprimento_dois" value="@Model.comprimento_dois"/>
                                 </td>
                             </tr>
                             <tr>
                                 <td>
                                     3°
                                 </td>
-                                <td>
+                                <td colspan="2">
                                     <input class="form-control" type="text" name="comprimento_tres" value="@Model.comprimento_tres" />
                                 </td>
                             </tr>
                             <tr>
+                                @{
+                                    double minimo = ViewBag.comprimento - 1.5;
+                                    double maximo = ViewBag.comprimento + 1.5;
+                                }
+                                <td>Minimo:</td>
+                                <td>@minimo</td>
+                                <td>Maximo:</td>
+                                <td>
+                                    @maximo
+                                </td>
+                            </tr>
+                            <tr>
                                 <td>Media:</td>
-                                <td colspan="3"><input class="form-control" readonly value="@Model.comprimento_media" /></td>
+                                <td colspan="3"><input class="form-control" value="@Model.comprimento_media" readonly /></td>
                             </tr>
                         </table>
                         <p> Nota: São adimitadas tolerâncias de ± 1,5 cm.</p>
@@ -1823,8 +1866,8 @@
                         <table class="tables table-bordered border-secondary  table-sm">
                             <tr class="fundo-tabela">
                                 <td>Pontos De Medição</td>
-                                <td>Largura (cm)</td>
-                                <td>
+                                <td colspan="2">Largura (cm)</td>
+                                <td colspan="4">
                                     Largura especificado (cm)
                                 </td>
                             </tr>
@@ -1832,16 +1875,16 @@
                                 <td>
                                     1°
                                 </td>
-                                <td>
+                                <td colspan="2">
                                     <input class="form-control" type="text" name="largura_um" value="@Model.largura_um" />
                                 </td>
-                                <td class="altura-input-centralizar" rowspan="4"><input style="margin-top:20px;" class="form-control altura-input altura-inputs" type="text" name="largura_esp" value="@Model.largura_esp" /></td>
+                                <td class="altura-input-centralizar" rowspan="3"><input style="margin-top:20px; margin-bottom:20px;  height:150px" class="form-control altura-input altura-inputs" type="text" name="largura_esp" value="@ViewBag.largura" readonly /></td>
                             </tr>
                             <tr>
                                 <td>
                                     2°
                                 </td>
-                                <td>
+                                <td colspan="2">
                                     <input class="form-control" type="text" name="largura_dois" value="@Model.largura_dois" />
                                 </td>
                             </tr>
@@ -1849,13 +1892,25 @@
                                 <td>
                                     3°
                                 </td>
-                                <td>
+                                <td colspan="2">
                                     <input class="form-control" type="text" name="largura_tres" value="@Model.largura_tres" />
                                 </td>
                             </tr>
                             <tr>
+                                @{
+                                    double minimo_largura = Math.Round(ViewBag.largura - 1.5, 2);
+                                    double maximo_largura = Math.Round(ViewBag.largura + 1.5, 2);
+                                }
+                                <td>Minimo:</td>
+                                <td>@minimo_largura</td>
+                                <td>Maximo:</td>
+                                <td>
+                                    @maximo_largura
+                                </td>
+                            </tr>
+                            <tr>
                                 <td>Media:</td>
-                                <td colspan="3"><input class="form-control" readonly value="@Model.largura_media" /></td>
+                                <td colspan="3"><input class="form-control" value="@Model.largura_media"  readonly /></td>
                             </tr>
                         </table>
                         <p> Nota: São adimitadas tolerâncias de ± 1,5 cm.</p>
@@ -1882,47 +1937,55 @@
                         <table class="tables table-bordered border-secondary  table-sm">
                             <tr class="fundo-tabela">
                                 <td>Pontos De Medição</td>
-                                <td>Altura (cm)</td>
-                                <td>
-                                    Altura especificado (cm)
+                                <td colspan="2">Altura (cm)</td>
+                                <td class="teste" colspan="4">
+                                    Altura (cm)
                                 </td>
                             </tr>
                             <tr>
                                 <td>
                                     1°
                                 </td>
-                                <td>
-                                    <input class="form-control" type="text" name="altura_um" value="@Model.altura_um" />
+                                <td colspan="2">
+                                    <input class="form-control" type="text" name="altura_um" value="@Model.altura_um"/>
                                 </td>
-                                <td class="altura-input-centralizar" rowspan="4"><input style="margin-top:20px;" class="form-control altura-input altura-inputs" type="text" name="altura_esp" value="@Model.altura_esp" /></td>
+                                <td class="altura-input-centralizar" rowspan="3" colspan="4"><input style="margin-top:20px; margin-bottom:20px;  height:150px" class="form-control altura-input altura-inputs" type="text" name="altura_esp" value="@ViewBag.altura" readonly /></td>
                             </tr>
                             <tr>
                                 <td>
                                     2°
                                 </td>
-                                <td>
-                                    <input class="form-control" type="text" name="altura_dois" value="@Model.altura_dois" />
+                                <td colspan="2">
+                                    <input class="form-control" type="text" name="altura_dois" value="@Model.altura_dois"/>
                                 </td>
                             </tr>
                             <tr>
                                 <td>
                                     3°
                                 </td>
-                                <td>
+                                <td colspan="2">
                                     <input class="form-control" type="text" name="altura_tres" value="@Model.altura_tres" />
                                 </td>
                             </tr>
                             <tr>
-                                <td>Media:</td>
-                                <td colspan="3"><input class="form-control" readonly value="@Model.altura_media" /></td>
+                                @{
+                                    double minimo_altura = Math.Round(ViewBag.altura - 0.5, 2);
+                                    double maximo_altura = Math.Round(ViewBag.altura + 1.5, 2);
+                                }
+                                <td>Minimo:</td>
+                                <td>@minimo_altura</td>
+                                <td>Maximo:</td>
+                                <td>
+                                    @maximo_altura
+                                </td>
                             </tr>
-
+                            <tr>
+                                <td>Media:</td>
+                                <td colspan="3"><input class="form-control" value="@Model.altura_media" readonly /></td>
+                            </tr>
                         </table>
-                        <p>
-                            Nota: São adimitadas tolerâncias de ± 0,5 cm, ± 1,5 cm
-                        </p>
+                        <p> Nota: São adimitadas tolerâncias de ± 0,5 cm, ± 1,5 cm.</p>
                     </td>
-
                 </tr>
             </table>
             <br />
@@ -3246,7 +3309,7 @@
                                             <option> Composto </option>
                                         </select>
                                     </td>
-                                    <td><input class="form-control" type="text" name="esp_lamina_um" value="@Model.esp_lamina_um" readonly/></td>
+                                    <td><input class="form-control" type="text" name="esp_lamina_um" value="@Model.esp_lamina_um" readonly /></td>
                                     <td><input class="form-control" type="text" name="esp_especificado_um" value="@Model.esp_especificado_um" readonly /></td>
                                     <td><input class="form-control" type="text" name="esp_mm_um" value="@Model.esp_mm_um" /></td>
                                     <td><input class="form-control" type="text" name="esp_cm_um" readonly value="@Model.esp_cm_um" /></td>

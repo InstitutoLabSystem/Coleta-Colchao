@@ -102,6 +102,10 @@ namespace Coleta_Colchao.Controllers
         {
             var dados = _context.ensaio_espuma4_1.Where(x => x.os == os && x.orcamento == orcamento).FirstOrDefault();
             var RegistroEspuma = _context.regtro_colchao_espuma.Where(x => x.os == os && x.orcamento == orcamento).FirstOrDefault();
+            //verificando largura,altura e comprimento do index.
+            ViewBag.comprimento = RegistroEspuma.comprimento;
+            ViewBag.largura = RegistroEspuma.largura;
+            ViewBag.altura = RegistroEspuma.altura;
 
             if (dados != null)
             {
@@ -119,7 +123,6 @@ namespace Coleta_Colchao.Controllers
                 ViewBag.tipoColchao = RegistroEspuma.tipo_colchao;
                 return View("Espuma/EnsaioEspuma4_1");
             }
-
         }
 
         public IActionResult Espuma4_4(string os, string orcamento)
@@ -986,6 +989,9 @@ namespace Coleta_Colchao.Controllers
                 string modelo_cert = salvarDados.modelo_cert;
                 string tipo_proc = salvarDados.tipo_proc;
                 string produto = salvarDados.produto;
+                float comprimento = salvarDados.comprimento;
+                float largura = salvarDados.largura;
+                float altura = salvarDados.altura;
                 string clasi_produto = salvarDados.clasi_produto;
                 string tipo_colchao = salvarDados.tipo_colchao;
                 string uso = salvarDados.uso;
@@ -1032,6 +1038,9 @@ namespace Coleta_Colchao.Controllers
                     editarDados.tipo_cert = salvarDados.tipo_cert;
                     editarDados.modelo_cert = salvarDados.modelo_cert;
                     editarDados.produto = salvarDados.produto;
+                    editarDados.comprimento = salvarDados.comprimento;
+                    editarDados.largura = salvarDados.largura;
+                    editarDados.altura = salvarDados.altura;
                     editarDados.clasi_produto = salvarDados.clasi_produto;
                     editarDados.tipo_colchao = salvarDados.tipo_colchao;
                     editarDados.uso = salvarDados.uso;
@@ -3714,7 +3723,7 @@ namespace Coleta_Colchao.Controllers
                     //conformidade dos restante das perguntas..
                     if (tipo_espuma == "Sim" && densidade_nominal == "Sim" && comp_revestimento == "Sim" && data_fabricacao == "Sim" && pais_fabricacao == "Sim" && cuidados == "Sim" && negrito_dois == "Sim" && caixa_alta_dois == "Sim" && negrito_tres == "Sim" && caixa_alta_tres == "Sim" && coloracao_eti == "Sim" && negrito_quat == "Sim" && caixa_alta_quat == "Sim" && coloracao_quat == "Sim" && espessura_mad == "Sim" || espessura_mad == null && aviso_um == "Sim" || aviso_um == null && negrito_dois == "Sim" || negrito_dois == null && caixa_alta_dois == "Sim" || caixa_alta_dois == null && esclarecimento_um == "Sim" || esclarecimento_um == null && negrito_tres == "Sim" || negrito_tres == null && caixa_alta_tres == "Sim" || caixa_alta_tres == null && coloracao_eti == "Sim" || coloracao_eti == null && esclarecimento_dois == "Sim" || esclarecimento_dois == null)
                     {
-                        if (int.Parse(altura_letra_dois) >= 3 && int.Parse(altura_letra_tres) >= 3 && int.Parse(altura_letra_quat) >= 3)
+                        if (int.Parse(altura_letra_tres) >= 3 && int.Parse(altura_letra_quat) >= 3)
                         {
                             conforme_letras_dois = "C";
                         }
@@ -5848,7 +5857,7 @@ namespace Coleta_Colchao.Controllers
                     editarDados.hora_final = salvarDados.hora_final;
                     editarDados.temp_inicio = salvarDados.temp_inicio;
                     editarDados.temp_final = salvarDados.temp_final;
-                    editarDados.temp_final = salvarDados.temp_final;                   
+                    editarDados.temp_final = salvarDados.temp_final;
                     editarDados.im = salvarDados.im;
                     editarDados.responsavel_cond_um = salvarDados.responsavel_cond_um;
                     editarDados.acond_inicio_dois = salvarDados.acond_inicio_dois;
@@ -7224,7 +7233,7 @@ namespace Coleta_Colchao.Controllers
                     editarDados.hora_inicio = salvarDados.hora_inicio;
                     editarDados.hora_final = salvarDados.hora_final;
                     editarDados.temp_inicio = salvarDados.temp_inicio;
-                    editarDados.temp_final = salvarDados.temp_final;                 
+                    editarDados.temp_final = salvarDados.temp_final;
                     editarDados.im = salvarDados.im;
                     editarDados.responsavel_cond = salvarDados.responsavel_cond;
 
@@ -7445,7 +7454,7 @@ namespace Coleta_Colchao.Controllers
                 {
 
                     //realizando media de largura, comprimento, e espessura.
-                   
+
 
                     //espessura.. 
                     float media_esp_um = ((salvarDados.esp_ini_amostra_um_um + salvarDados.esp_ini_amostra_um_dois + salvarDados.esp_ini_amostra_um_tres + salvarDados.esp_ini_amostra_um_quatro + salvarDados.esp_ini_amostra_um_cinco + salvarDados.esp_ini_amostra_um_seis + salvarDados.esp_ini_amostra_um_sete + salvarDados.esp_ini_amostra_um_oito) / 8);
@@ -7667,7 +7676,7 @@ namespace Coleta_Colchao.Controllers
                     editarDados.data_term = salvarDados.data_term;
                     editarDados.tipo_espuma = salvarDados.tipo_espuma;
 
-                    
+
 
                     //espessura...
                     editarDados.esp_ini_amostra_um_um = salvarDados.esp_ini_amostra_um_um;
