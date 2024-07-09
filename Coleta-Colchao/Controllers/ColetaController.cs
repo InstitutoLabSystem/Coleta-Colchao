@@ -3,6 +3,7 @@ using Coleta_Colchao.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.CodeAnalysis.CSharp.Syntax;
+using Microsoft.CodeAnalysis.Elfie.Serialization;
 using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using Microsoft.EntityFrameworkCore.Migrations.Operations;
 using Microsoft.EntityFrameworkCore.Storage;
@@ -38,12 +39,18 @@ namespace Coleta_Colchao.Controllers
             _bancoContext = bancoContext;
         }
 
-
         public IActionResult Index(string os, string orcamento)
         {
             ViewBag.os = os;
             ViewBag.orcamento = orcamento;
             return View();
+        }
+
+        // função para saber qual usuario esta logado para salvar ou editar.
+        public string Usuario()
+        {
+            var user = User.FindFirstValue(ClaimTypes.Name);
+            return user;
         }
 
 
@@ -1199,7 +1206,8 @@ namespace Coleta_Colchao.Controllers
                         pergunta_a = pergunta_a,
                         pergunta_b = pergunta_b,
                         pergunta_c = pergunta_c,
-                        pergunta_d = pergunta_d
+                        pergunta_d = pergunta_d,
+                        executor = Usuario()
                     };
 
                     _context.Add(registro);
@@ -1227,6 +1235,7 @@ namespace Coleta_Colchao.Controllers
                     dados.pergunta_b = salvarDados.pergunta_b;
                     dados.pergunta_c = salvarDados.pergunta_c;
                     dados.pergunta_d = salvarDados.pergunta_d;
+                    dados.usuarioEdicao = Usuario();
                     int contem_molejo;
 
                     if (dados.borda_aco_molejo == "X" || dados.borda_espuma_molejo == "X")
@@ -2208,6 +2217,7 @@ namespace Coleta_Colchao.Controllers
                         reves_especificado_dois = reves_especificado_dois,
                         reves_mm_dois = reves_mm_dois,
                         reves_cm_dois = reves_cm_dois,
+                        executor = Usuario()
 
                     };
 
@@ -2427,6 +2437,8 @@ namespace Coleta_Colchao.Controllers
 
                     editarDados.reves_cm_dois = (editarDados.reves_mm_dois / 10);
 
+                    //editando usuario da coleta.
+                    editarDados.editarUsuario = Usuario();
 
 
                     await _context.SaveChangesAsync();
@@ -3055,8 +3067,8 @@ namespace Coleta_Colchao.Controllers
                         quant_colagens_cinco = quant_colagens_cinco,
                         espessura_lamina = espessura_lamina,
                         adesivo = adesivo,
-                        tipo_ensaio = tipo_ensaio
-
+                        tipo_ensaio = tipo_ensaio,
+                        executor = Usuario()
 
                     };
                     _context.Add(salvardados);
@@ -3103,6 +3115,8 @@ namespace Coleta_Colchao.Controllers
                     editarDados.adesivo = salvar.adesivo;
                     editarDados.tipo_ensaio = salvar.tipo_ensaio;
 
+                    //quem editou a coleta.
+                    editarDados.editarUsuario = Usuario();
 
 
                     _context.Update(editarDados);
@@ -3892,6 +3906,7 @@ namespace Coleta_Colchao.Controllers
                         executador_dois = executador_dois,
                         executador_tres = executador_tres,
                         executador_quat = executador_quat,
+                        executor = Usuario()
                     };
 
                     //salvando no banco
@@ -4114,6 +4129,9 @@ namespace Coleta_Colchao.Controllers
                     editarDados.executador_dois = salvar.executador_dois;
                     editarDados.executador_tres = salvar.executador_tres;
                     editarDados.executador_quat = salvar.executador_quat;
+
+                    //edtando quem editou a coleta.
+                    editarDados.editarUsuario = Usuario();
 
                     _context.Update(editarDados);
                     await _context.SaveChangesAsync();
@@ -4387,7 +4405,8 @@ namespace Coleta_Colchao.Controllers
                         dados.conforme_c = "NC";
                     }
 
-
+                    //salvando quem fez a coleta.
+                    dados.executor = Usuario();
 
                     _context.Add(dados);
                     await _context.SaveChangesAsync();
@@ -4466,6 +4485,10 @@ namespace Coleta_Colchao.Controllers
                     {
                         editarRegistro.conforme_c = "NC";
                     }
+
+                    //salvando quem editou a coleta.
+                    editarRegistro.editarUsuario = Usuario();
+
                     _context.Update(editarRegistro);
                     await _context.SaveChangesAsync();
 
@@ -4751,6 +4774,8 @@ namespace Coleta_Colchao.Controllers
                     }
                     //fim dos resultados de conforme ou nao conforme..
 
+                    //salvar quem fez a coleta.
+                    salvarDados.executor = Usuario();
 
                     _context.Add(salvarDados);
                     await _context.SaveChangesAsync();
@@ -4834,6 +4859,9 @@ namespace Coleta_Colchao.Controllers
                     }
                     //fim dos resultados de conforme ou nao conforme..
 
+                    //salvar quem editou a coleta.
+                    editarRegistro.editarUsuario = Usuario();
+
                     _context.Update(editarRegistro);
                     await _context.SaveChangesAsync();
                     TempData["Mensagem"] = "Dados Editado com sucesso.";
@@ -4880,6 +4908,8 @@ namespace Coleta_Colchao.Controllers
                         salvarDados.conforme = "NC";
                     }
 
+                    //salvando quem fez a coleta
+                    salvarDados.executor = Usuario();
 
                     _context.Add(salvarDados);
                     await _context.SaveChangesAsync();
@@ -4912,6 +4942,8 @@ namespace Coleta_Colchao.Controllers
                         editarRegistro.conforme = "NC";
                     }
 
+                    //salvando quem editou a coleta
+                    editarRegistro.editarUsuario = Usuario();
 
                     _context.Update(editarRegistro);
                     await _context.SaveChangesAsync();
@@ -4944,6 +4976,9 @@ namespace Coleta_Colchao.Controllers
                         salvarDados.conforme = "NC";
                     }
 
+                    //salvando quem fez a coleta.
+                    salvarDados.executor = Usuario();
+
                     _context.ensaio_espuma_item_4_4.Add(salvarDados);
                     await _context.SaveChangesAsync();
                     TempData["Mensagem"] = "Dados Salvo com sucesso.";
@@ -4964,6 +4999,9 @@ namespace Coleta_Colchao.Controllers
                     {
                         editarDados.conforme = "NC";
                     }
+
+                    //salvando quem editou a coleta.
+                    editarDados.editarUsuario = Usuario();
 
                     _context.Update(editarDados);
                     await _context.SaveChangesAsync();
@@ -5088,6 +5126,9 @@ namespace Coleta_Colchao.Controllers
                     salvarDados.maxima_densidade = densidade_resultado;
                     salvarDados.minima_densidade = densidade_resultado_dois;
 
+                    //salvando usuario da coleta.
+                    salvarDados.executador = Usuario();
+
                     _context.lamina_determinacao_densidade.Add(salvarDados);
                     await _context.SaveChangesAsync();
 
@@ -5174,6 +5215,8 @@ namespace Coleta_Colchao.Controllers
                     //salvando minimo e maximo da densidade.
                     editarDados.maxima_densidade = densidade_resultado;
                     editarDados.minima_densidade = densidade_resultado_dois;
+
+                    editarDados.editorUsuario = Usuario();
 
                     _context.lamina_determinacao_densidade.Update(editarDados);
                     await _context.SaveChangesAsync();
@@ -5367,6 +5410,9 @@ namespace Coleta_Colchao.Controllers
                     {
                         salvarDados.conforme = "C";
                     }
+
+                    //salvando quem fez a coleta.
+                    salvarDados.executor = Usuario();
 
                     _context.lamina_resiliencia.Add(salvarDados);
                     await _context.SaveChangesAsync();
@@ -5570,6 +5616,9 @@ namespace Coleta_Colchao.Controllers
                     {
                         editarDados.conforme = "C";
                     }
+
+                    //pegando usuario que deletou a coleta.
+                    editarDados.editorUsuario = Usuario();
 
                     _context.lamina_resiliencia.Update(editarDados);
                     await _context.SaveChangesAsync();
@@ -5837,6 +5886,9 @@ namespace Coleta_Colchao.Controllers
                     {
                         salvarDados.conforme = "C";
                     }
+
+                    //salvando quem fez a coleta.
+                    salvarDados.executor = Usuario();
 
                     _context.lamina_dpc.Add(salvarDados);
                     await _context.SaveChangesAsync();
@@ -6172,6 +6224,9 @@ namespace Coleta_Colchao.Controllers
                     {
                         editarDados.conforme = "C";
                     }
+
+                    //salvando quem editou a coleta.
+                    editarDados.editorUsuario = Usuario();
 
                     _context.lamina_dpc.Update(editarDados);
                     await _context.SaveChangesAsync();
@@ -6588,6 +6643,9 @@ namespace Coleta_Colchao.Controllers
                     {
                         salvarDados.conforme_conforto = "C";
                     }
+
+                    //salvar quem fez a coleta.
+                    salvarDados.executor = Usuario();
 
                     _context.lamina_fi.Add(salvarDados);
                     await _context.SaveChangesAsync();
@@ -7057,6 +7115,8 @@ namespace Coleta_Colchao.Controllers
                         editarDados.conforme_conforto = "C";
                     }
 
+                    //salvar quem editou a coleta.
+                    editarDados.editorUsuario = Usuario();
 
                     _context.lamina_fi.Update(editarDados);
                     await _context.SaveChangesAsync();
@@ -7217,6 +7277,9 @@ namespace Coleta_Colchao.Controllers
                             salvarDados.conforme = "C";
                         }
                     }
+
+                    //salvando quem fez a coleta
+                    salvarDados.executor = Usuario();
 
                     _context.lamina_fadiga_dinamica.Add(salvarDados);
                     await _context.SaveChangesAsync();
@@ -7431,6 +7494,9 @@ namespace Coleta_Colchao.Controllers
                         }
                     }
 
+                    //salvando quem editou a coleta
+                    editarDados.editarUsuario = Usuario();
+
                     _context.lamina_fadiga_dinamica.Update(editarDados);
                     await _context.SaveChangesAsync();
                     TempData["Mensagem"] = "Dados Editado com sucesso.";
@@ -7452,7 +7518,6 @@ namespace Coleta_Colchao.Controllers
                 var editarDados = _context.lamina_pfi.Where(x => x.os == os && x.orcamento == orcamento).FirstOrDefault();
                 if (editarDados == null)
                 {
-
                     //realizando media de largura, comprimento, e espessura.
 
 
@@ -7662,6 +7727,10 @@ namespace Coleta_Colchao.Controllers
                     {
                         salvarDados.conforme = "C";
                     }
+
+                    //quem fez a coleta.
+                    salvarDados.executor = Usuario();
+
 
                     _context.lamina_pfi.Add(salvarDados);
                     await _context.SaveChangesAsync();
@@ -7926,6 +7995,8 @@ namespace Coleta_Colchao.Controllers
                         editarDados.conforme = "C";
                     }
 
+                    //quem editou a coleta.
+                    editarDados.editarUsuario = Usuario();
 
                     _context.lamina_pfi.Update(editarDados);
                     await _context.SaveChangesAsync();
