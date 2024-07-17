@@ -13,6 +13,7 @@ using System.Data.Entity;
 using System.Data.Entity.Core.Mapping;
 using System.Data.Entity.Core.Objects.DataClasses;
 using System.Drawing;
+using System.Globalization;
 using System.Linq;
 using System.Net;
 using System.Reflection.Metadata.Ecma335;
@@ -5087,26 +5088,28 @@ namespace Coleta_Colchao.Controllers
                     // final do calculo da medias de largura, comprimento, e espessura.
 
                     //inicio calculo total..
-                    float vol_calc_amostra_um = ((media_esp_um) / 1000);
-                    float vol_calc_amostra_dois = ((media_esp_dois) / 1000);
-                    float vol_calc_amostra_tres = ((media_esp_tres) / 1000);
+                    float vol_calc_amostra_um = media_esp_um / 100;
+                    float vol_calc_amostra_dois = media_esp_dois / 100;
+                    float vol_calc_amostra_tres = media_esp_tres / 100;
                     salvarDados.calc_amostra_um = vol_calc_amostra_um;
                     salvarDados.calc_amostra_dois = vol_calc_amostra_dois;
                     salvarDados.calc_amostra_tres = vol_calc_amostra_tres;
                     //final do calculo..
 
-                    //inicio calculo dr..
+                    //inicio calculo dr..            
                     salvarDados.dr_um_um = salvarDados.massa_um;
                     salvarDados.dr_um_dois = vol_calc_amostra_um;
-                    salvarDados.dr_resul_um = ((salvarDados.dr_um_um / salvarDados.dr_um_dois)) * 1000;
+                    salvarDados.dr_resul_um = (float)Math.Round((((salvarDados.dr_um_um / salvarDados.dr_um_dois) * 1000) / 1000),1);
+
+
 
                     salvarDados.dr_dois_um = salvarDados.massa_dois;
                     salvarDados.dr_dois_dois = vol_calc_amostra_dois;
-                    salvarDados.dr_resul_dois = ((salvarDados.dr_dois_um / salvarDados.dr_dois_dois) * 1000);
+                    salvarDados.dr_resul_dois = (float)Math.Round((((salvarDados.dr_dois_um / salvarDados.dr_dois_dois) * 1000) /1000),1);
 
                     salvarDados.dr_tres_um = salvarDados.massa_tres;
                     salvarDados.dr_tres_dois = vol_calc_amostra_tres;
-                    salvarDados.dr_resul_tres = ((salvarDados.dr_tres_um / salvarDados.dr_tres_dois) * 1000);
+                    salvarDados.dr_resul_tres = (float)Math.Round((((salvarDados.dr_tres_um / salvarDados.dr_tres_dois) * 1000) /1000),1);
 
                     salvarDados.dr_media = (float)Math.Round(((salvarDados.dr_resul_um + salvarDados.dr_resul_dois + salvarDados.dr_resul_tres) / 3), 1);
 
@@ -5186,17 +5189,18 @@ namespace Coleta_Colchao.Controllers
                     //inicio DR
                     editarDados.dr_um_um = editarDados.massa_um;
                     editarDados.dr_um_dois = editarDados.calc_amostra_um;
-                    editarDados.dr_resul_um = ((editarDados.dr_um_um / editarDados.dr_um_dois) * 1000);
+                    editarDados.dr_resul_um = (float)Math.Round((((editarDados.dr_um_um / editarDados.dr_um_dois) * 1000) / 1000), 1);
 
                     editarDados.dr_dois_um = editarDados.massa_dois;
                     editarDados.dr_dois_dois = editarDados.calc_amostra_dois;
-                    editarDados.dr_resul_dois = ((editarDados.dr_dois_um / editarDados.dr_dois_dois) * 1000);
+                    editarDados.dr_resul_dois = (float)Math.Round((((editarDados.dr_dois_um / editarDados.dr_dois_dois) * 1000) / 1000), 1);
+
 
                     editarDados.dr_tres_um = editarDados.massa_tres;
                     editarDados.dr_tres_dois = editarDados.calc_amostra_tres;
-                    editarDados.dr_resul_tres = ((editarDados.dr_tres_um / editarDados.dr_tres_dois) * 1000);
+                    editarDados.dr_resul_tres = (float)Math.Round((((editarDados.dr_tres_um / editarDados.dr_tres_dois) * 1000) / 1000), 1);
 
-                    editarDados.dr_media = ((editarDados.dr_resul_um + editarDados.dr_resul_dois + editarDados.dr_resul_tres) / 3);
+                    editarDados.dr_media = (float)Math.Round(((editarDados.dr_resul_um + editarDados.dr_resul_dois + editarDados.dr_resul_tres) / 3),1);
 
                     //float inverter_densidade = (salvarDados.densidade * 10) / 100;
                     float densidade_resultado = ((editarDados.densidade * 10) / 100) + editarDados.densidade;

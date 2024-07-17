@@ -7,16 +7,20 @@
       "RelativeMoniker": "D:0:0:{A122F397-C234-43D8-A8C7-2102421BAFCA}|Coleta-Colchao\\Coleta-Colchao.csproj|solutionrelative:coleta-colchao\\controllers\\coletacontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A122F397-C234-43D8-A8C7-2102421BAFCA}|Coleta-Colchao\\Coleta-Colchao.csproj|c:\\users\\molina\\source\\repos\\institutolabsystem\\coleta-colchao\\coleta-colchao\\models\\coletamodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A122F397-C234-43D8-A8C7-2102421BAFCA}|Coleta-Colchao\\Coleta-Colchao.csproj|solutionrelative:coleta-colchao\\models\\coletamodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{A122F397-C234-43D8-A8C7-2102421BAFCA}|Coleta-Colchao\\Coleta-Colchao.csproj|c:\\users\\molina\\source\\repos\\institutolabsystem\\coleta-colchao\\coleta-colchao\\views\\coleta\\laminas\\laminadeterminacaodensidade.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{A122F397-C234-43D8-A8C7-2102421BAFCA}|Coleta-Colchao\\Coleta-Colchao.csproj|solutionrelative:coleta-colchao\\views\\coleta\\laminas\\laminadeterminacaodensidade.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A122F397-C234-43D8-A8C7-2102421BAFCA}|Coleta-Colchao\\Coleta-Colchao.csproj|c:\\users\\molina\\source\\repos\\institutolabsystem\\coleta-colchao\\coleta-colchao\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A122F397-C234-43D8-A8C7-2102421BAFCA}|Coleta-Colchao\\Coleta-Colchao.csproj|solutionrelative:coleta-colchao\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{A122F397-C234-43D8-A8C7-2102421BAFCA}|Coleta-Colchao\\Coleta-Colchao.csproj|c:\\users\\molina\\source\\repos\\institutolabsystem\\coleta-colchao\\coleta-colchao\\data\\colchaocontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{A122F397-C234-43D8-A8C7-2102421BAFCA}|Coleta-Colchao\\Coleta-Colchao.csproj|solutionrelative:coleta-colchao\\data\\colchaocontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A122F397-C234-43D8-A8C7-2102421BAFCA}|Coleta-Colchao\\Coleta-Colchao.csproj|c:\\users\\molina\\source\\repos\\institutolabsystem\\coleta-colchao\\coleta-colchao\\views\\coleta\\ensaiobaseestruturadurabi.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{A122F397-C234-43D8-A8C7-2102421BAFCA}|Coleta-Colchao\\Coleta-Colchao.csproj|solutionrelative:coleta-colchao\\views\\coleta\\ensaiobaseestruturadurabi.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{A122F397-C234-43D8-A8C7-2102421BAFCA}|Coleta-Colchao\\Coleta-Colchao.csproj|c:\\users\\molina\\source\\repos\\institutolabsystem\\coleta-colchao\\coleta-colchao\\models\\coletamodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A122F397-C234-43D8-A8C7-2102421BAFCA}|Coleta-Colchao\\Coleta-Colchao.csproj|solutionrelative:coleta-colchao\\models\\coletamodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -36,7 +40,7 @@
               "RelativeDocumentMoniker": "Coleta-Colchao\\Controllers\\ColetaController.cs",
               "ToolTip": "C:\\Users\\Molina\\source\\repos\\InstitutoLabSystem\\Coleta-Colchao\\Coleta-Colchao\\Controllers\\ColetaController.cs",
               "RelativeToolTip": "Coleta-Colchao\\Controllers\\ColetaController.cs",
-              "ViewState": "AQIAAAcQAAAAAAAAAAAEwBwQAABGAAAA",
+              "ViewState": "AQIAACkUAAAAAAAAAADgvz0UAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-06-24T12:37:41.908Z",
               "IsPinned": true,
@@ -68,33 +72,46 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "EnsaioBaseEstruturaDurabi.cshtml",
-              "DocumentMoniker": "C:\\Users\\Molina\\source\\repos\\InstitutoLabSystem\\Coleta-Colchao\\Coleta-Colchao\\Views\\Coleta\\EnsaioBaseEstruturaDurabi.cshtml",
-              "RelativeDocumentMoniker": "Coleta-Colchao\\Views\\Coleta\\EnsaioBaseEstruturaDurabi.cshtml",
-              "ToolTip": "C:\\Users\\Molina\\source\\repos\\InstitutoLabSystem\\Coleta-Colchao\\Coleta-Colchao\\Views\\Coleta\\EnsaioBaseEstruturaDurabi.cshtml",
-              "RelativeToolTip": "Coleta-Colchao\\Views\\Coleta\\EnsaioBaseEstruturaDurabi.cshtml",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAABoAAABcAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-07-09T16:07:01.523Z",
+              "DocumentIndex": 2,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\Molina\\source\\repos\\InstitutoLabSystem\\Coleta-Colchao\\Coleta-Colchao\\Program.cs",
+              "RelativeDocumentMoniker": "Coleta-Colchao\\Program.cs",
+              "ToolTip": "C:\\Users\\Molina\\source\\repos\\InstitutoLabSystem\\Coleta-Colchao\\Coleta-Colchao\\Program.cs",
+              "RelativeToolTip": "Coleta-Colchao\\Program.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAB4AAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-07-17T14:09:35.233Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 1,
+              "Title": "LaminaDeterminacaoDensidade.cshtml",
+              "DocumentMoniker": "C:\\Users\\Molina\\source\\repos\\InstitutoLabSystem\\Coleta-Colchao\\Coleta-Colchao\\Views\\Coleta\\Laminas\\LaminaDeterminacaoDensidade.cshtml",
+              "RelativeDocumentMoniker": "Coleta-Colchao\\Views\\Coleta\\Laminas\\LaminaDeterminacaoDensidade.cshtml",
+              "ToolTip": "C:\\Users\\Molina\\source\\repos\\InstitutoLabSystem\\Coleta-Colchao\\Coleta-Colchao\\Views\\Coleta\\Laminas\\LaminaDeterminacaoDensidade.cshtml",
+              "RelativeToolTip": "Coleta-Colchao\\Views\\Coleta\\Laminas\\LaminaDeterminacaoDensidade.cshtml",
+              "ViewState": "AQIAAG4AAAAAAAAAAAAowJkAAABaAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-07-17T13:17:58.337Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
               "Title": "ColchaoContext.cs",
               "DocumentMoniker": "C:\\Users\\Molina\\source\\repos\\InstitutoLabSystem\\Coleta-Colchao\\Coleta-Colchao\\Data\\ColchaoContext.cs",
               "RelativeDocumentMoniker": "Coleta-Colchao\\Data\\ColchaoContext.cs",
               "ToolTip": "C:\\Users\\Molina\\source\\repos\\InstitutoLabSystem\\Coleta-Colchao\\Coleta-Colchao\\Data\\ColchaoContext.cs",
               "RelativeToolTip": "Coleta-Colchao\\Data\\ColchaoContext.cs",
-              "ViewState": "AQIAABEAAAAAAAAAAAA/wBYAAAA/AAAA",
+              "ViewState": "AQIAABQAAAAAAAAAAAA6wB4AAABhAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-07-09T13:57:32.277Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 4,
               "Title": "ColetaModel.cs",
               "DocumentMoniker": "C:\\Users\\Molina\\source\\repos\\InstitutoLabSystem\\Coleta-Colchao\\Coleta-Colchao\\Models\\ColetaModel.cs",
               "RelativeDocumentMoniker": "Coleta-Colchao\\Models\\ColetaModel.cs",
@@ -102,8 +119,7 @@
               "RelativeToolTip": "Coleta-Colchao\\Models\\ColetaModel.cs",
               "ViewState": "AQIAAH8CAAAAAAAAAAAhwIwCAAAJAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-07-09T13:07:25.383Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-07-09T13:07:25.383Z"
             }
           ]
         }
