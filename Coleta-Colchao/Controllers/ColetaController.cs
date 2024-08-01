@@ -2889,7 +2889,7 @@ namespace Coleta_Colchao.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> SalvarEnsaio7_3(string os, string orcamento, [Bind("data_ini,data_term,pergunta_a,pergunta_b,pergunta_c,pergunta_d,pergunta_e,material,suportou")] ColetaModel.Ensaio7_3 salvarDados)
+        public async Task<IActionResult> SalvarEnsaio7_3(string os, string orcamento, [Bind("data_ini,data_term,pergunta_a,pergunta_b,pergunta_c,pergunta_d,pergunta_e,material,suportou,qtd_ciclos")] ColetaModel.Ensaio7_3 salvarDados)
         {
             try
             {
@@ -2906,7 +2906,7 @@ namespace Coleta_Colchao.Controllers
                     string pergunta_e = salvarDados.pergunta_e;
                     string material = salvarDados.material;
                     string suportou = salvarDados.suportou;
-
+                    int qtd_ciclos = salvarDados.qtd_ciclos;
 
                     var registro = new ColetaModel.Ensaio7_3
                     {
@@ -2920,7 +2920,8 @@ namespace Coleta_Colchao.Controllers
                         pergunta_d = pergunta_d,
                         pergunta_e = pergunta_e,
                         material = material,
-                        suportou = suportou
+                        suportou = suportou,
+                        qtd_ciclos = qtd_ciclos
                     };
 
                     _context.Add(registro);
@@ -2940,6 +2941,7 @@ namespace Coleta_Colchao.Controllers
                     editarDados.pergunta_e = salvarDados.pergunta_e;
                     editarDados.material = salvarDados.material;
                     editarDados.suportou = salvarDados.suportou;
+                    editarDados.qtd_ciclos = salvarDados.qtd_ciclos;
 
                     _context.Update(editarDados);
                     await _context.SaveChangesAsync();
@@ -3110,7 +3112,7 @@ namespace Coleta_Colchao.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> SalvarEmbalagensMolas(string os, string orcamento, [Bind("data_ini,data_term,etiqueta_ident,revest_permanente,etiqueta_duravel_indele,face_superior,visualizacao,lingua_portuguesa,area_etiqueta_1,area_etiqueta_2,cnpj_cpf,cnpj_cpf_2,marca_modelo,dimensoes_prod,informada_altura,composicoes,tipo_molejo,contem_borda,densidade_espuma,composi_revestimento,data_fabricacao,ident_lote,pais_origem,codigo_barras,cuidado_minimos,aviso_esclarecimento,possui_mais_laminas,conforme_r,contem_advertencia,altura_letra,negrito,conforme_s,caixa_alta,contem_advertencia_mat,altura_letra_mat,negrito_mat,caixa_alta_mat,contem_instru_uso,orientacoes,alerta_consumidor,desenho_esquematico,contem_advertencia_6_2,altura_letra_6_2,negrito6_2,caixa_alta_6_2,embalagem_unitaria,embalagem_garante,colchao_disponivel,fixada,conforme_6_2")] ColetaModel.EnsaioIdentificacaoEmbalagem salvarDados)
+        public async Task<IActionResult> SalvarEmbalagensMolas(string os, string orcamento, [Bind("data_ini,data_term,etiqueta_ident,revest_permanente,etiqueta_duravel_indele,face_superior,visualizacao,lingua_portuguesa,area_etiqueta_1,area_etiqueta_2,cnpj_cpf,cnpj_cpf_2,marca_modelo,dimensoes_prod,informada_altura,composicoes,tipo_molejo,contem_borda,densidade_espuma,composi_revestimento,data_fabricacao,ident_lote,pais_origem,codigo_barras,cuidado_minimos,aviso_esclarecimento,possui_mais_laminas,conforme_r,contem_advertencia,altura_letra,negrito,conforme_s,caixa_alta,contem_advertencia_mat,altura_letra_mat,negrito_mat,caixa_alta_mat,contem_instru_uso,orientacoes,alerta_consumidor,desenho_esquematico,contem_advertencia_6_2,altura_letra_6_2,negrito6_2,caixa_alta_6_2,embalagem_unitaria,embalagem_garante,colchao_disponivel,fixada,conforme_6_2,conforme_area")] ColetaModel.EnsaioIdentificacaoEmbalagem salvarDados)
         {
             try
             {
@@ -3156,9 +3158,19 @@ namespace Coleta_Colchao.Controllers
                     string colchao_disponivel = salvarDados.colchao_disponivel;
                     string fixada = salvarDados.fixada;
                     string conforme6_2 = salvarDados.conforme_6_2;
+                    string conforme_area = salvarDados.conforme_area;
 
                     // realizando calculo necessario.
                     float calc_media = area_etiqueta_1 * area_etiqueta_2;
+                    
+                    if (calc_media <= 150)
+                    {
+                        conforme_area = "NC";
+                    }
+                    else
+                    {
+                        conforme_area = "C";
+                    }
 
                     //VERIFICANDO SE COLETA ESTA CONFORME OU NC DE CADA CAMPO
                     //if (etiqueta_ident == "NC" || revest_permanente == "NC" || etiqueta_duravel_indele == "NC" || face_superior == "NC" || visualizacao == "NC" || lingua_portuguesa == "NC")
@@ -3374,7 +3386,8 @@ namespace Coleta_Colchao.Controllers
                         embalagem_unitaria = embalagem_unitaria,
                         colchao_disponivel = colchao_disponivel,
                         fixada = fixada,
-                        conforme_6_2 = conforme6_2
+                        conforme_6_2 = conforme6_2,
+                        conforme_area = conforme_area
 
                     };
 
@@ -3418,153 +3431,161 @@ namespace Coleta_Colchao.Controllers
                     editarDados.desenho_esquematico = salvarDados.desenho_esquematico;
                     editarDados.altura_letra_6_2 = salvarDados.altura_letra_6_2;
                     editarDados.caixa_alta_6_2 = salvarDados.caixa_alta_6_2;
-
+                    editarDados.conforme_area = salvarDados.conforme_area;
 
                     //realizando contas necessarias.
                     float calc_media = editarDados.area_etiqueta_1 * editarDados.area_etiqueta_2;
+                    if (calc_media <= 150)
+                    {
+                        editarDados.conforme_area = "NC";
+                    }
+                    else
+                    {
+                        editarDados.conforme_area = "C";
+                    }
 
-                    //VERIFICANDO SE COLETA ESTA CONFORME OU NC DE CADA CAMPO
-                    //if (editarDados.etiqueta_ident == "NC" || editarDados.revest_permanente == "NC" || editarDados.etiqueta_duravel_indele == "NC" || editarDados.face_superior == "NC" || editarDados.visualizacao == "NC" || editarDados.lingua_portuguesa == "NC")
-                    //{
-                    //    if (calc_media <= 150)
-                    //    {
-                    //        editarDados.conforme_requisitos = "NC";
-                    //    }
-                    //    else
-                    //    {
-                    //        editarDados.conforme_requisitos = "C";
-                    //    }
-                    //}
-                    //else
-                    //{
-                    //    if (calc_media <= 150)
-                    //    {
-                    //        editarDados.conforme_requisitos = "C";
-                    //    }
-                    //    else
-                    //    {
-                    //        editarDados.conforme_requisitos = "NC";
-                    //    }
-                    //}
+                        //VERIFICANDO SE COLETA ESTA CONFORME OU NC DE CADA CAMPO
+                        //if (editarDados.etiqueta_ident == "NC" || editarDados.revest_permanente == "NC" || editarDados.etiqueta_duravel_indele == "NC" || editarDados.face_superior == "NC" || editarDados.visualizacao == "NC" || editarDados.lingua_portuguesa == "NC")
+                        //{
+                        //    if (calc_media <= 150)
+                        //    {
+                        //        editarDados.conforme_requisitos = "NC";
+                        //    }
+                        //    else
+                        //    {
+                        //        editarDados.conforme_requisitos = "C";
+                        //    }
+                        //}
+                        //else
+                        //{
+                        //    if (calc_media <= 150)
+                        //    {
+                        //        editarDados.conforme_requisitos = "C";
+                        //    }
+                        //    else
+                        //    {
+                        //        editarDados.conforme_requisitos = "NC";
+                        //    }
+                        //}
 
-                    //if (editarDados.cnpj_cpf == "NC" || editarDados.marca_modelo == "NC" || editarDados.dimensoes_prod == "NC")
-                    //{
-                    //    editarDados.conforme_requisitos_2 = "NC";
-                    //}
-                    //else
-                    //{
-                    //    editarDados.conforme_requisitos_2 = "C";
+                        //if (editarDados.cnpj_cpf == "NC" || editarDados.marca_modelo == "NC" || editarDados.dimensoes_prod == "NC")
+                        //{
+                        //    editarDados.conforme_requisitos_2 = "NC";
+                        //}
+                        //else
+                        //{
+                        //    editarDados.conforme_requisitos_2 = "C";
 
-                    //}
+                        //}
 
-                    //if (editarDados.informada_altura == "NC" || editarDados.composicoes == "NC" || editarDados.contem_borda == "NC" || editarDados.densidade_espuma == "NC" || editarDados.composi_revestimento == "NC" || editarDados.data_fabricacao == "NC" || editarDados.ident_lote == "NC" || editarDados.pais_origem == "NC" || editarDados.codigo_barras == "NC" || editarDados.cuidado_minimos == "NC")
-                    //{
-                    //    editarDados.conforme_requisitos_3 = "NC";
-                    //}
-                    //else
-                    //{
-                    //    editarDados.conforme_requisitos_3 = "C";
-                    //}
+                        //if (editarDados.informada_altura == "NC" || editarDados.composicoes == "NC" || editarDados.contem_borda == "NC" || editarDados.densidade_espuma == "NC" || editarDados.composi_revestimento == "NC" || editarDados.data_fabricacao == "NC" || editarDados.ident_lote == "NC" || editarDados.pais_origem == "NC" || editarDados.codigo_barras == "NC" || editarDados.cuidado_minimos == "NC")
+                        //{
+                        //    editarDados.conforme_requisitos_3 = "NC";
+                        //}
+                        //else
+                        //{
+                        //    editarDados.conforme_requisitos_3 = "C";
+                        //}
 
-                    //if (editarDados.aviso_esclarecimento == "NC" || editarDados.possui_mais_laminas == "NC" || editarDados.contem_advertencia == "NC" || editarDados.negrito == "NC" || editarDados.caixa_alta == "NC" || editarDados.contem_advertencia_mat == "NC" || editarDados.negrito_mat == "NC")
-                    //{
+                        //if (editarDados.aviso_esclarecimento == "NC" || editarDados.possui_mais_laminas == "NC" || editarDados.contem_advertencia == "NC" || editarDados.negrito == "NC" || editarDados.caixa_alta == "NC" || editarDados.contem_advertencia_mat == "NC" || editarDados.negrito_mat == "NC")
+                        //{
 
-                    //    float conv_altura_letra = float.Parse(editarDados.altura_letra);
-                    //    if (conv_altura_letra <= 2.5)
-                    //    {
-                    //        editarDados.conforme_requisitos_4 = "NC";
-                    //    }
-                    //    else
-                    //    {
-                    //        editarDados.conforme_requisitos_4 = "C";
-                    //    }
-                    //}
-                    //else
-                    //{
-                    //    float conv_altura_letra = float.Parse(editarDados.altura_letra);
-                    //    if (conv_altura_letra >= 2.5)
-                    //    {
-                    //        editarDados.conforme_requisitos_4 = "C";
-                    //    }
-                    //    else
-                    //    {
-                    //        editarDados.conforme_requisitos_4 = "NC";
-                    //    }
-                    //}
+                        //    float conv_altura_letra = float.Parse(editarDados.altura_letra);
+                        //    if (conv_altura_letra <= 2.5)
+                        //    {
+                        //        editarDados.conforme_requisitos_4 = "NC";
+                        //    }
+                        //    else
+                        //    {
+                        //        editarDados.conforme_requisitos_4 = "C";
+                        //    }
+                        //}
+                        //else
+                        //{
+                        //    float conv_altura_letra = float.Parse(editarDados.altura_letra);
+                        //    if (conv_altura_letra >= 2.5)
+                        //    {
+                        //        editarDados.conforme_requisitos_4 = "C";
+                        //    }
+                        //    else
+                        //    {
+                        //        editarDados.conforme_requisitos_4 = "NC";
+                        //    }
+                        //}
 
-                    //if (editarDados.contem_advertencia_mat == "C" || editarDados.negrito_mat == "C" || editarDados.caixa_alta_mat == "C")
-                    //{
+                        //if (editarDados.contem_advertencia_mat == "C" || editarDados.negrito_mat == "C" || editarDados.caixa_alta_mat == "C")
+                        //{
 
-                    //    float conv_altura_letra_mat = float.Parse(editarDados.altura_letra_mat);
-                    //    if (conv_altura_letra_mat >= 5)
-                    //    {
-                    //        editarDados.conforme_requisitos_5 = "C";
-                    //    }
-                    //    else
-                    //    {
-                    //        editarDados.conforme_requisitos_5 = "NC";
-                    //    }
-                    //}
-                    //else
-                    //{
-                    //    float conv_altura_letra_mat = float.Parse(editarDados.altura_letra_mat);
-                    //    if (conv_altura_letra_mat >= 5)
-                    //    {
-                    //        editarDados.conforme_requisitos_5 = "C";
-                    //    }
-                    //    else
-                    //    {
-                    //        editarDados.conforme_requisitos_5 = "NC";
-                    //    }
-                    //}
+                        //    float conv_altura_letra_mat = float.Parse(editarDados.altura_letra_mat);
+                        //    if (conv_altura_letra_mat >= 5)
+                        //    {
+                        //        editarDados.conforme_requisitos_5 = "C";
+                        //    }
+                        //    else
+                        //    {
+                        //        editarDados.conforme_requisitos_5 = "NC";
+                        //    }
+                        //}
+                        //else
+                        //{
+                        //    float conv_altura_letra_mat = float.Parse(editarDados.altura_letra_mat);
+                        //    if (conv_altura_letra_mat >= 5)
+                        //    {
+                        //        editarDados.conforme_requisitos_5 = "C";
+                        //    }
+                        //    else
+                        //    {
+                        //        editarDados.conforme_requisitos_5 = "NC";
+                        //    }
+                        //}
 
-                    //if (editarDados.contem_instru_uso == "NC" || editarDados.orientacoes == "NC" || editarDados.alerta_consumidor == "NC" || editarDados.desenho_esquematico == "NC" || editarDados.contem_advertencia_6_2 == "NC" || editarDados.altura_letra_6_2 == "NC" || editarDados.negrito6_2 == "NC" || editarDados.caixa_alta_6_2 == "NC")
-                    //{
-                    //    editarDados.conforme_6_1 = "NC";
-                    //}
-                    //else
-                    //{
-                    //    editarDados.conforme_6_1 = "C";
-                    //}
+                        //if (editarDados.contem_instru_uso == "NC" || editarDados.orientacoes == "NC" || editarDados.alerta_consumidor == "NC" || editarDados.desenho_esquematico == "NC" || editarDados.contem_advertencia_6_2 == "NC" || editarDados.altura_letra_6_2 == "NC" || editarDados.negrito6_2 == "NC" || editarDados.caixa_alta_6_2 == "NC")
+                        //{
+                        //    editarDados.conforme_6_1 = "NC";
+                        //}
+                        //else
+                        //{
+                        //    editarDados.conforme_6_1 = "C";
+                        //}
 
-                    //if (editarDados.contem_advertencia_6_2 == "C" || editarDados.negrito6_2 == "C" || editarDados.caixa_alta_6_2 == "C")
-                    //{
-                    //    float conv_altura_letra_6_2 = float.Parse(editarDados.altura_letra_6_2);
-                    //    if (conv_altura_letra_6_2 >= 5)
-                    //    {
-                    //        editarDados.conforme_6_2 = "C";
-                    //    }
-                    //    else
-                    //    {
-                    //        editarDados.conforme_6_2 = "NC";
-                    //    }
-                    //}
-                    //else
-                    //{
-                    //    float conv_altura_letra_6_2 = float.Parse(editarDados.altura_letra_6_2);
-                    //    if (conv_altura_letra_6_2 >= 5)
-                    //    {
-                    //        editarDados.conforme_6_2 = "C";
-                    //    }
-                    //    else
-                    //    {
-                    //        editarDados.conforme_6_2 = "NC";
-                    //    }
-                    //}
+                        //if (editarDados.contem_advertencia_6_2 == "C" || editarDados.negrito6_2 == "C" || editarDados.caixa_alta_6_2 == "C")
+                        //{
+                        //    float conv_altura_letra_6_2 = float.Parse(editarDados.altura_letra_6_2);
+                        //    if (conv_altura_letra_6_2 >= 5)
+                        //    {
+                        //        editarDados.conforme_6_2 = "C";
+                        //    }
+                        //    else
+                        //    {
+                        //        editarDados.conforme_6_2 = "NC";
+                        //    }
+                        //}
+                        //else
+                        //{
+                        //    float conv_altura_letra_6_2 = float.Parse(editarDados.altura_letra_6_2);
+                        //    if (conv_altura_letra_6_2 >= 5)
+                        //    {
+                        //        editarDados.conforme_6_2 = "C";
+                        //    }
+                        //    else
+                        //    {
+                        //        editarDados.conforme_6_2 = "NC";
+                        //    }
+                        //}
 
-                    //if (editarDados.embalagem_garante == "NC" || editarDados.embalagem_unitaria == "NC")
-                    //{
-                    //    editarDados.conforme_embalagem = "NC";
-                    //}
-                    //else
-                    //{
-                    //    editarDados.conforme_embalagem = "C";
-                    //}
-                    //termino das verificações de conformidade.
+                        //if (editarDados.embalagem_garante == "NC" || editarDados.embalagem_unitaria == "NC")
+                        //{
+                        //    editarDados.conforme_embalagem = "NC";
+                        //}
+                        //else
+                        //{
+                        //    editarDados.conforme_embalagem = "C";
+                        //}
+                        //termino das verificações de conformidade.
 
 
-                    //recebendo valor depois do calculo.
-                    editarDados.area_etiqueta_media = calc_media;
+                        //recebendo valor depois do calculo.
+                        editarDados.area_etiqueta_media = calc_media;
 
                     _context.Update(editarDados);
                     await _context.SaveChangesAsync();

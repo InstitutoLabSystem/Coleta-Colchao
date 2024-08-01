@@ -96,17 +96,21 @@
                 @if (ViewBag.qtd_face == 1)
                 {
                     <tr>
-                        <td>1 Face: 50.000 ciclos</td>
+                        <td>1 Face: 50.000 ciclos em sua face superior</td>
                         <td>Ciclos atingidos</td>
-                        <td>---</td>
+                        <td>
+                            <input type="text" name="qtd_ciclos"/>
+                        </td>
                     </tr>
                 }
                 else
                 {
                     <tr>
-                        <td>2 Face: 25.000 + 25.000 ciclos da primeira face</td>
+                        <td>2 Faces: 25.000 em sua face superior e 25.000 em sua face inferior e em (ciclos atingidos) </td>
                         <td>Ciclos atingidos</td>
-                        <td>---</td>
+                        <td>
+                            <input class="form-control" type="text" name="qtd_ciclos" value=""/>
+                        </td>
                     </tr>
                 }
             </table>
@@ -257,17 +261,21 @@
                 @if (ViewBag.qtd_face == 1)
                 {
                     <tr>
-                        <td>1 Face: 50.000 ciclos</td>
+                        <td>1 Face: 50.000 ciclos em sua face superior</td>
                         <td>Ciclos atingidos</td>
-                        <td>---</td>
+                        <td>
+                            <input class="form-control" name="qtd_ciclos" value="@Model.qtd_ciclos"/>
+                        </td>
                     </tr>
                 }
                 else
                 {
                     <tr>
-                        <td>2 Face: 25.000 + 25.000 ciclos da primeira face</td>
+                        <td>2 Faces: 25.000 em sua face superior e 25.000 em sua face inferior e em (ciclos atingidos)</td>
                         <td>Ciclos atingidos</td>
-                        <td>---</td>
+                        <td>
+                            <input class="form-control" name="qtd_ciclos" value="@Model.qtd_ciclos" />
+                        </td>
                     </tr>
                 }
             </table>

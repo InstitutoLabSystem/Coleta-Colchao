@@ -111,25 +111,20 @@
                 <tr>
                     <td>
                         <table class="tables table-bordered border-secondary  table-sm">
-                            <tr class="fundo-tabela"><td colspan="5">Tabela - Quantidade minima de molas para cada tipo de molejo</td></tr>
+                            <tr class="fundo-tabela">
+                                <td colspan="6">Tabela - Quantidade minima de molas para cada tipo de molejo</td>
+                            </tr>
                             <tr class="fundo-tabela">
                                 <td type="hidden"></td>
                                 <td>Tipo</td>
-                                <td>
-                                    Ø minimo da Bitola (mm)
-                                </td>
-                                <td>
-                                    Nº mínimo de molas por m²
-                                </td>
-                                <td>
-                                    Nº mínimo de molas por m²
-                                </td>
+                                <td>Ø minimo da Bitola (mm)</td>
+                                <td>Especificado do mínimo da bitola (mm)</td>
+                                <td>Nº médio de molas por m²</td>
                             </tr>
                                 @if (ViewBag.tipo == "Bonell")
                                 {
                                 <tr>
                                     <td type="hidden"><input name="contem_bonell" value="Sim" type="hidden" /></td>
-
                                     <td>
                                         Bonell <br />
                                         (2,20 ± 0,05)
@@ -144,9 +139,7 @@
                                 <tr>
                                     <td type="hidden"><input name="contem_mola" value="Sim" type="hidden" /></td>
                                     <td>Mola ensacada</td>
-                                    <td>
-                                        ---
-                                    </td>
+                                    <td>---</td>
                                     <td>152</td>
                                     <td><input class="form-control" type="text" name="mini_molas_3" /></td>
                                 </tr>
@@ -156,9 +149,7 @@
                                 <tr>
                                     <td type="hidden"><input name="contem_lkf" value="Sim" type="hidden" /></td>
                                     <td>LKF</td>
-                                    <td>
-                                        ---
-                                    </td>
+                                    <td>---</td>
                                     <td>152</td>
                                     <td><input class="form-control" type="text" name="mini_molas_4" /></td>
                                 </tr>
@@ -169,9 +160,7 @@
                                     <td type="hidden"><input name="contem_vericoil" value="Sim" type="hidden" /></td>
 
                                     <td>Verticoil</td>
-                                    <td>
-                                        ---
-                                    </td>
+                                    <td>---</td>
                                     <td>110</td>
                                     <td><input class="form-control" type="text" name="mini_molas_5" /></td>
                                 </tr>
@@ -181,11 +170,8 @@
 
                                 <tr>
                                     <td type="hidden"><input name="contem_fio_continuo_1" value="Sim" type="hidden" /></td>
-
                                     <td>Fio Continuo | </td>
-                                    <td>
-                                        ---
-                                    </td>
+                                    <td>---</td>
                                     <td>170</td>
                                     <td><input class="form-control" type="text" name="mini_molas_6" /></td>
                                 </tr>
@@ -194,11 +180,8 @@
                                 {
                                 <tr>
                                     <td type="hidden"><input name="contem_fio_continuo_2" value="Sim" type="hidden" /></td>
-
                                     <td>Fio continuo ||</td>
-                                    <td>
-                                        ---
-                                    </td>
+                                    <td>---</td>
                                     <td>198</td>
                                     <td><input class="form-control" type="text" name="mini_molas_7" /></td>
                                 </tr>
@@ -208,9 +191,7 @@
                                 <tr>
                                     <td type="hidden"><input name="contem_offset" value="Sim" type="hidden" /></td>
                                     <td>Offset</td>
-                                    <td>
-                                        ---
-                                    </td>
+                                    <td>---</td>
                                     <td>105</td>
                                     <td><input class="form-control" type="text" name="mini_molas_8" /></td>
                                 </tr>
@@ -219,7 +200,6 @@
                                 {
                                 <tr>
                                     <td type="hidden"><input name="contem_bonell" value="Sim" type="hidden" /></td>
-
                                     <td>
                                         Bonell <br />
                                         (2,20 ± 0,05)
@@ -233,11 +213,8 @@
                                 {
                                 <tr>
                                     <td type="hidden"><input name="contem_mola" value="Sim" type="hidden" /></td>
-
                                     <td>Mola ensacada</td>
-                                    <td>
-                                        ---
-                                    </td>
+                                    <td>---</td>
                                     <td>152</td>
                                     <td><input class="form-control" type="text" name="mini_molas_3" /></td>
                                 </tr>
@@ -246,11 +223,8 @@
                                 {
                                 <tr>
                                     <td type="hidden"><input name="contem_lkf" value="Sim" type="hidden" /></td>
-
                                     <td>LKF</td>
-                                    <td>
-                                        ---
-                                    </td>
+                                    <td>---</td>
                                     <td>152</td>
                                     <td><input class="form-control" type="text" name="mini_molas_4" /></td>
                                 </tr>
@@ -259,11 +233,8 @@
                                 {
                                 <tr>
                                     <td type="hidden"><input name="contem_vericoil" value="Sim" type="hidden" /></td>
-
                                     <td>Verticoil</td>
-                                    <td>
-                                        ---
-                                    </td>
+                                    <td>---</td>
                                     <td>110</td>
                                     <td><input class="form-control" type="text" name="mini_molas_5" /></td>
                                 </tr>
@@ -273,11 +244,8 @@
 
                                 <tr>
                                     <td type="hidden"><input name="contem_fio_continuo_1" value="Sim" type="hidden" /></td>
-
                                     <td>Fio Continuo | </td>
-                                    <td>
-                                        ---
-                                    </td>
+                                    <td>---</td>
                                     <td>170</td>
                                     <td><input class="form-control" type="text" name="mini_molas_6" /></td>
                                 </tr>
@@ -288,9 +256,7 @@
                                     <td type="hidden"><input name="contem_fio_continuo_2" value="Sim" type="hidden" /></td>
 
                                     <td>Fio continuo ||</td>
-                                    <td>
-                                        ---
-                                    </td>
+                                    <td>---</td>
                                     <td>198</td>
                                     <td><input class="form-control" type="text" name="mini_molas_7" /></td>
                                 </tr>
@@ -301,9 +267,7 @@
                                     <td type="hidden"><input name="contem_offset" value="Sim" type="hidden" /></td>
 
                                     <td>Offset</td>
-                                    <td>
-                                        ---
-                                    </td>
+                                    <td>---</td>
                                     <td>105</td>
                                     <td><input class="form-control" type="text" name="mini_molas_8" /></td>
                                 </tr>
@@ -469,9 +433,7 @@
                                 <tr>
                                     <td type="hidden"><input name="contem_mola" value="Sim" type="hidden" /></td>
                                     <td>Mola ensacada</td>
-                                    <td>
-                                        ---
-                                    </td>
+                                    <td>---</td>
                                     <td>152</td>
                                     <td><input class="form-control" type="text" name="mini_molas_3" value="@Model.mini_molas_3" /></td>
                                 </tr>
@@ -481,9 +443,7 @@
                                 <tr>
                                     <td type="hidden"><input name="contem_lkf" value="Sim" type="hidden" /></td>
                                     <td>LKF</td>
-                                    <td>
-                                        ---
-                                    </td>
+                                    <td>---</td>
                                     <td>152</td>
                                     <td><input class="form-control" type="text" name="mini_molas_4" value="@Model.mini_molas_4" /></td>
                                 </tr>
@@ -493,23 +453,17 @@
                                 <tr>
                                     <td type="hidden"><input name="contem_vericoil" value="Sim" type="hidden" /></td>
                                     <td>Verticoil</td>
-                                    <td>
-                                        ---
-                                    </td>
+                                    <td>---</td>
                                     <td>110</td>
                                     <td><input class="form-control" type="text" name="mini_molas_5" value="@Model.mini_molas_5" /></td>
                                 </tr>
                             }
                             @if (Model.contem_fio_continuo_1 == "Sim")
                             {
-
                                 <tr>
                                     <td type="hidden"><input name="contem_fio_continuo_1" value="Sim" type="hidden" /></td>
-
                                     <td>Fio Continuo | </td>
-                                    <td>
-                                        ---
-                                    </td>
+                                    <td>---</td>
                                     <td>170</td>
                                     <td><input class="form-control" type="text" name="mini_molas_6" value="@Model.mini_molas_6 " /></td>
                                 </tr>
@@ -520,9 +474,7 @@
                                     <td type="hidden"><input name="contem_fio_continuo_2" value="Sim" type="hidden" /></td>
 
                                     <td>Fio continuo ||</td>
-                                    <td>
-                                        ---
-                                    </td>
+                                    <td>---</td>
                                     <td>198</td>
                                     <td><input class="form-control" type="text" name="mini_molas_7" value="@Model.mini_molas_7" /></td>
                                 </tr>
@@ -532,9 +484,7 @@
                                 <tr>
                                     <td type="hidden"><input name="contem_offset" value="Sim" type="hidden" /></td>
                                     <td>Offset</td>
-                                    <td>
-                                        ---
-                                    </td>
+                                    <td>---</td>
                                     <td>105</td>
                                     <td><input class="form-control" type="text" name="mini_molas_8" value="@Model.mini_molas_8" /></td>
                                 </tr>

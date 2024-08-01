@@ -452,6 +452,7 @@ namespace Coleta_Colchao.Models
             public string? suportou { get; set; }
             public string? executador { get; set; }
             public string? auxiliar { get; set; }
+            public int qtd_ciclos { get; set; }
         }
 
 
@@ -504,6 +505,7 @@ namespace Coleta_Colchao.Models
             public string? conforme_6_2 { get; set; }
             public string? executador { get; set; }
             public string? auxiliar { get; set; }
+            public string? conforme_area { get; set; }
         }
 
 
