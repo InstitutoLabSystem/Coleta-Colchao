@@ -747,7 +747,16 @@
                     </td>
                 </tr>
                 <tr>
-                    <td colspan="2">Área da etiqueta <input style="width:200px;" class="controlador" type="text" name="area_etiqueta_1" value="@Model.area_etiqueta_1" /> X <input style="width:200px;" class="controlador" type="text" name="area_etiqueta_2" value="@Model.area_etiqueta_2" /> = <input style="width:200px;" class="controlador" type="text" readonly value="@Model.area_etiqueta_media" /></td>
+                    <td>Área da etiqueta <input style="width:200px;" class="controlador" type="text" name="area_etiqueta_1" value="@Model.area_etiqueta_1" /> X <input style="width:200px;" class="controlador" type="text" name="area_etiqueta_2" value="@Model.area_etiqueta_2" /> = <input style="width:200px;" class="controlador" type="text" readonly value="@Model.area_etiqueta_media" />
+                    </td>
+                    <td>
+                        <select class="form-select" name="conforme_area">
+                            <option>@Model.conforme_area</option>
+                            <option value="NA"> --- </option>
+                            <option value="C"> C </option>
+                            <option value="NC"> NC </option>
+                        </select>
+                    </td>
                 </tr>
                 <tr>
                     <td class="fundo-tabela" colspan="2">

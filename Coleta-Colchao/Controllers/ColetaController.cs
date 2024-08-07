@@ -382,7 +382,6 @@ namespace Coleta_Colchao.Controllers
                 ViewBag.metalasse = inicial.metalasse;
             }
 
-
             var dados = _context.ensaio_molas_item7_2.Where(x => x.os == os && x.orcamento == orcamento).FirstOrDefault();
             if (dados == null)
             {
@@ -1544,7 +1543,7 @@ namespace Coleta_Colchao.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> SalvarEnsaio7_2(string os, string orcamento, [Bind("data_ini,data_term,temp_ini,temp_term,comp_med_1,comp_med_2,comp_med_3,comp_espe,larg_med_1,larg_med_2,larg_med_3,larg_espe,alt_med_1,alt_med_2,alt_med_3,alt_espe,tipo_espuma_1,tipo_espuma_2,tipo_espuma_3,tipo_espuma_4,tipo_espuma_5,tipo_espuma_6,tipo_espuma_7,tipo_espuma_8,tipo_espuma_9,tipo_espuma_10,esp_tipo_esp_1,esp_tipo_esp_2,esp_tipo_esp_3,esp_tipo_esp_4,esp_tipo_esp_5,esp_tipo_esp_6,esp_tipo_esp_7,esp_tipo_esp_8,esp_tipo_esp_9,esp_tipo_esp_10,tem_metalasse,total_metalasse,mate_tipo_espuma_1,mata_esp_tipo_esp_1,mate_tipo_espuma_2,mata_esp_tipo_esp_2,executor,auxiliar")] ColetaModel.Ensaio7_2 salvarDados)
+        public async Task<IActionResult> SalvarEnsaio7_2(string os, string orcamento, [Bind("data_ini,data_term,temp_ini,temp_term,comp_med_1,comp_med_2,comp_med_3,comp_espe,larg_med_1,larg_med_2,larg_med_3,larg_espe,alt_med_1,alt_med_2,alt_med_3,alt_espe,tipo_espuma_1,tipo_espuma_2,tipo_espuma_3,tipo_espuma_4,tipo_espuma_5,tipo_espuma_6,tipo_espuma_7,tipo_espuma_8,tipo_espuma_9,tipo_espuma_10,esp_tipo_esp_1,esp_tipo_esp_2,esp_tipo_esp_3,esp_tipo_esp_4,esp_tipo_esp_5,esp_tipo_esp_6,esp_tipo_esp_7,esp_tipo_esp_8,esp_tipo_esp_9,esp_tipo_esp_10,tem_metalasse,total_metalasse,mate_tipo_espuma_1,mata_esp_tipo_esp_1,mate_tipo_espuma_2,mata_esp_tipo_esp_2,executor,auxiliar,qtd_espuma,enc_estofamento_1,enc_estofamento_2,enc_estofamento_3,enc_estofamento_4,enc_estofamento_5,enc_estofamento_6,enc_estofamento_7,enc_estofamento_8,enc_estofamento_9,enc_estofamento_10")] ColetaModel.Ensaio7_2 salvarDados)
         {
             try
             {
@@ -1599,8 +1598,17 @@ namespace Coleta_Colchao.Controllers
                     float mata_esp_tipo_esp_2 = salvarDados.mata_esp_tipo_esp_2;
                     string conformidade = string.Empty;
                     string conformidade_mat = string.Empty;
-
-
+                    float qtd_espuma = salvarDados.qtd_espuma;
+                    float enc_estofamento_1 = salvarDados.enc_estofamento_1;
+                    float enc_estofamento_2 = salvarDados.enc_estofamento_2;
+                    float enc_estofamento_3 = salvarDados.enc_estofamento_3;
+                    float enc_estofamento_4 = salvarDados.enc_estofamento_4;
+                    float enc_estofamento_5 = salvarDados.enc_estofamento_5;
+                    float enc_estofamento_6 = salvarDados.enc_estofamento_6;
+                    float enc_estofamento_7 = salvarDados.enc_estofamento_7;
+                    float enc_estofamento_8 = salvarDados.enc_estofamento_8;
+                    float enc_estofamento_9 = salvarDados.enc_estofamento_9;
+                    float enc_estofamento_10 = salvarDados.enc_estofamento_10;
 
                     //calculando a media dos resultados.
                     float media_comprimeto = (comp_med_1 + comp_med_2 + comp_med_3) / 3;
@@ -1728,7 +1736,18 @@ namespace Coleta_Colchao.Controllers
                         mate_tipo_espuma_2 = mate_tipo_espuma_2,
                         mata_esp_tipo_esp_2 = mata_esp_tipo_esp_2,
                         conformidade = conformidade,
-                        conformidade_mat = conformidade_mat
+                        conformidade_mat = conformidade_mat,
+                        qtd_espuma = qtd_espuma,
+                        enc_estofamento_1 = enc_estofamento_1,
+                        enc_estofamento_2 = enc_estofamento_2,
+                        enc_estofamento_3 = enc_estofamento_3,
+                        enc_estofamento_4 = enc_estofamento_4,
+                        enc_estofamento_5 = enc_estofamento_5,
+                        enc_estofamento_6 = enc_estofamento_6,
+                        enc_estofamento_7 = enc_estofamento_7,
+                        enc_estofamento_8 = enc_estofamento_8,
+                        enc_estofamento_9 = enc_estofamento_9,
+                        enc_estofamento_10 = enc_estofamento_10
                     };
 
                     _context.Add(registro);
@@ -1782,7 +1801,17 @@ namespace Coleta_Colchao.Controllers
                     editarDados.mata_esp_tipo_esp_1 = salvarDados.mata_esp_tipo_esp_1;
                     editarDados.mate_tipo_espuma_2 = salvarDados.mate_tipo_espuma_2;
                     editarDados.mata_esp_tipo_esp_2 = salvarDados.mata_esp_tipo_esp_2;
-
+                    editarDados.qtd_espuma = salvarDados.qtd_espuma;
+                    editarDados.enc_estofamento_1 = salvarDados.enc_estofamento_1;
+                    editarDados.enc_estofamento_2 = salvarDados.enc_estofamento_2;
+                    editarDados.enc_estofamento_3 = salvarDados.enc_estofamento_3;
+                    editarDados.enc_estofamento_4 = salvarDados.enc_estofamento_4;
+                    editarDados.enc_estofamento_5 = salvarDados.enc_estofamento_5;
+                    editarDados.enc_estofamento_6 = salvarDados.enc_estofamento_6;
+                    editarDados.enc_estofamento_7 = salvarDados.enc_estofamento_7;
+                    editarDados.enc_estofamento_8 = salvarDados.enc_estofamento_8;
+                    editarDados.enc_estofamento_9 = salvarDados.enc_estofamento_9;
+                    editarDados.enc_estofamento_10 = salvarDados.enc_estofamento_10;
 
 
                     //pegando a media dos valores
@@ -2595,11 +2624,11 @@ namespace Coleta_Colchao.Controllers
 
                     if (editarDados.trincas == "NC" && editarDados.rompimentos == "NC")
                     {
-                        editarDados.conforme = "C";
+                        editarDados.conforme = "NC";
                     }
                     else
                     {
-                        editarDados.conforme = "NC";
+                        editarDados.conforme = "C";
                     }
 
                     //editando os valores das contas, caso precise.
@@ -2741,7 +2770,7 @@ namespace Coleta_Colchao.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> SalvarEnsaio7_7(string os, string orcamento, [Bind("data_ini,data_term,rasgo,quebra,contem_bonell,contem_mola,contem_lkf,contem_vericoil,contem_fio_continuo_1,contem_fio_continuo_2,contem_offset,minim_bitola_1,minim_bitola_2,mini_molas_1,mini_molas_2,mini_molas_3,mini_molas_4,mini_molas_5,mini_molas_6,mini_molas_7,mini_molas_8,calc_molas_1,calc_molas_2,calc_molas_3,calc_molas_duplicado,calc_molas_duplicado_2,calc_molas_duplicado_3")] ColetaModel.Ensaio7_7 salvarDados)
+        public async Task<IActionResult> SalvarEnsaio7_7(string os, string orcamento, [Bind("data_ini,data_term,rasgo,quebra,contem_bonell_1,contem_bonell_2,contem_mola,contem_lkf,contem_vericoil,contem_fio_continuo_1,contem_fio_continuo_2,contem_offset,minim_bitola_1,minim_bitola_2,mini_molas_1,mini_molas_2,mini_molas_3,mini_molas_4,mini_molas_5,mini_molas_6,mini_molas_7,mini_molas_8,calc_molas_1,calc_molas_2,calc_molas_3,calc_molas_duplicado,calc_molas_duplicado_2,calc_molas_duplicado_3")] ColetaModel.Ensaio7_7 salvarDados)
         {
             try
             {
@@ -2753,7 +2782,8 @@ namespace Coleta_Colchao.Controllers
                     DateOnly data_term = salvarDados.data_term;
                     string rasgo = salvarDados.rasgo;
                     string quebra = salvarDados.quebra;
-                    string contem_bonell = salvarDados.contem_bonell;
+                    string contem_bonell_1 = salvarDados.contem_bonell_1;
+                    string contem_bonell_2 = salvarDados.contem_bonell_2;
                     string contem_mola = salvarDados.contem_mola;
                     string contem_lkf = salvarDados.contem_lkf;
                     string contem_vericoil = salvarDados.contem_vericoil;
@@ -2810,7 +2840,8 @@ namespace Coleta_Colchao.Controllers
                         data_term = data_term,
                         rasgo = rasgo,
                         quebra = quebra,
-                        contem_bonell = contem_bonell,
+                        contem_bonell_1 = contem_bonell_1,
+                        contem_bonell_2 = contem_bonell_2,
                         contem_mola = contem_mola,
                         contem_lkf = contem_lkf,
                         contem_vericoil = contem_vericoil,
@@ -2851,7 +2882,8 @@ namespace Coleta_Colchao.Controllers
                     editarDados.data_term = salvarDados.data_term;
                     editarDados.rasgo = salvarDados.rasgo;
                     editarDados.quebra = salvarDados.quebra;
-                    editarDados.contem_bonell = salvarDados.contem_bonell;
+                    editarDados.contem_bonell_1 = salvarDados.contem_bonell_1;
+                    editarDados.contem_bonell_2 = salvarDados.contem_bonell_2;
                     editarDados.contem_mola = salvarDados.contem_mola;
                     editarDados.contem_lkf = salvarDados.contem_lkf;
                     editarDados.contem_vericoil = salvarDados.contem_vericoil;
@@ -2911,7 +2943,7 @@ namespace Coleta_Colchao.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> SalvarEnsaio7_3(string os, string orcamento, [Bind("data_ini,data_term,pergunta_a,pergunta_b,pergunta_c,pergunta_d,pergunta_e,material,suportou")] ColetaModel.Ensaio7_3 salvarDados)
+        public async Task<IActionResult> SalvarEnsaio7_3(string os, string orcamento, [Bind("data_ini,data_term,pergunta_a,pergunta_b,pergunta_c,pergunta_d,pergunta_e,material,suportou,qtd_ciclos,acond_inicio,acond_final,hora_inicio,hora_final,temp_inicio,temp_final,im,responsavel_cond,face_escolhida,min_umidade,max_umidade")] ColetaModel.Ensaio7_3 salvarDados)
         {
             try
             {
@@ -2928,6 +2960,18 @@ namespace Coleta_Colchao.Controllers
                     string pergunta_e = salvarDados.pergunta_e;
                     string material = salvarDados.material;
                     string suportou = salvarDados.suportou;
+                    int qtd_ciclos = salvarDados.qtd_ciclos;
+                    DateOnly acond_inicio = salvarDados.acond_inicio;
+                    DateOnly acond_final = salvarDados.acond_final;
+                    TimeOnly hora_inicio = salvarDados.hora_inicio;
+                    TimeOnly hora_final = salvarDados.hora_final;
+                    float temp_inicio = salvarDados.temp_inicio;
+                    float temp_final = salvarDados.temp_final;
+                    string im = salvarDados.im;
+                    string responsavel_cond = salvarDados.responsavel_cond;
+                    string face_escolhida = salvarDados.face_escolhida;
+                    float min_umidade = salvarDados.min_umidade;
+                    float max_umidade = salvarDados.max_umidade;
 
 
                     var registro = new ColetaModel.Ensaio7_3
@@ -2942,7 +2986,19 @@ namespace Coleta_Colchao.Controllers
                         pergunta_d = pergunta_d,
                         pergunta_e = pergunta_e,
                         material = material,
-                        suportou = suportou
+                        suportou = suportou,
+                        qtd_ciclos = qtd_ciclos,
+                        acond_inicio = acond_inicio,
+                        acond_final = acond_final,
+                        hora_inicio = hora_inicio,
+                        hora_final = hora_final,
+                        temp_inicio = temp_inicio,
+                        temp_final = temp_final,
+                        im = im,
+                        responsavel_cond = responsavel_cond,
+                        face_escolhida = face_escolhida,
+                        min_umidade = min_umidade,
+                        max_umidade = max_umidade
                     };
 
                     _context.Add(registro);
@@ -2962,6 +3018,18 @@ namespace Coleta_Colchao.Controllers
                     editarDados.pergunta_e = salvarDados.pergunta_e;
                     editarDados.material = salvarDados.material;
                     editarDados.suportou = salvarDados.suportou;
+                    editarDados.qtd_ciclos = salvarDados.qtd_ciclos;
+                    editarDados.acond_inicio = salvarDados.acond_inicio;
+                    editarDados.acond_final = salvarDados.acond_final;
+                    editarDados.hora_inicio = salvarDados.hora_inicio;
+                    editarDados.hora_final = salvarDados.hora_final;
+                    editarDados.temp_inicio = salvarDados.temp_inicio;
+                    editarDados.temp_final = salvarDados.temp_final;
+                    editarDados.im = salvarDados.im;
+                    editarDados.responsavel_cond = salvarDados.responsavel_cond;
+                    editarDados.face_escolhida = salvarDados.face_escolhida;
+                    editarDados.min_umidade = salvarDados.min_umidade;
+                    editarDados.max_umidade = salvarDados.max_umidade;
 
                     _context.Update(editarDados);
                     await _context.SaveChangesAsync();
@@ -3134,7 +3202,7 @@ namespace Coleta_Colchao.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> SalvarEmbalagensMolas(string os, string orcamento, [Bind("data_ini,data_term,etiqueta_ident,revest_permanente,etiqueta_duravel_indele,face_superior,visualizacao,lingua_portuguesa,area_etiqueta_1,area_etiqueta_2,cnpj_cpf,cnpj_cpf_2,marca_modelo,dimensoes_prod,informada_altura,composicoes,tipo_molejo,contem_borda,densidade_espuma,composi_revestimento,data_fabricacao,ident_lote,pais_origem,codigo_barras,cuidado_minimos,aviso_esclarecimento,possui_mais_laminas,conforme_r,contem_advertencia,altura_letra,negrito,conforme_s,caixa_alta,contem_advertencia_mat,altura_letra_mat,negrito_mat,caixa_alta_mat,contem_instru_uso,orientacoes,alerta_consumidor,desenho_esquematico,contem_advertencia_6_2,altura_letra_6_2,negrito6_2,caixa_alta_6_2,embalagem_unitaria,embalagem_garante,colchao_disponivel,fixada,conforme_6_2")] ColetaModel.EnsaioIdentificacaoEmbalagem salvarDados)
+        public async Task<IActionResult> SalvarEmbalagensMolas(string os, string orcamento, [Bind("data_ini,data_term,etiqueta_ident,revest_permanente,etiqueta_duravel_indele,face_superior,visualizacao,lingua_portuguesa,area_etiqueta_1,area_etiqueta_2,cnpj_cpf,cnpj_cpf_2,marca_modelo,dimensoes_prod,informada_altura,composicoes,tipo_molejo,contem_borda,densidade_espuma,composi_revestimento,data_fabricacao,ident_lote,pais_origem,codigo_barras,cuidado_minimos,aviso_esclarecimento,possui_mais_laminas,conforme_r,contem_advertencia,altura_letra,negrito,conforme_s,caixa_alta,contem_advertencia_mat,altura_letra_mat,negrito_mat,caixa_alta_mat,contem_instru_uso,orientacoes,alerta_consumidor,desenho_esquematico,contem_advertencia_6_2,altura_letra_6_2,negrito6_2,caixa_alta_6_2,embalagem_unitaria,embalagem_garante,colchao_disponivel,fixada,conforme_6_2,conforme_area")] ColetaModel.EnsaioIdentificacaoEmbalagem salvarDados)
         {
             try
             {
@@ -3180,9 +3248,19 @@ namespace Coleta_Colchao.Controllers
                     string colchao_disponivel = salvarDados.colchao_disponivel;
                     string fixada = salvarDados.fixada;
                     string conforme6_2 = salvarDados.conforme_6_2;
+                    string conforme_area = salvarDados.conforme_area;
 
                     // realizando calculo necessario.
                     float calc_media = area_etiqueta_1 * area_etiqueta_2;
+                    
+                    if (calc_media <= 150)
+                    {
+                        conforme_area = "NC";
+                    }
+                    else
+                    {
+                        conforme_area = "C";
+                    }
 
                     //VERIFICANDO SE COLETA ESTA CONFORME OU NC DE CADA CAMPO
                     //if (etiqueta_ident == "NC" || revest_permanente == "NC" || etiqueta_duravel_indele == "NC" || face_superior == "NC" || visualizacao == "NC" || lingua_portuguesa == "NC")
@@ -3398,7 +3476,8 @@ namespace Coleta_Colchao.Controllers
                         embalagem_unitaria = embalagem_unitaria,
                         colchao_disponivel = colchao_disponivel,
                         fixada = fixada,
-                        conforme_6_2 = conforme6_2
+                        conforme_6_2 = conforme6_2,
+                        conforme_area = conforme_area
 
                     };
 
@@ -3441,154 +3520,171 @@ namespace Coleta_Colchao.Controllers
                     editarDados.alerta_consumidor = salvarDados.alerta_consumidor;
                     editarDados.desenho_esquematico = salvarDados.desenho_esquematico;
                     editarDados.altura_letra_6_2 = salvarDados.altura_letra_6_2;
+                    editarDados.fixada = salvarDados.fixada;
+                    editarDados.colchao_disponivel = salvarDados.colchao_disponivel;
+                    editarDados.cnpj_cpf_2 = salvarDados.cnpj_cpf_2;
+                    editarDados.embalagem_unitaria = salvarDados.embalagem_unitaria;
                     editarDados.caixa_alta_6_2 = salvarDados.caixa_alta_6_2;
-
+                    editarDados.conforme_area = salvarDados.conforme_area;
+                    editarDados.conforme_area = salvarDados.conforme_area;
+                    editarDados.conforme_r = salvarDados.conforme_r;
+                    editarDados.conforme_s = salvarDados.conforme_s;
+                    editarDados.conforme_6_2 = salvarDados.conforme_6_2;
+                    
 
                     //realizando contas necessarias.
                     float calc_media = editarDados.area_etiqueta_1 * editarDados.area_etiqueta_2;
-
-                    //VERIFICANDO SE COLETA ESTA CONFORME OU NC DE CADA CAMPO
-                    //if (editarDados.etiqueta_ident == "NC" || editarDados.revest_permanente == "NC" || editarDados.etiqueta_duravel_indele == "NC" || editarDados.face_superior == "NC" || editarDados.visualizacao == "NC" || editarDados.lingua_portuguesa == "NC")
+                    //if (calc_media <= 150)
                     //{
-                    //    if (calc_media <= 150)
-                    //    {
-                    //        editarDados.conforme_requisitos = "NC";
-                    //    }
-                    //    else
-                    //    {
-                    //        editarDados.conforme_requisitos = "C";
-                    //    }
+                    //    editarDados.conforme_area = "NC";
                     //}
                     //else
                     //{
-                    //    if (calc_media <= 150)
-                    //    {
-                    //        editarDados.conforme_requisitos = "C";
-                    //    }
-                    //    else
-                    //    {
-                    //        editarDados.conforme_requisitos = "NC";
-                    //    }
+                    //    editarDados.conforme_area = "C";
                     //}
 
-                    //if (editarDados.cnpj_cpf == "NC" || editarDados.marca_modelo == "NC" || editarDados.dimensoes_prod == "NC")
-                    //{
-                    //    editarDados.conforme_requisitos_2 = "NC";
-                    //}
-                    //else
-                    //{
-                    //    editarDados.conforme_requisitos_2 = "C";
+                        //VERIFICANDO SE COLETA ESTA CONFORME OU NC DE CADA CAMPO
+                        //if (editarDados.etiqueta_ident == "NC" || editarDados.revest_permanente == "NC" || editarDados.etiqueta_duravel_indele == "NC" || editarDados.face_superior == "NC" || editarDados.visualizacao == "NC" || editarDados.lingua_portuguesa == "NC")
+                        //{
+                        //    if (calc_media <= 150)
+                        //    {
+                        //        editarDados.conforme_requisitos = "NC";
+                        //    }
+                        //    else
+                        //    {
+                        //        editarDados.conforme_requisitos = "C";
+                        //    }
+                        //}
+                        //else
+                        //{
+                        //    if (calc_media <= 150)
+                        //    {
+                        //        editarDados.conforme_requisitos = "C";
+                        //    }
+                        //    else
+                        //    {
+                        //        editarDados.conforme_requisitos = "NC";
+                        //    }
+                        //}
 
-                    //}
+                        //if (editarDados.cnpj_cpf == "NC" || editarDados.marca_modelo == "NC" || editarDados.dimensoes_prod == "NC")
+                        //{
+                        //    editarDados.conforme_requisitos_2 = "NC";
+                        //}
+                        //else
+                        //{
+                        //    editarDados.conforme_requisitos_2 = "C";
 
-                    //if (editarDados.informada_altura == "NC" || editarDados.composicoes == "NC" || editarDados.contem_borda == "NC" || editarDados.densidade_espuma == "NC" || editarDados.composi_revestimento == "NC" || editarDados.data_fabricacao == "NC" || editarDados.ident_lote == "NC" || editarDados.pais_origem == "NC" || editarDados.codigo_barras == "NC" || editarDados.cuidado_minimos == "NC")
-                    //{
-                    //    editarDados.conforme_requisitos_3 = "NC";
-                    //}
-                    //else
-                    //{
-                    //    editarDados.conforme_requisitos_3 = "C";
-                    //}
+                        //}
 
-                    //if (editarDados.aviso_esclarecimento == "NC" || editarDados.possui_mais_laminas == "NC" || editarDados.contem_advertencia == "NC" || editarDados.negrito == "NC" || editarDados.caixa_alta == "NC" || editarDados.contem_advertencia_mat == "NC" || editarDados.negrito_mat == "NC")
-                    //{
+                        //if (editarDados.informada_altura == "NC" || editarDados.composicoes == "NC" || editarDados.contem_borda == "NC" || editarDados.densidade_espuma == "NC" || editarDados.composi_revestimento == "NC" || editarDados.data_fabricacao == "NC" || editarDados.ident_lote == "NC" || editarDados.pais_origem == "NC" || editarDados.codigo_barras == "NC" || editarDados.cuidado_minimos == "NC")
+                        //{
+                        //    editarDados.conforme_requisitos_3 = "NC";
+                        //}
+                        //else
+                        //{
+                        //    editarDados.conforme_requisitos_3 = "C";
+                        //}
 
-                    //    float conv_altura_letra = float.Parse(editarDados.altura_letra);
-                    //    if (conv_altura_letra <= 2.5)
-                    //    {
-                    //        editarDados.conforme_requisitos_4 = "NC";
-                    //    }
-                    //    else
-                    //    {
-                    //        editarDados.conforme_requisitos_4 = "C";
-                    //    }
-                    //}
-                    //else
-                    //{
-                    //    float conv_altura_letra = float.Parse(editarDados.altura_letra);
-                    //    if (conv_altura_letra >= 2.5)
-                    //    {
-                    //        editarDados.conforme_requisitos_4 = "C";
-                    //    }
-                    //    else
-                    //    {
-                    //        editarDados.conforme_requisitos_4 = "NC";
-                    //    }
-                    //}
+                        //if (editarDados.aviso_esclarecimento == "NC" || editarDados.possui_mais_laminas == "NC" || editarDados.contem_advertencia == "NC" || editarDados.negrito == "NC" || editarDados.caixa_alta == "NC" || editarDados.contem_advertencia_mat == "NC" || editarDados.negrito_mat == "NC")
+                        //{
 
-                    //if (editarDados.contem_advertencia_mat == "C" || editarDados.negrito_mat == "C" || editarDados.caixa_alta_mat == "C")
-                    //{
+                        //    float conv_altura_letra = float.Parse(editarDados.altura_letra);
+                        //    if (conv_altura_letra <= 2.5)
+                        //    {
+                        //        editarDados.conforme_requisitos_4 = "NC";
+                        //    }
+                        //    else
+                        //    {
+                        //        editarDados.conforme_requisitos_4 = "C";
+                        //    }
+                        //}
+                        //else
+                        //{
+                        //    float conv_altura_letra = float.Parse(editarDados.altura_letra);
+                        //    if (conv_altura_letra >= 2.5)
+                        //    {
+                        //        editarDados.conforme_requisitos_4 = "C";
+                        //    }
+                        //    else
+                        //    {
+                        //        editarDados.conforme_requisitos_4 = "NC";
+                        //    }
+                        //}
 
-                    //    float conv_altura_letra_mat = float.Parse(editarDados.altura_letra_mat);
-                    //    if (conv_altura_letra_mat >= 5)
-                    //    {
-                    //        editarDados.conforme_requisitos_5 = "C";
-                    //    }
-                    //    else
-                    //    {
-                    //        editarDados.conforme_requisitos_5 = "NC";
-                    //    }
-                    //}
-                    //else
-                    //{
-                    //    float conv_altura_letra_mat = float.Parse(editarDados.altura_letra_mat);
-                    //    if (conv_altura_letra_mat >= 5)
-                    //    {
-                    //        editarDados.conforme_requisitos_5 = "C";
-                    //    }
-                    //    else
-                    //    {
-                    //        editarDados.conforme_requisitos_5 = "NC";
-                    //    }
-                    //}
+                        //if (editarDados.contem_advertencia_mat == "C" || editarDados.negrito_mat == "C" || editarDados.caixa_alta_mat == "C")
+                        //{
 
-                    //if (editarDados.contem_instru_uso == "NC" || editarDados.orientacoes == "NC" || editarDados.alerta_consumidor == "NC" || editarDados.desenho_esquematico == "NC" || editarDados.contem_advertencia_6_2 == "NC" || editarDados.altura_letra_6_2 == "NC" || editarDados.negrito6_2 == "NC" || editarDados.caixa_alta_6_2 == "NC")
-                    //{
-                    //    editarDados.conforme_6_1 = "NC";
-                    //}
-                    //else
-                    //{
-                    //    editarDados.conforme_6_1 = "C";
-                    //}
+                        //    float conv_altura_letra_mat = float.Parse(editarDados.altura_letra_mat);
+                        //    if (conv_altura_letra_mat >= 5)
+                        //    {
+                        //        editarDados.conforme_requisitos_5 = "C";
+                        //    }
+                        //    else
+                        //    {
+                        //        editarDados.conforme_requisitos_5 = "NC";
+                        //    }
+                        //}
+                        //else
+                        //{
+                        //    float conv_altura_letra_mat = float.Parse(editarDados.altura_letra_mat);
+                        //    if (conv_altura_letra_mat >= 5)
+                        //    {
+                        //        editarDados.conforme_requisitos_5 = "C";
+                        //    }
+                        //    else
+                        //    {
+                        //        editarDados.conforme_requisitos_5 = "NC";
+                        //    }
+                        //}
 
-                    //if (editarDados.contem_advertencia_6_2 == "C" || editarDados.negrito6_2 == "C" || editarDados.caixa_alta_6_2 == "C")
-                    //{
-                    //    float conv_altura_letra_6_2 = float.Parse(editarDados.altura_letra_6_2);
-                    //    if (conv_altura_letra_6_2 >= 5)
-                    //    {
-                    //        editarDados.conforme_6_2 = "C";
-                    //    }
-                    //    else
-                    //    {
-                    //        editarDados.conforme_6_2 = "NC";
-                    //    }
-                    //}
-                    //else
-                    //{
-                    //    float conv_altura_letra_6_2 = float.Parse(editarDados.altura_letra_6_2);
-                    //    if (conv_altura_letra_6_2 >= 5)
-                    //    {
-                    //        editarDados.conforme_6_2 = "C";
-                    //    }
-                    //    else
-                    //    {
-                    //        editarDados.conforme_6_2 = "NC";
-                    //    }
-                    //}
+                        //if (editarDados.contem_instru_uso == "NC" || editarDados.orientacoes == "NC" || editarDados.alerta_consumidor == "NC" || editarDados.desenho_esquematico == "NC" || editarDados.contem_advertencia_6_2 == "NC" || editarDados.altura_letra_6_2 == "NC" || editarDados.negrito6_2 == "NC" || editarDados.caixa_alta_6_2 == "NC")
+                        //{
+                        //    editarDados.conforme_6_1 = "NC";
+                        //}
+                        //else
+                        //{
+                        //    editarDados.conforme_6_1 = "C";
+                        //}
 
-                    //if (editarDados.embalagem_garante == "NC" || editarDados.embalagem_unitaria == "NC")
-                    //{
-                    //    editarDados.conforme_embalagem = "NC";
-                    //}
-                    //else
-                    //{
-                    //    editarDados.conforme_embalagem = "C";
-                    //}
-                    //termino das verificações de conformidade.
+                        //if (editarDados.contem_advertencia_6_2 == "C" || editarDados.negrito6_2 == "C" || editarDados.caixa_alta_6_2 == "C")
+                        //{
+                        //    float conv_altura_letra_6_2 = float.Parse(editarDados.altura_letra_6_2);
+                        //    if (conv_altura_letra_6_2 >= 5)
+                        //    {
+                        //        editarDados.conforme_6_2 = "C";
+                        //    }
+                        //    else
+                        //    {
+                        //        editarDados.conforme_6_2 = "NC";
+                        //    }
+                        //}
+                        //else
+                        //{
+                        //    float conv_altura_letra_6_2 = float.Parse(editarDados.altura_letra_6_2);
+                        //    if (conv_altura_letra_6_2 >= 5)
+                        //    {
+                        //        editarDados.conforme_6_2 = "C";
+                        //    }
+                        //    else
+                        //    {
+                        //        editarDados.conforme_6_2 = "NC";
+                        //    }
+                        //}
+
+                        //if (editarDados.embalagem_garante == "NC" || editarDados.embalagem_unitaria == "NC")
+                        //{
+                        //    editarDados.conforme_embalagem = "NC";
+                        //}
+                        //else
+                        //{
+                        //    editarDados.conforme_embalagem = "C";
+                        //}
+                        //termino das verificações de conformidade.
 
 
-                    //recebendo valor depois do calculo.
-                    editarDados.area_etiqueta_media = calc_media;
+                        //recebendo valor depois do calculo.
+                        editarDados.area_etiqueta_media = calc_media;
 
                     _context.Update(editarDados);
                     await _context.SaveChangesAsync();
@@ -5077,20 +5173,20 @@ namespace Coleta_Colchao.Controllers
 
 
                     float media_esp_um = ((salvarDados.esp_amostra_um_um + salvarDados.esp_amostra_um_dois + salvarDados.esp_amostra_um_tres + salvarDados.esp_amostra_um_quat + salvarDados.esp_amostra_um_cinco + salvarDados.esp_amostra_um_seis + salvarDados.esp_amostra_um_sete + salvarDados.esp_amostra_um_oito) / 8);
-                    salvarDados.esp_media_um = media_esp_um;
+                    salvarDados.esp_media_um = (int)media_esp_um;
 
                     float media_esp_dois = ((salvarDados.esp_amostra_dois_um + salvarDados.esp_amostra_dois_dois + salvarDados.esp_amostra_dois_tres + salvarDados.esp_amostra_dois_quat + salvarDados.esp_amostra_dois_cinco + salvarDados.esp_amostra_dois_seis + salvarDados.esp_amostra_dois_sete + salvarDados.esp_amostra_dois_oito) / 8);
-                    salvarDados.esp_media_dois = media_esp_dois;
+                    salvarDados.esp_media_dois = (int)media_esp_dois;
 
                     float media_esp_tres = ((salvarDados.esp_amostra_tres_um + salvarDados.esp_amostra_tres_dois + salvarDados.esp_amostra_tres_tres + salvarDados.esp_amostra_tres_quat + salvarDados.esp_amostra_tres_cinco + salvarDados.esp_amostra_tres_seis + salvarDados.esp_amostra_tres_sete + salvarDados.esp_amostra_tres_oito) / 8);
-                    salvarDados.esp_media_tres = media_esp_tres;
+                    salvarDados.esp_media_tres = (int)media_esp_tres;
 
                     // final do calculo da medias de largura, comprimento, e espessura.
 
                     //inicio calculo total..
-                    float vol_calc_amostra_um = media_esp_um / 100;
-                    float vol_calc_amostra_dois = media_esp_dois / 100;
-                    float vol_calc_amostra_tres = media_esp_tres / 100;
+                    float vol_calc_amostra_um = float.Parse(((media_esp_um) / 100).ToString("N3"));
+                    float vol_calc_amostra_dois = float.Parse(((media_esp_dois) / 100).ToString("N3"));
+                    float vol_calc_amostra_tres = float.Parse(((media_esp_tres) / 100).ToString("N3"));
                     salvarDados.calc_amostra_um = vol_calc_amostra_um;
                     salvarDados.calc_amostra_dois = vol_calc_amostra_dois;
                     salvarDados.calc_amostra_tres = vol_calc_amostra_tres;
@@ -5158,7 +5254,7 @@ namespace Coleta_Colchao.Controllers
                     editarDados.esp_amostra_um_dois = salvarDados.esp_amostra_um_dois;
                     editarDados.esp_amostra_um_tres = salvarDados.esp_amostra_um_tres;
                     editarDados.esp_amostra_um_quat = salvarDados.esp_amostra_um_quat;
-                    editarDados.esp_amostra_um_cinco = salvarDados.esp_amostra_um_cinco;
+                    editarDados.esp_amostra_um_cinco = salvarDados.esp_amostra_um_cinco; 
                     editarDados.esp_amostra_um_seis = salvarDados.esp_amostra_um_seis;
                     editarDados.esp_amostra_um_sete = salvarDados.esp_amostra_um_sete;
                     editarDados.esp_amostra_um_oito = salvarDados.esp_amostra_um_oito;
@@ -5248,17 +5344,17 @@ namespace Coleta_Colchao.Controllers
                     //realizando calculos necessarios, convertendo direto para 2 casas decimais dps da virgula... convertendo para string e float a mesmo tempo.
                     salvarDados.varia_amostra_um_um = float.Parse((((salvarDados.resil_amostra_um_dois - salvarDados.resil_amostra_um_um) / salvarDados.resil_amostra_um_um) * 100).ToString("N2"));
                     salvarDados.varia_amostra_um_dois = float.Parse(((((salvarDados.resil_amostra_um_tres - salvarDados.resil_amostra_um_um) / salvarDados.resil_amostra_um_um) * 100) * -1).ToString("N2"));
-                    salvarDados.media_res_um = ((salvarDados.resil_amostra_um_um + salvarDados.resil_amostra_um_dois + salvarDados.resil_amostra_um_tres) / 3);
+                    salvarDados.media_res_um = (int)((salvarDados.resil_amostra_um_um + salvarDados.resil_amostra_um_dois + salvarDados.resil_amostra_um_tres) / 3.0);
 
                     salvarDados.varia_amostra_dois_um = float.Parse(((((salvarDados.resil_amostra_dois_dois - salvarDados.resil_amostra_dois_um) / salvarDados.resil_amostra_dois_um) * 100) * -1).ToString("N2"));
                     salvarDados.varia_amostra_dois_dois = float.Parse(((((salvarDados.resil_amostra_dois_tres - salvarDados.resil_amostra_dois_um) / salvarDados.resil_amostra_dois_um) * 100) * -1).ToString("N2"));
-                    salvarDados.media_res_dois = float.Parse(((salvarDados.resil_amostra_dois_um + salvarDados.resil_amostra_dois_dois + salvarDados.resil_amostra_dois_tres) / 3).ToString("N2"));
+                    salvarDados.media_res_dois = (int)((salvarDados.resil_amostra_dois_um + salvarDados.resil_amostra_dois_dois + salvarDados.resil_amostra_dois_tres) / 3.0);
 
-                    salvarDados.varia_amostra_tres_um = (((salvarDados.resil_amostra_tres_dois - salvarDados.resil_amostra_tres_um) / salvarDados.resil_amostra_tres_um) * 100);
-                    salvarDados.varia_amostra_tres_dois = (((salvarDados.resil_amostra_tres_tres - salvarDados.resil_amostra_tres_um) / salvarDados.resil_amostra_tres_um) * 100);
-                    salvarDados.media_res_tres = ((salvarDados.resil_amostra_tres_um + salvarDados.resil_amostra_tres_dois + salvarDados.resil_amostra_tres_tres) / 3);
+                    salvarDados.varia_amostra_tres_um = float.Parse((((salvarDados.resil_amostra_tres_dois - salvarDados.resil_amostra_tres_um) / salvarDados.resil_amostra_tres_um) * 100).ToString("N2"));
+                    salvarDados.varia_amostra_tres_dois = float.Parse((((salvarDados.resil_amostra_tres_tres - salvarDados.resil_amostra_tres_um) / salvarDados.resil_amostra_tres_um) * 100).ToString("N2"));
+                    salvarDados.media_res_tres = (int)((salvarDados.resil_amostra_tres_um + salvarDados.resil_amostra_tres_dois + salvarDados.resil_amostra_tres_tres) / 3.0);
 
-                    salvarDados.resiliencia_enc = (float)Math.Round(((salvarDados.media_res_um + salvarDados.media_res_dois + salvarDados.media_res_tres) / 3), 2);
+                    salvarDados.resiliencia_enc = (int)((salvarDados.media_res_um + salvarDados.media_res_dois + salvarDados.media_res_tres) / 3.0) + 1;
 
                     //conformes
                     if (salvarDados.tipo_espuma == "Convencional")
@@ -5452,18 +5548,18 @@ namespace Coleta_Colchao.Controllers
                     //realizando calculos necessarios, convertendo direto para 2 casas decimais dps da virgula... convertendo para string e float a mesmo tempo.
                     editarDados.varia_amostra_um_um = float.Parse((((editarDados.resil_amostra_um_dois - editarDados.resil_amostra_um_um) / editarDados.resil_amostra_um_um) * 100).ToString("N2"));
                     editarDados.varia_amostra_um_dois = float.Parse(((((editarDados.resil_amostra_um_tres - editarDados.resil_amostra_um_um) / editarDados.resil_amostra_um_um) * 100) * -1).ToString("N2"));
-                    editarDados.media_res_um = ((editarDados.resil_amostra_um_um + editarDados.resil_amostra_um_dois + editarDados.resil_amostra_um_tres) / 3);
+                    editarDados.media_res_um = (int)((editarDados.resil_amostra_um_um + editarDados.resil_amostra_um_dois + editarDados.resil_amostra_um_tres) / 3.0);
 
                     editarDados.varia_amostra_dois_um = float.Parse(((((editarDados.resil_amostra_dois_dois - editarDados.resil_amostra_dois_um) / editarDados.resil_amostra_dois_um) * 100) * -1).ToString("N2"));
                     editarDados.varia_amostra_dois_dois = float.Parse(((((editarDados.resil_amostra_dois_tres - editarDados.resil_amostra_dois_um) / editarDados.resil_amostra_dois_um) * 100) * -1).ToString("N2"));
-                    editarDados.media_res_dois = float.Parse(((editarDados.resil_amostra_dois_um + editarDados.resil_amostra_dois_dois + editarDados.resil_amostra_dois_tres) / 3).ToString("N2"));
+                    editarDados.media_res_dois = (int)((editarDados.resil_amostra_dois_um + editarDados.resil_amostra_dois_dois + editarDados.resil_amostra_dois_tres) / 3.0);
 
-                    editarDados.varia_amostra_tres_um = (((editarDados.resil_amostra_tres_dois - editarDados.resil_amostra_tres_um) / editarDados.resil_amostra_tres_um) * 100);
-                    editarDados.varia_amostra_tres_dois = (((editarDados.resil_amostra_tres_tres - editarDados.resil_amostra_tres_um) / editarDados.resil_amostra_tres_um) * 100);
-                    editarDados.media_res_tres = ((editarDados.resil_amostra_tres_um + editarDados.resil_amostra_tres_dois + editarDados.resil_amostra_tres_tres) / 3);
+                    editarDados.varia_amostra_tres_um = float.Parse((((editarDados.resil_amostra_tres_dois - editarDados.resil_amostra_tres_um) / editarDados.resil_amostra_tres_um) * 100).ToString("N2"));
+                    editarDados.varia_amostra_tres_dois = float.Parse((((editarDados.resil_amostra_tres_tres - editarDados.resil_amostra_tres_um) / editarDados.resil_amostra_tres_um) * 100).ToString("N2"));
+                    editarDados.media_res_tres = (int)((editarDados.resil_amostra_tres_um + editarDados.resil_amostra_tres_dois + editarDados.resil_amostra_tres_tres) / 3.0);
 
                     editarDados.resiliencia_esp = salvarDados.resiliencia_esp;
-                    editarDados.resiliencia_enc = (float)Math.Round(((editarDados.media_res_um + editarDados.media_res_dois + editarDados.media_res_tres) / 3), 2);
+                    editarDados.resiliencia_enc = (int)(((editarDados.media_res_um + editarDados.media_res_dois + editarDados.media_res_tres) / 3.0) + 1);
                     editarDados.min_max = salvarDados.min_max;
 
                     //conformes

@@ -59,6 +59,49 @@
             </table>
 
             <table class="tables table-bordered border-secondary  table-sm">
+                <thead>
+                    <tr class="fundo-tabela">
+                        <td colspan="9">- Temperatura da execução do ensaio (23 ± 2) °C, sem necessidade de controle de umidade.</td>
+                    </tr>
+                    <tr class="fundo-tabela">
+                        <td colspan="2">Data do Acondicionamento</td>
+                        <td colspan="2">Horario do acondicionamento</td>
+                        <td colspan="2">Temperatura encontrada</td>
+                        <td colspan="2">Umidade</td>
+                        <td>IM</td>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Inicio:</td>
+                        <td><input asp-for="acond_inicio" class="form-control" type="date" /></td>     
+                        <td>Inicio:</td>
+                        <td><input asp-for="hora_inicio" class="form-control" type="time" /></td>
+                        <td>Min:</td>
+                        <td><input asp-for="temp_inicio" class="form-control" /></td>
+                        <td>Inicio:</td>
+                        <td><input asp-for="min_umidade" class="form-control" /></td>
+                        <td rowspan="2"><input asp-for="im" class="form-control"/></td>
+                    </tr>
+                    <tr>
+                        <td>Final:</td>
+                        <td><input asp-for="acond_final" class="form-control" type="date" /></td>
+                        <td>Final:</td>
+                        <td><input asp-for="hora_final" class="form-control" type="time" /></td>
+                        <td>Max:</td>
+                        <td><input asp-for="temp_final" class="form-control" /></td>
+                        <td>Final:</td>
+                        <td><input asp-for="max_umidade" class="form-control"/></td>
+                    </tr>
+                    <tr>
+                        <td colspan="4">Responsavel</td>
+                        <td colspan="5"><input asp-for="responsavel_cond" class="form-control" /></td>
+                    </tr> 
+                    
+                </tbody>
+            </table>
+
+            <table class="tables table-bordered border-secondary  table-sm">
                 <tr class="fundo-tabela">
                     <td colspan="3">
                         <b> Ensaio de Rolagem</b>
@@ -96,17 +139,21 @@
                 @if (ViewBag.qtd_face == 1)
                 {
                     <tr>
-                        <td>1 Face: 50.000 ciclos</td>
+                        <td>1 Face: 50.000 ciclos em sua face superior</td>
                         <td>Ciclos atingidos</td>
-                        <td>---</td>
+                        <td>
+                            <input asp-for="qtd_ciclos"  name="qtd_ciclos" class="form-control"/>
+                        </td>
                     </tr>
                 }
                 else
                 {
                     <tr>
-                        <td>2 Face: 25.000 + 25.000 ciclos da primeira face</td>
+                        <td>2 Faces: 25.000 em sua face superior e 25.000 em sua face inferior e em (ciclos atingidos) </td>
                         <td>Ciclos atingidos</td>
-                        <td>---</td>
+                        <td>
+                            <input asp-for="qtd_ciclos" class="form-control" name="qtd_ciclos" />
+                        </td>
                     </tr>
                 }
             </table>
@@ -218,6 +265,48 @@
                     </tr>
                 </thead>
             </table>
+            <table class="tables table-bordered border-secondary  table-sm">
+                <thead>
+                    <tr class="fundo-tabela">
+                        <td colspan="9">- Temperatura da execução do ensaio (23 ± 2) °C, sem necessidade de controle de umidade.</td>
+                    </tr>
+                    <tr class="fundo-tabela">
+                        <td colspan="2">Data do Acondicionamento</td>
+                        <td colspan="2">Horario do acondicionamento</td>
+                        <td colspan="2">Temperatura encontrada</td>
+                        <td colspan="2">Umidade</td>
+                        <td>IM</td>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Inicio:</td>
+                        <td><input asp-for="acond_inicio" class="form-control" name="acond_inicio" value="@Model.acond_inicio"/></td>
+                        <td>Inicio:</td>
+                        <td><input asp-for="hora_inicio" class="form-control" type="time" value="@Model.hora_inicio"/></td>
+                        <td>Min:</td>
+                        <td><input asp-for="temp_inicio" class="form-control" value="@Model.temp_inicio"/></td>
+                        <td>Inicio:</td>
+                        <td><input asp-for="min_umidade" class="form-control" value="@Model.min_umidade"/></td>
+                        <td rowspan="2"><input asp-for="im" class="form-control" value="@Model.im"/></td>
+                    </tr>
+                    <tr>
+                        <td>Final:</td>
+                        <td><input asp-for="acond_final" class="form-control" name="acond_final" value="@Model.acond_final"/></td>
+                        <td>Final:</td>
+                        <td><input asp-for="hora_final" class="form-control" type="time" value="@Model.hora_final"/></td>
+                        <td>Max:</td>
+                        <td><input asp-for="temp_final" class="form-control" value="@Model.temp_final"/></td>
+                        <td>Final:</td>
+                        <td><input asp-for="max_umidade" class="form-control" value="@Model.max_umidade"/></td>
+                    </tr>
+                    <tr>
+                        <td colspan="4">Responsavel</td>
+                        <td colspan="5"><input asp-for="responsavel_cond" class="form-control" value="@Model.responsavel_cond"/></td>
+                    </tr>
+
+                </tbody>
+            </table>
 
             <table class="tables table-bordered border-secondary  table-sm">
                 <tr class="fundo-tabela">
@@ -257,17 +346,21 @@
                 @if (ViewBag.qtd_face == 1)
                 {
                     <tr>
-                        <td>1 Face: 50.000 ciclos</td>
+                        <td>1 Face: 50.000 ciclos em sua face superior</td>
                         <td>Ciclos atingidos</td>
-                        <td>---</td>
+                        <td>
+                            <input class="form-control" name="qtd_ciclos" value="@Model.qtd_ciclos"/>
+                        </td>
                     </tr>
                 }
                 else
                 {
                     <tr>
-                        <td>2 Face: 25.000 + 25.000 ciclos da primeira face</td>
+                        <td>2 Faces: 25.000 em sua face superior e 25.000 em sua face inferior e em (ciclos atingidos)</td>
                         <td>Ciclos atingidos</td>
-                        <td>---</td>
+                        <td>
+                            <input class="form-control" name="qtd_ciclos" value="@Model.qtd_ciclos" />
+                        </td>
                     </tr>
                 }
             </table>

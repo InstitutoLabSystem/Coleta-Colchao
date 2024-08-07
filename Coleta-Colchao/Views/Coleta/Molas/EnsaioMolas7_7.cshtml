@@ -5,6 +5,7 @@
 @{
     ViewData["Title"] = "AVALIAÇÃO DO MOLEJO ";
 }
+
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -105,209 +106,312 @@
                         Retirar o revestimento da face do colchão e verificar as informações conforme tabela abaixo.
                     </td>
                 </tr>
-                <tr>
-
 
                 <tr>
                     <td>
                         <table class="tables table-bordered border-secondary  table-sm">
-                            <tr class="fundo-tabela"><td colspan="5">Tabela - Quantidade minima de molas para cada tipo de molejo</td></tr>
-                            <tr class="fundo-tabela">
-                                <td type="hidden"></td>
-                                <td>Tipo</td>
-                                <td>
-                                    Ø minimo da Bitola (mm)
-                                </td>
-                                <td>
-                                    Nº mínimo de molas por m²
-                                </td>
-                                <td>
-                                    Nº mínimo de molas por m²
-                                </td>
-                            </tr>
-                                @if (ViewBag.tipo == "Bonell")
-                                {
+                            @if(ViewBag.tipo == "Bonell |" || ViewBag.tipo == "Bonell ||" || ViewBag.tipo2 == "Bonell |" || ViewBag.tipo2 == "Bonell ||")
+                            {
+                                <tr class="fundo-tabela">
+                                    <td colspan="6">Tabela - Quantidade minima de molas para cada tipo de molejo</td>
+                                </tr>
+                                <tr class="fundo-tabela">
+                                    <td>Tipo</td>
+                                    <td>Ø minimo da Bitola (mm)</td>
+                                    <td>Especificado do mínimo da Bitola (mm)</td>
+                                    <td>Especificado do mínimo de molas da bitola (mm)</td>
+                                    <td>Nº médio de molas por m²</td>
+                                    <td>Resultado</td>
+                                </tr>
+                            }
+                            else
+                            {
+                                <tr class="fundo-tabela">
+                                    <td colspan="5">Tabela - Quantidade minima de molas para cada tipo de molejo</td>
+                                </tr>
+                                <tr class="fundo-tabela">
+                                    <td>Tipo</td>
+                                    <td>Ø minimo da Bitola (mm)</td>
+                                    <td>Especificado do mínimo de molas da bitola (mm)</td>
+                                    <td>Nº médio de molas por m²</td>
+                                    <td>Resultado</td>
+                                </tr>
+                            }
+                            @if (ViewBag.tipo == "Bonell |")
+                            {
                                 <tr>
-                                    <td type="hidden"><input name="contem_bonell" value="Sim" type="hidden" /></td>
-
-                                    <td>
-                                        Bonell <br />
-                                        (2,20 ± 0,05)
-                                    </td>
+                                    <td>Bonell |</td>
+                                    <td>(2,20 ± 0,05)</td>
                                     <td><input class="form-control" type="text" name="minim_bitola_1" /></td>
                                     <td>105</td>
                                     <td><input class="form-control" type="text" name="mini_molas_1" /></td>
+                                    @if (Model.mini_molas_1 >= 105 && Model.calc_molas_1 <= Model.mini_molas_1)
+                                    {
+                                        <td>C</td>
+                                    }
+                                    else
+                                    {
+                                        <td>NC</td>
+                                    }
                                 </tr>
-                                }
-                                @if (ViewBag.tipo == "Mola ensacada")
-                                {
+                            }
+                            @if (ViewBag.tipo == "Bonell ||")
+                            {
                                 <tr>
-                                    <td type="hidden"><input name="contem_mola" value="Sim" type="hidden" /></td>
+                                    <td>Bonell ||</td>
+                                    <td>(2,20 ± 0,05)</td>
+                                    <td><input class="form-control" type="text" name="minim_bitola_2" /></td>
+                                    <td>115</td>
+                                    <td><input class="form-control" type="text" name="mini_molas_2" /></td>
+                                    @if (Model.mini_molas_2 >= 115 && Model.calc_molas_1 <= Model.mini_molas_2)
+                                    {
+                                        <td>C</td>
+                                    }
+                                    else
+                                    {
+                                        <td>NC</td>
+                                    }}
+                                </tr>
+                            }
+                            @if (ViewBag.tipo == "Mola ensacada")
+                            {
+                                <tr>
                                     <td>Mola ensacada</td>
-                                    <td>
-                                        ---
-                                    </td>
+                                    <td>---</td>
                                     <td>152</td>
                                     <td><input class="form-control" type="text" name="mini_molas_3" /></td>
+                                    @if (Model.mini_molas_3 >= 152 && Model.calc_molas_1 <= Model.mini_molas_3)
+                                    {
+                                        <td>C</td>
+                                    }
+                                    else
+                                    {
+                                        <td>NC</td>
+                                    }
                                 </tr>
-                                }
-                                @if (ViewBag.tipo == "LKF")
-                                {
+                            }
+                            @if (ViewBag.tipo == "LKF")
+                            {
                                 <tr>
-                                    <td type="hidden"><input name="contem_lkf" value="Sim" type="hidden" /></td>
                                     <td>LKF</td>
-                                    <td>
-                                        ---
-                                    </td>
+                                    <td>---</td>
                                     <td>152</td>
                                     <td><input class="form-control" type="text" name="mini_molas_4" /></td>
+                                    @if (Model.mini_molas_4 >= 152 && Model.calc_molas_1 <= Model.mini_molas_4)
+                                    {
+                                        <td>C</td>
+                                    }
+                                    else
+                                    {
+                                        <td>NC</td>
+                                    }
                                 </tr>
-                                }
-                                @if (ViewBag.tipo == "Verticoil")
-                                {
+                            }
+                            @if (ViewBag.tipo == "Verticoil")
+                            {
                                 <tr>
-                                    <td type="hidden"><input name="contem_vericoil" value="Sim" type="hidden" /></td>
-
                                     <td>Verticoil</td>
-                                    <td>
-                                        ---
-                                    </td>
+                                    <td>---</td>
                                     <td>110</td>
                                     <td><input class="form-control" type="text" name="mini_molas_5" /></td>
+                                    @if (Model.mini_molas_5 >= 110 && Model.calc_molas_1 <= Model.mini_molas_5)
+                                    {
+                                        <td>C</td>
+                                    }
+                                    else
+                                    {
+                                        <td>NC</td>
+                                    }
                                 </tr>
-                                }
-                                @if (ViewBag.tipo == "Fio Continuo |")
-                                {
-
+                            }
+                            @if (ViewBag.tipo == "Fio Continuo |")
+                            {
                                 <tr>
-                                    <td type="hidden"><input name="contem_fio_continuo_1" value="Sim" type="hidden" /></td>
-
                                     <td>Fio Continuo | </td>
-                                    <td>
-                                        ---
-                                    </td>
+                                    <td>---</td>
                                     <td>170</td>
                                     <td><input class="form-control" type="text" name="mini_molas_6" /></td>
+                                    @if (Model.mini_molas_6 >= 170 && Model.calc_molas_1 <= Model.mini_molas_6)
+                                    {
+                                        <td>C</td>
+                                    }
+                                    else
+                                    {
+                                        <td>NC</td>
+                                    }
                                 </tr>
-                                }
-                                @if (ViewBag.tipo == "Fio Continuo ||")
-                                {
+                            }
+                            @if (ViewBag.tipo == "Fio Continuo ||")
+                            {
                                 <tr>
-                                    <td type="hidden"><input name="contem_fio_continuo_2" value="Sim" type="hidden" /></td>
-
                                     <td>Fio continuo ||</td>
-                                    <td>
-                                        ---
-                                    </td>
+                                    <td>---</td>
                                     <td>198</td>
                                     <td><input class="form-control" type="text" name="mini_molas_7" /></td>
+                                    @if (Model.mini_molas_7 >= 198 && Model.calc_molas_1 <= Model.mini_molas_7)
+                                    {
+                                        <td>C</td>
+                                    }
+                                    else
+                                    {
+                                        <td>NC</td>
+                                    }
                                 </tr>
-                                }
-                                @if (ViewBag.tipo == "Offset")
-                                {
+                            }
+                            @if (ViewBag.tipo == "Offset")
+                            {
                                 <tr>
-                                    <td type="hidden"><input name="contem_offset" value="Sim" type="hidden" /></td>
                                     <td>Offset</td>
-                                    <td>
-                                        ---
-                                    </td>
+                                    <td>---</td>
                                     <td>105</td>
                                     <td><input class="form-control" type="text" name="mini_molas_8" /></td>
+                                    @if (Model.mini_molas_8 >= 105 && Model.calc_molas_1 <= Model.mini_molas_8)
+                                    {
+                                        <td>C</td>
+                                    }
+                                    else
+                                    {
+                                        <td>NC</td>
+                                    }
                                 </tr>
-                                }
-                                @if (ViewBag.tipo2 == "Bonell")
-                                {
+                            }
+                            @if (ViewBag.tipo2 == "Bonell |")
+                            {
                                 <tr>
-                                    <td type="hidden"><input name="contem_bonell" value="Sim" type="hidden" /></td>
-
-                                    <td>
-                                        Bonell <br />
-                                        (2,20 ± 0,05)
-                                    </td>
+                                    <td>Bonell |</td>
+                                    <td>(2,20 ± 0,05)</td>
                                     <td><input class="form-control" type="text" name="minim_bitola_1" /></td>
                                     <td>105</td>
                                     <td><input class="form-control" type="text" name="mini_molas_1" /></td>
+                                    @if (Model.mini_molas_1 >= 105 && Model.calc_molas_1 <= Model.mini_molas_1)
+                                    {
+                                        <td>C</td>
+                                    }
+                                    else
+                                    {
+                                        <td>NC</td>
+                                    }
                                 </tr>
-                                }
-                                @if (ViewBag.tipo2 == "Mola ensacada")
-                                {
+                            }
+                            @if (ViewBag.tipo2 == "Bonell ||")
+                            {
                                 <tr>
-                                    <td type="hidden"><input name="contem_mola" value="Sim" type="hidden" /></td>
-
+                                    <td>Bonell <br />(2,20 ± 0,05)</td>
+                                    <td><input class="form-control" type="text" name="minim_bitola_2" /></td>
+                                    <td>115</td>
+                                    <td><input class="form-control" type="text" name="mini_molas_2" /></td>
+                                    @if (Model.mini_molas_2 >= 115 && Model.calc_molas_1 <= Model.mini_molas_2)
+                                    {
+                                        <td>C</td>
+                                    }
+                                    else
+                                    {
+                                        <td>NC</td>
+                                    }
+                                </tr>
+                            }
+                            @if (ViewBag.tipo2 == "Mola ensacada")
+                            {
+                                <tr>
                                     <td>Mola ensacada</td>
-                                    <td>
-                                        ---
-                                    </td>
+                                    <td>---</td>
                                     <td>152</td>
                                     <td><input class="form-control" type="text" name="mini_molas_3" /></td>
+                                    @if (Model.mini_molas_3 >= 152 && Model.calc_molas_1 <= Model.mini_molas_3)
+                                    {
+                                        <td>C</td>
+                                    }
+                                    else
+                                    {
+                                        <td>NC</td>
+                                    }
                                 </tr>
-                                }
-                                @if (ViewBag.tipo2 == "LKF")
-                                {
+                            }
+                            @if (ViewBag.tipo2 == "LKF")
+                            {
                                 <tr>
-                                    <td type="hidden"><input name="contem_lkf" value="Sim" type="hidden" /></td>
-
                                     <td>LKF</td>
-                                    <td>
-                                        ---
-                                    </td>
+                                    <td>---</td>
                                     <td>152</td>
                                     <td><input class="form-control" type="text" name="mini_molas_4" /></td>
+                                    @if (Model.mini_molas_4 >= 105 && Model.calc_molas_1 <= Model.mini_molas_4)
+                                    {
+                                        <td>C</td>
+                                    }
+                                    else
+                                    {
+                                        <td>NC</td>
+                                    }
                                 </tr>
-                                }
-                                @if (ViewBag.tipo2 == "Verticoil")
-                                {
+                            }
+                            @if (ViewBag.tipo2 == "Verticoil")
+                            {
                                 <tr>
-                                    <td type="hidden"><input name="contem_vericoil" value="Sim" type="hidden" /></td>
-
                                     <td>Verticoil</td>
-                                    <td>
-                                        ---
-                                    </td>
+                                    <td>---</td>
                                     <td>110</td>
                                     <td><input class="form-control" type="text" name="mini_molas_5" /></td>
+                                    @if (Model.mini_molas_5 >= 110 && Model.calc_molas_1 <= Model.mini_molas_5)
+                                    {
+                                        <td>C</td>
+                                    }
+                                    else
+                                    {
+                                        <td>NC</td>
+                                    }
                                 </tr>
-                                }
-                                @if (ViewBag.tipo2 == "Fio Continuo |")
-                                {
-
+                            }
+                            @if (ViewBag.tipo2 == "Fio Continuo |")
+                            {
                                 <tr>
-                                    <td type="hidden"><input name="contem_fio_continuo_1" value="Sim" type="hidden" /></td>
-
                                     <td>Fio Continuo | </td>
-                                    <td>
-                                        ---
-                                    </td>
+                                    <td>---</td>
                                     <td>170</td>
                                     <td><input class="form-control" type="text" name="mini_molas_6" /></td>
+                                    @if (Model.mini_molas_1 >= 105 && Model.calc_molas_1 <= Model.mini_molas_1)
+                                    {
+                                        <td>C</td>
+                                    }
+                                    else
+                                    {
+                                        <td>NC</td>
+                                    }
                                 </tr>
-                                }
-                                @if (ViewBag.tipo2 == "Fio Continuo ||")
-                                {
+                            }
+                            @if (ViewBag.tipo2 == "Fio Continuo ||")
+                            {
                                 <tr>
-                                    <td type="hidden"><input name="contem_fio_continuo_2" value="Sim" type="hidden" /></td>
-
                                     <td>Fio continuo ||</td>
-                                    <td>
-                                        ---
-                                    </td>
+                                    <td>---</td>
                                     <td>198</td>
                                     <td><input class="form-control" type="text" name="mini_molas_7" /></td>
+                                    @if (Model.mini_molas_7 >= 198 && Model.calc_molas_1 <= Model.mini_molas_7)
+                                    {
+                                        <td>C</td>
+                                    }
+                                    else
+                                    {
+                                        <td>NC</td>
+                                    }
                                 </tr>
-                                }
-                                @if (ViewBag.tipo2 == "Offset")
-                                {
+                            }
+                            @if (ViewBag.tipo2 == "Offset")
+                            {
                                 <tr>
-                                    <td type="hidden"><input name="contem_offset" value="Sim" type="hidden" /></td>
-
                                     <td>Offset</td>
-                                    <td>
-                                        ---
-                                    </td>
+                                    <td>---</td>
                                     <td>105</td>
                                     <td><input class="form-control" type="text" name="mini_molas_8" /></td>
+                                    @if (Model.mini_molas_8 >= 105 && Model.calc_molas_1 <= Model.mini_molas_8)
+                                    {
+                                        <td>C</td>
+                                    }
+                                    else
+                                    {
+                                        <td>NC</td>
+                                    }
                                 </tr>
-                                }
+                            }
                         </table>
                     </td>
                 </tr>
@@ -434,155 +538,352 @@
                     </td>
                 </tr>
                 <tr>
-                    <td>
-                        <table class="tables table-bordered border-secondary  table-sm">
+                    <table class="tables table-bordered border-secondary  table-sm">
+                        @if (ViewBag.tipo == "Bonell |" || ViewBag.tipo == "Bonell ||" || ViewBag.tipo2 == "Bonell |" || ViewBag.tipo2 == "Bonell ||")
+                        {
+                            <tr class="fundo-tabela"><td colspan="6">Tabela - Quantidade minima de molas para cada tipo de molejo</td></tr>
+                            <tr class="fundo-tabela">
+                                <td>Tipo</td>
+                                <td>Ø minimo da Bitola (mm)</td>
+                                <td>Especificado do mínimo da Bitola (mm)</td>
+                                <td>Especificado do mínimo de molas da bitola (mm)</td>
+                                <td>Nº médio de molas por m²</td>
+                                <td>Resultado</td>
+                            </tr>
+                        }
+                        else
+                        {
                             <tr class="fundo-tabela"><td colspan="5">Tabela - Quantidade minima de molas para cada tipo de molejo</td></tr>
                             <tr class="fundo-tabela">
-
-                                <td type="hidden"></td>
                                 <td>Tipo</td>
-                                <td>
-                                    Ø minimo da Bitola (mm)
-                                </td>
-                                <td>
-                                    Nº mínimo de molas por m²
-                                </td>
-                                <td>
-                                    Nº mínimo de molas por m²
-                                </td>
+                                <td>Ø minimo da Bitola (mm)</td>
+                                <td>Especificado do mínimo de molas da bitola (mm)</td>
+                                <td>Nº médio de molas por m²</td>
+                                <td>Resultado</td>
                             </tr>
-                            @if (Model.contem_bonell == "Sim")
-                            {
-                                <tr>
-                                    <td type="hidden"><input name="contem_bonell" value="Sim" type="hidden" /></td>
-                                    <td>
-                                        Bonell <br />
-                                        (2,20 ± 0,05)
-                                    </td>
-                                    <td><input class="form-control" type="text" name="minim_bitola_1" value="@Model.minim_bitola_1" /></td>
-                                    <td>105</td>
-                                    <td><input class="form-control" type="text" name="mini_molas_1" value="@Model.mini_molas_1" /></td>
-                                </tr>
-                            }
-                            @if (Model.contem_mola == "Sim")
-                            {
-                                <tr>
-                                    <td type="hidden"><input name="contem_mola" value="Sim" type="hidden" /></td>
-                                    <td>Mola ensacada</td>
-                                    <td>
-                                        ---
-                                    </td>
-                                    <td>152</td>
-                                    <td><input class="form-control" type="text" name="mini_molas_3" value="@Model.mini_molas_3" /></td>
-                                </tr>
-                            }
-                            @if (Model.contem_lkf == "Sim")
-                            {
-                                <tr>
-                                    <td type="hidden"><input name="contem_lkf" value="Sim" type="hidden" /></td>
-                                    <td>LKF</td>
-                                    <td>
-                                        ---
-                                    </td>
-                                    <td>152</td>
-                                    <td><input class="form-control" type="text" name="mini_molas_4" value="@Model.mini_molas_4" /></td>
-                                </tr>
-                            }
-                            @if (Model.contem_vericoil == "Sim")
-                            {
-                                <tr>
-                                    <td type="hidden"><input name="contem_vericoil" value="Sim" type="hidden" /></td>
-                                    <td>Verticoil</td>
-                                    <td>
-                                        ---
-                                    </td>
-                                    <td>110</td>
-                                    <td><input class="form-control" type="text" name="mini_molas_5" value="@Model.mini_molas_5" /></td>
-                                </tr>
-                            }
-                            @if (Model.contem_fio_continuo_1 == "Sim")
-                            {
+                        }
 
-                                <tr>
-                                    <td type="hidden"><input name="contem_fio_continuo_1" value="Sim" type="hidden" /></td>
+                        @if (ViewBag.tipo == "Bonell |")
+                        {
+                            <tr>
+                                <td>Bonell |</td>
+                                <td>(2,20 ± 0,05)</td>
+                                <td><input class="form-control" type="text" name="minim_bitola_1" value="@Model.minim_bitola_1" /></td>
+                                <td>105</td>
+                                <td><input class="form-control" type="text" name="mini_molas_1" value="@Model.mini_molas_1" /></td>
+                                @if (Model.mini_molas_1 >= 105 && Model.calc_molas_1 <= Model.mini_molas_1)
+                                {
+                                    <td>C</td>
+                                }
+                                else
+                                {
+                                    <td>NC</td>
+                                }
 
-                                    <td>Fio Continuo | </td>
-                                    <td>
-                                        ---
-                                    </td>
-                                    <td>170</td>
-                                    <td><input class="form-control" type="text" name="mini_molas_6" value="@Model.mini_molas_6 " /></td>
-                                </tr>
-                            }
-                            @if (Model.contem_fio_continuo_2 == "Sim")
-                            {
-                                <tr>
-                                    <td type="hidden"><input name="contem_fio_continuo_2" value="Sim" type="hidden" /></td>
-
-                                    <td>Fio continuo ||</td>
-                                    <td>
-                                        ---
-                                    </td>
-                                    <td>198</td>
-                                    <td><input class="form-control" type="text" name="mini_molas_7" value="@Model.mini_molas_7" /></td>
-                                </tr>
-                            }
-                            @if (Model.contem_offset == "Sim")
-                            {
-                                <tr>
-                                    <td type="hidden"><input name="contem_offset" value="Sim" type="hidden" /></td>
-                                    <td>Offset</td>
-                                    <td>
-                                        ---
-                                    </td>
-                                    <td>105</td>
-                                    <td><input class="form-control" type="text" name="mini_molas_8" value="@Model.mini_molas_8" /></td>
-                                </tr>
-                            }
-
-                        </table>
-                    </td>
+                            </tr>
+                        }
+                        @if (ViewBag.tipo == "Bonell ||")
+                        {
+                            <tr>
+                                <td>Bonell ||</td>
+                                <td>(2,20 ± 0,05)</td>
+                                <td><input class="form-control" type="text" name="minim_bitola_2" value="@Model.minim_bitola_2" /></td>
+                                <td>115</td>
+                                <td><input class="form-control" type="text" name="mini_molas_2" value="@Model.mini_molas_2" /></td>
+                                @if (Model.mini_molas_2 >= 115 && Model.calc_molas_1 <= Model.mini_molas_2)
+                                {
+                                    <td>C</td>
+                                }
+                                else
+                                {
+                                    <td>NC</td>
+                                }
+                            </tr>
+                        }
+                        @if (ViewBag.tipo == "Mola ensacada")
+                        {
+                            <tr>
+                                <td>Mola ensacada</td>
+                                <td>---</td>
+                                <td>152</td>
+                                <td><input class="form-control" type="text" name="mini_molas_3" value="@Model.mini_molas_3" /></td>
+                                @if (Model.mini_molas_3 >= 152 && Model.calc_molas_1 <= Model.mini_molas_3)
+                                {
+                                    <td>C</td>
+                                }
+                                else
+                                {
+                                    <td>NC</td>
+                                }
+                            </tr>
+                        }
+                        @if (ViewBag.tipo == "LKF")
+                        {
+                            <tr>
+                                <td>LKF</td>
+                                <td>---</td>
+                                <td>152</td>
+                                <td><input class="form-control" type="text" name="mini_molas_4" value="@Model.mini_molas_4" /></td>
+                                @if (Model.mini_molas_4 >= 152 && Model.calc_molas_1 <= Model.mini_molas_4)
+                                {
+                                    <td>C</td>
+                                }
+                                else
+                                {
+                                    <td>NC</td>
+                                }
+                            </tr>
+                        }
+                        @if (ViewBag.tipo == "Verticoil")
+                        {
+                            <tr>
+                                <td>Verticoil</td>
+                                <td>---</td>
+                                <td>110</td>
+                                <td><input class="form-control" type="text" name="mini_molas_5" value="@Model.mini_molas_5" /></td>
+                                @if (Model.mini_molas_5 >= 110 && Model.calc_molas_1 <= Model.mini_molas_5)
+                                {
+                                    <td>C</td>
+                                }
+                                else
+                                {
+                                    <td>NC</td>
+                                }
+                            </tr>
+                        }
+                        @if (ViewBag.tipo == "Fio Continuo |")
+                        {
+                            <tr>
+                                <td>Fio Continuo | </td>
+                                <td>---</td>
+                                <td>170</td>
+                                <td><input class="form-control" type="text" name="mini_molas_6" value="@Model.mini_molas_6 " /></td>
+                                @if (Model.mini_molas_6 >= 170 && Model.calc_molas_1 <= Model.mini_molas_6)
+                                {
+                                    <td>C</td>
+                                }
+                                else
+                                {
+                                    <td>NC</td>
+                                }
+                            </tr>
+                        }
+                        @if (ViewBag.tipo == "Fio continuo ||")
+                        {
+                            <tr>
+                                <td>Fio Continuo ||</td>
+                                <td>---</td>
+                                <td>198</td>
+                                <td><input class="form-control" type="text" name="mini_molas_7" value="@Model.mini_molas_7" /></td>
+                                @if (Model.mini_molas_7 >= 198 && Model.calc_molas_1 <= Model.mini_molas_7)
+                                {
+                                    <td>C</td>
+                                }
+                                else
+                                {
+                                    <td>NC</td>
+                                }
+                            </tr>
+                        }
+                        @if (ViewBag.tipo == "Offset")
+                        {
+                            <tr>
+                                <td>Offset</td>
+                                <td>---</td>
+                                <td>105</td>
+                                <td><input class="form-control" type="text" name="mini_molas_8" value="@Model.mini_molas_8" /></td>
+                                @if (Model.mini_molas_8 >= 105 && Model.calc_molas_1 <= Model.mini_molas_8)
+                                {
+                                    <td>C</td>
+                                }
+                                else
+                                {
+                                    <td>NC</td>
+                                }
+                            </tr>
+                        }
+                        @if (ViewBag.tipo2 == "Bonell |")
+                        {
+                            <tr>
+                                <td>Bonell |</td>
+                                <td>(2,20 ± 0,05)</td>
+                                <td><input class="form-control" type="text" name="minim_bitola_1" /></td>
+                                <td>105</td>
+                                <td><input class="form-control" type="text" name="mini_molas_1" /></td>
+                                @if (Model.mini_molas_1 >= 105 && Model.calc_molas_1 <= Model.mini_molas_1)
+                                {
+                                    <td>C</td>
+                                }
+                                else
+                                {
+                                    <td>NC</td>
+                                }
+                            </tr>
+                        }
+                        @if (ViewBag.tipo2 == "Bonell ||")
+                        {
+                            <tr>
+                                <td>Bonell <br />(2,20 ± 0,05)</td>
+                                <td><input class="form-control" type="text" name="minim_bitola_2" /></td>
+                                <td>115</td>
+                                <td><input class="form-control" type="text" name="mini_molas_2" /></td>
+                                @if (Model.mini_molas_2 >= 115 && Model.calc_molas_1 <= Model.mini_molas_2)
+                                {
+                                    <td>C</td>
+                                }
+                                else
+                                {
+                                    <td>NC</td>
+                                }
+                            </tr>
+                        }
+                        @if (ViewBag.tipo2 == "Mola ensacada")
+                        {
+                            <tr>
+                                <td>Mola ensacada</td>
+                                <td>---</td>
+                                <td>152</td>
+                                <td><input class="form-control" type="text" name="mini_molas_3" /></td>
+                                @if (Model.mini_molas_3 >= 152 && Model.calc_molas_1 <= Model.mini_molas_3)
+                                {
+                                    <td>C</td>
+                                }
+                                else
+                                {
+                                    <td>NC</td>
+                                }
+                            </tr>
+                        }
+                        @if (ViewBag.tipo2 == "LKF")
+                        {
+                            <tr>
+                                <td>LKF</td>
+                                <td>---</td>
+                                <td>152</td>
+                                <td><input class="form-control" type="text" name="mini_molas_4" /></td>
+                                @if (Model.mini_molas_4 >= 105 && Model.calc_molas_1 <= Model.mini_molas_4)
+                                {
+                                    <td>C</td>
+                                }
+                                else
+                                {
+                                    <td>NC</td>
+                                }
+                            </tr>
+                        }
+                        @if (ViewBag.tipo2 == "Verticoil")
+                        {
+                            <tr>
+                                <td>Verticoil</td>
+                                <td>---</td>
+                                <td>110</td>
+                                <td><input class="form-control" type="text" name="mini_molas_5" /></td>
+                                @if (Model.mini_molas_5 >= 110 && Model.calc_molas_1 <= Model.mini_molas_5)
+                                {
+                                    <td>C</td>
+                                }
+                                else
+                                {
+                                    <td>NC</td>
+                                }
+                            </tr>
+                        }
+                        @if (ViewBag.tipo2 == "Fio Continuo |")
+                        {
+                            <tr>
+                                <td>Fio Continuo | </td>
+                                <td>---</td>
+                                <td>170</td>
+                                <td><input class="form-control" type="text" name="mini_molas_6" /></td>
+                                @if (Model.mini_molas_1 >= 105 && Model.calc_molas_1 <= Model.mini_molas_1)
+                                {
+                                    <td>C</td>
+                                }
+                                else
+                                {
+                                    <td>NC</td>
+                                }
+                            </tr>
+                        }
+                        @if (ViewBag.tipo2 == "Fio Continuo ||")
+                        {
+                            <tr>
+                                <td>Fio continuo ||</td>
+                                <td>---</td>
+                                <td>198</td>
+                                <td><input class="form-control" type="text" name="mini_molas_7" /></td>
+                                @if (Model.mini_molas_7 >= 198 && Model.calc_molas_1 <= Model.mini_molas_7)
+                                {
+                                    <td>C</td>
+                                }
+                                else
+                                {
+                                    <td>NC</td>
+                                }
+                            </tr>
+                        }
+                        @if (ViewBag.tipo2 == "Offset")
+                        {
+                            <tr>
+                                <td>Offset</td>
+                                <td>---</td>
+                                <td>105</td>
+                                <td><input class="form-control" type="text" name="mini_molas_8" /></td>
+                                @if (Model.mini_molas_8 >= 105 && Model.calc_molas_1 <= Model.mini_molas_8)
+                                {
+                                    <td>C</td>
+                                }
+                                else
+                                {
+                                    <td>NC</td>
+                                }
+                            </tr>
+                        }
+                    </table>
                 </tr>
-                <tr>
-                    <td class="fundo-tabela">
-                        <b>
-                            Cálculo de número de molas por m²
-                        </b>
-                    </td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <td>
-                        n° de molas por m² = Quantidade de molas ÷ Largura X Comprimento
-                    </td>
-                </tr>
-                @if (Model.calc_molas_duplicado == 0 || Model.calc_molas_duplicado_2 == 0 || Model.calc_molas_duplicado_3 == 0)
-                {
+                <table class="tables table-bordered border-secondary  table-sm">
+                    <tr>
+                        <td class="fundo-tabela">
+                            <b>
+                                Cálculo de número de molas por m²
+                            </b>
+                        </td>
+                        <td></td>
+                    </tr>
                     <tr>
                         <td>
-                            n° de molas por m² = <input class="controlador" type="text" style="width:200px;" name="calc_molas_1" value="@Model.calc_molas_1" /> ÷ <input style="width:200px;" class="controlador" style="width:200px;" type="text" name="calc_molas_2" value="@Model.calc_molas_2" /> X <input style="width:200px;" class="controlador" type="text" name="calc_molas_3" value="@Model.calc_molas_3" />
-                            <p>Resultado: <input class="form-control" type="text" readonly value="@Model.resultado_calc" /></p>
+                            n° de molas por m² = Quantidade de molas ÷ Largura X Comprimento
                         </td>
-
                     </tr>
-                }
-                else
-                {
-                    <tr>
-                        <td>
-                            n° de molas por m² = <input class="controlador" type="text" style="width:200px;" name="calc_molas_1" value="@Model.calc_molas_1" /> ÷ <input style="width:200px;" class="controlador" style="width:200px;" type="text" name="calc_molas_2" value="@Model.calc_molas_2" /> X <input style="width:200px;" class="controlador" type="text" name="calc_molas_3" value="@Model.calc_molas_3" />
-                            <p>Resultado: <input class="form-control" type="text" readonly value="@Model.resultado_calc" /></p>
-                        </td>
+                    @if (Model.calc_molas_duplicado == 0 || Model.calc_molas_duplicado_2 == 0 || Model.calc_molas_duplicado_3 == 0)
+                    {
+                        <tr>
+                            <td>
+                                n° de molas por m² = <input class="controlador" type="text" style="width:200px;" name="calc_molas_1" value="@Model.calc_molas_1" /> ÷ <input style="width:200px;" class="controlador" style="width:200px;" type="text" name="calc_molas_2" value="@Model.calc_molas_2" /> X <input style="width:200px;" class="controlador" type="text" name="calc_molas_3" value="@Model.calc_molas_3" />
+                                <p>Resultado: <input class="form-control" type="text" readonly value="@Model.resultado_calc" /></p>
+                            </td>
 
-                    </tr>
-                    <tr>
-                        <td>
-                            n° de molas por m² = <input class="controlador" type="text" style="width:200px;" name="calc_molas_duplicado" value="@Model.calc_molas_duplicado" /> ÷ <input style="width:200px;" class="controlador" style="width:200px;" type="text" name="calc_molas_duplicado_2" value="@Model.calc_molas_duplicado_2" /> X <input style="width:200px;" class="controlador" type="text" name="calc_molas_duplicado_3" value="@Model.calc_molas_duplicado_3" />
-                            <p>Resultado: <input class="form-control" type="text" readonly value="@Model.resultado_calc_duplicado" /></p>
-                        </td>
+                        </tr>
+                    }
+                    else
+                    {
+                        <tr>
+                            <td>
+                                n° de molas por m² = <input class="controlador" type="text" style="width:200px;" name="calc_molas_1" value="@Model.calc_molas_1" /> ÷ <input style="width:200px;" class="controlador" style="width:200px;" type="text" name="calc_molas_2" value="@Model.calc_molas_2" /> X <input style="width:200px;" class="controlador" type="text" name="calc_molas_3" value="@Model.calc_molas_3" />
+                                <p>Resultado: <input class="form-control" type="text" readonly value="@Model.resultado_calc" /></p>
+                            </td>
 
-                    </tr>
-                }
+                        </tr>
+                        <tr>
+                            <td>
+                                n° de molas por m² = <input class="controlador" type="text" style="width:200px;" name="calc_molas_duplicado" value="@Model.calc_molas_duplicado" /> ÷ <input style="width:200px;" class="controlador" style="width:200px;" type="text" name="calc_molas_duplicado_2" value="@Model.calc_molas_duplicado_2" /> X <input style="width:200px;" class="controlador" type="text" name="calc_molas_duplicado_3" value="@Model.calc_molas_duplicado_3" />
+                                <p>Resultado: <input class="form-control" type="text" readonly value="@Model.resultado_calc_duplicado" /></p>
+                            </td>
+
+                        </tr>
+                    }
+                </table>
+                
             </table>
             <br />
             <div class="d-grid gap-2 d-flex justify-content-center">

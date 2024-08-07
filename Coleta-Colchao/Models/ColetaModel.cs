@@ -337,6 +337,17 @@ namespace Coleta_Colchao.Models
             public string? conformidade_mat { get; set; }
             public string? executor { get; set; }
             public string? auxiliar { get; set; }
+            public float qtd_espuma { get; set; }
+            public float enc_estofamento_1 { get; set; }
+            public float enc_estofamento_2 { get; set; } 
+            public float enc_estofamento_3 { get; set; } 
+            public float enc_estofamento_4 { get; set; } 
+            public float enc_estofamento_5 { get; set; } 
+            public float enc_estofamento_6 { get; set; } 
+            public float enc_estofamento_7 { get; set; }
+            public float enc_estofamento_8 { get; set; } 
+            public float enc_estofamento_9 { get; set; }
+            public float enc_estofamento_10 { get; set; } 
         }
 
         public class Ensaio7_8
@@ -408,14 +419,14 @@ namespace Coleta_Colchao.Models
             public DateOnly data_term { get; set; }
             public string? rasgo { get; set; }
             public string? quebra { get; set; }
-            public string? contem_bonell { get; set; }
+            public string? contem_bonell_1 { get; set; }
+            public string? contem_bonell_2 { get; set; }
             public string? contem_mola { get; set; }
             public string? contem_lkf { get; set; }
             public string? contem_vericoil { get; set; }
             public string? contem_fio_continuo_1 { get; set; }
             public string? contem_fio_continuo_2 { get; set; }
             public string? contem_offset { get; set; }
-            public string? contem_bonel_2 { get; set; }
             public string? minim_bitola_1 { get; set; }
             public string? minim_bitola_2 { get; set; }
             public float mini_molas_1 { get; set; }
@@ -456,6 +467,19 @@ namespace Coleta_Colchao.Models
             public string? suportou { get; set; }
             public string? executador { get; set; }
             public string? auxiliar { get; set; }
+            public int qtd_ciclos { get; set; }
+            public DateOnly acond_inicio { get; set; }
+            public DateOnly acond_final {  get; set; }
+            public TimeOnly hora_inicio { get; set; }
+            public TimeOnly hora_final { get; set; }
+            public float temp_inicio { get; set; }
+            public float temp_final { get; set; }
+            public string? im { get; set; }
+            public string? responsavel_cond { get; set; }
+            public string? face_escolhida { get; set; }
+            public float min_umidade { get; set; }
+            public float max_umidade { get; set; }
+
         }
 
 
@@ -508,6 +532,7 @@ namespace Coleta_Colchao.Models
             public string? conforme_6_2 { get; set; }
             public string? executador { get; set; }
             public string? auxiliar { get; set; }
+            public string? conforme_area { get; set; }
         }
 
 
