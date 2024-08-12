@@ -1920,7 +1920,7 @@ namespace Coleta_Colchao.Controllers
                     float comprimento_dois = salvar.comprimento_dois;
                     float comprimento_tres = salvar.comprimento_tres;
                     string temp_repouso = salvar.temp_repouso;
-                    float comprimento_media = ((comprimento_um + comprimento_dois + comprimento_tres) / 3);
+                    float comprimento_media = float.Parse(((comprimento_um + comprimento_dois + comprimento_tres) / 3).ToString("N2"));
                     float valor_min_comprimento = comprimento_esp - 1.5f;
                     float valor_max_comprimento = comprimento_esp + 1.5f;
 
@@ -1939,7 +1939,7 @@ namespace Coleta_Colchao.Controllers
                     float largura_esp = salvar.largura_esp;
                     float largura_dois = salvar.largura_dois;
                     float largura_tres = salvar.largura_tres;
-                    float largura_media = ((largura_um + largura_dois + largura_tres) / 3);
+                    float largura_media = float.Parse(((largura_um + largura_dois + largura_tres) / 3).ToString("N2"));
                     float largura_valor_min_comprimento = largura_esp - 1.5f;
                     float largura_valor_max_comprimento = largura_esp + 1.5f;
 
@@ -1958,7 +1958,7 @@ namespace Coleta_Colchao.Controllers
                     float altura_esp = salvar.altura_esp;
                     float altura_dois = salvar.altura_dois;
                     float altura_tres = salvar.altura_tres;
-                    float altura_media = ((altura_um + altura_dois + altura_tres) / 3);
+                    float altura_media = float.Parse(((altura_um + altura_dois + altura_tres) / 3).ToString("N2"));
                     float altura_valor_min_comprimento = altura_esp - 1.5f;
                     float altura_valor_max_comprimento = altura_esp + 1.5f;
                     if (altura_media >= altura_valor_min_comprimento && altura_media <= altura_valor_max_comprimento)
@@ -1975,7 +1975,7 @@ namespace Coleta_Colchao.Controllers
                     float lamina_esp_um = salvar.lamina_esp_um;
                     float lamina_comp_dois = salvar.lamina_comp_dois;
                     float lamina_comp_tres = salvar.lamina_comp_tres;
-                    float lamina_media_um = ((lamina_comp_um + lamina_comp_dois + lamina_comp_tres) / 3);
+                    float lamina_media_um = float.Parse(((lamina_comp_um + lamina_comp_dois + lamina_comp_tres) / 3).ToString("N2"));
                     string lamina_tipo_um = salvar.lamina_tipo_um;
                     float lamina_min_um = salvar.lamina_min_um;
                     float lamina_max_um = salvar.lamina_max_um;
@@ -1996,9 +1996,7 @@ namespace Coleta_Colchao.Controllers
                     float lamina_esp_dois = salvar.lamina_esp_dois;
                     float lamina_comp_cinco = salvar.lamina_comp_cinco;
                     float lamina_comp_seis = salvar.lamina_comp_seis;
-
-                    float lamina_media_dois = ((lamina_comp_quat + lamina_comp_cinco + lamina_comp_seis) / 3);
-
+                    float lamina_media_dois = float.Parse(((lamina_comp_quat + lamina_comp_cinco + lamina_comp_seis) / 3).ToString("N2"));
                     string lamina_tipo_dois = salvar.lamina_tipo_dois;
                     float lamina_min_dois = salvar.lamina_min_dois;
                     float lamina_max_dois = salvar.lamina_max_dois;
@@ -2019,7 +2017,7 @@ namespace Coleta_Colchao.Controllers
                     float lamina_esp_tres = salvar.lamina_esp_tres;
                     float lamina_comp_oito = salvar.lamina_comp_oito;
                     float lamina_comp_nove = salvar.lamina_comp_nove;
-                    float lamina_media_tres = ((lamina_comp_sete + lamina_comp_oito + lamina_comp_nove) / 3);
+                    float lamina_media_tres = float.Parse(((lamina_comp_sete + lamina_comp_oito + lamina_comp_nove) / 3).ToString("N2"));
                     string lamina_tipo_tres = salvar.lamina_tipo_tres;
                     float lamina_min_tres = salvar.lamina_min_tres;
                     float lamina_max_tres = salvar.lamina_max_tres;
@@ -2039,8 +2037,7 @@ namespace Coleta_Colchao.Controllers
                     float lamina_esp_quat = salvar.lamina_esp_quat;
                     float lamina_comp_onze = salvar.lamina_comp_onze;
                     float lamina_comp_doze = salvar.lamina_comp_doze;
-                    float lamina_media_quat = ((lamina_comp_dez + lamina_comp_onze + lamina_comp_doze) / 3);
-
+                    float lamina_media_quat = float.Parse(((lamina_comp_dez + lamina_comp_onze + lamina_comp_doze) / 3).ToString("N2"));
                     string lamina_tipo_quat = salvar.lamina_tipo_quat;
                     float lamina_min_quat = salvar.lamina_min_quat;
                     float lamina_max_quat = salvar.lamina_max_quat;
@@ -2060,7 +2057,7 @@ namespace Coleta_Colchao.Controllers
                         lamina_resul_quat = "NC";
                     }
 
-                    float lamina_media_cinco = ((lamina_comp_treze + lamina_comp_quatorze + lamina_comp_quinze) / 3);
+                    float lamina_media_cinco = float.Parse(((lamina_comp_treze + lamina_comp_quatorze + lamina_comp_quinze) / 3).ToString("N2"));
                     string lamina_tipo_cinco = salvar.lamina_tipo_cinco;
                     float lamina_min_cinco = salvar.lamina_min_cinco;
                     float lamina_max_cinco = salvar.lamina_max_cinco;
@@ -2083,7 +2080,7 @@ namespace Coleta_Colchao.Controllers
                     float esp_cm_um = esp_mm_um / 10;
                     //realizando calculo do lamina um
                     esp_lamina_um = altura_media;
-                    esp_especificado_um = (float)Math.Round(esp_lamina_um / 3, 2);
+                    esp_especificado_um = float.Parse(Math.Round(esp_lamina_um / 3, 2).ToString("N2"));
 
                     string esp_tipo_dois = salvar.esp_tipo_dois;
 
@@ -2094,7 +2091,7 @@ namespace Coleta_Colchao.Controllers
 
                     //ralizando calculo do lamina dois
                     esp_lamina_dois = altura_media;
-                    esp_especificado_dois = (float)Math.Round(esp_lamina_dois / 3, 2);
+                    esp_especificado_dois = float.Parse(Math.Round(esp_lamina_dois / 3, 2).ToString("N2"));
 
                     string col_tipo_um = salvar.col_tipo_um;
                     float col_especificado_um = salvar.col_especificado_um;
@@ -2250,7 +2247,7 @@ namespace Coleta_Colchao.Controllers
                     editarDados.comprimento_tres = salvar.comprimento_tres;
                     editarDados.temp_repouso = salvar.temp_repouso;
 
-                    editarDados.comprimento_media = ((editarDados.comprimento_um + editarDados.comprimento_dois + editarDados.comprimento_tres) / 3);
+                    editarDados.comprimento_media = float.Parse(((editarDados.comprimento_um + editarDados.comprimento_dois + editarDados.comprimento_tres) / 3).ToString("N2"));
 
                     float valor_min_comprimento = editarDados.comprimento_esp - 1.5f;
                     float valor_max_comprimento = editarDados.comprimento_esp + 1.5f;
@@ -2271,7 +2268,7 @@ namespace Coleta_Colchao.Controllers
                     editarDados.largura_dois = salvar.largura_dois;
                     editarDados.largura_tres = salvar.largura_tres;
 
-                    editarDados.largura_media = ((editarDados.largura_um + editarDados.largura_dois + editarDados.largura_tres) / 3);
+                    editarDados.largura_media = float.Parse(((editarDados.largura_um + editarDados.largura_dois + editarDados.largura_tres) / 3).ToString("N2"));
 
 
                     float largura_valor_min_comprimento = editarDados.largura_esp - 1.5f;
@@ -2293,10 +2290,10 @@ namespace Coleta_Colchao.Controllers
                     editarDados.altura_dois = salvar.altura_dois;
                     editarDados.altura_tres = salvar.altura_tres;
 
-                    editarDados.altura_media = ((editarDados.altura_um + editarDados.altura_dois + editarDados.altura_tres) / 3);
+                    editarDados.altura_media = float.Parse(((editarDados.altura_um + editarDados.altura_dois + editarDados.altura_tres) / 3).ToString("N2"));
 
-                    float altura_valor_min_comprimento = editarDados.comprimento_esp - 1.5f;
-                    float altura_valor_max_comprimento = editarDados.comprimento_esp + 1.5f;
+                    float altura_valor_min_comprimento = editarDados.altura_esp - 1.5f;
+                    float altura_valor_max_comprimento = editarDados.altura_esp + 1.5f;
 
                     if (editarDados.altura_media >= altura_valor_min_comprimento && editarDados.altura_media <= altura_valor_max_comprimento)
                     {
@@ -2313,7 +2310,7 @@ namespace Coleta_Colchao.Controllers
                     editarDados.lamina_esp_um = salvar.lamina_esp_um;
                     editarDados.lamina_comp_dois = salvar.lamina_comp_dois;
                     editarDados.lamina_comp_tres = salvar.lamina_comp_tres;
-                    editarDados.lamina_media_um = ((editarDados.lamina_comp_um + editarDados.lamina_comp_dois + editarDados.lamina_comp_tres) / 3);
+                    editarDados.lamina_media_um = float.Parse(((editarDados.lamina_comp_um + editarDados.lamina_comp_dois + editarDados.lamina_comp_tres) / 3).ToString("N2"));
                     editarDados.lamina_tipo_um = salvar.lamina_tipo_um;
                     editarDados.lamina_min_um = salvar.lamina_min_um;
                     editarDados.lamina_max_um = salvar.lamina_max_um;
@@ -2334,7 +2331,7 @@ namespace Coleta_Colchao.Controllers
                     editarDados.lamina_comp_seis = salvar.lamina_comp_seis;
 
 
-                    editarDados.lamina_media_dois = ((editarDados.lamina_comp_quat + editarDados.lamina_comp_cinco + editarDados.lamina_comp_seis) / 3);
+                    editarDados.lamina_media_dois = float.Parse(((editarDados.lamina_comp_quat + editarDados.lamina_comp_cinco + editarDados.lamina_comp_seis) / 3).ToString("N2"));
                     editarDados.lamina_tipo_dois = salvar.lamina_tipo_dois;
                     editarDados.lamina_min_dois = salvar.lamina_min_dois;
                     editarDados.lamina_max_dois = salvar.lamina_max_dois;
@@ -2353,7 +2350,7 @@ namespace Coleta_Colchao.Controllers
                     editarDados.lamina_esp_tres = salvar.lamina_esp_tres;
                     editarDados.lamina_comp_oito = salvar.lamina_comp_oito;
                     editarDados.lamina_comp_nove = salvar.lamina_comp_nove;
-                    editarDados.lamina_media_tres = ((editarDados.lamina_comp_sete + editarDados.lamina_comp_oito + editarDados.lamina_comp_nove) / 3);
+                    editarDados.lamina_media_tres = float.Parse(((editarDados.lamina_comp_sete + editarDados.lamina_comp_oito + editarDados.lamina_comp_nove) / 3).ToString("N2"));
                     editarDados.lamina_tipo_tres = salvar.lamina_tipo_tres;
                     editarDados.lamina_min_tres = salvar.lamina_min_tres;
                     editarDados.lamina_max_tres = salvar.lamina_max_tres;
@@ -2373,7 +2370,7 @@ namespace Coleta_Colchao.Controllers
                     editarDados.lamina_esp_quat = salvar.lamina_esp_quat;
                     editarDados.lamina_comp_onze = salvar.lamina_comp_onze;
                     editarDados.lamina_comp_doze = salvar.lamina_comp_doze;
-                    editarDados.lamina_media_quat = ((editarDados.lamina_comp_dez + editarDados.lamina_comp_onze + editarDados.lamina_comp_doze) / 3);
+                    editarDados.lamina_media_quat = float.Parse(((editarDados.lamina_comp_dez + editarDados.lamina_comp_onze + editarDados.lamina_comp_doze) / 3).ToString("N2"));
                     editarDados.lamina_tipo_quat = salvar.lamina_tipo_quat;
                     editarDados.lamina_min_quat = salvar.lamina_min_quat;
                     editarDados.lamina_max_quat = salvar.lamina_max_quat;
@@ -2393,7 +2390,7 @@ namespace Coleta_Colchao.Controllers
                     editarDados.lamina_esp_cinco = salvar.lamina_esp_cinco;
                     editarDados.lamina_comp_quatorze = salvar.lamina_comp_quatorze;
                     editarDados.lamina_comp_quinze = salvar.lamina_comp_quinze;
-                    editarDados.lamina_media_cinco = ((editarDados.lamina_comp_treze + editarDados.lamina_comp_quatorze + editarDados.lamina_comp_quinze) / 3);
+                    editarDados.lamina_media_cinco = float.Parse(((editarDados.lamina_comp_treze + editarDados.lamina_comp_quatorze + editarDados.lamina_comp_quinze) / 3).ToString("N2"));
                     editarDados.lamina_tipo_cinco = salvar.lamina_tipo_cinco;
                     editarDados.lamina_min_cinco = salvar.lamina_min_cinco;
                     editarDados.lamina_max_cinco = salvar.lamina_max_cinco;
@@ -2438,16 +2435,14 @@ namespace Coleta_Colchao.Controllers
                     editarDados.reves_especificado_um = salvar.reves_especificado_um;
                     editarDados.reves_mm_um = salvar.reves_mm_um;
 
-                    editarDados.reves_cm_um = (editarDados.reves_mm_um / 10);
+                    editarDados.reves_cm_um = float.Parse((editarDados.reves_mm_um / 10).ToString("N2"));
 
                     editarDados.reves_tipo_dois = salvar.reves_tipo_dois;
                     editarDados.reves_lamina_dois = salvar.reves_lamina_dois;
                     editarDados.reves_especificado_dois = salvar.reves_especificado_dois;
                     editarDados.reves_mm_dois = salvar.reves_mm_dois;
 
-                    editarDados.reves_cm_dois = (editarDados.reves_mm_dois / 10);
-
-
+                    editarDados.reves_cm_dois = float.Parse((editarDados.reves_mm_dois / 10).ToString("N2"));
 
                     await _context.SaveChangesAsync();
                     TempData["Mensagem"] = "Dados Editado Com Sucesso";
