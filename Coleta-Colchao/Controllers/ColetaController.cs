@@ -2462,15 +2462,15 @@ namespace Coleta_Colchao.Controllers
                     editarDados.reves_especificado_dois = salvar.reves_especificado_dois;
                     editarDados.reves_mm_dois = salvar.reves_mm_dois;
 
-<<<<<<< HEAD
+
                     editarDados.reves_cm_dois = (editarDados.reves_mm_dois / 10);
 
                     //editando usuario da coleta.
                     editarDados.editarUsuario = Usuario();
 
-=======
+
                     editarDados.reves_cm_dois = float.Parse((editarDados.reves_mm_dois / 10).ToString("N2"));
->>>>>>> Gabriel
+
 
                     await _context.SaveChangesAsync();
                     TempData["Mensagem"] = "Dados Editado Com Sucesso";
@@ -5185,18 +5185,16 @@ namespace Coleta_Colchao.Controllers
                     // final do calculo da medias de largura, comprimento, e espessura.
 
                     //inicio calculo total..
-<<<<<<< HEAD
+
                     float vol_calc_amostra_um = float.Parse(((media_esp_um) / 100).ToString("N3"));
                     float vol_calc_amostra_dois = float.Parse(((media_esp_dois) / 100).ToString("N3"));
                     float vol_calc_amostra_tres = float.Parse(((media_esp_tres) / 100).ToString("N3"));
-=======
+
                     float calc_amostra_um = ((media_esp_um) / 1000);
                     float calc_amostra_dois = ((media_esp_dois) / 1000);
                     float calc_amostra_tres = ((media_esp_tres) / 1000);
-                    float vol_calc_amostra_um = (float)Math.Round((calc_amostra_um * 10000),2);
-                    float vol_calc_amostra_dois = (float)Math.Round((calc_amostra_dois * 10000),2);
-                    float vol_calc_amostra_tres = (float)Math.Round((calc_amostra_tres * 10000),2);
->>>>>>> Gabriel
+                    
+
                     salvarDados.calc_amostra_um = vol_calc_amostra_um;
                     salvarDados.calc_amostra_dois = vol_calc_amostra_dois;
                     salvarDados.calc_amostra_tres = vol_calc_amostra_tres;
@@ -5205,7 +5203,7 @@ namespace Coleta_Colchao.Controllers
                     //inicio calculo dr..            
                     salvarDados.dr_um_um = salvarDados.massa_um;
                     salvarDados.dr_um_dois = vol_calc_amostra_um;
-<<<<<<< HEAD
+
                     salvarDados.dr_resul_um = (float)Math.Round((((salvarDados.dr_um_um / salvarDados.dr_um_dois) * 1000) / 1000),1);
 
 
@@ -5217,7 +5215,7 @@ namespace Coleta_Colchao.Controllers
                     salvarDados.dr_tres_um = salvarDados.massa_tres;
                     salvarDados.dr_tres_dois = vol_calc_amostra_tres;
                     salvarDados.dr_resul_tres = (float)Math.Round((((salvarDados.dr_tres_um / salvarDados.dr_tres_dois) * 1000) /1000),1);
-=======
+
                     salvarDados.dr_resul_um = float.Parse((((salvarDados.dr_um_um / salvarDados.dr_um_dois)) * 1000).ToString("N2"));
 
                     salvarDados.dr_dois_um = salvarDados.massa_dois;
@@ -5227,7 +5225,7 @@ namespace Coleta_Colchao.Controllers
                     salvarDados.dr_tres_um = salvarDados.massa_tres;
                     salvarDados.dr_tres_dois = vol_calc_amostra_tres;
                     salvarDados.dr_resul_tres = float.Parse(((salvarDados.dr_tres_um / salvarDados.dr_tres_dois) * 1000).ToString("N2"));
->>>>>>> Gabriel
+
 
                     salvarDados.dr_media = float.Parse(Math.Round(((salvarDados.dr_resul_um + salvarDados.dr_resul_dois + salvarDados.dr_resul_tres) / 3), 1).ToString("N2"));
 
@@ -5311,7 +5309,6 @@ namespace Coleta_Colchao.Controllers
                     //inicio DR
                     editarDados.dr_um_um = editarDados.massa_um;
                     editarDados.dr_um_dois = editarDados.calc_amostra_um;
-<<<<<<< HEAD
                     editarDados.dr_resul_um = (float)Math.Round((((editarDados.dr_um_um / editarDados.dr_um_dois) * 1000) / 1000), 1);
 
                     editarDados.dr_dois_um = editarDados.massa_dois;
@@ -5324,7 +5321,7 @@ namespace Coleta_Colchao.Controllers
                     editarDados.dr_resul_tres = (float)Math.Round((((editarDados.dr_tres_um / editarDados.dr_tres_dois) * 1000) / 1000), 1);
 
                     editarDados.dr_media = (float)Math.Round(((editarDados.dr_resul_um + editarDados.dr_resul_dois + editarDados.dr_resul_tres) / 3),1);
-=======
+
                     float dr_result_um = ((editarDados.dr_um_um / editarDados.dr_um_dois) * 1000);
                     editarDados.dr_resul_um = float.Parse(dr_result_um.ToString("N2"));
 
@@ -5339,7 +5336,7 @@ namespace Coleta_Colchao.Controllers
                     editarDados.dr_resul_tres = float.Parse(dr_result_tres.ToString("N2"));
 
                     editarDados.dr_media = float.Parse(((editarDados.dr_resul_um + editarDados.dr_resul_dois + editarDados.dr_resul_tres) / 3).ToString("N2"));
->>>>>>> Gabriel
+
 
                     //float inverter_densidade = (salvarDados.densidade * 10) / 100;
                     float densidade_resultado = float.Parse(((editarDados.densidade * 10) / 100) + editarDados.densidade.ToString("N2"));
@@ -7668,10 +7665,9 @@ namespace Coleta_Colchao.Controllers
                 if (editarDados == null)
                 {
                     //realizando media de largura, comprimento, e espessura.
-<<<<<<< HEAD
 
-=======
->>>>>>> Gabriel
+
+
 
                     //espessura.. 
                     float media_esp_um = ((salvarDados.esp_ini_amostra_um_um + salvarDados.esp_ini_amostra_um_dois + salvarDados.esp_ini_amostra_um_tres + salvarDados.esp_ini_amostra_um_quatro + salvarDados.esp_ini_amostra_um_cinco + salvarDados.esp_ini_amostra_um_seis + salvarDados.esp_ini_amostra_um_sete + salvarDados.esp_ini_amostra_um_oito) / 8);
