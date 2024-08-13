@@ -3835,11 +3835,11 @@ namespace Coleta_Colchao.Controllers
                     //conformidade dos restante das perguntas..
                     if (tipo_espuma == "Sim" && densidade_nominal == "Sim" && comp_revestimento == "Sim" && data_fabricacao == "Sim" && pais_fabricacao == "Sim" && cuidados == "Sim" && negrito_dois == "Sim" && caixa_alta_dois == "Sim" && negrito_tres == "Sim" && caixa_alta_tres == "Sim" && coloracao_eti == "Sim" && negrito_quat == "Sim" && caixa_alta_quat == "Sim" && coloracao_quat == "Sim" && espessura_mad == "Sim" || espessura_mad == null && aviso_um == "Sim" || aviso_um == null && negrito_dois == "Sim" || negrito_dois == null && caixa_alta_dois == "Sim" || caixa_alta_dois == null && esclarecimento_um == "Sim" || esclarecimento_um == null && negrito_tres == "Sim" || negrito_tres == null && caixa_alta_tres == "Sim" || caixa_alta_tres == null && coloracao_eti == "Sim" || coloracao_eti == null && esclarecimento_dois == "Sim" || esclarecimento_dois == null)
                     {
-<<<<<<< HEAD
+
                         if (altura_letra_dois >= 3 && altura_letra_tres >= 3 && altura_letra_quat >= 3)
-=======
-                        if (int.Parse(altura_letra_tres) >= 3 && int.Parse(altura_letra_quat) >= 3)
->>>>>>> Molina
+
+                        if (altura_letra_tres >= 3 && altura_letra_quat >= 3)
+
                         {
                             conforme_letras_dois = "C";
                         }
@@ -5190,15 +5190,12 @@ namespace Coleta_Colchao.Controllers
 
                     //inicio calculo total..
 
-                    float vol_calc_amostra_um = float.Parse(((media_esp_um) / 100).ToString("N3"));
-                    float vol_calc_amostra_dois = float.Parse(((media_esp_dois) / 100).ToString("N3"));
-                    float vol_calc_amostra_tres = float.Parse(((media_esp_tres) / 100).ToString("N3"));
-
                     float calc_amostra_um = ((media_esp_um) / 1000);
                     float calc_amostra_dois = ((media_esp_dois) / 1000);
                     float calc_amostra_tres = ((media_esp_tres) / 1000);
-                    
-
+                    float vol_calc_amostra_um = (float)Math.Round((calc_amostra_um * 10000), 2);
+                    float vol_calc_amostra_dois = (float)Math.Round((calc_amostra_dois * 10000), 2);
+                    float vol_calc_amostra_tres = (float)Math.Round((calc_amostra_tres * 10000), 2);
                     salvarDados.calc_amostra_um = vol_calc_amostra_um;
                     salvarDados.calc_amostra_dois = vol_calc_amostra_dois;
                     salvarDados.calc_amostra_tres = vol_calc_amostra_tres;

@@ -14,11 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Coleta-Colchao")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-<<<<<<< HEAD
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+253860450b53e6ac6d0f7116d43b26e8c3ef5800")]
-=======
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+81e796529a3cc197f4eacd5a25842c35c6c2a28e")]
->>>>>>> Molina
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+55a856a8053927c201ccbfcc0d51217d59b9b569")]
 [assembly: System.Reflection.AssemblyProductAttribute("Coleta-Colchao")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Coleta-Colchao")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
