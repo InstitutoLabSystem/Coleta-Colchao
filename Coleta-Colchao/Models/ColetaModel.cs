@@ -90,6 +90,9 @@ namespace Coleta_Colchao.Models
             public string? revestimento { get; set; }
             public string? anti_reflexo { get; set; }
             public string? outros_materia { get; set; }
+            public float comprimento { get; set; }
+            public float altura { get; set; }
+            public float largura { get; set; }
             public string? andamento { get; set; }
 
 
@@ -204,8 +207,8 @@ namespace Coleta_Colchao.Models
             public float reves_mm_dois { get; set; }
             public float reves_cm_dois { get; set; }
             public string? reves_resul_final { get; set; }
-
-
+            public string? executor { get; set; }
+            public string? editarUsuario { get; set; }
         }
 
 
@@ -230,6 +233,7 @@ namespace Coleta_Colchao.Models
             public string? man_parale_espuma { get; set; }
             public string? man_parale_espuma_molejo { get; set; }
             public string? executor { get; set; }
+            public string? usuarioEdicao { get; set; }
             public int contem_molejo { get; set; }
             public string? pergunta_a { get; set; }
             public string? pergunta_b { get; set; }
@@ -576,6 +580,8 @@ namespace Coleta_Colchao.Models
             public string? quant_colagens_cinco { get; set; }
             public string? espessura_lamina { get; set; }
             public string? adesivo { get; set; }
+            public string? executor { get; set; }
+            public string? editarUsuario { get; set; }
 
         }
 
@@ -666,6 +672,8 @@ namespace Coleta_Colchao.Models
             public string? conforme_2_14_2 { get; set; }
             public string? conforme_2_14_3 { get; set; }
             public string? conforme6_2 { get; set; }
+            public string? executor { get; set; }
+            public string? editarUsuario { get; set; }
 
         }
 
@@ -714,7 +722,7 @@ namespace Coleta_Colchao.Models
             public string? conforme_b { get; set; }
             public string? conforme_c { get; set; }
             public string? executor { get; set; }
-            public string? auxiliar { get; set; }
+            public string? editarUsuario { get; set; }
             public string? temp_ini { get; set; }
             public string? temp_term { get; set; }
 
@@ -771,7 +779,7 @@ namespace Coleta_Colchao.Models
             public string? temp_ini { get; set; }
             public string? temp_term { get; set; }
             public string? executor { get; set; }
-            public string? auxiliar { get; set; }
+            public string? editarUsuario { get; set; }
 
         }
 
@@ -798,7 +806,7 @@ namespace Coleta_Colchao.Models
             public string? temp_ini { get; set; }
             public string? temp_term { get; set; }
 
-            public string? auxiliar { get; set; }
+            public string? editarUsuario { get; set; }
             public string? executor { get; set; }
         }
 
@@ -925,7 +933,10 @@ namespace Coleta_Colchao.Models
             public float dr_media { get; set; }
             public float maxima_densidade { get; set; }
             public float minima_densidade { get; set; }
+            public string? executador { get; set; }
+            public string? editorUsuario { get; set; }
             public string? conforme { get; set; }
+           
         }
 
         public class LaminaResiliencia
@@ -968,6 +979,8 @@ namespace Coleta_Colchao.Models
             public float temp_final { get; set; }         
             public string? im { get; set; }
             public string? responsavel_cond { get; set; }
+            public string? executor { get; set; }
+            public string? editorUsuario { get; set; }
         }
 
         public class LaminaDPC
@@ -1079,6 +1092,8 @@ namespace Coleta_Colchao.Models
             public int densidade { get; set; }
             public string? conforme { get; set; }
             public string? min_max { get; set; }
+            public string? executor { get; set; }
+            public string? editorUsuario { get; set; }
 
 
         }
@@ -1194,6 +1209,8 @@ namespace Coleta_Colchao.Models
             public float temp_final { get; set; }         
             public string? im { get; set; }
             public string? responsavel_cond { get; set; }
+            public string? executor { get; set; }
+            public string? editorUsuario { get; set; }
         }
 
         public class LaminaFadigaRotativa
@@ -1296,6 +1313,8 @@ namespace Coleta_Colchao.Models
             public string? tipo_espuma { get; set; }
             public int densidade { get; set; }
             public string? conforme { get; set; }
+            public string? executor { get; set; }
+            public string? editarUsuario { get; set; }
 
         }
 
@@ -1418,6 +1437,8 @@ namespace Coleta_Colchao.Models
             public string? im { get; set; }
             public string? responsavel_cond { get; set; }
             public string? conforme { get; set; }
+            public string? executor { get; set; }
+            public string? editarUsuario { get; set; }
         }
 
     }
