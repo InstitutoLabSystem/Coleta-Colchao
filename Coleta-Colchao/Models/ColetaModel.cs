@@ -602,7 +602,7 @@ namespace Coleta_Colchao.Models
             public string? colchoes { get; set; }
             public string? tipo_colchao { get; set; }
             public string? letras { get; set; }
-            public string? altura_letra_um { get; set; }
+            public float? altura_letra_um { get; set; }
             public string? negrito_um { get; set; }
             public string? caixa_alta_um { get; set; }
             public string? coloracao_um { get; set; }
@@ -617,30 +617,30 @@ namespace Coleta_Colchao.Models
             public string? pais_fabricacao { get; set; }
             public string? cuidados { get; set; }
             public string? aviso_um { get; set; }
-            public string? altura_letra_dois { get; set; }
+            public float? altura_letra_dois { get; set; }
             public string? negrito_dois { get; set; }
             public string? caixa_alta_dois { get; set; }
             public string? coloracao_dois { get; set; }
             public string? esclarecimento_um { get; set; }
-            public string? altura_letra_tres { get; set; }
+            public float? altura_letra_tres { get; set; }
             public string? negrito_tres { get; set; }
             public string? caixa_alta_tres { get; set; }
             public string? coloracao_eti { get; set; }
             public string? esclarecimento_dois { get; set; }
-            public string? altura_letra_quat { get; set; }
+            public float? altura_letra_quat { get; set; }
             public string? negrito_quat { get; set; }
             public string? caixa_alta_quat { get; set; }
             public string? coloracao_quat { get; set; }
             public string? colchao_infantil { get; set; }
             public string? embalagem_colchao { get; set; }
             public string? aviso_embalagem_um { get; set; }
-            public string? altura_letra_cinco { get; set; }
+            public float? altura_letra_cinco { get; set; }
             public string? negrito_cinco { get; set; }
             public string? caixa_alta_cinco { get; set; }
             public string? coloracao_cinco { get; set; }
             public string? aviso_odor { get; set; }
             public string? aviso_embalagem_dois { get; set; }
-            public string? altura_letra_seis { get; set; }
+            public float? altura_letra_seis { get; set; }
             public string? negrito_seis { get; set; }
             public string? caixa_alta_seis { get; set; }
             public string? coloracao_seis { get; set; }
@@ -814,7 +814,7 @@ namespace Coleta_Colchao.Models
             public string? inferior_horizontal { get; set; }
             public string? conforme { get; set; }
             public string? executor { get; set; }
-            public string? auxiliar { get; set; }
+            public string? editarUsuario { get; set; }
         }
 
         public class CargasEstatica

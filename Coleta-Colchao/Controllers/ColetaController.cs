@@ -3708,7 +3708,7 @@ namespace Coleta_Colchao.Controllers
                     string colchoes = salvar.colchoes;
                     string tipo_colchao = salvar.tipo_colchao;
                     string letras = salvar.letras;
-                    string altura_letra_um = salvar.altura_letra_um;
+                    float? altura_letra_um = salvar.altura_letra_um;
                     string negrito_um = salvar.negrito_um;
                     string caixa_alta_um = salvar.caixa_alta_um;
                     string coloracao_um = salvar.coloracao_um;
@@ -3723,30 +3723,30 @@ namespace Coleta_Colchao.Controllers
                     string pais_fabricacao = salvar.pais_fabricacao;
                     string cuidados = salvar.cuidados;
                     string aviso_um = salvar.aviso_um;
-                    string altura_letra_dois = salvar.altura_letra_dois;
+                    float? altura_letra_dois = salvar.altura_letra_dois;
                     string negrito_dois = salvar.negrito_dois;
                     string caixa_alta_dois = salvar.caixa_alta_dois;
                     string coloracao_dois = salvar.coloracao_dois;
                     string esclarecimento_um = salvar.esclarecimento_um;
-                    string altura_letra_tres = salvar.altura_letra_tres;
+                    float? altura_letra_tres = salvar.altura_letra_tres;
                     string negrito_tres = salvar.negrito_tres;
                     string caixa_alta_tres = salvar.caixa_alta_tres;
                     string coloracao_eti = salvar.coloracao_eti;
                     string esclarecimento_dois = salvar.esclarecimento_dois;
-                    string altura_letra_quat = salvar.altura_letra_quat;
+                    float? altura_letra_quat = salvar.altura_letra_quat;
                     string negrito_quat = salvar.negrito_quat;
                     string caixa_alta_quat = salvar.caixa_alta_quat;
                     string coloracao_quat = salvar.coloracao_quat;
                     string colchao_infantil = salvar.colchao_infantil;
                     string embalagem_colchao = salvar.embalagem_colchao;
                     string aviso_embalagem_um = salvar.aviso_embalagem_um;
-                    string altura_letra_cinco = salvar.altura_letra_cinco;
+                    float? altura_letra_cinco = salvar.altura_letra_cinco;
                     string negrito_cinco = salvar.negrito_cinco;
                     string caixa_alta_cinco = salvar.caixa_alta_cinco;
                     string coloracao_cinco = salvar.coloracao_cinco;
                     string aviso_odor = salvar.aviso_odor;
                     string aviso_embalagem_dois = salvar.aviso_embalagem_dois;
-                    string altura_letra_seis = salvar.altura_letra_seis;
+                    float? altura_letra_seis = salvar.altura_letra_seis;
                     string negrito_seis = salvar.negrito_seis;
                     string caixa_alta_seis = salvar.caixa_alta_seis;
                     string coloracao_seis = salvar.coloracao_seis;
@@ -3805,7 +3805,7 @@ namespace Coleta_Colchao.Controllers
                     //conformidade dos restante das perguntas..
                     if (tipo_espuma == "Sim" && densidade_nominal == "Sim" && comp_revestimento == "Sim" && data_fabricacao == "Sim" && pais_fabricacao == "Sim" && cuidados == "Sim" && negrito_dois == "Sim" && caixa_alta_dois == "Sim" && negrito_tres == "Sim" && caixa_alta_tres == "Sim" && coloracao_eti == "Sim" && negrito_quat == "Sim" && caixa_alta_quat == "Sim" && coloracao_quat == "Sim" && espessura_mad == "Sim" || espessura_mad == null && aviso_um == "Sim" || aviso_um == null && negrito_dois == "Sim" || negrito_dois == null && caixa_alta_dois == "Sim" || caixa_alta_dois == null && esclarecimento_um == "Sim" || esclarecimento_um == null && negrito_tres == "Sim" || negrito_tres == null && caixa_alta_tres == "Sim" || caixa_alta_tres == null && coloracao_eti == "Sim" || coloracao_eti == null && esclarecimento_dois == "Sim" || esclarecimento_dois == null)
                     {
-                        if (int.Parse(altura_letra_dois) >= 3 && int.Parse(altura_letra_tres) >= 3 && int.Parse(altura_letra_quat) >= 3)
+                        if (altura_letra_dois >= 3 && altura_letra_tres >= 3 && altura_letra_quat >= 3)
                         {
                             conforme_letras_dois = "C";
                         }
@@ -3824,7 +3824,7 @@ namespace Coleta_Colchao.Controllers
                     {
                         if (colchao_infantil == "Sim" && embalagem_colchao == "Sim" && aviso_embalagem_um == "Sim" && negrito_cinco == "Sim" && caixa_alta_cinco == "Sim" && coloracao_cinco == "Sim" && aviso_embalagem_dois == "Sim" && negrito_seis == "Sim" && caixa_alta_seis == "Sim" && coloracao_seis == "Sim" && dec_voluntaria == "Sim" && texto_negrito == "Sim" && identificacao == "Sim" && identificacao_dois == "Sim")
                         {
-                            if (int.Parse(altura_letra_cinco) >= 3 && int.Parse(altura_letra_seis) >= 3)
+                            if (altura_letra_cinco >= 3 && altura_letra_seis >= 3)
                             {
                                 conforme_infantil = "C";
                             }
@@ -4061,7 +4061,7 @@ namespace Coleta_Colchao.Controllers
                     {
                         if (editarDados.colchao_infantil == "Sim" && editarDados.embalagem_colchao == "Sim" && editarDados.aviso_embalagem_um == "Sim" && editarDados.negrito_cinco == "Sim" && editarDados.caixa_alta_cinco == "Sim" && editarDados.coloracao_cinco == "Sim" && editarDados.aviso_embalagem_dois == "Sim" && editarDados.negrito_seis == "Sim" && editarDados.caixa_alta_seis == "Sim" && editarDados.coloracao_seis == "Sim" && editarDados.dec_voluntaria == "Sim" && editarDados.texto_negrito == "Sim" && editarDados.identificacao == "Sim" && editarDados.identificacao_dois == "Sim")
                         {
-                            if (int.Parse(editarDados.altura_letra_cinco) >= 3 && int.Parse(editarDados.altura_letra_seis) >= 3)
+                            if (editarDados.altura_letra_cinco >= 3 && editarDados.altura_letra_seis >= 3)
                             {
                                 conforme_infantil = "C";
                             }
