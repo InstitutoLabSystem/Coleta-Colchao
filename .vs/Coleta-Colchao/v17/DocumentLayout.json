@@ -7,16 +7,20 @@
       "RelativeMoniker": "D:0:0:{A122F397-C234-43D8-A8C7-2102421BAFCA}|Coleta-Colchao\\Coleta-Colchao.csproj|solutionrelative:coleta-colchao\\controllers\\coletacontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A122F397-C234-43D8-A8C7-2102421BAFCA}|Coleta-Colchao\\Coleta-Colchao.csproj|c:\\xampp\\htdocs\\coleta-colchao\\coleta-colchao\\views\\coleta\\espuma\\identificacaoembalagem.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{A122F397-C234-43D8-A8C7-2102421BAFCA}|Coleta-Colchao\\Coleta-Colchao.csproj|solutionrelative:coleta-colchao\\views\\coleta\\espuma\\identificacaoembalagem.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A122F397-C234-43D8-A8C7-2102421BAFCA}|Coleta-Colchao\\Coleta-Colchao.csproj|c:\\xampp\\htdocs\\coleta-colchao\\coleta-colchao\\views\\coleta\\espuma\\espuma4_4.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{A122F397-C234-43D8-A8C7-2102421BAFCA}|Coleta-Colchao\\Coleta-Colchao.csproj|solutionrelative:coleta-colchao\\views\\coleta\\espuma\\espuma4_4.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{A122F397-C234-43D8-A8C7-2102421BAFCA}|Coleta-Colchao\\Coleta-Colchao.csproj|c:\\xampp\\htdocs\\coleta-colchao\\coleta-colchao\\views\\coleta\\molas\\ensaiomolas7_7.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{A122F397-C234-43D8-A8C7-2102421BAFCA}|Coleta-Colchao\\Coleta-Colchao.csproj|solutionrelative:coleta-colchao\\views\\coleta\\molas\\ensaiomolas7_7.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{A122F397-C234-43D8-A8C7-2102421BAFCA}|Coleta-Colchao\\Coleta-Colchao.csproj|c:\\xampp\\htdocs\\coleta-colchao\\coleta-colchao\\models\\coletamodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{A122F397-C234-43D8-A8C7-2102421BAFCA}|Coleta-Colchao\\Coleta-Colchao.csproj|solutionrelative:coleta-colchao\\models\\coletamodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A122F397-C234-43D8-A8C7-2102421BAFCA}|Coleta-Colchao\\Coleta-Colchao.csproj|c:\\xampp\\htdocs\\coleta-colchao\\coleta-colchao\\views\\coleta\\molas\\identificacaoembalagemmolas.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{A122F397-C234-43D8-A8C7-2102421BAFCA}|Coleta-Colchao\\Coleta-Colchao.csproj|solutionrelative:coleta-colchao\\views\\coleta\\molas\\identificacaoembalagemmolas.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A122F397-C234-43D8-A8C7-2102421BAFCA}|Coleta-Colchao\\Coleta-Colchao.csproj|c:\\xampp\\htdocs\\coleta-colchao\\coleta-colchao\\views\\coleta\\espuma\\espuma4_4.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{A122F397-C234-43D8-A8C7-2102421BAFCA}|Coleta-Colchao\\Coleta-Colchao.csproj|solutionrelative:coleta-colchao\\views\\coleta\\espuma\\espuma4_4.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     }
   ],
   "DocumentGroupContainers": [
@@ -36,7 +40,7 @@
               "RelativeDocumentMoniker": "Coleta-Colchao\\Controllers\\ColetaController.cs",
               "ToolTip": "C:\\xampp\\htdocs\\Coleta-Colchao\\Coleta-Colchao\\Controllers\\ColetaController.cs",
               "RelativeToolTip": "Coleta-Colchao\\Controllers\\ColetaController.cs",
-              "ViewState": "AQIAAPsOAAAAAAAAAAAWwBkPAAAdAAAA",
+              "ViewState": "AQIAACAKAAAAAAAAAAAAwCsKAAA6AAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-06-24T12:37:41.908Z",
               "IsPinned": true,
@@ -44,13 +48,13 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 2,
               "Title": "ColetaModel.cs",
               "DocumentMoniker": "C:\\xampp\\htdocs\\Coleta-Colchao\\Coleta-Colchao\\Models\\ColetaModel.cs",
               "RelativeDocumentMoniker": "Coleta-Colchao\\Models\\ColetaModel.cs",
               "ToolTip": "C:\\xampp\\htdocs\\Coleta-Colchao\\Coleta-Colchao\\Models\\ColetaModel.cs",
               "RelativeToolTip": "Coleta-Colchao\\Models\\ColetaModel.cs",
-              "ViewState": "AQIAAFgCAAAAAAAAAADgv1wCAAAZAAAA",
+              "ViewState": "AQIAAJsBAAAAAAAAAIA3wJsBAAAeAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-06-24T12:52:36.445Z",
               "IsPinned": true
@@ -81,7 +85,32 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 1,
+              "Title": "EnsaioMolas7_7.cshtml",
+              "DocumentMoniker": "C:\\xampp\\htdocs\\Coleta-Colchao\\Coleta-Colchao\\Views\\Coleta\\Molas\\EnsaioMolas7_7.cshtml",
+              "RelativeDocumentMoniker": "Coleta-Colchao\\Views\\Coleta\\Molas\\EnsaioMolas7_7.cshtml",
+              "ToolTip": "C:\\xampp\\htdocs\\Coleta-Colchao\\Coleta-Colchao\\Views\\Coleta\\Molas\\EnsaioMolas7_7.cshtml",
+              "RelativeToolTip": "Coleta-Colchao\\Views\\Coleta\\Molas\\EnsaioMolas7_7.cshtml",
+              "ViewState": "AQIAAH4AAAAAAAAAAAAAABsBAABrAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-08-15T12:10:22.499Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "IdentificacaoEmbalagemMolas.cshtml",
+              "DocumentMoniker": "C:\\xampp\\htdocs\\Coleta-Colchao\\Coleta-Colchao\\Views\\Coleta\\Molas\\IdentificacaoEmbalagemMolas.cshtml",
+              "RelativeDocumentMoniker": "Coleta-Colchao\\Views\\Coleta\\Molas\\IdentificacaoEmbalagemMolas.cshtml",
+              "ToolTip": "C:\\xampp\\htdocs\\Coleta-Colchao\\Coleta-Colchao\\Views\\Coleta\\Molas\\IdentificacaoEmbalagemMolas.cshtml",
+              "RelativeToolTip": "Coleta-Colchao\\Views\\Coleta\\Molas\\IdentificacaoEmbalagemMolas.cshtml",
+              "ViewState": "AQIAAOgDAAAAAAAAAAAmwPsDAABwAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-08-14T17:02:00.741Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
               "Title": "Espuma4_4.cshtml",
               "DocumentMoniker": "C:\\xampp\\htdocs\\Coleta-Colchao\\Coleta-Colchao\\Views\\Coleta\\Espuma\\Espuma4_4.cshtml",
               "RelativeDocumentMoniker": "Coleta-Colchao\\Views\\Coleta\\Espuma\\Espuma4_4.cshtml",
@@ -90,18 +119,6 @@
               "ViewState": "AQIAAGYAAAAAAAAAAAAAAIMAAABSAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
               "WhenOpened": "2024-08-13T12:32:06.571Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "IdentificacaoEmbalagem.cshtml",
-              "DocumentMoniker": "C:\\xampp\\htdocs\\Coleta-Colchao\\Coleta-Colchao\\Views\\Coleta\\Espuma\\IdentificacaoEmbalagem.cshtml",
-              "RelativeDocumentMoniker": "Coleta-Colchao\\Views\\Coleta\\Espuma\\IdentificacaoEmbalagem.cshtml",
-              "ToolTip": "C:\\xampp\\htdocs\\Coleta-Colchao\\Coleta-Colchao\\Views\\Coleta\\Espuma\\IdentificacaoEmbalagem.cshtml",
-              "RelativeToolTip": "Coleta-Colchao\\Views\\Coleta\\Espuma\\IdentificacaoEmbalagem.cshtml",
-              "ViewState": "AQIAAPcBAAAAAAAAAAAAABECAAAkAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-08-12T16:13:24.866Z"
             }
           ]
         }

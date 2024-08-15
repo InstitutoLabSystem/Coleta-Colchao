@@ -491,9 +491,7 @@ namespace Coleta_Colchao.Models
             public string orcamento { get; set; }
             public DateOnly data_ini { get; set; }
             public DateOnly data_term { get; set; }
-
             public string? lingua_portuguesa { get; set; }
-
             public float area_etiqueta_1 { get; set; }
             public float area_etiqueta_2 { get; set; }
             public float area_etiqueta_media { get; set; }
@@ -534,8 +532,6 @@ namespace Coleta_Colchao.Models
             public string? auxiliar { get; set; }
             public string? conforme_area { get; set; }
         }
-
-
 
         public class Espuma4_3
         {

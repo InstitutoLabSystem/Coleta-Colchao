@@ -2519,13 +2519,12 @@ namespace Coleta_Colchao.Controllers
                     string conforme = string.Empty;
 
                     //realizando calculos.
-                    float media_copos = (copos_prov_1 + copos_prov_2 + copos_prov_3 + copos_prov_4 + copos_prov_5 + copos_prov_6 + copos_prov_7 + copos_prov_8 + copos_prov_9 + copos_prov_10) / 10;
-                    string conv_media_copos = media_copos.ToString("N4");
+                    float media_copos = float.Parse(((copos_prov_1 + copos_prov_2 + copos_prov_3 + copos_prov_4 + copos_prov_5 + copos_prov_6 + copos_prov_7 + copos_prov_8 + copos_prov_9 + copos_prov_10) / 10).ToString("N2"));
+                    string conv_media_copos = media_copos.ToString("N3");
                     media_copos = float.Parse(conv_media_copos);
 
-                    float gramatura = ((media_copos / (area_corpo_1 * area_corpo_2 / 100)) * 10000);
-
-
+                    string resultado = ((media_copos / (area_corpo_1 * area_corpo_2 / 100)) * 10000).ToString("N0");
+                    float gramatura = float.Parse(resultado);
 
                     //verificando conformidade dos ensaios.
                     if (media_copos >= 100.0f)
@@ -2606,12 +2605,12 @@ namespace Coleta_Colchao.Controllers
                     string conforme = string.Empty;
 
                     //realizando contas.
-                    float media_copos = (editarDados.copos_prov_1 + editarDados.copos_prov_2 + editarDados.copos_prov_3 + editarDados.copos_prov_4 + editarDados.copos_prov_5 + editarDados.copos_prov_6 + editarDados.copos_prov_7 + editarDados.copos_prov_8 + editarDados.copos_prov_9 + editarDados.copos_prov_10) / 10;
-                    string conv_media_copos = media_copos.ToString("N4");
+                    float media_copos = float.Parse(((editarDados.copos_prov_1 + editarDados.copos_prov_2 + editarDados.copos_prov_3 + editarDados.copos_prov_4 + editarDados.copos_prov_5 + editarDados.copos_prov_6 + editarDados.copos_prov_7 + editarDados.copos_prov_8 + editarDados.copos_prov_9 + editarDados.copos_prov_10) / 10).ToString("N2"));
+                    string conv_media_copos = media_copos.ToString("N3");
                     media_copos = float.Parse(conv_media_copos);
 
-                    float gramatura = (media_copos / (editarDados.area_corpo_1 * editarDados.area_corpo_2 / 100) * 10000);
-
+                    float resultado = ((media_copos / (editarDados.area_corpo_1 * editarDados.area_corpo_2 / 100) * 10000));
+                    float gramatura = float.Parse((resultado / 10000).ToString("N0"));
 
                     //verificando conformidade dos ensaios.
                     if (media_copos >= 100.0f)
@@ -2781,19 +2780,19 @@ namespace Coleta_Colchao.Controllers
                     //recebendo os valores de html.
                     DateOnly data_ini = salvarDados.data_ini;
                     DateOnly data_term = salvarDados.data_term;
-                    string rasgo = salvarDados.rasgo;
-                    string quebra = salvarDados.quebra;
-                    string contem_bonell_1 = salvarDados.contem_bonell_1;
-                    string contem_bonell_2 = salvarDados.contem_bonell_2;
-                    string contem_mola = salvarDados.contem_mola;
-                    string contem_lkf = salvarDados.contem_lkf;
-                    string contem_vericoil = salvarDados.contem_vericoil;
-                    string contem_fio_continuo_1 = salvarDados.contem_fio_continuo_1;
-                    string contem_fio_continuo_2 = salvarDados.contem_fio_continuo_2;
-                    string contem_offset = salvarDados.contem_offset;
+                    string? rasgo = salvarDados.rasgo;
+                    string? quebra = salvarDados.quebra;
+                    string? contem_bonell_1 = salvarDados.contem_bonell_1;
+                    string? contem_bonell_2 = salvarDados.contem_bonell_2;
+                    string? contem_mola = salvarDados.contem_mola;
+                    string? contem_lkf = salvarDados.contem_lkf;
+                    string? contem_vericoil = salvarDados.contem_vericoil;
+                    string? contem_fio_continuo_1 = salvarDados.contem_fio_continuo_1;
+                    string? contem_fio_continuo_2 = salvarDados.contem_fio_continuo_2;
+                    string? contem_offset = salvarDados.contem_offset;
                     //string contem_tipo_8 = salvarDados.contem_tipo_8;
-                    string minim_bitola_1 = salvarDados.minim_bitola_1;
-                    string minim_bitola_2 = salvarDados.minim_bitola_2;
+                    string? minim_bitola_1 = salvarDados.minim_bitola_1;
+                    string? minim_bitola_2 = salvarDados.minim_bitola_2;
                     float mini_molas_1 = salvarDados.mini_molas_1;
                     float mini_molas_2 = salvarDados.mini_molas_2;
                     float mini_molas_3 = salvarDados.mini_molas_3;
@@ -2805,9 +2804,9 @@ namespace Coleta_Colchao.Controllers
                     float calc_molas_1 = salvarDados.calc_molas_1;
                     float calc_molas_2 = salvarDados.calc_molas_2;
                     float calc_molas_3 = salvarDados.calc_molas_3;
-                    float calc_molas_duplicado = (float)salvarDados.calc_molas_duplicado;
-                    float calc_molas_duplicado_2 = (float)salvarDados.calc_molas_duplicado_2;
-                    float calc_molas_duplicado_3 = (float)salvarDados.calc_molas_duplicado_3;
+                    float calc_molas_duplicado = salvarDados.calc_molas_duplicado;
+                    float calc_molas_duplicado_2 = salvarDados.calc_molas_duplicado_2;
+                    float calc_molas_duplicado_3 = salvarDados.calc_molas_duplicado_3;
                     float resultado_calculo_duplicado = 0f;
                     string conforme = string.Empty;
 
@@ -5206,8 +5205,6 @@ namespace Coleta_Colchao.Controllers
                     salvarDados.dr_um_dois = vol_calc_amostra_um;
 
                     salvarDados.dr_resul_um = (float)Math.Round((((salvarDados.dr_um_um / salvarDados.dr_um_dois) * 1000) / 1000),1);
-
-
 
                     salvarDados.dr_dois_um = salvarDados.massa_dois;
                     salvarDados.dr_dois_dois = vol_calc_amostra_dois;
