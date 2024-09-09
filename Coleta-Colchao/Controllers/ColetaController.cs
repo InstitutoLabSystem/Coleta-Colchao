@@ -156,11 +156,13 @@ namespace Coleta_Colchao.Controllers
         {
             var Inicial = _context.regtro_colchao_espuma.Where(x => x.os == os && x.orcamento == orcamento).FirstOrDefault();
             var dados = _context.ensaio_espuma4_3.Where(x => x.os == os && x.orcamento == orcamento).FirstOrDefault();
+
             if (dados != null)
             {
                 ViewBag.os = os;
                 ViewBag.orcamento = orcamento;
                 ViewBag.infantil = Inicial.tipo_colchao;
+                ViewBag.quant_laminas = Inicial.quant_laminas;
                 return View("Espuma/EnsaioEspuma4_3", dados);
             }
             else
@@ -168,6 +170,7 @@ namespace Coleta_Colchao.Controllers
                 ViewBag.os = os;
                 ViewBag.orcamento = orcamento;
                 ViewBag.infantil = Inicial.tipo_colchao;
+                ViewBag.quant_laminas = Inicial.quant_laminas;
                 return View("Espuma/EnsaioEspuma4_3");
             }
         }

@@ -176,10 +176,22 @@
                         </select>
                     </td>
                 </tr>
-
+                <tr>
+                    <td>Quantidade de Lâminas</td>
+                    <td colspan="3">
+                        <select class="form-control" asp-for="quant_laminas" id="quantidade" name="quant_laminas">
+                            <option value="Escolha">Selecione...</option>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                        </select>
+                    </td>
+                </tr>
                 @if (Model.tipo_espuma != null)
                 {
-                    <tr>
+                    <tr id="tipo_espuma">
                         <td>Tipo Da Espuma</td>
                         <td colspan="3">
                             <select class="form-control" asp-for="tipo_espuma">
@@ -213,7 +225,7 @@
 
                 @if (Model.tipo_espuma_2 != null)
                 {
-                    <tr>
+                    <tr id="tipo_espuma_2">
                         <td>Tipo Da Espuma</td>
                         <td colspan="3">
                             <select class="form-control" asp-for="tipo_espuma_2">
@@ -248,7 +260,7 @@
 
                 @if (Model.tipo_espuma_3 != null)
                 {
-                    <tr>
+                    <tr id="tipo_espuma_3">
                         <td>Tipo Da Espuma</td>
                         <td colspan="3">
                             <select class="form-control" asp-for="tipo_espuma_3">
@@ -281,7 +293,7 @@
                 }
                 @if (Model.tipo_espuma_4 != null)
                 {
-                    <tr>
+                    <tr id="tipo_espuma_4">
                         <td>Tipo Da Espuma</td>
                         <td colspan="3">
                             <select class="form-control" asp-for="tipo_espuma_4">
@@ -314,7 +326,7 @@
                 }
                 @if (Model.tipo_espuma_5 != null)
                 {
-                    <tr>
+                    <tr id="tipo_espuma_5">
                         <td>Tipo Da Espuma</td>
                         <td colspan="3">
                             <select class="form-control" asp-for="tipo_espuma_5">
@@ -346,22 +358,9 @@
                         </td>
                     </tr>
                 }
-                <tr>
-                    <td>Quantidade de Lâminas</td>
-                    <td colspan="3">
-                        <select class="form-control" asp-for="quant_laminas" id="quantidade" name="quant_laminas">
-                            <option value="Escolha">Selecione...</option>
-                            <option value="1">1</option>
-                            <option value="2">2</option>
-                            <option value="3">3</option>
-                            <option value="4">4</option>
-                            <option value="5">5</option>
-                        </select>
-                    </td>
-                </tr>
                 @if (Model.densidade_1 != null)
                 {
-                    <tr>
+                    <tr id="densidade_1">
                         <td>
                             Densidade Da Espuma
                         </td>
@@ -379,7 +378,7 @@
                 }
                 @if (Model.densidade_2 != null)
                 {
-                    <tr>
+                    <tr id="densidade_2">
                         <td>
                             Densidade Da Espuma
                         </td>
@@ -397,7 +396,7 @@
                 }
                 @if (Model.densidade_3 != null)
                 {
-                    <tr>
+                    <tr id="densidade_3">
                         <td>
                             Densidade Da Espuma
                         </td>
@@ -415,7 +414,7 @@
                 }
                 @if (Model.densidade_4 != null)
                 {
-                    <tr>
+                    <tr id="densidade_4">
                         <td>
                             Densidade Da Espuma
                         </td>
@@ -433,7 +432,7 @@
                 }
                 @if (Model.densidade_5 != null)
                 {
-                    <tr>
+                    <tr id="densidade_5">
                         <td>
                             Densidade Da Espuma
                         </td>
@@ -544,22 +543,32 @@
             console.log(trDensidade1.value);
             if (tipo_espuma.value != undefined) {
                 tipo_espuma.style.display = 'table-row';
+                tipo_espuma_2.style.display = 'none';
+                tipo_espuma_3.style.display = 'none';
+                tipo_espuma_4.style.display = 'none';
+                tipo_espuma_5.style.display = 'none';
 
             }
             if (tipo_espuma_2.value != undefined) {
                 tipo_espuma.style.display = 'table-row';
                 tipo_espuma_2.style.display = 'table-row';
+                tipo_espuma_3.style.display = 'none';
+                tipo_espuma_4.style.display = 'none';
+                tipo_espuma_5.style.display = 'none';
             }
             if (tipo_espuma_3.value != undefined) {
                 tipo_espuma.style.display = 'table-row';
                 tipo_espuma_2.style.display = 'table-row';
                 tipo_espuma_3.style.display = 'table-row';
+                tipo_espuma_4.style.display = 'none';
+                tipo_espuma_5.style.display = 'none';
             }
             if (tipo_espuma_4.value != undefined) {
                 tipo_espuma.style.display = 'table-row';
                 tipo_espuma_2.style.display = 'table-row';
                 tipo_espuma_3.style.display = 'table-row';
                 tipo_espuma_4.style.display = 'table-row';
+                tipo_espuma_5.style.display = 'none';
             }
             if (tipo_espuma_5.value != undefined) {
                 tipo_espuma.style.display = 'table-row';
@@ -573,17 +582,26 @@
 
             if (trDensidade1.value != undefined) {
                 trDensidade1.style.display = 'table-row';
+                trDensidade2.style.display = 'none';
+                trDensidade3.style.display = 'none';
+                trDensidade4.style.display = 'none';
+                trDensidade5.style.display = 'none';
 
             }
             if (trDensidade2.value != undefined) {
                 trDensidade1.style.display = 'table-row';
                 trDensidade2.style.display = 'table-row';
+                trDensidade3.style.display = 'none';
+                trDensidade4.style.display = 'none';
+                trDensidade5.style.display = 'none';
 
             }
             if (trDensidade3.value != undefined) {
                 trDensidade1.style.display = 'table-row';
                 trDensidade2.style.display = 'table-row';
                 trDensidade3.style.display = 'table-row';
+                trDensidade4.style.display = 'none';
+                trDensidade5.style.display = 'none';
 
             }
             if (trDensidade4.value != undefined) {
@@ -591,6 +609,7 @@
                 trDensidade2.style.display = 'table-row';
                 trDensidade3.style.display = 'table-row';
                 trDensidade4.style.display = 'table-row';
+                trDensidade5.style.display = 'none';
 
             }
             if (trDensidade5.value != undefined) {
@@ -619,31 +638,51 @@
                 // Mostrar as trs com base no valor selecionado
                 if (selectedValue === '1') {
                     trDensidade1.style.display = 'table-row';
+                    trDensidade2.style.display = 'none';
+                    trDensidade3.style.display = 'none';
+                    trDensidade4.style.display = 'none';
+                    trDensidade5.style.display = 'none';
                     tipo_espuma.style.display = 'table-row';
+                    tipo_espuma_2.style.display = 'none';
+                    tipo_espuma_3.style.display = 'none';
+                    tipo_espuma_4.style.display = 'none';
+                    tipo_espuma_5.style.display = 'none';
                 } else if (selectedValue === '2') {
                     trDensidade1.style.display = 'table-row';
                     trDensidade2.style.display = 'table-row';
+                    trDensidade3.style.display = 'none';
+                    trDensidade4.style.display = 'none';
+                    trDensidade5.style.display = 'none';
 
                     tipo_espuma.style.display = 'table-row';
                     tipo_espuma_2.style.display = 'table-row';
+                    tipo_espuma_3.style.display = 'none';
+                    tipo_espuma_4.style.display = 'none';
+                    tipo_espuma_5.style.display = 'none';
                 } else if (selectedValue === '3') {
                     trDensidade1.style.display = 'table-row';
                     trDensidade2.style.display = 'table-row';
                     trDensidade3.style.display = 'table-row';
+                    trDensidade4.style.display = 'none';
+                    trDensidade5.style.display = 'none';
 
                     tipo_espuma.style.display = 'table-row';
                     tipo_espuma_2.style.display = 'table-row';
                     tipo_espuma_3.style.display = 'table-row';
+                    tipo_espuma_4.style.display = 'none';
+                    tipo_espuma_5.style.display = 'none';
                 } else if (selectedValue === '4') {
                     trDensidade1.style.display = 'table-row';
                     trDensidade2.style.display = 'table-row';
                     trDensidade3.style.display = 'table-row';
                     trDensidade4.style.display = 'table-row';
+                    trDensidade5.style.display = 'none';
 
                     tipo_espuma.style.display = 'table-row';
                     tipo_espuma_2.style.display = 'table-row';
                     tipo_espuma_3.style.display = 'table-row';
                     tipo_espuma_4.style.display = 'table-row';
+                    tipo_espuma_5.style.display = 'none';
                 } else {
                     trDensidade1.style.display = 'table-row';
                     trDensidade2.style.display = 'table-row';

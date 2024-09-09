@@ -146,38 +146,174 @@
                         </select> <br /> <br />
 
                         <table class="tables table-bordered border-secondary  table-sm ">
-                            <tr>
-                                <td class="fundo-tabela"> Espessura da lâmina </td>
-                                <td> <input class="form-control" type="text" name="esp_lamina_um" /> </td>
-                            </tr>
-                            <tr>
-                                <td class="fundo-tabela"> Espessura da lâmina </td>
-                                <td> <input class="form-control" type="text" name="esp_lamina_dois" /> </td>
-                            </tr>
-                            <tr>
-                                <td class="fundo-tabela"> Espessura da lâmina </td>
-                                <td> <input class="form-control" type="text" name="esp_lamina_tres" /> </td>
-                            </tr>
-                            <tr>
-                                <td class="fundo-tabela"> Espessura da lâmina </td>
-                                <td> <input class="form-control" type="text" name="esp_lamina_quat" /> </td>
-                            </tr>
-                            <tr>
-                                <td class="fundo-tabela"> Espessura da lâmina </td>
-                                <td> <input class="form-control" type="text" name="esp_lamina_cinco" /> </td>
-                            </tr>
-                            <tr>
-                                <td class="fundo-tabela"> Espessura da lâmina </td>
-                                <td> <input class="form-control" type="text" name="esp_lamina_seis" /> </td>
-                            </tr>
-                            <tr>
-                                <td class="fundo-tabela"> Espessura da lâmina </td>
-                                <td> <input class="form-control" type="text" name="esp_lamina_sete" /> </td>
-                            </tr>
-                            <tr>
-                                <td class="fundo-tabela"> Espessura da lâmina </td>
-                                <td> <input class="form-control" type="text" name="esp_lamina_oito" /> </td>
-                            </tr>
+                            @if(ViewBag.quant_laminas == 1)
+                            {
+                                <tr>
+                                    <td class="fundo-tabela"> Espessura da lâmina </td>
+                                    <td> <input class="form-control" type="text" name="esp_lamina_um" /> </td>
+                                </tr>
+                            }
+                            @if(ViewBag.quant_laminas == 2)
+                            {
+                                <tr>
+                                    <td class="fundo-tabela"> Espessura da lâmina </td>
+                                    <td> <input class="form-control" type="text" name="esp_lamina_um" /> </td>
+                                </tr>
+                                <tr>
+                                    <td class="fundo-tabela"> Espessura da lâmina </td>
+                                    <td> <input class="form-control" type="text" name="esp_lamina_dois" /> </td>
+                                </tr>
+                            }
+                            @if(ViewBag.quant_laminas == 3)
+                            {
+                                <tr>
+                                    <td class="fundo-tabela"> Espessura da lâmina </td>
+                                    <td> <input class="form-control" type="text" name="esp_lamina_um" /> </td>
+                                </tr>
+                                <tr>
+                                    <td class="fundo-tabela"> Espessura da lâmina </td>
+                                    <td> <input class="form-control" type="text" name="esp_lamina_dois" /> </td>
+                                </tr>
+                                <tr>
+                                    <td class="fundo-tabela"> Espessura da lâmina </td>
+                                    <td> <input class="form-control" type="text" name="esp_lamina_tres" /> </td>
+                                </tr>
+                            }
+                            @if(ViewBag.quant_laminas == 4)
+                            {
+                                <tr>
+                                    <td class="fundo-tabela"> Espessura da lâmina </td>
+                                    <td> <input class="form-control" type="text" name="esp_lamina_um" /> </td>
+                                </tr>
+                                <tr>
+                                    <td class="fundo-tabela"> Espessura da lâmina </td>
+                                    <td> <input class="form-control" type="text" name="esp_lamina_dois" /> </td>
+                                </tr>
+                                <tr>
+                                    <td class="fundo-tabela"> Espessura da lâmina </td>
+                                    <td> <input class="form-control" type="text" name="esp_lamina_tres" /> </td>
+                                </tr>
+                                <tr>
+                                    <td class="fundo-tabela"> Espessura da lâmina </td>
+                                    <td> <input class="form-control" type="text" name="esp_lamina_quat" /> </td>
+                                </tr>
+                            }
+                            @if(ViewBag.quant_laminas == 5)
+                            {
+                                <tr>
+                                    <td class="fundo-tabela"> Espessura da lâmina </td>
+                                    <td> <input class="form-control" type="text" name="esp_lamina_um" /> </td>
+                                </tr>
+                                <tr>
+                                    <td class="fundo-tabela"> Espessura da lâmina </td>
+                                    <td> <input class="form-control" type="text" name="esp_lamina_dois" /> </td>
+                                </tr>
+                                <tr>
+                                    <td class="fundo-tabela"> Espessura da lâmina </td>
+                                    <td> <input class="form-control" type="text" name="esp_lamina_tres" /> </td>
+                                </tr>
+                                <tr>
+                                    <td class="fundo-tabela"> Espessura da lâmina </td>
+                                    <td> <input class="form-control" type="text" name="esp_lamina_quat" /> </td>
+                                </tr>
+                                <tr>
+                                    <td class="fundo-tabela"> Espessura da lâmina </td>
+                                    <td> <input class="form-control" type="text" name="esp_lamina_cinco" /> </td>
+                                </tr>
+                            }
+                            @if(ViewBag.quant_laminas == 6)
+                            {
+                                <tr>
+                                    <td class="fundo-tabela"> Espessura da lâmina </td>
+                                    <td> <input class="form-control" type="text" name="esp_lamina_um" /> </td>
+                                </tr>
+                                <tr>
+                                    <td class="fundo-tabela"> Espessura da lâmina </td>
+                                    <td> <input class="form-control" type="text" name="esp_lamina_dois" /> </td>
+                                </tr>
+                                <tr>
+                                    <td class="fundo-tabela"> Espessura da lâmina </td>
+                                    <td> <input class="form-control" type="text" name="esp_lamina_tres" /> </td>
+                                </tr>
+                                <tr>
+                                    <td class="fundo-tabela"> Espessura da lâmina </td>
+                                    <td> <input class="form-control" type="text" name="esp_lamina_quat" /> </td>
+                                </tr>
+                                <tr>
+                                    <td class="fundo-tabela"> Espessura da lâmina </td>
+                                    <td> <input class="form-control" type="text" name="esp_lamina_cinco" /> </td>
+                                </tr>
+                                <tr>
+                                    <td class="fundo-tabela"> Espessura da lâmina </td>
+                                    <td> <input class="form-control" type="text" name="esp_lamina_seis" /> </td>
+                                </tr>
+                            }
+                            @if(ViewBag.quant_laminas == 7)
+                            {
+                                <tr>
+                                    <td class="fundo-tabela"> Espessura da lâmina </td>
+                                    <td> <input class="form-control" type="text" name="esp_lamina_um" /> </td>
+                                </tr>
+                                <tr>
+                                    <td class="fundo-tabela"> Espessura da lâmina </td>
+                                    <td> <input class="form-control" type="text" name="esp_lamina_dois" /> </td>
+                                </tr>
+                                <tr>
+                                    <td class="fundo-tabela"> Espessura da lâmina </td>
+                                    <td> <input class="form-control" type="text" name="esp_lamina_tres" /> </td>
+                                </tr>
+                                <tr>
+                                    <td class="fundo-tabela"> Espessura da lâmina </td>
+                                    <td> <input class="form-control" type="text" name="esp_lamina_quat" /> </td>
+                                </tr>
+                                <tr>
+                                    <td class="fundo-tabela"> Espessura da lâmina </td>
+                                    <td> <input class="form-control" type="text" name="esp_lamina_cinco" /> </td>
+                                </tr>
+                                <tr>
+                                    <td class="fundo-tabela"> Espessura da lâmina </td>
+                                    <td> <input class="form-control" type="text" name="esp_lamina_seis" /> </td>
+                                </tr>
+                                <tr>
+                                    <td class="fundo-tabela"> Espessura da lâmina </td>
+                                    <td> <input class="form-control" type="text" name="esp_lamina_sete" /> </td>
+                                </tr>
+                            }
+                            @if(ViewBag.quant_laminas == 8)
+                            {
+                                <tr>
+                                    <td class="fundo-tabela"> Espessura da lâmina </td>
+                                    <td> <input class="form-control" type="text" name="esp_lamina_um" /> </td>
+                                </tr>
+                                <tr>
+                                    <td class="fundo-tabela"> Espessura da lâmina </td>
+                                    <td> <input class="form-control" type="text" name="esp_lamina_dois" /> </td>
+                                </tr>
+                                <tr>
+                                    <td class="fundo-tabela"> Espessura da lâmina </td>
+                                    <td> <input class="form-control" type="text" name="esp_lamina_tres" /> </td>
+                                </tr>
+                                <tr>
+                                    <td class="fundo-tabela"> Espessura da lâmina </td>
+                                    <td> <input class="form-control" type="text" name="esp_lamina_quat" /> </td>
+                                </tr>
+                                <tr>
+                                    <td class="fundo-tabela"> Espessura da lâmina </td>
+                                    <td> <input class="form-control" type="text" name="esp_lamina_cinco" /> </td>
+                                </tr>
+                                <tr>
+                                    <td class="fundo-tabela"> Espessura da lâmina </td>
+                                    <td> <input class="form-control" type="text" name="esp_lamina_seis" /> </td>
+                                </tr>
+                                <tr>
+                                    <td class="fundo-tabela"> Espessura da lâmina </td>
+                                    <td> <input class="form-control" type="text" name="esp_lamina_sete" /> </td>
+                                </tr>
+                                <tr>
+                                    <td class="fundo-tabela"> Espessura da lâmina </td>
+                                    <td> <input class="form-control" type="text" name="esp_lamina_oito" /> </td>
+                                </tr>
+                            }
                         </table>
                     </td>
                 </tr>
@@ -418,38 +554,174 @@
                             </select> <br /> <br />
 
                             <table class="tables table-bordered border-secondary  table-sm">
-                                <tr>
-                                    <td class="fundo-tabela"> Espessura da lâmina </td>
-                                    <td> <input class="form-control" type="text" name="esp_lamina_um" value="@Model.esp_lamina_um" /> </td>
-                                </tr>
-                                <tr>
-                                    <td class="fundo-tabela"> Espessura da lâmina </td>
-                                    <td> <input class="form-control" type="text" name="esp_lamina_dois" value="@Model.esp_lamina_dois" /> </td>
-                                </tr>
-                                <tr>
-                                    <td class="fundo-tabela"> Espessura da lâmina </td>
-                                    <td> <input class="form-control" type="text" name="esp_lamina_tres" value="@Model.esp_lamina_tres" /> </td>
-                                </tr>
-                                <tr>
-                                    <td class="fundo-tabela"> Espessura da lâmina </td>
-                                    <td> <input class="form-control" type="text" name="esp_lamina_quat" value="@Model.esp_lamina_quat" /> </td>
-                                </tr>
-                                <tr>
-                                    <td class="fundo-tabela"> Espessura da lâmina </td>
-                                    <td> <input class="form-control" type="text" name="esp_lamina_cinco" value="@Model.esp_lamina_cinco" /> </td>
-                                </tr>
-                                <tr>
-                                    <td class="fundo-tabela"> Espessura da lâmina </td>
-                                    <td> <input class="form-control" type="text" name="esp_lamina_seis" value="@Model.esp_lamina_seis" /> </td>
-                                </tr>
-                                <tr>
-                                    <td class="fundo-tabela"> Espessura da lâmina </td>
-                                    <td> <input class="form-control" type="text" name="esp_lamina_sete" value="@Model.esp_lamina_sete" /> </td>
-                                </tr>
-                                <tr>
-                                    <td class="fundo-tabela"> Espessura da lâmina </td>
-                                    <td> <input class="form-control" type="text" name="esp_lamina_oito" value="@Model.esp_lamina_oito" /> </td>
-                                </tr>
+                                @if(ViewBag.quant_laminas == 1)
+                                {
+                                    <tr>
+                                        <td class="fundo-tabela"> Espessura da lâmina </td>
+                                        <td> <input class="form-control" type="text" name="esp_lamina_um" value="@Model.esp_lamina_um" /> </td>
+                                    </tr>
+                                }
+                                @if(ViewBag.quant_laminas == 2)
+                                {
+                                    <tr>
+                                        <td class="fundo-tabela"> Espessura da lâmina </td>
+                                        <td> <input class="form-control" type="text" name="esp_lamina_um" value="@Model.esp_lamina_um" /> </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="fundo-tabela"> Espessura da lâmina </td>
+                                        <td> <input class="form-control" type="text" name="esp_lamina_dois" value="@Model.esp_lamina_dois" /> </td>
+                                    </tr>
+                                }
+                                @if(ViewBag.quant_laminas == 3)
+                                {
+                                    <tr>
+                                        <td class="fundo-tabela"> Espessura da lâmina </td>
+                                        <td> <input class="form-control" type="text" name="esp_lamina_um" value="@Model.esp_lamina_um" /> </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="fundo-tabela"> Espessura da lâmina </td>
+                                        <td> <input class="form-control" type="text" name="esp_lamina_dois" value="@Model.esp_lamina_dois" /> </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="fundo-tabela"> Espessura da lâmina </td>
+                                        <td> <input class="form-control" type="text" name="esp_lamina_tres" value="@Model.esp_lamina_tres" /> </td>
+                                    </tr>
+                                }
+                                @if(ViewBag.quant_laminas == 4)
+                                {
+                                    <tr>
+                                        <td class="fundo-tabela"> Espessura da lâmina </td>
+                                        <td> <input class="form-control" type="text" name="esp_lamina_um" value="@Model.esp_lamina_um" /> </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="fundo-tabela"> Espessura da lâmina </td>
+                                        <td> <input class="form-control" type="text" name="esp_lamina_dois" value="@Model.esp_lamina_dois" /> </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="fundo-tabela"> Espessura da lâmina </td>
+                                        <td> <input class="form-control" type="text" name="esp_lamina_tres" value="@Model.esp_lamina_tres" /> </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="fundo-tabela"> Espessura da lâmina </td>
+                                        <td> <input class="form-control" type="text" name="esp_lamina_quat" value="@Model.esp_lamina_quat" /> </td>
+                                    </tr>
+                                }
+                                @if(ViewBag.quant_laminas == 5)
+                                {
+                                    <tr>
+                                        <td class="fundo-tabela"> Espessura da lâmina </td>
+                                        <td> <input class="form-control" type="text" name="esp_lamina_um" value="@Model.esp_lamina_um" /> </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="fundo-tabela"> Espessura da lâmina </td>
+                                        <td> <input class="form-control" type="text" name="esp_lamina_dois" value="@Model.esp_lamina_dois" /> </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="fundo-tabela"> Espessura da lâmina </td>
+                                        <td> <input class="form-control" type="text" name="esp_lamina_tres" value="@Model.esp_lamina_tres" /> </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="fundo-tabela"> Espessura da lâmina </td>
+                                        <td> <input class="form-control" type="text" name="esp_lamina_quat" value="@Model.esp_lamina_quat" /> </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="fundo-tabela"> Espessura da lâmina </td>
+                                        <td> <input class="form-control" type="text" name="esp_lamina_cinco" value="@Model.esp_lamina_cinco" /> </td>
+                                    </tr>
+                                }
+                                @if(ViewBag.quant_laminas == 6)
+                                {
+                                    <tr>
+                                        <td class="fundo-tabela"> Espessura da lâmina </td>
+                                        <td> <input class="form-control" type="text" name="esp_lamina_um" value="@Model.esp_lamina_um" /> </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="fundo-tabela"> Espessura da lâmina </td>
+                                        <td> <input class="form-control" type="text" name="esp_lamina_dois" value="@Model.esp_lamina_dois" /> </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="fundo-tabela"> Espessura da lâmina </td>
+                                        <td> <input class="form-control" type="text" name="esp_lamina_tres" value="@Model.esp_lamina_tres" /> </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="fundo-tabela"> Espessura da lâmina </td>
+                                        <td> <input class="form-control" type="text" name="esp_lamina_quat" value="@Model.esp_lamina_quat" /> </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="fundo-tabela"> Espessura da lâmina </td>
+                                        <td> <input class="form-control" type="text" name="esp_lamina_cinco" value="@Model.esp_lamina_cinco" /> </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="fundo-tabela"> Espessura da lâmina </td>
+                                        <td> <input class="form-control" type="text" name="esp_lamina_seis" value="@Model.esp_lamina_seis" /> </td>
+                                    </tr>
+                                }
+                                @if(ViewBag.quant_laminas == 7)
+                                {
+                                    <tr>
+                                        <td class="fundo-tabela"> Espessura da lâmina </td>
+                                        <td> <input class="form-control" type="text" name="esp_lamina_um" value="@Model.esp_lamina_um" /> </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="fundo-tabela"> Espessura da lâmina </td>
+                                        <td> <input class="form-control" type="text" name="esp_lamina_dois" value="@Model.esp_lamina_dois" /> </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="fundo-tabela"> Espessura da lâmina </td>
+                                        <td> <input class="form-control" type="text" name="esp_lamina_tres" value="@Model.esp_lamina_tres" /> </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="fundo-tabela"> Espessura da lâmina </td>
+                                        <td> <input class="form-control" type="text" name="esp_lamina_quat" value="@Model.esp_lamina_quat" /> </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="fundo-tabela"> Espessura da lâmina </td>
+                                        <td> <input class="form-control" type="text" name="esp_lamina_cinco" value="@Model.esp_lamina_cinco" /> </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="fundo-tabela"> Espessura da lâmina </td>
+                                        <td> <input class="form-control" type="text" name="esp_lamina_seis" value="@Model.esp_lamina_seis" /> </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="fundo-tabela"> Espessura da lâmina </td>
+                                        <td> <input class="form-control" type="text" name="esp_lamina_sete" value="@Model.esp_lamina_sete" /> </td>
+                                    </tr>
+                                }
+                                @if(ViewBag.quant_laminas == 8)
+                                {
+                                    <tr>
+                                        <td class="fundo-tabela"> Espessura da lâmina </td>
+                                        <td> <input class="form-control" type="text" name="esp_lamina_um" value="@Model.esp_lamina_um" /> </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="fundo-tabela"> Espessura da lâmina </td>
+                                        <td> <input class="form-control" type="text" name="esp_lamina_dois" value="@Model.esp_lamina_dois" /> </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="fundo-tabela"> Espessura da lâmina </td>
+                                        <td> <input class="form-control" type="text" name="esp_lamina_tres" value="@Model.esp_lamina_tres" /> </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="fundo-tabela"> Espessura da lâmina </td>
+                                        <td> <input class="form-control" type="text" name="esp_lamina_quat" value="@Model.esp_lamina_quat" /> </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="fundo-tabela"> Espessura da lâmina </td>
+                                        <td> <input class="form-control" type="text" name="esp_lamina_cinco" value="@Model.esp_lamina_cinco" /> </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="fundo-tabela"> Espessura da lâmina </td>
+                                        <td> <input class="form-control" type="text" name="esp_lamina_seis" value="@Model.esp_lamina_seis" /> </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="fundo-tabela"> Espessura da lâmina </td>
+                                        <td> <input class="form-control" type="text" name="esp_lamina_sete" value="@Model.esp_lamina_sete" /> </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="fundo-tabela"> Espessura da lâmina </td>
+                                        <td> <input class="form-control" type="text" name="esp_lamina_oito" value="@Model.esp_lamina_oito" /> </td>
+                                    </tr>
+                                }
                             </table>
                         </td>
                     </tr>
