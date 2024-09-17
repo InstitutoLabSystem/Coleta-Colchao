@@ -6465,7 +6465,15 @@ namespace Coleta_Colchao.Controllers
                     salvarDados.conforto_65 = (int)salvarDados.media_65;
                     salvarDados.conforto_25 = (int)salvarDados.media_25;
 
-                    salvarDados.media_conforto = (salvarDados.conforto_65 / salvarDados.conforto_25);
+                    if(salvarDados.conforto_65 == 0 && salvarDados.conforto_25 == 0)
+                    {
+                        salvarDados.media_conforto = 0;
+                    }
+                    else
+                    {
+                        salvarDados.media_conforto = (salvarDados.conforto_65 / salvarDados.conforto_25);
+                    }
+                    
 
                     //realizando logica para saber se esta conforme ou nao conforme.
                     if (salvarDados.tipo_espuma == "Convencional")
