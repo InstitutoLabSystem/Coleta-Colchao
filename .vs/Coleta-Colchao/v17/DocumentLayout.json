@@ -40,7 +40,7 @@
               "RelativeDocumentMoniker": "Coleta-Colchao\\Controllers\\ColetaController.cs",
               "ToolTip": "C:\\Users\\Molina\\source\\repos\\InstitutoLabSystem\\Coleta-Colchao\\Coleta-Colchao\\Controllers\\ColetaController.cs",
               "RelativeToolTip": "Coleta-Colchao\\Controllers\\ColetaController.cs",
-              "ViewState": "AgIAABIbAAAAAAAAAAAowCgbAAA8AAAAAAAAAA==",
+              "ViewState": "AgIAABIbAAAAAAAAAAAowCUbAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-06-24T12:37:41.908Z",
               "IsPinned": true,
@@ -57,8 +57,7 @@
               "ViewState": "AgIAAEAAAAAAAAAAAIA8wE0AAAAsAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-06-24T12:52:36.445Z",
-              "IsPinned": true,
-              "EditorCaption": ""
+              "IsPinned": true
             },
             {
               "$type": "Bookmark",
@@ -94,8 +93,7 @@
               "RelativeToolTip": "Coleta-Colchao\\Views\\Coleta\\Laminas\\LaminaF_I.cshtml",
               "ViewState": "AgIAACQCAAAAAAAAAADgvzkCAABbAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-09-17T16:13:58.963Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-09-17T16:13:58.963Z"
             },
             {
               "$type": "Document",
@@ -107,8 +105,7 @@
               "RelativeToolTip": "Coleta-Colchao\\Controllers\\HomeController.cs",
               "ViewState": "AgIAAHcAAAAAAAAAAAAMwIAAAABbAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-17T15:43:32.649Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-09-17T15:43:32.649Z"
             },
             {
               "$type": "Document",
@@ -120,8 +117,7 @@
               "RelativeToolTip": "Coleta-Colchao\\Views\\Home\\Index.cshtml",
               "ViewState": "AgIAAFQAAAAAAAAAAAAwwF4AAABCAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-09-17T15:43:14.535Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-09-17T15:43:14.535Z"
             }
           ]
         }

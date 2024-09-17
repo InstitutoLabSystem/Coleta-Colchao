@@ -6938,7 +6938,15 @@ namespace Coleta_Colchao.Controllers
                     editarDados.conforto_65 = float.Parse(editarDados.media_65.ToString("N2"));
                     editarDados.conforto_25 = float.Parse(editarDados.media_25.ToString("N2"));
 
-                    editarDados.media_conforto = float.Parse((editarDados.conforto_65 / editarDados.conforto_25).ToString("N2"));
+
+                    if(editarDados.conforto_65 == 0 && editarDados.conforto_25 == 0)
+                    {
+                        editarDados.media_conforto = 0;
+                    }
+                    else
+                    {
+                        editarDados.media_conforto = float.Parse((editarDados.conforto_65 / editarDados.conforto_25).ToString("N2"));
+                    }
 
                     //realizando logica para saber se esta conforme ou nao conforme.
                     editarDados.tipo_espuma = salvarDados.tipo_espuma;
