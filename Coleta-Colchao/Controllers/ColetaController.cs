@@ -6930,13 +6930,13 @@ namespace Coleta_Colchao.Controllers
                     editarDados.forca_esp_40 = float.Parse(salvarDados.forca_esp_40.ToString("N2"));
                     editarDados.forca_esp_65 = float.Parse(salvarDados.forca_esp_65.ToString("N2"));
 
-                    editarDados.fator_ind_25 = float.Parse(editarDados.media_25.ToString("N2"));
-                    editarDados.fator_ind_40 = float.Parse(editarDados.media_40.ToString("N2"));
-                    editarDados.fator_ind_65 = float.Parse(editarDados.media_65.ToString("N2"));
+                    editarDados.fator_ind_25 = float.Parse(salvarDados.media_25.ToString("N2"));
+                    editarDados.fator_ind_40 = float.Parse(salvarDados.media_40.ToString("N2"));
+                    editarDados.fator_ind_65 = float.Parse(salvarDados.media_65.ToString("N2"));
 
                     //conforto
-                    editarDados.conforto_65 = float.Parse(salvarDados.media_65.ToString("N2"));
-                    editarDados.conforto_25 = float.Parse(salvarDados.media_25.ToString("N2"));
+                    editarDados.conforto_65 = float.Parse(editarDados.media_65.ToString("N2"));
+                    editarDados.conforto_25 = float.Parse(editarDados.media_25.ToString("N2"));
 
                     editarDados.media_conforto = float.Parse((editarDados.conforto_65 / editarDados.conforto_25).ToString("N2"));
 
