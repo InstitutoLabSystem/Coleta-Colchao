@@ -51,9 +51,25 @@ namespace Coleta_Colchao.Models
         public class OrdemServicoLaboratorio
         {
             public string OS { get; set; }
+            public int seq { get; set; } 
+            public string mes { get; set; }
+            public string ano { get; set; }
             public string orcamento { get; set; }
+            public string seqorc { get; set; }
+            public string mesorc { get; set; }
+            public string anoorc { get; set; }
             public string? Laboratorio { get; set; }
+            public string? Andamento { get; set; }
             public DateOnly DataSaidaAmReceb { get; set; }
+        }
+
+        [Keyless]
+        public class OrdemSericoCopyLab
+        { 
+            public string? seqorc { get; set; }
+            public string? mesorc { get; set; }
+            public string? anoorc { get; set; }
+            public int item { get; set; }
         }
 
         public class Resposta

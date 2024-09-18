@@ -131,12 +131,14 @@ namespace Coleta_Colchao.Controllers
                                             on new { Orcamento = p.Orcamento, Item = p.Item } equals new { Orcamento = c.orcamento, Item = c.Item.ToString() }
                                             join hc in _bancoContext.Wmoddetprod
                                             on c.CodigoEnsaio equals hc.codmaster
-                                            where p.Orcamento == dados.First().orcamento && codigosLaminas.Contains(hc.codigo)
-                                            orderby hc.descricao
+                                            join lb in _bancoContext.ordemservico_laboratorio
+                                            on new { Numero =  c.Numero.ToString(), Mes = c.Mes, Ano = c.Ano } equals new { Numero = lb.seqorc, Mes = lb.mesorc, Ano = lb.anoorc }
+                                            where lb.orcamento == dados.First().orcamento && codigosLaminas.Contains(hc.codigo) && lb.Andamento != "ENVIADO"
+                                            orderby lb.OS
                                             select new
                                             {
-                                                hc.codigo,
-                                                p.OS,
+                                                lb.OS,
+                                                hc.codigo,                                             
                                             }).ToList().Distinct();
 
                         return View("Index", dados);

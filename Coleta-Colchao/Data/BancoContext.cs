@@ -14,6 +14,8 @@ namespace Coleta_Colchao.Data
         public DbSet<HomeModel.Wmoddetprod> Wmoddetprod { get; set; }
         public DbSet<HomeModel.OrdemServico> ordemservicocotacao_hc_copylab { get; set; }
         public DbSet<HomeModel.OrdemServicoLaboratorio> ordemservico_laboratorio { get; set; }
-    } 
+        public DbSet<HomeModel.OrdemSericoCopyLab> ordemservico_copylab {get; set; }
+
+} 
 }
 
