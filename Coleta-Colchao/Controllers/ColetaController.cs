@@ -6831,9 +6831,11 @@ namespace Coleta_Colchao.Controllers
                     editarDados.acond_final = salvarDados.acond_final;
                     editarDados.temp_inicio = salvarDados.temp_inicio;
                     editarDados.temp_final = salvarDados.temp_final;
+                    editarDados.hora_inicio = salvarDados.hora_inicio;
+                    editarDados.hora_final = salvarDados.hora_final;
+                    editarDados.responsavel_cond = salvarDados.responsavel_cond;
                     editarDados.im = salvarDados.im;
-
-
+                    
                     //espessura.
                     editarDados.esp_ini_amostra_um_um = salvarDados.esp_ini_amostra_um_um;
                     editarDados.esp_ini_amostra_um_dois = salvarDados.esp_ini_amostra_um_dois;
@@ -6951,7 +6953,7 @@ namespace Coleta_Colchao.Controllers
                     editarDados.fator_ind_25 = float.Parse(salvarDados.media_25.ToString("N2"));
                     editarDados.fator_ind_40 = float.Parse(salvarDados.media_40.ToString("N2"));
                     editarDados.fator_ind_65 = float.Parse(salvarDados.media_65.ToString("N2"));
-
+               
                     //conforto
                     editarDados.conforto_65 = float.Parse(editarDados.media_65.ToString("N2"));
                     editarDados.conforto_25 = float.Parse(editarDados.media_25.ToString("N2"));
