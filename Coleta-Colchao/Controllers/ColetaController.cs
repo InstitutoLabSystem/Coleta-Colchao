@@ -506,16 +506,20 @@ namespace Coleta_Colchao.Controllers
         public IActionResult EnsaioMolas4_3(string os, string orcamento)
         {
             var dados = _context.ensaio_molas_item4_3.Where(x => x.os == os && x.orcamento == orcamento).FirstOrDefault();
+            var ExisteBorda = _context.regtro_colchao.Where(x => x.os == os && x.orcamento == orcamento).FirstOrDefault();
             if (dados == null)
             {
                 ViewBag.os = os;
                 ViewBag.orcamento = orcamento;
+                ViewBag.ExisteBorda = ExisteBorda.borda_peri;
                 return View("Molas/EnsaioMolas4_3");
             }
             else
             {
+
                 ViewBag.os = os;
                 ViewBag.orcamento = orcamento;
+                ViewBag.ExisteBorda = ExisteBorda.borda_peri;
                 return View("Molas/EnsaioMolas4_3", dados);
             }
 
@@ -2527,11 +2531,11 @@ namespace Coleta_Colchao.Controllers
                     string conv_media_copos = media_copos.ToString("N3");
                     media_copos = float.Parse(conv_media_copos);
 
-                    string resultado = ((media_copos / (area_corpo_1 * area_corpo_2 / 100)) * 10000).ToString("N0");
+                    string resultado = ((media_copos / (area_corpo_1 * area_corpo_2 / 100)) * 10000).ToString("N2");
                     float gramatura = float.Parse(resultado);
 
                     //verificando conformidade dos ensaios.
-                    if (media_copos >= 100.0f)
+                    if (gramatura >= 100.0f)
                     {
                         conforme_gramas = "C";
                     }
@@ -2614,10 +2618,10 @@ namespace Coleta_Colchao.Controllers
                     media_copos = float.Parse(conv_media_copos);
 
                     float resultado = ((media_copos / (editarDados.area_corpo_1 * editarDados.area_corpo_2 / 100) * 10000));
-                    float gramatura = float.Parse((resultado / 10000).ToString("N0"));
+                    float gramatura = resultado;
 
                     //verificando conformidade dos ensaios.
-                    if (media_copos >= 100.0f)
+                    if (gramatura >= 100.0f)
                     {
                         editarDados.conforme_gramas = "C";
                     }

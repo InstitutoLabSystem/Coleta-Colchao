@@ -75,13 +75,16 @@
                         A borda perimetral de aço e/ou espuma deve manter seu paralelismo e perpendicularidade antes e após o ensaio de rolagem. Além de atender as especificações abaixo.
                     </td>
                 </tr>
-                <tr>
-                    <td colspan="2">
-                        <button type="button" class="btn btn-info" id="btn-aco" onclick="mostrarLinhaAco()">Aço</button>
-                        <button type="button" class="btn btn-info" id="btn-espuma" onclick="mostrarLinhaEspuma()">Espuma</button>
-                        <button type="button" class="btn btn-info" id="btn-espuma" onclick="mostrarTabelaMolejo()">Mais De Um Molejo</button>
-                    </td>
-                </tr>
+                @if(ViewBag.ExisteBorda != "Não")
+                {
+                    <tr>
+                        <td colspan="2">
+                            <button type="button" class="btn btn-info" id="btn-aco" onclick="mostrarLinhaAco()">Aço</button>
+                            <button type="button" class="btn btn-info" id="btn-espuma" onclick="mostrarLinhaEspuma()">Espuma</button>
+                            <button type="button" class="btn btn-info" id="btn-espuma" onclick="mostrarTabelaMolejo()">Mais De Um Molejo</button>
+                        </td>
+                    </tr>
+                }             
                 <tr class="tabela-toda">
                     <td colspan="2">
                         <table class="tables table-bordered border-secondary  table-sm" id="tabela">
@@ -181,41 +184,43 @@
                         Quando se for utilizado não tecido de fibras sintéticas, naturais e/ou artificiais, ela deve ter gramatura mínima de 100 g/m².
                     </td>
                 </tr>
-                <tr>
-                    <td>
-                        A) Apresentar paralelelismo e perpendicularidade, quando vista de cima;
-                    </td>
-                    <td>
-                        <select name="pergunta_a" class="controlador">
-                            <option value="C">C</option>
-                            <option value="NC">NC</option>
-                        </select>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        B) Ter largura maxima de 120,0 mm;
-                    </td>
-                    <td>
-                        <select name="pergunta_b" class="controlador">
-                            <option value="C">C</option>
-                            <option value="NC">NC</option>
-                        </select>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        C) Não utilizar, para fins de sustentação ou outra função estrutural, qualquer componente;
-                    </td>
-                    <td>
-                        <select name="pergunta_c" class="controlador">
-                            <option value="C">C</option>
-                            <option value="NC">NC</option>
-                        </select>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
+                @if (ViewBag.ExisteBorda != "Não")
+                {
+                    <tr>
+                        <td>
+                            A) Apresentar paralelelismo e perpendicularidade, quando vista de cima;
+                        </td>
+                        <td>
+                            <select name="pergunta_a" class="controlador">
+                                <option value="C">C</option>
+                                <option value="NC">NC</option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            B) Ter largura maxima de 120,0 mm;
+                        </td>
+                        <td>
+                            <select name="pergunta_b" class="controlador">
+                                <option value="C">C</option>
+                                <option value="NC">NC</option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            C) Não utilizar, para fins de sustentação ou outra função estrutural, qualquer componente;
+                        </td>
+                        <td>
+                            <select name="pergunta_c" class="controlador">
+                                <option value="C">C</option>
+                                <option value="NC">NC</option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
                         D) Possuir características adqueadas ás funções de dar uniformidade e sustentação ao perímetro do molejo, podendo ser constituída de espuma, aço, ou outros materiais, conjuntamente ou não;
                     </td>
                     <td>
@@ -225,11 +230,15 @@
                         </select>
                     </td>
                 </tr>
+                }
             </table>
             <br />
-            <div class="d-grid gap-2 d-flex justify-content-center">
-                <button type="submit" class="btn btn-success btn btn-primary btn-md">Salvar</button>
+            @if (ViewBag.ExisteBorda != "Não")
+            {
+                <div class="d-grid gap-2 d-flex justify-content-center">
+                    <button type="submit" class="btn btn-success btn btn-primary btn-md">Salvar</button>
             </div>
+            }
         }
         else
         {
