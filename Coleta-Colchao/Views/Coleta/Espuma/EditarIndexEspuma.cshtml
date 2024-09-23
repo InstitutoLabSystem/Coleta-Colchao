@@ -101,9 +101,25 @@
                 <tr>
                     <td> Data de realização dos ensaios: </td>
                     <td> Ínicio: </td>
-                    <td> <input class="form-control" type="date" asp-for="data_realizacao_ini" /> </td>
+                    @if(Model.data_realizacao_ini.ToString() == "0001-01-01")
+                    {
+                        <td> <input class="form-control" type="date" asp-for="data_realizacao_ini" /> </td>
+                    }else{
+                        <td> <input class="form-control" type="text" asp-for="data_realizacao_ini" /> </td>
+
+                    }
+                    
                     <td> Término:  </td>
-                    <td> <input class="form-control" type="date" asp-for="data_realizacao_term" /> </td>
+                    @if (Model.data_realizacao_term.ToString() == "0001-01-01")
+                    {
+                        <td> <input class="form-control" type="date" asp-for="data_realizacao_term" /> </td>
+                    }
+                    else
+                    {
+                        <td> <input class="form-control" type="text" asp-for="data_realizacao_term" /> </td>
+
+                    }
+                    
                 </tr>
             </table>
 
