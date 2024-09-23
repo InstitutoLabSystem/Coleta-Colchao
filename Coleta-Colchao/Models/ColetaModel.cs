@@ -860,6 +860,7 @@ namespace Coleta_Colchao.Models
             public DateOnly data_realizacao_term { get; set; }
             public string? num_proc { get; set; }
             public string? cod_ref { get; set; }
+            public string? desc_lamina { get; set; }
             public string? tipo_cert { get; set; }
             public string? modelo_cert { get; set; }
             public string? tipo_proc { get; set; }

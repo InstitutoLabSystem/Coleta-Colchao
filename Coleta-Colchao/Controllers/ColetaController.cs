@@ -955,13 +955,14 @@ namespace Coleta_Colchao.Controllers
                     Editardados.data_realizacao_term = dados.data_realizacao_term;
                     Editardados.num_proc = dados.num_proc;
                     Editardados.cod_ref = dados.cod_ref;
+                    Editardados.desc_lamina = dados.desc_lamina;
                     Editardados.tipo_cert = dados.tipo_cert;
                     Editardados.modelo_cert = dados.modelo_cert;
                     Editardados.tipo_proc = dados.tipo_proc;
 
 
 
-                    _context.regtro_colchao_lamina.Update(dados);
+                    _context.regtro_colchao_lamina.Update(Editardados);
                     await _context.SaveChangesAsync();
 
                     TempData["Mensagem"] = "Dados editado Com Sucesso";
