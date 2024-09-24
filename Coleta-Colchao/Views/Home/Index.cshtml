@@ -47,8 +47,8 @@
             border-radius: 10px;
         }
 
-        #fonte{
-            font-family:Arial, sans-serif;
+        #fonte {
+            font-family: Arial, sans-serif;
         }
     </style>
 
@@ -425,15 +425,26 @@
                                         <a role="button" target="_blank" class="btn btn-success" asp-controller="Coleta" asp-action="EditarLamina" asp-route-os="@ViewBag.os" asp-route-orcamento="@ViewBag.orcamento">Informações</a>
                                     </td>
                                 }
-                                @if (Model[i].codigo == "QUICCH002000001")
+
+
+                                @if (@Model[i].descricao != "5.6  |  DETERMINAÇÃO DO TEOR DE CINZAS (ABNT NBR 14961)")
                                 {
-                                    <td>
-                                        <a role="button" target="_blank" class="btn btn-success" asp-controller="Coleta" asp-action="LaminaPFI" asp-route-os="@ViewBag.os" asp-route-orcamento="@ViewBag.orcamento">Abrir</a>
-                                    </td>
-                                    <td>
-                                        <a role="button" target="_blank" class="btn btn-success" asp-controller="Coleta" asp-action="EditarLamina" asp-route-os="@ViewBag.os" asp-route-orcamento="@ViewBag.orcamento">Informações</a>
-                                    </td>
+                                    @if (Model[i].codigo == "QUICCH002000001")
+                                    {
+                                        <td>
+                                            <a role="button" target="_blank" class="btn btn-success" asp-controller="Coleta" asp-action="LaminaPFI" asp-route-os="@ViewBag.os" asp-route-orcamento="@ViewBag.orcamento">Abrir</a>
+                                        </td>
+                                        <td>
+                                            <a role="button" target="_blank" class="btn btn-success" asp-controller="Coleta" asp-action="EditarLamina" asp-route-os="@ViewBag.os" asp-route-orcamento="@ViewBag.orcamento">Informações</a>
+                                        </td>
+                                    }
                                 }
+                                else
+                                {
+                                    <td colspan="2">ENSAIO PARA O QUIMICO.</td>
+                                }
+
+
                                 @if (Model[i].codigo == "RSLCCH002000001")
                                 {
                                     <td>
