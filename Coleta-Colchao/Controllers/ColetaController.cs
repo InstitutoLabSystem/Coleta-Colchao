@@ -121,6 +121,7 @@ namespace Coleta_Colchao.Controllers
                 ViewBag.orcamento = orcamento;
                 ViewBag.quantidadeLaminas = RegistroEspuma.quant_laminas;
                 ViewBag.tipoColchao = RegistroEspuma.tipo_colchao;
+                ViewBag.revestimento = RegistroEspuma.revestimento;
                 return View("Espuma/EnsaioEspuma4_1", dados);
             }
             else
@@ -129,6 +130,7 @@ namespace Coleta_Colchao.Controllers
                 ViewBag.orcamento = orcamento;
                 ViewBag.quantidadeLaminas = RegistroEspuma.quant_laminas;
                 ViewBag.tipoColchao = RegistroEspuma.tipo_colchao;
+                ViewBag.revestimento = RegistroEspuma.revestimento;
                 return View("Espuma/EnsaioEspuma4_1");
             }
         }

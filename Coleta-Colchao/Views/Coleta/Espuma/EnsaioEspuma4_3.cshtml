@@ -455,7 +455,7 @@
                         <strong> Colchão tipo simples </strong> <br /> <br />
                         A lâmina colada sobre a lâmina central deve ser composta de uma única peça. <br />
                         A lâmina central é composta por um única peça?
-                        <select class="form-control" name="lamina_central">
+                        <select class="form-control" name="lamina_central" id="tem_colchao">
                             <option selected> @Model.lamina_central </option>
                             <option> Sim </option>
                             <option> Não </option>
@@ -476,17 +476,17 @@
                         </select>
                     </td>
                 </tr>
-                @if (Model.tipo_ensaio == "Colagem horizontal com peça inteira")
+                @if (Model.tipo_ensaio == "Colagem horizontal com peça inteira" || Model.executor != null)
                 {
-                    <tr>
+                    <tr id="colagem" class="colagem">
                         <td class="fundo-tabela"> Colagem horizontal com peça inteira </td>
                     </tr>
-                    <tr>
+                    <tr id="colagem" class="colagem">
                         <td>
                             Pode haver no máximo duas colagens na horizontal, de mesma densidade. <br /> <br />
-                            Quantidades de colagens   <input class="form-control" type="text" name="quant_colagens" value="@Model.quant_colagens" /> <br /> <br />
+                            Quantidades de colagens   <input class="form-control w-100" type="text" name="quant_colagens" value="@Model.quant_colagens" /> <br /> <br />
                             As colagens são de mesmas densidades
-                            <select class="form-control" name="colagens_densidade">
+                            <select class="form-control w-100" name="colagens_densidade">
                                 <option selected> @Model.colagens_densidade </option>
                                 <option> Sim </option>
                                 <option> Não </option>
@@ -505,14 +505,14 @@
                         </td>
                     </tr>
                 }
-                @if (Model.tipo_ensaio == "Colagem vertical na largura")
+                @if (Model.tipo_ensaio == "Colagem vertical na largura" || Model.executor != null)
                 {
-                    <tr>
+                    <tr class="vertical"> 
                         <td class="fundo-tabela">
                             Colagem vertical na largura
                         </td>
                     </tr>
-                    <tr>
+                    <tr class="vertical">
                         <td>
                             Pode haver somente uma colagem no sentido da largura, com distância máxima de 40 cm da extremidade do colchão. <br /> <br />
                             Quantidades de colagens
@@ -535,14 +535,14 @@
 
 
             <table class="tables table-bordered border-secondary  table-sm">
-                @if (Model.tipo_ensaio == "Colchão tipo composto")
+                @if (Model.tipo_ensaio == "Colchão tipo composto" || Model.executor != null)
                 {
-                    <tr>
+                    <tr class="colcao_composto">
                         <td rowspan="12"> 4.3</td>
                         <td class="fundo-tabela"> Colchão tipo composto </td>
                         <td rowspan="12"> NA </td>
                     </tr>
-                    <tr>
+                    <tr class="colcao_composto">
                         <td>
                             <strong> Colagem horizontal </strong> <br /> <br />
                             As colagens horizontais devem ocorrer entre as espumas de características diferentes, porém com espessura mínima de 3 cm.<br /> <br />
@@ -726,14 +726,14 @@
                         </td>
                     </tr>
                 }
-                @if (Model.tipo_ensaio == "Colagem na largura")
+                @if (Model.tipo_ensaio == "Colagem na largura" || Model.executor != null)
                 {
-                    <tr>
+                    <tr class="colagem_largura">
                         <td class="fundo-tabela">
                             <strong> Colagem na largura </strong>
                         </td>
                     </tr>
-                    <tr>
+                    <tr class="colagem_largura">
                         <td>
                             Pode haver somente uma colagem no sentido da largura, com distância máxima de 40 cm da extremidade do colchão. <br /> <br />
                             Quantidades de colagens <input class="form-control" type="text" name="quant_colagens_tres" value="@Model.quant_colagens_tres" /> <br /> <br />
@@ -743,14 +743,14 @@
                         </td>
                     </tr>
                 }
-                @if (Model.tipo_ensaio == "Colagem no comprimento")
+                @if (Model.tipo_ensaio == "Colagem no comprimento" || Model.executor != null)
                 {
-                    <tr>
+                    <tr class="colchao_comprimento">
                         <td class="fundo-tabela">
                             <strong> Colagem no comprimento </strong>
                         </td>
                     </tr>
-                    <tr>
+                    <tr class="colchao_comprimento">
                         <td>
                             Pode ser utilizada uma colagem no sentido do comprimento, somente para colchão de casal,
                             utilizando-se espumas convecionais de densidades distintas, desde que não haja colagem na largura.
@@ -795,12 +795,12 @@
                         </td>
                     </tr>
                 }
-                @if (Model.tipo_ensaio == "Colchonete")
+                @if (Model.tipo_ensaio == "Colchonete" || Model.executor != null)
                 {
-                    <tr>
+                    <tr class="colchonete">
                         <td class="fundo-tabela"> Colchonete </td>
                     </tr>
-                    <tr>
+                    <tr class="colchonete">
                         <td>
                             Somente é permitada uma colagem na horizontal com espessura mínima de 3 cm. <br /> <br />
                             Quantidades de colagens  <input class="form-control" type="text" name="quant_colagens_cinco" value="@Model.quant_colagens_cinco" /> <br /> <br />
@@ -810,7 +810,7 @@
                 }
             </table>
             <br />
-            @if (ViewBag.infantil != "Colchão Infantil")
+            @if (ViewBag.infantil == "Colchão Infantil")
             {
                 <table class="tables table-bordered border-secondary  table-sm">
                     <tr>
