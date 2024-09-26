@@ -558,48 +558,54 @@
                             </select>
                         </td>
                     </tr>
-
-                    <tr>
-                        <td colspan="2">
-                            Nota - O aviso de esclarecimento deve ser apresentado em letras não inferiores a 3 mm de altura, em negrito,
-                            caixa alta e em coloração que se destaque da cor de fundo da etiqueta.
-                        </td>
-                    </tr>
-                    <tr>
-                        <td> Altura da letra </td>
-                        <td> <input class="form-control" type="text" name="altura_letra_quat" /> </td>
-                    </tr>
-                    <tr>
-                        <td> Está em negrito </td>
-                        <td>
-                            <select name="negrito_quat">
-                                <option selected> --- </option>
-                                <option> Sim </option>
-                                <option> Não </option>
-                            </select>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td> Está em caixa alta </td>
-                        <td>
-                            <select name="caixa_alta_quat">
-                                <option selected> --- </option>
-                                <option> Sim </option>
-                                <option> Não </option>
-                            </select>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td> Está em coloração que se destaque da cor do fundo da etiqueta </td>
-                        <td>
-                            <select name="coloracao_quat">
-                                <option selected> --- </option>
-                                <option> Sim </option>
-                                <option> Não </option>
-                            </select>
-                        </td>
-                    </tr>
                 }
+                @if (ViewBag.tipoColchao == "Colchão Misto")
+                {
+                    if (ViewBag.outrosMateriais == "Infravermelho" || ViewBag.outrosMateriais == "Elementos" || ViewBag.outrosMateriais == "Lâmina Rabatan")
+                    {
+                        <tr>
+                            <td colspan="2">
+                                Nota - O aviso de esclarecimento deve ser apresentado em letras não inferiores a 3 mm de altura, em negrito,
+                                caixa alta e em coloração que se destaque da cor de fundo da etiqueta.
+                            </td>
+                        </tr>
+                        <tr>
+                            <td> Altura da letra </td>
+                            <td> <input class="form-control" type="text" name="altura_letra_quat" /> </td>
+                        </tr>
+                        <tr>
+                            <td> Está em negrito </td>
+                            <td>
+                                <select name="negrito_quat">
+                                    <option selected> --- </option>
+                                    <option> Sim </option>
+                                    <option> Não </option>
+                                </select>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td> Está em caixa alta </td>
+                            <td>
+                                <select name="caixa_alta_quat">
+                                    <option selected> --- </option>
+                                    <option> Sim </option>
+                                    <option> Não </option>
+                                </select>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td> Está em coloração que se destaque da cor do fundo da etiqueta </td>
+                            <td>
+                                <select name="coloracao_quat">
+                                    <option selected> --- </option>
+                                    <option> Sim </option>
+                                    <option> Não </option>
+                                </select>
+                            </td>
+                        </tr>
+                    }
+                }
+
             </table>
 
 
@@ -750,9 +756,16 @@
                 </tr>
                 <tr>
                     <td>
-
-                        Está em coloração que se destaque da cor do fundo da etiqueta:
-                        <input class="controlador" type="text" name="coloracao_seis" />
+                        Está em coloração que se destaque da cor do fundo da etiqueta:                  
+                    </td>
+                    <td>
+                    <td>
+                        <select name="coloracao_seis">
+                            <option> --- </option>
+                            <option> Sim </option>
+                            <option> Não </option>
+                        </select>
+                    </td>
                     </td>
                 </tr>
                 @if (ViewBag.tipLamina == "Colchão misto")
@@ -776,18 +789,18 @@
 
                     <tr>
                         <td>
-                        2.13.1 O texto deve ser em negrito, com o mesmo formato e tamanho de letra da utilizada ndescrição
-                        e em todos os locais onde se descrevam tais funcionalidades.
+                            2.13.1 O texto deve ser em negrito, com o mesmo formato e tamanho de letra da utilizada ndescrição
+                            e em todos os locais onde se descrevam tais funcionalidades.
 
-                    </td>
-                    <td>
-                        <select name="texto_negrito">
-                            <option selected> --- </option>
-                            <option> Sim </option>
-                            <option> Não </option>
-                        </select>
-                    </td>
-                </tr>
+                        </td>
+                        <td>
+                            <select name="texto_negrito">
+                                <option selected> --- </option>
+                                <option> Sim </option>
+                                <option> Não </option>
+                            </select>
+                        </td>
+                    </tr>
                 }
                 <tr>
                     <td>
@@ -1473,53 +1486,58 @@
                         </td>
                     </tr>
                 }
-                <tr>
-                    <td colspan="2">
-                        Nota - O aviso de esclarecimento deve ser apresentado em letras não inferiores a 3 mm de altura, em negrito,
-                        caixa alta e em coloração que se destaque da cor de fundo da etiqueta.
-                    </td>
-                </tr>
-                <tr>
-                    <td> Altura da letra </td>
-                    <td> <input class="form-control" type="text" name="altura_letra_quat" value="@Model.altura_letra_quat" /> </td>
-                </tr>
-                <tr>
-                    <td> Está em negrito </td>
-                    <td>
-                        <select name="negrito_quat">
-                            <option selected> @Model.negrito_quat </option>
-                            <option> --- </option>
-                            <option> Sim </option>
-                            <option> Não </option>
-                        </select>
-                    </td>
-                </tr>
-                <tr>
-                    <td> Está em caixa alta </td>
-                    <td>
-                        <select name="caixa_alta_quat">
-                            <option selected> @Model.caixa_alta_quat </option>
-                            <option> --- </option>
-                            <option> Sim </option>
-                            <option> Não </option>
-                        </select>
-                    </td>
-                </tr>
-                <tr>
-                    <td> Está em coloração que se destaque da cor do fundo da etiqueta </td>
-                    <td>
-                        <select name="coloracao_quat">
-                            <option selected> @Model.coloracao_quat </option>
-                            <option> --- </option>
-                            <option> Sim </option>
-                            <option> Não </option>
-                        </select>
-                    </td>
-                </tr>
-
+                @if (ViewBag.tipoColchao == "Colchão Misto")
+                {
+                    if (ViewBag.outrosMateriais == "Infravermelho" || ViewBag.outrosMateriais == "Elementos" || ViewBag.outrosMateriais == "Lâmina Rabatan")
+                    {
+                        <tr>
+                            <td colspan="2">
+                                Nota - O aviso de esclarecimento deve ser apresentado em letras não inferiores a 3 mm de altura, em negrito,
+                                caixa alta e em coloração que se destaque da cor de fundo da etiqueta.
+                            </td>
+                        </tr>
+                        <tr>
+                            <td> Altura da letra </td>
+                            <td> <input class="form-control" type="text" name="altura_letra_quat" value="@Model.altura_letra_quat" /> </td>
+                        </tr>
+                        <tr>
+                            <td> Está em negrito </td>
+                            <td>
+                                <select name="negrito_quat">
+                                    <option selected> @Model.negrito_quat </option>
+                                    <option> --- </option>
+                                    <option> Sim </option>
+                                    <option> Não </option>
+                                </select>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td> Está em caixa alta </td>
+                            <td>
+                                <select name="caixa_alta_quat">
+                                    <option selected> @Model.caixa_alta_quat </option>
+                                    <option> --- </option>
+                                    <option> Sim </option>
+                                    <option> Não </option>
+                                </select>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td> Está em coloração que se destaque da cor do fundo da etiqueta </td>
+                            <td>
+                                <select name="coloracao_quat">
+                                    <option selected> @Model.coloracao_quat </option>
+                                    <option> --- </option>
+                                    <option> Sim </option>
+                                    <option> Não </option>
+                                </select>
+                            </td>
+                        </tr>
+                    }
+                }
             </table>
 
-
+            <br />
             <table class="tables table-bordered border-secondary  table-sm">
                 <tr class="fundo-tabela">
                     <td>Item</td>
@@ -1683,41 +1701,49 @@
                     <td>
 
                         Está em coloração que se destaque da cor do fundo da etiqueta:
-                        <input class="controlador" type="text" name="coloracao_seis" />
-                    </td>
-                </tr>
-                @if (ViewBag.tipLamina == "Colchão misto"){
-                <tr>
-                    <td>
-                        2.13  No  caso  de  declaração  voluntária  do fornecedor  sobre  funcionalidades  dos  colchões  mistos,
-                        as instruções de uso ou de informações ao usuário (manual do produto) devem incluir o seguinte texto:
-                        “As  características  sobre  as  funcionalidades  descritas  a  seguir  não  foram  avaliadas  pelo processo de certificação do produto.”<br /> <br />
-
                     </td>
                     <td>
-                        <select name="dec_voluntaria">
-                            <option selected> @Model.dec_voluntaria </option>
+                        <select name="coloracao_seis">
+                            <option selected> @Model.coloracao_seis </option>
                             <option> --- </option>
                             <option> Sim </option>
                             <option> Não </option>
                         </select>
                     </td>
                 </tr>
-                <tr>
-                    <td>
-                        2.13.1 O texto deve ser em negrito, com o mesmo formato e tamanho de letra da utilizada ndescrição
-                        e em todos os locais onde se descrevam tais funcionalidades.
+                @if (ViewBag.tipLamina == "Colchão misto")
+                {
+                    <tr>
+                        <td>
+                            2.13  No  caso  de  declaração  voluntária  do fornecedor  sobre  funcionalidades  dos  colchões  mistos,
+                            as instruções de uso ou de informações ao usuário (manual do produto) devem incluir o seguinte texto:
+                            “As  características  sobre  as  funcionalidades  descritas  a  seguir  não  foram  avaliadas  pelo processo de certificação do produto.”<br /> <br />
 
-                    </td>
-                    <td>
-                        <select name="texto_negrito">
-                            <option selected> @Model.texto_negrito </option>
-                            <option> --- </option>
-                            <option> Sim </option>
-                            <option> Não </option>
-                        </select>
-                    </td>
-                </tr>
+                        </td>
+                        <td>
+                            <select name="dec_voluntaria">
+                                <option selected> @Model.dec_voluntaria </option>
+                                <option> --- </option>
+                                <option> Sim </option>
+                                <option> Não </option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            2.13.1 O texto deve ser em negrito, com o mesmo formato e tamanho de letra da utilizada ndescrição
+                            e em todos os locais onde se descrevam tais funcionalidades.
+
+                        </td>
+                        <td>
+                            <select name="texto_negrito">
+                                <option selected> @Model.texto_negrito </option>
+                                <option> --- </option>
+                                <option> Sim </option>
+                                <option> Não </option>
+                            </select>
+                        </td>
+                    </tr>
                 }
                 <tr>
                     <td>
