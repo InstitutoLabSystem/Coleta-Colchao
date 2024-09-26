@@ -654,7 +654,6 @@
                 <button type="submit" class="btn btn-success btn btn-primary btn-md">Editar Dados</button>
             </div>
         }
-
     </form>
     <script>
         const tipo_espuma = document.getElementById("tipo_espuma");
@@ -683,44 +682,46 @@
 
                 if (valorDigitado == '20') {
                     especificado.value = 95;
-                    conforto.value = 2, 0;
+                    conforto.value = 2;
                     tamanho.value = 'Min';
                     console.log(especificado.value);
                 } else if (valorDigitado == '18') {
                     especificado.value = 80;
-                    conforto.value = 2, 0;
+                    conforto.value = 2;
                     tamanho.value = 'Min';
                 } else if (valorDigitado == '23') {
                     especificado.value = 110;
-                    conforto.value = 2, 1;
+                    conforto.value = "2,1";
                     tamanho.value = 'Min';
                 } else if (valorDigitado == '26') {
                     especificado.value = 130;
-                    conforto.value = 2, 1;
+                    conforto.value = "2,1";
                     tamanho.value = 'Min';
                 } else if (valorDigitado == '28') {
                     especificado.value = 145;
-                    conforto.value = 2, 2;
+                    conforto.value = "2,2";
                     tamanho.value = 'Min';
                 }
                 else if (valorDigitado == '33') {
                     especificado.value = 165;
-                    conforto.value = 2, 2;
+                    conforto.value = "2,2";
                     tamanho.value = 'Min';
                 }
                 else if (valorDigitado == '40') {
                     especificado.value = 185;
-                    conforto.value = 2, 2;
+                    conforto.value = "2,2";
                     tamanho.value = 'Min';
                 }
                 else if (valorDigitado == '45') {
                     especificado.value = 200;
-                    conforto.value = 2, 2;
+                    conforto.value = "2,2";
                     tamanho.value = 'Min';
                 }
                 else {
                     especificado.value = "Não há especificado na tabela";
                 }
+                console.log(valorDigitado);
+                console.log(conforto.value);
 
             } else if (opcaoSelecionada === 'Hipermacia') {
                 if (valorDigitado == '20' || valorDigitado == '24') {
@@ -759,7 +760,7 @@
                 conforto.value = "Não há especificado na tabela";
             } else if (opcaoSelecionada === 'Aglomerado') {
                 if (valorDigitado >= '65') {
-                    especificado.value = 35;
+                    especificado.value = 250;
                     tamanho.value = 'Max';
                 }
                 else {
@@ -771,7 +772,7 @@
             else if (opcaoSelecionada === 'Visco elástica') {
                 if (valorDigitado >= '30') {
                     especificado.value = 25;
-                    conforto.value = 10;
+                    conforto.value = "1,8";
                     tamanho.value = 'Min';
                 }
                 else {
@@ -787,7 +788,7 @@
                 conforto.value = "Não há especificado na tabela";
             } else if (opcaoSelecionada === 'Alta resiliência') {
                 if (valorDigitado >= '30') {
-                    conforto.value = 2, 3;
+                    conforto.value = "2, 3";
                     tamanho.value = 'Min';
                 }
                 especificado.value = "Não há especificado na tabela";

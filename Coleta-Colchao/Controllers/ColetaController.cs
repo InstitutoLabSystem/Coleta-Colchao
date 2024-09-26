@@ -3262,7 +3262,7 @@ namespace Coleta_Colchao.Controllers
 
                     // realizando calculo necessario.
                     float calc_media = area_etiqueta_1 * area_etiqueta_2;
-                    
+
                     if (calc_media <= 150)
                     {
                         conforme_area = "NC";
@@ -3540,7 +3540,7 @@ namespace Coleta_Colchao.Controllers
                     editarDados.conforme_r = salvarDados.conforme_r;
                     editarDados.conforme_s = salvarDados.conforme_s;
                     editarDados.conforme_6_2 = salvarDados.conforme_6_2;
-                    
+
 
                     //realizando contas necessarias.
                     float calc_media = editarDados.area_etiqueta_1 * editarDados.area_etiqueta_2;
@@ -3553,148 +3553,148 @@ namespace Coleta_Colchao.Controllers
                     //    editarDados.conforme_area = "C";
                     //}
 
-                        //VERIFICANDO SE COLETA ESTA CONFORME OU NC DE CADA CAMPO
-                        //if (editarDados.etiqueta_ident == "NC" || editarDados.revest_permanente == "NC" || editarDados.etiqueta_duravel_indele == "NC" || editarDados.face_superior == "NC" || editarDados.visualizacao == "NC" || editarDados.lingua_portuguesa == "NC")
-                        //{
-                        //    if (calc_media <= 150)
-                        //    {
-                        //        editarDados.conforme_requisitos = "NC";
-                        //    }
-                        //    else
-                        //    {
-                        //        editarDados.conforme_requisitos = "C";
-                        //    }
-                        //}
-                        //else
-                        //{
-                        //    if (calc_media <= 150)
-                        //    {
-                        //        editarDados.conforme_requisitos = "C";
-                        //    }
-                        //    else
-                        //    {
-                        //        editarDados.conforme_requisitos = "NC";
-                        //    }
-                        //}
+                    //VERIFICANDO SE COLETA ESTA CONFORME OU NC DE CADA CAMPO
+                    //if (editarDados.etiqueta_ident == "NC" || editarDados.revest_permanente == "NC" || editarDados.etiqueta_duravel_indele == "NC" || editarDados.face_superior == "NC" || editarDados.visualizacao == "NC" || editarDados.lingua_portuguesa == "NC")
+                    //{
+                    //    if (calc_media <= 150)
+                    //    {
+                    //        editarDados.conforme_requisitos = "NC";
+                    //    }
+                    //    else
+                    //    {
+                    //        editarDados.conforme_requisitos = "C";
+                    //    }
+                    //}
+                    //else
+                    //{
+                    //    if (calc_media <= 150)
+                    //    {
+                    //        editarDados.conforme_requisitos = "C";
+                    //    }
+                    //    else
+                    //    {
+                    //        editarDados.conforme_requisitos = "NC";
+                    //    }
+                    //}
 
-                        //if (editarDados.cnpj_cpf == "NC" || editarDados.marca_modelo == "NC" || editarDados.dimensoes_prod == "NC")
-                        //{
-                        //    editarDados.conforme_requisitos_2 = "NC";
-                        //}
-                        //else
-                        //{
-                        //    editarDados.conforme_requisitos_2 = "C";
+                    //if (editarDados.cnpj_cpf == "NC" || editarDados.marca_modelo == "NC" || editarDados.dimensoes_prod == "NC")
+                    //{
+                    //    editarDados.conforme_requisitos_2 = "NC";
+                    //}
+                    //else
+                    //{
+                    //    editarDados.conforme_requisitos_2 = "C";
 
-                        //}
+                    //}
 
-                        //if (editarDados.informada_altura == "NC" || editarDados.composicoes == "NC" || editarDados.contem_borda == "NC" || editarDados.densidade_espuma == "NC" || editarDados.composi_revestimento == "NC" || editarDados.data_fabricacao == "NC" || editarDados.ident_lote == "NC" || editarDados.pais_origem == "NC" || editarDados.codigo_barras == "NC" || editarDados.cuidado_minimos == "NC")
-                        //{
-                        //    editarDados.conforme_requisitos_3 = "NC";
-                        //}
-                        //else
-                        //{
-                        //    editarDados.conforme_requisitos_3 = "C";
-                        //}
+                    //if (editarDados.informada_altura == "NC" || editarDados.composicoes == "NC" || editarDados.contem_borda == "NC" || editarDados.densidade_espuma == "NC" || editarDados.composi_revestimento == "NC" || editarDados.data_fabricacao == "NC" || editarDados.ident_lote == "NC" || editarDados.pais_origem == "NC" || editarDados.codigo_barras == "NC" || editarDados.cuidado_minimos == "NC")
+                    //{
+                    //    editarDados.conforme_requisitos_3 = "NC";
+                    //}
+                    //else
+                    //{
+                    //    editarDados.conforme_requisitos_3 = "C";
+                    //}
 
-                        //if (editarDados.aviso_esclarecimento == "NC" || editarDados.possui_mais_laminas == "NC" || editarDados.contem_advertencia == "NC" || editarDados.negrito == "NC" || editarDados.caixa_alta == "NC" || editarDados.contem_advertencia_mat == "NC" || editarDados.negrito_mat == "NC")
-                        //{
+                    //if (editarDados.aviso_esclarecimento == "NC" || editarDados.possui_mais_laminas == "NC" || editarDados.contem_advertencia == "NC" || editarDados.negrito == "NC" || editarDados.caixa_alta == "NC" || editarDados.contem_advertencia_mat == "NC" || editarDados.negrito_mat == "NC")
+                    //{
 
-                        //    float conv_altura_letra = float.Parse(editarDados.altura_letra);
-                        //    if (conv_altura_letra <= 2.5)
-                        //    {
-                        //        editarDados.conforme_requisitos_4 = "NC";
-                        //    }
-                        //    else
-                        //    {
-                        //        editarDados.conforme_requisitos_4 = "C";
-                        //    }
-                        //}
-                        //else
-                        //{
-                        //    float conv_altura_letra = float.Parse(editarDados.altura_letra);
-                        //    if (conv_altura_letra >= 2.5)
-                        //    {
-                        //        editarDados.conforme_requisitos_4 = "C";
-                        //    }
-                        //    else
-                        //    {
-                        //        editarDados.conforme_requisitos_4 = "NC";
-                        //    }
-                        //}
+                    //    float conv_altura_letra = float.Parse(editarDados.altura_letra);
+                    //    if (conv_altura_letra <= 2.5)
+                    //    {
+                    //        editarDados.conforme_requisitos_4 = "NC";
+                    //    }
+                    //    else
+                    //    {
+                    //        editarDados.conforme_requisitos_4 = "C";
+                    //    }
+                    //}
+                    //else
+                    //{
+                    //    float conv_altura_letra = float.Parse(editarDados.altura_letra);
+                    //    if (conv_altura_letra >= 2.5)
+                    //    {
+                    //        editarDados.conforme_requisitos_4 = "C";
+                    //    }
+                    //    else
+                    //    {
+                    //        editarDados.conforme_requisitos_4 = "NC";
+                    //    }
+                    //}
 
-                        //if (editarDados.contem_advertencia_mat == "C" || editarDados.negrito_mat == "C" || editarDados.caixa_alta_mat == "C")
-                        //{
+                    //if (editarDados.contem_advertencia_mat == "C" || editarDados.negrito_mat == "C" || editarDados.caixa_alta_mat == "C")
+                    //{
 
-                        //    float conv_altura_letra_mat = float.Parse(editarDados.altura_letra_mat);
-                        //    if (conv_altura_letra_mat >= 5)
-                        //    {
-                        //        editarDados.conforme_requisitos_5 = "C";
-                        //    }
-                        //    else
-                        //    {
-                        //        editarDados.conforme_requisitos_5 = "NC";
-                        //    }
-                        //}
-                        //else
-                        //{
-                        //    float conv_altura_letra_mat = float.Parse(editarDados.altura_letra_mat);
-                        //    if (conv_altura_letra_mat >= 5)
-                        //    {
-                        //        editarDados.conforme_requisitos_5 = "C";
-                        //    }
-                        //    else
-                        //    {
-                        //        editarDados.conforme_requisitos_5 = "NC";
-                        //    }
-                        //}
+                    //    float conv_altura_letra_mat = float.Parse(editarDados.altura_letra_mat);
+                    //    if (conv_altura_letra_mat >= 5)
+                    //    {
+                    //        editarDados.conforme_requisitos_5 = "C";
+                    //    }
+                    //    else
+                    //    {
+                    //        editarDados.conforme_requisitos_5 = "NC";
+                    //    }
+                    //}
+                    //else
+                    //{
+                    //    float conv_altura_letra_mat = float.Parse(editarDados.altura_letra_mat);
+                    //    if (conv_altura_letra_mat >= 5)
+                    //    {
+                    //        editarDados.conforme_requisitos_5 = "C";
+                    //    }
+                    //    else
+                    //    {
+                    //        editarDados.conforme_requisitos_5 = "NC";
+                    //    }
+                    //}
 
-                        //if (editarDados.contem_instru_uso == "NC" || editarDados.orientacoes == "NC" || editarDados.alerta_consumidor == "NC" || editarDados.desenho_esquematico == "NC" || editarDados.contem_advertencia_6_2 == "NC" || editarDados.altura_letra_6_2 == "NC" || editarDados.negrito6_2 == "NC" || editarDados.caixa_alta_6_2 == "NC")
-                        //{
-                        //    editarDados.conforme_6_1 = "NC";
-                        //}
-                        //else
-                        //{
-                        //    editarDados.conforme_6_1 = "C";
-                        //}
+                    //if (editarDados.contem_instru_uso == "NC" || editarDados.orientacoes == "NC" || editarDados.alerta_consumidor == "NC" || editarDados.desenho_esquematico == "NC" || editarDados.contem_advertencia_6_2 == "NC" || editarDados.altura_letra_6_2 == "NC" || editarDados.negrito6_2 == "NC" || editarDados.caixa_alta_6_2 == "NC")
+                    //{
+                    //    editarDados.conforme_6_1 = "NC";
+                    //}
+                    //else
+                    //{
+                    //    editarDados.conforme_6_1 = "C";
+                    //}
 
-                        //if (editarDados.contem_advertencia_6_2 == "C" || editarDados.negrito6_2 == "C" || editarDados.caixa_alta_6_2 == "C")
-                        //{
-                        //    float conv_altura_letra_6_2 = float.Parse(editarDados.altura_letra_6_2);
-                        //    if (conv_altura_letra_6_2 >= 5)
-                        //    {
-                        //        editarDados.conforme_6_2 = "C";
-                        //    }
-                        //    else
-                        //    {
-                        //        editarDados.conforme_6_2 = "NC";
-                        //    }
-                        //}
-                        //else
-                        //{
-                        //    float conv_altura_letra_6_2 = float.Parse(editarDados.altura_letra_6_2);
-                        //    if (conv_altura_letra_6_2 >= 5)
-                        //    {
-                        //        editarDados.conforme_6_2 = "C";
-                        //    }
-                        //    else
-                        //    {
-                        //        editarDados.conforme_6_2 = "NC";
-                        //    }
-                        //}
+                    //if (editarDados.contem_advertencia_6_2 == "C" || editarDados.negrito6_2 == "C" || editarDados.caixa_alta_6_2 == "C")
+                    //{
+                    //    float conv_altura_letra_6_2 = float.Parse(editarDados.altura_letra_6_2);
+                    //    if (conv_altura_letra_6_2 >= 5)
+                    //    {
+                    //        editarDados.conforme_6_2 = "C";
+                    //    }
+                    //    else
+                    //    {
+                    //        editarDados.conforme_6_2 = "NC";
+                    //    }
+                    //}
+                    //else
+                    //{
+                    //    float conv_altura_letra_6_2 = float.Parse(editarDados.altura_letra_6_2);
+                    //    if (conv_altura_letra_6_2 >= 5)
+                    //    {
+                    //        editarDados.conforme_6_2 = "C";
+                    //    }
+                    //    else
+                    //    {
+                    //        editarDados.conforme_6_2 = "NC";
+                    //    }
+                    //}
 
-                        //if (editarDados.embalagem_garante == "NC" || editarDados.embalagem_unitaria == "NC")
-                        //{
-                        //    editarDados.conforme_embalagem = "NC";
-                        //}
-                        //else
-                        //{
-                        //    editarDados.conforme_embalagem = "C";
-                        //}
-                        //termino das verificações de conformidade.
+                    //if (editarDados.embalagem_garante == "NC" || editarDados.embalagem_unitaria == "NC")
+                    //{
+                    //    editarDados.conforme_embalagem = "NC";
+                    //}
+                    //else
+                    //{
+                    //    editarDados.conforme_embalagem = "C";
+                    //}
+                    //termino das verificações de conformidade.
 
 
-                        //recebendo valor depois do calculo.
-                        editarDados.area_etiqueta_media = calc_media;
+                    //recebendo valor depois do calculo.
+                    editarDados.area_etiqueta_media = calc_media;
 
                     _context.Update(editarDados);
                     await _context.SaveChangesAsync();
@@ -3847,15 +3847,15 @@ namespace Coleta_Colchao.Controllers
 
                         if (altura_letra_dois >= 3 && altura_letra_tres >= 3 && altura_letra_quat >= 3)
 
-                        if (altura_letra_tres >= 3 && altura_letra_quat >= 3)
+                            if (altura_letra_tres >= 3 && altura_letra_quat >= 3)
 
-                        {
-                            conforme_letras_dois = "C";
-                        }
-                        else
-                        {
-                            conforme_letras_dois = "NC";
-                        }
+                            {
+                                conforme_letras_dois = "C";
+                            }
+                            else
+                            {
+                                conforme_letras_dois = "NC";
+                            }
                     }
                     else
                     {
@@ -5214,15 +5214,15 @@ namespace Coleta_Colchao.Controllers
                     salvarDados.dr_um_um = salvarDados.massa_um;
                     salvarDados.dr_um_dois = vol_calc_amostra_um;
 
-                    salvarDados.dr_resul_um = (float)Math.Round((((salvarDados.dr_um_um / salvarDados.dr_um_dois) * 1000) / 1000),1);
+                    salvarDados.dr_resul_um = (float)Math.Round((((salvarDados.dr_um_um / salvarDados.dr_um_dois) * 1000) / 1000), 1);
 
                     salvarDados.dr_dois_um = salvarDados.massa_dois;
                     salvarDados.dr_dois_dois = vol_calc_amostra_dois;
-                    salvarDados.dr_resul_dois = (float)Math.Round((((salvarDados.dr_dois_um / salvarDados.dr_dois_dois) * 1000) /1000),1);
+                    salvarDados.dr_resul_dois = (float)Math.Round((((salvarDados.dr_dois_um / salvarDados.dr_dois_dois) * 1000) / 1000), 1);
 
                     salvarDados.dr_tres_um = salvarDados.massa_tres;
                     salvarDados.dr_tres_dois = vol_calc_amostra_tres;
-                    salvarDados.dr_resul_tres = (float)Math.Round((((salvarDados.dr_tres_um / salvarDados.dr_tres_dois) * 1000) /1000),1);
+                    salvarDados.dr_resul_tres = (float)Math.Round((((salvarDados.dr_tres_um / salvarDados.dr_tres_dois) * 1000) / 1000), 1);
 
                     salvarDados.dr_resul_um = float.Parse((((salvarDados.dr_um_um / salvarDados.dr_um_dois)) * 1000).ToString("N2"));
 
@@ -5238,8 +5238,20 @@ namespace Coleta_Colchao.Controllers
                     salvarDados.dr_media = float.Parse(Math.Round(((salvarDados.dr_resul_um + salvarDados.dr_resul_dois + salvarDados.dr_resul_tres) / 3), 1).ToString("N2"));
 
                     //float inverter_densidade = (salvarDados.densidade * 10) / 100;
-                    float densidade_resultado = ((salvarDados.densidade * 10) / 100) + salvarDados.densidade;
-                    float densidade_resultado_dois = (((salvarDados.densidade * 10) / 100) - salvarDados.densidade) * -1;
+                    float densidade_resultado;
+                    float densidade_resultado_dois;
+
+                    if (salvarDados.tem_maior_igual == "Não")
+                    {
+                        densidade_resultado = ((salvarDados.densidade * 10) / 100) + salvarDados.densidade;
+                        densidade_resultado_dois = (((salvarDados.densidade * 10) / 100) - salvarDados.densidade) * -1;
+                    }
+                    else
+                    {
+                        densidade_resultado = ((salvarDados.densidade * 5) / 100) + salvarDados.densidade;
+                        densidade_resultado_dois = (((salvarDados.densidade * 5) / 100) - salvarDados.densidade) * -1;
+                    }
+
 
                     if (salvarDados.dr_media >= densidade_resultado_dois && salvarDados.dr_media <= densidade_resultado)
                     {
@@ -5276,13 +5288,14 @@ namespace Coleta_Colchao.Controllers
                     editarDados.temp_final = salvarDados.temp_final;
                     editarDados.im = salvarDados.im;
                     editarDados.responsavel_cond = salvarDados.responsavel_cond;
+                    editarDados.tem_maior_igual = salvarDados.tem_maior_igual;
 
                     ////espessura.
                     editarDados.esp_amostra_um_um = salvarDados.esp_amostra_um_um;
                     editarDados.esp_amostra_um_dois = salvarDados.esp_amostra_um_dois;
                     editarDados.esp_amostra_um_tres = salvarDados.esp_amostra_um_tres;
                     editarDados.esp_amostra_um_quat = salvarDados.esp_amostra_um_quat;
-                    editarDados.esp_amostra_um_cinco = salvarDados.esp_amostra_um_cinco; 
+                    editarDados.esp_amostra_um_cinco = salvarDados.esp_amostra_um_cinco;
                     editarDados.esp_amostra_um_seis = salvarDados.esp_amostra_um_seis;
                     editarDados.esp_amostra_um_sete = salvarDados.esp_amostra_um_sete;
                     editarDados.esp_amostra_um_oito = salvarDados.esp_amostra_um_oito;
@@ -5346,7 +5359,7 @@ namespace Coleta_Colchao.Controllers
                     editarDados.dr_tres_dois = editarDados.calc_amostra_tres;
                     editarDados.dr_resul_tres = (float)Math.Round((((editarDados.dr_tres_um / editarDados.dr_tres_dois) * 1000) / 1000), 1);
 
-                    editarDados.dr_media = (float)Math.Round(((editarDados.dr_resul_um + editarDados.dr_resul_dois + editarDados.dr_resul_tres) / 3),1);
+                    editarDados.dr_media = (float)Math.Round(((editarDados.dr_resul_um + editarDados.dr_resul_dois + editarDados.dr_resul_tres) / 3), 1);
 
                     float dr_result_um = ((editarDados.dr_um_um / editarDados.dr_um_dois) * 1000);
                     editarDados.dr_resul_um = float.Parse(dr_result_um.ToString("N2"));
@@ -5365,9 +5378,20 @@ namespace Coleta_Colchao.Controllers
 
 
                     //float inverter_densidade = (salvarDados.densidade * 10) / 100;
-                    float densidade_resultado = float.Parse(((editarDados.densidade * 10) / 100) + editarDados.densidade.ToString("N2"));
-                    float densidade_resultado_dois = float.Parse(((((editarDados.densidade * 10) / 100) - editarDados.densidade) * -1).ToString("N2"));
+                    float densidade_resultado;
+                    float densidade_resultado_dois;
 
+                    if (editarDados.tem_maior_igual == "Não")
+                    {
+                        densidade_resultado = float.Parse(((editarDados.densidade * 10) / 100) + editarDados.densidade.ToString("N2"));
+                        densidade_resultado_dois = float.Parse(((((editarDados.densidade * 10) / 100) - editarDados.densidade) * -1).ToString("N2"));
+                    }
+                    else
+                    {
+                        densidade_resultado = float.Parse(((editarDados.densidade * 5) / 100) + editarDados.densidade.ToString("N2"));
+                        densidade_resultado_dois = float.Parse(((((editarDados.densidade * 5) / 100) - editarDados.densidade) * -1).ToString("N2"));
+                    }
+                    
                     if (editarDados.dr_media >= densidade_resultado_dois && editarDados.dr_media <= densidade_resultado)
                     {
                         editarDados.conforme = "C";
@@ -5375,7 +5399,6 @@ namespace Coleta_Colchao.Controllers
                     else
                     {
                         editarDados.conforme = "NC";
-
                     }
 
                     //salvando minimo e maximo da densidade.
@@ -6437,7 +6460,7 @@ namespace Coleta_Colchao.Controllers
                     salvarDados.media_espessura_tres = esp_media_tres;
 
                     //calculo redução mm
-                    salvarDados.reducao_um = float.Parse(((salvarDados.esp_media_um * salvarDados.reducao_porc_um) / 100).ToString("N2")); 
+                    salvarDados.reducao_um = float.Parse(((salvarDados.esp_media_um * salvarDados.reducao_porc_um) / 100).ToString("N2"));
                     salvarDados.reducao_dois = float.Parse(((salvarDados.esp_media_dois * salvarDados.reducao_porc_dois) / 100).ToString("N2"));
                     salvarDados.reducao_tres = float.Parse(((salvarDados.esp_media_tres * salvarDados.reducao_porc_tres) / 100).ToString("N2"));
 
@@ -6490,7 +6513,7 @@ namespace Coleta_Colchao.Controllers
                     salvarDados.conforto_65 = (int)salvarDados.media_65;
                     salvarDados.conforto_25 = (int)salvarDados.media_25;
 
-                    if(salvarDados.conforto_65 == 0 && salvarDados.conforto_25 == 0)
+                    if (salvarDados.conforto_65 == 0 && salvarDados.conforto_25 == 0)
                     {
                         salvarDados.media_conforto = 0;
                     }
@@ -6498,7 +6521,7 @@ namespace Coleta_Colchao.Controllers
                     {
                         salvarDados.media_conforto = (salvarDados.conforto_65 / salvarDados.conforto_25);
                     }
-                    
+
 
                     //realizando logica para saber se esta conforme ou nao conforme.
                     if (salvarDados.tipo_espuma == "Convencional")
@@ -6842,7 +6865,7 @@ namespace Coleta_Colchao.Controllers
                     editarDados.hora_final = salvarDados.hora_final;
                     editarDados.responsavel_cond = salvarDados.responsavel_cond;
                     editarDados.im = salvarDados.im;
-                    
+
                     //espessura.
                     editarDados.esp_ini_amostra_um_um = salvarDados.esp_ini_amostra_um_um;
                     editarDados.esp_ini_amostra_um_dois = salvarDados.esp_ini_amostra_um_dois;
@@ -6960,13 +6983,13 @@ namespace Coleta_Colchao.Controllers
                     editarDados.fator_ind_25 = float.Parse(salvarDados.media_25.ToString("N2"));
                     editarDados.fator_ind_40 = float.Parse(salvarDados.media_40.ToString("N2"));
                     editarDados.fator_ind_65 = float.Parse(salvarDados.media_65.ToString("N2"));
-               
+
                     //conforto
                     editarDados.conforto_65 = float.Parse(editarDados.media_65.ToString("N2"));
                     editarDados.conforto_25 = float.Parse(editarDados.media_25.ToString("N2"));
 
 
-                    if(editarDados.conforto_65 == 0 && editarDados.conforto_25 == 0)
+                    if (editarDados.conforto_65 == 0 && editarDados.conforto_25 == 0)
                     {
                         editarDados.media_conforto = 0;
                     }
@@ -7720,7 +7743,7 @@ namespace Coleta_Colchao.Controllers
                     salvarDados.media_espessura_um = salvarDados.esp_media_um;
                     salvarDados.media_espessura_dois = salvarDados.esp_media_dois;
                     salvarDados.media_espessura_tres = salvarDados.esp_media_tres;
-                    salvarDados.media_espessura_total = float.Parse(((salvarDados.media_espessura_um + salvarDados.media_espessura_dois + salvarDados.media_espessura_tres)/3).ToString("N2"));
+                    salvarDados.media_espessura_total = float.Parse(((salvarDados.media_espessura_um + salvarDados.media_espessura_dois + salvarDados.media_espessura_tres) / 3).ToString("N2"));
 
                     //calculo de reducao...
                     float red_25_um = ((salvarDados.media_espessura_um * salvarDados.comp_25_um) / 100);
@@ -7965,7 +7988,7 @@ namespace Coleta_Colchao.Controllers
                     editarDados.esp_media_dois = float.Parse(((editarDados.esp_ini_amostra_dois_um + editarDados.esp_ini_amostra_dois_dois + editarDados.esp_ini_amostra_dois_tres + editarDados.esp_ini_amostra_dois_quatro + editarDados.esp_ini_amostra_dois_cinco + editarDados.esp_ini_amostra_dois_seis + editarDados.esp_ini_amostra_dois_sete + editarDados.esp_ini_amostra_dois_oito) / 8).ToString("N2"));
                     editarDados.esp_media_tres = float.Parse(((editarDados.esp_ini_amostra_tres_um + editarDados.esp_ini_amostra_tres_dois + editarDados.esp_ini_amostra_tres_tres + editarDados.esp_ini_amostra_tres_quatro + editarDados.esp_ini_amostra_tres_cinco + editarDados.esp_ini_amostra_tres_seis + editarDados.esp_ini_amostra_tres_sete + editarDados.esp_ini_amostra_tres_oito) / 8).ToString("N2"));
                     editarDados.media_espessura_total = float.Parse(((editarDados.esp_media_um + editarDados.esp_media_dois + editarDados.esp_media_tres) / 3).ToString("N2"));
-                    
+
                     //recebendo media de espessura.
                     editarDados.media_espessura_um = editarDados.esp_media_um;
                     editarDados.media_espessura_dois = editarDados.esp_media_dois;
@@ -8047,7 +8070,7 @@ namespace Coleta_Colchao.Controllers
                         TempData["Mensagem"] = "Erro ao editar dados";
                         return RedirectToAction(nameof(LaminaPFI), "Coleta", new { os, orcamento });
                     }
-                    
+
                     editarDados.pfi_25_um = buscarFi.fator_ind_25;
                     editarDados.pfi_25_dois = salvarDados.forca_ind_enc_25;
                     editarDados.pfi_25_tres = salvarDados.pfi_25_um;

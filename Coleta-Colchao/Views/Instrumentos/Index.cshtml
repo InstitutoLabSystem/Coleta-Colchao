@@ -1,0 +1,102 @@
+﻿@model InstrumentosViewModel;
+@{
+    ViewData["Title"] = "Pagina Instrumentos";
+}
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="~/css/coleta.css" asp-append-version="true" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <title>Instrumentos</title>
+
+</head>
+<body>
+    <div class="container">
+        <form method="post" class="form-inline" asp-controller="Instrumentos" asp-action="Index" asp-route-os="@ViewBag.os" asp-route-orcamento="@ViewBag.orcamento">
+            <div class="container mt-2" style="text-align:center; align-items:center;">
+                <div class="row">
+                    <div class="input-group ">
+                        <label class="mr-2">Buscar codigo</label>
+                        <input name="os" type="hidden" value="@ViewBag.os" />
+                        <input name="orcamento" readonly type="hidden" value="@ViewBag.orcamento" />
+                        <input class="form-control col-md-8 " asp-for="@Model.oInstrumentos.codigo" />
+                        <div class="input-group-append  col-md-1">
+                            <button class="btn btn-primary  " type="submit" id="botao-pesquisar"> Pesquisar </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+
+        @* quando o instrumento for null significa que nao foi realizado pesquisa ainda, se for realizado pesqusa instrumento é null*@
+        @if (Model.oInstrumentos == null)
+        {
+            <form method="post" asp-controller="Instrumentos" asp-action="salvarInstrumentos">
+                <input asp-for="@Model.oInstrumentosColchao.os" readonly type="hidden" />
+                <input asp-for="@Model.oInstrumentosColchao.orcamento" readonly type="hidden" />
+                <div class="pt-3">
+                <h1 >Trazendo Instrumento</h1>
+                <table class="table table-striped mt-3">
+                    <thead>
+                        <tr>
+                            <th scope="col">Os</th>
+                            <th scope="col">Orçamento</th>
+                            <th scope="col">Codigo</th>
+                            <th scope="col">Descrição</th>
+                            <th scope="col">Certificado</th>
+                            <th scope="col">Validade</th>
+                            <th scope="col">Adicionar</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><input class="form-control" asp-for="@Model.oInstrumentosColchao.os" readonly /></td>
+                            <td><input class="form-control" asp-for="@Model.oInstrumentosColchao.orcamento" readonly /></td>
+                            <td><input class="form-control" asp-for="@Model.oInstrumentosColchao.codigo" readonly /></td>
+                            <td><input class="form-control" asp-for="@Model.oInstrumentosColchao.descricao" readonly /></td>
+                            <td><input class="form-control" asp-for="@Model.oInstrumentosColchao.certificado" readonly /></td>
+                            <td><input class="form-control" asp-for="@Model.oInstrumentosColchao.validade" readonly /></td>
+                            <td><button type="submit" class="btn btn-primary">salvar</button></td>
+                        </tr>
+                    </tbody>
+                </table>
+                </div>
+            </form>
+        }
+
+        @if (Model.oInstrumentosColchaoSalvos.Count > 0)
+        {
+            <div style="padding-top:100px" >
+            <h1>Instrumentos salvos</h1>
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th scope="col">Os</th>
+                        <th scope="col">Orçamento</th>
+                        <th scope="col">Codigo</th>
+                        <th scope="col">Descrição</th>
+                        <th scope="col">Certificado</th>
+                        <th scope="col">Validade</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @for (int i = 0; i < Model.oInstrumentosColchaoSalvos.Count; i++)
+                    {
+                        <tr>
+                            <td>@Model.oInstrumentosColchaoSalvos[i].os</td>
+                            <td>@Model.oInstrumentosColchaoSalvos[i].orcamento</td>
+                            <td>@Model.oInstrumentosColchaoSalvos[i].codigo</td>
+                            <td>@Model.oInstrumentosColchaoSalvos[i].descricao</td>
+                            <td>@Model.oInstrumentosColchaoSalvos[i].certificado</td>
+                            <td>@Model.oInstrumentosColchaoSalvos[i].validade</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+            </div>
+        }
+    </div>
+</body>
+</html>

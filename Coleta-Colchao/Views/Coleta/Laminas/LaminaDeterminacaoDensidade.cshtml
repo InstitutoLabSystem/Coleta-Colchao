@@ -145,10 +145,21 @@
                             <td colspan="4">Responsavel</td>
                             <td colspan="5"><input asp-for="responsavel_cond" class="form-control" /></td>
                         </tr>
-
                     </table>
                     <br />
+
                     <table class="tables table-bordered border-secondary  table-sm">
+                        <tr>
+                            <td colspan="2" class="fundo-tabela">Possui maior ou igual(≥ ou >) </Td>
+                            <td colspan="2">
+                                <select asp-for="tem_maior_igual" class="form-control">
+                               <option>---</option>
+                               <option value="Sim">Sim</option>
+                               <option value="Não">Não</option>
+                           </select>
+                           </td>
+                           
+                        </tr>
                         <tr>
                             <td class="fundo-tabela">Densidade (kg/m³)</td>
                             <td><input type="text" class="form-control" asp-for="densidade" /></td>

@@ -72,6 +72,12 @@
                                     <a role="button" target="_blank" class="btn btn-secondary" asp-controller="Coleta" asp-action="EnviarFotos" asp-route-os="@ViewBag.os" asp-route-orcamento="@ViewBag.orcamento">Imagens</a>
                                 </div>
                             }
+                            @if (Model != null)
+                            {
+                                <div class="input-group-append  col-sm-1 ml-3">
+                                    <a role="button" target="_blank" class="btn btn-warning" asp-controller="Instrumentos" asp-action="Index" asp-route-os="@ViewBag.os" asp-route-orcamento="@ViewBag.orcamento">Instrumentos</a>
+                                </div>
+                            }
                         </div>
                     </div>
                 </div>

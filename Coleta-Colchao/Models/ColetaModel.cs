@@ -885,6 +885,7 @@ namespace Coleta_Colchao.Models
             public float temp_final { get; set; }
             public string? im { get; set; }
             public string? responsavel_cond { get; set; }
+            public string? tem_maior_igual { get; set; }
             public float esp_amostra_um_um { get; set; }
             public float esp_amostra_um_dois { get; set; }
             public float esp_amostra_um_tres { get; set; }
