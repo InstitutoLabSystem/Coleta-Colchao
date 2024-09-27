@@ -132,6 +132,13 @@
                         Área da etiqueta
                         <br /><br /><input class="form-control" type="text" name="area_um" /> <b> X </b> <input class="form-control" type="text" name="area_dois" /> <b> = </b> <input class="form-control" type="text" name="area_result" readonly /> <br /> <br />
                     </td>
+                      <td>
+                        <select name="conforme_area_um">
+                            <option value="NA" selected> --- </option>
+                            <option value="C"> Sim </option>
+                            <option value="NC"> Não </option>
+                             </select>
+                        </td>
                 </tr>
                 <tr>
                     <td colspan="2">
@@ -1025,12 +1032,21 @@
                             <option> Não </option>
                         </select>
                     </td>
+                        
                 </tr>
                 <tr>
-                    <td colspan="2">
+                    <td >
                         Àrea da etiqueta
                         <br /><br /><input class="form-control" type="text" name="area_um" value="@Model.area_um" /> <b> X </b> <input class="form-control" type="text" name="area_dois" value="@Model.area_dois" /> <b> = </b> <input class="form-control" type="text" name="area_result" readonly value="@Model.area_result" /> <br /> <br />
                     </td>
+                    <td> 
+                         <select name="conforme_area_um">
+                            <option selected> @Model.conforme_area_um </option>
+                            <option value="NA"> --- </option>
+                            <option value="C"> C </option>
+                            <option value="NC"> NC </option>
+                             </select>
+                        </td>
                 </tr>
                 <tr>
                     <td colspan="2">

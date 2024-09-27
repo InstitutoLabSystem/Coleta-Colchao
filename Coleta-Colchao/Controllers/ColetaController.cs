@@ -3712,7 +3712,7 @@ namespace Coleta_Colchao.Controllers
 
 
         [HttpPost]
-        public async Task<IActionResult> EspumaIdentificacaoEmbalagem(string os, string orcamento, [Bind("data_ini,data_term,temp_ini,temp_fim,etiquieta_um,etiquieta_um,fixacao,material,area_um,area_dois,area_result,etiquieta_dois,marca,dimensoes,info_altura,medidas,colchoes,tipo_colchao," +
+        public async Task<IActionResult> EspumaIdentificacaoEmbalagem(string os, string orcamento, [Bind("data_ini,data_term,temp_ini,temp_fim,etiquieta_um,etiquieta_um,fixacao,material,area_um,area_dois,area_result,conforme_area_um,etiquieta_dois,marca,dimensoes,info_altura,medidas,colchoes,tipo_colchao," +
             "letras,altura_letra_um,negrito_um,caixa_alta_um,coloracao_um,classificacao,uso,composicao,tipo_espuma,densidade_nominal,espessura_mad,comp_revestimento,data_fabricacao,pais_fabricacao,cuidados,aviso_um,altura_letra_dois,negrito_dois,caixa_alta_dois,coloracao_dois,esclarecimento_um," +
             "altura_letra_tres,negrito_tres,caixa_alta_tres,coloracao_eti,esclarecimento_dois,altura_letra_quat,negrito_quat,caixa_alta_quat,coloracao_quat,colchao_infantil,embalagem_colchao,aviso_embalagem_um,altura_letra_cinco,negrito_cinco,caixa_alta_cinco,coloracao_cinco,aviso_odor,aviso_embalagem_dois,altura_letra_seis,negrito_seis," +
             "caixa_alta_seis,coloracao_seis,dec_voluntaria,texto_negrito,identificacao,identificacao_dois,desc_lamina,latex,embalagem_uni,embalagem_protecao,observacao,visualizacao,lingua_portuguesa,executador_um,executador_dois,executador_tres,executador_quat")] ColetaModel.Espuma_identificacao_embalagem salvar)
@@ -3738,6 +3738,7 @@ namespace Coleta_Colchao.Controllers
                     double areadois = double.Parse(area_dois);
                     double calculo_area_result = areaum * areadois;
                     string area_result = calculo_area_result.ToString();
+                    string conforme_area_um = salvar.conforme_area_um;
 
                     string etiquieta_dois = salvar.etiquieta_dois;
                     string marca = salvar.marca;
@@ -3930,9 +3931,6 @@ namespace Coleta_Colchao.Controllers
                         conforme6_2 = "NC";
                     }
 
-
-
-
                     var registro = new ColetaModel.Espuma_identificacao_embalagem
                     {
                         os = os,
@@ -3945,6 +3943,7 @@ namespace Coleta_Colchao.Controllers
                         area_um = area_um,
                         area_dois = area_dois,
                         area_result = area_result,
+                        conforme_area_um = conforme_area_um,
                         etiquieta_dois = etiquieta_dois,
                         marca = marca,
                         dimensoes = dimensoes,
@@ -4041,6 +4040,7 @@ namespace Coleta_Colchao.Controllers
                     double areaum = double.Parse(editarDados.area_um);
                     double areadois = double.Parse(editarDados.area_dois);
                     editarDados.area_result = (areaum * areadois).ToString();
+                    editarDados.conforme_area_um = salvar.conforme_area_um;
 
 
                     //editando os valores par conforme e nao conforme.
@@ -5391,7 +5391,7 @@ namespace Coleta_Colchao.Controllers
                         densidade_resultado = float.Parse(((editarDados.densidade * 5) / 100) + editarDados.densidade.ToString("N2"));
                         densidade_resultado_dois = float.Parse(((((editarDados.densidade * 5) / 100) - editarDados.densidade) * -1).ToString("N2"));
                     }
-                    
+
                     if (editarDados.dr_media >= densidade_resultado_dois && editarDados.dr_media <= densidade_resultado)
                     {
                         editarDados.conforme = "C";

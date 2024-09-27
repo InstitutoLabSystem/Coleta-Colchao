@@ -596,6 +596,7 @@ namespace Coleta_Colchao.Models
             public string? area_um { get; set; }
             public string? area_dois { get; set; }
             public string? area_result { get; set; }
+            public string? conforme_area_um { get; set; }
             public string? etiquieta_dois { get; set; }
             public string? marca { get; set; }
             public string? dimensoes { get; set; }
