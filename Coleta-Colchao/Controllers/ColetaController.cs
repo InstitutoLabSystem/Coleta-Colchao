@@ -1351,13 +1351,13 @@ namespace Coleta_Colchao.Controllers
                         }
 
 
-                        acomodacao_encontrada_1 = (med_face_1 / esp_face_1) * 100;
-                        string conv_acomodacao_encontrada_1 = acomodacao_encontrada_1.ToString("N1");
-                        acomodacao_encontrada_1 = float.Parse(conv_acomodacao_encontrada_1);
+                        acomodacao_encontrada_1 = float.Parse(((med_face_1 / esp_face_1) * 100).ToString("N2"));
+                        //string conv_acomodacao_encontrada_1 = acomodacao_encontrada_1.ToString("N1");
+                        //acomodacao_encontrada_1 = float.Parse(conv_acomodacao_encontrada_1);
 
-                        acomodacao_encontrada_2 = (med_face_2 / esp_face_2) * 100;
-                        string conv_acomodacao_encontrada_2 = acomodacao_encontrada_1.ToString("N1");
-                        acomodacao_encontrada_2 = float.Parse(conv_acomodacao_encontrada_2);
+                        acomodacao_encontrada_2 = float.Parse(((med_face_2 / esp_face_2) * 100).ToString("N2"));
+                        //string conv_acomodacao_encontrada_2 = acomodacao_encontrada_1.ToString("N1");
+                        //acomodacao_encontrada_2 = float.Parse(conv_acomodacao_encontrada_2);
 
                         float media = (acomodacao_encontrada_1 + acomodacao_encontrada_2) / 2;
 
@@ -1430,9 +1430,10 @@ namespace Coleta_Colchao.Controllers
                         {
                             editarDados.acom_esp_face_1 = 10;
                         }
-                        acomodacao_encontrada_1 = (editarDados.med_face_1 / editarDados.esp_face_1) * 100;
-                        string conv_acomodacao_encontrada_1 = acomodacao_encontrada_1.ToString("N1");
-                        acomodacao_encontrada_1 = float.Parse(conv_acomodacao_encontrada_1);
+                        acomodacao_encontrada_1 = float.Parse(((editarDados.med_face_1 / editarDados.esp_face_1) * 100).ToString("N2"));
+                        
+                        //string conv_acomodacao_encontrada_1 = acomodacao_encontrada_1.ToString("N1");
+                        //acomodacao_encontrada_1 = float.Parse(conv_acomodacao_encontrada_1);
 
                         if (acomodacao_encontrada_1 <= editarDados.acom_esp_face_1)
                         {
