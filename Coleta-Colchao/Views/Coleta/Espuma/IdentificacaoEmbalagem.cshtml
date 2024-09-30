@@ -1664,19 +1664,19 @@
 
                     </td>
                     <td>
-                        <select name="aviso_odor">
+                        <select name="aviso_odor" id="avisoOdor">
                             <option selected> @Model.aviso_odor </option>
                             <option> --- </option>
                             <option> Sim </option>
                             <option> Não </option>
+                            <option> NA </option>
                         </select>
                     </td>
                 </tr>
-                <tr>
+                <tr id="avisoOdor2">
                     <td>
                         2.12.1  O  aviso  na  embalagem  deve  ser  apresentado  em  letras  não  inferiores  a  20  mm  de  altura,
                         em negrito, caixa alta e em coloração que se destaque da cor de fundo da embalagem
-
                     </td>
                     <td>
                         <select name="aviso_embalagem_dois">
@@ -1687,11 +1687,11 @@
                         </select>
                     </td>
                 </tr>
-                <tr>
+                <tr id="alturaOdor">
                     <td> Altura da letra </td>
                     <td> <input class="form-control" type="text" name="altura_letra_seis" value="@Model.altura_letra_seis" /> </td>
                 </tr>
-                <tr>
+                <tr id="odorNegrito">
                     <td> Está em negrito </td>
                     <td>
                         <select name="negrito_seis">
@@ -1702,7 +1702,7 @@
                         </select>
                     </td>
                 </tr>
-                <tr>
+                <tr id="odorCaixa">
                     <td> Está em caixa alta </td>
                     <td>
                         <select name="caixa_alta_seis">
@@ -1713,7 +1713,7 @@
                         </select>
                     </td>
                 </tr>
-                <tr>
+                <tr id="odorColoracao">
                     <td>
 
                         Está em coloração que se destaque da cor do fundo da etiqueta:
@@ -1903,6 +1903,40 @@
     </script>
 }
 <script>
+    document.addEventListener("DOMContentLoaded", function () {
+        var verificarConformidade = document.querySelector('select[id="avisoOdor"]');
+        var avisoOdor2 = document.getElementById("avisoOdor2");
+        var alturaOdor = document.getElementById("alturaOdor");
+        var negritoOdor = document.getElementById("odorNegrito");
+        var odorCaixa = document.getElementById("odorCaixa");
+        var odorColoracao = document.getElementById("odorColoracao");
+
+        function atualizarInputs() {
+            var valorSelecionado = verificarConformidade.value;
+            if (valorSelecionado === "NA") {
+                avisoOdor2.style.display = 'none';
+                alturaOdor.style.display = 'none';
+                negritoOdor.style.display = 'none';
+                odorCaixa.style.display = 'none';
+                odorColoracao.style.display = 'none';
+            } else {
+                avisoOdor2.style.display = 'table-row';
+                alturaOdor.style.display = 'table-row';
+                negritoOdor.style.display = 'table-row';
+                odorCaixa.style.display = 'table-row';
+                odorColoracao.style.display = 'table-row';
+            }
+        }
+
+        atualizarInputs();
+        verificarConformidade.addEventListener('change', atualizarInputs);
+    });
+
+    
+
+
+
+
     document.addEventListener("keydown", function (e) {
         if (e.keyCode === 13) {
 

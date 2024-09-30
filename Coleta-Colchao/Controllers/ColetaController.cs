@@ -3739,8 +3739,16 @@ namespace Coleta_Colchao.Controllers
                     double areadois = double.Parse(area_dois);
                     double calculo_area_result = areaum * areadois;
                     string area_result = calculo_area_result.ToString();
-                    string conforme_area_um = salvar.conforme_area_um;
-
+                    string conforme_area_um;
+                    if (calculo_area_result >= 150)
+                    {
+                        conforme_area_um = "C";
+                    } 
+                    else
+                    {
+                        conforme_area_um = "NC";
+                    }
+                    
                     string etiquieta_dois = salvar.etiquieta_dois;
                     string marca = salvar.marca;
                     string dimensoes = salvar.dimensoes;
@@ -4058,10 +4066,12 @@ namespace Coleta_Colchao.Controllers
                         if (float.Parse(editarDados.area_result) > 150)
                         {
                             conforme_inicial = "C";
+                            editarDados.conforme_area_um = "C";
                         }
                         else
                         {
                             conforme_inicial = "NC";
+                            editarDados.conforme_area_um = "NC";
                         }
                     }
                     else
