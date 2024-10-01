@@ -845,6 +845,7 @@ namespace Coleta_Colchao.Models
             public string? rasgo { get; set; }
             public string? rompimento { get; set; }
             public string? prejudique { get; set; }
+            public string? conforme_pontoA { get; set; }
         }
 
         public class RegistroLamina

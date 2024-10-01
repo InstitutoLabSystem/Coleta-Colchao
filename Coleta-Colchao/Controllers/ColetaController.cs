@@ -5172,6 +5172,7 @@ namespace Coleta_Colchao.Controllers
                     editarRegistro.rasgo = salvarDados.rasgo;
                     editarRegistro.rompimento = salvarDados.rompimento;
                     editarRegistro.prejudique = salvarDados.prejudique;
+                    editarRegistro.conforme_pontoA = salvarDados.conforme_pontoA;
 
                     _context.ensaio_base_carga_estatica.Update(editarRegistro);
                     await _context.SaveChangesAsync();
@@ -5909,13 +5910,12 @@ namespace Coleta_Colchao.Controllers
 
                     //inico de variacao...
                     float variacao_dois = (((media_dpc_dois - media_dpc_um) / media_dpc_um) * 100);
-                    salvarDados.vari_amsotra_dois = float.Parse(variacao_dois.ToString("N2"));
+                    salvarDados.vari_amsotra_dois = variacao_dois;
 
                     float variacao_tres = (((media_dpc_tres - media_dpc_um) / media_dpc_um) * 100);
-                    salvarDados.vari_amsotra_tres = float.Parse(variacao_tres.ToString("N2"));
+                    salvarDados.vari_amsotra_tres = variacao_tres;
 
-                    //float dpc_encntrado = ((media_dpc_um + media_dpc_tres + media_dpc_tres) / 3);
-                    float dpc_encntrado = ((media_dpc_tres + media_dpc_tres + media_dpc_tres) / 3);
+                    float dpc_encntrado = ((media_dpc_um + media_dpc_tres + media_dpc_tres) / 3);
                     salvarDados.encontrada = float.Parse(dpc_encntrado.ToString("N2"));
 
                     //conformidade.
@@ -6249,15 +6249,14 @@ namespace Coleta_Colchao.Controllers
 
                     //inico de variacao...
                     float variacao_dois = (((media_dpc_dois - media_dpc_um) / media_dpc_um) * 100);
-                    editarDados.vari_amsotra_dois = float.Parse(variacao_dois.ToString("N2"));
+                    editarDados.vari_amsotra_dois = variacao_dois;
 
-                    float variacao_tres = (((media_dpc_tres - media_dpc_um) / media_dpc_um) * 100) * -1;
-                    editarDados.vari_amsotra_tres = float.Parse(variacao_tres.ToString("N2"));
+                    float variacao_tres = (((media_dpc_tres - media_dpc_um) / media_dpc_um) * 100);
+                    editarDados.vari_amsotra_tres = variacao_tres;
 
                     //float dpc_encntrado = ((media_dpc_um + media_dpc_tres + media_dpc_tres) / 3);
                     //editarDados.encontrada = dpc_encntrado;
-                    float encontrado = float.Parse(((media_dpc_tres + media_dpc_tres + media_dpc_tres) / 3).ToString("N2"));
-                    editarDados.encontrada = float.Parse(encontrado.ToString("N2"));
+                    editarDados.encontrada = float.Parse(((media_dpc_um + media_dpc_dois + media_dpc_tres) / 3).ToString("N2"));
                     editarDados.especificada = float.Parse(salvarDados.especificada.ToString("N2"));
 
                     //conformes

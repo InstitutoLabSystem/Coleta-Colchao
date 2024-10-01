@@ -111,11 +111,11 @@
                 </tr>
                 <tr>
                     <td>
-                        Local Da Aplicação: <input type="text" class="controlador" asp-for="local_aplicado" />
+                        Local Da Aplicação: <input type="text" class="controlador" asp-for="local_aplicado" value="Ponto A" readonly/>
                     </td>
                 </tr>
                 <tr>
-                    <td>Força Aplicada: <input type="text" class="controlador" style="width:200px;" asp-for="forca_aplicada" />  Tempo De Aplicação Da Carga: <input type="text" class="controlador" style="width:200px;" asp-for="aplicacao_carga" /></td>
+                    <td>Força Aplicada: <input type="text" class="controlador" style="width:200px;" asp-for="forca_aplicada" value="1400" readonly />  Tempo De Aplicação Da Carga: <input type="text" class="controlador" style="width:200px;" asp-for="aplicacao_carga" value="10" readonly/></td>
                 </tr>
                 <tr>
                     <td>
@@ -274,15 +274,21 @@
                         Ponto A
                     </td>
                     <td rowspan="10">
+                        <select class="controlar" asp-for="conforme_pontoA">
+                            <option value="---">---</option>
+                            <option value="C">C</option>
+                            <option value="NC">NC</option>
+                            <option value="NA">NA</option>
+                        </select>
                     </td>
                 </tr>
                 <tr>
                     <td>
-                        Local Da Aplicação: <input type="text" class="controlador" asp-for="local_aplicado" />
+                        Local Da Aplicação: <input type="text" class="controlador" asp-for="local_aplicado" value="Ponto A" readonly/>
                     </td>
                 </tr>
                 <tr>
-                    <td>Força Aplicada: <input type="text" class="controlador" style="width:200px;" asp-for="forca_aplicada" />  Tempo De Aplicação Da Carga: <input type="text" class="controlador" style="width:200px;" asp-for="aplicacao_carga" /></td>
+                    <td>Força Aplicada: <input type="text" class="controlador" style="width:200px;" asp-for="forca_aplicada" value="1400" readonly/>  Tempo De Aplicação Da Carga: <input type="text" class="controlador" style="width:200px;" asp-for="aplicacao_carga" value="10" readonly /></td>
                 </tr>
                 <tr>
                     <td>

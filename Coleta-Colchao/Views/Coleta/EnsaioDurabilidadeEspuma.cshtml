@@ -47,7 +47,7 @@
                         <td><input class="form-control" type="date" asp-for="data_inicio" /></td>
                         <span asp-validation-for="data_inicio" class="text-danger"></span>
                         <td>Termino:</td>
-                        <td><input class="form-control" type="date" name="data_termi" /></td>
+                        <td><input class="form-control" type="date" asp-for="data_termi" /></td>
                         <span asp-validation-for="data_termi" class="text-danger"></span>
 
                     </tr>
@@ -447,10 +447,10 @@
 
                     <tr>
                         <td>Inicio:</td>
-                        <td><input class="form-control" type="text" asp-for="data_inicio" value="@Model.data_inicio" /></td>
+                        <td><input class="form-control" type="text" asp-for="data_inicio"/></td>
                         <span asp-validation-for="data_inicio" class="text-danger"></span>
                         <td>Termino:</td>
-                        <td><input class="form-control" type="text" asp-for="data_termi" value="@Model.data_termi" /></td>
+                        <td><input class="form-control" type="text" asp-for="data_termi"  /></td>
                         <span asp-validation-for="data_termi" class="text-danger"></span>
 
                     </tr>
@@ -490,18 +490,18 @@
                             </tr>
                             <tr>
                                 <td>Inicio:</td>
-                                <td><input class="form-control" type="date" asp-for="data_inicio" /></td>
+                                <td><input class="form-control" type="text" asp-for="data_inicio" /></td>
                                 <td>Inicio:</td>
-                                <td><input class="form-control" type="time" asp-for="hora_inicio" /></td>
+                                <td><input class="form-control" type="text" asp-for="hora_inicio" /></td>
                                 <td>Min:</td>
                                 <td><input class="form-control" type="text" asp-for="temp_min" /></td>
                                 <td rowspan="2"><input class="form-control" type="type" asp-for="im" /></td>
                             </tr>
                             <tr>
                                 <td>Final:</td>
-                                <td><input class="form-control" type="date" asp-for="data_termi" /></td>
+                                <td><input class="form-control" type="text" asp-for="data_termi" /></td>
                                 <td>Final:</td>
-                                <td><input class="form-control" type="time" asp-for="hora_term" /></td>
+                                <td><input class="form-control" type="text" asp-for="hora_term" /></td>
                                 <td>Max:</td>
                                 <td><input class="form-control" type="text" asp-for="temp_max" /></td>
                             </tr>
