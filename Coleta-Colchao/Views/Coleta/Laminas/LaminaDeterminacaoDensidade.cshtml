@@ -99,7 +99,7 @@
                 <td>
                     <table class="tables table-bordered border-secondary table-sm" style="width:1100px;">
                         <tr class="fundo-tabela">
-                            <td colspan="10">
+                            <td colspan="12">
                                 - Temperatura da execução do ensaio  (23 ± 2) °C, sem necessidade de controle de umidade.
                             </td>
                         </tr>
@@ -107,6 +107,7 @@
                             <td colspan="2">Data do acondicionamento</td>
                             <td colspan="2">Horario do acondicionamento</td>
                             <td colspan="2">Temperatura encontrada</td>
+                            <td colspan="2">Umidade</td>
                             <td colspan="2">IM</td>
                         </tr>
                         <tr>
@@ -123,10 +124,11 @@
                             <td><input asp-for="hora_inicio" class="form-control" type="time" /></td>
                             <td>Min : </td>
                             <td><input asp-for="temp_inicio" class="form-control" /></td>
+                            <td>Inicio:</td>
+                            <td><input asp-for="temp_umidade_inicio" class="form-control" /></td>
                             <td rowspan="2"><input asp-for="im" class="form-control" style="height:80px;"/></td>
                         </tr>
                         <tr>
-
                             <td>Final:</td>
                             @if (Model == null)
                             {
@@ -140,6 +142,8 @@
                             <td><input asp-for="hora_final" class="form-control" type="time" /></td>
                             <td>Max : </td>
                             <td><input asp-for="temp_final" class="form-control" /></td>
+                            <td>Final:</td>
+                            <td><input asp-for="temp_umidade_final" class="form-control" type="text"/></td>
                         </tr>
                         <tr>
                             <td colspan="4">Responsavel</td>

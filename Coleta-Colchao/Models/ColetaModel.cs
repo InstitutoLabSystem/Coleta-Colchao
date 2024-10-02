@@ -477,9 +477,6 @@ namespace Coleta_Colchao.Models
             public string? im { get; set; }
             public string? responsavel_cond { get; set; }
             public string? face_escolhida { get; set; }
-            public float min_umidade { get; set; }
-            public float max_umidade { get; set; }
-
         }
 
 
@@ -885,6 +882,8 @@ namespace Coleta_Colchao.Models
             public TimeOnly hora_final { get; set; }
             public float temp_inicio { get; set; }
             public float temp_final { get; set; }
+            public float temp_umidade_inicio { get; set; }
+            public float temp_umidade_final { get; set; }
             public string? im { get; set; }
             public string? responsavel_cond { get; set; }
             public string? tem_maior_igual { get; set; }

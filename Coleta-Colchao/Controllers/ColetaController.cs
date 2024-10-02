@@ -2981,8 +2981,6 @@ namespace Coleta_Colchao.Controllers
                     string im = salvarDados.im;
                     string responsavel_cond = salvarDados.responsavel_cond;
                     string face_escolhida = salvarDados.face_escolhida;
-                    float min_umidade = salvarDados.min_umidade;
-                    float max_umidade = salvarDados.max_umidade;
 
 
                     var registro = new ColetaModel.Ensaio7_3
@@ -3007,9 +3005,7 @@ namespace Coleta_Colchao.Controllers
                         temp_final = temp_final,
                         im = im,
                         responsavel_cond = responsavel_cond,
-                        face_escolhida = face_escolhida,
-                        min_umidade = min_umidade,
-                        max_umidade = max_umidade
+                        face_escolhida = face_escolhida
                     };
 
                     _context.Add(registro);
@@ -3039,8 +3035,6 @@ namespace Coleta_Colchao.Controllers
                     editarDados.im = salvarDados.im;
                     editarDados.responsavel_cond = salvarDados.responsavel_cond;
                     editarDados.face_escolhida = salvarDados.face_escolhida;
-                    editarDados.min_umidade = salvarDados.min_umidade;
-                    editarDados.max_umidade = salvarDados.max_umidade;
 
                     _context.Update(editarDados);
                     await _context.SaveChangesAsync();
@@ -5298,6 +5292,8 @@ namespace Coleta_Colchao.Controllers
                     editarDados.hora_final = salvarDados.hora_final;
                     editarDados.temp_inicio = salvarDados.temp_inicio;
                     editarDados.temp_final = salvarDados.temp_final;
+                    editarDados.temp_umidade_inicio = salvarDados.temp_umidade_inicio;
+                    editarDados.temp_umidade_final = salvarDados.temp_umidade_final;
                     editarDados.im = salvarDados.im;
                     editarDados.responsavel_cond = salvarDados.responsavel_cond;
                     editarDados.tem_maior_igual = salvarDados.tem_maior_igual;

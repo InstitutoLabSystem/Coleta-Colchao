@@ -61,13 +61,12 @@
             <table class="tables table-bordered border-secondary  table-sm">
                 <thead>
                     <tr class="fundo-tabela">
-                        <td colspan="9">- Temperatura da execução do ensaio (23 ± 2) °C, sem necessidade de controle de umidade.</td>
+                        <td colspan="7">- Temperatura da execução do ensaio (23 ± 2) °C, sem necessidade de controle de umidade.</td>
                     </tr>
                     <tr class="fundo-tabela">
                         <td colspan="2">Data do Acondicionamento</td>
                         <td colspan="2">Horario do acondicionamento</td>
                         <td colspan="2">Temperatura encontrada</td>
-                        <td colspan="2">Umidade</td>
                         <td>IM</td>
                     </tr>
                 </thead>
@@ -79,8 +78,6 @@
                         <td><input asp-for="hora_inicio" class="form-control" type="time" /></td>
                         <td>Min:</td>
                         <td><input asp-for="temp_inicio" class="form-control" /></td>
-                        <td>Inicio:</td>
-                        <td><input asp-for="min_umidade" class="form-control" /></td>
                         <td rowspan="2"><input asp-for="im" class="form-control"/></td>
                     </tr>
                     <tr>
@@ -90,8 +87,6 @@
                         <td><input asp-for="hora_final" class="form-control" type="time" /></td>
                         <td>Max:</td>
                         <td><input asp-for="temp_final" class="form-control" /></td>
-                        <td>Final:</td>
-                        <td><input asp-for="max_umidade" class="form-control"/></td>
                     </tr>
                     <tr>
                         <td colspan="4">Responsavel</td>
@@ -268,13 +263,12 @@
             <table class="tables table-bordered border-secondary  table-sm">
                 <thead>
                     <tr class="fundo-tabela">
-                        <td colspan="9">- Temperatura da execução do ensaio (23 ± 2) °C, sem necessidade de controle de umidade.</td>
+                        <td colspan="7">- Temperatura da execução do ensaio (23 ± 2) °C, sem necessidade de controle de umidade.</td>
                     </tr>
                     <tr class="fundo-tabela">
                         <td colspan="2">Data do Acondicionamento</td>
                         <td colspan="2">Horario do acondicionamento</td>
                         <td colspan="2">Temperatura encontrada</td>
-                        <td colspan="2">Umidade</td>
                         <td>IM</td>
                     </tr>
                 </thead>
@@ -286,8 +280,6 @@
                         <td><input asp-for="hora_inicio" class="form-control" type="time" value="@Model.hora_inicio"/></td>
                         <td>Min:</td>
                         <td><input asp-for="temp_inicio" class="form-control" value="@Model.temp_inicio"/></td>
-                        <td>Inicio:</td>
-                        <td><input asp-for="min_umidade" class="form-control" value="@Model.min_umidade"/></td>
                         <td rowspan="2"><input asp-for="im" class="form-control" value="@Model.im"/></td>
                     </tr>
                     <tr>
@@ -297,8 +289,7 @@
                         <td><input asp-for="hora_final" class="form-control" type="time" value="@Model.hora_final"/></td>
                         <td>Max:</td>
                         <td><input asp-for="temp_final" class="form-control" value="@Model.temp_final"/></td>
-                        <td>Final:</td>
-                        <td><input asp-for="max_umidade" class="form-control" value="@Model.max_umidade"/></td>
+                        
                     </tr>
                     <tr>
                         <td colspan="4">Responsavel</td>
