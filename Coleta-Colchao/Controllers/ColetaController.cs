@@ -7612,7 +7612,7 @@ namespace Coleta_Colchao.Controllers
                     editarDados.pe_media_tres = float.Parse((((editarDados.pe_tres_um - editarDados.pe_tres_dois) / editarDados.pe_tres_tres) * 100).ToString("N2"));
 
                     editarDados.pe_especificado = salvarDados.pe_especificado;
-                    editarDados.pe_encontrado = (float)Math.Round(((editarDados.pe_media_um + editarDados.pe_media_dois + editarDados.pe_media_tres) / 3), 1);
+                    editarDados.pe_encontrado = float.Parse(((editarDados.pe_media_um + editarDados.pe_media_dois + editarDados.pe_media_tres) / 3).ToString("N2"));
                     editarDados.min_max = salvarDados.min_max;
 
                     //realizando logica para saber se esta conforme ou nao conforme.
