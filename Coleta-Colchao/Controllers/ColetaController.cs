@@ -4484,7 +4484,7 @@ namespace Coleta_Colchao.Controllers
 
 
                     //realizando se esta conforme ou nao conforme
-                    if (ruptura_ponto_a == "Não" && afundamento_ponto_a == "Não" && rasgo_ponto_a == "Não" && rompimento_ponto_a == "Não" && prejudique_ponto_a == "Não")
+                    if ((ruptura_ponto_a == "Não" || ruptura_ponto_a == "---") && (afundamento_ponto_a == "Não" || afundamento_ponto_a == "---") && (rasgo_ponto_a == "Não" || rasgo_ponto_a == "---") && (rompimento_ponto_a == "Não" || rompimento_ponto_a == "---") && (prejudique_ponto_a == "Não" || prejudique_ponto_a == "---"))
                     {
                         dados.conforme_a = "C";
                     }
@@ -4494,7 +4494,7 @@ namespace Coleta_Colchao.Controllers
                     }
 
                     //realizando se esta conforme ou nao conforme
-                    if (ruptura_ponto_b == "Não" && afundamento_ponto_b == "Não" && rasgo_ponto_b == "Não" && rompimento_ponto_b == "Não" && prejudique_ponto_b == "Não")
+                    if ((ruptura_ponto_b == "Não" || ruptura_ponto_b == "---") && (afundamento_ponto_b == "Não" || afundamento_ponto_b == "---") && (rasgo_ponto_b == "Não" || rasgo_ponto_b == "---") && (rompimento_ponto_b == "Não" || rompimento_ponto_b == "---") && (prejudique_ponto_b == "Não" || prejudique_ponto_b == "---"))
                     {
                         dados.conforme_b = "C";
                     }
@@ -4508,7 +4508,7 @@ namespace Coleta_Colchao.Controllers
                     }
 
                     //realizando se esta conforme ou nao conforme
-                    if (ruptura_ponto_c == "Não" && afundamento_ponto_c == "Não" && rasgo_ponto_c == "Não" && rompimento_ponto_c == "Não" && prejudique_ponto_c == "Não")
+                    if ((ruptura_ponto_c == "Não" || ruptura_ponto_c == "---") && (afundamento_ponto_c == "Não" || afundamento_ponto_c == "---") && (rasgo_ponto_c == "Não" || rasgo_ponto_c == "---") && (rompimento_ponto_c == "Não" || rompimento_ponto_c == "---") && (prejudique_ponto_c == "Não" || prejudique_ponto_c == "---"))
                     {
                         dados.conforme_c = "C";
                     }
@@ -4565,7 +4565,7 @@ namespace Coleta_Colchao.Controllers
                     editarRegistro.prejudique_ponto_c = dados.prejudique_ponto_c;
 
                     //realizando se esta conforme ou nao conforme
-                    if (editarRegistro.ruptura_ponto_a == "Não" && editarRegistro.afundamento_ponto_a == "Não" && editarRegistro.rasgo_ponto_a == "Não" && editarRegistro.rompimento_ponto_a == "Não" && editarRegistro.prejudique_ponto_a == "Não")
+                    if ((editarRegistro.ruptura_ponto_a == "Não" || editarRegistro.ruptura_ponto_a == "---") && (editarRegistro.afundamento_ponto_a == "Não" || editarRegistro.afundamento_ponto_a == "---") && (editarRegistro.rasgo_ponto_a == "Não" || editarRegistro.rasgo_ponto_a == "---") && (editarRegistro.rompimento_ponto_a == "Não" || editarRegistro.rompimento_ponto_a == "---") && (editarRegistro.prejudique_ponto_a == "Não" || editarRegistro.prejudique_ponto_a == "---"))
                     {
                         editarRegistro.conforme_a = "C";
                     }
@@ -4575,7 +4575,7 @@ namespace Coleta_Colchao.Controllers
                     }
 
                     //realizando se esta conforme ou nao conforme
-                    if (editarRegistro.ruptura_ponto_b == "Não" && editarRegistro.afundamento_ponto_b == "Não" && editarRegistro.rasgo_ponto_b == "Não" && editarRegistro.rompimento_ponto_b == "Não" && editarRegistro.prejudique_ponto_b == "Não")
+                    if ((editarRegistro.ruptura_ponto_b == "Não" || editarRegistro.ruptura_ponto_b == "---") && (editarRegistro.afundamento_ponto_b == "Não" || editarRegistro.afundamento_ponto_b == "---") && (editarRegistro.rasgo_ponto_b == "Não" || editarRegistro.rasgo_ponto_b == "---") && (editarRegistro.rompimento_ponto_b == "Não" || editarRegistro.rompimento_ponto_b == "---") && (editarRegistro.prejudique_ponto_b == "Não" || editarRegistro.prejudique_ponto_b == "---"))
                     {
                         editarRegistro.conforme_b = "C";
                     }
@@ -4589,7 +4589,7 @@ namespace Coleta_Colchao.Controllers
                     }
 
                     //realizando se esta conforme ou nao conforme
-                    if (editarRegistro.ruptura_ponto_c == "Não" && editarRegistro.afundamento_ponto_c == "Não" && editarRegistro.rasgo_ponto_c == "Não" && editarRegistro.rompimento_ponto_c == "Não" && editarRegistro.prejudique_ponto_c == "Não")
+                    if ((editarRegistro.ruptura_ponto_c == "Não" || editarRegistro.prejudique_ponto_c == "---") && (editarRegistro.afundamento_ponto_c == "Não" || editarRegistro.prejudique_ponto_c == "---") && (editarRegistro.rasgo_ponto_c == "Não" || editarRegistro.rasgo_ponto_c == "---") && (editarRegistro.rompimento_ponto_c == "Não" || editarRegistro.rompimento_ponto_c == "---") && (editarRegistro.prejudique_ponto_c == "Não" || editarRegistro.prejudique_ponto_c == "---"))
                     {
                         editarRegistro.conforme_c = "C";
                     }
