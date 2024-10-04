@@ -29,6 +29,7 @@ namespace Coleta_Colchao.Models
             public string? tipo_cert { get; set; }
             public string? modelo_cert { get; set; }
             public string? tipo_proc { get; set; }
+            public string? marca_modelo { get; set; }
             public string? produto { get; set; }
             public string? estrutura { get; set; }
             public string? tipo_molejo { get; set; }
@@ -72,6 +73,7 @@ namespace Coleta_Colchao.Models
             public string? tipo_cert { get; set; }
             public string? modelo_cert { get; set; }
             public string? tipo_proc { get; set; }
+            public string? marca_modelo { get; set; }
             public string? produto { get; set; }
             public string? clasi_produto { get; set; }
             public string? tipo_colchao { get; set; }
@@ -857,6 +859,7 @@ namespace Coleta_Colchao.Models
             public string? quant_ensaiada { get; set; }
             public DateOnly data_realizacao_ini { get; set; }
             public DateOnly data_realizacao_term { get; set; }
+            public string? marca_modelo { get; set; }
             public string? num_proc { get; set; }
             public string? cod_ref { get; set; }
             public string? desc_lamina { get; set; }

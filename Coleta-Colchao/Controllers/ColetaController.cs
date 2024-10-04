@@ -835,7 +835,7 @@ namespace Coleta_Colchao.Controllers
 
         //INICIO DAS FUNÇÕES PARA SALVAR OS DADOS,
         [HttpPost]
-        public async Task<IActionResult> SalvarRegistroMolas(string os, string orcamento, [Bind("lacre,realizacao_ensaios,quant_recebida,quant_ensaiada,data_realizacao_ini,data_realizacao_term,num_proc,cod_ref,tipo_cert,modelo_cert,tipo_proc,produto,estrutura,tipo_molejo,quant_molejo,fornecedor_um,fornecedor_dois,nome_molejo_um,nome_molejo_dois,quant_media_um,quant_media_dois,bitola_arame_um,bitola_arame_dois,borda_peri,metalasse,qtd_face,comprimento,largura,altura,isolante,latex,napa_cou_plas,manual")] ColetaModel.Registro registro)
+        public async Task<IActionResult> SalvarRegistroMolas(string os, string orcamento, [Bind("lacre,realizacao_ensaios,quant_recebida,quant_ensaiada,data_realizacao_ini,data_realizacao_term,num_proc,cod_ref,tipo_cert,modelo_cert,tipo_proc,produto,estrutura,tipo_molejo,quant_molejo,fornecedor_um,fornecedor_dois,nome_molejo_um,nome_molejo_dois,quant_media_um,quant_media_dois,bitola_arame_um,bitola_arame_dois,borda_peri,metalasse,qtd_face,comprimento,largura,altura,isolante,latex,napa_cou_plas,manual,marca_modelo")] ColetaModel.Registro registro)
         {
             try
             {
@@ -850,6 +850,7 @@ namespace Coleta_Colchao.Controllers
                 string tipo_cert = registro.tipo_cert;
                 string modelo_cert = registro.modelo_cert;
                 string tipo_proc = registro.tipo_proc;
+                string marca_modelo = registro.marca_modelo;
                 string produto = registro.produto;
                 string estrutura = registro.estrutura;
                 string tipo_molejo = registro.tipo_molejo;
@@ -889,6 +890,7 @@ namespace Coleta_Colchao.Controllers
                     tipo_cert = tipo_cert,
                     modelo_cert = modelo_cert,
                     tipo_proc = tipo_proc,
+                    marca_modelo = marca_modelo,
                     produto = produto,
                     estrutura = estrutura,
                     tipo_molejo = tipo_molejo,
@@ -1096,7 +1098,7 @@ namespace Coleta_Colchao.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> EditarRegistroMolas(string os, string orcamento, [Bind("lacre,realizacao_ensaios,quant_recebida,quant_ensaiada,data_realizacao_ini,data_realizacao_term,num_proc,cod_ref,tipo_cert,modelo_cert,tipo_proc,produto,estrutura,tipo_molejo,quant_molejo,fornecedor_um,fornecedor_dois,nome_molejo_um,nome_molejo_dois,quant_media_um,quant_media_dois,bitola_arame_um,bitola_arame_dois,borda_peri,qtd_face,comprimento,largura,altura,metalasse,isolante,latex,napa_cou_plas,manual")] ColetaModel.Registro EditarRegistros)
+        public async Task<IActionResult> EditarRegistroMolas(string os, string orcamento, [Bind("lacre,realizacao_ensaios,quant_recebida,quant_ensaiada,data_realizacao_ini,data_realizacao_term,num_proc,cod_ref,tipo_cert,modelo_cert,tipo_proc,produto,estrutura,tipo_molejo,quant_molejo,fornecedor_um,fornecedor_dois,nome_molejo_um,nome_molejo_dois,quant_media_um,quant_media_dois,bitola_arame_um,bitola_arame_dois,borda_peri,qtd_face,comprimento,largura,altura,metalasse,isolante,latex,napa_cou_plas,manual,marca_modelo")] ColetaModel.Registro EditarRegistros)
         {
             var editarValores = _context.regtro_colchao.Where(x => x.os == os && x.orcamento == orcamento).FirstOrDefault();
             try
@@ -1114,6 +1116,7 @@ namespace Coleta_Colchao.Controllers
                     editarValores.tipo_cert = EditarRegistros.tipo_cert;
                     editarValores.modelo_cert = EditarRegistros.modelo_cert;
                     editarValores.tipo_proc = EditarRegistros.tipo_proc;
+                    editarValores.marca_modelo = EditarRegistros.marca_modelo;
                     editarValores.produto = EditarRegistros.produto;
                     editarValores.estrutura = EditarRegistros.estrutura;
                     editarValores.tipo_molejo = EditarRegistros.tipo_molejo;
@@ -4860,7 +4863,7 @@ namespace Coleta_Colchao.Controllers
                         salvarDados.confome_ponto_a = "NC";
                     }
 
-                    if (ruptura_um == "Não" && prejudique_um == "Não" && rompimento_um == "Não" && rasgo_um == "Não" && afundamento_um == "Não")
+                    if ((ruptura_um == "Não" || ruptura_um == "---") && (prejudique_um == "Não" || prejudique_um == "---") && (rompimento_um == "Não" || rompimento_um == "---") && (rasgo_um == "Não" || rasgo_um == "---") && (afundamento_um == "Não" || afundamento_um == "---"))
                     {
                         salvarDados.conforme_um = "C";
                     }
@@ -4869,7 +4872,7 @@ namespace Coleta_Colchao.Controllers
                         salvarDados.conforme_um = "NC";
                     }
 
-                    if (ruptura_dois == "Não" && prejudique_dois == "Não" && rompimento_dois == "Não" && rasgo_dois == "Não" && afundamento_dois == "Não")
+                    if ((ruptura_dois == "Não" || ruptura_dois == "---") && (prejudique_dois == "Não" || prejudique_dois == "---") && (rompimento_dois == "Não" || rompimento_dois == "---") && (rasgo_dois == "Não" || rasgo_dois == "---") && (afundamento_dois == "Não" || afundamento_dois == "---"))
                     {
                         salvarDados.conforme_dois = "C";
                     }
@@ -4947,7 +4950,7 @@ namespace Coleta_Colchao.Controllers
                     }
 
 
-                    if (editarRegistro.ruptura_um == "Não" && editarRegistro.prejudique_um == "Não" && editarRegistro.rompimento_um == "Não" && editarRegistro.rasgo_um == "Não" && editarRegistro.afundamento_um == "Não")
+                    if ((editarRegistro.ruptura_um == "Não" || editarRegistro.ruptura_um == "---") && (editarRegistro.prejudique_um == "Não" || editarRegistro.prejudique_um == "---") && (editarRegistro.rompimento_um == "Não" || editarRegistro.rompimento_um == "---") && (editarRegistro.rasgo_um == "Não" || editarRegistro.rasgo_um == "---") && (editarRegistro.afundamento_um == "Não" || editarRegistro.afundamento_um == "---"))
                     {
                         editarRegistro.conforme_um = "C";
                     }
@@ -4956,7 +4959,7 @@ namespace Coleta_Colchao.Controllers
                         editarRegistro.conforme_um = "NC";
                     }
 
-                    if (editarRegistro.ruptura_dois == "Não" && editarRegistro.prejudique_dois == "Não" && editarRegistro.rompimento_dois == "Não" && editarRegistro.rasgo_dois == "Não" && editarRegistro.afundamento_dois == "Não")
+                    if ((editarRegistro.ruptura_dois == "Não" || editarRegistro.ruptura_dois == "---") && (editarRegistro.prejudique_dois == "Não" || editarRegistro.prejudique_dois == "---") && (editarRegistro.rompimento_dois == "Não" || editarRegistro.rompimento_dois == "---") && (editarRegistro.rasgo_dois == "Não" || editarRegistro.rasgo_dois == "---") && (editarRegistro.afundamento_dois == "Não" || editarRegistro.afundamento_dois == "---"))
                     {
                         editarRegistro.conforme_dois = "C";
                     }
