@@ -90,7 +90,7 @@
                         Quantidades de colagens   <input class="form-control" type="text" name="quant_colagens" /> <br /> <br />
                         As colagens são de mesmas densidades
                         <select class="form-control" name="colagens_densidade">
-                            <option selected> --- </option>
+                            <option> --- </option>
                             <option> Sim </option>
                             <option> Não </option>
                         </select> <br /> <br />
@@ -120,7 +120,7 @@
                         Distância da extremidade do colchão  <input class="form-control" type="text" name="distancia_dois" /> <br /> <br />
                         Não é permitido utilizar colagens no sentido do comprimento. <br /> <br />
                         Possui colagens do sentido do comprimento?  <select class="form-control" name="colagens_comp">
-                            <option selected> --- </option>
+                            <option> --- </option>
                             <option> Sim </option>
                             <option> Não </option>
                         </select> <br /> <br />
@@ -140,7 +140,7 @@
                         As colagens horizontais devem ocorrer entre as espumas de características diferentes, porém com espessura mínima de 3 cm.<br /> <br />
                         Ocorrem entre as espumas de características diferente?
                         <select class="form-control" name="espuma">
-                            <option selected> --- </option>
+                            <option> --- </option>
                             <option> Sim </option>
                             <option> Não </option>
                         </select> <br /> <br />
@@ -342,19 +342,19 @@
                         Esta colagem deve ser localizada no centro do colchão. <br /> <br />
                         O colchão é de casal
                         <select class="form-control" name="colchao_casal">
-                            <option selected> --- </option>
+                            <option> --- </option>
                             <option> Sim </option>
                             <option> Não </option>
                         </select> <br /> <br />
                         Possuí colagem no sentido do comprimento?
                         <select class="form-control" name="colagem_comp">
-                            <option selected> --- </option>
+                            <option> --- </option>
                             <option> Sim </option>
                             <option> Não </option>
                         </select> <br /> <br />
                         A espuma é convencional
                         <select class="form-control" name="espuma_conv">
-                            <option selected> --- </option>
+                            <option> --- </option>
                             <option> Sim </option>
                             <option> Não </option>
                         </select> <br /> <br />
@@ -459,6 +459,7 @@
                             <option selected> @Model.lamina_central </option>
                             <option> Sim </option>
                             <option> Não </option>
+                            <option>---</option>
                         </select> <br /> <br />
                     </td>
                 </tr>
@@ -491,6 +492,7 @@
                                 <option selected> @Model.colagens_densidade </option>
                                 <option> Sim </option>
                                 <option> Não </option>
+                                <option>---</option>
                             </select> <br /> <br />
                             A lâmina central deve ter no mínimo 50%  da espessura nominal do produto sem o revestimento <br /> <br />
                             Espessura nominal do produto sem o revestimento
@@ -528,6 +530,7 @@
                                 <option selected> @Model.colagens_comp </option>
                                 <option> Sim </option>
                                 <option> Não </option>
+                                <option>---</option>
                             </select> <br /> <br />
                         </td>
                     </tr>
@@ -552,6 +555,7 @@
                                 <option selected> @Model.espuma </option>
                                 <option> Sim </option>
                                 <option> Não </option>
+                                <option>---</option>
                             </select> <br /> <br />
 
                             <table class="tables table-bordered border-secondary  table-sm">
@@ -761,30 +765,35 @@
                                 <option selected> @Model.colchao_casal </option>
                                 <option> Sim </option>
                                 <option> Não </option>
+                                <option>---</option>
                             </select> <br /> <br />
                             Possuí colagem no sentido do comprimento?
                             <select class="form-control" name="colagem_comp">
                                 <option selected> @Model.colagem_comp </option>
                                 <option> Sim </option>
                                 <option> Não </option>
+                                <option>---</option>
                             </select> <br /> <br />
                             A espuma é convencional
                             <select class="form-control" name="espuma_conv">
                                 <option selected> @Model.espuma_conv </option>
                                 <option> Sim </option>
                                 <option> Não </option>
+                                <option>---</option>
                             </select> <br /> <br />
                             As espumas possuem densidades distintas
                             <select class="form-control" name="espuma_densidade">
                                 <option selected> @Model.espuma_densidade </option>
                                 <option> Sim </option>
                                 <option> Não </option>
+                                <option>---</option>
                             </select> <br /> <br />
                             Possui colagem na largura
                             <select class="form-control" name="colagem_largura">
                                 <option selected> @Model.colagem_largura </option>
                                 <option> Sim </option>
                                 <option> Não </option>
+                                <option>---</option>
                             </select> <br /> <br />
                             Quantidades de colagens <input class="form-control" type="text" name="quant_colagens_quat" value="@Model.quant_colagens_quat" /> <br /> <br />
                             A colagem está localizada no centro do colchão?
@@ -792,6 +801,7 @@
                                 <option selected> @Model.localidade </option>
                                 <option> Sim </option>
                                 <option> Não </option>
+                                <option>---</option>
                             </select> <br /> <br />
                         </td>
                     </tr>
@@ -825,6 +835,7 @@
                                 <option selected> @Model.adesivo </option>
                                 <option> Sim </option>
                                 <option> Não </option>
+                                <option>---</option>
                             </select> <br /> <br />
                         </td>
                     </tr>

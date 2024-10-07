@@ -1005,6 +1005,7 @@ namespace Coleta_Colchao.Controllers
                 string num_proc = salvarDados.num_proc;
                 string cod_ref = salvarDados.cod_ref;
                 string tipo_cert = salvarDados.tipo_cert;
+                string marca_modelo = salvarDados.marca_modelo;
                 string modelo_cert = salvarDados.modelo_cert;
                 string tipo_proc = salvarDados.tipo_proc;
                 string produto = salvarDados.produto;
@@ -1056,6 +1057,7 @@ namespace Coleta_Colchao.Controllers
                     editarDados.cod_ref = salvarDados.cod_ref;
                     editarDados.tipo_cert = salvarDados.tipo_cert;
                     editarDados.modelo_cert = salvarDados.modelo_cert;
+                    editarDados.marca_modelo = salvarDados.marca_modelo;
                     editarDados.produto = salvarDados.produto;
                     editarDados.comprimento = salvarDados.comprimento;
                     editarDados.largura = salvarDados.largura;
