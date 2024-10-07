@@ -2112,7 +2112,8 @@ namespace Coleta_Colchao.Controllers
                     float esp_lamina_um = salvar.esp_lamina_um;
                     float esp_especificado_um = salvar.esp_especificado_um;
                     float esp_mm_um = salvar.esp_mm_um;
-                    float esp_cm_um = esp_mm_um / 10;
+                    float esp_cm_um = float.Parse((esp_mm_um / 10).ToString("N2"));
+
                     //realizando calculo do lamina um
                     esp_lamina_um = altura_media;
                     esp_especificado_um = float.Parse(Math.Round(esp_lamina_um / 3, 2).ToString("N2"));
@@ -2121,8 +2122,8 @@ namespace Coleta_Colchao.Controllers
 
                     float esp_lamina_dois = salvar.esp_lamina_dois;
                     float esp_especificado_dois = salvar.esp_especificado_dois;
-                    float esp_mm_dois = salvar.esp_mm_dois;
-                    float esp_cm_dois = esp_mm_dois / 10;
+                    float esp_mm_dois = float.Parse((salvar.esp_mm_dois).ToString("N2"));
+                    float esp_cm_dois = float.Parse((esp_mm_dois / 10).ToString("N2"));
 
                     //ralizando calculo do lamina dois
                     esp_lamina_dois = altura_media;
@@ -2447,17 +2448,17 @@ namespace Coleta_Colchao.Controllers
                     editarDados.esp_lamina_um = editarDados.altura_media;
                     editarDados.esp_especificado_um = (float)Math.Round(editarDados.esp_lamina_um / 3, 2);
 
-                    editarDados.esp_mm_um = salvar.esp_mm_um;
+                    editarDados.esp_mm_um = float.Parse((salvar.esp_mm_um).ToString("N2"));
 
-                    editarDados.esp_cm_um = (editarDados.esp_mm_um / 10);
+                    editarDados.esp_cm_um = float.Parse((editarDados.esp_mm_um / 10).ToString("N2"));
                     editarDados.esp_tipo_dois = salvar.esp_tipo_dois;
 
                     //realizando calculo do lamina dois
                     editarDados.esp_lamina_dois = editarDados.altura_media;
                     editarDados.esp_especificado_dois = (float)Math.Round(editarDados.esp_lamina_dois / 3, 2);
 
-                    editarDados.esp_mm_dois = salvar.esp_mm_dois;
-                    editarDados.esp_cm_dois = (editarDados.esp_mm_dois / 10);
+                    editarDados.esp_mm_dois = float.Parse((salvar.esp_mm_dois).ToString("N2"));
+                    editarDados.esp_cm_dois = float.Parse((editarDados.esp_mm_dois / 10).ToString("N2"));
                     editarDados.col_tipo_um = salvar.col_tipo_um;
                     editarDados.col_especificado_um = salvar.col_especificado_um;
                     editarDados.col_encontrado_um = salvar.col_encontrado_um;

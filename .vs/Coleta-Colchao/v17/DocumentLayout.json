@@ -52,7 +52,7 @@
               "RelativeDocumentMoniker": "Coleta-Colchao\\Controllers\\ColetaController.cs",
               "ToolTip": "C:\\xampp\\htdocs\\Coleta-Colchao\\Coleta-Colchao\\Controllers\\ColetaController.cs",
               "RelativeToolTip": "Coleta-Colchao\\Controllers\\ColetaController.cs",
-              "ViewState": "AQIAAP0DAAAAAAAAAAAAwBEEAAASAAAA",
+              "ViewState": "AQIAAIUJAAAAAAAAAAAUwJYJAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-09-25T14:30:32.517Z",
               "IsPinned": true,
@@ -92,8 +92,7 @@
               "RelativeToolTip": "Coleta-Colchao\\Views\\Coleta\\Espuma\\EnsaioEspuma4_3.cshtml",
               "ViewState": "AQIAAEoBAAAAAAAAAAAAAF4BAAAyAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-10-07T14:18:40.986Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-10-07T14:18:40.986Z"
             },
             {
               "$type": "Document",
@@ -105,8 +104,7 @@
               "RelativeToolTip": "Coleta-Colchao\\Views\\Coleta\\Espuma\\IndexEspuma.cshtml",
               "ViewState": "AQIAAGYAAAAAAAAAAAAAAHsAAAAVAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-10-07T13:34:53.758Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-10-07T13:34:53.758Z"
             },
             {
               "$type": "Document",
@@ -118,8 +116,7 @@
               "RelativeToolTip": "Coleta-Colchao\\Views\\Coleta\\Espuma\\EditarIndexEspuma.cshtml",
               "ViewState": "AQIAAHIAAAAAAAAAAAAAAH0AAABGAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-10-07T13:31:14.179Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-10-07T13:31:14.179Z"
             },
             {
               "$type": "Document",
@@ -131,8 +128,7 @@
               "RelativeToolTip": "Coleta-Colchao\\Views\\Coleta\\Espuma\\EnsaioEspuma4_1.cshtml",
               "ViewState": "AQIAADcLAAAAAAAAAAAAAEsLAAAkAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-10-07T13:17:34.922Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-10-07T13:17:34.922Z"
             },
             {
               "$type": "Document",
@@ -144,8 +140,7 @@
               "RelativeToolTip": "Coleta-Colchao\\Views\\Coleta\\Molas\\EditarRegistroMolas.cshtml",
               "ViewState": "AQIAAGYAAAAAAAAAAAAAAHUAAAAqAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-10-04T16:35:27.803Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-10-04T16:35:27.803Z"
             },
             {
               "$type": "Document",
@@ -157,8 +152,7 @@
               "RelativeToolTip": "Coleta-Colchao\\Models\\ColetaModel.cs",
               "ViewState": "AQIAABECAAAAAAAAAAAjwCACAAA0AAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-04T16:30:51.39Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-10-04T16:30:51.39Z"
             },
             {
               "$type": "Document",
@@ -170,8 +164,7 @@
               "RelativeToolTip": "Coleta-Colchao\\Views\\Coleta\\Molas\\IndexMolas.cshtml",
               "ViewState": "AQIAAFQAAAAAAAAAAAAAAHcAAAAzAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-10-04T16:28:28.976Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-10-04T16:28:28.976Z"
             }
           ]
         }
