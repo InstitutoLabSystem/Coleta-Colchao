@@ -5020,8 +5020,9 @@ namespace Coleta_Colchao.Controllers
                     string prejudicou = salvarDados.prejudicou;
                     string temp_ini = salvarDados.temp_ini;
                     string temp_term = salvarDados.temp_term;
+                    string rompimento = salvarDados.rompimento;
 
-                    if (ruptura == "NC" && quebra == "NC" && prejudicou == "NC")
+                    if (ruptura == "NC" && quebra == "NC" && prejudicou == "NC" && rompimento == "NC")
                     {
                         salvarDados.conforme = "C";
                     }
@@ -5054,8 +5055,9 @@ namespace Coleta_Colchao.Controllers
                     editarRegistro.prejudicou = salvarDados.prejudicou;
                     editarRegistro.temp_ini = salvarDados.temp_ini;
                     editarRegistro.temp_term = salvarDados.temp_term;
+                    editarRegistro.rompimento = salvarDados.rompimento;
 
-                    if (editarRegistro.ruptura == "Não" && editarRegistro.quebra == "Não" && editarRegistro.prejudicou == "Não")
+                    if (editarRegistro.ruptura == "Não" && editarRegistro.quebra == "Não" && editarRegistro.prejudicou == "Não" && editarRegistro.rompimento == "Não")
                     {
                         editarRegistro.conforme = "C";
                     }

@@ -798,6 +798,7 @@ namespace Coleta_Colchao.Models
             public string? ruptura { get; set; }
             public string? quebra { get; set; }
             public string? prejudicou { get; set; }
+            public string? rompimento { get; set; }
             public string? conforme { get; set; }
             public string? temp_ini { get; set; }
             public string? temp_term { get; set; }
