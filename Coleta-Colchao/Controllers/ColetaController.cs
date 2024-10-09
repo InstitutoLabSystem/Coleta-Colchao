@@ -1955,7 +1955,7 @@ namespace Coleta_Colchao.Controllers
                     float comprimento_dois = salvar.comprimento_dois;
                     float comprimento_tres = salvar.comprimento_tres;
                     string temp_repouso = salvar.temp_repouso;
-                    float comprimento_media = float.Parse(((comprimento_um + comprimento_dois + comprimento_tres) / 3).ToString("N2"));
+                    float comprimento_media = float.Parse(((comprimento_um + comprimento_dois + comprimento_tres) / 3).ToString("N1"));
                     float valor_min_comprimento = comprimento_esp - 1.5f;
                     float valor_max_comprimento = comprimento_esp + 1.5f;
 
@@ -1974,7 +1974,7 @@ namespace Coleta_Colchao.Controllers
                     float largura_esp = salvar.largura_esp;
                     float largura_dois = salvar.largura_dois;
                     float largura_tres = salvar.largura_tres;
-                    float largura_media = float.Parse(((largura_um + largura_dois + largura_tres) / 3).ToString("N2"));
+                    float largura_media = float.Parse(((largura_um + largura_dois + largura_tres) / 3).ToString("N1"));
                     float largura_valor_min_comprimento = largura_esp - 1.5f;
                     float largura_valor_max_comprimento = largura_esp + 1.5f;
 
@@ -2072,7 +2072,7 @@ namespace Coleta_Colchao.Controllers
                     float lamina_esp_quat = salvar.lamina_esp_quat;
                     float lamina_comp_onze = salvar.lamina_comp_onze;
                     float lamina_comp_doze = salvar.lamina_comp_doze;
-                    float lamina_media_quat = float.Parse(((lamina_comp_dez + lamina_comp_onze + lamina_comp_doze) / 3).ToString("N2"));
+                    float lamina_media_quat = float.Parse(((lamina_comp_dez + lamina_comp_onze + lamina_comp_doze) / 3).ToString("N1"));
                     string lamina_tipo_quat = salvar.lamina_tipo_quat;
                     float lamina_min_quat = salvar.lamina_min_quat;
                     float lamina_max_quat = salvar.lamina_max_quat;
@@ -2284,7 +2284,7 @@ namespace Coleta_Colchao.Controllers
                     editarDados.comprimento_tres = salvar.comprimento_tres;
                     editarDados.temp_repouso = salvar.temp_repouso;
 
-                    editarDados.comprimento_media = float.Parse(((editarDados.comprimento_um + editarDados.comprimento_dois + editarDados.comprimento_tres) / 3).ToString("N2"));
+                    editarDados.comprimento_media = float.Parse(((editarDados.comprimento_um + editarDados.comprimento_dois + editarDados.comprimento_tres) / 3).ToString("N1"));
 
                     float valor_min_comprimento = editarDados.comprimento_esp - 1.5f;
                     float valor_max_comprimento = editarDados.comprimento_esp + 1.5f;
@@ -2305,7 +2305,7 @@ namespace Coleta_Colchao.Controllers
                     editarDados.largura_dois = salvar.largura_dois;
                     editarDados.largura_tres = salvar.largura_tres;
 
-                    editarDados.largura_media = float.Parse(((editarDados.largura_um + editarDados.largura_dois + editarDados.largura_tres) / 3).ToString("N2"));
+                    editarDados.largura_media = float.Parse(((editarDados.largura_um + editarDados.largura_dois + editarDados.largura_tres) / 3).ToString("N1"));
 
 
                     float largura_valor_min_comprimento = editarDados.largura_esp - 1.5f;
@@ -2327,7 +2327,7 @@ namespace Coleta_Colchao.Controllers
                     editarDados.altura_dois = salvar.altura_dois;
                     editarDados.altura_tres = salvar.altura_tres;
 
-                    editarDados.altura_media = float.Parse(((editarDados.altura_um + editarDados.altura_dois + editarDados.altura_tres) / 3).ToString("N2"));
+                    editarDados.altura_media = float.Parse(((editarDados.altura_um + editarDados.altura_dois + editarDados.altura_tres) / 3).ToString("N1"));
 
                     float altura_valor_min_comprimento = editarDados.altura_esp - 1.5f;
                     float altura_valor_max_comprimento = editarDados.altura_esp + 1.5f;
@@ -5055,7 +5055,7 @@ namespace Coleta_Colchao.Controllers
                     editarRegistro.temp_ini = salvarDados.temp_ini;
                     editarRegistro.temp_term = salvarDados.temp_term;
 
-                    if (editarRegistro.ruptura == "NC" && editarRegistro.quebra == "NC" && editarRegistro.prejudicou == "NC")
+                    if (editarRegistro.ruptura == "Não" && editarRegistro.quebra == "Não" && editarRegistro.prejudicou == "Não")
                     {
                         editarRegistro.conforme = "C";
                     }
