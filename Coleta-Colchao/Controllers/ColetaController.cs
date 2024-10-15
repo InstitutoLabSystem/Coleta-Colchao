@@ -2440,8 +2440,6 @@ namespace Coleta_Colchao.Controllers
                         editarDados.lamina_resul_cinco = "NC";
                     }
 
-
-
                     editarDados.esp_tipo_um = salvar.esp_tipo_um;
 
                     //realizando calculo do lamina um

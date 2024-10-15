@@ -86,5 +86,21 @@ namespace Coleta_Colchao.Controllers
 
             return RedirectToAction("Index", new { dados.oInstrumentosColchao.os, dados.oInstrumentosColchao.orcamento });
         }
+        [HttpPost]
+        public async Task<IActionResult> excluirInstrumentos(int id)
+        {
+            // Busca o instrumento no banco de dados pelo id
+            var instrumento = await _colchaoContext.instrumentos_colchao.FindAsync(id);
+
+            // Se o instrumento existir, remove ele do banco de dados
+            if (instrumento != null)
+            {
+                _colchaoContext.instrumentos_colchao.Remove(instrumento);
+                await _colchaoContext.SaveChangesAsync();
+            }
+
+            // Redireciona para a página principal após a exclusão
+            return RedirectToAction("Index");
+        }
     }
 }
