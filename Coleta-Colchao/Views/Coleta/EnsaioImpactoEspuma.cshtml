@@ -31,7 +31,7 @@
 </head>
 <body>
     <br />
-    <form method="post" asp-controller="Coleta" asp-action="salvarEnsaioImpactioVerticalEspuma" asp-route-os="@ViewBag.os" asp-route-orcamento="@ViewBag.orcamento">
+    <form method="post" asp-controller="Coleta" asp-action="salvarEnsaioImpactioVerticalEspuma" asp-route-os="@ViewBag.os" asp-route-orcamento="@ViewBag.orcamento" asp-route-rev="@ViewBag.rev">
         @if (Model == null)
         {
             <table class="tables table-bordered border-secondary  table-sm">

@@ -18,6 +18,7 @@ namespace Coleta_Colchao.Models
             public int Id { get; set; }
             public string orcamento { get; set; }
             public string os { get; set; }
+            public int rev { get; set; }
             public string? lacre { get; set; }
             public string? realizacao_ensaios { get; set; }
             public string? quant_recebida { get; set; }
@@ -54,6 +55,12 @@ namespace Coleta_Colchao.Models
             public string? manual { get; set; }
             public string? andamento { get; set; }
 
+            // Método de clonagem
+            public Registro Clone()
+            {
+                return (Registro)this.MemberwiseClone();
+            }
+
         }
 
         public class RegistroEspuma
@@ -62,6 +69,7 @@ namespace Coleta_Colchao.Models
             public int Id { get; set; }
             public string orcamento { get; set; }
             public string os { get; set; }
+            public int rev { get; set; }
             public string? lacre { get; set; }
             public string? realizacao_ensaios { get; set; }
             public string? quant_recebida { get; set; }
@@ -220,6 +228,7 @@ namespace Coleta_Colchao.Models
             public int Id { get; set; }
             public string os { get; set; }
             public string orcamento { get; set; }
+            public int rev { get; set; }
             public string? borda_aco { get; set; }
             public string? borda_espuma { get; set; }
             public string? borda_aco_molejo { get; set; }
@@ -241,6 +250,13 @@ namespace Coleta_Colchao.Models
             public string? pergunta_b { get; set; }
             public string? pergunta_c { get; set; }
             public string? pergunta_d { get; set; }
+
+            // Método de clonagem
+            public Ensaio4_3 Clone()
+            {
+                return (Ensaio4_3)this.MemberwiseClone();
+            }
+
         }
 
         public class Ensaio7_5
@@ -249,6 +265,7 @@ namespace Coleta_Colchao.Models
             public int Id { get; set; }
             public string os { get; set; }
             public string orcamento { get; set; }
+            public int rev { get; set; }
             public DateOnly data_ini { get; set; }
             public DateOnly data_term { get; set; }
             public string? temp_ensaio { get; set; }
@@ -265,6 +282,12 @@ namespace Coleta_Colchao.Models
             public string? conforme { get; set; }
             public string? executor { get; set; }
             public string? auxiliar { get; set; }
+
+            //função para clonar resultados quando for gerado revisao.
+            public Ensaio7_5 Clone()
+            {
+                return (Ensaio7_5)this.MemberwiseClone();
+            }
         }
 
         public class Ensaio7_1
@@ -273,11 +296,19 @@ namespace Coleta_Colchao.Models
             public int Id { get; set; }
             public string os { get; set; }
             public string orcamento { get; set; }
+            public int rev { get; set; }
+
             public DateOnly data_ini { get; set; }
             public DateOnly data_term { get; set; }
             public string? acordo { get; set; }
             public string? executor { get; set; }
             public string? auxiliar { get; set; }
+
+            //função para clonar resultados quando for gerado revisao.
+            public Ensaio7_1 Clone()
+            {
+                return (Ensaio7_1)this.MemberwiseClone();
+            }
 
         }
 
@@ -287,6 +318,8 @@ namespace Coleta_Colchao.Models
             public int Id { get; set; }
             public string os { get; set; }
             public string orcamento { get; set; }
+            public int rev { get; set; }
+
             public DateOnly data_ini { get; set; }
             public DateOnly data_term { get; set; }
             public float temp_ini { get; set; }
@@ -341,15 +374,21 @@ namespace Coleta_Colchao.Models
             public string? auxiliar { get; set; }
             public float qtd_espuma { get; set; }
             public float enc_estofamento_1 { get; set; }
-            public float enc_estofamento_2 { get; set; } 
-            public float enc_estofamento_3 { get; set; } 
-            public float enc_estofamento_4 { get; set; } 
-            public float enc_estofamento_5 { get; set; } 
-            public float enc_estofamento_6 { get; set; } 
+            public float enc_estofamento_2 { get; set; }
+            public float enc_estofamento_3 { get; set; }
+            public float enc_estofamento_4 { get; set; }
+            public float enc_estofamento_5 { get; set; }
+            public float enc_estofamento_6 { get; set; }
             public float enc_estofamento_7 { get; set; }
-            public float enc_estofamento_8 { get; set; } 
+            public float enc_estofamento_8 { get; set; }
             public float enc_estofamento_9 { get; set; }
-            public float enc_estofamento_10 { get; set; } 
+            public float enc_estofamento_10 { get; set; }
+
+            //função para clonar resultados quando for gerado revisao.
+            public Ensaio7_2 Clone()
+            {
+                return (Ensaio7_2)this.MemberwiseClone();
+            }
         }
 
         public class Ensaio7_8
@@ -358,6 +397,8 @@ namespace Coleta_Colchao.Models
             public int Id { get; set; }
             public string os { get; set; }
             public string orcamento { get; set; }
+            public int rev { get; set; }
+
             public string tipo_material { get; set; }
             public DateOnly data_ini { get; set; }
             public DateOnly data_term { get; set; }
@@ -383,6 +424,12 @@ namespace Coleta_Colchao.Models
             public string? conforme_gramas { get; set; }
             public string? executor { get; set; }
             public string? auxiliar { get; set; }
+
+            //função para clonar resultados quando for gerado revisao.
+            public Ensaio7_8 Clone()
+            {
+                return (Ensaio7_8)this.MemberwiseClone();
+            }
         }
 
         public class Ensaio7_6
@@ -391,6 +438,8 @@ namespace Coleta_Colchao.Models
             public int Id { get; set; }
             public string os { get; set; }
             public string orcamento { get; set; }
+            public int rev { get; set; }
+
             public DateOnly data_ini { get; set; }
             public DateOnly data_term { get; set; }
             public string faces { get; set; }
@@ -409,6 +458,12 @@ namespace Coleta_Colchao.Models
             public string? conforme { get; set; }
             public string? executor { get; set; }
             public string? auxiliar { get; set; }
+
+            //função para clonar resultados quando for gerado revisao.
+            public Ensaio7_6 Clone()
+            {
+                return (Ensaio7_6)this.MemberwiseClone();
+            }
         }
 
         public class Ensaio7_7
@@ -417,6 +472,8 @@ namespace Coleta_Colchao.Models
             public int Id { get; set; }
             public string os { get; set; }
             public string orcamento { get; set; }
+            public int rev { get; set; }
+
             public DateOnly data_ini { get; set; }
             public DateOnly data_term { get; set; }
             public string? rasgo { get; set; }
@@ -450,6 +507,12 @@ namespace Coleta_Colchao.Models
             public string? executador { get; set; }
             public string? auxiliar { get; set; }
             public string? conforme { get; set; }
+
+            //função para clonar resultados quando for gerado revisao.
+            public Ensaio7_7 Clone()
+            {
+                return (Ensaio7_7)this.MemberwiseClone();
+            }
         }
 
         public class Ensaio7_3
@@ -458,6 +521,7 @@ namespace Coleta_Colchao.Models
             public int Id { get; set; }
             public string os { get; set; }
             public string orcamento { get; set; }
+            public int rev { get; set; }
             public DateOnly data_ini { get; set; }
             public DateOnly data_term { get; set; }
             public string? pergunta_a { get; set; }
@@ -471,7 +535,7 @@ namespace Coleta_Colchao.Models
             public string? auxiliar { get; set; }
             public int qtd_ciclos { get; set; }
             public DateOnly acond_inicio { get; set; }
-            public DateOnly acond_final {  get; set; }
+            public DateOnly acond_final { get; set; }
             public TimeOnly hora_inicio { get; set; }
             public TimeOnly hora_final { get; set; }
             public float temp_inicio { get; set; }
@@ -479,6 +543,12 @@ namespace Coleta_Colchao.Models
             public string? im { get; set; }
             public string? responsavel_cond { get; set; }
             public string? face_escolhida { get; set; }
+
+            //função para clonar resultados quando for gerado revisao.
+            public Ensaio7_3 Clone()
+            {
+                return (Ensaio7_3)this.MemberwiseClone();
+            }
         }
 
 
@@ -488,6 +558,7 @@ namespace Coleta_Colchao.Models
             public int Id { get; set; }
             public string os { get; set; }
             public string orcamento { get; set; }
+            public int rev { get; set; }
             public DateOnly data_ini { get; set; }
             public DateOnly data_term { get; set; }
             public string? lingua_portuguesa { get; set; }
@@ -530,6 +601,11 @@ namespace Coleta_Colchao.Models
             public string? executador { get; set; }
             public string? auxiliar { get; set; }
             public string? conforme_area { get; set; }
+            //função para clonar resultados quando for gerado revisao.
+            public EnsaioIdentificacaoEmbalagem Clone()
+            {
+                return (EnsaioIdentificacaoEmbalagem)this.MemberwiseClone();
+            }
         }
 
         public class Espuma4_3
@@ -679,14 +755,10 @@ namespace Coleta_Colchao.Models
             public int Id { get; set; }
             public string os { get; set; }
             public string orcamento { get; set; }
-
+            public int rev { get; set; }
             public DateOnly data_inicio { get; set; }
-
             public DateOnly data_termi { get; set; }
-
-
             public TimeOnly hora_inicio { get; set; }
-
             public TimeOnly hora_term { get; set; }
             public string? temp_min { get; set; }
             public string? temp_max { get; set; }
@@ -722,7 +794,11 @@ namespace Coleta_Colchao.Models
             public string? temp_ini { get; set; }
             public string? temp_term { get; set; }
 
-
+            //função para clonar resultados quando for gerado revisao.
+            public EnsaioBaseDurabilidade Clone()
+            {
+                return (EnsaioBaseDurabilidade)this.MemberwiseClone();
+            }
         }
 
         public class EnsaioBaseImpactoVertical
@@ -731,6 +807,7 @@ namespace Coleta_Colchao.Models
             public int Id { get; set; }
             public string os { get; set; }
             public string orcamento { get; set; }
+            public int rev { get; set; }
             public DateOnly data_ini { get; set; }
             public DateOnly data_term { get; set; }
             public DateOnly data_ini_ens { get; set; }
@@ -777,6 +854,12 @@ namespace Coleta_Colchao.Models
             public string? executor { get; set; }
             public string? editarUsuario { get; set; }
 
+            //função para clonar resultados quando for gerado revisao.
+            public EnsaioBaseImpactoVertical Clone()
+            {
+                return (EnsaioBaseImpactoVertical)this.MemberwiseClone();
+            }
+
         }
 
         public class EnsaioBaseDurabilidadeEstrutural
@@ -785,6 +868,7 @@ namespace Coleta_Colchao.Models
             public int Id { get; set; }
             public string os { get; set; }
             public string orcamento { get; set; }
+            public int rev { get; set; }
             public DateOnly data_ini { get; set; }
             public DateOnly data_term { get; set; }
 
@@ -805,6 +889,12 @@ namespace Coleta_Colchao.Models
 
             public string? editarUsuario { get; set; }
             public string? executor { get; set; }
+
+            //função para clonar resultados quando for gerado revisao.
+            public EnsaioBaseDurabilidadeEstrutural Clone()
+            {
+                return (EnsaioBaseDurabilidadeEstrutural)this.MemberwiseClone();
+            }
         }
 
         public class EnsaioEspuma4_4
@@ -828,6 +918,7 @@ namespace Coleta_Colchao.Models
             public int Id { get; set; }
             public string os { get; set; }
             public string orcamento { get; set; }
+            public int rev { get; set; }
             public DateOnly data_ini { get; set; }
             public DateOnly data_term { get; set; }
             public DateOnly data_ini_ens { get; set; }
@@ -846,6 +937,11 @@ namespace Coleta_Colchao.Models
             public string? rompimento { get; set; }
             public string? prejudique { get; set; }
             public string? conforme_pontoA { get; set; }
+            //função para clonar resultados quando for gerado revisao.
+            public CargasEstatica Clone()
+            {
+                return (CargasEstatica)this.MemberwiseClone();
+            }
         }
 
         public class RegistroLamina
@@ -854,6 +950,7 @@ namespace Coleta_Colchao.Models
             public int Id { get; set; }
             public string orcamento { get; set; }
             public string os { get; set; }
+            public int rev { get; set; }
             public string? lacre { get; set; }
             public string? realizacao_ensaios { get; set; }
             public string? quant_recebida { get; set; }
@@ -869,6 +966,12 @@ namespace Coleta_Colchao.Models
             public string? tipo_proc { get; set; }
             public string? produto { get; set; }
             public string? andamento { get; set; }
+
+            //função para clonar resultados quando for gerado revisao.
+            public RegistroLamina Clone()
+            {
+                return (RegistroLamina)this.MemberwiseClone();
+            }
         }
 
         public class SalvarLaminaDeterminacaoDensidade
@@ -876,6 +979,7 @@ namespace Coleta_Colchao.Models
             public int Id { get; set; }
             public string orcamento { get; set; }
             public string os { get; set; }
+            public int rev { get; set; }
             public DateOnly data_ini { get; set; }
             public DateOnly data_term { get; set; }
             public int densidade { get; set; }
@@ -939,15 +1043,22 @@ namespace Coleta_Colchao.Models
             public string? executador { get; set; }
             public string? editorUsuario { get; set; }
             public string? conforme { get; set; }
-           
+
+            //função para clonar resultados quando for gerado revisao.
+            public SalvarLaminaDeterminacaoDensidade Clone()
+            {
+                return (SalvarLaminaDeterminacaoDensidade)this.MemberwiseClone();
+            }
+
         }
 
         public class LaminaResiliencia
         {
             [Key]
             public int Id { get; set; }
-            public string orcamento { get; set; }
             public string os { get; set; }
+            public string orcamento { get; set; }
+            public int rev { get; set; }
             public DateOnly data_ini { get; set; }
             public DateOnly data_term { get; set; }
             public string? tipo_espuma { get; set; }
@@ -979,19 +1090,26 @@ namespace Coleta_Colchao.Models
             public TimeOnly hora_inicio { get; set; }
             public TimeOnly hora_final { get; set; }
             public float temp_inicio { get; set; }
-            public float temp_final { get; set; }         
+            public float temp_final { get; set; }
             public string? im { get; set; }
             public string? responsavel_cond { get; set; }
             public string? executor { get; set; }
             public string? editorUsuario { get; set; }
+
+            //função para clonar resultados quando for gerado revisao.
+            public LaminaResiliencia Clone()
+            {
+                return (LaminaResiliencia)this.MemberwiseClone();
+            }
         }
 
         public class LaminaDPC
         {
             [Key]
             public int Id { get; set; }
-            public string orcamento { get; set; }
             public string os { get; set; }
+            public string orcamento { get; set; }
+            public int rev { get; set; }
             public DateOnly data_ini { get; set; }
             public DateOnly date_term { get; set; }
             public DateOnly acond_inicio { get; set; }
@@ -1098,7 +1216,11 @@ namespace Coleta_Colchao.Models
             public string? executor { get; set; }
             public string? editorUsuario { get; set; }
 
-
+            //função para clonar resultados quando for gerado revisao.
+            public LaminaDPC Clone()
+            {
+                return (LaminaDPC)this.MemberwiseClone();
+            }
         }
 
         public class LaminaFI
@@ -1107,11 +1229,11 @@ namespace Coleta_Colchao.Models
             public int Id { get; set; }
             public string orcamento { get; set; }
             public string os { get; set; }
+            public int rev { get; set; }
             public DateOnly data_ini { get; set; }
             public DateOnly data_term { get; set; }
             public string? tipo_espuma { get; set; }
             public int densidade { get; set; }
-
             public float esp_ini_amostra_um_um { get; set; }
             public float esp_ini_amostra_um_dois { get; set; }
             public float esp_ini_amostra_um_tres { get; set; }
@@ -1209,19 +1331,26 @@ namespace Coleta_Colchao.Models
             public TimeOnly hora_inicio { get; set; }
             public TimeOnly hora_final { get; set; }
             public float temp_inicio { get; set; }
-            public float temp_final { get; set; }         
+            public float temp_final { get; set; }
             public string? im { get; set; }
             public string? responsavel_cond { get; set; }
             public string? executor { get; set; }
             public string? editorUsuario { get; set; }
+
+            //função para clonar resultados quando for gerado revisao.
+            public LaminaFI Clone()
+            {
+                return (LaminaFI)this.MemberwiseClone();
+            }
         }
 
         public class LaminaFadigaRotativa
         {
             [Key]
             public int Id { get; set; }
-            public string orcamento { get; set; }
             public string os { get; set; }
+            public string orcamento { get; set; }
+            public int rev { get; set; }
             public DateOnly data_ini { get; set; }
             public DateOnly data_term { get; set; }
             public DateOnly acond_inicio { get; set; }
@@ -1230,7 +1359,7 @@ namespace Coleta_Colchao.Models
             public TimeOnly hora_final { get; set; }
             public float temp_inicio { get; set; }
             public float temp_final { get; set; }
-            
+
             public string? im { get; set; }
             public string? responsavel_cond { get; set; }
             public float esp_ini_amostra_um_um { get; set; }
@@ -1319,18 +1448,25 @@ namespace Coleta_Colchao.Models
             public string? executor { get; set; }
             public string? editarUsuario { get; set; }
 
+            //função para clonar resultados quando for gerado revisao.
+            public LaminaFadigaRotativa Clone()
+            {
+                return (LaminaFadigaRotativa)this.MemberwiseClone();
+            }
+
         }
 
         public class LaminaPFI
         {
             [Key]
             public int Id { get; set; }
-            public string orcamento { get; set; }
             public string os { get; set; }
+            public string orcamento { get; set; }
+            public int rev { get; set; }
             public DateOnly data_ini { get; set; }
             public DateOnly data_term { get; set; }
             public string? tipo_espuma { get; set; }
-            public int densidade { get; set; }          
+            public int densidade { get; set; }
             public float esp_ini_amostra_um_um { get; set; }
             public float esp_ini_amostra_um_dois { get; set; }
             public float esp_ini_amostra_um_tres { get; set; }
@@ -1442,7 +1578,12 @@ namespace Coleta_Colchao.Models
             public string? conforme { get; set; }
             public string? executor { get; set; }
             public string? editarUsuario { get; set; }
-        }
 
+            //função para clonar resultados quando for gerado revisao.
+            public LaminaPFI Clone()
+            {
+                return (LaminaPFI)this.MemberwiseClone();
+            }
+        }
     }
 }

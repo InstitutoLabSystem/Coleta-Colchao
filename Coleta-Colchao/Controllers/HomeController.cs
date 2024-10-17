@@ -8,6 +8,8 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.Build.Framework;
 using System.Security.Claims;
 using System.Linq;
+using Microsoft.VisualStudio.Web.CodeGenerators.Mvc.View;
+using static Coleta_Colchao.Models.ColetaModel;
 
 namespace Coleta_Colchao.Controllers
 {
@@ -24,6 +26,14 @@ namespace Coleta_Colchao.Controllers
             _bancoContext = bancoContext;
             _context = context;
         }
+
+        //função de pegar usuario.
+        public string Usuario()
+        {
+            var user = User.FindFirstValue(ClaimTypes.Name);
+            return user;
+        }
+
         public async Task<IActionResult> LogOutAsync()
         {
             await HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
@@ -63,9 +73,9 @@ namespace Coleta_Colchao.Controllers
 
                              }).ToList();
 
-                var buscarOs = _context.regtro_colchao.Where(x => x.os == os).FirstOrDefault();
-                var buscarEspumaOs = _context.regtro_colchao_espuma.Where(x => x.os == os).FirstOrDefault();
-                var buscarLamina = _context.regtro_colchao_lamina.Where(x => x.os == os).FirstOrDefault();
+                var buscarOs = _context.regtro_colchao.Where(x => x.os == os).OrderByDescending(x => x.Id).FirstOrDefault();
+                var buscarEspumaOs = _context.regtro_colchao_espuma.Where(x => x.os == os).OrderByDescending(x => x.Id).FirstOrDefault();
+                var buscarLamina = _context.regtro_colchao_lamina.Where(x => x.os == os).OrderByDescending(x => x.Id).FirstOrDefault();
                 if (buscarOs == null && buscarEspumaOs == null && buscarLamina == null)
                 {
                     if (dados.Count != 0)
@@ -104,6 +114,9 @@ namespace Coleta_Colchao.Controllers
                         ViewBag.os = os;
                         ViewBag.orcamento = dados.First().orcamento;
                         ViewBag.estrutura = buscarOs.estrutura;
+                        ViewBag.user = Usuario();
+                        ViewBag.rev = buscarOs.rev;
+                        ViewBag.PercorrerRegstro = _context.regtro_colchao.Where(x => x.os == os).OrderByDescending(x => x.Id).ToList();
                         ViewBag.ensaio = "Molas";
 
                         return View("Index", dados);
@@ -113,6 +126,9 @@ namespace Coleta_Colchao.Controllers
                     {
                         ViewBag.os = os;
                         ViewBag.orcamento = dados.First().orcamento;
+                        ViewBag.rev = buscarEspumaOs.rev;
+                        ViewBag.PercorrerRegstro = _context.regtro_colchao_espuma.Where(x => x.os == os).OrderByDescending(x => x.Id).ToList();
+                        ViewBag.user = Usuario();
                         ViewBag.ensaio = "Espuma";
                         return View("Index", dados);
                     }
@@ -121,6 +137,9 @@ namespace Coleta_Colchao.Controllers
                     {
                         ViewBag.os = os;
                         ViewBag.orcamento = dados.First().orcamento;
+                        ViewBag.rev = buscarLamina.rev;
+                        ViewBag.PercorrerRegstro = _context.regtro_colchao_lamina.Where(x => x.os == os).OrderByDescending(x => x.Id).ToList();
+                        ViewBag.user = Usuario();
                         ViewBag.ensaio = "Laminas";
                         ViewBag.status = "andamento";
                         //codigos dos ensaios do colchao, para trazer todas os referente ao ensaio de colchao.
@@ -132,13 +151,13 @@ namespace Coleta_Colchao.Controllers
                                             join hc in _bancoContext.Wmoddetprod
                                             on c.CodigoEnsaio equals hc.codmaster
                                             join lb in _bancoContext.ordemservico_laboratorio
-                                            on new { Numero =  c.Numero.ToString(), Mes = c.Mes, Ano = c.Ano } equals new { Numero = lb.seqorc, Mes = lb.mesorc, Ano = lb.anoorc }
+                                            on new { Numero = c.Numero.ToString(), Mes = c.Mes, Ano = c.Ano } equals new { Numero = lb.seqorc, Mes = lb.mesorc, Ano = lb.anoorc }
                                             where lb.orcamento == dados.First().orcamento && codigosLaminas.Contains(hc.codigo) && lb.Andamento != "ENVIADO"
                                             orderby lb.OS
                                             select new
                                             {
                                                 lb.OS,
-                                                hc.codigo,                                             
+                                                hc.codigo,
                                             }).ToList().Distinct();
 
                         return View("Index", dados);
@@ -151,6 +170,271 @@ namespace Coleta_Colchao.Controllers
                 _logger.LogError(ex, "Error", ex.Message);
                 throw;
             }
+        }
+
+        //gerar revisao da coleta.
+        public async Task<IActionResult> GerarRevisao(string os, string orcamento, string ensaio, int revisao, string nota, string motivo)
+        {
+            //somando a revisao para salvar no log.
+            revisao = revisao + 1;
+
+            //esses ensaios pode ter para todos os tipo de colchao.
+            var EnsaioBaseEstrutural = _context.ensaio_base_durabilidade_estrutural.Where(x => x.os == os && x.orcamento == orcamento).OrderByDescending(x => x.Id).FirstOrDefault();
+            if (EnsaioBaseEstrutural != null)
+            {
+                var Novo_EnsaioBaseEstrutural = EnsaioBaseEstrutural.Clone();
+
+                Novo_EnsaioBaseEstrutural.Id = 0;
+                Novo_EnsaioBaseEstrutural.rev = Novo_EnsaioBaseEstrutural.rev + 1;
+
+                _context.ensaio_base_durabilidade_estrutural.Add(Novo_EnsaioBaseEstrutural);
+            }
+
+            var EnsaioImpacto = _context.ensaio_base_impacto_vertical.Where(x => x.os == os && x.orcamento == orcamento).OrderByDescending(x => x.Id).FirstOrDefault();
+            if (EnsaioImpacto != null)
+            {
+                var novoEnsaioImpcato = EnsaioImpacto.Clone();
+
+                novoEnsaioImpcato.Id = 0;
+                novoEnsaioImpcato.rev = novoEnsaioImpcato.rev + 1;
+
+                _context.ensaio_base_impacto_vertical.Add(novoEnsaioImpcato);
+            }
+
+            var EnsaioDurabilidade = _context.ensaio_base_durabilidade.Where(x => x.os == os && x.orcamento == orcamento).OrderByDescending(x => x.Id).FirstOrDefault();
+            if (EnsaioDurabilidade != null)
+            {
+                var novoEnsaioDurabilidade = EnsaioDurabilidade.Clone();
+
+                novoEnsaioDurabilidade.Id = 0;
+                novoEnsaioDurabilidade.rev = novoEnsaioDurabilidade.rev + 1;
+
+                _context.ensaio_base_durabilidade.Add(novoEnsaioDurabilidade);
+            }
+
+            var EnsaioBaseCargaEstatica = _context.ensaio_base_carga_estatica.Where(x => x.os == os && x.orcamento == orcamento).OrderByDescending(x => x.Id).FirstOrDefault();
+            if(EnsaioBaseCargaEstatica != null)
+            {
+                var novo_EnsaioBaseCargaEstatica = EnsaioBaseCargaEstatica.Clone();
+
+                novo_EnsaioBaseCargaEstatica.Id = 0;
+                novo_EnsaioBaseCargaEstatica.rev = novo_EnsaioBaseCargaEstatica.rev + 1;
+
+                _context.ensaio_base_carga_estatica.Add(novo_EnsaioBaseCargaEstatica);
+            }
+            //fim.
+
+            //verificando qual ensaio é, molas,espuma,Laminas
+            if (ensaio == "Molas")
+            {
+                //pegando registro geral de molas.
+                var RegtroMolas = _context.regtro_colchao.Where(x => x.os == os && x.orcamento == orcamento).OrderByDescending(x => x.Id).FirstOrDefault();
+
+                if (RegtroMolas != null)
+                {
+                    var novo_RegtroMolas = RegtroMolas.Clone();
+
+                    novo_RegtroMolas.Id = 0;
+                    novo_RegtroMolas.rev = novo_RegtroMolas.rev + 1;
+                    _context.Add(novo_RegtroMolas);
+                }
+
+                //pegando todas as tabelas de molas e verifando se existe valores e insertando a nova revisao.
+                var Ensaio_molas_4_3 = _context.ensaio_molas_item4_3.Where(x => x.os == os && x.orcamento == orcamento).OrderByDescending(x => x.Id).FirstOrDefault();
+                if (Ensaio_molas_4_3 != null)
+                {
+                    var novo_Ensaio_molas_4_3 = Ensaio_molas_4_3.Clone();
+
+                    novo_Ensaio_molas_4_3.Id = 0;
+                    novo_Ensaio_molas_4_3.rev = novo_Ensaio_molas_4_3.rev + 1;
+
+                    _context.ensaio_molas_item4_3.Add(novo_Ensaio_molas_4_3);
+                }
+
+                var Ensaio_molas_7_1 = _context.ensaio_molas_item7_1.Where(x => x.os == os && x.orcamento == orcamento).OrderByDescending(x => x.Id).FirstOrDefault();
+                if (Ensaio_molas_7_1 != null)
+                {
+                    var novo_ensaio_molas_7_1 = Ensaio_molas_7_1.Clone();
+
+                    novo_ensaio_molas_7_1.Id = 0;
+                    novo_ensaio_molas_7_1.rev = novo_ensaio_molas_7_1.rev + 1;
+                    _context.ensaio_molas_item7_1.Add(novo_ensaio_molas_7_1);
+                }
+
+                var Ensaio_molas_7_2 = _context.ensaio_molas_item7_2.Where(x => x.os == os && x.orcamento == orcamento).OrderByDescending(x => x.Id).FirstOrDefault();
+                if (Ensaio_molas_7_2 != null)
+                {
+                    var novo_Ensaio_molas7_2 = Ensaio_molas_7_2.Clone();
+
+                    novo_Ensaio_molas7_2.Id = 0;
+                    novo_Ensaio_molas7_2.rev = novo_Ensaio_molas7_2.rev + 1;
+                    _context.ensaio_molas_item7_2.Add(novo_Ensaio_molas7_2);
+                }
+
+                var Ensaio_molas_7_3 = _context.ensaio_molas_item7_3.Where(x => x.os == os && x.orcamento == orcamento).OrderByDescending(x => x.Id).FirstOrDefault();
+                if (Ensaio_molas_7_3 != null)
+                {
+                    var novo_molas_7_3 = Ensaio_molas_7_3.Clone();
+
+                    novo_molas_7_3.Id = 0;
+                    novo_molas_7_3.rev = novo_molas_7_3.rev + 1;
+                    _context.ensaio_molas_item7_3.Add(novo_molas_7_3);
+                }
+
+                var Ensaio_molas_7_5 = _context.ensaio_molas_item7_5.Where(x => x.os == os && x.orcamento == orcamento).OrderByDescending(x => x.Id).FirstOrDefault();
+                if (Ensaio_molas_7_5 != null)
+                {
+                    var novo_ensaio_molas7_5 = Ensaio_molas_7_5.Clone();
+
+                    novo_ensaio_molas7_5.Id = 0;
+                    novo_ensaio_molas7_5.rev = novo_ensaio_molas7_5.rev + 1;
+                    _context.ensaio_molas_item7_5.Add(novo_ensaio_molas7_5);
+                }
+
+                var Ensaio_molas_7_6 = _context.ensaio_molas_item7_6.Where(x => x.os == os && x.orcamento == orcamento).OrderByDescending(x => x.Id).FirstOrDefault();
+                if (Ensaio_molas_7_6 != null)
+                {
+                    var novo_ensaio_molas7_6 = Ensaio_molas_7_6.Clone();
+
+                    novo_ensaio_molas7_6.Id = 0;
+                    novo_ensaio_molas7_6.rev = novo_ensaio_molas7_6.rev + 1;
+                    _context.ensaio_molas_item7_6.Add(novo_ensaio_molas7_6);
+                }
+
+                var Ensaio_molas_7_7 = _context.ensaio_molas_item7_7.Where(x => x.os == os && x.orcamento == orcamento).OrderByDescending(x => x.Id).FirstOrDefault();
+                if (Ensaio_molas_7_7 != null)
+                {
+                    var novo_ensaio_molas7_7 = Ensaio_molas_7_7.Clone();
+
+                    novo_ensaio_molas7_7.Id = 0;
+                    novo_ensaio_molas7_7.rev = novo_ensaio_molas7_7.rev + 1;
+                    _context.ensaio_molas_item7_7.Add(novo_ensaio_molas7_7);
+                }
+
+                var Ensaio_molas_7_8 = _context.ensaio_molas_item7_8.Where(x => x.os == os && x.orcamento == orcamento).OrderByDescending(x => x.Id).FirstOrDefault();
+                if (Ensaio_molas_7_8 != null)
+                {
+                    var novo_ensaio_molas7_8 = Ensaio_molas_7_8.Clone();
+
+                    novo_ensaio_molas7_8.Id = 0;
+                    novo_ensaio_molas7_8.rev = novo_ensaio_molas7_8.rev + 1;
+                    _context.ensaio_molas_item7_8.Add(novo_ensaio_molas7_8);
+                }
+
+                var Identificacao_Embalagem = _context.ensaio_identificacao_embalagem.Where(x => x.os == os && x.orcamento == orcamento).OrderByDescending(x => x.Id).FirstOrDefault();
+                if(Identificacao_Embalagem != null)
+                {
+                    var Novo_Identificacao_Embalagem = Identificacao_Embalagem.Clone();
+
+                    Novo_Identificacao_Embalagem.Id = 0;
+                    Novo_Identificacao_Embalagem.rev = Novo_Identificacao_Embalagem.rev +1;
+
+                    _context.ensaio_identificacao_embalagem.Add(Novo_Identificacao_Embalagem);
+                }
+            }
+            //fim verificação se ensaio é de molas.
+
+            //inicio de laminas
+            if (ensaio == "Laminas")
+            {
+                var registro_Laminas = _context.regtro_colchao_lamina.Where(x => x.os == os && x.orcamento == orcamento).OrderByDescending(x => x.Id).FirstOrDefault();
+
+                if(registro_Laminas != null)
+                {
+                    var novo_registro_Laminas = registro_Laminas.Clone();
+
+                    novo_registro_Laminas.Id = 0;
+                    novo_registro_Laminas.rev = novo_registro_Laminas.rev +1;
+
+                    _context.regtro_colchao_lamina.Add(novo_registro_Laminas);
+                }
+                
+                var LaminaDeterminicaoDensidade = _context.lamina_determinacao_densidade.Where(x => x.os == os && x.orcamento == orcamento).OrderByDescending(x => x.Id).FirstOrDefault();
+                if(LaminaDeterminicaoDensidade != null)
+                {
+                    var novo_LaminaDeterminicaoDensidade = LaminaDeterminicaoDensidade.Clone();
+
+                    novo_LaminaDeterminicaoDensidade.Id = 0;
+                    novo_LaminaDeterminicaoDensidade.rev = novo_LaminaDeterminicaoDensidade.rev +1;
+
+                    _context.lamina_determinacao_densidade.Add(novo_LaminaDeterminicaoDensidade);
+                }
+                
+                var LaminaDpc = _context.lamina_dpc.Where(x => x.os == os && x.orcamento == orcamento).OrderByDescending(x => x.Id).FirstOrDefault();
+                if(LaminaDpc != null)
+                {
+                    var novo_LaminaDpc = LaminaDpc.Clone();
+
+                    novo_LaminaDpc.Id = 0;
+                    novo_LaminaDpc.rev = novo_LaminaDpc.rev + 1;
+
+                    _context.lamina_dpc.Add(novo_LaminaDpc);
+                }
+
+                var LaminasFI = _context.lamina_fi.Where(x => x.os == os && x.orcamento == orcamento).OrderByDescending(x => x.Id).FirstOrDefault();
+                if (LaminasFI != null)
+                {
+                    var novo_LaminasFI = LaminasFI.Clone();
+
+                    novo_LaminasFI.Id = 0;
+                    novo_LaminasFI.rev = novo_LaminasFI.rev + 1;
+
+                    _context.lamina_fi.Add(novo_LaminasFI);
+                }
+
+                var LaminaFadiga = _context.lamina_fadiga_dinamica.Where(x => x.os == os && x.orcamento == orcamento).OrderByDescending(x => x.Id).FirstOrDefault();
+                if (LaminaFadiga != null)
+                {
+                    var novo_LaminaFadiga = LaminaFadiga.Clone();
+
+                    novo_LaminaFadiga.Id = 0;
+                    novo_LaminaFadiga.rev = novo_LaminaFadiga.rev + 1;
+
+                    _context.lamina_fadiga_dinamica.Add(novo_LaminaFadiga);
+                }
+
+                var LaminaPFI = _context.lamina_pfi.Where(x => x.os == os && x.orcamento == orcamento).OrderByDescending(x => x.Id).FirstOrDefault();
+                if (LaminaPFI != null)
+                {
+                    var novo_LaminaPFI = LaminaPFI.Clone();
+
+                    novo_LaminaPFI.Id = 0;
+                    novo_LaminaPFI.rev = novo_LaminaPFI.rev + 1;
+
+                    _context.lamina_pfi.Add(novo_LaminaPFI);
+                }
+
+                var LaminaDetResiliencia = _context.lamina_resiliencia.Where(x => x.os == os && x.orcamento == orcamento).OrderByDescending(x => x.Id).FirstOrDefault();
+                if (LaminaDetResiliencia != null)
+                {
+                    var novo_LaminaDetResiliencia = LaminaDetResiliencia.Clone();
+
+                    novo_LaminaDetResiliencia.Id = 0;
+                    novo_LaminaDetResiliencia.rev = novo_LaminaDetResiliencia.rev + 1;
+
+                    _context.lamina_resiliencia.Add(novo_LaminaDetResiliencia);
+                }
+            }
+            //fim de laminas
+
+            //salvando no log as informações
+            var salvarLog = new LogRevisao
+            {
+                os = os,
+                orcamento = orcamento,
+                rev = revisao,
+                motivo = motivo,
+                nota = nota,
+                ensaio = ensaio,
+                usuario = Usuario()
+            };
+            _context.log_colchao.Add(salvarLog);
+
+            //SALVANDO NO BANCO DE DADOS AS ALTERAÇÕES DE NOVA REV.
+            await _context.SaveChangesAsync();
+
+            //retornando para minha função direto.
+            return RedirectToAction(nameof(BuscarOrcamento), new { os });
         }
     }
 }

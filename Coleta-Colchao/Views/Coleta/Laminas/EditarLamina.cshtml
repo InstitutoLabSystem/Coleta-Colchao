@@ -56,7 +56,7 @@
     </style>
 </head>
 <body>
-    <form method="post" asp-controller="Coleta" asp-action="editarLamina" asp-route-os="@ViewBag.os" asp-route-orcamento="@ViewBag.orcamento">
+    <form method="post" asp-controller="Coleta" asp-action="editarLamina" asp-route-os="@ViewBag.os" asp-route-orcamento="@ViewBag.orcamento" asp-route-rev="@ViewBag.rev">
         <div class="full-height text-center">
             <table class="tables table-bordered border-secondary  table-sm">
                 <tr>
@@ -101,6 +101,10 @@
             </table>
 
             <table class="tables table-bordered border-secondary  table-sm">
+                <tr>
+                    <td>Produto</td>
+                    <td colspan="5"><input class="form-control" type="text" asp-for="produto" /></td>
+                </tr>
                 <tr>
                     <td>Marca / Modelo</td>
                     <td colspan="5"><input class="form-control" type="text" asp-for="marca_modelo" /></td>
