@@ -83,11 +83,12 @@ namespace Coleta_Colchao.Controllers
             return View("Espuma/IndexEspuma");
         }
 
-        public IActionResult EditarIndexEspuma(string os, string orcamento)
+        public IActionResult EditarIndexEspuma(string os, string orcamento,int rev)
         {
-            var dados = _context.regtro_colchao_espuma.Where(x => x.os == os && x.orcamento == orcamento).FirstOrDefault();
+            var dados = _context.regtro_colchao_espuma.Where(x => x.os == os && x.orcamento == orcamento && x.rev == rev).FirstOrDefault();
             ViewBag.os = os;
             ViewBag.orcamento = orcamento;
+            ViewBag.rev = rev;
             return View("Espuma/EditarIndexEspuma", dados);
         }
 
@@ -110,10 +111,10 @@ namespace Coleta_Colchao.Controllers
             }
         }
 
-        public IActionResult EnsaioEspuma4_1(string os, string orcamento)
+        public IActionResult EnsaioEspuma4_1(string os, string orcamento, int rev)
         {
-            var dados = _context.ensaio_espuma4_1.Where(x => x.os == os && x.orcamento == orcamento).FirstOrDefault();
-            var RegistroEspuma = _context.regtro_colchao_espuma.Where(x => x.os == os && x.orcamento == orcamento).FirstOrDefault();
+            var dados = _context.ensaio_espuma4_1.Where(x => x.os == os && x.orcamento == orcamento && x.rev == rev).FirstOrDefault();
+            var RegistroEspuma = _context.regtro_colchao_espuma.Where(x => x.os == os && x.orcamento == orcamento && x.rev == rev).FirstOrDefault();
             //verificando largura,altura e comprimento do index.
             ViewBag.comprimento = RegistroEspuma.comprimento;
             ViewBag.largura = RegistroEspuma.largura;
@@ -123,6 +124,7 @@ namespace Coleta_Colchao.Controllers
             {
                 ViewBag.os = os;
                 ViewBag.orcamento = orcamento;
+                ViewBag.rev = rev;
                 ViewBag.quantidadeLaminas = RegistroEspuma.quant_laminas;
                 ViewBag.tipoColchao = RegistroEspuma.tipo_colchao;
                 ViewBag.revestimento = RegistroEspuma.revestimento;
@@ -132,6 +134,7 @@ namespace Coleta_Colchao.Controllers
             {
                 ViewBag.os = os;
                 ViewBag.orcamento = orcamento;
+                ViewBag.rev = rev;
                 ViewBag.quantidadeLaminas = RegistroEspuma.quant_laminas;
                 ViewBag.tipoColchao = RegistroEspuma.tipo_colchao;
                 ViewBag.revestimento = RegistroEspuma.revestimento;
@@ -1084,11 +1087,11 @@ namespace Coleta_Colchao.Controllers
 
 
         [HttpPost]
-        public async Task<IActionResult> EditarRegistroEspuma(string os, string orcamento, ColetaModel.RegistroEspuma salvarDados)
+        public async Task<IActionResult> EditarRegistroEspuma(string os, string orcamento, int rev,ColetaModel.RegistroEspuma salvarDados)
         {
             try
             {
-                var editarDados = _context.regtro_colchao_espuma.Where(x => x.os == os && x.orcamento == orcamento).FirstOrDefault();
+                var editarDados = _context.regtro_colchao_espuma.Where(x => x.os == os && x.orcamento == orcamento && x.rev == rev).FirstOrDefault();
                 if (editarDados != null)
                 {
                     editarDados.lacre = salvarDados.lacre;
@@ -1127,12 +1130,12 @@ namespace Coleta_Colchao.Controllers
                     _context.regtro_colchao_espuma.Update(editarDados);
                     await _context.SaveChangesAsync();
                     TempData["Mensagem"] = "Dados Editado com Sucesso.";
-                    return RedirectToAction(nameof(Index), "Home", new { os, orcamento });
+                    return RedirectToAction(nameof(Index), "Home", new { os, orcamento,rev });
                 }
                 else
                 {
                     TempData["Mensagem"] = "Não foi possivel editar os dados.";
-                    return RedirectToAction(nameof(Index), "Home", new { os, orcamento });
+                    return RedirectToAction(nameof(Index), "Home", new { os, orcamento,rev });
 
                 }
             }
@@ -1973,7 +1976,7 @@ namespace Coleta_Colchao.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> SalvarEspumaUm(string os, string orcamento, [Bind("data_ini,data_term,temp_ini,temp_fim,dimensao_temp,comprimento_result,comprimento_um,comprimento_esp,comprimento_dois," +
+        public async Task<IActionResult> SalvarEspumaUm(string os, string orcamento, int rev, [Bind("data_ini,data_term,temp_ini,temp_fim,dimensao_temp,comprimento_result,comprimento_um,comprimento_esp,comprimento_dois," +
           "comprimento_tres,comprimento_media,largura_result,largura_um,largura_esp,largura_dois,largura_tres,largura_media,altura_result,altura_um,altura_esp,altura_dois,altura_tres,altura_media,lamina_um,lamina_comp_um," +
           "lamina_esp_um,lamina_comp_dois,lamina_comp_tres,lamina_media_um,lamina_tipo_um,lamina_min_um,lamina_max_um,lamina_resul_um,lamina_dois,lamina_comp_quat,lamina_esp_dois, lamina_comp_cinco,lamina_comp_seis,lamina_media_dois,lamina_tipo_dois," +
           "lamina_min_dois,lamina_max_dois,lamina_resul_dois,lamina_tres,lamina_comp_sete,lamina_esp_tres,lamina_comp_oito,lamina_comp_nove,lamina_media_tres,lamina_tipo_tres,lamina_min_tres,lamina_max_tres,lamina_resul_tres,lamina_quat,lamina_comp_dez,lamina_esp_quat," +
@@ -1984,7 +1987,7 @@ namespace Coleta_Colchao.Controllers
             try
             {
 
-                var editarDados = _context.ensaio_espuma4_1.Where(x => x.os == os && x.orcamento == orcamento).FirstOrDefault();
+                var editarDados = _context.ensaio_espuma4_1.Where(x => x.os == os && x.orcamento == orcamento && x.rev == rev).FirstOrDefault();
 
                 if (editarDados == null)
                 {
@@ -2312,7 +2315,7 @@ namespace Coleta_Colchao.Controllers
                     _context.Add(salvarEspuma);
                     await _context.SaveChangesAsync();
                     TempData["Mensagem"] = "Dados Salvo Com Sucesso";
-                    return RedirectToAction(nameof(EnsaioEspuma4_1), "Coleta", new { os, orcamento });
+                    return RedirectToAction(nameof(EnsaioEspuma4_1), "Coleta", new { os, orcamento,rev });
                 }
                 else
                 {
@@ -2533,7 +2536,7 @@ namespace Coleta_Colchao.Controllers
 
                     await _context.SaveChangesAsync();
                     TempData["Mensagem"] = "Dados Editado Com Sucesso";
-                    return RedirectToAction(nameof(EnsaioEspuma4_1), "Coleta", new { os, orcamento });
+                    return RedirectToAction(nameof(EnsaioEspuma4_1), "Coleta", new { os, orcamento ,rev});
 
                 }
             }

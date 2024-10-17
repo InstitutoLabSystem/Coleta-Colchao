@@ -33,7 +33,7 @@
 <body>
     <br />
 
-    <form asp-controller="Coleta" class="meuFormulario" id="form1" asp-action="SalvarEspumaUm" method="post" asp-route-os="@ViewData["os"]" asp-route-orcamento="@ViewData["orcamento"]">
+    <form asp-controller="Coleta" class="meuFormulario" id="form1" asp-action="SalvarEspumaUm" method="post" asp-route-os="@ViewData["os"]" asp-route-orcamento="@ViewData["orcamento"]" asp-route-rev="@ViewData["rev"]" >
         @if (Model == null)
         {
             <table class="tables table-bordered border-secondary  table-sm">

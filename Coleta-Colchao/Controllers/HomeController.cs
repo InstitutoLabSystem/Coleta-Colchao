@@ -417,6 +417,23 @@ namespace Coleta_Colchao.Controllers
             }
             //fim de laminas
 
+            //Inicio Espuma
+            if(ensaio == "Espuma")
+            {
+                var registro_Espuma = _context.regtro_colchao_espuma.Where(x => x.os == os && x.orcamento == orcamento).OrderByDescending(x => x.Id).FirstOrDefault();
+
+                if (registro_Espuma != null)
+                {
+                    var novo_registro_Espuma = registro_Espuma.Clone();
+
+                    novo_registro_Espuma.Id = 0;
+                    novo_registro_Espuma.rev = novo_registro_Espuma.rev + 1;
+
+                    _context.regtro_colchao_espuma.Add(novo_registro_Espuma);
+                }
+            }
+            // fim espuma.
+
             //salvando no log as informações
             var salvarLog = new LogRevisao
             {

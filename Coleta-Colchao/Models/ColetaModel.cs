@@ -105,8 +105,11 @@ namespace Coleta_Colchao.Models
             public float largura { get; set; }
             public string? andamento { get; set; }
 
-
-
+            //função para clonar resultados quando for gerado revisao.
+            public RegistroEspuma Clone()
+            {
+                return (RegistroEspuma)this.MemberwiseClone();
+            }
         }
 
         public class EspumaUm
@@ -114,6 +117,7 @@ namespace Coleta_Colchao.Models
             [Key]
             public string os { get; set; }
             public string orcamento { get; set; }
+            public int rev { get; set; }
             public DateOnly data_ini { get; set; }
             public DateOnly data_term { get; set; }
             public string? dimensao_temp { get; set; }
@@ -219,6 +223,12 @@ namespace Coleta_Colchao.Models
             public string? reves_resul_final { get; set; }
             public string? executor { get; set; }
             public string? editarUsuario { get; set; }
+
+            //função para clonar resultados quando for gerado revisao.
+            public EspumaUm Clone()
+            {
+                return (EspumaUm)this.MemberwiseClone();
+            }
         }
 
 
