@@ -115,6 +115,7 @@ namespace Coleta_Colchao.Models
         public class EspumaUm
         {
             [Key]
+            public int Id { get; set; }
             public string os { get; set; }
             public string orcamento { get; set; }
             public int rev { get; set; }
@@ -624,33 +625,31 @@ namespace Coleta_Colchao.Models
             public int Id { get; set; }
             public string os { get; set; }
             public string orcamento { get; set; }
+            public int rev { get; set; }
             public DateOnly data_ini { get; set; }
             public DateOnly data_term { get; set; }
-
             public string? lamina_central { get; set; }
             public string? tipo_ensaio { get; set; }
             public string? quant_colagens { get; set; }
             public string? colagens_densidade { get; set; }
-            public string? espessura_nominal { get; set; }
-            public string? espessura_central { get; set; }
-            public string? porcentagem_enc { get; set; }
-            public string? lamina_menor_esp { get; set; }
+            public float espessura_nominal { get; set; }
+            public float espessura_central { get; set; }
+            public float porcentagem_enc { get; set; }
+            public int lamina_menor_esp { get; set; }
             public string? quant_colagens_dois { get; set; }
-            public string? distancia_um { get; set; }
-            public string? distancia_dois { get; set; }
+            public int distancia_um { get; set; }
             public string? colagens_comp { get; set; }
             public string? espuma { get; set; }
-            public string? esp_lamina_um { get; set; }
-            public string? esp_lamina_dois { get; set; }
-            public string? esp_lamina_tres { get; set; }
-            public string? esp_lamina_quat { get; set; }
-            public string? esp_lamina_cinco { get; set; }
-            public string? esp_lamina_seis { get; set; }
-            public string? esp_lamina_sete { get; set; }
-            public string? esp_lamina_oito { get; set; }
+            public float esp_lamina_um { get; set; }
+            public float esp_lamina_dois { get; set; }
+            public float esp_lamina_tres { get; set; }
+            public float esp_lamina_quat { get; set; }
+            public float esp_lamina_cinco { get; set; }
+            public float esp_lamina_seis { get; set; }
+            public float esp_lamina_sete { get; set; }
+            public float esp_lamina_oito { get; set; }
             public string? quant_colagens_tres { get; set; }
-            public string? distancia_tres { get; set; }
-            public string? distancia_quat { get; set; }
+            public int distancia_tres { get; set; }
             public string? colchao_casal { get; set; }
             public string? colagem_comp { get; set; }
             public string? espuma_conv { get; set; }
@@ -659,19 +658,26 @@ namespace Coleta_Colchao.Models
             public string? quant_colagens_quat { get; set; }
             public string? localidade { get; set; }
             public string? quant_colagens_cinco { get; set; }
-            public string? espessura_lamina { get; set; }
+            public float espessura_lamina { get; set; }
             public string? adesivo { get; set; }
+            public string? conforme { get; set; }
             public string? executor { get; set; }
             public string? editarUsuario { get; set; }
-
+            //função para clonar resultados quando for gerado revisao.
+            public Espuma4_3 Clone()
+            {
+                return (Espuma4_3)this.MemberwiseClone();
+            }
         }
 
 
         public class Espuma_identificacao_embalagem
         {
             [Key]
+            public int Id { get; set; }
             public string os { get; set; }
             public string orcamento { get; set; }
+            public int rev { get; set; }
             public DateOnly data_ini { get; set; }
             public DateOnly data_term { get; set; }
 
@@ -756,6 +762,11 @@ namespace Coleta_Colchao.Models
             public string? conforme6_2 { get; set; }
             public string? executor { get; set; }
             public string? editarUsuario { get; set; }
+            //função para clonar resultados quando for gerado revisao.
+            public Espuma_identificacao_embalagem Clone()
+            {
+                return (Espuma_identificacao_embalagem)this.MemberwiseClone();
+            }
 
         }
 
@@ -913,6 +924,7 @@ namespace Coleta_Colchao.Models
             public int Id { get; set; }
             public string os { get; set; }
             public string orcamento { get; set; }
+            public int rev { get; set; }
             public DateOnly data_ini { get; set; }
             public DateOnly data_term { get; set; }
             public string? superior_horizontal { get; set; }
@@ -920,6 +932,11 @@ namespace Coleta_Colchao.Models
             public string? conforme { get; set; }
             public string? executor { get; set; }
             public string? editarUsuario { get; set; }
+            //função para clonar resultados quando for gerado revisao.
+            public EnsaioEspuma4_4 Clone()
+            {
+                return (EnsaioEspuma4_4)this.MemberwiseClone();
+            }
         }
 
         public class CargasEstatica

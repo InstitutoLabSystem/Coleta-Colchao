@@ -431,6 +431,50 @@ namespace Coleta_Colchao.Controllers
 
                     _context.regtro_colchao_espuma.Add(novo_registro_Espuma);
                 }
+
+                var EnsaioEspuma4_1 = _context.ensaio_espuma4_1.Where(x => x.os == os && x.orcamento == orcamento).OrderByDescending(x => x.Id).FirstOrDefault();
+                if (EnsaioEspuma4_1 != null)
+                {
+                    var novo_EnsaioEspuma4_1 = EnsaioEspuma4_1.Clone();
+
+                    novo_EnsaioEspuma4_1.Id = 0;
+                    novo_EnsaioEspuma4_1.rev = novo_EnsaioEspuma4_1.rev + 1;
+
+                    _context.ensaio_espuma4_1.Add(novo_EnsaioEspuma4_1);
+                }
+
+                var EnsaioEspuma4_3 = _context.ensaio_espuma4_3.Where(x => x.os == os && x.orcamento == orcamento).OrderByDescending(x => x.Id).FirstOrDefault();
+                if (EnsaioEspuma4_3 != null)
+                {
+                    var novo_EnsaioEspuma4_3 = EnsaioEspuma4_3.Clone();
+
+                    novo_EnsaioEspuma4_3.Id = 0;
+                    novo_EnsaioEspuma4_3.rev = novo_EnsaioEspuma4_3.rev + 1;
+
+                    _context.ensaio_espuma4_3.Add(novo_EnsaioEspuma4_3);
+                }
+
+                var EnsaioEspuma4_4 = _context.ensaio_espuma_item_4_4.Where(x=>x.os == os && x.orcamento == orcamento).OrderByDescending(x => x.Id).FirstOrDefault();
+                if(EnsaioEspuma4_4 != null)
+                {
+                    var novo_EnsaioEspuma4_4 = EnsaioEspuma4_4.Clone();
+
+                    novo_EnsaioEspuma4_4.Id = 0;
+                    novo_EnsaioEspuma4_4.rev = novo_EnsaioEspuma4_4.rev + 1;
+
+                    _context.ensaio_espuma_item_4_4.Add(novo_EnsaioEspuma4_4);
+                }
+
+                var EspumaIdentificacaoEmbalagem = _context.espuma_identificacao_embalagem.Where(x => x.os == os && x.orcamento == orcamento).OrderByDescending(x => x.Id).FirstOrDefault();
+                if(EspumaIdentificacaoEmbalagem != null)
+                {
+                    var novo_EspumaIdentificacaoEmbalagem = EspumaIdentificacaoEmbalagem.Clone();
+
+                    novo_EspumaIdentificacaoEmbalagem.Id = 0;
+                    novo_EspumaIdentificacaoEmbalagem.rev = novo_EspumaIdentificacaoEmbalagem.rev + 1;
+
+                    _context.espuma_identificacao_embalagem.Add(novo_EspumaIdentificacaoEmbalagem);
+                }
             }
             // fim espuma.
 

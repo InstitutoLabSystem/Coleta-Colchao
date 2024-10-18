@@ -27,7 +27,7 @@
 <body>
     <br />
 
-    <form asp-controller="Coleta" class="meuFormulario" id="form1" asp-action="EspumaIdentificacaoEmbalagem" method="post" asp-route-os="@ViewData["os"]" asp-route-orcamento="@ViewData["orcamento"]">
+    <form asp-controller="Coleta" class="meuFormulario" id="form1" asp-action="EspumaIdentificacaoEmbalagem" method="post" asp-route-os="@ViewData["os"]" asp-route-orcamento="@ViewData["orcamento"]" asp-route-rev="@ViewData["rev"]">
 
         @if (Model == null)
         {

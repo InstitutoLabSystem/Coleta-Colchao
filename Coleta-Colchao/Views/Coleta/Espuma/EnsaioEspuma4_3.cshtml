@@ -18,7 +18,7 @@
 </head>
 <body>
     <br />
-    <form asp-controller="Coleta" class="meuFormulario" id="form1" asp-action="SalvarEspuma4_3" method="post" asp-route-os="@ViewData["os"]" asp-route-orcamento="@ViewData["orcamento"]">
+    <form asp-controller="Coleta" class="meuFormulario" id="form1" asp-action="SalvarEspuma4_3" method="post" asp-route-os="@ViewData["os"]" asp-route-orcamento="@ViewData["orcamento"]" asp-route-rev="@ViewData["rev"]">
 
         @if (Model == null)
         {
@@ -87,7 +87,13 @@
                 <tr id="colagem" class="colagem">
                     <td>
                         Pode haver no máximo duas colagens na horizontal, de mesma densidade. <br /> <br />
-                        Quantidades de colagens   <input class="form-control" type="text" name="quant_colagens" /> <br /> <br />
+                        Quantidades de colagens
+                        <select name="quant_colagens">
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                        </select> <br /> <br />
                         As colagens são de mesmas densidades
                         <select class="form-control" name="colagens_densidade">
                             <option> --- </option>
@@ -100,7 +106,7 @@
                         Espessura da lâmina central encontrado
                         <input class="form-control" type="text" name="espessura_central" /> <br /> <br />
                         Porcentagem encontrada
-                        <input class="form-control" type="text" name="porcentagem_enc" /> <br /> <br />
+                        <input class="form-control" type="text" readonly name="porcentagem_enc" /> <br /> <br />
                         A menor lâmina do colchão ou colchonete deve ter no mínimo 3 cm de espessura.  <br /> <br />
                         Espessura da menor lâmina
                         <input class="form-control" type="text" name="lamina_menor_esp" /> <br /> <br />
@@ -115,7 +121,13 @@
                 <tr class="vertical">
                     <td>
                         Pode haver somente uma colagem no sentido da largura, com distância máxima de 40 cm da extremidade do colchão. <br /> <br />
-                        Quantidades de colagens <input class="form-control" type="text" name="quant_colagens_dois" /> <br /> <br />
+                        Quantidades de colagens
+                        <select name="quant_colagens_dois" class="form-control w-100">
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                        </select> <br /> <br />
                         Distância da extremidade do colchão <input class="form-control" type="text" name="distancia_um" /> <br /> <br />
                         Distância da extremidade do colchão  <input class="form-control" type="text" name="distancia_dois" /> <br /> <br />
                         Não é permitido utilizar colagens no sentido do comprimento. <br /> <br />
@@ -146,14 +158,14 @@
                         </select> <br /> <br />
 
                         <table class="tables table-bordered border-secondary  table-sm ">
-                            @if(ViewBag.quant_laminas == 1)
+                            @if (ViewBag.quant_laminas == 1)
                             {
                                 <tr>
                                     <td class="fundo-tabela"> Espessura da lâmina </td>
                                     <td> <input class="form-control" type="text" name="esp_lamina_um" /> </td>
                                 </tr>
                             }
-                            @if(ViewBag.quant_laminas == 2)
+                            @if (ViewBag.quant_laminas == 2)
                             {
                                 <tr>
                                     <td class="fundo-tabela"> Espessura da lâmina </td>
@@ -164,7 +176,7 @@
                                     <td> <input class="form-control" type="text" name="esp_lamina_dois" /> </td>
                                 </tr>
                             }
-                            @if(ViewBag.quant_laminas == 3)
+                            @if (ViewBag.quant_laminas == 3)
                             {
                                 <tr>
                                     <td class="fundo-tabela"> Espessura da lâmina </td>
@@ -179,7 +191,7 @@
                                     <td> <input class="form-control" type="text" name="esp_lamina_tres" /> </td>
                                 </tr>
                             }
-                            @if(ViewBag.quant_laminas == 4)
+                            @if (ViewBag.quant_laminas == 4)
                             {
                                 <tr>
                                     <td class="fundo-tabela"> Espessura da lâmina </td>
@@ -198,7 +210,7 @@
                                     <td> <input class="form-control" type="text" name="esp_lamina_quat" /> </td>
                                 </tr>
                             }
-                            @if(ViewBag.quant_laminas == 5)
+                            @if (ViewBag.quant_laminas == 5)
                             {
                                 <tr>
                                     <td class="fundo-tabela"> Espessura da lâmina </td>
@@ -221,7 +233,7 @@
                                     <td> <input class="form-control" type="text" name="esp_lamina_cinco" /> </td>
                                 </tr>
                             }
-                            @if(ViewBag.quant_laminas == 6)
+                            @if (ViewBag.quant_laminas == 6)
                             {
                                 <tr>
                                     <td class="fundo-tabela"> Espessura da lâmina </td>
@@ -248,7 +260,7 @@
                                     <td> <input class="form-control" type="text" name="esp_lamina_seis" /> </td>
                                 </tr>
                             }
-                            @if(ViewBag.quant_laminas == 7)
+                            @if (ViewBag.quant_laminas == 7)
                             {
                                 <tr>
                                     <td class="fundo-tabela"> Espessura da lâmina </td>
@@ -279,7 +291,7 @@
                                     <td> <input class="form-control" type="text" name="esp_lamina_sete" /> </td>
                                 </tr>
                             }
-                            @if(ViewBag.quant_laminas == 8)
+                            @if (ViewBag.quant_laminas == 8)
                             {
                                 <tr>
                                     <td class="fundo-tabela"> Espessura da lâmina </td>
@@ -325,9 +337,14 @@
                 <tr class="colagem_largura">
                     <td>
                         Pode haver somente uma colagem no sentido da largura, com distância máxima de 40 cm da extremidade do colchão. <br /> <br />
-                        Quantidades de colagens <input class="form-control" type="text" name="quant_colagens_tres" /> <br /> <br />
+                        Quantidades de colagens
+                        <select name="quant_colagens_tres" class="form-control w-100">
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                        </select> <br /> <br />
                         Distância da extremidade do colchão <input class="form-control" type="text" name="distancia_tres" /> <br /> <br />
-                        Distância da extremidade do colchão  <input class="form-control" type="text" name="distancia_quat" /> <br /> <br />
 
                     </td>
                 </tr>
@@ -370,7 +387,13 @@
                             <option> Sim </option>
                             <option> Não </option>
                         </select> <br /> <br />
-                        Quantidades de colagens <input class="form-control" type="text" name="quant_colagens_quat" /> <br /> <br />
+                        Quantidades de colagens
+                        <select name="quant_colagens_quat" class="form-control w-100">
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                        </select> <br /> <br />
                         A colagem está localizada no centro do colchão?
                         <select class="form-control" name="localidade">
                             <option selected> --- </option>
@@ -385,7 +408,14 @@
                 <tr class="colchonete">
                     <td>
                         Somente é permitada uma colagem na horizontal com espessura mínima de 3 cm. <br /> <br />
-                        Quantidades de colagens  <input class="form-control" type="text" name="quant_colagens_cinco" /> <br /> <br />
+                        Quantidades de colagens
+                        <select name="quant_colagens_cinco" class="form-control w-100">
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                        </select>
+                        <br /> <br />
                         Espessura da lâmina <input class="form-control" type="text" name="espessura_lamina" /> <br /> <br />
                     </td>
                 </tr>
@@ -417,6 +447,7 @@
         }
         else
         {
+
             <table class="tables table-bordered border-secondary  table-sm">
                 <thead>
                     <tr>
@@ -436,9 +467,7 @@
                     </tr>
                 </thead>
             </table>
-
             <br />
-
             <table class="tables table-bordered border-secondary  table-sm">
                 <tr class="fundo-tabela">
                     <td>Item</td>
@@ -448,7 +477,7 @@
                 <tr>
                     <td rowspan="12"> 4.3</td>
                     <td class="fundo-tabela"> Colagens permitidas </td>
-                    <td rowspan="12">NA</td>
+                    <td rowspan="12">@Model.conforme</td>
                 </tr>
                 <tr>
                     <td>
@@ -478,7 +507,8 @@
                         </select>
                     </td>
                 </tr>
-                @if (Model.tipo_ensaio == "Colagem horizontal com peça inteira" || Model.executor != null)
+
+                @if (Model.tipo_ensaio == "Colagem horizontal com peça inteira")
                 {
                     <tr id="colagem" class="colagem">
                         <td class="fundo-tabela"> Colagem horizontal com peça inteira </td>
@@ -486,7 +516,14 @@
                     <tr id="colagem" class="colagem">
                         <td>
                             Pode haver no máximo duas colagens na horizontal, de mesma densidade. <br /> <br />
-                            Quantidades de colagens   <input class="form-control w-100" type="text" name="quant_colagens" value="@Model.quant_colagens" /> <br /> <br />
+                            Quantidades de colagens
+                            <select name="quant_colagens" class="form-control w-100">
+                                <option selected>@Model.quant_colagens</option>
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                            </select> <br /> <br />
                             As colagens são de mesmas densidades
                             <select class="form-control w-100" name="colagens_densidade">
                                 <option selected> @Model.colagens_densidade </option>
@@ -500,7 +537,7 @@
                             Espessura da lâmina central encontrado
                             <input class="form-control" type="text" name="espessura_central" value="@Model.espessura_central" /> <br /> <br />
                             Porcentagem encontrada
-                            <input class="form-control" type="text" name="porcentagem_enc" value="@Model.porcentagem_enc" /> <br /> <br />
+                            <input class="form-control" type="text" value="@Model.porcentagem_enc"  readonly/> <br /> <br />
                             A menor lâmina do colchão ou colchonete deve ter no mínimo 3 cm de espessura.  <br /> <br />
                             Espessura da menor lâmina
                             <input class="form-control" type="text" name="lamina_menor_esp" value="@Model.lamina_menor_esp" /> <br /> <br />
@@ -508,9 +545,10 @@
                         </td>
                     </tr>
                 }
-                @if (Model.tipo_ensaio == "Colagem vertical na largura" || Model.executor != null)
+
+                @if (Model.tipo_ensaio == "Colagem vertical na largura")
                 {
-                    <tr class="vertical"> 
+                    <tr class="vertical">
                         <td class="fundo-tabela">
                             Colagem vertical na largura
                         </td>
@@ -519,11 +557,16 @@
                         <td>
                             Pode haver somente uma colagem no sentido da largura, com distância máxima de 40 cm da extremidade do colchão. <br /> <br />
                             Quantidades de colagens
-                            <input class="form-control" type="text" name="quant_colagens_dois" value="@Model.quant_colagens_dois" /> <br /> <br />
+                            <select name="quant_colagens_dois" class="form-control w-100">
+                                <option selected>@Model.quant_colagens_dois</option>
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                            </select>
+                            <br /> <br />
                             Distância da extremidade do colchão
                             <input class="form-control" type="text" name="distancia_um" value="@Model.distancia_um" /> <br /> <br />
-                            Distância da extremidade do colchão
-                            <input class="form-control" type="text" name="distancia_dois" value="@Model.distancia_dois" /> <br /> <br />
                             Não é permitido utilizar colagens no sentido do comprimento. <br /> <br />
                             Possui colagens do sentido do comprimento?
                             <select class="form-control" name="colagens_comp">
@@ -539,12 +582,12 @@
 
 
             <table class="tables table-bordered border-secondary  table-sm">
-                @if (Model.tipo_ensaio == "Colchão tipo composto" || Model.executor != null)
+                @if (Model.tipo_ensaio == "Colchão tipo composto")
                 {
                     <tr class="colcao_composto">
                         <td rowspan="12"> 4.3</td>
                         <td class="fundo-tabela"> Colchão tipo composto </td>
-                        <td rowspan="12"> NA </td>
+                        <td rowspan="12"> @Model.conforme </td>
                     </tr>
                     <tr class="colcao_composto">
                         <td>
@@ -559,14 +602,14 @@
                             </select> <br /> <br />
 
                             <table class="tables table-bordered border-secondary  table-sm">
-                                @if(ViewBag.quant_laminas == 1)
+                                @if (ViewBag.quant_laminas == 1)
                                 {
                                     <tr>
                                         <td class="fundo-tabela"> Espessura da lâmina </td>
                                         <td> <input class="form-control" type="text" name="esp_lamina_um" value="@Model.esp_lamina_um" /> </td>
                                     </tr>
                                 }
-                                @if(ViewBag.quant_laminas == 2)
+                                @if (ViewBag.quant_laminas == 2)
                                 {
                                     <tr>
                                         <td class="fundo-tabela"> Espessura da lâmina </td>
@@ -577,7 +620,7 @@
                                         <td> <input class="form-control" type="text" name="esp_lamina_dois" value="@Model.esp_lamina_dois" /> </td>
                                     </tr>
                                 }
-                                @if(ViewBag.quant_laminas == 3)
+                                @if (ViewBag.quant_laminas == 3)
                                 {
                                     <tr>
                                         <td class="fundo-tabela"> Espessura da lâmina </td>
@@ -592,7 +635,7 @@
                                         <td> <input class="form-control" type="text" name="esp_lamina_tres" value="@Model.esp_lamina_tres" /> </td>
                                     </tr>
                                 }
-                                @if(ViewBag.quant_laminas == 4)
+                                @if (ViewBag.quant_laminas == 4)
                                 {
                                     <tr>
                                         <td class="fundo-tabela"> Espessura da lâmina </td>
@@ -611,7 +654,7 @@
                                         <td> <input class="form-control" type="text" name="esp_lamina_quat" value="@Model.esp_lamina_quat" /> </td>
                                     </tr>
                                 }
-                                @if(ViewBag.quant_laminas == 5)
+                                @if (ViewBag.quant_laminas == 5)
                                 {
                                     <tr>
                                         <td class="fundo-tabela"> Espessura da lâmina </td>
@@ -634,7 +677,7 @@
                                         <td> <input class="form-control" type="text" name="esp_lamina_cinco" value="@Model.esp_lamina_cinco" /> </td>
                                     </tr>
                                 }
-                                @if(ViewBag.quant_laminas == 6)
+                                @if (ViewBag.quant_laminas == 6)
                                 {
                                     <tr>
                                         <td class="fundo-tabela"> Espessura da lâmina </td>
@@ -661,7 +704,7 @@
                                         <td> <input class="form-control" type="text" name="esp_lamina_seis" value="@Model.esp_lamina_seis" /> </td>
                                     </tr>
                                 }
-                                @if(ViewBag.quant_laminas == 7)
+                                @if (ViewBag.quant_laminas == 7)
                                 {
                                     <tr>
                                         <td class="fundo-tabela"> Espessura da lâmina </td>
@@ -692,7 +735,7 @@
                                         <td> <input class="form-control" type="text" name="esp_lamina_sete" value="@Model.esp_lamina_sete" /> </td>
                                     </tr>
                                 }
-                                @if(ViewBag.quant_laminas == 8)
+                                @if (ViewBag.quant_laminas == 8)
                                 {
                                     <tr>
                                         <td class="fundo-tabela"> Espessura da lâmina </td>
@@ -731,7 +774,7 @@
                         </td>
                     </tr>
                 }
-                @if (Model.tipo_ensaio == "Colagem na largura" || Model.executor != null)
+                @if (Model.tipo_ensaio == "Colagem na largura")
                 {
                     <tr class="colagem_largura">
                         <td class="fundo-tabela">
@@ -741,14 +784,20 @@
                     <tr class="colagem_largura">
                         <td>
                             Pode haver somente uma colagem no sentido da largura, com distância máxima de 40 cm da extremidade do colchão. <br /> <br />
-                            Quantidades de colagens <input class="form-control" type="text" name="quant_colagens_tres" value="@Model.quant_colagens_tres" /> <br /> <br />
+                            Quantidades de colagens
+                            <select name="quant_colagens_tres" class="form-control w-100">
+                                <option selected>@Model.quant_colagens_tres</option>
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                            </select> <br /> <br />
                             Distância da extremidade do colchão <input class="form-control" type="text" name="distancia_tres" value="@Model.distancia_tres" /> <br /> <br />
-                            Distância da extremidade do colchão  <input class="form-control" type="text" name="distancia_quat" value="@Model.distancia_quat" /> <br /> <br />
 
                         </td>
                     </tr>
                 }
-                @if (Model.tipo_ensaio == "Colagem no comprimento" || Model.executor != null)
+                @if (Model.tipo_ensaio == "Colagem no comprimento")
                 {
                     <tr class="colchao_comprimento">
                         <td class="fundo-tabela">
@@ -795,7 +844,14 @@
                                 <option> Não </option>
                                 <option>---</option>
                             </select> <br /> <br />
-                            Quantidades de colagens <input class="form-control" type="text" name="quant_colagens_quat" value="@Model.quant_colagens_quat" /> <br /> <br />
+                            Quantidades de colagens
+                            <select name="quant_colagens_quat" class="form-control w-100">
+                                <option selected>@Model.quant_colagens_quat</option>
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                            </select> <br /> <br />
                             A colagem está localizada no centro do colchão?
                             <select class="form-control" name="localidade">
                                 <option selected> @Model.localidade </option>
@@ -806,7 +862,7 @@
                         </td>
                     </tr>
                 }
-                @if (Model.tipo_ensaio == "Colchonete" || Model.executor != null)
+                @if (Model.tipo_ensaio == "Colchonete")
                 {
                     <tr class="colchonete">
                         <td class="fundo-tabela"> Colchonete </td>
@@ -814,12 +870,22 @@
                     <tr class="colchonete">
                         <td>
                             Somente é permitada uma colagem na horizontal com espessura mínima de 3 cm. <br /> <br />
-                            Quantidades de colagens  <input class="form-control" type="text" name="quant_colagens_cinco" value="@Model.quant_colagens_cinco" /> <br /> <br />
+                            Quantidades de colagens
+                            <select name="quant_colagens_cinco" class="form-control w-100">
+                                <option selected>@Model.quant_colagens_cinco</option>
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                            </select>
+                            <br /> <br />
                             Espessura da lâmina <input class="form-control" type="text" name="espessura_lamina" value="@Model.espessura_lamina" /> <br /> <br />
                         </td>
                     </tr>
                 }
+
             </table>
+
             <br />
             @if (ViewBag.infantil == "Colchão Infantil")
             {
@@ -910,6 +976,9 @@
             var tem_colchao = document.getElementById("tem_colchao");
             var tipo_ensaio = document.getElementById("tipo_ensaio");
             var dados = tem_colchao.value
+            console.log(tipo_ensaio.value);
+
+
 
             tipo_ensaio.addEventListener('change', function () {
 
@@ -1011,39 +1080,38 @@
                 var colchao_comprimento = document.getElementsByClassName("colchao_comprimento");
                 var colchonete = document.getElementsByClassName("colchonete");
 
-
                 for (var i = 0; i < colagem.length; i++) {
                     if (dados == "Não" || dados == "---" || dados == "Sim") {
                         colagem[i].style.display = 'none';
-                    } 
+                    }
                 }
 
                 for (var i = 0; i < vertical.length; i++) {
                     if (dados == "Não" || dados == "---" || dados == "Sim") {
                         vertical[i].style.display = 'none';
-                    } 
+                    }
                 }
 
                 for (var i = 0; i < colchao_composto.length; i++) {
                     if (dados == "Não" || dados == "---" || dados == "Sim") {
                         colchao_composto[i].style.display = 'none';
-                    } 
+                    }
                 }
                 for (var i = 0; i < colchao_largura.length; i++) {
                     if (dados == "Não" || dados == "---" || dados == "Sim") {
                         colchao_largura[i].style.display = 'none';
-                    } 
+                    }
                 }
 
                 for (var i = 0; i < colchao_comprimento.length; i++) {
                     if (dados == "Não" || dados == "---" || dados == "Sim") {
                         colchao_comprimento[i].style.display = 'none';
-                    } 
+                    }
                 }
                 for (var i = 0; i < colchonete.length; i++) {
                     if (dados == "Não" || dados == "---" || dados == "Sim") {
                         colchonete[i].style.display = 'none';
-                    } 
+                    }
                 }
             });
 
