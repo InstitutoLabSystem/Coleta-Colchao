@@ -32,7 +32,7 @@
                 <thead>
                     <tr>
                         <td><img src="https://www.labsystem-nuvem.com.br/imagens_arq/imagens/img/LabSystem.png" class="imagem" /></td>
-                        <td colspan="3" class="fundo-tabela">Coleta De Dados</td>
+                        <td colspan="3" class="fundo-tabela">Coleta De Dados Ensaio Em Base Durabilidade</td>
                         <td class="fundo-tabela">N Os:</td>
                     </tr>
                     <tr>
@@ -106,11 +106,6 @@
                 </tr>
                 <tr class="fundo-tabela">
                     <td colspan="2">
-                        Posicionar a base em uma superfície plana e rígida e aplicar uma força vertical para baixo de 1400 N e mantê-la por (10 ± 1) s no(s) ponto(s) que apresentem sinais de fragilidade.
-                    </td>
-                </tr>
-                <tr class="fundo-tabela">
-                    <td colspan="2">
                         Posicionar uma massa de 75 kg no centro da estrutura e aplicar uma força lateral de 300 N durante 10000 ciclos.
                     </td>
                 </tr>
@@ -148,33 +143,30 @@
                 </tr>
                 <tr>
                     <td colspan="2">
-                        Houve Ruptura Da Estrutura :
-                        <select class="controlador" asp-for="ruptura">
-                            <option value="---">---</option>
+                        Houve fratura :
+                        <select class="controlador" asp-for="fratura">
                             <option value="NA">NA</option>
-                            <option value="Sim">Sim</option>
-                            <option value="Não">Não</option>
+                            <option value="C">C</option>
+                            <option value="NC">NC</option>
                         </select>
                     </td>
 
                 </tr>
                 <tr>
                     <td colspan="2">
-                        Houve Quebra Nas Fixações:
+                        Houve Quebra:
                         <select class="controlador" asp-for="quebra">
-                            <option value="---">---</option>
                             <option value="NA">NA</option>
-                            <option value="Sim">Sim</option>
-                            <option value="Não">Não</option>
+                            <option value="C">C</option>
+                            <option value="NC">NC</option>
                         </select>
                     </td>
 
                 </tr>
                 <tr>
                     <td colspan="2">
-                        Apresentou algo que prejudique o seu comprometimento de uso :
-                        <select class="controlador" style="width:200px;" asp-for="prejudicou">
-                            <option value="---">---</option>
+                        Houve Rachadura:
+                        <select class="controlador" style="width:200px;" asp-for="rachadura">
                             <option value="NA">NA</option>
                             <option value="C">C</option>
                             <option value="NC">NC</option>
@@ -185,10 +177,9 @@
                     <td>
                         Houve Rompimento nos pés:
                         <select class="controlador" asp-for="rompimento">
-                            <option value="---">---</option>
                             <option value="NA">NA</option>
-                            <option value="Sim">Sim</option>
-                            <option value="Não">Não</option>
+                            <option value="C">C</option>
+                            <option value="NC">NC</option>
                         </select>
                     </td>
                 </tr>
@@ -203,7 +194,7 @@
                 <thead>
                     <tr>
                         <td><img src="https://www.labsystem-nuvem.com.br/imagens_arq/imagens/img/LabSystem.png" class="imagem" /></td>
-                        <td colspan="3" class="fundo-tabela">Coleta De Dados</td>
+                        <td colspan="3" class="fundo-tabela">Coleta De Dados Ensaio Em Base Durabilidade</td>
                         <td class="fundo-tabela">N Os:</td>
                     </tr>
                     <tr>
@@ -275,11 +266,7 @@
                         </table>
                     </td>
                 </tr>
-                <tr class="fundo-tabela">
-                    <td colspan="3">
-                        Posicionar a base em uma superfície plana e rígida e aplicar uma força vertical para baixo de 1400 N e mantê-la por (10 ± 1) s no(s) ponto(s) que apresentem sinais de fragilidade.
-                    </td>
-                </tr>
+
                 <tr class="fundo-tabela">
                     <td colspan="3">
                         Posicionar uma massa de 75 kg no centro da estrutura e aplicar uma força lateral de 300 N durante 10000 ciclos.
@@ -327,36 +314,33 @@
                 </tr>
                 <tr>
                     <td colspan="2">
-                        Houve Ruptura Da Estrutura :
-                        <select class="controlador" asp-for="ruptura">
-                            <option value="---">---</option>
+                        Houve fratura :
+                        <select class="controlador" asp-for="fratura">
                             <option value="NA">NA</option>
-                            <option value="Sim">Sim</option>
-                            <option value="Não">Não</option>
+                            <option value="C">C</option>
+                            <option value="NC">NC</option>
                         </select>
                     </td>
                     <td rowspan="3">@Model.conforme</td>
                 </tr>
                 <tr>
                     <td>
-                        Houve Quebra Nas Fixações:
+                        Houve Quebra:
                         <select class="controlador" asp-for="quebra">
-                            <option value="---">---</option>
                             <option value="NA">NA</option>
-                            <option value="Sim">Sim</option>
-                            <option value="Não">Não</option>
+                            <option value="C">C</option>
+                            <option value="NC">NC</option>
                         </select>
                     </td>
 
                 </tr>
                 <tr>
                     <td>
-                        Apresentou algo que prejudique o seu comprometimento de uso :
-                        <select class="controlador" style="width:200px;" asp-for="prejudicou">
-                            <option value="---">---</option>
+                        Houve rachadura :
+                        <select class="controlador" style="width:200px;" asp-for="rachadura">
                             <option value="NA">NA</option>
-                            <option value="Sim">Sim</option>
-                            <option value="Não">Não</option>
+                            <option value="C">C</option>
+                            <option value="NC">NC</option>
                         </select>
                     </td>
                 </tr>
@@ -364,10 +348,9 @@
                     <td>
                         Houve rompimento nos pés:
                         <select class="controlador" asp-for="rompimento">
-                            <option value="---">---</option>
                             <option value="NA">NA</option>
-                            <option value="Sim">Sim</option>
-                            <option value="Não">Não</option>
+                            <option value="C">C</option>
+                            <option value="NC">NC</option>
                         </select>
                     </td>
                 </tr>

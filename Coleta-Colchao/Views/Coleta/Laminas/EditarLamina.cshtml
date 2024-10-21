@@ -110,6 +110,15 @@
                     <td colspan="5"><input class="form-control" type="text" asp-for="marca_modelo" /></td>
                 </tr>
                 <tr>
+                    <td>Portaria</td>
+                    <td colspan="5">
+                        <select class="form-control" asp-for="portaria">
+                            <option value="35">35</option>
+                            <option value="75">75</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
                     <td> Número de processo </td>
                     <td> <input class="form-control" type="text" asp-for="num_proc" /> </td>
                     <td> Código de referência </td>
@@ -137,9 +146,9 @@
     </form>
     @if (TempData.ContainsKey("Mensagem"))
     {
-    <script>
-        alert('@Html.Raw(TempData["Mensagem"])');
-    </script>
+        <script>
+            alert('@Html.Raw(TempData["Mensagem"])');
+        </script>
     }
 </body>
 </html>

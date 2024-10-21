@@ -790,22 +790,19 @@ namespace Coleta_Colchao.Models
             public int distancia_ponto_a { get; set; }
             public int largura_ponto_a { get; set; }
             public string? suportou_ponto_a { get; set; }
-            public string? ruptura_ponto_a { get; set; }
-            public string? afundamento_ponto_a { get; set; }
-            public string? rasgo_ponto_a { get; set; }
-            public string? rompimento_ponto_a { get; set; }
+            public string? fratura_ponto_a { get; set; }
+            public string? rachadura_ponto_a { get; set; }
+            public string? quebra_ponto_a { get; set; }
             public string? prejudique_ponto_a { get; set; }
             public string? suportou_ponto_b { get; set; }
-            public string? ruptura_ponto_b { get; set; }
-            public string? afundamento_ponto_b { get; set; }
-            public string? rasgo_ponto_b { get; set; }
-            public string? rompimento_ponto_b { get; set; }
+            public string? fratura_ponto_b { get; set; }
+            public string? rachadura_ponto_b { get; set; }
+            public string? quebra_ponto_b { get; set; }
             public string? prejudique_ponto_b { get; set; }
             public string? suportou_ponto_c { get; set; }
-            public string? ruptura_ponto_c { get; set; }
-            public string? afundamento_ponto_c { get; set; }
-            public string? rasgo_ponto_c { get; set; }
-            public string? rompimento_ponto_c { get; set; }
+            public string? fratura_ponto_c { get; set; }
+            public string? rachadura_ponto_c { get; set; }
+            public string? quebra_ponto_c { get; set; }
             public string? prejudique_ponto_c { get; set; }
             public string? conforme_a { get; set; }
             public string? conforme_b { get; set; }
@@ -848,10 +845,9 @@ namespace Coleta_Colchao.Models
             public string? impac_um_g { get; set; }
             public string? impac_um_i { get; set; }
             public string? impac_um_j { get; set; }
-            public string? ruptura_um { get; set; }
-            public string? afundamento_um { get; set; }
-            public string? rasgo_um { get; set; }
-            public string? rompimento_um { get; set; }
+            public string? fratura_um { get; set; }
+            public string? rachadura_um { get; set; }
+            public string? quebra_um { get; set; }
             public string? prejudique_um { get; set; }
             public string? impac_dois_a { get; set; }
             public string? impac_dois_b { get; set; }
@@ -861,10 +857,9 @@ namespace Coleta_Colchao.Models
             public string? impac_dois_g { get; set; }
             public string? impac_dois_i { get; set; }
             public string? impac_dois_j { get; set; }
-            public string? ruptura_dois { get; set; }
-            public string? afundamento_dois { get; set; }
-            public string? rasgo_dois { get; set; }
-            public string? rompimento_dois { get; set; }
+            public string? fratura_dois { get; set; }
+            public string? rachadura_dois { get; set; }
+            public string? quebra_dois { get; set; }
             public string? prejudique_dois { get; set; }
             public string? confome_ponto_a { get; set; }
             public string? confome_ponto_b { get; set; }
@@ -900,9 +895,9 @@ namespace Coleta_Colchao.Models
             public string? im { get; set; }
             public string? responsavel_cond { get; set; }
             public string? suportou { get; set; }
-            public string? ruptura { get; set; }
+            public string? fratura { get; set; }
             public string? quebra { get; set; }
-            public string? prejudicou { get; set; }
+            public string? rachadura { get; set; }
             public string? rompimento { get; set; }
             public string? conforme { get; set; }
             public string? temp_ini { get; set; }
@@ -958,10 +953,9 @@ namespace Coleta_Colchao.Models
             public string? forca_aplicada { get; set; }
             public string? aplicacao_carga { get; set; }
             public string? suportou_aplicacao { get; set; }
-            public string? ruptura { get; set; }
-            public string? afundamento { get; set; }
-            public string? rasgo { get; set; }
-            public string? rompimento { get; set; }
+            public string? fratura { get; set; }
+            public string? rachadura { get; set; }
+            public string? quebra { get; set; }
             public string? prejudique { get; set; }
             public string? conforme_pontoA { get; set; }
             //função para clonar resultados quando for gerado revisao.
@@ -985,6 +979,7 @@ namespace Coleta_Colchao.Models
             public DateOnly data_realizacao_ini { get; set; }
             public DateOnly data_realizacao_term { get; set; }
             public string? marca_modelo { get; set; }
+            public string? portaria { get; set; }
             public string? num_proc { get; set; }
             public string? cod_ref { get; set; }
             public string? desc_lamina { get; set; }

@@ -57,8 +57,8 @@
 </head>
 <body>
 
-   
-        <form method="post" asp-controller="Coleta" asp-action="salvarLamina" asp-route-os="@ViewBag.os" asp-route-orcamento="@ViewBag.orcamento">
+
+    <form method="post" asp-controller="Coleta" asp-action="salvarLamina" asp-route-os="@ViewBag.os" asp-route-orcamento="@ViewBag.orcamento">
         <div class="full-height text-center">
             <table class="tables table-bordered border-secondary  table-sm">
                 <tr>
@@ -112,6 +112,15 @@
                     <td colspan="5"><input class="form-control" type="text" asp-for="marca_modelo" /></td>
                 </tr>
                 <tr>
+                    <td>Portaria</td>
+                    <td colspan="5">
+                        <select class="form-control" asp-for="portaria">
+                            <option value="35">35</option>
+                            <option value="75">75</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
                     <td> Número de processo </td>
                     <td> <input class="form-control" type="text" asp-for="num_proc" /> </td>
                     <td> Código de referência </td>
@@ -128,7 +137,7 @@
                     <td> <input class="form-control" type="text" asp-for="tipo_cert" /> </td>
                     <td colspan="3"> <input class="form-control" type="text" asp-for="modelo_cert" /> </td>
                     <td colspan="3"> <input class="form-control" type="text" asp-for="tipo_proc" /> </td>
-                </tr> 
+                </tr>
             </table>
             <tr>
                 <td>
@@ -139,9 +148,9 @@
     </form>
     @if (TempData.ContainsKey("Mensagem"))
     {
-    <script>
-        alert('@Html.Raw(TempData["Mensagem"])');
-    </script>
+        <script>
+            alert('@Html.Raw(TempData["Mensagem"])');
+        </script>
     }
 </body>
 </html>

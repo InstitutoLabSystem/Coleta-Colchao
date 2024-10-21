@@ -36,7 +36,7 @@
             <thead>
                 <tr>
                     <td><img src="https://www.labsystem-nuvem.com.br/imagens_arq/imagens/img/LabSystem.png" class="imagem" /></td>
-                    <td colspan="3" class="fundo-tabela">Coleta De Dados</td>
+                    <td colspan="3" class="fundo-tabela">Coleta De Dados Ensaio Lamina Densidade</td>
                     <td class="fundo-tabela">N Os:</td>
                 </tr>
                 <tr>
@@ -309,6 +309,8 @@
                     Resiliência encontrada % <input type="text" class="controlador" readonly asp-for="resiliencia_enc" />
                 </td>
             </tr>
+
+            
         </table>
         @if (Model == null)
         {
@@ -336,6 +338,8 @@
         const densidade = document.getElementById("densidade");
         const tamanho = document.getElementById("tamanho");
         var especificado = document.getElementById("especificado");
+        var portaria = @ViewBag.portaria
+        console.log(portaria);
 
         tipo_espuma.addEventListener('change', function () {
             mostrarResultados(tipo_espuma.value, densidade.value);
@@ -411,8 +415,13 @@
                 }
             } else if (opcaoSelecionada === 'Visco elástica') {
                 if (valorDigitado >= '30') {
-                    especificado.value = 15;
+                    if (portaria == '35') {
+                         especificado.value = 15;
                     tamanho.value = 'Max';
+                    }else{
+                        especificado.value = 10;
+                        tamanho.value = 'Max';
+                    }        
                 }
                 else {
                     especificado.value = "Não há especificado na tabela";
