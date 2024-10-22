@@ -55,6 +55,13 @@ namespace Coleta_Colchao.Controllers
                              }
                          }).FirstOrDefault();
 
+            //retornar para a tela caso nao encontrar o codigo.
+            if (dados == null)
+            {
+                TempData["Mensagem"] = "Codigo não encontrado.";
+                return RedirectToAction("Index", "Instrumentos", new { os, orcamento });
+            }
+
             // Inicializando a lista de instrumentos colchão salvos
             var viewModel = new InstrumentosViewModel();
             viewModel.oInstrumentosColchao = dados.oInstrumentosColchao;
@@ -63,6 +70,7 @@ namespace Coleta_Colchao.Controllers
             // Passando os valores para ViewBag
             ViewBag.os = os;
             ViewBag.orcamento = orcamento;
+
 
             return View(viewModel);
         }
