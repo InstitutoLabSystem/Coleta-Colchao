@@ -3191,7 +3191,7 @@ namespace Coleta_Colchao.Controllers
                     }
                     else if (tipo_ensaio == "Colagem no comprimento")
                     {
-                        if (colchao_casal == "Não" || colagem_comp == "Não" || espuma_conv == "Não" || espuma_densidade == "Não" || colagem_largura == "Não" || quant_colagens_quat != "1" || localidade == "Não")
+                        if (colchao_casal == "Não" || colagem_comp == "Não" || espuma_conv == "Não" || espuma_densidade == "Não" || colagem_largura == "Sim" || quant_colagens_quat != "1" || localidade == "Não")
                         {
                             salvar.conforme = "NC";
                         }
@@ -3327,7 +3327,7 @@ namespace Coleta_Colchao.Controllers
                             editarDados.porcentagem_enc = 0;
                         }
 
-                        if (editarDados.quant_colagens == "3" || editarDados.quant_colagens == "4" || editarDados.colagens_densidade == "Não" || editarDados.porcentagem_enc <= 50 || editarDados.lamina_menor_esp <= 3)
+                        if (editarDados.quant_colagens == "3" || editarDados.quant_colagens == "4" || editarDados.colagens_densidade == "Não" || editarDados.porcentagem_enc < 50 || editarDados.lamina_menor_esp < 3)
                         {
                             editarDados.conforme = "NC";
                         }
@@ -3349,7 +3349,7 @@ namespace Coleta_Colchao.Controllers
                     }
                     else if (editarDados.tipo_ensaio == "Colagem no comprimento")
                     {
-                        if (editarDados.colchao_casal == "Não" || editarDados.colagem_comp == "Não" || editarDados.espuma_conv == "Não" || editarDados.espuma_densidade == "Não" || editarDados.colagem_largura == "Não" || editarDados.quant_colagens_quat != "1" || editarDados.localidade == "Não")
+                        if (editarDados.colchao_casal == "Não" || editarDados.colagem_comp == "Não" || editarDados.espuma_conv == "Não" || editarDados.espuma_densidade == "Não" || editarDados.colagem_largura == "Sim" || editarDados.quant_colagens_quat != "1" || editarDados.localidade == "Não")
                         {
                             editarDados.conforme = "NC";
                         }

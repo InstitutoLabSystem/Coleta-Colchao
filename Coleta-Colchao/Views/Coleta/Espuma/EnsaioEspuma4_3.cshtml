@@ -402,23 +402,26 @@
                         </select> <br /> <br />
                     </td>
                 </tr>
-                <tr class="colchonete">
-                    <td class="fundo-tabela"> Colchonete </td>
-                </tr>
-                <tr class="colchonete">
-                    <td>
-                        Somente é permitada uma colagem na horizontal com espessura mínima de 3 cm. <br /> <br />
-                        Quantidades de colagens
-                        <select name="quant_colagens_cinco" class="form-control w-100">
-                            <option value="1">1</option>
-                            <option value="2">2</option>
-                            <option value="3">3</option>
-                            <option value="4">4</option>
-                        </select>
-                        <br /> <br />
-                        Espessura da lâmina <input class="form-control" type="text" name="espessura_lamina" /> <br /> <br />
-                    </td>
-                </tr>
+                    @if (ViewBag.infantil == "Colchonete")
+                    {
+                    <tr >
+                        <td class="fundo-tabela"> Colchonete </td>
+                    </tr>
+                    <tr >
+                        <td>
+                            Somente é permitada uma colagem na horizontal com espessura mínima de 3 cm. <br /> <br />
+                            Quantidades de colagens
+                            <select name="quant_colagens_cinco" class="form-control w-100">
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                            </select>
+                            <br /> <br />
+                            Espessura da lâmina <input class="form-control" type="text" name="espessura_lamina" /> <br /> <br />
+                        </td>
+                    </tr>
+                    }
 
             </table>
             <br />
@@ -537,7 +540,7 @@
                             Espessura da lâmina central encontrado
                             <input class="form-control" type="text" name="espessura_central" value="@Model.espessura_central" /> <br /> <br />
                             Porcentagem encontrada
-                            <input class="form-control" type="text" value="@Model.porcentagem_enc"  readonly/> <br /> <br />
+                            <input class="form-control" type="text" value="@Model.porcentagem_enc" readonly /> <br /> <br />
                             A menor lâmina do colchão ou colchonete deve ter no mínimo 3 cm de espessura.  <br /> <br />
                             Espessura da menor lâmina
                             <input class="form-control" type="text" name="lamina_menor_esp" value="@Model.lamina_menor_esp" /> <br /> <br />
@@ -781,6 +784,7 @@
                             <strong> Colagem na largura </strong>
                         </td>
                     </tr>
+                    <td rowspan="2">@Model.conforme</td>
                     <tr class="colagem_largura">
                         <td>
                             Pode haver somente uma colagem no sentido da largura, com distância máxima de 40 cm da extremidade do colchão. <br /> <br />
@@ -800,9 +804,12 @@
                 @if (Model.tipo_ensaio == "Colagem no comprimento")
                 {
                     <tr class="colchao_comprimento">
-                        <td class="fundo-tabela">
+                        <td class="fundo-tabela" rowspan="2">
                             <strong> Colagem no comprimento </strong>
                         </td>
+                    </tr>
+                    <tr>
+                        <td rowspan="2">@Model.conforme</td>
                     </tr>
                     <tr class="colchao_comprimento">
                         <td>
@@ -862,12 +869,14 @@
                         </td>
                     </tr>
                 }
-                @if (Model.tipo_ensaio == "Colchonete")
+                @if (ViewBag.infantil == "Colchonete")
                 {
-                    <tr class="colchonete">
+                    <tr >
                         <td class="fundo-tabela"> Colchonete </td>
+                        <td rowspan="2">@Model.conforme</td>
                     </tr>
-                    <tr class="colchonete">
+
+                    <tr >
                         <td>
                             Somente é permitada uma colagem na horizontal com espessura mínima de 3 cm. <br /> <br />
                             Quantidades de colagens
@@ -893,6 +902,7 @@
                     <tr>
                         <td class="fundo-tabela"> Colagem com adesivos á base de solventes aromáticos </td>
                     </tr>
+
                     <tr>
                         <td>
                             Não é permitido o uso de adesviso à base de solventes aromáticos em colchão infantil. <br /> <br />
