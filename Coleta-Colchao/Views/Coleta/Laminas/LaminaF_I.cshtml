@@ -639,7 +639,7 @@
                 <td>F.C : <input type="text" class="controlador" style="width:100px;" asp-for="conforto_65" readonly /> ÷  <input type="text" class="controlador" style="width:100px;" asp-for="conforto_25" readonly />  = <input type="text" class="controlador" readonly style="width:100px;" readonly asp-for="media_conforto" /></td>
             </tr>
             <tr>
-                <td>F.C ESPECIFICADO : <input id="tamanho" class="controlador" style="width:80px" readonly /> : <input type="text" class="controlador" id="conforto" style="width:200px;" asp-for="fc_especificado" readonly> </td>
+                <td>F.C ESPECIFICADO : <input id="tamanho" class="controlador" style="width:80px" readonly asp-for="min_max"/> : <input type="text" class="controlador" id="conforto" style="width:200px;" asp-for="fc_especificado" readonly> </td>
             </tr>
         </table>
         @if (Model == null)

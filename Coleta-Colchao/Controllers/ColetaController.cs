@@ -7066,6 +7066,7 @@ namespace Coleta_Colchao.Controllers
                     editarDados.hora_final = salvarDados.hora_final;
                     editarDados.responsavel_cond = salvarDados.responsavel_cond;
                     editarDados.im = salvarDados.im;
+                    editarDados.min_max = salvarDados.min_max;
 
                     //espessura.
                     editarDados.esp_ini_amostra_um_um = salvarDados.esp_ini_amostra_um_um;
