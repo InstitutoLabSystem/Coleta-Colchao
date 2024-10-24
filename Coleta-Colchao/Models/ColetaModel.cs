@@ -261,6 +261,7 @@ namespace Coleta_Colchao.Models
             public string? pergunta_b { get; set; }
             public string? pergunta_c { get; set; }
             public string? pergunta_d { get; set; }
+            public float largura_encontrada { get; set; }
 
             // Método de clonagem
             public Ensaio4_3 Clone()
@@ -581,6 +582,7 @@ namespace Coleta_Colchao.Models
             public string? marca_modelo { get; set; }
             public string? dimensoes_prod { get; set; }
             public string? informada_altura { get; set; }
+            public string? conforme5_1_4 { get; set; }
             public string? composicoes { get; set; }
             public string? tipo_molejo { get; set; }
             public string? contem_borda { get; set; }

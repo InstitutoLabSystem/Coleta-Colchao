@@ -24,10 +24,10 @@
 
         .controlador {
             /*  padding: 5px;
-                            border-color: gray;
-                            border-radius: 5px;
-                            box-sizing: border-box;
-                            height: 500px; */
+                                            border-color: gray;
+                                            border-radius: 5px;
+                                            box-sizing: border-box;
+                                            height: 500px; */
             width: 100px;
         }
     </style>
@@ -75,7 +75,7 @@
                         A borda perimetral de aço e/ou espuma deve manter seu paralelismo e perpendicularidade antes e após o ensaio de rolagem. Além de atender as especificações abaixo.
                     </td>
                 </tr>
-                @if(ViewBag.ExisteBorda != "Não")
+                @if (ViewBag.ExisteBorda != "Não")
                 {
                     <tr>
                         <td colspan="2">
@@ -84,7 +84,7 @@
                             <button type="button" class="btn btn-info" id="btn-espuma" onclick="mostrarTabelaMolejo()">Mais De Um Molejo</button>
                         </td>
                     </tr>
-                }             
+                }
                 <tr class="tabela-toda">
                     <td colspan="2">
                         <table class="tables table-bordered border-secondary  table-sm" id="tabela">
@@ -210,6 +210,27 @@
                     </tr>
                     <tr>
                         <td>
+                            <table class="tables table-bordered border-secondary table-sm">
+                                <tr>
+                                    <td colspan="2">
+                                        B) Ter largura maxima de 120,0 mm;
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <Td>Largura Encontrada (mm) : </Td>
+                                    <td><input class="controlador" type="text" name="largura_encontrada" /></td>
+                                </tr>
+                            </table>
+                        </td>
+                        <td>
+                            <select name="pergunta_b" class="controlador">
+                                <option value="C">C</option>
+                                <option value="NC">NC</option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
                             C) Não utilizar, para fins de sustentação ou outra função estrutural, qualquer componente;
                         </td>
                         <td>
@@ -221,15 +242,15 @@
                     </tr>
                     <tr>
                         <td>
-                        D) Possuir características adqueadas ás funções de dar uniformidade e sustentação ao perímetro do molejo, podendo ser constituída de espuma, aço, ou outros materiais, conjuntamente ou não;
-                    </td>
-                    <td>
-                        <select name="pergunta_d" class="controlador">
-                            <option value="C">C</option>
-                            <option value="NC">NC</option>
-                        </select>
-                    </td>
-                </tr>
+                            D) Possuir características adqueadas ás funções de dar uniformidade e sustentação ao perímetro do molejo, podendo ser constituída de espuma, aço, ou outros materiais, conjuntamente ou não;
+                        </td>
+                        <td>
+                            <select name="pergunta_d" class="controlador">
+                                <option value="C">C</option>
+                                <option value="NC">NC</option>
+                            </select>
+                        </td>
+                    </tr>
                 }
             </table>
             <br />
@@ -237,7 +258,7 @@
             {
                 <div class="d-grid gap-2 d-flex justify-content-center">
                     <button type="submit" class="btn btn-success btn btn-primary btn-md">Salvar</button>
-            </div>
+                </div>
             }
         }
         else
@@ -487,7 +508,17 @@
                 </tr>
                 <tr>
                     <td>
-                        B) Ter largura maxima de 120,0 mm;
+                        <table class="tables table-bordered border-secondary table-sm">
+                            <tr>
+                                <td colspan="2">
+                                    B) Ter largura maxima de 120,0 mm;
+                                </td>
+                            </tr>
+                            <tr>
+                                <Td>Largura Encontrada (mm) : </Td>
+                                <td><input class="controlador" type="text" name="largura_encontrada" value="@Model.largura_encontrada" /></td>
+                            </tr>
+                        </table>
                     </td>
                     <td>
                         <select name="pergunta_b" class="controlador">

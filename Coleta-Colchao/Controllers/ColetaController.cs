@@ -1220,7 +1220,7 @@ namespace Coleta_Colchao.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> SalvarEnsaio4_3(string os, string orcamento, int rev, [Bind("borda_aco,borda_espuma,borda_aco_molejo,borda_espuma_molejo,data_ini,data_term,valor_enc_aco,valor_enc_espuma,valor_enc_aco_molejo,valor_enc_espuma_molejo,man_parale_aco,man_parale_espuma,man_parale_aco_molejo,man_parale_espuma_molejo,pergunta_a,pergunta_b,pergunta_c,pergunta_d")] ColetaModel.Ensaio4_3 salvarDados)
+        public async Task<IActionResult> SalvarEnsaio4_3(string os, string orcamento, int rev, [Bind("borda_aco,borda_espuma,borda_aco_molejo,borda_espuma_molejo,data_ini,data_term,valor_enc_aco,valor_enc_espuma,valor_enc_aco_molejo,valor_enc_espuma_molejo,man_parale_aco,man_parale_espuma,man_parale_aco_molejo,man_parale_espuma_molejo,pergunta_a,pergunta_b,largura_encontrada,pergunta_c,pergunta_d")] ColetaModel.Ensaio4_3 salvarDados)
         {
             try
             {
@@ -1245,6 +1245,7 @@ namespace Coleta_Colchao.Controllers
                     int contem_molejo;
                     string pergunta_a = salvarDados.pergunta_a;
                     string pergunta_b = salvarDados.pergunta_b;
+                    float largura_encontrada = salvarDados.largura_encontrada;
                     string pergunta_c = salvarDados.pergunta_c;
                     string pergunta_d = salvarDados.pergunta_d;
 
@@ -1277,6 +1278,7 @@ namespace Coleta_Colchao.Controllers
                         contem_molejo = contem_molejo,
                         pergunta_a = pergunta_a,
                         pergunta_b = pergunta_b,
+                        largura_encontrada = largura_encontrada,
                         pergunta_c = pergunta_c,
                         pergunta_d = pergunta_d,
                         executor = Usuario()
@@ -1305,6 +1307,7 @@ namespace Coleta_Colchao.Controllers
                     dados.man_parale_espuma = salvarDados.man_parale_espuma;
                     dados.pergunta_a = salvarDados.pergunta_a;
                     dados.pergunta_b = salvarDados.pergunta_b;
+                    dados.largura_encontrada = salvarDados.largura_encontrada;
                     dados.pergunta_c = salvarDados.pergunta_c;
                     dados.pergunta_d = salvarDados.pergunta_d;
                     dados.usuarioEdicao = Usuario();
@@ -3409,7 +3412,7 @@ namespace Coleta_Colchao.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> SalvarEmbalagensMolas(string os, string orcamento, int rev, [Bind("data_ini,data_term,etiqueta_ident,revest_permanente,etiqueta_duravel_indele,face_superior,visualizacao,lingua_portuguesa,area_etiqueta_1,area_etiqueta_2,cnpj_cpf,cnpj_cpf_2,marca_modelo,dimensoes_prod,informada_altura,composicoes,tipo_molejo,contem_borda,densidade_espuma,composi_revestimento,data_fabricacao,ident_lote,pais_origem,codigo_barras,cuidado_minimos,aviso_esclarecimento,possui_mais_laminas,conforme_r,contem_advertencia,altura_letra,negrito,conforme_s,caixa_alta,contem_advertencia_mat,altura_letra_mat,negrito_mat,caixa_alta_mat,contem_instru_uso,orientacoes,alerta_consumidor,desenho_esquematico,contem_advertencia_6_2,altura_letra_6_2,negrito6_2,caixa_alta_6_2,embalagem_unitaria,embalagem_garante,colchao_disponivel,fixada,conforme_6_2,conforme_area")] ColetaModel.EnsaioIdentificacaoEmbalagem salvarDados)
+        public async Task<IActionResult> SalvarEmbalagensMolas(string os, string orcamento, int rev, [Bind("data_ini,data_term,etiqueta_ident,revest_permanente,etiqueta_duravel_indele,face_superior,visualizacao,lingua_portuguesa,area_etiqueta_1,area_etiqueta_2,cnpj_cpf,cnpj_cpf_2,marca_modelo,dimensoes_prod,informada_altura,conforme5_1_4,composicoes,tipo_molejo,contem_borda,densidade_espuma,composi_revestimento,data_fabricacao,ident_lote,pais_origem,codigo_barras,cuidado_minimos,aviso_esclarecimento,possui_mais_laminas,conforme_r,contem_advertencia,altura_letra,negrito,conforme_s,caixa_alta,contem_advertencia_mat,altura_letra_mat,negrito_mat,caixa_alta_mat,contem_instru_uso,orientacoes,alerta_consumidor,desenho_esquematico,contem_advertencia_6_2,altura_letra_6_2,negrito6_2,caixa_alta_6_2,embalagem_unitaria,embalagem_garante,colchao_disponivel,fixada,conforme_6_2,conforme_area")] ColetaModel.EnsaioIdentificacaoEmbalagem salvarDados)
         {
             try
             {
@@ -3427,6 +3430,7 @@ namespace Coleta_Colchao.Controllers
                     string marca_modelo = salvarDados.marca_modelo;
                     string dimensoes_prod = salvarDados.dimensoes_prod;
                     string informada_altura = salvarDados.informada_altura;
+                    string conforme5_1_4 = salvarDados.conforme5_1_4;
                     string composicoes = salvarDados.composicoes;
                     string tipo_molejo = salvarDados.tipo_molejo;
                     string contem_borda = salvarDados.contem_borda;
@@ -3656,6 +3660,7 @@ namespace Coleta_Colchao.Controllers
                         marca_modelo = marca_modelo,
                         dimensoes_prod = salvarDados.dimensoes_prod,
                         informada_altura = informada_altura,
+                        conforme5_1_4 = conforme5_1_4,
                         composicoes = composicoes,
                         tipo_molejo = tipo_molejo,
                         contem_borda = contem_borda,
@@ -3706,6 +3711,7 @@ namespace Coleta_Colchao.Controllers
                     editarDados.marca_modelo = salvarDados.marca_modelo;
                     editarDados.dimensoes_prod = salvarDados.dimensoes_prod;
                     editarDados.informada_altura = salvarDados.informada_altura;
+                    editarDados.conforme5_1_4 = salvarDados.conforme5_1_4;
                     editarDados.composicoes = salvarDados.composicoes;
                     editarDados.tipo_molejo = salvarDados.tipo_molejo;
                     editarDados.contem_borda = salvarDados.contem_borda;
