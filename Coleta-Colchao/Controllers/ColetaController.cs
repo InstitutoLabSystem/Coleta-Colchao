@@ -174,6 +174,7 @@ namespace Coleta_Colchao.Controllers
                 ViewBag.orcamento = orcamento;
                 ViewBag.rev = rev;
                 ViewBag.infantil = Inicial.tipo_colchao;
+                ViewBag.infantil2 = Inicial.uso;
                 ViewBag.quant_laminas = Inicial.quant_laminas;
                 return View("Espuma/EnsaioEspuma4_3", dados);
             }
@@ -183,6 +184,7 @@ namespace Coleta_Colchao.Controllers
                 ViewBag.orcamento = orcamento;
                 ViewBag.rev = rev;
                 ViewBag.infantil = Inicial.tipo_colchao;
+                ViewBag.infantil2 = Inicial.uso;
                 ViewBag.quant_laminas = Inicial.quant_laminas;
                 return View("Espuma/EnsaioEspuma4_3");
             }
