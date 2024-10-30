@@ -132,13 +132,13 @@
                         Área da etiqueta
                         <br /><br /><input class="form-control" type="text" name="area_um" /> <b> X </b> <input class="form-control" type="text" name="area_dois" /> <b> = </b> <input class="form-control" type="text" name="area_result" readonly /> <br /> <br />
                     </td>
-                      <td>
+                    <td>
                         <select name="conforme_area_um">
                             <option value="NA" selected> --- </option>
                             <option value="C"> Sim </option>
                             <option value="NC"> Não </option>
-                             </select>
-                        </td>
+                        </select>
+                    </td>
                 </tr>
                 <tr>
                     <td colspan="2">
@@ -732,6 +732,7 @@
                     <td>
                         <select name="aviso_embalagem_dois">
                             <option selected>---</option>
+                            <option>NA</option>
                             <option> Sim </option>
                             <option> Não </option>
                         </select>
@@ -763,9 +764,9 @@
                 </tr>
                 <tr>
                     <td>
-                        Está em coloração que se destaque da cor do fundo da etiqueta:                  
+                        Está em coloração que se destaque da cor do fundo da etiqueta:
                     </td>
-                  
+
                     <td>
                         <select name="coloracao_seis">
                             <option> --- </option>
@@ -773,7 +774,7 @@
                             <option> Não </option>
                         </select>
                     </td>
-                    
+
                 </tr>
                 @if (ViewBag.tipLamina == "Colchão misto")
                 {
@@ -787,6 +788,7 @@
                         <td>
                             <select name="dec_voluntaria">
                                 <option selected> --- </option>
+                                <option>NA</option>
                                 <option> Sim </option>
                                 <option> Não </option>
                             </select>
@@ -1032,21 +1034,21 @@
                             <option> Não </option>
                         </select>
                     </td>
-                        
+
                 </tr>
                 <tr>
-                    <td >
+                    <td>
                         Àrea da etiqueta
                         <br /><br /><input class="form-control" type="text" name="area_um" value="@Model.area_um" /> <b> X </b> <input class="form-control" type="text" name="area_dois" value="@Model.area_dois" /> <b> = </b> <input class="form-control" type="text" name="area_result" readonly value="@Model.area_result" /> <br /> <br />
                     </td>
-                    <td> 
-                         <select name="conforme_area_um">
+                    <td>
+                        <select name="conforme_area_um">
                             <option selected> @Model.conforme_area_um </option>
                             <option value="NA"> --- </option>
                             <option value="C"> C </option>
                             <option value="NC"> NC </option>
-                             </select>
-                        </td>
+                        </select>
+                    </td>
                 </tr>
                 <tr>
                     <td colspan="2">
@@ -1682,6 +1684,7 @@
                         <select name="aviso_embalagem_dois">
                             <option selected> @Model.aviso_embalagem_dois </option>
                             <option>---</option>
+                            <option>NA</option>
                             <option> Sim </option>
                             <option> Não </option>
                         </select>
@@ -1739,6 +1742,7 @@
                         <td>
                             <select name="dec_voluntaria">
                                 <option selected> @Model.dec_voluntaria </option>
+                                <option>NA</option>
                                 <option> --- </option>
                                 <option> Sim </option>
                                 <option> Não </option>
@@ -1932,7 +1936,7 @@
         verificarConformidade.addEventListener('change', atualizarInputs);
     });
 
-    
+
 
 
 
