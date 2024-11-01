@@ -1081,6 +1081,7 @@ namespace Coleta_Colchao.Controllers
                 string densidade_4 = salvarDados.densidade_1;
                 string densidade_5 = salvarDados.densidade_1;
                 string revestimento = salvarDados.revestimento;
+                string obs_revestimento = salvarDados.obs_revestimento;
                 string outros_materia = salvarDados.outros_materia;
                 salvarDados.andamento = "Andamento";
 
@@ -1136,6 +1137,7 @@ namespace Coleta_Colchao.Controllers
                     editarDados.densidade_4 = salvarDados.densidade_4;
                     editarDados.densidade_5 = salvarDados.densidade_5;
                     editarDados.revestimento = salvarDados.revestimento;
+                    editarDados.obs_revestimento = salvarDados.obs_revestimento;
                     editarDados.outros_materia = salvarDados.outros_materia;
                     editarDados.anti_reflexo = salvarDados.anti_reflexo;
 
@@ -3118,7 +3120,7 @@ namespace Coleta_Colchao.Controllers
 
 
         [HttpPost]
-        public async Task<IActionResult> SalvarEspuma4_3(string os, string orcamento, int rev, [Bind("data_ini,data_term,temp_ini,temp_fim,lamina_central,quant_colagens,colagens_densidade,espessura_nominal,espessura_central,porcentagem_enc,lamina_menor_esp,quant_colagens_dois," +
+        public async Task<IActionResult> SalvarEspuma4_3(string os, string orcamento, int rev, [Bind("data_ini,data_term,temp_ini,temp_fim,tem_ensaio,lamina_central,quant_colagens,colagens_densidade,espessura_nominal,espessura_central,porcentagem_enc,lamina_menor_esp,quant_colagens_dois," +
             "distancia_um,distancia_dois,colagens_comp,espuma,esp_lamina_um,esp_lamina_dois,esp_lamina_tres,esp_lamina_quat,esp_lamina_cinco,esp_lamina_seis,esp_lamina_sete,esp_lamina_oito,quant_colagens_tres,distancia_tres,distancia_quat,colchao_casal,colagem_comp,espuma_conv,espuma_densidade," +
             "colagem_largura,quant_colagens_quat,localidade,quant_colagens_cinco,espessura_lamina,adesivo,conforme,tipo_ensaio")] ColetaModel.Espuma4_3 salvar)
         {
@@ -3131,6 +3133,7 @@ namespace Coleta_Colchao.Controllers
                     DateOnly data_ini = salvar.data_ini;
                     DateOnly data_term = salvar.data_term;
                     var lamina_central = salvar.lamina_central;
+                    var tem_ensaio = salvar.tem_ensaio;
                     var quant_colagens = salvar.quant_colagens;
                     var colagens_densidade = salvar.colagens_densidade;
                     var espessura_nominal = salvar.espessura_nominal;
@@ -3238,6 +3241,17 @@ namespace Coleta_Colchao.Controllers
                             salvar.conforme = "C";
                         }
                     }
+                    else if (tipo_ensaio == "Colchão tipo simples")
+                    {
+                        if (lamina_central == "Sim")
+                        {
+                            salvar.conforme = "C";
+                        }
+                        else
+                        {
+                            salvar.conforme = "NC";
+                        }
+                    }
 
                     var salvardados = new ColetaModel.Espuma4_3
                     {
@@ -3245,6 +3259,7 @@ namespace Coleta_Colchao.Controllers
                         orcamento = orcamento,
                         data_ini = data_ini,
                         data_term = data_term,
+                        tem_ensaio = tem_ensaio,
                         lamina_central = lamina_central,
                         quant_colagens = quant_colagens,
                         colagens_densidade = colagens_densidade,
@@ -3290,6 +3305,7 @@ namespace Coleta_Colchao.Controllers
                     editarDados.data_ini = salvar.data_ini;
                     editarDados.data_term = salvar.data_term;
                     editarDados.lamina_central = salvar.lamina_central;
+                    editarDados.tem_ensaio = salvar.tem_ensaio;
                     editarDados.quant_colagens = salvar.quant_colagens;
                     editarDados.colagens_densidade = salvar.colagens_densidade;
                     editarDados.espessura_nominal = salvar.espessura_nominal;
@@ -3327,7 +3343,7 @@ namespace Coleta_Colchao.Controllers
                         //realizando calculo de porcetagem quando tem  Colagem horizontal com peça inteira
                         editarDados.porcentagem_enc = (editarDados.espessura_central * 100) / editarDados.espessura_nominal;
 
-                        if(Double.IsNaN(editarDados.porcentagem_enc))
+                        if (Double.IsNaN(editarDados.porcentagem_enc))
                         {
                             editarDados.porcentagem_enc = 0;
                         }
@@ -3394,6 +3410,17 @@ namespace Coleta_Colchao.Controllers
                         else
                         {
                             editarDados.conforme = "C";
+                        }
+                    }
+                    else if (editarDados.tipo_ensaio == "Colchão tipo simples")
+                    {
+                        if (editarDados.lamina_central == "Sim")
+                        {
+                            editarDados.conforme = "C";
+                        }
+                        else
+                        {
+                            editarDados.conforme = "NC";
                         }
                     }
 
@@ -4515,7 +4542,7 @@ namespace Coleta_Colchao.Controllers
 
 
                     //realizando se esta conforme ou nao conforme
-                    if (suportou_ponto_a == "Sim" && fratura_ponto_a == "C" && rachadura_ponto_a == "C"  && quebra_ponto_a == "C" && prejudique_ponto_a == "C")
+                    if (suportou_ponto_a == "Sim" && fratura_ponto_a == "C" && rachadura_ponto_a == "C" && quebra_ponto_a == "C" && prejudique_ponto_a == "C")
                     {
                         dados.conforme_a = "C";
                     }
@@ -4529,7 +4556,7 @@ namespace Coleta_Colchao.Controllers
                     }
 
                     //realizando se esta conforme ou nao conforme
-                    if (suportou_ponto_b == "Sim" && fratura_ponto_b == "C" && rachadura_ponto_b == "C" &&  quebra_ponto_b == "C" && prejudique_ponto_b == "C")
+                    if (suportou_ponto_b == "Sim" && fratura_ponto_b == "C" && rachadura_ponto_b == "C" && quebra_ponto_b == "C" && prejudique_ponto_b == "C")
                     {
                         dados.conforme_b = "C";
                     }
@@ -4597,7 +4624,7 @@ namespace Coleta_Colchao.Controllers
                     editarRegistro.temp_term = dados.temp_term;
 
                     //realizando se esta conforme ou nao conforme
-                    if (editarRegistro.suportou_ponto_a == "Sim" && editarRegistro.fratura_ponto_a == "C" && editarRegistro.rachadura_ponto_a == "C"  && editarRegistro.quebra_ponto_a == "C" && editarRegistro.prejudique_ponto_a == "C")
+                    if (editarRegistro.suportou_ponto_a == "Sim" && editarRegistro.fratura_ponto_a == "C" && editarRegistro.rachadura_ponto_a == "C" && editarRegistro.quebra_ponto_a == "C" && editarRegistro.prejudique_ponto_a == "C")
                     {
                         editarRegistro.conforme_a = "C";
                     }
@@ -4607,7 +4634,7 @@ namespace Coleta_Colchao.Controllers
                     }
 
                     //realizando se esta conforme ou nao conforme
-                    if (editarRegistro.suportou_ponto_b == "Sim" && editarRegistro.fratura_ponto_b == "C" && editarRegistro.rachadura_ponto_b == "C"  && editarRegistro.quebra_ponto_b == "C" && editarRegistro.prejudique_ponto_b == "C")
+                    if (editarRegistro.suportou_ponto_b == "Sim" && editarRegistro.fratura_ponto_b == "C" && editarRegistro.rachadura_ponto_b == "C" && editarRegistro.quebra_ponto_b == "C" && editarRegistro.prejudique_ponto_b == "C")
                     {
                         editarRegistro.conforme_b = "C";
                     }
@@ -4621,7 +4648,7 @@ namespace Coleta_Colchao.Controllers
                     }
 
                     //realizando se esta conforme ou nao conforme
-                    if (editarRegistro.suportou_ponto_c == "Sim" && editarRegistro.fratura_ponto_c == "C" && editarRegistro.rachadura_ponto_c == "C"  && editarRegistro.quebra_ponto_c == "C" && editarRegistro.prejudique_ponto_c == "C")
+                    if (editarRegistro.suportou_ponto_c == "Sim" && editarRegistro.fratura_ponto_c == "C" && editarRegistro.rachadura_ponto_c == "C" && editarRegistro.quebra_ponto_c == "C" && editarRegistro.prejudique_ponto_c == "C")
                     {
                         editarRegistro.conforme_c = "C";
                     }
@@ -4674,12 +4701,12 @@ namespace Coleta_Colchao.Controllers
                     string prejudique_ponto_a = dados.prejudique_ponto_a;
                     string suportou_ponto_b = dados.suportou_ponto_b;
                     string fratura_ponto_b = dados.fratura_ponto_b;
-                    string rachadura_ponto_b = dados.rachadura_ponto_b;                 
+                    string rachadura_ponto_b = dados.rachadura_ponto_b;
                     string quebra_ponto_b = dados.quebra_ponto_b;
                     string prejudique_ponto_b = dados.prejudique_ponto_b;
                     string suportou_ponto_c = dados.suportou_ponto_c;
                     string fratura_ponto_c = dados.fratura_ponto_c;
-                    string rachadura_ponto_c = dados.rachadura_ponto_c;                 
+                    string rachadura_ponto_c = dados.rachadura_ponto_c;
                     string quebra_ponto_c = dados.quebra_ponto_c;
                     string prejudique_ponto_c = dados.prejudique_ponto_c;
 
@@ -5057,7 +5084,7 @@ namespace Coleta_Colchao.Controllers
                         salvarDados.confome_ponto_a = "NC";
                     }
 
-                    if (fratura_um == "C"  && prejudique_um == "C"  && rachadura_um == "C" && quebra_um == "C")
+                    if (fratura_um == "C" && prejudique_um == "C" && rachadura_um == "C" && quebra_um == "C")
                     {
                         salvarDados.conforme_um = "C";
                     }
@@ -5066,7 +5093,7 @@ namespace Coleta_Colchao.Controllers
                         salvarDados.conforme_um = "NC";
                     }
 
-                    if (fratura_dois == "C" && prejudique_dois == "C"  && rachadura_dois == "C" && quebra_dois == "C")
+                    if (fratura_dois == "C" && prejudique_dois == "C" && rachadura_dois == "C" && quebra_dois == "C")
                     {
                         salvarDados.conforme_dois = "C";
                     }
@@ -5142,7 +5169,7 @@ namespace Coleta_Colchao.Controllers
                     }
 
 
-                    if (editarRegistro.fratura_um == "C"  && editarRegistro.prejudique_um == "C" && editarRegistro.rachadura_um == "C"  && editarRegistro.quebra_um == "C")
+                    if (editarRegistro.fratura_um == "C" && editarRegistro.prejudique_um == "C" && editarRegistro.rachadura_um == "C" && editarRegistro.quebra_um == "C")
                     {
                         editarRegistro.conforme_um = "C";
                     }
@@ -5151,7 +5178,7 @@ namespace Coleta_Colchao.Controllers
                         editarRegistro.conforme_um = "NC";
                     }
 
-                    if (editarRegistro.fratura_dois == "C" && editarRegistro.prejudique_dois == "C"  && editarRegistro.rachadura_dois == "C"  && editarRegistro.quebra_dois == "C")
+                    if (editarRegistro.fratura_dois == "C" && editarRegistro.prejudique_dois == "C" && editarRegistro.rachadura_dois == "C" && editarRegistro.quebra_dois == "C")
                     {
                         editarRegistro.conforme_dois = "C";
                     }
@@ -5241,7 +5268,7 @@ namespace Coleta_Colchao.Controllers
                     editarRegistro.suportou = salvarDados.suportou;
                     editarRegistro.fratura = salvarDados.fratura;
                     editarRegistro.quebra = salvarDados.quebra;
-                    editarRegistro.rachadura = salvarDados. rachadura   ;
+                    editarRegistro.rachadura = salvarDados.rachadura;
                     editarRegistro.temp_ini = salvarDados.temp_ini;
                     editarRegistro.temp_term = salvarDados.temp_term;
                     editarRegistro.rompimento = salvarDados.rompimento;

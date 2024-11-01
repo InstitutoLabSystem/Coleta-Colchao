@@ -98,6 +98,7 @@ namespace Coleta_Colchao.Models
             public string? densidade_4 { get; set; }
             public string? densidade_5 { get; set; }
             public string? revestimento { get; set; }
+            public string? obs_revestimento { get; set; }
             public string? anti_reflexo { get; set; }
             public string? outros_materia { get; set; }
             public float comprimento { get; set; }
@@ -631,6 +632,7 @@ namespace Coleta_Colchao.Models
             public DateOnly data_ini { get; set; }
             public DateOnly data_term { get; set; }
             public string? lamina_central { get; set; }
+            public string? tem_ensaio { get; set; }
             public string? tipo_ensaio { get; set; }
             public string? quant_colagens { get; set; }
             public string? colagens_densidade { get; set; }

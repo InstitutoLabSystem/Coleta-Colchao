@@ -48,22 +48,18 @@
                 <tr class="fundo-tabela">
                     <td>Item</td>
                     <td>Descrição</td>
-                    <td>Resultado</td>
                 </tr>
                 <tr>
                     <td rowspan="12"> 4.3</td>
                     <td class="fundo-tabela"> Colagens permitidas </td>
-                    <td rowspan="12">  </td>
                 </tr>
                 <tr>
                     <td>
-                        <strong> Colchão tipo simples </strong> <br /> <br />
-                        A lâmina colada sobre a lâmina central deve ser composta de uma única peça. <br />
-                        A lâmina central é composta por um uúnica peça?
-                        <select class="form-control" name="lamina_central" id="tem_colchao">
-                            <option> --- </option>
-                            <option> Sim </option>
-                            <option> Não </option>
+                        Existe ensaio?
+                        <select class="form-control" name="tem_ensaio" id="tem_colchao">
+                            <option > Não </option>
+                            <option> Sim </option>                         
+                            <option>---</option>
                         </select> <br /> <br />
                     </td>
                 </tr>
@@ -71,14 +67,29 @@
                     <td>
                         Escolha o ensaio:
                         <select class="form-control" id="tipo_ensaio" name="tipo_ensaio">
-                            <option> --- </option>
+                            <option>---</option>
                             <option>Colagem horizontal com peça inteira</option>
+                            <option>Colchão tipo simples</option>
                             <option>Colagem vertical na largura</option>
                             <option>Colchão tipo composto</option>
                             <option>Colagem na largura</option>
                             <option>Colagem no comprimento</option>
-                            <option>Colchonete</option>
+                            <option>Colchonete</option>           
                         </select>
+                    </td>
+                </tr>
+                <tr id="tipo_simples" class="tipo_simples">
+                    <td class="fundo-tabela"><strong> Colchão tipo simples </strong></td>
+                </tr>
+                <tr id="tipo_simples" class="tipo_simples">
+                    <td>
+                        A lâmina colada sobre a lâmina central deve ser composta de uma única peça. <br />
+                        A lâmina central é composta por um única peça?
+                        <select class="form-control" name="lamina_central">
+                            <option> Sim </option>
+                            <option> Não </option>
+                            <option>---</option>
+                        </select> <br /> <br />
                     </td>
                 </tr>
                 <tr id="colagem" class="colagem">
@@ -404,10 +415,10 @@
                 </tr>
                     @if (ViewBag.infantil == "Colchonete")
                     {
-                    <tr >
+                    <tr>
                         <td class="fundo-tabela"> Colchonete </td>
                     </tr>
-                    <tr >
+                    <tr>
                         <td>
                             Somente é permitada uma colagem na horizontal com espessura mínima de 3 cm. <br /> <br />
                             Quantidades de colagens
@@ -475,32 +486,30 @@
                 <tr class="fundo-tabela">
                     <td>Item</td>
                     <td>Descrição</td>
-                    <td>Resultado</td>
                 </tr>
                 <tr>
                     <td rowspan="12"> 4.3</td>
                     <td class="fundo-tabela"> Colagens permitidas </td>
-                    <td rowspan="12">@Model.conforme</td>
                 </tr>
+
                 <tr>
                     <td>
-                        <strong> Colchão tipo simples </strong> <br /> <br />
-                        A lâmina colada sobre a lâmina central deve ser composta de uma única peça. <br />
-                        A lâmina central é composta por um única peça?
-                        <select class="form-control" name="lamina_central" id="tem_colchao">
-                            <option selected> @Model.lamina_central </option>
+                        Existe ensaio?
+                        <select class="form-control" name="tem_ensaio" id="tem_colchao">
+                            <option selected> @Model.tem_ensaio </option>
                             <option> Sim </option>
                             <option> Não </option>
                             <option>---</option>
                         </select> <br /> <br />
                     </td>
                 </tr>
-                <tr>
+                <tr>            
                     <td>
                         Escolha o ensaio:
                         <select class="form-control" id="tipo_ensaio" name="tipo_ensaio">
                             <option>@Model.tipo_ensaio</option>
                             <option>Colagem horizontal com peça inteira</option>
+                            <option>Colchão tipo simples</option>
                             <option>Colagem vertical na largura</option>
                             <option>Colchão tipo composto</option>
                             <option>Colagem na largura</option>
@@ -510,7 +519,24 @@
                         </select>
                     </td>
                 </tr>
-
+                @if (Model.tipo_ensaio == "Colchão tipo simples")
+                {
+                    <tr id="tipo_simples" class="tipo_simples">
+                        <td><strong> Colchão tipo simples </strong></td>
+                    </tr>
+                    <tr id="tipo_simples" class="tipo_simples">
+                        <td>
+                            A lâmina colada sobre a lâmina central deve ser composta de uma única peça. <br />
+                            A lâmina central é composta por um única peça?
+                            <select class="form-control" name="lamina_central">
+                                <option selected> @Model.lamina_central </option>
+                                <option> Sim </option>
+                                <option> Não </option>
+                                <option>---</option>
+                            </select> <br /> <br />
+                        </td>
+                    </tr>
+                }
                 @if (Model.tipo_ensaio == "Colagem horizontal com peça inteira")
                 {
                     <tr id="colagem" class="colagem">
@@ -871,12 +897,12 @@
                 }
                 @if (ViewBag.infantil == "Colchonete")
                 {
-                    <tr >
+                    <tr>
                         <td class="fundo-tabela"> Colchonete </td>
                         <td rowspan="2">@Model.conforme</td>
                     </tr>
 
-                    <tr >
+                    <tr>
                         <td>
                             Somente é permitada uma colagem na horizontal com espessura mínima de 3 cm. <br /> <br />
                             Quantidades de colagens
@@ -927,6 +953,7 @@
     <script>
         var colagem = document.getElementsByClassName("colagem");
         var vertical = document.getElementsByClassName("vertical");
+        var tipo_simples = document.getElementsByClassName("tipo_simples");
         var colchao_composto = document.getElementsByClassName("colcao_composto");
         var colchao_largura = document.getElementsByClassName("colagem_largura");
         var colchao_comprimento = document.getElementsByClassName("colchao_comprimento");
@@ -936,6 +963,14 @@
         var dados = tem_colchao.value
 
         console.log(dados);
+
+        for (var i = 0; i < tipo_simples.length; i++) {
+            if (dados == "Não" || dados == "---") {
+                tipo_simples[i].style.display = 'none';
+            } else {
+                tipo_simples[i].style.display = 'table-row';
+            }
+        }
 
         for (var i = 0; i < colagem.length; i++) {
             if (dados == "Não" || dados == "---") {
@@ -988,18 +1023,30 @@
             var dados = tem_colchao.value
             console.log(tipo_ensaio.value);
 
-
-
             tipo_ensaio.addEventListener('change', function () {
-
                 var colagem = document.getElementsByClassName("colagem");
                 var vertical = document.getElementsByClassName("vertical");
+                var tipo_simples = document.getElementsByClassName("tipo_simples");
                 var colchao_composto = document.getElementsByClassName("colcao_composto");
                 var colchao_largura = document.getElementsByClassName("colagem_largura");
                 var colchao_comprimento = document.getElementsByClassName("colchao_comprimento");
                 var colchonete = document.getElementsByClassName("colchonete");
                 var tipo_ensaio_value = tipo_ensaio.value
                 console.log(tipo_ensaio_value);
+
+
+                for (var i = 0; i < tipo_simples.length; i++) {
+                    if (dados == "Não" || dados == "---") {
+                        tipo_simples[i].style.display = 'none';
+                    } else {
+                        tipo_simples[i].style.display = 'table-row';
+                    }
+                    if (tipo_ensaio_value == "Colchão tipo simples") {
+                        tipo_simples[i].style.display = 'table-row';
+                    } else {
+                        tipo_simples[i].style.display = 'none';
+                    }
+                }
 
                 for (var i = 0; i < colagem.length; i++) {
                     if (dados == "Não" || dados == "---") {
@@ -1084,11 +1131,18 @@
                 var dados = tem_colchao.value
 
                 var colagem = document.getElementsByClassName("colagem");
+                var colagem = document.getElementsByClassName("tipo_simples");
                 var vertical = document.getElementsByClassName("vertical");
                 var colchao_composto = document.getElementsByClassName("colcao_composto");
                 var colchao_largura = document.getElementsByClassName("colagem_largura");
                 var colchao_comprimento = document.getElementsByClassName("colchao_comprimento");
                 var colchonete = document.getElementsByClassName("colchonete");
+
+                for (var i = 0; i < tipo_simples.length; i++) {
+                    if (dados == "Não" || dados == "---" || dados == "Sim") {
+                        tipo_simples[i].style.display = 'none';
+                    }
+                }
 
                 for (var i = 0; i < colagem.length; i++) {
                     if (dados == "Não" || dados == "---" || dados == "Sim") {
