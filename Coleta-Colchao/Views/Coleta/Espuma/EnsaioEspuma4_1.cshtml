@@ -33,7 +33,7 @@
 <body>
     <br />
 
-    <form asp-controller="Coleta" class="meuFormulario" id="form1" asp-action="SalvarEspumaUm" method="post" asp-route-os="@ViewData["os"]" asp-route-orcamento="@ViewData["orcamento"]" asp-route-rev="@ViewData["rev"]" >
+    <form asp-controller="Coleta" class="meuFormulario" id="form1" asp-action="SalvarEspumaUm" method="post" asp-route-os="@ViewData["os"]" asp-route-orcamento="@ViewData["orcamento"]" asp-route-rev="@ViewData["rev"]">
         @if (Model == null)
         {
             <table class="tables table-bordered border-secondary  table-sm">
@@ -1149,12 +1149,12 @@
                                 </tr>
                                 <tr>
                                     <td>1º </td>
-                                    <td><input class="form-control" type="text" name="lamina_comp_um" value="@Model.lamina_comp_um"/></td>
+                                    <td><input class="form-control" type="text" name="lamina_comp_um" value="@Model.lamina_comp_um" /></td>
                                     @* <td rowspan="3"><input class="form-control" type="text" style="width:100%;height:200px;" name="lamina_esp_um" /> </td> *@
                                 </tr>
                                 <tr>
                                     <td>2º </td>
-                                    <td><input class="form-control" type="text" name="lamina_comp_dois" value="@Model.lamina_comp_dois"/></td>
+                                    <td><input class="form-control" type="text" name="lamina_comp_dois" value="@Model.lamina_comp_dois" /></td>
                                 </tr>
                                 <tr>
                                     <td>3º </td>
@@ -1387,7 +1387,7 @@
                                 </tr>
                                 <tr>
                                     <td>1º </td>
-                                    <td><input class="form-control" type="text" name="lamina_comp_dez" value="@Model.lamina_comp_dez"/></td>
+                                    <td><input class="form-control" type="text" name="lamina_comp_dez" value="@Model.lamina_comp_dez" /></td>
                                     @* <td rowspan="3"><input class="form-control" type="text" style="width:100%;height:200px;" name="lamina_esp_quat" /> </td> *@
                                 </tr>
                                 <tr>
@@ -1522,10 +1522,39 @@
                         </td>
                     </tr>
                 }
-                @if (ViewBag.tipoColchao == "Colchão De Espuma" || ViewBag.tipoColchao == "Colchão Misto")
-                {
-                    @if (ViewBag.revestimento == "Sim")
-                    {
+
+                <tr>
+                    <td>
+                        <table class="tables table-bordered border-secondary  table-sm">
+                            <tr>
+                                <td class="fundo-tabela"> Tipos </td>
+                                <td class="fundo-tabela"> Encontrada </td>
+                                <td class="fundo-tabela" id="minima_max"> Minima</td>
+                                <td class="fundo-tabela" id="max_max"> Maxima</td>
+                                <td class="fundo-tabela">Conforme</td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <select class="form-control" id="tipo_total" name="tipo_total" onchange="Updatetipo_total()">
+                                        <option> Colchonete </option>
+                                        <option> Colchão infantil </option>
+                                        <option> Colchão Espuma </option>
+                                        <option> Colchão auxiliar </option>
+                                        <option> Colchão box conjugado </option>
+                                        <option> Colchão misto </option>
+                                    </select>
+                                </td>
+                                <td><input class="form-control" type="text" readonly name="encontrado_total" /></td>
+                                <td><input class="form-control" id="min_soma_total" name="min_soma_total" type="text" readonly /></td>
+                                <td><input class="form-control" id="max_soma_total" name="max_soma_total" type="text" readonly /></td>
+                                <td><input class="form-control" type="text" readonly name="conforme_total" /></td>
+                            </tr>
+                        </table>
+                        <br />
+                        @if (ViewBag.tipoColchao == "Colchão De Espuma" || ViewBag.tipoColchao == "Colchão Misto")
+                        {
+                            @if (ViewBag.revestimento == "Sim")
+                            {
                         <tr>
                             <td>
                                 A soma das espessuras dos materiais que compõem o revestimento do colchão (infantil, geral e misto), não pode exceder 1/3 da espessura da lâmina de espuma.
@@ -1588,10 +1617,10 @@
                                 </table>
                             </td>
                         </tr>
-                    }
-                }
-                else if (ViewBag.tipoColchao == "Colchonete")
-                {
+                            }
+                        }
+                        else if (ViewBag.tipoColchao == "Colchonete")
+                        {
 
 
                     <tr>
@@ -1662,9 +1691,9 @@
                             </table>
                         </td>
                     </tr>
-                }
-                else if (ViewBag.tipoColchao == "Colchão Auxilia" || ViewBag.tipoColchao == "Colchão Box Conjugado")
-                {
+                        }
+                        else if (ViewBag.tipoColchao == "Colchão Auxilia" || ViewBag.tipoColchao == "Colchão Box Conjugado")
+                        {
                     <tr>
                         <td>
                             Conjulgado e auxiliar a soma das espessuras dos materiais que compõem o revestimento do colchão
@@ -1725,7 +1754,7 @@
                             </table>
                         </td>
                     </tr>
-                }
+                        }
                 <tr>
                     <td>
                         <button type="submit" value="SalvarEspumaUm" class="btn btn-danger">Salvar Coleta </button>
@@ -3280,10 +3309,42 @@
                         </td>
                     </tr>
                 }
-                @if (ViewBag.tipoColchao == "Colchão De Espuma" || ViewBag.tipoColchao == "Colchão Misto")
-                {
-                    @if (ViewBag.revestimento == "Sim")
-                    {
+
+                <tr>
+                    <td>
+                        <table class="tables table-bordered border-secondary  table-sm">
+                            <tr>
+                                <td class="fundo-tabela"> Tipos </td>
+                                <td class="fundo-tabela"> Encontrada </td>
+                                <td class="fundo-tabela" id="minima_max">Minimo</td>
+                                <td class="fundo-tabela" id="max_max">Maximo</td>
+                                <td class="fundo-tabela">Conforme</td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <select class="form-control" id="tipo_total" name="tipo_total" onchange="Updatetipo_total()">
+                                        <option> @Model.tipo_total</option>
+                                        <option> Colchonete </option>
+                                        <option> Colchão infantil </option>
+                                        <option> Colchão Espuma </option>
+                                        <option> Colchão auxiliar </option>
+                                        <option> Colchão box conjugado </option>
+                                        <option> Colchão misto </option>
+                                    </select>
+                                </td>
+                                <td><input class="form-control" type="text" readonly name="encontrado_total" value="@Model.encontrado_total" /></td>
+                                <td><input class="form-control" id="min_soma_total" name="min_soma_total" type="text" readonly value="@Model.min_soma_total" /></td>
+                                <td><input class="form-control" id="max_soma_total" name="max_soma_total" type="text" readonly value="@Model.max_soma_total" /></td>
+                                <td><input class="form-control" type="text" readonly name="conforme_total" value="@Model.conforme_total" /></td>
+                            </tr>
+                        </table>
+                        <br />
+
+
+                        @if (ViewBag.tipoColchao == "Colchão De Espuma" || ViewBag.tipoColchao == "Colchão Misto")
+                        {
+                            @if (ViewBag.revestimento == "Sim")
+                            {
                         <tr>
                             <td>
                                 A soma das espessuras dos materiais que compõem o revestimento do colchão (infantil, geral e misto), não pode exceder 1/3 da espessura da lâmina de espuma.
@@ -3349,10 +3410,10 @@
                                 </table>
                             </td>
                         </tr>
-                    }
-                }
-                else if (ViewBag.tipoColchao == "Colchonete")
-                {
+                            }
+                        }
+                        else if (ViewBag.tipoColchao == "Colchonete")
+                        {
                     <tr>
                         <td>
                             Colchonete: A altura total não pode exceder 8 cm, inclusive com o revestimento.
@@ -3421,9 +3482,9 @@
                             </table>
                         </td>
                     </tr>
-                }
-                else if (ViewBag.tipoColchao == "Colchão Auxiliar" || ViewBag.tipoColchao == "Colchão Box Conjugado")
-                {
+                        }
+                        else if (ViewBag.tipoColchao == "Colchão Auxiliar" || ViewBag.tipoColchao == "Colchão Box Conjugado")
+                        {
 
 
                     <tr>
@@ -3486,7 +3547,7 @@
                             </table>
                         </td>
                     </tr>
-                }
+                        }
                 <tr>
                     <td>
                         <button type="submit" value="SalvarEspumaUm" class="btn btn-success"> Editar </button>
@@ -3515,6 +3576,8 @@
         // Atualiza o valor no segundo select
         var laminaTipoUmSelect = document.getElementById("lamina_tipo_um");
         laminaTipoUmSelect.value = selectedValue;
+
+
 
         // Verifica se a opção selecionada é "Colchonete" e define os valores nos campos apropriados
         if (selectedValue === "Colchão infantil") {
@@ -3549,9 +3612,9 @@
         }
 
     }
-</script>
 
-<script>
+
+
     function updateTipoLamina2() {
         // Obtém o valor selecionado no primeiro select
         var laminaUmSelect = document.getElementById("lamina_dois");
@@ -3594,9 +3657,7 @@
         }
 
     }
-</script>
 
-<script>
     function updateTipoLamina3() {
         // Obtém o valor selecionado no primeiro select
         var laminaUmSelect = document.getElementById("lamina_tres");
@@ -3639,9 +3700,9 @@
         }
 
     }
-</script>
 
-<script>
+
+
     function updateTipoLamina4() {
         // Obtém o valor selecionado no primeiro select
         var laminaUmSelect = document.getElementById("lamina_quat");
@@ -3684,9 +3745,8 @@
         }
 
     }
-</script>
 
-<script>
+
     function updateTipoLamina5() {
         // Obtém o valor selecionado no primeiro select
         var laminaUmSelect = document.getElementById("lamina_cinco");
@@ -3729,6 +3789,54 @@
         }
 
     }
+
+    function Updatetipo_total() {
+
+        var tipo_total = document.getElementById("tipo_total");
+        console.log(tipo_total.value);
+
+        var minima_max = document.getElementById("minima_max");
+        minima_max.textContent = "Minimo";
+
+        // Verifica se a opção selecionada é "Colchonete" e define os valores nos campos apropriados
+        if (tipo_total.value === "Colchão infantil") {
+            document.getElementById("min_soma_total").value = "7";
+            document.getElementById("max_soma_total").value = "---";
+
+        } if (tipo_total.value === "Colchonete") {
+            document.getElementById("min_soma_total").value = "4";
+            document.getElementById("max_soma_total").value = "8";
+        }
+        if (tipo_total.value === "Colchão Espuma") {
+            document.getElementById("min_soma_total").value = "12";
+            document.getElementById("max_soma_total").value = "---";
+
+
+        }
+        if (tipo_total.value === "Colchão auxiliar") {
+            document.getElementById("min_soma_total").value = "5";
+            document.getElementById("max_soma_total").value = "---";
+
+
+        }
+        if (tipo_total.value === "Colchão box conjugado") {
+            document.getElementById("min_soma_total").value = "5";
+            document.getElementById("max_soma_total").value = "---";
+
+
+        }
+        if (tipo_total.value === "Colchão misto") {
+            document.getElementById("min_soma_total").value = "5";
+            document.getElementById("max_soma_total").value = "---";
+
+        }
+        if (tipo_total.value === "---") {
+            document.getElementById("lamina_min_cinco").value = "";
+            document.getElementById("lamina_max_cinco").value = "";
+        }
+    }
+
+
 </script>
 
 <script>

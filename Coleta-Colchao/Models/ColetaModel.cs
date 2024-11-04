@@ -223,6 +223,11 @@ namespace Coleta_Colchao.Models
             public float reves_mm_dois { get; set; }
             public float reves_cm_dois { get; set; }
             public string? reves_resul_final { get; set; }
+            public string? tipo_total { get; set; }
+            public float encontrado_total { get; set; }
+            public int min_soma_total { get; set; }
+            public int max_soma_total { get; set; }
+            public string? conforme_total { get; set; }
             public string? executor { get; set; }
             public string? editarUsuario { get; set; }
 

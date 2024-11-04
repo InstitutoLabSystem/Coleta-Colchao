@@ -1998,7 +1998,7 @@ namespace Coleta_Colchao.Controllers
           "lamina_esp_um,lamina_comp_dois,lamina_comp_tres,lamina_media_um,lamina_tipo_um,lamina_min_um,lamina_max_um,lamina_resul_um,lamina_dois,lamina_comp_quat,lamina_esp_dois, lamina_comp_cinco,lamina_comp_seis,lamina_media_dois,lamina_tipo_dois," +
           "lamina_min_dois,lamina_max_dois,lamina_resul_dois,lamina_tres,lamina_comp_sete,lamina_esp_tres,lamina_comp_oito,lamina_comp_nove,lamina_media_tres,lamina_tipo_tres,lamina_min_tres,lamina_max_tres,lamina_resul_tres,lamina_quat,lamina_comp_dez,lamina_esp_quat," +
           "lamina_comp_onze,lamina_comp_doze,lamina_media_quat,lamina_tipo_quat,lamina_min_quat,lamina_max_quat,lamina_resul_quat,lamina_cinco,lamina_comp_treze,lamina_esp_cinco,lamina_comp_quatorze,lamina_comp_quinze,lamina_media_cinco,lamina_tipo_cinco," +
-          "lamina_min_cinco,lamina_max_cinco,lamina_resul_cinco,esp_tipo_um,esp_mm_um,esp_cm_um,esp_tipo_dois,esp_mm_dois,esp_cm_dois,col_tipo_um,col_especificado_um,col_encontrado_um,col_resul_um," +
+          "lamina_min_cinco,lamina_max_cinco,lamina_resul_cinco,tipo_total,min_soma_total,max_soma_total,esp_tipo_um,esp_mm_um,esp_cm_um,esp_tipo_dois,esp_mm_dois,esp_cm_dois,col_tipo_um,col_especificado_um,col_encontrado_um,col_resul_um," +
           "col_tipo_dois,col_lamina_dois,col_especificado_dois,col_resul_dois,reves_tipo_um,reves_lamina_um,reves_especificado_um,reves_mm_um,reves_cm_um,reves_tipo_dois,reves_lamina_dois,reves_especificado_dois,reves_mm_dois,reves_cm_dois,temp_repouso,lamina_media_um")] ColetaModel.EspumaUm salvar)
         {
             try
@@ -2171,6 +2171,141 @@ namespace Coleta_Colchao.Controllers
                         lamina_resul_cinco = "NC";
                     }
 
+                    //realizando tipo total de todas as medias. ára dar o resultado do conforme dela e encontrado.
+                    int min_soma_total = salvar.min_soma_total;
+                    float encontrado_total = 0;
+                    string tipo_total = salvar.tipo_total;
+                    if (lamina_media_um != 0 && lamina_media_dois == 0 && lamina_media_tres == 0 && lamina_media_quat == 0 && lamina_media_cinco == 0)
+                    {
+                        encontrado_total = lamina_media_um;
+                        if (tipo_total != "Colchonete")
+                        {
+                            if (encontrado_total >= min_soma_total)
+                            {
+                                salvar.conforme_total = "C";
+                            }
+                            else
+                            {
+                                salvar.conforme_total = "NC";
+                            }
+                        }
+                        else
+                        {
+                            if (encontrado_total <= min_soma_total)
+                            {
+                                salvar.conforme_total = "C";
+                            }
+
+                            {
+                                salvar.conforme_total = "NC";
+                            }
+                        }
+                    }
+                    else if (lamina_media_um != 0 && lamina_media_dois != 0 && lamina_media_tres == 0 && lamina_media_quat == 0 && lamina_media_cinco == 0)
+                    {
+                        if (tipo_total != "Colchonete")
+                        {
+                            if (encontrado_total >= min_soma_total)
+                            {
+                                salvar.conforme_total = "C";
+                            }
+                            else
+                            {
+                                salvar.conforme_total = "NC";
+                            }
+                        }
+                        else
+                        {
+                            if (encontrado_total <= min_soma_total)
+                            {
+                                salvar.conforme_total = "C";
+                            }
+                            else
+                            {
+                                salvar.conforme_total = "NC";
+                            }
+                        }
+                    }
+                    else if (lamina_media_um != 0 && lamina_media_dois != 0 && lamina_media_tres != 0 && lamina_media_quat == 0 && lamina_media_cinco == 0)
+                    {
+                        encontrado_total = (float)Math.Round((lamina_media_um + lamina_media_dois + lamina_media_tres), 2);
+                        if (tipo_total != "Colchonete")
+                        {
+                            if (encontrado_total >= min_soma_total)
+                            {
+                                salvar.conforme_total = "C";
+                            }
+                            else
+                            {
+                                salvar.conforme_total = "NC";
+                            }
+                        }
+                        else
+                        {
+                            if (encontrado_total <= min_soma_total)
+                            {
+                                salvar.conforme_total = "C";
+                            }
+                            else
+                            {
+                                salvar.conforme_total = "NC";
+                            }
+                        }
+                    }
+                    else if (lamina_media_um != 0 && lamina_media_dois != 0 && lamina_media_tres != 0 && lamina_media_quat != 0 && lamina_media_cinco == 0)
+                    {
+                        encontrado_total = (float)Math.Round((editarDados.lamina_media_um + editarDados.lamina_media_dois + editarDados.lamina_media_tres + editarDados.lamina_media_quat), 2);
+                        if (editarDados.tipo_total != "Colchonete")
+                        {
+                            if (encontrado_total >= min_soma_total)
+                            {
+                                salvar.conforme_total = "C";
+                            }
+                            else
+                            {
+                                salvar.conforme_total = "NC";
+                            }
+                        }
+                        else
+                        {
+                            if (encontrado_total <= min_soma_total)
+                            {
+                                salvar.conforme_total = "C";
+                            }
+                            else
+                            {
+                                salvar.conforme_total = "NC";
+                            }
+                        }
+                    }
+                    else
+                    {
+                        encontrado_total = (float)Math.Round((lamina_media_um + lamina_media_dois + lamina_media_tres + lamina_media_quat + lamina_media_cinco), 2);
+
+                        if (tipo_total != "Colchonete")
+                        {
+                            if (encontrado_total >= min_soma_total)
+                            {
+                                salvar.conforme_total = "C";
+                            }
+                            else
+                            {
+                                salvar.conforme_total = "NC";
+                            }
+                        }
+                        else
+                        {
+                            if (encontrado_total <= min_soma_total)
+                            {
+                                salvar.conforme_total = "C";
+                            }
+                            else
+                            {
+                                salvar.conforme_total = "NC";
+                            }
+                        }
+                    }
+
 
                     string esp_tipo_um = salvar.esp_tipo_um;
                     float esp_lamina_um = salvar.esp_lamina_um;
@@ -2325,8 +2460,11 @@ namespace Coleta_Colchao.Controllers
                         reves_especificado_dois = reves_especificado_dois,
                         reves_mm_dois = reves_mm_dois,
                         reves_cm_dois = reves_cm_dois,
+                        tipo_total = tipo_total,
+                        encontrado_total = encontrado_total,
+                        min_soma_total = min_soma_total,
+                        conforme_total = salvar.conforme_total,
                         executor = Usuario()
-
                     };
 
                     _context.Add(salvarEspuma);
@@ -2502,6 +2640,142 @@ namespace Coleta_Colchao.Controllers
                     else
                     {
                         editarDados.lamina_resul_cinco = "NC";
+                    }
+
+                    //realizando tipo total de todas as medias. ára dar o resultado do conforme dela e encontrado.
+                    editarDados.min_soma_total = salvar.min_soma_total;
+                    editarDados.max_soma_total = salvar.max_soma_total;
+                    editarDados.tipo_total = salvar.tipo_total;
+                    if (editarDados.lamina_media_um != 0 && editarDados.lamina_media_dois == 0 && editarDados.lamina_media_tres == 0 && editarDados.lamina_media_quat == 0 && editarDados.lamina_media_cinco == 0)
+                    {
+                        editarDados.encontrado_total = editarDados.lamina_media_um;
+                        if (editarDados.tipo_total != "Colchonete")
+                        {
+                            if (editarDados.encontrado_total >= editarDados.min_soma_total)
+                            {
+                                editarDados.conforme_total = "C";
+                            }
+                            else
+                            {
+                                editarDados.conforme_total = "NC";
+                            }
+                        }
+                        else
+                        {
+                            if (editarDados.encontrado_total >= editarDados.min_soma_total && editarDados.encontrado_total <= editarDados.max_soma_total)
+                            {
+                                editarDados.conforme_total = "C";
+                            }
+                            else
+                            {
+                                editarDados.conforme_total = "NC";
+                            }
+                        }
+                    }
+                    else if (editarDados.lamina_media_um != 0 && editarDados.lamina_media_dois != 0 && editarDados.lamina_media_tres == 0 && editarDados.lamina_media_quat == 0 && editarDados.lamina_media_cinco == 0)
+                    {
+                        editarDados.encontrado_total = (float)Math.Round((editarDados.lamina_media_um + editarDados.lamina_media_dois), 2);
+                        if (editarDados.tipo_total != "Colchonete")
+                        {
+                            if (editarDados.encontrado_total >= editarDados.min_soma_total)
+                            {
+                                editarDados.conforme_total = "C";
+                            }
+                            else
+                            {
+                                editarDados.conforme_total = "NC";
+                            }
+                        }
+                        else
+                        {
+                            if (editarDados.encontrado_total >= editarDados.min_soma_total && editarDados.encontrado_total <= editarDados.max_soma_total)
+                            {
+                                editarDados.conforme_total = "C";
+                            }
+                            else
+                            {
+                                editarDados.conforme_total = "NC";
+                            }
+                        }
+                    }
+                    else if (editarDados.lamina_media_um != 0 && editarDados.lamina_media_dois != 0 && editarDados.lamina_media_tres != 0 && editarDados.lamina_media_quat == 0 && editarDados.lamina_media_cinco == 0)
+                    {
+                        editarDados.encontrado_total = (float)Math.Round((editarDados.lamina_media_um + editarDados.lamina_media_dois + editarDados.lamina_media_tres), 2);
+                        if (editarDados.tipo_total != "Colchonete")
+                        {
+                            if (editarDados.encontrado_total >= editarDados.min_soma_total)
+                            {
+                                editarDados.conforme_total = "C";
+                            }
+                            else
+                            {
+                                editarDados.conforme_total = "NC";
+                            }
+                        }
+                        else
+                        {
+                            if (editarDados.encontrado_total >= editarDados.min_soma_total && editarDados.encontrado_total <= editarDados.max_soma_total)
+                            {
+                                editarDados.conforme_total = "C";
+                            }
+                            else
+                            {
+                                editarDados.conforme_total = "NC";
+                            }
+                        }
+                    }
+                    else if (editarDados.lamina_media_um != 0 && editarDados.lamina_media_dois != 0 && editarDados.lamina_media_tres != 0 && editarDados.lamina_media_quat != 0 && editarDados.lamina_media_cinco == 0)
+                    {
+                        editarDados.encontrado_total = (float)Math.Round((editarDados.lamina_media_um + editarDados.lamina_media_dois + editarDados.lamina_media_tres + editarDados.lamina_media_quat), 2);
+                        if (editarDados.tipo_total != "Colchonete")
+                        {
+                            if (editarDados.encontrado_total >= editarDados.min_soma_total)
+                            {
+                                editarDados.conforme_total = "C";
+                            }
+                            else
+                            {
+                                editarDados.conforme_total = "NC";
+                            }
+                        }
+                        else
+                        {
+                            if (editarDados.encontrado_total >= editarDados.min_soma_total && editarDados.encontrado_total <= editarDados.max_soma_total)
+                            {
+                                editarDados.conforme_total = "C";
+                            }
+                            else
+                            {
+                                editarDados.conforme_total = "NC";
+                            }
+                        }
+                    }
+                    else
+                    {
+                        editarDados.encontrado_total = (float)Math.Round((editarDados.lamina_media_um + editarDados.lamina_media_dois + editarDados.lamina_media_tres + editarDados.lamina_media_quat + editarDados.lamina_media_cinco), 2);
+
+                        if (editarDados.tipo_total != "Colchonete")
+                        {
+                            if (editarDados.encontrado_total >= editarDados.min_soma_total)
+                            {
+                                editarDados.conforme_total = "C";
+                            }
+                            else
+                            {
+                                editarDados.conforme_total = "NC";
+                            }
+                        }
+                        else
+                        {
+                            if (editarDados.encontrado_total >= editarDados.min_soma_total && editarDados.encontrado_total <= editarDados.max_soma_total)
+                            {
+                                editarDados.conforme_total = "C";
+                            }
+                            else
+                            {
+                                editarDados.conforme_total = "NC";
+                            }
+                        }
                     }
 
                     editarDados.esp_tipo_um = salvar.esp_tipo_um;
