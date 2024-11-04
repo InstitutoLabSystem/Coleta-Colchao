@@ -2173,6 +2173,7 @@ namespace Coleta_Colchao.Controllers
 
                     //realizando tipo total de todas as medias. ára dar o resultado do conforme dela e encontrado.
                     int min_soma_total = salvar.min_soma_total;
+                    int max_soma_total = salvar.max_soma_total;
                     float encontrado_total = 0;
                     string tipo_total = salvar.tipo_total;
                     if (lamina_media_um != 0 && lamina_media_dois == 0 && lamina_media_tres == 0 && lamina_media_quat == 0 && lamina_media_cinco == 0)
@@ -2191,7 +2192,7 @@ namespace Coleta_Colchao.Controllers
                         }
                         else
                         {
-                            if (encontrado_total <= min_soma_total)
+                            if (encontrado_total >= min_soma_total && encontrado_total <= max_soma_total)
                             {
                                 salvar.conforme_total = "C";
                             }
@@ -2216,7 +2217,7 @@ namespace Coleta_Colchao.Controllers
                         }
                         else
                         {
-                            if (encontrado_total <= min_soma_total)
+                            if (encontrado_total >= min_soma_total && encontrado_total <= max_soma_total)
                             {
                                 salvar.conforme_total = "C";
                             }
@@ -2242,7 +2243,7 @@ namespace Coleta_Colchao.Controllers
                         }
                         else
                         {
-                            if (encontrado_total <= min_soma_total)
+                            if (encontrado_total >= min_soma_total && encontrado_total <= max_soma_total)
                             {
                                 salvar.conforme_total = "C";
                             }
@@ -2268,7 +2269,7 @@ namespace Coleta_Colchao.Controllers
                         }
                         else
                         {
-                            if (encontrado_total <= min_soma_total)
+                            if (encontrado_total >= min_soma_total && encontrado_total <= max_soma_total)
                             {
                                 salvar.conforme_total = "C";
                             }
@@ -2295,7 +2296,7 @@ namespace Coleta_Colchao.Controllers
                         }
                         else
                         {
-                            if (encontrado_total <= min_soma_total)
+                            if (encontrado_total >= min_soma_total && encontrado_total <= max_soma_total)
                             {
                                 salvar.conforme_total = "C";
                             }
@@ -2463,6 +2464,7 @@ namespace Coleta_Colchao.Controllers
                         tipo_total = tipo_total,
                         encontrado_total = encontrado_total,
                         min_soma_total = min_soma_total,
+                        max_soma_total = max_soma_total,
                         conforme_total = salvar.conforme_total,
                         executor = Usuario()
                     };
