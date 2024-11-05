@@ -110,7 +110,7 @@
                 <tr>
                     <td>
                         <table class="tables table-bordered border-secondary  table-sm">
-                            @if(ViewBag.tipo == "Bonell |" || ViewBag.tipo == "Bonell ||" || ViewBag.tipo2 == "Bonell |" || ViewBag.tipo2 == "Bonell ||")
+                            @if (ViewBag.tipo == "Bonell |" || ViewBag.tipo == "Bonell ||" || ViewBag.tipo2 == "Bonell |" || ViewBag.tipo2 == "Bonell ||")
                             {
                                 <tr class="fundo-tabela">
                                     <td colspan="6">Tabela - Quantidade minima de molas para cada tipo de molejo</td>
@@ -301,8 +301,8 @@
                         n° de molas por m² = Quantidade de molas ÷ Largura X Comprimento
                     </td>
                 </tr>
-                    @if (ViewBag.tipo != "NA" && ViewBag.tipo2 != "NA")
-                    {
+                @if (ViewBag.tipo != "NA" && ViewBag.tipo2 != "NA")
+                {
                     <tr>
                         <td>
                             n° de molas por m² = <input class="controlador" type="text" style="width:200px;" name="calc_molas_1" /> ÷ <input style="width:200px;" class="controlador" style="width:200px;" type="text" name="calc_molas_2" /> X <input style="width:200px;" class="controlador" type="text" name="calc_molas_3" />
@@ -317,9 +317,9 @@
                         </td>
 
                     </tr>
-                    }
-                    else
-                    {
+                }
+                else
+                {
                     <tr>
                         <td>
                             n° de molas por m² = <input class="controlador" type="text" style="width:200px;" name="calc_molas_1" /> ÷ <input style="width:200px;" class="controlador" style="width:200px;" type="text" name="calc_molas_2" /> X <input style="width:200px;" class="controlador" type="text" name="calc_molas_3" />
@@ -327,7 +327,7 @@
                         </td>
 
                     </tr>
-                    }
+                }
             </table>
             <br />
             <div class="d-grid gap-2 d-flex justify-content-center">
@@ -479,7 +479,7 @@
                                 <td>---</td>
                                 <td>152</td>
                                 <td><input class="form-control" type="text" name="mini_molas_3" value="@Model.mini_molas_3" /></td>
-                                @if (Model.mini_molas_3 >= 152 )
+                                @if (Model.mini_molas_3 >= 152)
                                 {
                                     <td>C</td>
                                 }
@@ -616,7 +616,7 @@
                                 <td>---</td>
                                 <td>152</td>
                                 <td><input class="form-control" type="text" name="mini_molas_3" /></td>
-                                @if (Model.mini_molas_3 >= 152 )
+                                @if (Model.mini_molas_3 >= 152)
                                 {
                                     <td>C</td>
                                 }
@@ -755,12 +755,23 @@
                         </tr>
                     }
                 </table>
-                
+
             </table>
             <br />
-            <div class="d-grid gap-2 d-flex justify-content-center">
-                <button type="submit" class="btn btn-success btn btn-primary btn-md">Editar</button>
-            </div>
+            @if (ViewBag.bloqueada != "Sim")
+            {
+                <div class="d-grid gap-2 d-flex justify-content-center">
+                    <button type="submit" class="btn btn-success btn btn-primary btn-md">Editar</button>
+                </div>
+            }
+            else
+            {
+                <div class="d-flex justify-content-center">
+                    <div class="alert alert-danger w-50 p-3 m-3 text-center" role="alert">
+                        Coleta Bloqueada!
+                    </div>
+                </div>
+            }
         }
     </form>
 

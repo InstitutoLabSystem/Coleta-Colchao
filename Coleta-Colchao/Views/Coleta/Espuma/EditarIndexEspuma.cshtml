@@ -512,11 +512,21 @@
                     </td>
                 </tr>
             </table>
-            <tr>
-                <td>
-                    <button type="submit" class="btn btn-success"> Salvar Informações</button>
-                </td>
-            </tr>
+            @if(Model.Bloqueada != "Sim")
+            {
+                <tr>
+                    <td>
+                        <button type="submit" class="btn btn-success"> Salvar Informações</button>
+                    </td>
+                </tr>
+            }
+            else
+            {
+                <div class="alert alert-danger w-50 p-3 m-3" role="alert">
+                   Coleta Bloqueada!
+                </div>
+            }
+          
         </div>
     </form>
 

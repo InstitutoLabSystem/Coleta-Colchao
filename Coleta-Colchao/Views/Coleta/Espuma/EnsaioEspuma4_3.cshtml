@@ -57,8 +57,8 @@
                     <td>
                         Existe ensaio?
                         <select class="form-control" name="tem_ensaio" id="tem_colchao">
-                            <option > Não </option>
-                            <option> Sim </option>                         
+                            <option> Não </option>
+                            <option> Sim </option>
                             <option>---</option>
                         </select> <br /> <br />
                     </td>
@@ -74,7 +74,7 @@
                             <option>Colchão tipo composto</option>
                             <option>Colagem na largura</option>
                             <option>Colagem no comprimento</option>
-                            <option>Colchonete</option>           
+                            <option>Colchonete</option>
                         </select>
                     </td>
                 </tr>
@@ -503,7 +503,7 @@
                         </select> <br /> <br />
                     </td>
                 </tr>
-                <tr>            
+                <tr>
                     <td>
                         Escolha o ensaio:
                         <select class="form-control" id="tipo_ensaio" name="tipo_ensaio">
@@ -944,9 +944,20 @@
                 </table>
             }
             <br />
-            <div class="d-grid gap-2 d-flex justify-content-center">
-                <button type="submit" value="SalvarEspuma4_3" class="btn btn-success">Editar Coleta </button>
-            </div>
+            @if (ViewBag.bloqueada != "Sim")
+            {
+                <div class="d-grid gap-2 d-flex justify-content-center">
+                    <button type="submit" value="SalvarEspuma4_3" class="btn btn-success">Editar Coleta </button>
+                </div>
+            }
+            else
+            {
+                <div class="d-flex justify-content-center">
+                    <div class="alert alert-danger w-50 p-3 m-3 text-center" role="alert">
+                        Coleta Bloqueada!
+                    </div>
+                </div>
+            }
         }
     </form>
 

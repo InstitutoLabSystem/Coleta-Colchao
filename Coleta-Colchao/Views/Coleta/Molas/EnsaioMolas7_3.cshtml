@@ -33,7 +33,7 @@
 
 </head>
 <body>
-    <form method="post" asp-controller="Coleta" asp-action="SalvarEnsaio7_3" asp-route-os="@ViewBag.os" asp-route-orcamento="@ViewBag.orcamento" >
+    <form method="post" asp-controller="Coleta" asp-action="SalvarEnsaio7_3" asp-route-os="@ViewBag.os" asp-route-orcamento="@ViewBag.orcamento">
         @if (Model == null)
         {
             <input type="hidden" id="entrada" value="0" />
@@ -73,12 +73,12 @@
                 <tbody>
                     <tr>
                         <td>Inicio:</td>
-                        <td><input asp-for="acond_inicio" class="form-control" type="date" /></td>     
+                        <td><input asp-for="acond_inicio" class="form-control" type="date" /></td>
                         <td>Inicio:</td>
                         <td><input asp-for="hora_inicio" class="form-control" type="time" /></td>
                         <td>Min:</td>
                         <td><input asp-for="temp_inicio" class="form-control" /></td>
-                        <td rowspan="2"><input asp-for="im" class="form-control"/></td>
+                        <td rowspan="2"><input asp-for="im" class="form-control" /></td>
                     </tr>
                     <tr>
                         <td>Final:</td>
@@ -91,8 +91,8 @@
                     <tr>
                         <td colspan="4">Responsavel</td>
                         <td colspan="5"><input asp-for="responsavel_cond" class="form-control" /></td>
-                    </tr> 
-                    
+                    </tr>
+
                 </tbody>
             </table>
 
@@ -137,7 +137,7 @@
                         <td>1 Face: 50.000 ciclos em sua face superior</td>
                         <td>Ciclos atingidos</td>
                         <td>
-                            <input asp-for="qtd_ciclos"  name="qtd_ciclos" class="form-control"/>
+                            <input asp-for="qtd_ciclos" name="qtd_ciclos" class="form-control" />
                         </td>
                     </tr>
                 }
@@ -275,25 +275,25 @@
                 <tbody>
                     <tr>
                         <td>Inicio:</td>
-                        <td><input asp-for="acond_inicio" class="form-control" name="acond_inicio" value="@Model.acond_inicio"/></td>
+                        <td><input asp-for="acond_inicio" class="form-control" name="acond_inicio" value="@Model.acond_inicio" /></td>
                         <td>Inicio:</td>
-                        <td><input asp-for="hora_inicio" class="form-control" type="time" value="@Model.hora_inicio"/></td>
+                        <td><input asp-for="hora_inicio" class="form-control" type="time" value="@Model.hora_inicio" /></td>
                         <td>Min:</td>
-                        <td><input asp-for="temp_inicio" class="form-control" value="@Model.temp_inicio"/></td>
-                        <td rowspan="2"><input asp-for="im" class="form-control" value="@Model.im"/></td>
+                        <td><input asp-for="temp_inicio" class="form-control" value="@Model.temp_inicio" /></td>
+                        <td rowspan="2"><input asp-for="im" class="form-control" value="@Model.im" /></td>
                     </tr>
                     <tr>
                         <td>Final:</td>
-                        <td><input asp-for="acond_final" class="form-control" name="acond_final" value="@Model.acond_final"/></td>
+                        <td><input asp-for="acond_final" class="form-control" name="acond_final" value="@Model.acond_final" /></td>
                         <td>Final:</td>
-                        <td><input asp-for="hora_final" class="form-control" type="time" value="@Model.hora_final"/></td>
+                        <td><input asp-for="hora_final" class="form-control" type="time" value="@Model.hora_final" /></td>
                         <td>Max:</td>
-                        <td><input asp-for="temp_final" class="form-control" value="@Model.temp_final"/></td>
-                        
+                        <td><input asp-for="temp_final" class="form-control" value="@Model.temp_final" /></td>
+
                     </tr>
                     <tr>
                         <td colspan="4">Responsavel</td>
-                        <td colspan="5"><input asp-for="responsavel_cond" class="form-control" value="@Model.responsavel_cond"/></td>
+                        <td colspan="5"><input asp-for="responsavel_cond" class="form-control" value="@Model.responsavel_cond" /></td>
                     </tr>
 
                 </tbody>
@@ -340,7 +340,7 @@
                         <td>1 Face: 50.000 ciclos em sua face superior</td>
                         <td>Ciclos atingidos</td>
                         <td>
-                            <input class="form-control" name="qtd_ciclos" value="@Model.qtd_ciclos"/>
+                            <input class="form-control" name="qtd_ciclos" value="@Model.qtd_ciclos" />
                         </td>
                     </tr>
                 }
@@ -442,9 +442,20 @@
                     </td>
                 </tr>
             </table>
-            <div class="d-grid gap-2 d-flex justify-content-center">
-                <button type="submit" class="btn btn-success btn btn-primary btn-md">Editar</button>
-            </div>
+            @if (ViewBag.bloqueada != "Sim")
+            {
+                <div class="d-grid gap-2 d-flex justify-content-center">
+                    <button type="submit" class="btn btn-success btn btn-primary btn-md">Editar</button>
+                </div>
+            }
+            else
+            {
+                <div class="d-flex justify-content-center">
+                    <div class="alert alert-danger w-50 p-3 m-3 text-center" role="alert">
+                        Coleta Bloqueada!
+                    </div>
+                </div>
+            }
         }
     </form>
 

@@ -118,6 +118,7 @@ namespace Coleta_Colchao.Controllers
                         ViewBag.rev = buscarOs.rev;
                         ViewBag.PercorrerRegstro = _context.regtro_colchao.Where(x => x.os == os).OrderByDescending(x => x.Id).ToList();
                         ViewBag.ensaio = "Molas";
+                        ViewBag.bloqueada = buscarOs.Bloqueada;
 
                         return View("Index", dados);
                     }
@@ -130,6 +131,7 @@ namespace Coleta_Colchao.Controllers
                         ViewBag.PercorrerRegstro = _context.regtro_colchao_espuma.Where(x => x.os == os).OrderByDescending(x => x.Id).ToList();
                         ViewBag.user = Usuario();
                         ViewBag.ensaio = "Espuma";
+                        ViewBag.bloqueada = buscarEspumaOs.Bloqueada;
                         return View("Index", dados);
                     }
 
@@ -141,6 +143,7 @@ namespace Coleta_Colchao.Controllers
                         ViewBag.PercorrerRegstro = _context.regtro_colchao_lamina.Where(x => x.os == os).OrderByDescending(x => x.Id).ToList();
                         ViewBag.user = Usuario();
                         ViewBag.ensaio = "Laminas";
+                        ViewBag.bloqueada = buscarLamina.Bloqueada;
                         ViewBag.status = "andamento";
                         //codigos dos ensaios do colchao, para trazer todas os referente ao ensaio de colchao.
                         var codigosLaminas = new List<string> { "DNSCCH002000001", "DPCCCH002000001", "FDGCCH002000001", "FTCCCH002000001", "IDTCCH001000001", "QUICCH002000001", "RSLCCH002000001" };
@@ -213,7 +216,7 @@ namespace Coleta_Colchao.Controllers
             }
 
             var EnsaioBaseCargaEstatica = _context.ensaio_base_carga_estatica.Where(x => x.os == os && x.orcamento == orcamento).OrderByDescending(x => x.Id).FirstOrDefault();
-            if(EnsaioBaseCargaEstatica != null)
+            if (EnsaioBaseCargaEstatica != null)
             {
                 var novo_EnsaioBaseCargaEstatica = EnsaioBaseCargaEstatica.Clone();
 
@@ -322,12 +325,12 @@ namespace Coleta_Colchao.Controllers
                 }
 
                 var Identificacao_Embalagem = _context.ensaio_identificacao_embalagem.Where(x => x.os == os && x.orcamento == orcamento).OrderByDescending(x => x.Id).FirstOrDefault();
-                if(Identificacao_Embalagem != null)
+                if (Identificacao_Embalagem != null)
                 {
                     var Novo_Identificacao_Embalagem = Identificacao_Embalagem.Clone();
 
                     Novo_Identificacao_Embalagem.Id = 0;
-                    Novo_Identificacao_Embalagem.rev = Novo_Identificacao_Embalagem.rev +1;
+                    Novo_Identificacao_Embalagem.rev = Novo_Identificacao_Embalagem.rev + 1;
 
                     _context.ensaio_identificacao_embalagem.Add(Novo_Identificacao_Embalagem);
                 }
@@ -339,29 +342,29 @@ namespace Coleta_Colchao.Controllers
             {
                 var registro_Laminas = _context.regtro_colchao_lamina.Where(x => x.os == os && x.orcamento == orcamento).OrderByDescending(x => x.Id).FirstOrDefault();
 
-                if(registro_Laminas != null)
+                if (registro_Laminas != null)
                 {
                     var novo_registro_Laminas = registro_Laminas.Clone();
 
                     novo_registro_Laminas.Id = 0;
-                    novo_registro_Laminas.rev = novo_registro_Laminas.rev +1;
+                    novo_registro_Laminas.rev = novo_registro_Laminas.rev + 1;
 
                     _context.regtro_colchao_lamina.Add(novo_registro_Laminas);
                 }
-                
+
                 var LaminaDeterminicaoDensidade = _context.lamina_determinacao_densidade.Where(x => x.os == os && x.orcamento == orcamento).OrderByDescending(x => x.Id).FirstOrDefault();
-                if(LaminaDeterminicaoDensidade != null)
+                if (LaminaDeterminicaoDensidade != null)
                 {
                     var novo_LaminaDeterminicaoDensidade = LaminaDeterminicaoDensidade.Clone();
 
                     novo_LaminaDeterminicaoDensidade.Id = 0;
-                    novo_LaminaDeterminicaoDensidade.rev = novo_LaminaDeterminicaoDensidade.rev +1;
+                    novo_LaminaDeterminicaoDensidade.rev = novo_LaminaDeterminicaoDensidade.rev + 1;
 
                     _context.lamina_determinacao_densidade.Add(novo_LaminaDeterminicaoDensidade);
                 }
-                
+
                 var LaminaDpc = _context.lamina_dpc.Where(x => x.os == os && x.orcamento == orcamento).OrderByDescending(x => x.Id).FirstOrDefault();
-                if(LaminaDpc != null)
+                if (LaminaDpc != null)
                 {
                     var novo_LaminaDpc = LaminaDpc.Clone();
 
@@ -418,7 +421,7 @@ namespace Coleta_Colchao.Controllers
             //fim de laminas
 
             //Inicio Espuma
-            if(ensaio == "Espuma")
+            if (ensaio == "Espuma")
             {
                 var registro_Espuma = _context.regtro_colchao_espuma.Where(x => x.os == os && x.orcamento == orcamento).OrderByDescending(x => x.Id).FirstOrDefault();
 
@@ -454,8 +457,8 @@ namespace Coleta_Colchao.Controllers
                     _context.ensaio_espuma4_3.Add(novo_EnsaioEspuma4_3);
                 }
 
-                var EnsaioEspuma4_4 = _context.ensaio_espuma_item_4_4.Where(x=>x.os == os && x.orcamento == orcamento).OrderByDescending(x => x.Id).FirstOrDefault();
-                if(EnsaioEspuma4_4 != null)
+                var EnsaioEspuma4_4 = _context.ensaio_espuma_item_4_4.Where(x => x.os == os && x.orcamento == orcamento).OrderByDescending(x => x.Id).FirstOrDefault();
+                if (EnsaioEspuma4_4 != null)
                 {
                     var novo_EnsaioEspuma4_4 = EnsaioEspuma4_4.Clone();
 
@@ -466,7 +469,7 @@ namespace Coleta_Colchao.Controllers
                 }
 
                 var EspumaIdentificacaoEmbalagem = _context.espuma_identificacao_embalagem.Where(x => x.os == os && x.orcamento == orcamento).OrderByDescending(x => x.Id).FirstOrDefault();
-                if(EspumaIdentificacaoEmbalagem != null)
+                if (EspumaIdentificacaoEmbalagem != null)
                 {
                     var novo_EspumaIdentificacaoEmbalagem = EspumaIdentificacaoEmbalagem.Clone();
 
@@ -496,6 +499,130 @@ namespace Coleta_Colchao.Controllers
 
             //retornando para minha função direto.
             return RedirectToAction(nameof(BuscarOrcamento), new { os });
+        }
+
+        //bloquear Coleta.
+        [HttpPost]
+        public async Task<IActionResult> BloquearColeta(string os, string orcamento, string ensaio, string motivo)
+        {
+            try
+            {
+                // verificando qual tipo de ensaio é para poder editar na tabela para bloquar coleta.
+                if (ensaio == "Espuma")
+                {
+                    //buscando a os para saber se esta bloqueada ou não
+                    var buscarDados = _context.regtro_colchao_espuma.Where(x => x.os == os && x.orcamento == orcamento).ToList();
+
+                    //salvar no log se caso o usuario for desbloquear a coleta.
+                    if (buscarDados[0].Bloqueada == "Sim")
+                    {
+                        var salvarLog = new LogRevisao
+                        {
+                            os = os,
+                            orcamento = orcamento,
+                            motivo = motivo,
+                            nota = "Desbloqueio de coleta",
+                            ensaio = ensaio,
+                            usuario = Usuario()
+                        };
+                        _context.log_colchao.Add(salvarLog);
+                    }
+
+                    //começar a verificação se é para bloquear ou desbloquear 
+                    for (int i = 0; i < buscarDados.Count; i++)
+                    {
+                        if (buscarDados[i].Bloqueada == null || buscarDados[i].Bloqueada == "Não")
+                        {
+                            buscarDados[i].Bloqueada = "Sim";
+                        }
+                        else
+                        {
+                            buscarDados[i].Bloqueada = "Não";
+                        }
+
+                        _context.regtro_colchao_espuma.Update(buscarDados[i]);
+                    }
+                }
+                else if (ensaio == "Molas")
+                {
+                    //buscando a os para saber se esta bloqueada ou não
+                    var buscarDados = _context.regtro_colchao.Where(x => x.os == os && x.orcamento == orcamento).ToList();
+
+                    //salvar no log se caso o usuario for desbloquear a coleta.
+                    if (buscarDados[0].Bloqueada == "Sim")
+                    {
+                        var salvarLog = new LogRevisao
+                        {
+                            os = os,
+                            orcamento = orcamento,
+                            motivo = motivo,
+                            nota = "Desbloqueio de coleta",
+                            ensaio = ensaio,
+                            usuario = Usuario()
+                        };
+                        _context.log_colchao.Add(salvarLog);
+                    }
+
+                    //começar a verificação se é para bloquear ou desbloquear 
+                    for (int i = 0; i < buscarDados.Count; i++)
+                    {
+                        if (buscarDados[i].Bloqueada == null || buscarDados[i].Bloqueada == "Não")
+                        {
+                            buscarDados[i].Bloqueada = "Sim";
+                        }
+                        else
+                        {
+                            buscarDados[i].Bloqueada = "Não";
+                        }
+                        _context.regtro_colchao.Update(buscarDados[i]);
+                    }
+                }
+                else
+                {
+                    //buscando a os para saber se esta bloqueada ou não
+                    var buscarDados = _context.regtro_colchao_lamina.Where(x => x.os == os && x.orcamento == orcamento).ToList();
+
+                    //salvar no log se caso o usuario for desbloquear a coleta.
+                    if (buscarDados[0].Bloqueada == "Sim")
+                    {
+                        var salvarLog = new LogRevisao
+                        {
+                            os = os,
+                            orcamento = orcamento,
+                            motivo = motivo,
+                            nota = "Desbloqueio de coleta",
+                            ensaio = ensaio,
+                            usuario = Usuario()
+                        };
+                        _context.log_colchao.Add(salvarLog);
+                    }
+
+                    //começar a verificação se é para bloquear ou desbloquear 
+                    for (int i = 0; i < buscarDados.Count; i++)
+                    {
+                        if (buscarDados[i].Bloqueada == null || buscarDados[i].Bloqueada == "Não")
+                        {
+                            buscarDados[i].Bloqueada = "Sim";
+                        }
+                        else
+                        {
+                            buscarDados[i].Bloqueada = "Não";
+                        }
+                        _context.regtro_colchao_lamina.Update(buscarDados[i]);
+                    }
+                }
+
+                TempData["Mensagem"] = "Sucesso!";
+                await _context.SaveChangesAsync();
+                //var buscarDados = _context.regtro_colchao_espuma
+
+                return RedirectToAction(nameof(BuscarOrcamento), new { os });
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "Error", ex.Message);
+                throw;
+            }
         }
     }
 }

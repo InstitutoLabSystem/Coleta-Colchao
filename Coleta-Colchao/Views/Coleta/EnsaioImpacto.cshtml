@@ -297,16 +297,16 @@
                             </select>
                         </td>
                     </tr>
-@*                     <tr>
-                        <td>
-                            Houve rompimento nos pés:
-                            <select class="controlador" asp-for="rompimento_um">
-                                <option value="NA">---</option>
-                                <option value="C">C</option>
-                                <option value="NC">NC</option>
-                            </select>
-                        </td>
-                    </tr> *@
+                    @*                     <tr>
+            <td>
+            Houve rompimento nos pés:
+            <select class="controlador" asp-for="rompimento_um">
+            <option value="NA">---</option>
+            <option value="C">C</option>
+            <option value="NC">NC</option>
+            </select>
+            </td>
+            </tr> *@
                     <tr>
                         <td>
                             Apresentou algo que prejudique o seu comprometimento de uso:
@@ -481,16 +481,16 @@
                             </select>
                         </td>
                     </tr>
-                @*     <tr>
-                        <td>
-                            Houve rasgo no revestimento:
-                            <select class="controlador" asp-for="rasgo_dois">
-                                <option value="NA">---</option>
-                                <option value="C">C</option>
-                                <option value="NC">NC</option>
-                            </select>
-                        </td>
-                    </tr> *@
+                    @*     <tr>
+            <td>
+            Houve rasgo no revestimento:
+            <select class="controlador" asp-for="rasgo_dois">
+            <option value="NA">---</option>
+            <option value="C">C</option>
+            <option value="NC">NC</option>
+            </select>
+            </td>
+            </tr> *@
                     <tr>
                         <td>
                             Houve quebra:
@@ -774,16 +774,16 @@
                             </select>
                         </td>
                     </tr>
-                 @*    <tr>
-                        <td>
-                            Houve rasgo no revestimento:
-                            <select class="controlador" asp-for="rasgo_um">
-                                <option value="NA">---</option>
-                                <option value="C">C</option>
-                                <option value="NC">NC</option>
-                            </select>
-                        </td>
-                    </tr> *@
+                    @*    <tr>
+            <td>
+            Houve rasgo no revestimento:
+            <select class="controlador" asp-for="rasgo_um">
+            <option value="NA">---</option>
+            <option value="C">C</option>
+            <option value="NC">NC</option>
+            </select>
+            </td>
+            </tr> *@
                     <tr>
                         <td>
                             Resistência a possíveis impactos verticais:
@@ -968,19 +968,19 @@
                             </select>
                         </td>
                     </tr>
-                  @*   <tr>
-                        <td>
-                            Houve rasgo no revestimento:
-                            <select class="controlador" asp-for="rasgo_dois">
-                                <option value="NA">---</option>
-                                <option value="C">C</option>
-                                <option value="NC">NC</option>
-                            </select>
-                        </td>
-                    </tr> *@
+                    @*   <tr>
+            <td>
+            Houve rasgo no revestimento:
+            <select class="controlador" asp-for="rasgo_dois">
+            <option value="NA">---</option>
+            <option value="C">C</option>
+            <option value="NC">NC</option>
+            </select>
+            </td>
+            </tr> *@
                     <tr>
                         <td>
-                            Houve quebra : 
+                            Houve quebra :
                             <select class="controlador" asp-for="quebra_dois">
                                 <option value="NA">---</option>
                                 <option value="C">C</option>
@@ -1000,9 +1000,20 @@
                     </tr>
                 }
             </table>
-            <div class="d-grid gap-2 d-flex justify-content-center">
-                <button type="submit" class="btn btn-success btn btn-primary btn-md">Editar</button>
-            </div>
+            @if (ViewBag.bloqueada != "Sim")
+            {
+                <div class="d-grid gap-2 d-flex justify-content-center">
+                    <button type="submit" class="btn btn-success btn btn-primary btn-md">Editar</button>
+                </div>
+            }
+            else
+            {
+                <div class="d-flex justify-content-center">
+                    <div class="alert alert-danger w-50 p-3 m-3 text-center" role="alert">
+                        Coleta Bloqueada!
+                    </div>
+                </div>
+            }
         }
     </form>
     @* <table class="tables table-bordered border-secondary  table-sm">

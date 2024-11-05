@@ -145,7 +145,7 @@
                                 </td>
                             </tr>
                             <tr>
-                                <td><input name="area_corpo_1" class="areaProva" type="text" value="50" readonly/> x  <input name="area_corpo_2" class="areaProva" type="text" value="50" readonly/></td>
+                                <td><input name="area_corpo_1" class="areaProva" type="text" value="50" readonly /> x  <input name="area_corpo_2" class="areaProva" type="text" value="50" readonly /></td>
                             </tr>
                             <tr>
                                 <td>Gramatura: <input style="background-color: #e9ecef" class="areaProva" readonly type="text" /></td>
@@ -172,7 +172,7 @@
                 </tr>
                 <tr>
                     <td>
-                        Dimensões do corpo: <input name="dim_corpo_1" class="areaProva" type="text" value="297" readonly/> X <input name="dim_corpo_2" class="areaProva" type="text" value="210" readonly/>
+                        Dimensões do corpo: <input name="dim_corpo_1" class="areaProva" type="text" value="297" readonly /> X <input name="dim_corpo_2" class="areaProva" type="text" value="210" readonly />
                     </td>
                 </tr>
                 <tr>
@@ -309,7 +309,7 @@
                                 </td>
                             </tr>
                             <tr>
-                                <td><input name="area_corpo_1" value="@Model.area_corpo_1" class="areaProva" type="text" readonly/> x  <input name="area_corpo_2" value="@Model.area_corpo_2" class="areaProva" type="text" readonly/></td>
+                                <td><input name="area_corpo_1" value="@Model.area_corpo_1" class="areaProva" type="text" readonly /> x  <input name="area_corpo_2" value="@Model.area_corpo_2" class="areaProva" type="text" readonly /></td>
                             </tr>
                             <tr>
                                 <td>Gramatura: <input style="background-color: #e9ecef" class="areaProva" readonly type="text" value="@Model.gramatura" /></td>
@@ -335,7 +335,7 @@
                 </tr>
                 <tr>
                     <td>
-                        Dimensões do corpo: <input name="dim_corpo_1" value="@Model.dim_corpo_1" class="areaProva" type="text" readonly/> X <input name="dim_corpo_2" value="@Model.dim_corpo_2" class="areaProva" type="text" readonly/>
+                        Dimensões do corpo: <input name="dim_corpo_1" value="@Model.dim_corpo_1" class="areaProva" type="text" readonly /> X <input name="dim_corpo_2" value="@Model.dim_corpo_2" class="areaProva" type="text" readonly />
                     </td>
                 </tr>
                 <tr>
@@ -348,7 +348,7 @@
                         Apresentou trincas:
                         <select class="areaProva" name="trincas">
                             <option selected> @Model.trincas </option>
-                            <option value="NA" > --- </option>
+                            <option value="NA"> --- </option>
                             <option value="C"> C </option>
                             <option value="NC"> NC </option>
                         </select>
@@ -368,9 +368,20 @@
                 </tr>
             </table>
             <br />
-            <div class="d-grid gap-2 d-flex justify-content-center">
-                <button type="submit" class="btn btn-success btn btn-primary btn-md">Editar Dados</button>
-            </div>
+            @if (ViewBag.bloqueada != "Sim")
+            {
+                <div class="d-grid gap-2 d-flex justify-content-center">
+                    <button type="submit" class="btn btn-success btn btn-primary btn-md">Editar Dados</button>
+                </div>
+            }
+            else
+            {
+                <div class="d-flex justify-content-center">
+                    <div class="alert alert-danger w-50 p-3 m-3 text-center" role="alert">
+                        Coleta Bloqueada!
+                    </div>
+                </div>
+            }
         }
     </form>
 

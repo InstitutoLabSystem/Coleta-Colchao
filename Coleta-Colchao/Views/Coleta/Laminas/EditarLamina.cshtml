@@ -137,11 +137,20 @@
                     <td colspan="3"> <input class="form-control" type="text" asp-for="tipo_proc" /> </td>
                 </tr>
             </table>
-            <tr>
-                <td>
+
+            @if (Model.Bloqueada != "Sim")
+            {
+                <div class="d-grid gap-2 d-flex justify-content-center">
                     <button type="submit" class="btn btn-success"> Salvar Informações</button>
-                </td>
-            </tr>
+                </div>
+
+            }
+            else
+            {
+                <div class="alert alert-danger w-50 p-3 m-3" role="alert">
+                    Coleta Bloqueada!
+                </div>
+            }
         </div>
     </form>
     @if (TempData.ContainsKey("Mensagem"))

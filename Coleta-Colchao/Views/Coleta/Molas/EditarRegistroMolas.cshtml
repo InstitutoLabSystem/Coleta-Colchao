@@ -115,7 +115,7 @@
                     <table class="tables table-bordered border-secondary  table-sm">
                         <tr>
                             <td> Marca / Modelo</td>
-                            <td colspan="3"> <input class="form-control" type="text" name="marca_modelo" value="@Model[i].marca_modelo"/></td>
+                            <td colspan="3"> <input class="form-control" type="text" name="marca_modelo" value="@Model[i].marca_modelo" /></td>
                         </tr>
                         <tr>
                             <td> Número de processo </td>
@@ -165,11 +165,11 @@
                             <td> Quantidade de Molejo </td>
                             <td colspan="3">
                                 <input class="form-control" name="quant_molejo" id="quant_molejo" value="@Model[i].quant_molejo" readonly />
-                               @*  <select class="form-control" name="quant_molejo">
-                                    <option selected> @Model[i].quant_molejo </option>
-                                    <option value="1"> 1 </option>
-                                    <option value="2"> 2 </option>
-                                </select> *@
+                                @*  <select class="form-control" name="quant_molejo">
+                        <option selected> @Model[i].quant_molejo </option>
+                        <option value="1"> 1 </option>
+                        <option value="2"> 2 </option>
+                        </select> *@
                             </td>
                         </tr>
                         <tr>
@@ -329,14 +329,20 @@
                                 </select>
                             </td>
                         </tr>
-                        <tr>
-                            <td colspan="5">
-                                <button type="submit" class="btn btn-success"> Editar Informações</button>
-                            </td>
-                        </tr>
                     </table>
+                    @if (Model[i].Bloqueada != "Sim")
+                    {
+                        <div class="d-grid gap-2 d-flex justify-content-center">
+                            <button type="submit" class="btn btn-success"> Editar Informações</button>
+                        </div>
+                    }
+                    else
+                    {
+                        <div class="alert alert-danger w-50 p-3 m-3" role="alert">
+                            Coleta Bloqueada!
+                        </div>
+                    }
                 </div>
-
             }
         </form>
     }
@@ -359,7 +365,7 @@
             var trQuantMolas = document.querySelector('.quant_molas');
             var trBitola = document.querySelector('.bitola');
 
-            if (selectedValue == 'Conforto'){
+            if (selectedValue == 'Conforto') {
                 trFornecedor.style.display = 'table-row';
                 trMolejo.style.display = 'table-row';
                 trQuantMolas.style.display = 'table-row';

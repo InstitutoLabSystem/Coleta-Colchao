@@ -24,10 +24,10 @@
 
         .controlador {
             /*  padding: 5px;
-                                            border-color: gray;
-                                            border-radius: 5px;
-                                            box-sizing: border-box;
-                                            height: 500px; */
+                                                    border-color: gray;
+                                                    border-radius: 5px;
+                                                    box-sizing: border-box;
+                                                    height: 500px; */
             width: 100px;
         }
     </style>
@@ -553,9 +553,20 @@
                     </td>
                 </tr>
             </table>
-            <div class="d-grid gap-2 d-flex justify-content-center">
-                <button type="submit" class="btn btn-success btn btn-primary btn-md">Editar Dados</button>
-            </div>
+            @if (ViewBag.bloqueada != "Sim")
+            {
+                <div class="d-grid gap-2 d-flex justify-content-center">
+                    <button type="submit" class="btn btn-success btn btn-primary btn-md">Editar Dados</button>
+                </div>
+            }
+            else
+            {
+                <div class="d-flex justify-content-center">
+                    <div class="alert alert-danger w-50 p-3 m-3 text-center" role="alert">
+                        Coleta Bloqueada!
+                    </div>
+                </div>
+            }
         }
     </form>
 

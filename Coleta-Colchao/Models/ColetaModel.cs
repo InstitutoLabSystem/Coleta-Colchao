@@ -54,6 +54,7 @@ namespace Coleta_Colchao.Models
             public string? napa_cou_plas { get; set; }
             public string? manual { get; set; }
             public string? andamento { get; set; }
+            public string? Bloqueada { get; set; }
 
             // Método de clonagem
             public Registro Clone()
@@ -105,6 +106,7 @@ namespace Coleta_Colchao.Models
             public float altura { get; set; }
             public float largura { get; set; }
             public string? andamento { get; set; }
+            public string? Bloqueada { get; set; }
 
             //função para clonar resultados quando for gerado revisao.
             public RegistroEspuma Clone()
@@ -997,6 +999,7 @@ namespace Coleta_Colchao.Models
             public string? tipo_proc { get; set; }
             public string? produto { get; set; }
             public string? andamento { get; set; }
+            public string? Bloqueada { get; set; }
 
             //função para clonar resultados quando for gerado revisao.
             public RegistroLamina Clone()

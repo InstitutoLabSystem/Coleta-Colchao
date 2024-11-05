@@ -89,6 +89,30 @@
                                     </div>
                                 }
                             }
+                            @if (Model != null)
+                            {
+                                if (ViewBag.bloqueada == "Não" || ViewBag.bloqueada == null)
+                                {
+                                    @if (ViewBag.user == "CASSIO FARIAS" || ViewBag.user == "WESLLEY NUNES" || ViewBag.user == "WESLLEY" || ViewBag.user == "JMOLINA" || ViewBag.user == "FAGUNDESOFF" || ViewBag.user == "DCALDAS" || ViewBag.user == "GABRIELS")
+                                    {
+                                        <div class="input-group-append  col-sm-1 ml-1">
+                                            <button type="button" class="btn btn-info" data-bs-toggle="modal" data-bs-target="#secondModal" id="secondInput">
+                                                Bloquear
+                                            </button>
+                                        </div>
+                                    }
+                                }else
+                                {
+                                    @if (ViewBag.user == "WESLLEY NUNES" || ViewBag.user == "WESLLEY" || ViewBag.user == "JMOLINA" || ViewBag.user == "FAGUNDESOFF" || ViewBag.user == "DCALDAS" || ViewBag.user == "GABRIELS")
+                                    {
+                                        <div class="input-group-append  col-sm-1 ml-1">
+                                            <button type="button" class="btn btn-info" data-bs-toggle="modal" data-bs-target="#secondModal" id="secondInput">
+                                                Desbloquear
+                                            </button>
+                                        </div>
+                                    }
+                                }
+                            }
                         </div>
                     </div>
                 </div>
@@ -270,7 +294,7 @@
                                     @if (Model[i].codigo == "MLJCCH001000001")
                                     {
                                         <td>
-                                            <a role="button" target="_blank" class="btn btn-success" asp-controller="Coleta" asp-action="EnsaioMolas7_7" asp-route-os="@Model[i].OS" asp-route-orcamento="@Model[i].orcamento"asp-route-rev="@ViewBag.PercorrerRegstro[j].rev">Abrir</a>
+                                            <a role="button" target="_blank" class="btn btn-success" asp-controller="Coleta" asp-action="EnsaioMolas7_7" asp-route-os="@Model[i].OS" asp-route-orcamento="@Model[i].orcamento" asp-route-rev="@ViewBag.PercorrerRegstro[j].rev">Abrir</a>
                                         </td>
                                         <td>
                                             <a role="button" target="_blank" class="btn btn-success" asp-controller="Coleta" asp-action="EditarRegistroMolas" asp-route-os="@ViewBag.os" asp-route-orcamento="@ViewBag.orcamento" asp-route-rev="@ViewBag.PercorrerRegstro[j].rev">Informações</a>
@@ -288,7 +312,7 @@
                                     @if (Model[i].codigo == "RLGCCH001000001")
                                     {
                                         <td>
-                                            <a role="button" target="_blank" class="btn btn-success" asp-controller="Coleta" asp-action="EnsaioMolas7_3" asp-route-os="@Model[i].OS" asp-route-orcamento="@Model[i].orcamento"asp-route-rev="@ViewBag.PercorrerRegstro[j].rev">Abrir</a>
+                                            <a role="button" target="_blank" class="btn btn-success" asp-controller="Coleta" asp-action="EnsaioMolas7_3" asp-route-os="@Model[i].OS" asp-route-orcamento="@Model[i].orcamento" asp-route-rev="@ViewBag.PercorrerRegstro[j].rev">Abrir</a>
                                         </td>
                                         <td>
                                             <a role="button" target="_blank" class="btn btn-success" asp-controller="Coleta" asp-action="EditarRegistroMolas" asp-route-os="@ViewBag.os" asp-route-orcamento="@ViewBag.orcamento" asp-route-rev="@ViewBag.PercorrerRegstro[j].rev">Informações</a>
@@ -297,7 +321,7 @@
                                     @if (Model[i].codigo == "CASCCH000000001")
                                     {
                                         <td>
-                                            <a role="button" target="_blank" class="btn btn-success" asp-controller="Coleta" asp-action="Espuma4_4" asp-route-os="@Model[i].OS" asp-route-orcamento="@Model[i].orcamento"asp-route-rev="@ViewBag.PercorrerRegstro[j].rev">Abrir</a>
+                                            <a role="button" target="_blank" class="btn btn-success" asp-controller="Coleta" asp-action="Espuma4_4" asp-route-os="@Model[i].OS" asp-route-orcamento="@Model[i].orcamento" asp-route-rev="@ViewBag.PercorrerRegstro[j].rev">Abrir</a>
                                         </td>
                                         <td>
                                             <a role="button" target="_blank" class="btn btn-success" asp-controller="Coleta" asp-action="EditarIndexEspuma" asp-route-os="@ViewBag.os" asp-route-orcamento="@ViewBag.orcamento" asp-route-rev="@ViewBag.PercorrerRegstro[j].rev">Informações</a>
@@ -335,7 +359,7 @@
                                         else
                                         {
                                             <td>
-                                                <a role="button" target="_blank" class="btn btn-success" asp-controller="Coleta" asp-action="EnsaioImpactoEspuma" asp-route-os="@Model[i].OS" asp-route-orcamento="@Model[i].orcamento"asp-route-rev="@ViewBag.PercorrerRegstro[j].rev">Abrir</a>
+                                                <a role="button" target="_blank" class="btn btn-success" asp-controller="Coleta" asp-action="EnsaioImpactoEspuma" asp-route-os="@Model[i].OS" asp-route-orcamento="@Model[i].orcamento" asp-route-rev="@ViewBag.PercorrerRegstro[j].rev">Abrir</a>
                                             </td>
                                             <td>
                                                 <a role="button" target="_blank" class="btn btn-success" asp-controller="Coleta" asp-action="EditarIndexEspuma" asp-route-os="@ViewBag.os" asp-route-orcamento="@ViewBag.orcamento" asp-route-rev="@ViewBag.PercorrerRegstro[j].rev">Informações</a>
@@ -380,7 +404,7 @@
                                         else
                                         {
                                             <td>
-                                                <a role="button" target="_blank" class="btn btn-success" asp-controller="Coleta" asp-action="EnsaioDurabilidadeEspuma" asp-route-os="@Model[i].OS" asp-route-orcamento="@Model[i].orcamento"asp-route-rev="@ViewBag.PercorrerRegstro[j].rev">Abrir</a>
+                                                <a role="button" target="_blank" class="btn btn-success" asp-controller="Coleta" asp-action="EnsaioDurabilidadeEspuma" asp-route-os="@Model[i].OS" asp-route-orcamento="@Model[i].orcamento" asp-route-rev="@ViewBag.PercorrerRegstro[j].rev">Abrir</a>
                                             </td>
                                             <td>
                                                 <a role="button" target="_blank" class="btn btn-success" asp-controller="Coleta" asp-action="EditarIndexEspuma" asp-route-os="@ViewBag.os" asp-route-orcamento="@ViewBag.orcamento" asp-route-rev="@ViewBag.PercorrerRegstro[j].rev">Informações</a>
@@ -403,7 +427,7 @@
                                         else
                                         {
                                             <td>
-                                                <a role="button" target="_blank" class="btn btn-success" asp-controller="Coleta" asp-action="EnsaioBaseEstruturaDurabi" asp-route-os="@Model[i].OS" asp-route-orcamento="@Model[i].orcamento"asp-route-rev="@ViewBag.PercorrerRegstro[j].rev">Abrir</a>
+                                                <a role="button" target="_blank" class="btn btn-success" asp-controller="Coleta" asp-action="EnsaioBaseEstruturaDurabi" asp-route-os="@Model[i].OS" asp-route-orcamento="@Model[i].orcamento" asp-route-rev="@ViewBag.PercorrerRegstro[j].rev">Abrir</a>
                                             </td>
                                             <td>
                                                 <a role="button" target="_blank" class="btn btn-success" asp-controller="Coleta" asp-action="EditarRegistroMolas" asp-route-os="@ViewBag.os" asp-route-orcamento="@ViewBag.orcamento" asp-route-rev="@ViewBag.PercorrerRegstro[j].rev">Informações</a>
@@ -416,16 +440,16 @@
                                         @if (ViewBag.ensaio == "Molas")
                                         {
                                             <td>
-                                                <a role="button" target="_blank" class="btn btn-success" asp-controller="Coleta" asp-action="EnsaioDurabilidade" asp-route-os="@Model[i].OS" asp-route-orcamento="@Model[i].orcamento"asp-route-rev="@ViewBag.PercorrerRegstro[j].rev">Abrir</a>
+                                                <a role="button" target="_blank" class="btn btn-success" asp-controller="Coleta" asp-action="EnsaioDurabilidade" asp-route-os="@Model[i].OS" asp-route-orcamento="@Model[i].orcamento" asp-route-rev="@ViewBag.PercorrerRegstro[j].rev">Abrir</a>
                                             </td>
                                             <td>
-                                                <a role="button" target="_blank" class="btn btn-success" asp-controller="Coleta" asp-action="EditarRegistroMolas" asp-route-os="@ViewBag.os" asp-route-orcamento="@ViewBag.orcamento"asp-route-rev="@ViewBag.PercorrerRegstro[j].rev">Informações</a>
+                                                <a role="button" target="_blank" class="btn btn-success" asp-controller="Coleta" asp-action="EditarRegistroMolas" asp-route-os="@ViewBag.os" asp-route-orcamento="@ViewBag.orcamento" asp-route-rev="@ViewBag.PercorrerRegstro[j].rev">Informações</a>
                                             </td>
                                         }
                                         else if (ViewBag.ensaio == "Laminas")
                                         {
                                             <td>
-                                                <a role="button" target="_blank" class="btn btn-success" asp-controller="Coleta" asp-action="LaminaDeterminacaoDensidade" asp-route-os="@ViewBag.os" asp-route-orcamento="@ViewBag.orcamento"asp-route-rev="@ViewBag.PercorrerRegstro[j].rev">Abrir</a>
+                                                <a role="button" target="_blank" class="btn btn-success" asp-controller="Coleta" asp-action="LaminaDeterminacaoDensidade" asp-route-os="@ViewBag.os" asp-route-orcamento="@ViewBag.orcamento" asp-route-rev="@ViewBag.PercorrerRegstro[j].rev">Abrir</a>
                                             </td>
                                             <td>
                                                 <a role="button" target="_blank" class="btn btn-success" asp-controller="Coleta" asp-action="EditarLamina" asp-route-os="@ViewBag.os" asp-route-orcamento="@ViewBag.orcamento" asp-route-rev="@ViewBag.PercorrerRegstro[j].rev">Informações</a>
@@ -437,7 +461,7 @@
                                     @if (Model[i].codigo == "DPCCCH002000001")
                                     {
                                         <td>
-                                            <a role="button" target="_blank" class="btn btn-success" asp-controller="Coleta" asp-action="LaminaDPC" asp-route-os="@ViewBag.os" asp-route-orcamento="@ViewBag.orcamento"asp-route-rev="@ViewBag.PercorrerRegstro[j].rev">Abrir</a>
+                                            <a role="button" target="_blank" class="btn btn-success" asp-controller="Coleta" asp-action="LaminaDPC" asp-route-os="@ViewBag.os" asp-route-orcamento="@ViewBag.orcamento" asp-route-rev="@ViewBag.PercorrerRegstro[j].rev">Abrir</a>
                                         </td>
                                         <td>
                                             <a role="button" target="_blank" class="btn btn-success" asp-controller="Coleta" asp-action="EditarLamina" asp-route-os="@ViewBag.os" asp-route-orcamento="@ViewBag.orcamento" asp-route-rev="@ViewBag.PercorrerRegstro[j].rev">Informações</a>
@@ -450,7 +474,7 @@
                                         @if (Model[i].codigo == "QUICCH002000001")
                                         {
                                             <td>
-                                                <a role="button" target="_blank" class="btn btn-success" asp-controller="Coleta" asp-action="LaminaPFI" asp-route-os="@ViewBag.os" asp-route-orcamento="@ViewBag.orcamento"asp-route-rev="@ViewBag.PercorrerRegstro[j].rev">Abrir</a>
+                                                <a role="button" target="_blank" class="btn btn-success" asp-controller="Coleta" asp-action="LaminaPFI" asp-route-os="@ViewBag.os" asp-route-orcamento="@ViewBag.orcamento" asp-route-rev="@ViewBag.PercorrerRegstro[j].rev">Abrir</a>
                                             </td>
                                             <td>
                                                 <a role="button" target="_blank" class="btn btn-success" asp-controller="Coleta" asp-action="EditarLamina" asp-route-os="@ViewBag.os" asp-route-orcamento="@ViewBag.orcamento" asp-route-rev="@ViewBag.PercorrerRegstro[j].rev">Informações</a>
@@ -474,7 +498,7 @@
                                     @if (Model[i].codigo == "FDGCCH002000001")
                                     {
                                         <td>
-                                            <a role="button" target="_blank" class="btn btn-success" asp-controller="Coleta" asp-action="LaminaFadiga" asp-route-os="@ViewBag.os" asp-route-orcamento="@ViewBag.orcamento"asp-route-rev="@ViewBag.PercorrerRegstro[j].rev">Abrir</a>
+                                            <a role="button" target="_blank" class="btn btn-success" asp-controller="Coleta" asp-action="LaminaFadiga" asp-route-os="@ViewBag.os" asp-route-orcamento="@ViewBag.orcamento" asp-route-rev="@ViewBag.PercorrerRegstro[j].rev">Abrir</a>
                                         </td>
                                         <td>
                                             <a role="button" target="_blank" class="btn btn-success" asp-controller="Coleta" asp-action="EditarLamina" asp-route-os="@ViewBag.os" asp-route-orcamento="@ViewBag.orcamento" asp-route-rev="@ViewBag.PercorrerRegstro[j].rev">Informações</a>
@@ -603,6 +627,53 @@
                 </div>
             </div>
 
+            <!-- Segundo Modal -->
+            <div class="modal fade" id="secondModal" tabindex="-1" aria-labelledby="secondModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <form id="bloqueioForm" method="post" action="@Url.Action("BloquearColeta", "Home")">
+                            <div class="modal-header">
+                                <h1 class="modal-title fs-5" id="secondModalLabel">Bloquar Coleta</h1>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                <!-- Campos do segundo formulário -->
+                                <div class="mb-3">
+                                    <label for="campo1" class="col-form-label">Os</label>
+                                    <input type="text" class="form-control" id="campo1" name="os" value="@ViewBag.os" readonly>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="campo2" class="col-form-label">Orçamento</label>
+                                    <input type="text" class="form-control" id="campo1" name="orcamento"  value="@ViewBag.orcamento" readonly>
+                                </div>
+                                @if (ViewBag.user == "WESLLEY NUNES" || ViewBag.user == "WESLLEY" || ViewBag.user == "JMOLINA" || ViewBag.user == "FAGUNDESOFF" || ViewBag.user == "DCALDAS" || ViewBag.user == "GABRIELS")
+                                {
+                                    @if (ViewBag.bloqueada == "Sim")
+                                    {
+                                        <div class="mb-3">
+                                            <label for="campo2" class="col-form-label">motivo</label>
+                                            <input type="text" class="form-control" id="campo1" name="motivo">
+                                        </div>
+                                    }
+                                }
+                                <div class="mb-3">
+                                    <input type="hidden" class="form-control" id="ensaio" name="ensaio" value="@ViewBag.ensaio" readonly>
+                                </div>
+
+                                
+                                <!-- Adicione mais campos conforme necessário -->
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button"  id="fecharBloqueio" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
+                                <button type="submit" id="salvarBloqueio" class="btn btn-primary" onclick="myFunctionBloquear(event)">Salvar</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+
+
         }
     </div>
     <script>
@@ -613,6 +684,16 @@
             myInput.focus()
         })
 
+        // Segundo Modal
+        const secondModal = document.getElementById('secondModal');
+        const secondInput = document.getElementById('secondInput');
+
+        secondModal.addEventListener('shown.bs.modal', () => {
+
+            secondInput.focus();
+
+        })
+
         function myFunction(event) {
             event.preventDefault();
 
@@ -620,6 +701,16 @@
                 document.getElementById("salvarRevisao").disabled = true;
                 document.getElementById("fecharRevisao").disabled = true;
                 document.getElementById("revisaoForm").submit();
+            }
+        }
+
+         function myFunctionBloquear(event) {
+            event.preventDefault();
+
+            if (confirm("Você tem certeza que deseja bloquear Coleta?")) {
+                document.getElementById("fecharBloqueio").disabled = true;
+                document.getElementById("salvarBloqueio").disabled = true;
+                document.getElementById("bloqueioForm").submit();
             }
         }
     </script>

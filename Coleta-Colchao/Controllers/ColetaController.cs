@@ -128,6 +128,7 @@ namespace Coleta_Colchao.Controllers
                 ViewBag.quantidadeLaminas = RegistroEspuma.quant_laminas;
                 ViewBag.tipoColchao = RegistroEspuma.tipo_colchao;
                 ViewBag.revestimento = RegistroEspuma.revestimento;
+                ViewBag.bloqueada = RegistroEspuma.Bloqueada;
                 return View("Espuma/EnsaioEspuma4_1", dados);
             }
             else
@@ -144,6 +145,7 @@ namespace Coleta_Colchao.Controllers
 
         public IActionResult Espuma4_4(string os, string orcamento, int rev)
         {
+            var inicial = _context.regtro_colchao_espuma.Where(x => x.os == os && x.orcamento == orcamento && x.rev == rev).FirstOrDefault();
             var dados = _context.ensaio_espuma_item_4_4.Where(x => x.os == os && x.orcamento == orcamento && x.rev == rev).FirstOrDefault();
             if (dados == null)
             {
@@ -158,6 +160,7 @@ namespace Coleta_Colchao.Controllers
                 ViewBag.os = os;
                 ViewBag.orcamento = orcamento;
                 ViewBag.rev = rev;
+                ViewBag.bloqueada = inicial.Bloqueada;
                 return View("Espuma/Espuma4_4", dados);
             }
         }
@@ -176,6 +179,7 @@ namespace Coleta_Colchao.Controllers
                 ViewBag.infantil = Inicial.tipo_colchao;
                 ViewBag.infantil2 = Inicial.uso;
                 ViewBag.quant_laminas = Inicial.quant_laminas;
+                ViewBag.bloqueada = Inicial.Bloqueada;
                 return View("Espuma/EnsaioEspuma4_3", dados);
             }
             else
@@ -210,6 +214,7 @@ namespace Coleta_Colchao.Controllers
                 ViewBag.antiReflexo = visualizarDados.anti_reflexo;
                 ViewBag.tipoColchao = visualizarDados.tipo_colchao;
                 ViewBag.tipLamina = EnsaioEspuma4_1.lamina_um;
+                ViewBag.bloqueada = visualizarDados.Bloqueada;
                 return View("Espuma/IdentificacaoEmbalagem", dados);
             }
             else
@@ -265,6 +270,7 @@ namespace Coleta_Colchao.Controllers
 
         public IActionResult EnsaioDurabilidade(string os, string orcamento, int rev)
         {
+            var inicio = _context.regtro_colchao.Where(x => x.os == os && x.orcamento == orcamento && x.rev == rev).FirstOrDefault();
             var dados = _context.ensaio_base_durabilidade.Where(x => x.os == os && x.orcamento == orcamento && x.rev == rev).FirstOrDefault();
             var trazerEnsaio7_2 = _context.ensaio_molas_item7_2.Where(x => x.os == os && x.orcamento == orcamento && x.rev == rev).FirstOrDefault();
 
@@ -284,6 +290,7 @@ namespace Coleta_Colchao.Controllers
                 ViewBag.os = os;
                 ViewBag.orcamento = orcamento;
                 ViewBag.rev = rev;
+                ViewBag.bloqueada = inicio.Bloqueada;
                 ViewBag.ensaio = "Molas";
                 return View(dados);
             }
@@ -304,6 +311,7 @@ namespace Coleta_Colchao.Controllers
         }
         public IActionResult EnsaioDurabilidadeEspuma(string os, string orcamento, int rev)
         {
+            var inicial = _context.regtro_colchao_espuma.Where(x => x.os == os && x.orcamento == orcamento && x.rev == rev).FirstOrDefault();
             var dados = _context.ensaio_base_durabilidade.Where(x => x.os == os && x.orcamento == orcamento && x.rev == rev).FirstOrDefault();
             var buscarInformacao = _context.ensaio_espuma4_1.Where(x => x.os == os && x.orcamento == orcamento && x.rev == rev).FirstOrDefault();
 
@@ -313,6 +321,7 @@ namespace Coleta_Colchao.Controllers
                 ViewBag.orcamento = orcamento;
                 ViewBag.ensaio = "Espuma";
                 ViewBag.rev = rev;
+                ViewBag.bloqueada = inicial.Bloqueada;
                 return View(dados);
             }
             else
@@ -329,7 +338,9 @@ namespace Coleta_Colchao.Controllers
 
         public IActionResult EnsaioImpacto(string os, string orcamento, int rev)
         {
+
             var dados = _context.ensaio_base_impacto_vertical.Where(x => x.os == os && x.orcamento == orcamento && x.rev == rev).FirstOrDefault();
+            var inicial = _context.regtro_colchao_espuma.Where(x => x.os == os && x.orcamento == orcamento && x.rev == rev).FirstOrDefault();
 
             //buscar valor preenchido no ensaio.
             var buscarEnsaio7_2 = _context.ensaio_molas_item7_2.Where(x => x.os == os && x.orcamento == orcamento && x.rev == rev).FirstOrDefault();
@@ -347,12 +358,13 @@ namespace Coleta_Colchao.Controllers
                 ViewBag.os = os;
                 ViewBag.orcamento = orcamento;
                 ViewBag.rev = rev;
-
+                ViewBag.bloqueada = inicial.Bloqueada;
                 return View(dados);
             }
         }
         public IActionResult EnsaioImpactoEspuma(string os, string orcamento, int rev)
         {
+            var inicial = _context.regtro_colchao_espuma.Where(x => x.os == os && x.orcamento == orcamento && x.rev == rev).FirstOrDefault();
             var dados = _context.ensaio_base_impacto_vertical.Where(x => x.os == os && x.orcamento == orcamento && x.rev == rev).FirstOrDefault();
             var buscarInformacao = _context.ensaio_espuma4_1.Where(x => x.os == os && x.orcamento == orcamento && x.rev == rev).FirstOrDefault();
 
@@ -363,6 +375,7 @@ namespace Coleta_Colchao.Controllers
                 ViewBag.rev = rev;
                 ViewBag.comprimento = buscarInformacao.comprimento_esp * 10;
                 ViewBag.largura = buscarInformacao.largura_esp * 10;
+                
                 return View();
             }
             else
@@ -370,6 +383,7 @@ namespace Coleta_Colchao.Controllers
                 ViewBag.os = os;
                 ViewBag.orcamento = orcamento;
                 ViewBag.rev = rev;
+                ViewBag.bloqueada = inicial.Bloqueada;
                 return View(dados);
             }
         }
@@ -400,6 +414,7 @@ namespace Coleta_Colchao.Controllers
                 ViewBag.os = os;
                 ViewBag.orcamento = orcamento;
                 ViewBag.rev = rev;
+                ViewBag.bloqueada = inicial.Bloqueada;
                 return View("Molas/EnsaioMolas7_1", dados);
             }
 
@@ -430,12 +445,14 @@ namespace Coleta_Colchao.Controllers
                 ViewBag.os = os;
                 ViewBag.orcamento = orcamento;
                 ViewBag.rev = rev;
+                ViewBag.bloqueada = inicial.Bloqueada;
                 return View("Molas/EnsaioMolas7_2", dados);
             }
 
         }
         public IActionResult EnsaioMolas7_6(string os, string orcamento, int rev)
         {
+            var inicial = _context.regtro_colchao.Where(x => x.os == os && x.orcamento == orcamento && x.rev == rev).FirstOrDefault();
             var trazerAltura = _context.ensaio_molas_item7_2.Where(x => x.os == os && x.orcamento == orcamento && x.rev == rev).FirstOrDefault();
             var dados = _context.ensaio_molas_item7_6.Where(x => x.os == os && x.orcamento == orcamento && x.rev == rev).FirstOrDefault();
             if (dados == null)
@@ -451,6 +468,7 @@ namespace Coleta_Colchao.Controllers
                 ViewBag.os = os;
                 ViewBag.orcamento = orcamento;
                 ViewBag.rev = rev;
+                ViewBag.bloqueada = inicial.Bloqueada;
                 return View("Molas/EnsaioMolas7_6", dados);
             }
         }
@@ -480,6 +498,7 @@ namespace Coleta_Colchao.Controllers
                 ViewBag.os = os;
                 ViewBag.orcamento = orcamento;
                 ViewBag.rev = rev;
+                ViewBag.bloqueada = inicial.Bloqueada;
                 return View("Molas/EnsaioMolas7_3", dados);
             }
         }
@@ -495,6 +514,7 @@ namespace Coleta_Colchao.Controllers
                 ViewBag.os = os;
                 ViewBag.orcamento = orcamento;
                 ViewBag.rev = rev;
+               
                 return View("Molas/EnsaioMolas7_7");
             }
             else
@@ -506,11 +526,13 @@ namespace Coleta_Colchao.Controllers
                 ViewBag.rev = rev;
                 ViewBag.os = os;
                 ViewBag.orcamento = orcamento;
+                ViewBag.bloqueada = trazerEnsaio.Bloqueada;
                 return View("Molas/EnsaioMolas7_7", dados);
             }
         }
         public IActionResult EnsaioMolas7_5(string os, string orcamento, int rev)
         {
+            var inicial = _context.regtro_colchao.Where(x => x.os == os && x.orcamento == orcamento && x.rev == rev).FirstOrDefault();
             var dados = _context.ensaio_molas_item7_5.Where(x => x.os == os && x.orcamento == orcamento && x.rev == rev).FirstOrDefault();
             if (dados == null)
             {
@@ -524,11 +546,13 @@ namespace Coleta_Colchao.Controllers
                 ViewBag.os = os;
                 ViewBag.orcamento = orcamento;
                 ViewBag.rev = rev;
+                ViewBag.bloqueada = inicial.Bloqueada;
                 return View("Molas/EnsaioMolas7_5", dados);
             }
         }
         public IActionResult EnsaioMolas7_8(string os, string orcamento, int rev)
         {
+            var inicial = _context.regtro_colchao.Where(x => x.os == os && x.orcamento == orcamento && x.rev == rev).FirstOrDefault();
             var dados = _context.ensaio_molas_item7_8.Where(x => x.os == os && x.orcamento == orcamento && x.rev == rev).FirstOrDefault();
             if (dados == null)
             {
@@ -542,6 +566,7 @@ namespace Coleta_Colchao.Controllers
                 ViewBag.os = os;
                 ViewBag.orcamento = orcamento;
                 ViewBag.rev = rev;
+                ViewBag.bloqueada = inicial.Bloqueada;
                 return View("Molas/EnsaioMolas7_8", dados);
             }
         }
@@ -564,6 +589,7 @@ namespace Coleta_Colchao.Controllers
                 ViewBag.orcamento = orcamento;
                 ViewBag.rev = rev;
                 ViewBag.ExisteBorda = ExisteBorda.borda_peri;
+                ViewBag.bloqueada = ExisteBorda.Bloqueada;
                 return View("Molas/EnsaioMolas4_3", dados);
             }
 
@@ -597,6 +623,7 @@ namespace Coleta_Colchao.Controllers
                 ViewBag.os = os;
                 ViewBag.orcamento = orcamento;
                 ViewBag.rev = rev;
+                ViewBag.bloqueada = trazerDadosSalvos.Bloqueada;
                 return View("Molas/IdentificacaoEmbalagemMolas", dados);
             }
         }
@@ -607,6 +634,7 @@ namespace Coleta_Colchao.Controllers
 
         public IActionResult LaminaDeterminacaoDensidade(string os, string orcamento, int rev)
         {
+            var inicial = _context.regtro_colchao_lamina.Where(x => x.os == os && x.orcamento == orcamento && x.rev == rev).FirstOrDefault();
             var dados = _context.lamina_determinacao_densidade.Where(x => x.os == os && x.orcamento == orcamento && x.rev == rev).FirstOrDefault();
             if (dados == null)
             {
@@ -620,6 +648,7 @@ namespace Coleta_Colchao.Controllers
                 ViewBag.os = os;
                 ViewBag.orcamento = orcamento;
                 ViewBag.rev = rev;
+                ViewBag.bloqueada = inicial.Bloqueada;
                 return View("Laminas/LaminaDeterminacaoDensidade", dados);
             }
 
@@ -627,6 +656,7 @@ namespace Coleta_Colchao.Controllers
 
         public IActionResult LamindaDeterminacaoResiliencia(string os, string orcamento, int rev)
         {
+            var inicial = _context.regtro_colchao_lamina.Where(x => x.os == os && x.orcamento == orcamento && x.rev == rev).FirstOrDefault();
             var dados = _context.lamina_resiliencia.Where(x => x.os == os && x.orcamento == orcamento && x.rev == rev).FirstOrDefault();
             var Regstro_lamina = _context.regtro_colchao_lamina.Where(x => x.os == os && x.orcamento == orcamento && x.rev == rev).FirstOrDefault();
 
@@ -644,12 +674,14 @@ namespace Coleta_Colchao.Controllers
                 ViewBag.orcamento = orcamento;
                 ViewBag.rev = rev;
                 ViewBag.portaria = Regstro_lamina.portaria;
+                ViewBag.bloqueada = inicial.Bloqueada;
                 return View("Laminas/LamindaDeterminacaoResiliencia", dados);
             }
 
         }
         public IActionResult LaminaDPC(string os, string orcamento, int rev)
         {
+            var inicial = _context.regtro_colchao_lamina.Where(x => x.os == os && x.orcamento == orcamento && x.rev == rev).FirstOrDefault();
             var DadosDensidade = _context.lamina_determinacao_densidade.Where(x => x.os == os && x.orcamento == orcamento && x.rev == rev).FirstOrDefault();
 
             if (DadosDensidade == null)
@@ -702,12 +734,14 @@ namespace Coleta_Colchao.Controllers
                 ViewBag.os = os;
                 ViewBag.orcamento = orcamento;
                 ViewBag.rev = rev;
+                ViewBag.bloqueada = inicial.Bloqueada;
                 return View("Laminas/LaminaDPC", dados);
             }
         }
 
         public IActionResult LaminaFadiga(string os, string orcamento, int rev)
         {
+            var inicial = _context.regtro_colchao_lamina.Where(x => x.os == os && x.orcamento == orcamento && x.rev == rev).FirstOrDefault();
             var dados = _context.lamina_fadiga_dinamica.Where(x => x.os == os && x.orcamento == orcamento && x.rev == rev).FirstOrDefault();
 
             //buscar resultados para inserir na tabela do ensaio atraves da view bag.
@@ -779,12 +813,14 @@ namespace Coleta_Colchao.Controllers
                 ViewBag.os = os;
                 ViewBag.orcamento = orcamento;
                 ViewBag.rev = rev;
+                ViewBag.bloqueada = inicial.Bloqueada;
                 return View("Laminas/LaminaFadiga", dados);
             }
 
         }
         public IActionResult LaminaPFI(string os, string orcamento)
         {
+            var inicial = _context.regtro_colchao_lamina.Where(x => x.os == os && x.orcamento == orcamento).FirstOrDefault();
             var buscarFi = _context.lamina_fi.Where(x => x.os == os && x.orcamento == orcamento).FirstOrDefault();
             var buscarFadiga = _context.lamina_fadiga_dinamica.Where(x => x.os == os && x.orcamento == orcamento).FirstOrDefault();
             if (buscarFi == null)
@@ -846,12 +882,14 @@ namespace Coleta_Colchao.Controllers
             {
                 ViewBag.os = os;
                 ViewBag.orcamento = orcamento;
+                ViewBag.bloqueada = inicial.Bloqueada;
                 return View("Laminas/LaminaPFI", dados);
             }
 
         }
         public IActionResult LaminaF_I(string os, string orcamento, int rev)
         {
+            var inicial = _context.regtro_colchao_lamina.Where(x => x.os == os && x.orcamento == orcamento && x.rev == rev).FirstOrDefault();
             var dados = _context.lamina_fi.Where(x => x.os == os && x.orcamento == orcamento && x.rev == rev).FirstOrDefault();
             if (dados == null)
             {
@@ -865,6 +903,7 @@ namespace Coleta_Colchao.Controllers
                 ViewBag.os = os;
                 ViewBag.orcamento = orcamento;
                 ViewBag.rev = rev;
+                ViewBag.bloqueada = inicial.Bloqueada;
                 return View("Laminas/LaminaF_I", dados);
             }
         }
