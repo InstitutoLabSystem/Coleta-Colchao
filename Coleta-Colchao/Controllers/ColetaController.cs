@@ -6713,6 +6713,7 @@ namespace Coleta_Colchao.Controllers
                     float reducao = salvarDados.reducao_porc;
                     float reducao_mm = ((media_espessura_total * reducao) / 100);
                     editarDados.reducao_mm = float.Parse(reducao_mm.ToString("N2"));
+                    editarDados.reducao_porc = reducao;
 
                     //recebendo os dados de esp final..
                     editarDados.esp_fin_amostra_um_um = salvarDados.esp_fin_amostra_um_um;
