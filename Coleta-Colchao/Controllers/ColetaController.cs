@@ -1155,6 +1155,7 @@ namespace Coleta_Colchao.Controllers
                     editarDados.num_proc = salvarDados.num_proc;
                     editarDados.cod_ref = salvarDados.cod_ref;
                     editarDados.tipo_cert = salvarDados.tipo_cert;
+                    editarDados.tipo_proc = salvarDados.tipo_proc;
                     editarDados.modelo_cert = salvarDados.modelo_cert;
                     editarDados.marca_modelo = salvarDados.marca_modelo;
                     editarDados.produto = salvarDados.produto;
