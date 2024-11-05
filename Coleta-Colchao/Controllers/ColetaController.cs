@@ -608,6 +608,7 @@ namespace Coleta_Colchao.Controllers
                 ViewBag.latex = trazerDadosSalvos.latex;
                 ViewBag.napa = trazerDadosSalvos.napa_cou_plas;
                 ViewBag.manual = trazerDadosSalvos.manual;
+                ViewBag.estrutura = trazerDadosSalvos.estrutura;
 
                 ViewBag.os = os;
                 ViewBag.orcamento = orcamento;
@@ -619,7 +620,7 @@ namespace Coleta_Colchao.Controllers
                 ViewBag.latex = trazerDadosSalvos.latex;
                 ViewBag.napa = trazerDadosSalvos.napa_cou_plas;
                 ViewBag.manual = trazerDadosSalvos.manual;
-
+                ViewBag.estrutura = trazerDadosSalvos.estrutura;
                 ViewBag.os = os;
                 ViewBag.orcamento = orcamento;
                 ViewBag.rev = rev;

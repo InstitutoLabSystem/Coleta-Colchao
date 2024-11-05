@@ -242,8 +242,10 @@
                         </select>
                     </td>
                 </tr>
-                <tr>
-                    <td class="esquerda">
+                @if (ViewBag.estrutura != "Simples")
+                {
+                    <tr>
+                        <td class="esquerda">
                         e) Para colchões de molas conjugados, deve ser informada a altura do produto sem os pés e a altura dos pés isoladamente.
                     </td>
                     <td>
@@ -255,6 +257,7 @@
                         </select>
                     </td>
                 </tr>
+                }
                 <tr>
                     <td class="esquerda">
                         f) Composição qualitativa dos componentes internos do produto :
@@ -879,8 +882,10 @@
                         </select>
                     </td>
                 </tr>
-                <tr>
-                    <td class="esquerda">
+                @if (ViewBag.estrutura != "Simples")
+                {
+                    <tr>
+                        <td class="esquerda">
                         e) Para colchões de molas conjugados, deve ser informada a altura do produto sem os pés e a altura dos pés isoladamente.
                     </td>
                     <td>
@@ -893,6 +898,7 @@
                         </select>
                     </td>
                 </tr>
+                }
                 <tr>
                     <td class="esquerda">
                         f) Composição qualitativa dos componentes internos do produto :
