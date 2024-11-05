@@ -419,7 +419,7 @@ namespace Coleta_Colchao.Models
             public string orcamento { get; set; }
             public int rev { get; set; }
 
-            public string tipo_material { get; set; }
+            public string? tipo_material { get; set; }
             public DateOnly data_ini { get; set; }
             public DateOnly data_term { get; set; }
             public float copos_prov_1 { get; set; }
