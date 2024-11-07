@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Coleta-Colchao")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+ebe27a6b55ec71b65b2dc3c2b90ce4058d933b10")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+faa81927a5ea7ad68d29c1f7a37ba2f4b80c455b")]
 [assembly: System.Reflection.AssemblyProductAttribute("Coleta-Colchao")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Coleta-Colchao")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
