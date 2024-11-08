@@ -1,9 +1,11 @@
 ﻿using Coleta_Colchao.Data;
 using Coleta_Colchao.Models;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.CodeAnalysis.CSharp.Syntax;
 using Microsoft.CodeAnalysis.Elfie.Serialization;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using Microsoft.EntityFrameworkCore.Migrations.Operations;
 using Microsoft.EntityFrameworkCore.Storage;
@@ -20,6 +22,7 @@ using System.Reflection.Metadata.Ecma335;
 using System.Runtime.CompilerServices;
 using System.Security.Claims;
 using System.Security.Cryptography.X509Certificates;
+using System.Security.Policy;
 using static Coleta_Colchao.Models.ColetaModel;
 using static Microsoft.EntityFrameworkCore.DbLoggerCategory;
 
@@ -1180,6 +1183,7 @@ namespace Coleta_Colchao.Controllers
                     editarDados.revestimento = salvarDados.revestimento;
                     editarDados.obs_revestimento = salvarDados.obs_revestimento;
                     editarDados.outros_materia = salvarDados.outros_materia;
+                    editarDados.desc_outros_materia = salvarDados.desc_outros_materia;
                     editarDados.anti_reflexo = salvarDados.anti_reflexo;
 
                     _context.regtro_colchao_espuma.Update(editarDados);
@@ -8766,6 +8770,27 @@ namespace Coleta_Colchao.Controllers
         {
             try
             {
+                //deletar arquivo do ftp caso usuario subir novas fotos.
+                var buscarOs = _context.colchao_anexos.Where(x => x.rae == Int32.Parse(os) && x.orcamento == orcamento).ToList();
+                if(buscarOs.Count != 0)
+                {
+                    for(int i = 0; i< buscarOs.Count; i++)
+                    {
+                        string newUrl = "ftp://labsystem-nuvem.com.br/imagens_arq/imagens/relatorios/colchao/" + os + '-' + i + buscarOs[i].imageID;
+
+                        FtpWebRequest request = (FtpWebRequest)WebRequest.Create(newUrl);
+                        request.Credentials = new NetworkCredential("u838556479.admin", "@7847Awse");
+                        request.Method = WebRequestMethods.Ftp.DeleteFile;
+
+
+                        FtpWebResponse responseFileDelete = (FtpWebResponse)request.GetResponse();
+
+                        _context.colchao_anexos.Remove(buscarOs[i]);
+                    }
+                    await _context.SaveChangesAsync();
+                }
+                //fim de deletar imagem no ftp e no banco de dados.
+
                 for (int i = 0; i < arquivo.Count; i++)
                 {
                     //pegando os dados do arquivo para salvar.
@@ -8792,7 +8817,9 @@ namespace Coleta_Colchao.Controllers
                         titulo = titulo[i],
                         layout = layout[i],
                         juntar = juntar[i],
-                        img = newUrl
+                        img = newUrl,
+                        imageID = tipoArquivo,
+                        ativo = 1
                     };
                     _context.colchao_anexos.Add(dados);
                 }

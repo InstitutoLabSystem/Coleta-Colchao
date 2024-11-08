@@ -102,6 +102,7 @@ namespace Coleta_Colchao.Models
             public string? obs_revestimento { get; set; }
             public string? anti_reflexo { get; set; }
             public string? outros_materia { get; set; }
+            public string? desc_outros_materia { get; set; }
             public float comprimento { get; set; }
             public float altura { get; set; }
             public float largura { get; set; }

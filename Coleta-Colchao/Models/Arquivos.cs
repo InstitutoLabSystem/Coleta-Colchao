@@ -15,6 +15,8 @@ namespace Coleta_Colchao.Models
             public string? layout { get; set; }
             public int? juntar { get; set; }
             public string? img { get; set; }
+            public string? imageID { get; set; }
+            public int ativo { get; set; }
         }
     }
 }
