@@ -2362,6 +2362,7 @@ namespace Coleta_Colchao.Controllers
                     //realizando calculo do lamina um
                     esp_lamina_um = altura_media;
                     esp_especificado_um = float.Parse(Math.Round(esp_lamina_um / 3, 2).ToString("N2"));
+                                        editarDados.reves_especificado_um = float.Parse(Math.Round(editarDados.reves_lamina_um / 3, 2).ToString("N2"));
 
                     string esp_tipo_dois = salvar.esp_tipo_dois;
 
@@ -2388,6 +2389,8 @@ namespace Coleta_Colchao.Controllers
                     string reves_tipo_um = salvar.reves_tipo_um;
                     float reves_lamina_um = salvar.reves_lamina_um;
                     float reves_especificado_um = salvar.reves_especificado_um;
+                    reves_especificado_um = float.Parse(Math.Round(reves_lamina_um / 3, 2).ToString("N2"));
+
                     float reves_mm_um = salvar.reves_mm_um;
 
                     float reves_cm_um = reves_mm_um / 10;
@@ -2395,6 +2398,8 @@ namespace Coleta_Colchao.Controllers
                     string reves_tipo_dois = salvar.reves_tipo_dois;
 
                     float reves_lamina_dois = salvar.reves_lamina_dois;
+                    reves_lamina_dois = float.Parse(Math.Round(reves_lamina_dois / 3, 2).ToString("N2"));
+
                     float reves_especificado_dois = salvar.reves_especificado_dois;
                     float reves_mm_dois = salvar.reves_mm_dois;
 
@@ -2852,14 +2857,15 @@ namespace Coleta_Colchao.Controllers
                     editarDados.col_resul_dois = salvar.col_resul_dois;
                     editarDados.reves_tipo_um = salvar.reves_tipo_um;
                     editarDados.reves_lamina_um = salvar.reves_lamina_um;
-                    editarDados.reves_especificado_um = salvar.reves_especificado_um;
+                    editarDados.reves_especificado_um = float.Parse(Math.Round(editarDados.reves_lamina_um / 3, 2).ToString("N2"));
                     editarDados.reves_mm_um = salvar.reves_mm_um;
 
                     editarDados.reves_cm_um = float.Parse((editarDados.reves_mm_um / 10).ToString("N2"));
 
                     editarDados.reves_tipo_dois = salvar.reves_tipo_dois;
                     editarDados.reves_lamina_dois = salvar.reves_lamina_dois;
-                    editarDados.reves_especificado_dois = salvar.reves_especificado_dois;
+                    editarDados.reves_especificado_dois = float.Parse(Math.Round(editarDados.reves_lamina_dois / 3, 2).ToString("N2"));
+
                     editarDados.reves_mm_dois = salvar.reves_mm_dois;
 
 
