@@ -2362,7 +2362,6 @@ namespace Coleta_Colchao.Controllers
                     //realizando calculo do lamina um
                     esp_lamina_um = altura_media;
                     esp_especificado_um = float.Parse(Math.Round(esp_lamina_um / 3, 2).ToString("N2"));
-                                        editarDados.reves_especificado_um = float.Parse(Math.Round(editarDados.reves_lamina_um / 3, 2).ToString("N2"));
 
                     string esp_tipo_dois = salvar.esp_tipo_dois;
 
