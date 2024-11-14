@@ -31,6 +31,17 @@ namespace Coleta_Colchao.Models
             public string? modelo_cert { get; set; }
             public string? tipo_proc { get; set; }
             public string? marca_modelo { get; set; }
+            public int quant_laminas { get; set; }
+            public string? densidade { get; set; }
+            public string? densidade_2 { get; set; }
+            public string? densidade_3 { get; set; }
+            public string? densidade_4 { get; set; }
+            public string? densidade_5 { get; set; }
+            public string? tipo_espuma { get; set; }
+            public string? tipo_espuma_2 { get; set; }
+            public string? tipo_espuma_3 { get; set; }
+            public string? tipo_espuma_4 { get; set; }
+            public string? tipo_espuma_5 { get; set; }
             public string? produto { get; set; }
             public string? estrutura { get; set; }
             public string? tipo_molejo { get; set; }

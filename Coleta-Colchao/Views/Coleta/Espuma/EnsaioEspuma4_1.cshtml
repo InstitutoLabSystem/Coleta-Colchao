@@ -1551,7 +1551,7 @@
                             </tr>
                         </table>
                         <br />
-                        @if (ViewBag.tipoColchao == "Colchão De Espuma" || ViewBag.tipoColchao == "Colchão Misto")
+                        @if (ViewBag.tipoColchao == "Colchão De Espuma" || ViewBag.tipoColchao == "Colchão Misto" ViewBag.tipoColchao == "Colchão Infantil")
                         {
                             @if (ViewBag.revestimento == "Sim")
                             {
@@ -1621,8 +1621,6 @@
                         }
                         else if (ViewBag.tipoColchao == "Colchonete")
                         {
-
-
                     <tr>
                         <td>
                             Colchonete: A altura total não pode exceder 8 cm, inclusive com o revestimento.
@@ -3341,7 +3339,7 @@
                         <br />
 
 
-                        @if (ViewBag.tipoColchao == "Colchão De Espuma" || ViewBag.tipoColchao == "Colchão Misto")
+                        @if (ViewBag.tipoColchao == "Colchão De Espuma" || ViewBag.tipoColchao == "Colchão Misto" || ViewBag.tipoColchao == "Colchão Infantil")
                         {
                             @if (ViewBag.revestimento == "Sim")
                             {

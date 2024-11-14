@@ -935,7 +935,7 @@ namespace Coleta_Colchao.Controllers
 
         //INICIO DAS FUNÇÕES PARA SALVAR OS DADOS,
         [HttpPost]
-        public async Task<IActionResult> SalvarRegistroMolas(string os, string orcamento, [Bind("lacre,realizacao_ensaios,quant_recebida,quant_ensaiada,data_realizacao_ini,data_realizacao_term,num_proc,cod_ref,tipo_cert,modelo_cert,tipo_proc,produto,estrutura,tipo_molejo,quant_molejo,fornecedor_um,fornecedor_dois,nome_molejo_um,nome_molejo_dois,quant_media_um,quant_media_dois,bitola_arame_um,bitola_arame_dois,borda_peri,metalasse,qtd_face,comprimento,largura,altura,isolante,latex,napa_cou_plas,manual,marca_modelo")] ColetaModel.Registro registro)
+        public async Task<IActionResult> SalvarRegistroMolas(string os, string orcamento, [Bind("lacre,realizacao_ensaios,quant_recebida,quant_ensaiada,data_realizacao_ini,data_realizacao_term,num_proc,cod_ref,tipo_cert,modelo_cert,tipo_proc,produto,estrutura,tipo_molejo,quant_molejo,fornecedor_um,fornecedor_dois,nome_molejo_um,nome_molejo_dois,quant_media_um,quant_media_dois,bitola_arame_um,bitola_arame_dois,borda_peri,metalasse,qtd_face,comprimento,largura,altura,isolante,latex,napa_cou_plas,manual,marca_modelo,densidade,densidade_2,densidade_3,densidade_4,densidade_5,tipo_espuma,tipo_espuma_2,tipo_espuma_3,tipo_espuma_4,tipo_espuma_5,quant_laminas")] ColetaModel.Registro registro)
         {
             try
             {
@@ -951,6 +951,17 @@ namespace Coleta_Colchao.Controllers
                 string modelo_cert = registro.modelo_cert;
                 string tipo_proc = registro.tipo_proc;
                 string marca_modelo = registro.marca_modelo;
+                int quant_laminas = registro.quant_laminas;
+                string densidade = registro.densidade;
+                string densidade_2 = registro.densidade_2;
+                string densidade_3 = registro.densidade_3;
+                string densidade_4 = registro.densidade_4;
+                string densidade_5 = registro.densidade_5;
+                string tipo_espuma = registro.tipo_espuma;
+                string tipo_espuma_2 = registro.tipo_espuma_2;
+                string tipo_espuma_3 = registro.tipo_espuma_3;
+                string tipo_espuma_4 = registro.tipo_espuma_4;
+                string tipo_espuma_5 = registro.tipo_espuma_5;
                 string produto = registro.produto;
                 string estrutura = registro.estrutura;
                 string tipo_molejo = registro.tipo_molejo;
@@ -991,6 +1002,17 @@ namespace Coleta_Colchao.Controllers
                     modelo_cert = modelo_cert,
                     tipo_proc = tipo_proc,
                     marca_modelo = marca_modelo,
+                    quant_laminas = quant_laminas,
+                    densidade = densidade,
+                    densidade_2 = densidade_2,
+                    densidade_3 = densidade_3,
+                    densidade_4 = densidade_4,
+                    densidade_5 = densidade_5,
+                    tipo_espuma = tipo_espuma,
+                    tipo_espuma_2 = tipo_espuma_2,
+                    tipo_espuma_3= tipo_espuma_3,
+                    tipo_espuma_4 = tipo_espuma_4,
+                    tipo_espuma_5= tipo_espuma_5,
                     produto = produto,
                     estrutura = estrutura,
                     tipo_molejo = tipo_molejo,
@@ -1206,7 +1228,7 @@ namespace Coleta_Colchao.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> EditarRegistroMolas(string os, string orcamento, int rev, [Bind("lacre,realizacao_ensaios,quant_recebida,quant_ensaiada,data_realizacao_ini,data_realizacao_term,num_proc,cod_ref,tipo_cert,modelo_cert,tipo_proc,produto,estrutura,tipo_molejo,quant_molejo,fornecedor_um,fornecedor_dois,nome_molejo_um,nome_molejo_dois,quant_media_um,quant_media_dois,bitola_arame_um,bitola_arame_dois,borda_peri,qtd_face,comprimento,largura,altura,metalasse,isolante,latex,napa_cou_plas,manual,marca_modelo")] ColetaModel.Registro EditarRegistros)
+        public async Task<IActionResult> EditarRegistroMolas(string os, string orcamento, int rev, [Bind("lacre,realizacao_ensaios,quant_recebida,quant_ensaiada,data_realizacao_ini,data_realizacao_term,num_proc,cod_ref,tipo_cert,modelo_cert,tipo_proc,produto,estrutura,tipo_molejo,quant_molejo,fornecedor_um,fornecedor_dois,nome_molejo_um,nome_molejo_dois,quant_media_um,quant_media_dois,bitola_arame_um,bitola_arame_dois,borda_peri,qtd_face,comprimento,largura,altura,metalasse,isolante,latex,napa_cou_plas,manual,marca_modelo,densidade,densidade_2,densidade_3,densidade_4,densidade_5,tipo_espuma,tipo_espuma_2,tipo_espuma_3,tipo_espuma_4,tipo_espuma_5,quant_laminas")] ColetaModel.Registro EditarRegistros)
         {
             var editarValores = _context.regtro_colchao.Where(x => x.os == os && x.orcamento == orcamento && x.rev == rev).FirstOrDefault();
             try
@@ -1225,6 +1247,17 @@ namespace Coleta_Colchao.Controllers
                     editarValores.modelo_cert = EditarRegistros.modelo_cert;
                     editarValores.tipo_proc = EditarRegistros.tipo_proc;
                     editarValores.marca_modelo = EditarRegistros.marca_modelo;
+                    editarValores.quant_laminas = EditarRegistros.quant_laminas;
+                    editarValores.densidade = EditarRegistros.densidade;
+                    editarValores.densidade_2 = EditarRegistros.densidade_2;
+                    editarValores.densidade_3 = EditarRegistros.densidade_3;
+                    editarValores.densidade_4 = EditarRegistros.densidade_4;
+                    editarValores.densidade_5 = EditarRegistros.densidade_5;
+                    editarValores.tipo_espuma = EditarRegistros.tipo_espuma;
+                    editarValores.tipo_espuma_2 = EditarRegistros.tipo_espuma_2;
+                    editarValores.tipo_espuma_3 = EditarRegistros.tipo_espuma_3;
+                    editarValores.tipo_espuma_4 = EditarRegistros.tipo_espuma_4;
+                    editarValores.tipo_espuma_5 = EditarRegistros.tipo_espuma_5;
                     editarValores.produto = EditarRegistros.produto;
                     editarValores.estrutura = EditarRegistros.estrutura;
                     editarValores.tipo_molejo = EditarRegistros.tipo_molejo;
