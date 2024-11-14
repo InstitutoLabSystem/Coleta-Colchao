@@ -5402,6 +5402,8 @@ namespace Coleta_Colchao.Controllers
                     //recebendo os valores do html.
                     DateOnly data_ini = salvarDados.data_ini;
                     DateOnly data_term = salvarDados.data_term;
+                    DateOnly data_ini_ens = salvarDados.data_ini_ens;
+                    DateOnly data_term_ens = salvarDados.data_term_ens;
                     TimeOnly hora_inic = salvarDados.hora_inic;
                     TimeOnly hora_term = salvarDados.hora_term;
                     string tem_min = salvarDados.tem_min;
@@ -5486,6 +5488,8 @@ namespace Coleta_Colchao.Controllers
                     //editando os valores no html
                     editarRegistro.data_ini = salvarDados.data_ini;
                     editarRegistro.data_term = salvarDados.data_term;
+                    editarRegistro.data_ini_ens = salvarDados.data_ini_ens;
+                    editarRegistro.data_term_ens = salvarDados.data_term_ens;
                     editarRegistro.hora_inic = salvarDados.hora_inic;
                     editarRegistro.hora_term = salvarDados.hora_term;
                     editarRegistro.tem_min = salvarDados.tem_min;
