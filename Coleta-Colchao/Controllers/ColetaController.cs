@@ -3,6 +3,7 @@ using Coleta_Colchao.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.CodeAnalysis;
 using Microsoft.CodeAnalysis.CSharp.Syntax;
 using Microsoft.CodeAnalysis.Elfie.Serialization;
 using Microsoft.EntityFrameworkCore;
@@ -378,7 +379,7 @@ namespace Coleta_Colchao.Controllers
                 ViewBag.rev = rev;
                 ViewBag.comprimento = buscarInformacao.comprimento_esp * 10;
                 ViewBag.largura = buscarInformacao.largura_esp * 10;
-                
+
                 return View();
             }
             else
@@ -517,7 +518,7 @@ namespace Coleta_Colchao.Controllers
                 ViewBag.os = os;
                 ViewBag.orcamento = orcamento;
                 ViewBag.rev = rev;
-               
+
                 return View("Molas/EnsaioMolas7_7");
             }
             else
@@ -1010,9 +1011,9 @@ namespace Coleta_Colchao.Controllers
                     densidade_5 = densidade_5,
                     tipo_espuma = tipo_espuma,
                     tipo_espuma_2 = tipo_espuma_2,
-                    tipo_espuma_3= tipo_espuma_3,
+                    tipo_espuma_3 = tipo_espuma_3,
                     tipo_espuma_4 = tipo_espuma_4,
-                    tipo_espuma_5= tipo_espuma_5,
+                    tipo_espuma_5 = tipo_espuma_5,
                     produto = produto,
                     estrutura = estrutura,
                     tipo_molejo = tipo_molejo,
@@ -1823,7 +1824,7 @@ namespace Coleta_Colchao.Controllers
 
                     //conforme ou nao conform,estofamento.
 
-                    if (esp_tipo_esp_1 != 0 && esp_tipo_esp_1 <= 19 || esp_tipo_esp_2 != 0 && esp_tipo_esp_2 <= 19 || esp_tipo_esp_3 != 0 && esp_tipo_esp_3 <= 19 || esp_tipo_esp_4 != 0 && esp_tipo_esp_4 <= 19 || esp_tipo_esp_5 != 0 && esp_tipo_esp_5 <= 19 || esp_tipo_esp_6 != 0 && esp_tipo_esp_6 <= 20 || esp_tipo_esp_7 != 0 && esp_tipo_esp_7 <= 19 || esp_tipo_esp_8 != 0 && esp_tipo_esp_8 <= 19 || esp_tipo_esp_9 != 0 && esp_tipo_esp_9 <= 19)
+                    if (enc_estofamento_1 != 0 && enc_estofamento_1 <= 19 || enc_estofamento_2 != 0 && enc_estofamento_2 <= 19 || enc_estofamento_3 != 0 && enc_estofamento_4 <= 19 || enc_estofamento_5 != 0 && enc_estofamento_5 <= 19 || esp_tipo_esp_5 != 0 && esp_tipo_esp_5 <= 19)
                     {
                         conformidade = "NC";
                     }
@@ -2028,9 +2029,7 @@ namespace Coleta_Colchao.Controllers
                         conform_altura = "NC";
                     }
 
-                    //conforme ou nao conform,estofamento.
-
-                    if (editarDados.esp_tipo_esp_1 != 0 && editarDados.esp_tipo_esp_1 <= 19 || editarDados.esp_tipo_esp_2 != 0 && editarDados.esp_tipo_esp_2 <= 19 || editarDados.esp_tipo_esp_3 != 0 && editarDados.esp_tipo_esp_3 <= 19 || editarDados.esp_tipo_esp_4 != 0 && editarDados.esp_tipo_esp_4 <= 19 || editarDados.esp_tipo_esp_5 != 0 && editarDados.esp_tipo_esp_5 <= 19 || editarDados.esp_tipo_esp_6 != 0 && editarDados.esp_tipo_esp_6 <= 19 || editarDados.esp_tipo_esp_7 != 0 && editarDados.esp_tipo_esp_7 <= 19 || editarDados.esp_tipo_esp_8 != 0 && editarDados.esp_tipo_esp_8 <= 19 || editarDados.esp_tipo_esp_9 != 0 && editarDados.esp_tipo_esp_9 <= 19)
+                    if (editarDados.enc_estofamento_1 != 0 && editarDados.enc_estofamento_1 <= 19 || editarDados.enc_estofamento_2 != 0 && editarDados.enc_estofamento_2 <= 19 || editarDados.enc_estofamento_3 != 0 && editarDados.enc_estofamento_3 <= 19 || editarDados.enc_estofamento_4 != 0 && editarDados.enc_estofamento_4 <= 19 || editarDados.enc_estofamento_5 != 0 && editarDados.enc_estofamento_5 <= 19)
                     {
                         editarDados.conformidade = "NC";
                     }
@@ -8814,9 +8813,9 @@ namespace Coleta_Colchao.Controllers
             {
                 //deletar arquivo do ftp caso usuario subir novas fotos.
                 var buscarOs = _context.colchao_anexos.Where(x => x.rae == Int32.Parse(os) && x.orcamento == orcamento).ToList();
-                if(buscarOs.Count != 0)
+                if (buscarOs.Count != 0)
                 {
-                    for(int i = 0; i< buscarOs.Count; i++)
+                    for (int i = 0; i < buscarOs.Count; i++)
                     {
                         string newUrl = "ftp://labsystem-nuvem.com.br/imagens_arq/imagens/relatorios/colchao/" + os + '-' + i + buscarOs[i].imageID;
 
