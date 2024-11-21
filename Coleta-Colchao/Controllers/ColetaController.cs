@@ -3590,7 +3590,7 @@ namespace Coleta_Colchao.Controllers
                     }
                     else if (tipo_ensaio == "Colchão tipo composto")
                     {
-                        if ((esp_lamina_um < 3) || (esp_lamina_dois != 0 && esp_lamina_dois < 3) || (esp_lamina_tres != 0 && esp_lamina_tres < 3) || (esp_lamina_quat != 0 && editarDados.esp_lamina_quat < 3) || (editarDados.esp_lamina_cinco != 0 && esp_lamina_cinco < 3) || (esp_lamina_seis != 0 && esp_lamina_seis < 3) || (esp_lamina_sete != 0 && esp_lamina_sete < 3) || (esp_lamina_oito != 0 && esp_lamina_oito < 3))
+                        if ((esp_lamina_um < 3) || (esp_lamina_dois != 0 && esp_lamina_dois < 3) || (esp_lamina_tres != 0 && esp_lamina_tres < 3) || (esp_lamina_quat != 0 && esp_lamina_quat < 3) || (esp_lamina_cinco != 0 && esp_lamina_cinco < 3) || (esp_lamina_seis != 0 && esp_lamina_seis < 3) || (esp_lamina_sete != 0 && esp_lamina_sete < 3) || (esp_lamina_oito != 0 && esp_lamina_oito < 3))
                         {
                             salvar.conforme = "NC";
                         }
