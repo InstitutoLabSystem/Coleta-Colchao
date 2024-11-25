@@ -344,7 +344,7 @@ namespace Coleta_Colchao.Controllers
         {
 
             var dados = _context.ensaio_base_impacto_vertical.Where(x => x.os == os && x.orcamento == orcamento && x.rev == rev).FirstOrDefault();
-            var inicial = _context.regtro_colchao_espuma.Where(x => x.os == os && x.orcamento == orcamento && x.rev == rev).FirstOrDefault();
+            var inicial = _context.regtro_colchao.Where(x => x.os == os && x.orcamento == orcamento && x.rev == rev).FirstOrDefault();
 
             //buscar valor preenchido no ensaio.
             var buscarEnsaio7_2 = _context.ensaio_molas_item7_2.Where(x => x.os == os && x.orcamento == orcamento && x.rev == rev).FirstOrDefault();
