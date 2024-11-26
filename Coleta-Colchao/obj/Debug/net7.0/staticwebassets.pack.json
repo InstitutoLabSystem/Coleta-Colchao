@@ -2,7 +2,7 @@
   "Files": [
     {
       "Id": "C:\\Users\\Molina\\source\\repos\\InstitutoLabSystem\\Coleta-Colchao\\Coleta-Colchao\\obj\\Debug\\net7.0\\scopedcss\\projectbundle\\Coleta-Colchao.bundle.scp.css",
-      "PackagePath": "staticwebassets\\Coleta-Colchao.bundle.scp.css"
+      "PackagePath": "staticwebassets\\Coleta-Colchao.t4j5n7w54b.bundle.scp.css"
     },
     {
       "Id": "C:\\Users\\Molina\\source\\repos\\InstitutoLabSystem\\Coleta-Colchao\\Coleta-Colchao\\wwwroot\\css\\coleta.css",
@@ -259,6 +259,10 @@
     {
       "Id": "C:\\Users\\Molina\\source\\repos\\InstitutoLabSystem\\Coleta-Colchao\\Coleta-Colchao\\wwwroot\\lib\\jquery\\dist\\jquery.min.map",
       "PackagePath": "staticwebassets\\lib\\jquery\\dist\\jquery.min.map"
+    },
+    {
+      "Id": "obj\\Debug\\net7.0\\staticwebassets\\msbuild.Coleta-Colchao.Microsoft.AspNetCore.StaticWebAssetEndpoints.props",
+      "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssetEndpoints.props"
     },
     {
       "Id": "obj\\Debug\\net7.0\\staticwebassets\\msbuild.Coleta-Colchao.Microsoft.AspNetCore.StaticWebAssets.props",

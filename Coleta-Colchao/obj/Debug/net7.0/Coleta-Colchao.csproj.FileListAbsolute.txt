@@ -1124,3 +1124,7 @@ C:\Users\Molina\source\repos\InstitutoLabSystem\Coleta-Colchao\Coleta-Colchao\ob
 C:\xampp\htdocs\Coleta-Colchao\Coleta-Colchao\obj\Debug\net7.0\Coleta-Colchao.sourcelink.json
 C:\Users\Molina\source\repos\InstitutoLabSystem\Coleta-Colchao\Coleta-Colchao\obj\Debug\net7.0\Coleta-C.98129255.Up2Date
 C:\xampp\htdocs\Coleta-Colchao\Coleta-Colchao\obj\Debug\net7.0\Coleta-C.98129255.Up2Date
+C:\Users\Molina\source\repos\InstitutoLabSystem\Coleta-Colchao\Coleta-Colchao\bin\Debug\net7.0\Coleta-Colchao.staticwebassets.endpoints.json
+C:\Users\Molina\source\repos\InstitutoLabSystem\Coleta-Colchao\Coleta-Colchao\obj\Debug\net7.0\staticwebassets.build.endpoints.json
+C:\Users\Molina\source\repos\InstitutoLabSystem\Coleta-Colchao\Coleta-Colchao\obj\Debug\net7.0\staticwebassets\msbuild.Coleta-Colchao.Microsoft.AspNetCore.StaticWebAssetEndpoints.props
+C:\Users\Molina\source\repos\InstitutoLabSystem\Coleta-Colchao\Coleta-Colchao\obj\Debug\net7.0\staticwebassets.upToDateCheck.txt
