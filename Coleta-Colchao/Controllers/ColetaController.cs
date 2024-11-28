@@ -1455,7 +1455,7 @@ namespace Coleta_Colchao.Controllers
                     //realizando logica para 1 face.
                     if (qtd_face == 1)
                     {
-                        if (ensaio7_2.alt_media >= 12 && ensaio7_2.alt_media <= 22)
+                        if (ensaio7_2.alt_media >= 12 && ensaio7_2.alt_media < 23)
                         {
                             acom_esp_face_1 = 6;
                         }
@@ -1482,7 +1482,7 @@ namespace Coleta_Colchao.Controllers
                     }
                     else
                     {
-                        if (ensaio7_2.alt_media >= 12 && ensaio7_2.alt_media <= 22)
+                        if (ensaio7_2.alt_media >= 12 && ensaio7_2.alt_media < 23)
                         {
                             acom_esp_face_1 = 6;
                             acom_esp_face_2 = 6;
@@ -1566,7 +1566,7 @@ namespace Coleta_Colchao.Controllers
 
                     if (editarDados.qtd_face == 1)
                     {
-                        if (ensaio7_2.alt_media >= 12 && ensaio7_2.alt_media <= 22)
+                        if (ensaio7_2.alt_media >= 12 && ensaio7_2.alt_media < 23)
                         {
                             editarDados.acom_esp_face_1 = 6;
                         }
@@ -1595,7 +1595,7 @@ namespace Coleta_Colchao.Controllers
                     }
                     else
                     {
-                        if (ensaio7_2.alt_media >= 12 && ensaio7_2.alt_media <= 22)
+                        if (ensaio7_2.alt_media >= 12 && ensaio7_2.alt_media < 23)
                         {
                             editarDados.acom_esp_face_1 = 6;
                             editarDados.acom_esp_face_2 = 6;
