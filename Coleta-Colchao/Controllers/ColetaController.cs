@@ -8540,6 +8540,10 @@ namespace Coleta_Colchao.Controllers
                     editarDados.tipo_espuma = salvarDados.tipo_espuma;
                     editarDados.hora_inicio = salvarDados.hora_inicio;
                     editarDados.hora_final = salvarDados.hora_final;
+                    editarDados.temp_inicio = salvarDados.temp_inicio;
+                    editarDados.umidade_inicio = salvarDados.umidade_inicio;
+                    editarDados.temp_final = salvarDados.temp_final;
+                    editarDados.umidade_final = salvarDados.umidade_final;
 
                     //espessura...
                     editarDados.esp_ini_amostra_um_um = salvarDados.esp_ini_amostra_um_um;
