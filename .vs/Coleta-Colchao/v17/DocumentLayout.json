@@ -11,8 +11,20 @@
       "RelativeMoniker": "D:0:0:{A122F397-C234-43D8-A8C7-2102421BAFCA}|Coleta-Colchao\\Coleta-Colchao.csproj|solutionrelative:coleta-colchao\\controllers\\coletacontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
+      "AbsoluteMoniker": "D:0:0:{A122F397-C234-43D8-A8C7-2102421BAFCA}|Coleta-Colchao\\Coleta-Colchao.csproj|c:\\xampp\\htdocs\\coleta-colchao\\coleta-colchao\\views\\coleta\\laminas\\laminapfi.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{A122F397-C234-43D8-A8C7-2102421BAFCA}|Coleta-Colchao\\Coleta-Colchao.csproj|solutionrelative:coleta-colchao\\views\\coleta\\laminas\\laminapfi.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A122F397-C234-43D8-A8C7-2102421BAFCA}|Coleta-Colchao\\Coleta-Colchao.csproj|c:\\xampp\\htdocs\\coleta-colchao\\coleta-colchao\\controllers\\instrumentoscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A122F397-C234-43D8-A8C7-2102421BAFCA}|Coleta-Colchao\\Coleta-Colchao.csproj|solutionrelative:coleta-colchao\\controllers\\instrumentoscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{A122F397-C234-43D8-A8C7-2102421BAFCA}|Coleta-Colchao\\Coleta-Colchao.csproj|c:\\xampp\\htdocs\\coleta-colchao\\coleta-colchao\\models\\coletamodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{A122F397-C234-43D8-A8C7-2102421BAFCA}|Coleta-Colchao\\Coleta-Colchao.csproj|solutionrelative:coleta-colchao\\models\\coletamodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A122F397-C234-43D8-A8C7-2102421BAFCA}|Coleta-Colchao\\Coleta-Colchao.csproj|c:\\xampp\\htdocs\\coleta-colchao\\coleta-colchao\\data\\colchaocontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A122F397-C234-43D8-A8C7-2102421BAFCA}|Coleta-Colchao\\Coleta-Colchao.csproj|solutionrelative:coleta-colchao\\data\\colchaocontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -22,21 +34,20 @@
       "DocumentGroups": [
         {
           "DockedWidth": 186,
-          "SelectedChildIndex": 8,
+          "SelectedChildIndex": 9,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 4,
               "Title": "ColetaModel.cs",
               "DocumentMoniker": "C:\\xampp\\htdocs\\Coleta-Colchao\\Coleta-Colchao\\Models\\ColetaModel.cs",
               "RelativeDocumentMoniker": "Coleta-Colchao\\Models\\ColetaModel.cs",
               "ToolTip": "C:\\xampp\\htdocs\\Coleta-Colchao\\Coleta-Colchao\\Models\\ColetaModel.cs",
               "RelativeToolTip": "Coleta-Colchao\\Models\\ColetaModel.cs",
-              "ViewState": "AQIAAHcBAAAAAAAAAAAswJ4BAAAqAAAA",
+              "ViewState": "AgIAAHAAAAAAAAAAAIA4wHgAAAAyAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-10-15T19:21:48.061Z",
-              "IsPinned": true,
-              "EditorCaption": ""
+              "IsPinned": true
             },
             {
               "$type": "Document",
@@ -46,11 +57,24 @@
               "RelativeDocumentMoniker": "Coleta-Colchao\\Controllers\\ColetaController.cs",
               "ToolTip": "C:\\xampp\\htdocs\\Coleta-Colchao\\Coleta-Colchao\\Controllers\\ColetaController.cs",
               "RelativeToolTip": "Coleta-Colchao\\Controllers\\ColetaController.cs",
-              "ViewState": "AQIAANAGAAAAAAAAAAAcwOMGAAA+AAAA",
+              "ViewState": "AgIAAE0hAAAAAAAAAAAWwGEhAABKAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-11-13T18:52:30.702Z",
               "IsPinned": true,
               "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "InstrumentosController.cs",
+              "DocumentMoniker": "C:\\xampp\\htdocs\\Coleta-Colchao\\Coleta-Colchao\\Controllers\\InstrumentosController.cs",
+              "RelativeDocumentMoniker": "Coleta-Colchao\\Controllers\\InstrumentosController.cs",
+              "ToolTip": "C:\\xampp\\htdocs\\Coleta-Colchao\\Coleta-Colchao\\Controllers\\InstrumentosController.cs",
+              "RelativeToolTip": "Coleta-Colchao\\Controllers\\InstrumentosController.cs",
+              "ViewState": "AgIAADQAAAAAAAAAAAAkwEEAAAA1AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-19T19:30:01.248Z",
+              "IsPinned": true
             },
             {
               "$type": "Bookmark",
@@ -84,10 +108,34 @@
               "RelativeDocumentMoniker": "Coleta-Colchao\\Views\\Coleta\\Molas\\EnsaioMolas7_2.cshtml",
               "ToolTip": "C:\\xampp\\htdocs\\Coleta-Colchao\\Coleta-Colchao\\Views\\Coleta\\Molas\\EnsaioMolas7_2.cshtml",
               "RelativeToolTip": "Coleta-Colchao\\Views\\Coleta\\Molas\\EnsaioMolas7_2.cshtml",
-              "ViewState": "AQIAALsDAAAAAAAAAAAAANsDAAAxAAAA",
+              "ViewState": "AQIAACYDAAAAAAAAAAAAAD0DAAA+AAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-11-18T13:47:32.006Z",
+              "WhenOpened": "2024-12-04T12:36:58.127Z",
               "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "LaminaPFI.cshtml",
+              "DocumentMoniker": "C:\\xampp\\htdocs\\Coleta-Colchao\\Coleta-Colchao\\Views\\Coleta\\Laminas\\LaminaPFI.cshtml",
+              "RelativeDocumentMoniker": "Coleta-Colchao\\Views\\Coleta\\Laminas\\LaminaPFI.cshtml",
+              "ToolTip": "C:\\xampp\\htdocs\\Coleta-Colchao\\Coleta-Colchao\\Views\\Coleta\\Laminas\\LaminaPFI.cshtml",
+              "RelativeToolTip": "Coleta-Colchao\\Views\\Coleta\\Laminas\\LaminaPFI.cshtml",
+              "ViewState": "AgIAAHUAAAAAAAAAAAAAAIwAAAA9AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-12-04T12:32:53.826Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "ColchaoContext.cs",
+              "DocumentMoniker": "C:\\xampp\\htdocs\\Coleta-Colchao\\Coleta-Colchao\\Data\\ColchaoContext.cs",
+              "RelativeDocumentMoniker": "Coleta-Colchao\\Data\\ColchaoContext.cs",
+              "ToolTip": "C:\\xampp\\htdocs\\Coleta-Colchao\\Coleta-Colchao\\Data\\ColchaoContext.cs",
+              "RelativeToolTip": "Coleta-Colchao\\Data\\ColchaoContext.cs",
+              "ViewState": "AgIAACAAAAAAAAAAAAAswCUAAABEAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-21T15:15:49.794Z"
             }
           ]
         }
