@@ -826,18 +826,24 @@
                             <table class="tables table-bordered border-secondary  table-sm">
                                 <tr class="fundo-tabela">
                                     <td>Tipo de espuma</td>
+                                    <td>Declaração de espuma</td>
+                                    <td>Densidade (kg/m³)</td>
                                     <td>Encontrado</td>
                                     <td>Espessura mínima especificada (mm)</td>
                                     <td>Resultado</td>
                                 </tr>
                                 <tr id="excluir_input_1">
                                     <td><input class="form-control" type="text" name="mate_tipo_espuma_1" value="Espuma do Matelassê" readonly></input></td>
+                                    <td><input class="form-control" type="text" name="declaracao_espuma1"/></td>
+                                    <td><input class="form-control" type="text" name="densidade1"/></td>
                                     <td><input class="form-control" type="text" name="mata_esp_tipo_esp_1" value="@Model.mata_esp_tipo_esp_1"/></td>
                                     <td><input class="form-control" type="text" value="10" readonly/></td>
                                     <td rowspan="2">@Model.conformidade_mat</td>
                                 </tr>
                                 <tr id="excluir_input_2">
                                     <td><input class="form-control" type="text" name="mate_tipo_espuma_2" value="Espuma do Matelassê" readonly></td>
+                                    <td><input class="form-control" type="text" name="declaracao_espuma2"/></td>
+                                    <td><input class="form-control" type="text" name="densidade2"/></td>
                                     <td><input class="form-control" type="text" name="mata_esp_tipo_esp_2" value="@Model.mata_esp_tipo_esp_2" /></td>
                                     <td><input class="form-control" type="text" value="10" readonly/></td>
                                 </tr>
@@ -894,7 +900,7 @@
                                 </td>
                                 <td><input class="form-control" type="text" name="enc_estofamento_1" value="@Model.enc_estofamento_1"/></td>
                                 <td><input id="esp_min1" class="form-control" type="text" name="esp_tipo_esp_1" value="@Model.esp_tipo_esp_1" readonly/></td> 
-                                <td rowspan="10">@Model.conformidade</td>
+                                <td>@Model.conformidade</td>
                             </tr>
                             <tr id="tipo_empuma_2">
                                 <td>
@@ -911,6 +917,7 @@
                                 </td>
                                 <td><input class="form-control" type="text" name="enc_estofamento_2" value="@Model.enc_estofamento_2"/></td>
                                 <td><input id="esp_min2" class="form-control" type="text" name="esp_tipo_esp_2" value="@Model.esp_tipo_esp_2" readonly/></td>
+                                <td>@Model.conformidade_2</td>
                             </tr>
                             <tr id="tipo_empuma_3">
                                 <td>
@@ -927,6 +934,7 @@
                                 </td>
                                 <td><input class="form-control" type="text" name="enc_estofamento_3" value="@Model.enc_estofamento_3"/></td>
                                 <td><input id="esp_min3" class="form-control" type="text" name="esp_tipo_esp_3" value="@Model.esp_tipo_esp_3" readonly/></td>
+                                <td>@Model.conformidade_3</td>
                             </tr>
                             <tr id="tipo_empuma_4">
                                 <td>
@@ -943,6 +951,7 @@
                                 </td>
                                 <td><input class="form-control" type="text" name="enc_estofamento_4" value="@Model.enc_estofamento_4"/></td>
                                 <td><input id="esp_min4" class="form-control" type="text" name="esp_tipo_esp_4" value="@Model.esp_tipo_esp_4" readonly/></td>
+                                <td>@Model.conformidade_4</td>
                             </tr>
                            
                                 <tr id="tipo_empuma_5">
@@ -960,8 +969,11 @@
                                     </td>
                                     <td><input class="form-control" type="text" name="enc_estofamento_5" value="@Model.enc_estofamento_5"/></td>
                                     <td><input id="esp_min5" class="form-control" type="text" name="esp_tipo_esp_5" value="@Model.esp_tipo_esp_5" readonly/></td>
+                                    <td>@Model.conformidade_5</td>
                                 </tr>
-                            
+                                @* Não foi acrescentado a declaracao_espuma1 e 2 e densidade 1 e 2 nas quantidades abaixo porque até então, eles nunca passaram de 5 quantidades.
+                                    Se precisar, necessário criar novas variaveis para o banco e para ColetaController.
+                                *@
                                 <tr id="tipo_empuma_6">
                                     <td>
                                         <select id="tipo_6" class="controlador" name="tipo_espuma_6" style="width:300px;">
