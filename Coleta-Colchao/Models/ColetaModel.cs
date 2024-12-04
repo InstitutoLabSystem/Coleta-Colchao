@@ -401,6 +401,10 @@ namespace Coleta_Colchao.Models
             public string? mate_tipo_espuma_2 { get; set; }
             public float mata_esp_tipo_esp_2 { get; set; }
             public string? conformidade { get; set; }
+            public string? conformidade_2 { get; set; }
+            public string? conformidade_3 { get; set; }
+            public string? conformidade_4 { get; set; }
+            public string? conformidade_5 { get; set; }
             public string? conformidade_mat { get; set; }
             public string? executor { get; set; }
             public string? auxiliar { get; set; }
@@ -415,6 +419,10 @@ namespace Coleta_Colchao.Models
             public float enc_estofamento_8 { get; set; }
             public float enc_estofamento_9 { get; set; }
             public float enc_estofamento_10 { get; set; }
+            public string? densidade1 { get; set; }
+            public string? densidade2 { get; set; }
+            public string? declaracao_espuma1 { get; set; }
+            public string? declaracao_espuma2 { get; set; }
 
             //função para clonar resultados quando for gerado revisao.
             public Ensaio7_2 Clone()
