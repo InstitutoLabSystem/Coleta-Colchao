@@ -8200,6 +8200,7 @@ namespace Coleta_Colchao.Controllers
                     editarDados.temp_final = salvarDados.temp_final;
                     editarDados.im = salvarDados.im;
                     editarDados.responsavel_cond = salvarDados.responsavel_cond;
+                    editarDados.densidade = salvarDados.densidade;
 
 
 
