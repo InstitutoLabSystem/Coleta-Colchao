@@ -8639,7 +8639,9 @@ namespace Coleta_Colchao.Controllers
                 {
                     //editando os dados recebidos do html..
                     editarDados.data_ini = salvarDados.data_ini;
+                    editarDados.acond_inicio = salvarDados.acond_inicio;
                     editarDados.data_term = salvarDados.data_term;
+                    editarDados.acond_final = salvarDados.acond_final;
                     editarDados.tipo_espuma = salvarDados.tipo_espuma;
                     editarDados.hora_inicio = salvarDados.hora_inicio;
                     editarDados.hora_final = salvarDados.hora_final;
