@@ -2078,45 +2078,65 @@ namespace Coleta_Colchao.Controllers
                         conform_altura = "NC";
                     }
 
-                    if (editarDados.enc_estofamento_1 != 0 && editarDados.enc_estofamento_1 <= 19  || editarDados.enc_estofamento_4 != 0 && editarDados.enc_estofamento_4 <= 19 || editarDados.enc_estofamento_5 != 0 && editarDados.enc_estofamento_5 <= 19)
+                    //inicio da logica para resultado do tipo de espuma
+                    if (!string.IsNullOrEmpty(editarDados.tipo_espuma_1))
                     {
-                        editarDados.conformidade = "NC";
+                        if (editarDados.enc_estofamento_1 != 0 && editarDados.enc_estofamento_1 <= 19 || editarDados.enc_estofamento_4 != 0 && editarDados.enc_estofamento_4 <= 19 || editarDados.enc_estofamento_5 != 0 && editarDados.enc_estofamento_5 <= 19)
+                        {
+                            editarDados.conformidade = "NC";
+                        }
+                        else
+                        {
+                            editarDados.conformidade = "C";
+                        }
                     }
-                    else
+
+                    if (!string.IsNullOrEmpty(editarDados.tipo_espuma_2))
                     {
-                        editarDados.conformidade = "C";
+                        if (editarDados.enc_estofamento_2 != 0 && editarDados.enc_estofamento_2 <= 19)
+                        {
+                            editarDados.conformidade_2 = "NC";
+                        }
+                        else
+                        {
+                            editarDados.conformidade_2 = "C";
+                        }
                     }
-                    if (editarDados.enc_estofamento_2 != 0 && editarDados.enc_estofamento_2 <= 19)
+
+                    if (!string.IsNullOrEmpty(editarDados.tipo_espuma_3))
                     {
-                        editarDados.conformidade_2 = "NC";
+                        if (editarDados.enc_estofamento_3 != 0 && editarDados.enc_estofamento_3 <= 19)
+                        {
+                            editarDados.conformidade_3 = "NC";
+                        }
+                        else
+                        {
+                            editarDados.conformidade_3 = "C";
+                        }
                     }
-                    else
+
+                    if (!string.IsNullOrEmpty(editarDados.tipo_espuma_4))
                     {
-                        editarDados.conformidade_2 = "C";
+                        if (editarDados.enc_estofamento_4 != 0 && editarDados.enc_estofamento_4 <= 19)
+                        {
+                            editarDados.conformidade_4 = "NC";
+                        }
+                        else
+                        {
+                            editarDados.conformidade_4 = "C";
+                        }
                     }
-                    if(editarDados.enc_estofamento_3 != 0 && editarDados.enc_estofamento_3 <= 19)
+
+                    if (!string.IsNullOrEmpty(editarDados.tipo_espuma_5))
                     {
-                        editarDados.conformidade_3 = "NC";
-                    }
-                    else
-                    {
-                        editarDados.conformidade_3 = "C";
-                    }
-                    if (editarDados.enc_estofamento_4 != 0 && editarDados.enc_estofamento_4 <= 19)
-                    {
-                        editarDados.conformidade_4 = "NC";
-                    }
-                    else
-                    {
-                        editarDados.conformidade_4 = "C";
-                    }
-                    if (editarDados.enc_estofamento_5 != 0 && editarDados.enc_estofamento_5 <= 19)
-                    {
-                        editarDados.conformidade_5 = "NC";
-                    }
-                    else
-                    {
-                        editarDados.conformidade_5 = "C";
+                        if (editarDados.enc_estofamento_5 != 0 && editarDados.enc_estofamento_5 <= 19)
+                        {
+                            editarDados.conformidade_5 = "NC";
+                        }
+                        else
+                        {
+                            editarDados.conformidade_5 = "C";
+                        }
                     }
                     //conforme ou nao conform,metalasse.
                     if (editarDados.mata_esp_tipo_esp_1 != 0 && editarDados.mata_esp_tipo_esp_1 <= 9 || editarDados.mata_esp_tipo_esp_2 != 0 && editarDados.mata_esp_tipo_esp_2 <= 9)
@@ -2128,14 +2148,16 @@ namespace Coleta_Colchao.Controllers
                         editarDados.conformidade_mat = "C";
                     }
 
+                    editarDados.densidade1 = salvarDados.densidade1;
+                    editarDados.densidade2 = salvarDados.densidade2;
+                    editarDados.declaracao_espuma1 = salvarDados.declaracao_espuma1;
+                    editarDados.declaracao_espuma2 = salvarDados.declaracao_espuma2;
                     editarDados.conforme_comprimento = conforme_comprimento;
                     editarDados.conforme_largura = conform_largura;
                     editarDados.conforme_altura = conform_altura;
                     editarDados.alt_media = media_altura;
                     editarDados.com_media = media_comprimeto;
                     editarDados.larg_media = media_largura;
-
-
 
                     _context.Update(editarDados);
                     await _context.SaveChangesAsync();

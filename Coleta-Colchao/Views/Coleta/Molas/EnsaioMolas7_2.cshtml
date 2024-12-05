@@ -37,7 +37,7 @@
     <form method="post" asp-controller="Coleta" asp-action="SalvarEnsaio7_2" asp-route-os="@ViewBag.os" asp-route-orcamento="@ViewBag.orcamento" asp-route-rev="@ViewBag.rev">
         @if (Model == null)
         {
-            <input id="salvandoMolas" hidden=true/>
+            <input id="salvandoMolas" hidden=true />
             <table class="tables table-bordered border-secondary  table-sm">
                 <thead>
                     <tr>
@@ -176,7 +176,7 @@
                                 <td class="altura-input-centralizar" rowspan="3"><input style="margin-top:20px; margin-bottom:20px;" class="form-control altura-input altura-inputs" type="text" name="larg_espe" value="@ViewBag.largura" readonly /></td>
                             </tr>
                             <tr>
-                                <td >
+                                <td>
                                     2°
                                 </td>
                                 <td colspan="2">
@@ -255,7 +255,7 @@
                                 </td>
                             </tr>
                             <tr>
-                                <td >
+                                <td>
                                     3°
                                 </td>
                                 <td colspan="2">
@@ -350,7 +350,8 @@
                 <tr class="fundo-tabela">
                     <td>Estofamento</td>
                 </tr>
-                <tr> @* quantidade de espuma *@
+                <tr>
+                    @* quantidade de espuma *@
                     <td>
                         Quantidade de espuma :
                         <select id="quantidade_espuma" class="controlador" name="qtd_espuma">
@@ -389,7 +390,7 @@
                                         <option value="Estofamento Aglomerado"> Estofamento Aglomerado</option>
                                     </select>
                                 </td>
-                                <td><input class="form-control" type="text" name="enc_estofamento_1"/></td> 
+                                <td><input class="form-control" type="text" name="enc_estofamento_1" /></td>
                                 <td><input id="esp_min1" class="form-control" type="text" name="esp_tipo_esp_1" /></td>
                             </tr>
                             <tr id="tipo_empuma_2">
@@ -405,7 +406,7 @@
                                         <option value="Estofamento Aglomerado"> Estofamento Aglomerado</option>
                                     </select>
                                 </td>
-                                <td><input class="form-control" type="text" name="enc_estofamento_2"/></td> 
+                                <td><input class="form-control" type="text" name="enc_estofamento_2" /></td>
                                 <td><input id="esp_min2" class="form-control" type="text" name="esp_tipo_esp_2" /></td>
                             </tr>
                             <tr id="tipo_empuma_3">
@@ -421,7 +422,7 @@
                                         <option value="Estofamento Aglomerado"> Estofamento Aglomerado</option>
                                     </select>
                                 </td>
-                                <td><input class="form-control" type="text" name="enc_estofamento_3"/></td>
+                                <td><input class="form-control" type="text" name="enc_estofamento_3" /></td>
                                 <td><input id="esp_min3" class="form-control" type="text" name="esp_tipo_esp_3" /></td>
                             </tr>
                             <tr id="tipo_empuma_4">
@@ -437,7 +438,7 @@
                                         <option value="Estofamento Aglomerado"> Estofamento Aglomerado</option>
                                     </select>
                                 </td>
-                                <td><input class="form-control" type="text" name="enc_estofamento_4"/></td>
+                                <td><input class="form-control" type="text" name="enc_estofamento_4" /></td>
                                 <td><input id="esp_min4" class="form-control" type="text" name="esp_tipo_esp_4" /></td>
                             </tr>
                             <tr id="tipo_empuma_5">
@@ -453,7 +454,7 @@
                                         <option value="Estofamento Aglomerado"> Estofamento Aglomerado</option>
                                     </select>
                                 </td>
-                                <td><input class="form-control" type="text" name="enc_estofamento_5"/></td>
+                                <td><input class="form-control" type="text" name="enc_estofamento_5" /></td>
                                 <td><input id="esp_min5" class="form-control" type="text" name="esp_tipo_esp_5" /></td>
                             </tr>
                             <tr id="tipo_empuma_6">
@@ -469,7 +470,7 @@
                                         <option value="Estofamento Aglomerado"> Estofamento Aglomerado</option>
                                     </select>
                                 </td>
-                                <td><input class="form-control" type="text" name="enc_estofamento_6"/></td>
+                                <td><input class="form-control" type="text" name="enc_estofamento_6" /></td>
                                 <td><input id="esp_min6" class="form-control" type="text" name="esp_tipo_esp_6" /></td>
                             </tr>
                             <tr id="tipo_empuma_7">
@@ -485,7 +486,7 @@
                                         <option value="Estofamento Aglomerado"> Estofamento Aglomerado</option>
                                     </select>
                                 </td>
-                                <td><input class="form-control" type="text" name="enc_estofamento_7"/></td>
+                                <td><input class="form-control" type="text" name="enc_estofamento_7" /></td>
                                 <td><input id="esp_min7" class="form-control" type="text" name="esp_tipo_esp_7" /></td>
                             </tr>
                             <tr id="tipo_empuma_8">
@@ -501,7 +502,7 @@
                                         <option value="Estofamento Aglomerado"> Estofamento Aglomerado</option>
                                     </select>
                                 </td>
-                                <td><input class="form-control" type="text" name="enc_estofamento_8"/></td>
+                                <td><input class="form-control" type="text" name="enc_estofamento_8" /></td>
                                 <td><input id="esp_min8" class="form-control" type="text" name="esp_tipo_esp_8" /></td>
                             </tr>
                             <tr id="tipo_empuma_9">
@@ -517,7 +518,7 @@
                                         <option value="Estofamento Aglomerado"> Estofamento Aglomerado</option>
                                     </select>
                                 </td>
-                                <td><input class="form-control" type="text" name="enc_estofamento_9"/></td>
+                                <td><input class="form-control" type="text" name="enc_estofamento_9" /></td>
                                 <td><input id="esp_min9" class="form-control" type="text" name="esp_tipo_esp_9" /></td>
                             </tr>
                             <tr id="tipo_empuma_10">
@@ -533,7 +534,7 @@
                                         <option value="Estofamento Aglomerado"> Estofamento Aglomerado</option>
                                     </select>
                                 </td>
-                                <td><input class="form-control" type="text" name="enc_estofamento_10"/></td>
+                                <td><input class="form-control" type="text" name="enc_estofamento_10" /></td>
                                 <td><input id="esp_min10" class="form-control" type="text" name="esp_tipo_esp_10" /></td>
                             </tr>
                         </table>
@@ -749,7 +750,7 @@
                                 <td>
                                     1°
                                 </td>
-                                <td colspan ="2">
+                                <td colspan="2">
                                     <input class="form-control" type="text" name="alt_med_1" value="@Model.alt_med_1" />
                                 </td>
                                 <td class="altura-input-centralizar" rowspan="3"><input style="margin-top:20px; margin-bottom:20px;" class="form-control altura-input altura-inputs" type="text" name="alt_espe" value="@ViewBag.altura" readonly /></td>
@@ -816,6 +817,7 @@
                         <td>
                             Total de Matelassê?
                             <select name="total_metalasse" id="total_metalasse" class="controlador">
+                                <option>@Model.total_metalasse</option>
                                 <option value="1">1</option>
                                 <option value="2">2</option>
                             </select>
@@ -833,19 +835,19 @@
                                     <td>Resultado</td>
                                 </tr>
                                 <tr id="excluir_input_1">
-                                    <td><input class="form-control" type="text" name="mate_tipo_espuma_1" value="Espuma do Matelassê" readonly></input></td>
-                                    <td><input class="form-control" type="text" name="declaracao_espuma1"/></td>
-                                    <td><input class="form-control" type="text" name="densidade1"/></td>
-                                    <td><input class="form-control" type="text" name="mata_esp_tipo_esp_1" value="@Model.mata_esp_tipo_esp_1"/></td>
-                                    <td><input class="form-control" type="text" value="10" readonly/></td>
+                                    <td><input class="form-control" type="text" name="mate_tipo_espuma_1" value="Espuma do Matelassê" readonly></td>
+                                    <td><input class="form-control" type="text" name="declaracao_espuma1" value="@Model.declaracao_espuma1" /></td>
+                                    <td><input class="form-control" type="text" name="densidade1" value="@Model.densidade1" /></td>
+                                    <td><input class="form-control" type="text" name="mata_esp_tipo_esp_1" value="@Model.mata_esp_tipo_esp_1" /></td>
+                                    <td><input class="form-control" type="text" value="10" readonly /></td>
                                     <td rowspan="2">@Model.conformidade_mat</td>
                                 </tr>
                                 <tr id="excluir_input_2">
                                     <td><input class="form-control" type="text" name="mate_tipo_espuma_2" value="Espuma do Matelassê" readonly></td>
-                                    <td><input class="form-control" type="text" name="declaracao_espuma2"/></td>
-                                    <td><input class="form-control" type="text" name="densidade2"/></td>
+                                    <td><input class="form-control" type="text" name="declaracao_espuma2" value="@Model.declaracao_espuma2" /></td>
+                                    <td><input class="form-control" type="text" name="densidade2" value="@Model.densidade2" /></td>
                                     <td><input class="form-control" type="text" name="mata_esp_tipo_esp_2" value="@Model.mata_esp_tipo_esp_2" /></td>
-                                    <td><input class="form-control" type="text" value="10" readonly/></td>
+                                    <td><input class="form-control" type="text" value="10" readonly /></td>
                                 </tr>
                             </table>
                         </td>
@@ -898,8 +900,8 @@
                                         <option value="Estofamento Aglomerado"> Estofamento Aglomerado</option>
                                     </select>
                                 </td>
-                                <td><input class="form-control" type="text" name="enc_estofamento_1" value="@Model.enc_estofamento_1"/></td>
-                                <td><input id="esp_min1" class="form-control" type="text" name="esp_tipo_esp_1" value="@Model.esp_tipo_esp_1" readonly/></td> 
+                                <td><input class="form-control" type="text" name="enc_estofamento_1" value="@Model.enc_estofamento_1" /></td>
+                                <td><input id="esp_min1" class="form-control" type="text" name="esp_tipo_esp_1" value="@Model.esp_tipo_esp_1" readonly /></td>
                                 <td>@Model.conformidade</td>
                             </tr>
                             <tr id="tipo_empuma_2">
@@ -915,8 +917,8 @@
                                         <option value="Estofamento Aglomerado"> Estofamento Aglomerado</option>
                                     </select>
                                 </td>
-                                <td><input class="form-control" type="text" name="enc_estofamento_2" value="@Model.enc_estofamento_2"/></td>
-                                <td><input id="esp_min2" class="form-control" type="text" name="esp_tipo_esp_2" value="@Model.esp_tipo_esp_2" readonly/></td>
+                                <td><input class="form-control" type="text" name="enc_estofamento_2" value="@Model.enc_estofamento_2" /></td>
+                                <td><input id="esp_min2" class="form-control" type="text" name="esp_tipo_esp_2" value="@Model.esp_tipo_esp_2" readonly /></td>
                                 <td>@Model.conformidade_2</td>
                             </tr>
                             <tr id="tipo_empuma_3">
@@ -932,8 +934,8 @@
                                         <option value="Estofamento Aglomerado"> Estofamento Aglomerado</option>
                                     </select>
                                 </td>
-                                <td><input class="form-control" type="text" name="enc_estofamento_3" value="@Model.enc_estofamento_3"/></td>
-                                <td><input id="esp_min3" class="form-control" type="text" name="esp_tipo_esp_3" value="@Model.esp_tipo_esp_3" readonly/></td>
+                                <td><input class="form-control" type="text" name="enc_estofamento_3" value="@Model.enc_estofamento_3" /></td>
+                                <td><input id="esp_min3" class="form-control" type="text" name="esp_tipo_esp_3" value="@Model.esp_tipo_esp_3" readonly /></td>
                                 <td>@Model.conformidade_3</td>
                             </tr>
                             <tr id="tipo_empuma_4">
@@ -949,116 +951,116 @@
                                         <option value="Estofamento Aglomerado"> Estofamento Aglomerado</option>
                                     </select>
                                 </td>
-                                <td><input class="form-control" type="text" name="enc_estofamento_4" value="@Model.enc_estofamento_4"/></td>
-                                <td><input id="esp_min4" class="form-control" type="text" name="esp_tipo_esp_4" value="@Model.esp_tipo_esp_4" readonly/></td>
+                                <td><input class="form-control" type="text" name="enc_estofamento_4" value="@Model.enc_estofamento_4" /></td>
+                                <td><input id="esp_min4" class="form-control" type="text" name="esp_tipo_esp_4" value="@Model.esp_tipo_esp_4" readonly /></td>
                                 <td>@Model.conformidade_4</td>
                             </tr>
-                           
-                                <tr id="tipo_empuma_5">
-                                    <td>
-                                        <select id="tipo_5" class="controlador" name="tipo_espuma_5" style="width:300px;">
-                                            <option selected>@Model.tipo_espuma_5</option>
-                                            <option value="Espuma do Matelassê">Espuma do Matelassê</option>
-                                            <option value="Espuma de acabamento (face sup)"> Espuma de acabamento (face sup)</option>
-                                            <option value="Espuma de acabamento (face inf)">Espuma de acabamento (face inf)</option>
-                                            <option value="Estofamento Convencional">Estofamento Convencional </option>
-                                            <option value="Estofamento Hipermacia"> Estofamento Hipermacia</option>
-                                            <option value="Estofamento Macia">Estofamento Macia </option>
-                                            <option value="Estofamento Aglomerado"> Estofamento Aglomerado</option>
-                                        </select>
-                                    </td>
-                                    <td><input class="form-control" type="text" name="enc_estofamento_5" value="@Model.enc_estofamento_5"/></td>
-                                    <td><input id="esp_min5" class="form-control" type="text" name="esp_tipo_esp_5" value="@Model.esp_tipo_esp_5" readonly/></td>
-                                    <td>@Model.conformidade_5</td>
-                                </tr>
-                                @* Não foi acrescentado a declaracao_espuma1 e 2 e densidade 1 e 2 nas quantidades abaixo porque até então, eles nunca passaram de 5 quantidades.
+
+                            <tr id="tipo_empuma_5">
+                                <td>
+                                    <select id="tipo_5" class="controlador" name="tipo_espuma_5" style="width:300px;">
+                                        <option selected>@Model.tipo_espuma_5</option>
+                                        <option value="Espuma do Matelassê">Espuma do Matelassê</option>
+                                        <option value="Espuma de acabamento (face sup)"> Espuma de acabamento (face sup)</option>
+                                        <option value="Espuma de acabamento (face inf)">Espuma de acabamento (face inf)</option>
+                                        <option value="Estofamento Convencional">Estofamento Convencional </option>
+                                        <option value="Estofamento Hipermacia"> Estofamento Hipermacia</option>
+                                        <option value="Estofamento Macia">Estofamento Macia </option>
+                                        <option value="Estofamento Aglomerado"> Estofamento Aglomerado</option>
+                                    </select>
+                                </td>
+                                <td><input class="form-control" type="text" name="enc_estofamento_5" value="@Model.enc_estofamento_5" /></td>
+                                <td><input id="esp_min5" class="form-control" type="text" name="esp_tipo_esp_5" value="@Model.esp_tipo_esp_5" readonly /></td>
+                                <td>@Model.conformidade_5</td>
+                            </tr>
+                            @* Não foi acrescentado a declaracao_espuma1 e 2 e densidade 1 e 2 nas quantidades abaixo porque até então, eles nunca passaram de 5 quantidades.
                                     Se precisar, necessário criar novas variaveis para o banco e para ColetaController.
                                 *@
-                                <tr id="tipo_empuma_6">
-                                    <td>
-                                        <select id="tipo_6" class="controlador" name="tipo_espuma_6" style="width:300px;">
-                                            <option selected>@Model.tipo_espuma_6</option>
-                                            <option value="Espuma do Matelassê">Espuma do Matelassê</option>
-                                            <option value="Espuma de acabamento (face sup)"> Espuma de acabamento (face sup)</option>
-                                            <option value="Espuma de acabamento (face inf)">Espuma de acabamento (face inf)</option>
-                                            <option value="Estofamento Convencional">Estofamento Convencional </option>
-                                            <option value="Estofamento Hipermacia"> Estofamento Hipermacia</option>
-                                            <option value="Estofamento Macia">Estofamento Macia </option>
-                                            <option value="Estofamento Aglomerado"> Estofamento Aglomerado</option>
-                                        </select>
-                                    </td>
-                                    <td><input class="form-control" type="text" name="enc_estofamento_6" value="@Model.enc_estofamento_6"/></td>
-                                    <td><input id="esp_min6" class="form-control" type="text" name="esp_tipo_esp_6" value="@Model.esp_tipo_esp_6" readonly/></td>
-                                </tr>
-                            
-                                <tr id="tipo_empuma_7">
-                                    <td>
-                                        <select id="tipo_7" class="controlador" name="tipo_espuma_7" style="width:300px;">
-                                            <option selected>@Model.tipo_espuma_7</option>
-                                            <option value="Espuma do Matelassê">Espuma do Matelassê</option>
-                                            <option value="Espuma de acabamento (face sup)"> Espuma de acabamento (face sup)</option>
-                                            <option value="Espuma de acabamento (face inf)">Espuma de acabamento (face inf)</option>
-                                            <option value="Estofamento Convencional">Estofamento Convencional </option>
-                                            <option value="Estofamento Hipermacia"> Estofamento Hipermacia</option>
-                                            <option value="Estofamento Macia">Estofamento Macia </option>
-                                            <option value="Estofamento Aglomerado"> Estofamento Aglomerado</option>
-                                        </select>
-                                    </td>
-                                    <td><input class="form-control" type="text" name="enc_estofamento_7" value="@Model.enc_estofamento_7"/></td>
-                                    <td><input id="esp_min7" class="form-control" type="text" name="esp_tipo_esp_7" value="@Model.esp_tipo_esp_7" readonly/></td>
-                                </tr>
-                            
-                                <tr id="tipo_empuma_8">
-                                    <td>
-                                        <select id="tipo_8" class="controlador" name="tipo_espuma_8" style="width:300px;">
-                                            <option selected>@Model.tipo_espuma_8</option>
-                                            <option value="Espuma do Matelassê">Espuma do Matelassê</option>
-                                            <option value="Espuma de acabamento (face sup)"> Espuma de acabamento (face sup)</option>
-                                            <option value="Espuma de acabamento (face inf)">Espuma de acabamento (face inf)</option>
-                                            <option value="Estofamento Convencional">Estofamento Convencional </option>
-                                            <option value="Estofamento Hipermacia"> Estofamento Hipermacia</option>
-                                            <option value="Estofamento Macia">Estofamento Macia </option>
-                                            <option value="Estofamento Aglomerado"> Estofamento Aglomerado</option>
-                                        </select>
-                                    </td>
-                                    <td><input class="form-control" type="text" name="enc_estofamento_8" value="@Model.enc_estofamento_8"/></td>
-                                    <td><input id="esp_min8" class="form-control" type="text" name="esp_tipo_esp_8" value="@Model.esp_tipo_esp_8" readonly/></td>
-                                </tr>
-                            
-                                <tr id="tipo_empuma_9">
-                                    <td>
-                                        <select id="tipo_9" class="controlador" name="tipo_espuma_9" style="width:300px;">
-                                            <option selected>@Model.tipo_espuma_9</option>
-                                            <option value="Espuma do Matelassê">Espuma do Matelassê</option>
-                                            <option value="Espuma de acabamento (face sup)"> Espuma de acabamento (face sup)</option>
-                                            <option value="Espuma de acabamento (face inf)">Espuma de acabamento (face inf)</option>
-                                            <option value="Estofamento Convencional">Estofamento Convencional </option>
-                                            <option value="Estofamento Hipermacia"> Estofamento Hipermacia</option>
-                                            <option value="Estofamento Macia">Estofamento Macia </option>
-                                            <option value="Estofamento Aglomerado"> Estofamento Aglomerado</option>
-                                        </select>
-                                    </td>
-                                    <td><input class="form-control" type="text" name="enc_estofamento_9" value="@Model.enc_estofamento_9"/></td>
-                                    <td><input id="esp_min9" class="form-control" type="text" name="esp_tipo_esp_9" value="@Model.esp_tipo_esp_9" readonly/></td>
-                                </tr>
-                            
-                                <tr id="tipo_empuma_10">
-                                    <td>
-                                        <select id="tipo_10" class="controlador" name="tipo_espuma_10" style="width:300px;">
-                                            <option selected>@Model.tipo_espuma_10</option>
-                                            <option value="Espuma do Matelassê">Espuma do Matelassê</option>
-                                            <option value="Espuma de acabamento (face sup)"> Espuma de acabamento (face sup)</option>
-                                            <option value="Espuma de acabamento (face inf)">Espuma de acabamento (face inf)</option>
-                                            <option value="Estofamento Convencional">Estofamento Convencional </option>
-                                            <option value="Estofamento Hipermacia"> Estofamento Hipermacia</option>
-                                            <option value="Estofamento Macia">Estofamento Macia </option>
-                                            <option value="Estofamento Aglomerado"> Estofamento Aglomerado</option>
-                                        </select>
-                                    </td>
-                                    <td><input class="form-control" type="text" name="enc_estofamento_10" value="@Model.enc_estofamento_10"/></td>
-                                    <td><input id="esp_min10" class="form-control" type="text" name="esp_tipo_esp_10" value="@Model.esp_tipo_esp_10" readonly/></td>
-                                </tr>
-                            
+                            <tr id="tipo_empuma_6">
+                                <td>
+                                    <select id="tipo_6" class="controlador" name="tipo_espuma_6" style="width:300px;">
+                                        <option selected>@Model.tipo_espuma_6</option>
+                                        <option value="Espuma do Matelassê">Espuma do Matelassê</option>
+                                        <option value="Espuma de acabamento (face sup)"> Espuma de acabamento (face sup)</option>
+                                        <option value="Espuma de acabamento (face inf)">Espuma de acabamento (face inf)</option>
+                                        <option value="Estofamento Convencional">Estofamento Convencional </option>
+                                        <option value="Estofamento Hipermacia"> Estofamento Hipermacia</option>
+                                        <option value="Estofamento Macia">Estofamento Macia </option>
+                                        <option value="Estofamento Aglomerado"> Estofamento Aglomerado</option>
+                                    </select>
+                                </td>
+                                <td><input class="form-control" type="text" name="enc_estofamento_6" value="@Model.enc_estofamento_6" /></td>
+                                <td><input id="esp_min6" class="form-control" type="text" name="esp_tipo_esp_6" value="@Model.esp_tipo_esp_6" readonly /></td>
+                            </tr>
+
+                            <tr id="tipo_empuma_7">
+                                <td>
+                                    <select id="tipo_7" class="controlador" name="tipo_espuma_7" style="width:300px;">
+                                        <option selected>@Model.tipo_espuma_7</option>
+                                        <option value="Espuma do Matelassê">Espuma do Matelassê</option>
+                                        <option value="Espuma de acabamento (face sup)"> Espuma de acabamento (face sup)</option>
+                                        <option value="Espuma de acabamento (face inf)">Espuma de acabamento (face inf)</option>
+                                        <option value="Estofamento Convencional">Estofamento Convencional </option>
+                                        <option value="Estofamento Hipermacia"> Estofamento Hipermacia</option>
+                                        <option value="Estofamento Macia">Estofamento Macia </option>
+                                        <option value="Estofamento Aglomerado"> Estofamento Aglomerado</option>
+                                    </select>
+                                </td>
+                                <td><input class="form-control" type="text" name="enc_estofamento_7" value="@Model.enc_estofamento_7" /></td>
+                                <td><input id="esp_min7" class="form-control" type="text" name="esp_tipo_esp_7" value="@Model.esp_tipo_esp_7" readonly /></td>
+                            </tr>
+
+                            <tr id="tipo_empuma_8">
+                                <td>
+                                    <select id="tipo_8" class="controlador" name="tipo_espuma_8" style="width:300px;">
+                                        <option selected>@Model.tipo_espuma_8</option>
+                                        <option value="Espuma do Matelassê">Espuma do Matelassê</option>
+                                        <option value="Espuma de acabamento (face sup)"> Espuma de acabamento (face sup)</option>
+                                        <option value="Espuma de acabamento (face inf)">Espuma de acabamento (face inf)</option>
+                                        <option value="Estofamento Convencional">Estofamento Convencional </option>
+                                        <option value="Estofamento Hipermacia"> Estofamento Hipermacia</option>
+                                        <option value="Estofamento Macia">Estofamento Macia </option>
+                                        <option value="Estofamento Aglomerado"> Estofamento Aglomerado</option>
+                                    </select>
+                                </td>
+                                <td><input class="form-control" type="text" name="enc_estofamento_8" value="@Model.enc_estofamento_8" /></td>
+                                <td><input id="esp_min8" class="form-control" type="text" name="esp_tipo_esp_8" value="@Model.esp_tipo_esp_8" readonly /></td>
+                            </tr>
+
+                            <tr id="tipo_empuma_9">
+                                <td>
+                                    <select id="tipo_9" class="controlador" name="tipo_espuma_9" style="width:300px;">
+                                        <option selected>@Model.tipo_espuma_9</option>
+                                        <option value="Espuma do Matelassê">Espuma do Matelassê</option>
+                                        <option value="Espuma de acabamento (face sup)"> Espuma de acabamento (face sup)</option>
+                                        <option value="Espuma de acabamento (face inf)">Espuma de acabamento (face inf)</option>
+                                        <option value="Estofamento Convencional">Estofamento Convencional </option>
+                                        <option value="Estofamento Hipermacia"> Estofamento Hipermacia</option>
+                                        <option value="Estofamento Macia">Estofamento Macia </option>
+                                        <option value="Estofamento Aglomerado"> Estofamento Aglomerado</option>
+                                    </select>
+                                </td>
+                                <td><input class="form-control" type="text" name="enc_estofamento_9" value="@Model.enc_estofamento_9" /></td>
+                                <td><input id="esp_min9" class="form-control" type="text" name="esp_tipo_esp_9" value="@Model.esp_tipo_esp_9" readonly /></td>
+                            </tr>
+
+                            <tr id="tipo_empuma_10">
+                                <td>
+                                    <select id="tipo_10" class="controlador" name="tipo_espuma_10" style="width:300px;">
+                                        <option selected>@Model.tipo_espuma_10</option>
+                                        <option value="Espuma do Matelassê">Espuma do Matelassê</option>
+                                        <option value="Espuma de acabamento (face sup)"> Espuma de acabamento (face sup)</option>
+                                        <option value="Espuma de acabamento (face inf)">Espuma de acabamento (face inf)</option>
+                                        <option value="Estofamento Convencional">Estofamento Convencional </option>
+                                        <option value="Estofamento Hipermacia"> Estofamento Hipermacia</option>
+                                        <option value="Estofamento Macia">Estofamento Macia </option>
+                                        <option value="Estofamento Aglomerado"> Estofamento Aglomerado</option>
+                                    </select>
+                                </td>
+                                <td><input class="form-control" type="text" name="enc_estofamento_10" value="@Model.enc_estofamento_10" /></td>
+                                <td><input id="esp_min10" class="form-control" type="text" name="esp_tipo_esp_10" value="@Model.esp_tipo_esp_10" readonly /></td>
+                            </tr>
+
                         </table>
                     </td>
                 </tr>
@@ -1069,9 +1071,10 @@
                 <div class="d-grid gap-2 d-flex justify-content-center">
                     <button type="submit" class="btn btn-success btn btn-primary btn-md">Editar Dados</button>
                 </div>
-            }else
+            }
+            else
             {
-                  <div class="d-flex justify-content-center">
+                <div class="d-flex justify-content-center">
                     <div class="alert alert-danger w-50 p-3 m-3 text-center" role="alert">
                         Coleta Bloqueada!
                     </div>
@@ -1088,7 +1091,7 @@
         </script>
     }
 
-    
+
     <script>
         document.addEventListener("DOMContentLoaded", function () {
             var quantidade_espuma = document.querySelector('select[id="quantidade_espuma"]');
@@ -1102,7 +1105,7 @@
             var quantidade_8 = document.getElementById("tipo_empuma_8");
             var quantidade_9 = document.getElementById("tipo_empuma_9");
             var quantidade_10 = document.getElementById("tipo_empuma_10");
-            
+
             function atualizarVisibilidade() {
                 var valor = parseInt(quantidade_espuma.value, 10);
 
@@ -1125,14 +1128,27 @@
             quantidade_espuma.addEventListener('change', atualizarVisibilidade);
         });
     </script>
-    
+
     <script>
         var tem_metalasse = document.getElementById("tem_metalasse");
+
         var total_metalasse = document.getElementById("total_metalasse");
         var tirar_quant_metalasse = document.getElementById("tirar_quant_metalasse");
         var inputs_adicionais_1 = document.getElementById("excluir_input_1");
         var inputs_adicionais_2 = document.getElementById("excluir_input_2");
         var nao_tem_metalasse = document.getElementById("nao_tem_metalasse");
+
+        document.addEventListener('DOMContentLoaded', function () {
+            // Verifica e aplica o estado inicial do 'total_metalasse'
+            var valorSelecionadoTotal = total_metalasse.value;
+            if (valorSelecionadoTotal === "1") {
+                inputs_adicionais_1.style.display = "table-row";
+                inputs_adicionais_2.style.display = "none";
+            } else if (valorSelecionadoTotal === "2") {
+                inputs_adicionais_1.style.display = "table-row";
+                inputs_adicionais_2.style.display = "table-row";
+            }
+        });
 
         tem_metalasse.addEventListener('change', function () {
             var valorSelecionado = tem_metalasse.value;
@@ -1157,6 +1173,7 @@
                 inputs_adicionais_2.style.display = "table-row";
             }
         });
+
     </script>
 
     <script>
@@ -1182,70 +1199,70 @@
         const esp_min10 = document.getElementById("esp_min10");
 
         tipo_1.addEventListener('change', function () {
-            if (tipo_1.value === "Espuma do Matelassê") { 
+            if (tipo_1.value === "Espuma do Matelassê") {
                 esp_min1.value = "10";
             } else {
                 esp_min1.value = "20";
             }
         });
         tipo_2.addEventListener('change', function () {
-            if (tipo_2.value === "Espuma do Matelassê") { 
+            if (tipo_2.value === "Espuma do Matelassê") {
                 esp_min2.value = "10";
             } else {
                 esp_min2.value = "20";
             }
         });
         tipo_3.addEventListener('change', function () {
-            if (tipo_3.value === "Espuma do Matelassê") { 
+            if (tipo_3.value === "Espuma do Matelassê") {
                 esp_min3.value = "10";
             } else {
                 esp_min3.value = "20";
             }
         });
         tipo_4.addEventListener('change', function () {
-            if (tipo_4.value === "Espuma do Matelassê") { 
+            if (tipo_4.value === "Espuma do Matelassê") {
                 esp_min4.value = "10";
             } else {
                 esp_min4.value = "20";
             }
         });
         tipo_5.addEventListener('change', function () {
-            if (tipo_5.value === "Espuma do Matelassê") { 
+            if (tipo_5.value === "Espuma do Matelassê") {
                 esp_min5.value = "10";
             } else {
                 esp_min5.value = "20";
             }
         });
         tipo_6.addEventListener('change', function () {
-            if (tipo_6.value === "Espuma do Matelassê") { 
+            if (tipo_6.value === "Espuma do Matelassê") {
                 esp_min6.value = "10";
             } else {
                 esp_min6.value = "20";
             }
         });
         tipo_7.addEventListener('change', function () {
-            if (tipo_7.value === "Espuma do Matelassê") { 
+            if (tipo_7.value === "Espuma do Matelassê") {
                 esp_min7.value = "10";
             } else {
                 esp_min7.value = "20";
             }
         });
         tipo_8.addEventListener('change', function () {
-            if (tipo_8.value === "Espuma do Matelassê") { 
+            if (tipo_8.value === "Espuma do Matelassê") {
                 esp_min8.value = "10";
             } else {
                 esp_min8.value = "20";
             }
         });
         tipo_9.addEventListener('change', function () {
-            if (tipo_9.value === "Espuma do Matelassê") { 
+            if (tipo_9.value === "Espuma do Matelassê") {
                 esp_min9.value = "10";
             } else {
                 esp_min9.value = "20";
             }
         });
         tipo_10.addEventListener('change', function () {
-            if (tipo_10.value === "Espuma do Matelassê") { 
+            if (tipo_10.value === "Espuma do Matelassê") {
                 esp_min10.value = "10";
             } else {
                 esp_min10.value = "20";
@@ -1253,7 +1270,7 @@
         });
     </script>
 
-    
+
 
     <script>
         document.addEventListener("keydown", function (e) {
@@ -1262,6 +1279,6 @@
             }
         });
     </script>
-    
+
 </body>
 </html>
