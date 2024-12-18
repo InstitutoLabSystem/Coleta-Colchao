@@ -3,16 +3,20 @@
   "WorkspaceRootPath": "C:\\Users\\Molina\\source\\repos\\InstitutoLabSystem\\Coleta-Colchao\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{A122F397-C234-43D8-A8C7-2102421BAFCA}|Coleta-Colchao\\Coleta-Colchao.csproj|c:\\users\\molina\\source\\repos\\institutolabsystem\\coleta-colchao\\coleta-colchao\\views\\coleta\\laminas\\laminafadiga.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{A122F397-C234-43D8-A8C7-2102421BAFCA}|Coleta-Colchao\\Coleta-Colchao.csproj|solutionrelative:coleta-colchao\\views\\coleta\\laminas\\laminafadiga.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{A122F397-C234-43D8-A8C7-2102421BAFCA}|Coleta-Colchao\\Coleta-Colchao.csproj|c:\\users\\molina\\source\\repos\\institutolabsystem\\coleta-colchao\\coleta-colchao\\views\\coleta\\espuma\\indexespuma.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{A122F397-C234-43D8-A8C7-2102421BAFCA}|Coleta-Colchao\\Coleta-Colchao.csproj|solutionrelative:coleta-colchao\\views\\coleta\\espuma\\indexespuma.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A122F397-C234-43D8-A8C7-2102421BAFCA}|Coleta-Colchao\\Coleta-Colchao.csproj|c:\\users\\molina\\source\\repos\\institutolabsystem\\coleta-colchao\\coleta-colchao\\views\\coleta\\espuma\\editarindexespuma.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{A122F397-C234-43D8-A8C7-2102421BAFCA}|Coleta-Colchao\\Coleta-Colchao.csproj|solutionrelative:coleta-colchao\\views\\coleta\\espuma\\editarindexespuma.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{A122F397-C234-43D8-A8C7-2102421BAFCA}|Coleta-Colchao\\Coleta-Colchao.csproj|c:\\users\\molina\\source\\repos\\institutolabsystem\\coleta-colchao\\coleta-colchao\\controllers\\coletacontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{A122F397-C234-43D8-A8C7-2102421BAFCA}|Coleta-Colchao\\Coleta-Colchao.csproj|solutionrelative:coleta-colchao\\controllers\\coletacontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A122F397-C234-43D8-A8C7-2102421BAFCA}|Coleta-Colchao\\Coleta-Colchao.csproj|c:\\users\\molina\\source\\repos\\institutolabsystem\\coleta-colchao\\coleta-colchao\\views\\coleta\\laminas\\laminapfi.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{A122F397-C234-43D8-A8C7-2102421BAFCA}|Coleta-Colchao\\Coleta-Colchao.csproj|solutionrelative:coleta-colchao\\views\\coleta\\laminas\\laminapfi.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{A122F397-C234-43D8-A8C7-2102421BAFCA}|Coleta-Colchao\\Coleta-Colchao.csproj|c:\\users\\molina\\source\\repos\\institutolabsystem\\coleta-colchao\\coleta-colchao\\views\\coleta\\laminas\\laminafadiga.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{A122F397-C234-43D8-A8C7-2102421BAFCA}|Coleta-Colchao\\Coleta-Colchao.csproj|solutionrelative:coleta-colchao\\views\\coleta\\laminas\\laminafadiga.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{A122F397-C234-43D8-A8C7-2102421BAFCA}|Coleta-Colchao\\Coleta-Colchao.csproj|c:\\users\\molina\\source\\repos\\institutolabsystem\\coleta-colchao\\coleta-colchao\\models\\coletamodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -30,26 +34,26 @@
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 4,
               "Title": "ColetaModel.cs",
               "DocumentMoniker": "C:\\Users\\Molina\\source\\repos\\InstitutoLabSystem\\Coleta-Colchao\\Coleta-Colchao\\Models\\ColetaModel.cs",
               "RelativeDocumentMoniker": "Coleta-Colchao\\Models\\ColetaModel.cs",
               "ToolTip": "C:\\Users\\Molina\\source\\repos\\InstitutoLabSystem\\Coleta-Colchao\\Coleta-Colchao\\Models\\ColetaModel.cs",
               "RelativeToolTip": "Coleta-Colchao\\Models\\ColetaModel.cs",
-              "ViewState": "AgIAAJIBAAAAAAAAAAAewKUBAAAzAAAAAAAAAA==",
+              "ViewState": "AgIAAJIBAAAAAAAAAIA2wKUBAAAzAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-10-15T19:21:48.061Z",
               "IsPinned": true
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 2,
               "Title": "ColetaController.cs",
               "DocumentMoniker": "C:\\Users\\Molina\\source\\repos\\InstitutoLabSystem\\Coleta-Colchao\\Coleta-Colchao\\Controllers\\ColetaController.cs",
               "RelativeDocumentMoniker": "Coleta-Colchao\\Controllers\\ColetaController.cs",
               "ToolTip": "C:\\Users\\Molina\\source\\repos\\InstitutoLabSystem\\Coleta-Colchao\\Coleta-Colchao\\Controllers\\ColetaController.cs",
               "RelativeToolTip": "Coleta-Colchao\\Controllers\\ColetaController.cs",
-              "ViewState": "AgIAAAAgAAAAAAAAAAAMwBAgAAAUAAAAAAAAAA==",
+              "ViewState": "AgIAABgAAAAAAAAAAAAAACYAAAA0AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-11-13T18:52:30.702Z",
               "IsPinned": true,
@@ -82,27 +86,40 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
+              "Title": "IndexEspuma.cshtml",
+              "DocumentMoniker": "C:\\Users\\Molina\\source\\repos\\InstitutoLabSystem\\Coleta-Colchao\\Coleta-Colchao\\Views\\Coleta\\Espuma\\IndexEspuma.cshtml",
+              "RelativeDocumentMoniker": "Coleta-Colchao\\Views\\Coleta\\Espuma\\IndexEspuma.cshtml",
+              "ToolTip": "C:\\Users\\Molina\\source\\repos\\InstitutoLabSystem\\Coleta-Colchao\\Coleta-Colchao\\Views\\Coleta\\Espuma\\IndexEspuma.cshtml",
+              "RelativeToolTip": "Coleta-Colchao\\Views\\Coleta\\Espuma\\IndexEspuma.cshtml",
+              "ViewState": "AgIAAAIBAAAAAAAAAAAAAAwBAAA8AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-12-18T19:09:49.948Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "EditarIndexEspuma.cshtml",
+              "DocumentMoniker": "C:\\Users\\Molina\\source\\repos\\InstitutoLabSystem\\Coleta-Colchao\\Coleta-Colchao\\Views\\Coleta\\Espuma\\EditarIndexEspuma.cshtml",
+              "RelativeDocumentMoniker": "Coleta-Colchao\\Views\\Coleta\\Espuma\\EditarIndexEspuma.cshtml",
+              "ToolTip": "C:\\Users\\Molina\\source\\repos\\InstitutoLabSystem\\Coleta-Colchao\\Coleta-Colchao\\Views\\Coleta\\Espuma\\EditarIndexEspuma.cshtml",
+              "RelativeToolTip": "Coleta-Colchao\\Views\\Coleta\\Espuma\\EditarIndexEspuma.cshtml",
+              "ViewState": "AgIAAHkBAAAAAAAAAAAAAHkBAABAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-12-18T19:05:51.391Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
               "Title": "LaminaFadiga.cshtml",
               "DocumentMoniker": "C:\\Users\\Molina\\source\\repos\\InstitutoLabSystem\\Coleta-Colchao\\Coleta-Colchao\\Views\\Coleta\\Laminas\\LaminaFadiga.cshtml",
               "RelativeDocumentMoniker": "Coleta-Colchao\\Views\\Coleta\\Laminas\\LaminaFadiga.cshtml",
               "ToolTip": "C:\\Users\\Molina\\source\\repos\\InstitutoLabSystem\\Coleta-Colchao\\Coleta-Colchao\\Views\\Coleta\\Laminas\\LaminaFadiga.cshtml",
               "RelativeToolTip": "Coleta-Colchao\\Views\\Coleta\\Laminas\\LaminaFadiga.cshtml",
-              "ViewState": "AgIAAHoAAAAAAAAAAAAMwI4AAABaAAAAAAAAAA==",
+              "ViewState": "AgIAAAwAAAAAAAAAAAAAABgAAABAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-12-05T16:02:43.03Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "LaminaPFI.cshtml",
-              "DocumentMoniker": "C:\\Users\\Molina\\source\\repos\\InstitutoLabSystem\\Coleta-Colchao\\Coleta-Colchao\\Views\\Coleta\\Laminas\\LaminaPFI.cshtml",
-              "RelativeDocumentMoniker": "Coleta-Colchao\\Views\\Coleta\\Laminas\\LaminaPFI.cshtml",
-              "ToolTip": "C:\\Users\\Molina\\source\\repos\\InstitutoLabSystem\\Coleta-Colchao\\Coleta-Colchao\\Views\\Coleta\\Laminas\\LaminaPFI.cshtml",
-              "RelativeToolTip": "Coleta-Colchao\\Views\\Coleta\\Laminas\\LaminaPFI.cshtml",
-              "ViewState": "AgIAAGYAAAAAAAAAAAAAAIEAAAA/AAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-12-04T12:32:53.826Z"
+              "WhenOpened": "2024-12-18T12:09:21.226Z"
             }
           ]
         }
