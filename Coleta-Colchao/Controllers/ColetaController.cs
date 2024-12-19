@@ -4408,7 +4408,7 @@ namespace Coleta_Colchao.Controllers
         public async Task<IActionResult> EspumaIdentificacaoEmbalagem(string os, string orcamento, int rev, [Bind("data_ini,data_term,temp_ini,temp_fim,etiquieta_um,etiquieta_um,fixacao,material,area_um,area_dois,area_result,conforme_area_um,etiquieta_dois,marca,dimensoes,info_altura,medidas,colchoes,tipo_colchao," +
             "letras,altura_letra_um,negrito_um,caixa_alta_um,coloracao_um,classificacao,uso,composicao,tipo_espuma,densidade_nominal,espessura_mad,comp_revestimento,data_fabricacao,pais_fabricacao,cuidados,aviso_um,altura_letra_dois,negrito_dois,caixa_alta_dois,coloracao_dois,esclarecimento_um," +
             "altura_letra_tres,negrito_tres,caixa_alta_tres,coloracao_eti,esclarecimento_dois,altura_letra_quat,negrito_quat,caixa_alta_quat,coloracao_quat,colchao_infantil,embalagem_colchao,aviso_embalagem_um,altura_letra_cinco,negrito_cinco,caixa_alta_cinco,coloracao_cinco,aviso_odor,aviso_embalagem_dois,altura_letra_seis,negrito_seis," +
-            "caixa_alta_seis,coloracao_seis,dec_voluntaria,texto_negrito,identificacao,identificacao_dois,desc_lamina,latex,embalagem_uni,embalagem_protecao,observacao,visualizacao,lingua_portuguesa,executador_um,executador_dois,executador_tres,executador_quat")] ColetaModel.Espuma_identificacao_embalagem salvar)
+            "caixa_alta_seis,coloracao_seis,dec_voluntaria,texto_negrito,identificacao,identificacao_dois,desc_lamina,latex,embalagem_uni,embalagem_protecao,observacao,visualizacao,lingua_portuguesa,executador_um,executador_dois,executador_tres,executador_quat,conforme_3_2_1")] ColetaModel.Espuma_identificacao_embalagem salvar)
         {
 
             try
@@ -4506,6 +4506,7 @@ namespace Coleta_Colchao.Controllers
                     string executador_dois = salvar.executador_dois;
                     string executador_tres = salvar.executador_tres;
                     string executador_quat = salvar.executador_quat;
+                    string conforme_3_2_1 = salvar.conforme_3_2_1;
 
 
                     //verificação de conformidade dos ensaios.
@@ -4712,6 +4713,7 @@ namespace Coleta_Colchao.Controllers
                         conforme_infantil = conforme_infantil,
                         conforme_2_14_2 = conforme2_14_2,
                         conforme_2_14_3 = conforme2_14_3,
+                        conforme_3_2_1 = conforme_3_2_1,
                         conforme6_2 = conforme6_2,
                         executador_um = executador_um,
                         executador_dois = executador_dois,
@@ -4939,6 +4941,7 @@ namespace Coleta_Colchao.Controllers
                     editarDados.conforme_infantil = conforme_infantil;
                     editarDados.conforme_2_14_2 = conforme2_14_2;
                     editarDados.conforme_2_14_3 = conforme2_14_3;
+                    editarDados.conforme_3_2_1 = salvar.conforme_3_2_1;
                     editarDados.conforme6_2 = conforme6_2;
                     editarDados.executador_dois = salvar.executador_dois;
                     editarDados.executador_tres = salvar.executador_tres;

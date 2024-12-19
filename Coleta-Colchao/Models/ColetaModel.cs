@@ -790,6 +790,7 @@ namespace Coleta_Colchao.Models
             public string? conforme_infantil { get; set; }
             public string? conforme_2_14_2 { get; set; }
             public string? conforme_2_14_3 { get; set; }
+            public string? conforme_3_2_1 { get; set; }
             public string? conforme6_2 { get; set; }
             public string? executor { get; set; }
             public string? editarUsuario { get; set; }

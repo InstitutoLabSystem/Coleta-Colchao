@@ -824,11 +824,23 @@
                         acompanhado  ou  não  da  letra  “D”,  divergente da(s)  densidade(s)  nominal(is)  apresentada(s)  pela(s)  lâmina(s)  de  espuma(s)
                         que  constitui(em)  o colchão  ou  colchonete,  exceto  quando  o  numeral  apresentar  mais  que  4  (dígitos),
                         evitando qualquer  confusão  quanto  à  densidade  do  colchão,  ou  ao  atendimento  a  normas  de  gestão consagradas.
-
                     </td>
                     <td>
                         <select name="identificacao_dois">
                             <option selected> --- </option>
+                            <option> Sim </option>
+                            <option> Não </option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        3.2.1 O colchão deve ser revestido em plástico ou material têxtil plastificado, com costuras soldadas totalmente impermeáveis, com ou sem zíper, e com ilhós de respiro para espuma.
+                    </td>
+                    <td>
+                        <select name="conforme_3_2_1">
+                            <option selected> --- </option>
+                            <option>NA</option>
                             <option> Sim </option>
                             <option> Não </option>
                         </select>
@@ -1779,6 +1791,19 @@
                         <select name="identificacao_dois">
                             <option selected> @Model.identificacao_dois </option>
                             <option> --- </option>
+                            <option> Sim </option>
+                            <option> Não </option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        3.2.1 O colchão deve ser revestido em plástico ou material têxtil plastificado, com costuras soldadas totalmente impermeáveis, com ou sem zíper, e com ilhós de respiro para espuma.
+                    </td>
+                    <td>
+                        <select name="conforme_3_2_1">
+                            <option selected> @Model.conforme_3_2_1 </option>
+                            <option>NA</option>
                             <option> Sim </option>
                             <option> Não </option>
                         </select>
