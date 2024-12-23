@@ -3076,7 +3076,7 @@ namespace Coleta_Colchao.Controllers
                         conforme_gramas = "NC";
                     }
 
-                    if (trincas == "NC" && rompimentos == "NC")
+                    if (trincas == "C" && rompimentos == "C")
                     {
                         conforme = "C";
                     }
@@ -3162,13 +3162,13 @@ namespace Coleta_Colchao.Controllers
                         editarDados.conforme_gramas = "NC";
                     }
 
-                    if (editarDados.trincas == "NC" && editarDados.rompimentos == "NC")
+                    if (editarDados.trincas == "C" && editarDados.rompimentos == "C")
                     {
-                        editarDados.conforme = "NC";
+                        editarDados.conforme = "C";
                     }
                     else
                     {
-                        editarDados.conforme = "C";
+                        editarDados.conforme = "NC";
                     }
 
                     //editando os valores das contas, caso precise.
