@@ -24,10 +24,10 @@
 
         .controlador {
             /*  padding: 5px;
-                                                    border-color: gray;
-                                                    border-radius: 5px;
-                                                    box-sizing: border-box;
-                                                    height: 500px; */
+                                                            border-color: gray;
+                                                            border-radius: 5px;
+                                                            box-sizing: border-box;
+                                                            height: 500px; */
             width: 100px;
         }
     </style>
@@ -270,17 +270,18 @@
                         A borda perimetral de aço e/ou espuma deve manter seu paralelismo e perpendicularidade antes e após o ensaio de rolagem. Além de atender as especificações abaixo.
                     </td>
                 </tr>
-                <tr>
-                    <td colspan="3">
-                        <table class="tables table-bordered border-secondary  table-sm">
-                            <tr class="fundo-tabela borda">
-                                <td>Borda</td>
-                                <td>Especificado</td>
-                                <td colspan="2">Encontrado</td>
-                                <td>Manteve seu paralelismo e perpendicularidade</td>
-                            </tr>
-                            @if (Model.contem_molejo == 0)
-                            {
+                @if (Model.contem_molejo == 0)
+                {
+                    <tr>
+                        <td colspan="3">
+                            <table class="tables table-bordered border-secondary  table-sm">
+                                <tr class="fundo-tabela borda">
+                                    <td>Borda</td>
+                                    <td>Especificado</td>
+                                    <td colspan="2">Encontrado</td>
+                                    <td>Manteve seu paralelismo e perpendicularidade</td>
+                                </tr>
+
                                 @if (Model.borda_aco == "X")
                                 {
 
@@ -333,11 +334,12 @@
                                         </td>
                                     </tr>
                                 }
-                            }
-                        </table>
 
-                    </td>
-                </tr>
+                            </table>
+
+                        </td>
+                    </tr>
+                }
                 @*    @* duplicando tabela caso seja mais de um molejo *@
                 @if (Model.contem_molejo == 1)
                 {
@@ -474,7 +476,7 @@
                         </select>
                     </td>
                 </tr>
-              
+
                 <tr>
                     <td>
                         B) Não utilizar, para fins de sustentação ou outra função estrutural, qualquer componente;
