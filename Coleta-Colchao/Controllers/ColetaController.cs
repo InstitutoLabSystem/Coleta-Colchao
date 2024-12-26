@@ -115,6 +115,30 @@ namespace Coleta_Colchao.Controllers
             }
         }
 
+        public IActionResult Condicionamento(string os, string orcamento, int rev)
+        {
+            var dados = _context.condicionamento
+                        .Where(x => x.os == os && x.orcamento == orcamento && x.rev == rev)
+                        .FirstOrDefault();
+
+            if (dados != null)
+            {
+                ViewBag.os = os;
+                ViewBag.orcamento = orcamento;
+                ViewBag.rev = rev;
+
+                return View(dados);
+            }
+            else
+            {
+                ViewBag.os = os;
+                ViewBag.orcamento = orcamento;
+                ViewBag.rev = rev;
+
+                return View();
+            }
+        }
+
         public IActionResult EnsaioEspuma4_1(string os, string orcamento, int rev)
         {
             var dados = _context.ensaio_espuma4_1.Where(x => x.os == os && x.orcamento == orcamento && x.rev == rev).FirstOrDefault();
@@ -935,6 +959,47 @@ namespace Coleta_Colchao.Controllers
 
 
         //INICIO DAS FUNÇÕES PARA SALVAR OS DADOS,
+        [HttpPost]
+        public async Task<IActionResult> salvarCondicionamento(string os, string orcamento, int rev, ColetaModel.Condicionamento returnDados)
+        {
+            var dados = _context.condicionamento
+                        .Where(x => x.os == os && x.orcamento == orcamento && x.rev == rev)
+                        .FirstOrDefault();
+
+            if(dados == null)
+            {
+                //salvando os dados
+                _context.condicionamento.Add(returnDados);
+                await _context.SaveChangesAsync();
+
+                TempData["Mensagem"] = "Dados salvo com sucesso";
+                return RedirectToAction("Condicionamento", new { os, orcamento, rev });
+            }
+            else
+            {
+
+                //editando os valores.
+                dados.data_ini = returnDados.data_ini;
+                dados.data_term = returnDados.data_term;
+                dados.acond_inicio = returnDados.acond_inicio;
+                dados.acond_final = returnDados.acond_final;
+                dados.hora_inicio = returnDados.hora_inicio;
+                dados.hora_final = returnDados.hora_final;
+                dados.temp_inicio = returnDados.temp_inicio;
+                dados.temp_final = returnDados.temp_final;
+                dados.temp_umidade_inicio = returnDados.temp_umidade_inicio;
+                dados.temp_umidade_final = returnDados.temp_umidade_final;
+
+                _context.condicionamento.Update(dados);
+                await _context.SaveChangesAsync();
+
+                TempData["Mensagem"] = "Dados editado com sucesso";
+                return RedirectToAction("Condicionamento", new { os, orcamento, rev });
+            }
+        }
+
+
+
         [HttpPost]
         public async Task<IActionResult> SalvarRegistroMolas(string os, string orcamento, [Bind("lacre,realizacao_ensaios,quant_recebida,quant_ensaiada,data_realizacao_ini,data_realizacao_term,num_proc,cod_ref,tipo_cert,modelo_cert,tipo_proc,produto,estrutura,tipo_molejo,quant_molejo,fornecedor_um,fornecedor_dois,nome_molejo_um,nome_molejo_dois,quant_media_um,quant_media_dois,bitola_arame_um,bitola_arame_dois,borda_peri,metalasse,qtd_face,comprimento,largura,altura,isolante,latex,napa_cou_plas,manual,marca_modelo,densidade,densidade_2,densidade_3,densidade_4,densidade_5,tipo_espuma,tipo_espuma_2,tipo_espuma_3,tipo_espuma_4,tipo_espuma_5,quant_laminas")] ColetaModel.Registro registro)
         {

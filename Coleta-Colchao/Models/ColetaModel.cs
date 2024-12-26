@@ -1640,5 +1640,25 @@ namespace Coleta_Colchao.Models
                 return (LaminaPFI)this.MemberwiseClone();
             }
         }
+
+        public class Condicionamento
+        {
+            [Key]
+            public int Id { get; set; }
+            public string? os { get; set; }
+            public string? orcamento { get; set; }
+            public int rev { get; set; }
+            public DateOnly data_ini { get; set; }
+            public DateOnly data_term { get; set; }
+            public DateOnly acond_inicio { get; set; }         
+            public DateOnly acond_final { get; set; }
+            public TimeOnly hora_inicio { get; set; }
+            public TimeOnly hora_final { get; set; }
+            public float temp_inicio { get; set; }
+            public float temp_final { get; set; }
+            public float temp_umidade_inicio { get; set; }
+            public float temp_umidade_final { get; set; }
+
+        }
     }
 }

@@ -37,5 +37,6 @@ namespace Coleta_Colchao.Data
         public DbSet<Arquivos.Imagens> colchao_anexos { get; set; }
         public DbSet<InstrumentosColchaoSalvos> instrumentos_colchao { get; set; }
         public DbSet<LogRevisao> log_colchao { get; set; }
+        public DbSet<ColetaModel.Condicionamento> condicionamento { get; set; }
     }
 }
