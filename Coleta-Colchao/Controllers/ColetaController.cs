@@ -1001,7 +1001,7 @@ namespace Coleta_Colchao.Controllers
 
 
         [HttpPost]
-        public async Task<IActionResult> SalvarRegistroMolas(string os, string orcamento, [Bind("lacre,realizacao_ensaios,quant_recebida,quant_ensaiada,data_realizacao_ini,data_realizacao_term,num_proc,cod_ref,tipo_cert,modelo_cert,tipo_proc,produto,estrutura,tipo_molejo,quant_molejo,fornecedor_um,fornecedor_dois,nome_molejo_um,nome_molejo_dois,quant_media_um,quant_media_dois,bitola_arame_um,bitola_arame_dois,borda_peri,metalasse,qtd_face,comprimento,largura,altura,isolante,latex,napa_cou_plas,manual,marca_modelo,densidade,densidade_2,densidade_3,densidade_4,densidade_5,tipo_espuma,tipo_espuma_2,tipo_espuma_3,tipo_espuma_4,tipo_espuma_5,quant_laminas")] ColetaModel.Registro registro)
+        public async Task<IActionResult> SalvarRegistroMolas(string os, string orcamento, [Bind("lacre,realizacao_ensaios,quant_recebida,quant_ensaiada,data_realizacao_ini,data_realizacao_term,num_proc,cod_ref,tipo_cert,modelo_cert,tipo_proc,produto,estrutura,tipo_molejo,tipo_molejo2,quant_molejo,fornecedor_um,fornecedor_dois,nome_molejo_um,nome_molejo_dois,quant_media_um,quant_media_dois,bitola_arame_um,bitola_arame_dois,borda_peri,metalasse,qtd_face,comprimento,largura,altura,isolante,latex,napa_cou_plas,manual,marca_modelo,densidade,densidade_2,densidade_3,densidade_4,densidade_5,tipo_espuma,tipo_espuma_2,tipo_espuma_3,tipo_espuma_4,tipo_espuma_5,quant_laminas")] ColetaModel.Registro registro)
         {
             try
             {
@@ -1031,6 +1031,7 @@ namespace Coleta_Colchao.Controllers
                 string produto = registro.produto;
                 string estrutura = registro.estrutura;
                 string tipo_molejo = registro.tipo_molejo;
+                string tipo_molejo2 = registro.tipo_molejo2;
                 string quant_molejo = registro.quant_molejo;
                 string fornecedor_um = registro.fornecedor_um;
                 string fornecedor_dois = registro.fornecedor_dois;
@@ -1082,6 +1083,7 @@ namespace Coleta_Colchao.Controllers
                     produto = produto,
                     estrutura = estrutura,
                     tipo_molejo = tipo_molejo,
+                    tipo_molejo2 = tipo_molejo2,
                     quant_molejo = quant_molejo,
                     fornecedor_um = fornecedor_um,
                     fornecedor_dois = fornecedor_dois,
@@ -1294,7 +1296,7 @@ namespace Coleta_Colchao.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> EditarRegistroMolas(string os, string orcamento, int rev, [Bind("lacre,realizacao_ensaios,quant_recebida,quant_ensaiada,data_realizacao_ini,data_realizacao_term,num_proc,cod_ref,tipo_cert,modelo_cert,tipo_proc,produto,estrutura,tipo_molejo,quant_molejo,fornecedor_um,fornecedor_dois,nome_molejo_um,nome_molejo_dois,quant_media_um,quant_media_dois,bitola_arame_um,bitola_arame_dois,borda_peri,qtd_face,comprimento,largura,altura,metalasse,isolante,latex,napa_cou_plas,manual,marca_modelo,densidade,densidade_2,densidade_3,densidade_4,densidade_5,tipo_espuma,tipo_espuma_2,tipo_espuma_3,tipo_espuma_4,tipo_espuma_5,quant_laminas")] ColetaModel.Registro EditarRegistros)
+        public async Task<IActionResult> EditarRegistroMolas(string os, string orcamento, int rev, [Bind("lacre,realizacao_ensaios,quant_recebida,quant_ensaiada,data_realizacao_ini,data_realizacao_term,num_proc,cod_ref,tipo_cert,modelo_cert,tipo_proc,produto,estrutura,tipo_molejo,tipo_molejo2,quant_molejo,fornecedor_um,fornecedor_dois,nome_molejo_um,nome_molejo_dois,quant_media_um,quant_media_dois,bitola_arame_um,bitola_arame_dois,borda_peri,qtd_face,comprimento,largura,altura,metalasse,isolante,latex,napa_cou_plas,manual,marca_modelo,densidade,densidade_2,densidade_3,densidade_4,densidade_5,tipo_espuma,tipo_espuma_2,tipo_espuma_3,tipo_espuma_4,tipo_espuma_5,quant_laminas")] ColetaModel.Registro EditarRegistros)
         {
             var editarValores = _context.regtro_colchao.Where(x => x.os == os && x.orcamento == orcamento && x.rev == rev).FirstOrDefault();
             try
@@ -1327,6 +1329,7 @@ namespace Coleta_Colchao.Controllers
                     editarValores.produto = EditarRegistros.produto;
                     editarValores.estrutura = EditarRegistros.estrutura;
                     editarValores.tipo_molejo = EditarRegistros.tipo_molejo;
+                    editarValores.tipo_molejo2 = EditarRegistros.tipo_molejo2;
                     editarValores.quant_molejo = EditarRegistros.quant_molejo;
                     editarValores.fornecedor_um = EditarRegistros.fornecedor_um;
                     editarValores.fornecedor_dois = EditarRegistros.fornecedor_dois;

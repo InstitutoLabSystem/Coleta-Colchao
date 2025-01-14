@@ -45,6 +45,7 @@ namespace Coleta_Colchao.Models
             public string? produto { get; set; }
             public string? estrutura { get; set; }
             public string? tipo_molejo { get; set; }
+            public string? tipo_molejo2 { get; set; }
             public string? quant_molejo { get; set; }
             public string? fornecedor_um { get; set; }
             public string? fornecedor_dois { get; set; }

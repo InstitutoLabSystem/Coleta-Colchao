@@ -430,6 +430,16 @@
                                 </select>
                             </td>
                         </tr>
+                        <tr class="tipo_molejo">
+                            <td> Tipo de Molejo </td>
+                            <td colspan="3">
+                                @* <input class="form-control" type="text" name="tipo_molejo" /> *@
+                                <select class="form-control" name="tipo_molejo2">
+                                    <option selected> @Model[i].tipo_molejo2</option>
+                                    <option value="Estrutural">Estrutural</option>
+                                </select>
+                            </td>
+                        </tr>
                         <tr>
                             <td> Quantidade de Molejo </td>
                             <td colspan="3">
@@ -633,12 +643,14 @@
             var trMolejo = document.querySelector('.molejo');
             var trQuantMolas = document.querySelector('.quant_molas');
             var trBitola = document.querySelector('.bitola');
+            var trTipoMolejo = document.querySelector('.tipo_molejo');
 
             if (selectedValue == 'Conforto') {
                 trFornecedor.style.display = 'table-row';
                 trMolejo.style.display = 'table-row';
                 trQuantMolas.style.display = 'table-row';
                 trBitola.style.display = 'table-row';
+                trTipoMolejo.style.display = 'table-row';
             }
 
             if (selectedValue === 'Conforto') {
@@ -654,11 +666,14 @@
                 var trMolejo = document.querySelector('.molejo');
                 var trQuantMolas = document.querySelector('.quant_molas');
                 var trBitola = document.querySelector('.bitola');
+                var trTipoMolejo = document.querySelector('.tipo_molejo');
+
 
                 trFornecedor.style.display = 'none';
                 trMolejo.style.display = 'none';
                 trQuantMolas.style.display = 'none';
                 trBitola.style.display = 'none';
+                trTipoMolejo.style.display = 'none';
 
                 // Mostrar as trs com base no valor selecionado
                 if (selectedValue == 'Conforto') {
@@ -666,6 +681,7 @@
                     trMolejo.style.display = 'table-row';
                     trQuantMolas.style.display = 'table-row';
                     trBitola.style.display = 'table-row';
+                    trTipoMolejo.style.display = 'table-row';
                 }
 
                 if (selectedValue === 'Conforto') {
