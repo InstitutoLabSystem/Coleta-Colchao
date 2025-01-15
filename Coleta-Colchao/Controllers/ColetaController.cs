@@ -6930,7 +6930,7 @@ namespace Coleta_Colchao.Controllers
                     editarDados.media_esp_total = float.Parse(media_espessura_total.ToString("N2"));
 
                     //calculo de reducao
-                    float reducao = salvarDados.reducao_porc;
+                    float reducao = editarDados.reducao_porc;
                     float reducao_mm = ((media_espessura_total * reducao) / 100);
                     editarDados.reducao_mm = float.Parse(reducao_mm.ToString("N2"));
                     editarDados.reducao_porc = reducao;
