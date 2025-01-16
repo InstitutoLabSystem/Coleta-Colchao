@@ -93,7 +93,7 @@
                             {
                                 if (ViewBag.bloqueada == "Não" || ViewBag.bloqueada == null)
                                 {
-                                    @if (ViewBag.user == "CASSIO FARIAS" || ViewBag.user == "WESLLEY NUNES" || ViewBag.user == "WESLLEY" || ViewBag.user == "JMOLINA" || ViewBag.user == "FAGUNDESOFF" || ViewBag.user == "DCALDAS" || ViewBag.user == "GABRIELS")
+                                    @if (ViewBag.user == "CASSIO FARIAS" || ViewBag.user == "WESLLEYNUNES" || ViewBag.user == "WESLLEY" || ViewBag.user == "JMOLINA" || ViewBag.user == "FAGUNDESOFF" || ViewBag.user == "DCALDAS" || ViewBag.user == "GABRIELS")
                                     {
                                         <div class="input-group-append  col-sm-1 ml-1">
                                             <button type="button" class="btn btn-info" data-bs-toggle="modal" data-bs-target="#secondModal" id="secondInput">
@@ -104,7 +104,7 @@
                                 }
                                 else
                                 {
-                                    @if (ViewBag.user == "WESLLEY NUNES" || ViewBag.user == "WESLLEY" || ViewBag.user == "JMOLINA" || ViewBag.user == "FAGUNDESOFF" || ViewBag.user == "DCALDAS" || ViewBag.user == "GABRIELS")
+                                    @if (ViewBag.user == "WESLLEYNUNES" || ViewBag.user == "WESLLEY" || ViewBag.user == "JMOLINA" || ViewBag.user == "FAGUNDESOFF" || ViewBag.user == "DCALDAS" || ViewBag.user == "GABRIELS")
                                     {
                                         <div class="input-group-append  col-sm-1 ml-1">
                                             <button type="button" class="btn btn-info" data-bs-toggle="modal" data-bs-target="#secondModal" id="secondInput">
@@ -163,29 +163,40 @@
                             </tr>
                             @if (ViewBag.ensaio == "Laminas" || ViewBag.ensaio == "Molas")
                             {
+                                
                                 <tr>
-                                    <td colspan="2">@ViewBag.os</td>
-                                    <td>@ViewBag.orcamento</td>
-                                    <td>@ViewBag.rev</td>
-                                    <td>Condicionamento</td>
-                                    <td>Ensaio Condicionamento</td>
-                                    <td>
-                                        <a role="button" target="_blank" class="btn btn-success" asp-controller="Coleta" asp-action="Condicionamento" asp-route-os="@ViewBag.os" asp-route-orcamento="@ViewBag.orcamento" asp-route-rev="@ViewBag.rev">Abrir</a>
-                                    </td>
-                                    @if (ViewBag.ensaio == "Laminas")
+                                    @if(Model[j].descricao == "Condicionamento") 
                                     {
-                                        <td>
-                                            <a role="button" target="_blank" class="btn btn-success" asp-controller="Coleta" asp-action="EditarLamina" asp-route-os="@ViewBag.os" asp-route-orcamento="@ViewBag.orcamento" asp-route-rev="@ViewBag.rev">Informações</a>
-                                        </td>
+                                        <td style="display:none"></td>
                                     }
                                     else
                                     {
+                                        <td colspan="2">@Model[j].OS</td>
                                         <td>
-                                            <a role="button" target="_blank" class="btn btn-success" asp-controller="Coleta" asp-action="EditarRegistroMolas" asp-route-os="@ViewBag.os" asp-route-orcamento="@ViewBag.orcamento" asp-route-rev="@ViewBag.rev">Informações</a>
+                                            @Model[j].orcamento
                                         </td>
+                                        <td>@ViewBag.PercorrerRegstro[j].rev</td>
+                                        <td>Condicionamento</td>
+                                        <td>Ensaio Condicionamento</td>
+                                        <td>
+                                            <a role="button" target="_blank" class="btn btn-success" asp-controller="Coleta" asp-action="Condicionamento" asp-route-os="@ViewBag.os" asp-route-orcamento="@ViewBag.orcamento" asp-route-rev="@ViewBag.rev">Abrir</a>
+                                        </td>
+                                        @if (ViewBag.ensaio == "Laminas")
+                                        {
+                                            <td>
+                                                <a role="button" target="_blank" class="btn btn-success" asp-controller="Coleta" asp-action="EditarLamina" asp-route-os="@ViewBag.os" asp-route-orcamento="@ViewBag.orcamento" asp-route-rev="@ViewBag.rev">Informações</a>
+                                            </td>
+                                        }
+                                        else
+                                        {
+                                            <td>
+                                                <a role="button" target="_blank" class="btn btn-success" asp-controller="Coleta" asp-action="EditarRegistroMolas" asp-route-os="@ViewBag.os" asp-route-orcamento="@ViewBag.orcamento" asp-route-rev="@ViewBag.rev">Informações</a>
+                                            </td>
+                                        }
                                     }
-
                                 </tr>
+                                
+                                
                             }
 
                             @for (var i = 0; i < Model.Count; i++)

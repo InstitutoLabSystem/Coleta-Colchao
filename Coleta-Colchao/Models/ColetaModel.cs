@@ -1659,7 +1659,11 @@ namespace Coleta_Colchao.Models
             public float temp_final { get; set; }
             public float temp_umidade_inicio { get; set; }
             public float temp_umidade_final { get; set; }
-
+            // Método de clonagem
+            public Condicionamento Clone()
+            {
+                return (Condicionamento)this.MemberwiseClone();
+            }
         }
     }
 }

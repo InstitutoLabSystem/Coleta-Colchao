@@ -225,6 +225,16 @@ namespace Coleta_Colchao.Controllers
 
                 _context.ensaio_base_carga_estatica.Add(novo_EnsaioBaseCargaEstatica);
             }
+            var Condicionamento = _context.condicionamento.Where(x => x.os == os && x.orcamento == orcamento).OrderByDescending(x => x.Id).FirstOrDefault();
+
+            if (Condicionamento != null)
+            {
+                var novo_Condicionamento = Condicionamento.Clone();
+
+                novo_Condicionamento.Id = 0;
+                novo_Condicionamento.rev = novo_Condicionamento.rev + 1;
+                _context.Add(novo_Condicionamento);
+            }
             //fim.
 
             //verificando qual ensaio é, molas,espuma,Laminas
