@@ -40,7 +40,7 @@
                 </tr>
                 <tr>
                     <td colspan="4">Ensaios de Colchão de Espuma (Portaria Inmetro 35)</td>
-                    <td rowspan="2"> @ViewBag.os</td>
+                    <td rowspan="3"> @ViewBag.os</td>
                 </tr>
                 @if (Model == null)
                 {
@@ -60,6 +60,10 @@
                         <td><input class="form-control" type="text" asp-for="data_term" /></td>
                     </tr>
                 }
+                <tr>
+                    <td>Responsável pelo ensaio:</td>
+                    <td colspan="3"><input class="form-control" type="text" asp-for="executador"/></td>
+                </tr>
 
             </thead>
         </table>
@@ -100,14 +104,14 @@
                     <table class="tables table-bordered border-secondary table-sm" style="width:1100px;">
                         <tr class="fundo-tabela">
                             <td colspan="12">
-                                - Temperatura da execução do ensaio  (23 ± 2) °C, sem necessidade de controle de umidade.
+                                - Temperatura de execução do ensaio (23±2)°C, e umidade relativa do ar (50±5)%.
                             </td>
                         </tr>
                         <tr class="fundo-tabela">
                             <td colspan="2">Data do acondicionamento</td>
                             <td colspan="2">Horario do acondicionamento</td>
-                            <td colspan="2">Temperatura encontrada</td>
-                            <td colspan="2">Umidade</td>
+                            <td colspan="2">Temperatura encontrada (°C)</td>
+                            <td colspan="2">Umidade (%)</td>
                             <td colspan="2">IM</td>
                         </tr>
                         <tr>
@@ -243,17 +247,17 @@
             </tr>
             <tr>
                 <td>
-                    Volume calculado 1º Amostra:  <input type="text" class="controlador" readonly asp-for="calc_amostra_um" />
+                    Volume calculado 1º Amostra (cm³):  <input type="text" class="controlador" readonly asp-for="calc_amostra_um" />
                 </td>
             </tr>
             <tr>
                 <td>
-                    Volume calculado 2º Amostra:  <input type="text" class="controlador" readonly asp-for="calc_amostra_dois" />
+                    Volume calculado 2º Amostra (cm³):  <input type="text" class="controlador" readonly asp-for="calc_amostra_dois" />
                 </td>
             </tr>
             <tr>
                 <td>
-                    Volume calculado 3º Amostra:  <input type="text" class="controlador" readonly asp-for="calc_amostra_tres" />
+                    Volume calculado 3º Amostra (cm³):  <input type="text" class="controlador" readonly asp-for="calc_amostra_tres" />
                 </td>
             </tr>
             <tr>
@@ -306,7 +310,7 @@
             </tr>
             <tr>
                 <td>
-                    Dr Media:
+                    Dr Media (kg/m³):
                     <input type="text" class="controlador" readonly style="width:150px;" asp-for="dr_media" />
                 </td>
             </tr>

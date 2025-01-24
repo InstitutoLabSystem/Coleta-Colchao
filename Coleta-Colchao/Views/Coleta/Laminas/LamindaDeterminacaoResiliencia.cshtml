@@ -41,7 +41,7 @@
                 </tr>
                 <tr>
                     <td colspan="4">Ensaios de Colchão de Espuma (Portaria Inmetro 35)</td>
-                    <td rowspan="2"> @ViewBag.os</td>
+                    <td rowspan="3"> @ViewBag.os</td>
                 </tr>
                 @if (Model == null)
                 {
@@ -61,7 +61,10 @@
                         <td><input class="form-control" type="text" asp-for="data_term" /></td>
                     </tr>
                 }
-
+                <tr>
+                    <td>Responsável pelo ensaio:</td>
+                    <td colspan="3"><input class="form-control" type="text" asp-for="executor" /></td> @* criar responsavel depois *@
+                </tr>
             </thead>
         </table>
         <table class="tables table-bordered border-secondary  table-sm">
@@ -106,7 +109,8 @@
                         <tr class="fundo-tabela">
                             <td colspan="2">Data do acondicionamento</td>
                             <td colspan="2">Horario do acondicionamento</td>
-                            <td colspan="2">Temperatura encontrada</td>
+                            <td colspan="2">Temperatura encontrada (°C)</td>
+                            <td colspan="2">Umidade</td>
                             <td colspan="2">IM</td>
                         </tr>
                         <tr>
@@ -121,13 +125,13 @@
                             }
                             <td>Inicio:</td>
                             <td><input asp-for="hora_inicio" class="form-control" type="time" /></td>
-                            <td>Min:</td>
+                            <td>Min :</td>
                             <td><input asp-for="temp_inicio" class="form-control" /></td>
-
+                            <td>Min (%):</td>
+                            <td><input class="form-control"/></td>
                             <td rowspan="2"><input asp-for="im" class="form-control" style="height:80px;" /></td>
                         </tr>
                         <tr>
-
                             <td>Final:</td>
                             @if (Model == null)
                             {
@@ -139,9 +143,10 @@
                             }
                             <td>Final:</td>
                             <td><input asp-for="hora_final" class="form-control" type="time" /></td>
-                            <td>Max:</td>
+                            <td>Max :</td>
                             <td><input asp-for="temp_final" class="form-control" /></td>
-
+                            <td>Max (%):</td>
+                            <td><input class="form-control" /></td>
                         </tr>
                         <tr>
                             <td colspan="5">Responsavel</td>

@@ -1149,6 +1149,8 @@ namespace Coleta_Colchao.Models
             public float temp_final { get; set; }
             public string? im { get; set; }
             public string? responsavel_cond { get; set; }
+            public float umidade_min { get; set; }
+            public float umidade_max { get; set; }
             public string? executor { get; set; }
             public string? editorUsuario { get; set; }
 
