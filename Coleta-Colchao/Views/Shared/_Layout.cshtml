@@ -56,12 +56,22 @@
             @RenderBody()
         </main>
     </div>
-@* 
-    <footer class="border-top footer text-muted">
-        <div class="container">
-            &copy; 2023 - Coleta_Colchao - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+    
+    <footer class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 fixed-bottom">
+        <div class="col-md-4 d-flex align-items-center">
+            <a asp-controller="Home" asp-action="Index" class="mb-3 me-2 mb-md-0 text-body-secondary text-decoration-none lh-1">
+                <img src="https://www.labsystem-nuvem.com.br/imagens_arq/imagens/img/LabSystem.png" class="bi" width="30" height="24" />
+            </a>
+            <span class="mb-4 mb-md-0 text-body-secondary">&copy; Coleta Colchao - CD-SI 001/MVS </span>
         </div>
-    </footer> *@
+    </footer>
+
+    
+    @* <footer class="border-top footer text-muted">
+        <div class="container">
+            &copy; 2023 - Coleta Colchao - CD-SI 001/MVS  <a asp-controller="Home" asp-action="Index"></a> 
+        </div>
+    </footer>   *@   
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>

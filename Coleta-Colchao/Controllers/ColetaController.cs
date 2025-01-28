@@ -6008,7 +6008,7 @@ namespace Coleta_Colchao.Controllers
 
                     if (salvarDados.tem_maior_igual == "Não" || salvarDados.tem_maior_igual == "---")
                     {
-                        densidade_resultado = ((salvarDados.densidade * 10) / 100) + salvarDados.densidade;
+                        densidade_resultado = (((salvarDados.densidade * 10) / 100) + salvarDados.densidade) * 1;
                         densidade_resultado_dois = (((salvarDados.densidade * 10) / 100) - salvarDados.densidade) * -1;
                     }
                     else
@@ -6150,7 +6150,7 @@ namespace Coleta_Colchao.Controllers
 
                     if (editarDados.tem_maior_igual == "Não" || editarDados.tem_maior_igual == "---")
                     {
-                        densidade_resultado = float.Parse(((editarDados.densidade * 10) / 100) + editarDados.densidade.ToString("N2"));
+                        densidade_resultado = float.Parse((((editarDados.densidade * 10) / 100) + editarDados.densidade * 1).ToString("N2"));
                         densidade_resultado_dois = float.Parse(((((editarDados.densidade * 10) / 100) - editarDados.densidade) * -1).ToString("N2"));
                     }
                     else
