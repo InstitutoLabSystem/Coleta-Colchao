@@ -968,6 +968,7 @@ namespace Coleta_Colchao.Controllers
 
             if(dados == null)
             {
+                dados.executor = Usuario();
                 //salvando os dados
                 _context.condicionamento.Add(returnDados);
                 await _context.SaveChangesAsync();
@@ -989,6 +990,7 @@ namespace Coleta_Colchao.Controllers
                 dados.temp_final = returnDados.temp_final;
                 dados.temp_umidade_inicio = returnDados.temp_umidade_inicio;
                 dados.temp_umidade_final = returnDados.temp_umidade_final;
+                dados.executor = Usuario();
 
                 _context.condicionamento.Update(dados);
                 await _context.SaveChangesAsync();
@@ -1461,7 +1463,7 @@ namespace Coleta_Colchao.Controllers
                     dados.largura_encontrada = salvarDados.largura_encontrada;
                     dados.pergunta_c = salvarDados.pergunta_c;
                     dados.pergunta_d = salvarDados.pergunta_d;
-                    dados.usuarioEdicao = Usuario();
+                    dados.executor = Usuario();
                     int contem_molejo;
 
                     if (dados.borda_aco_molejo == "X" || dados.borda_espuma_molejo == "X")
@@ -1606,6 +1608,7 @@ namespace Coleta_Colchao.Controllers
                         acom_esp_face_2 = acom_esp_face_2,
                         acom_enc_face_2 = acomodacao_encontrada_2,
                         conforme = conforme,
+                        executor = Usuario()
                     };
 
                     _context.Add(registro);
@@ -1702,7 +1705,7 @@ namespace Coleta_Colchao.Controllers
 
                     editarDados.acom_enc_face_1 = acomodacao_encontrada_1;
                     editarDados.acom_enc_face_2 = acomodacao_encontrada_2;
-
+                    editarDados.executor = Usuario();
 
                     _context.Update(editarDados);
                     await _context.SaveChangesAsync();
@@ -1731,8 +1734,7 @@ namespace Coleta_Colchao.Controllers
                     DateOnly data_term = salvarDados.data_term;
 
                     string acordo = salvarDados.acordo;
-                    string executor = salvarDados.executor;
-                    string auxiliar = salvarDados.auxiliar;
+                    
 
                     var registro = new ColetaModel.Ensaio7_1
                     {
@@ -1741,8 +1743,8 @@ namespace Coleta_Colchao.Controllers
                         data_ini = data_ini,
                         data_term = data_term,
                         acordo = acordo,
-                        executor = executor,
-                        auxiliar = auxiliar,
+                        executor = Usuario()
+                        //auxiliar = Usu,
                     };
                     _context.Add(registro);
                     await _context.SaveChangesAsync();
@@ -1754,8 +1756,8 @@ namespace Coleta_Colchao.Controllers
                     editarDados.data_ini = salvarDados.data_ini;
                     editarDados.data_term = salvarDados.data_term;
                     editarDados.acordo = salvarDados.acordo;
-                    editarDados.executor = salvarDados.executor;
-                    editarDados.auxiliar = salvarDados.auxiliar;
+                    editarDados.executor = Usuario();
+                    //editarDados.auxiliar = salvarDados.auxiliar;
 
                     await _context.SaveChangesAsync();
                     TempData["Mensagem"] = "Dados Editado Com Sucesso";
@@ -2022,8 +2024,8 @@ namespace Coleta_Colchao.Controllers
                         densidade1 = densidade1,
                         densidade2 = densidade2,
                         declaracao_espuma1 = declaracao_espuma1,
-                        declaracao_espuma2 = declaracao_espuma2
-
+                        declaracao_espuma2 = declaracao_espuma2,
+                        executor = Usuario()
                     };
 
                     _context.Add(registro);
@@ -2226,6 +2228,7 @@ namespace Coleta_Colchao.Controllers
                     editarDados.alt_media = media_altura;
                     editarDados.com_media = media_comprimeto;
                     editarDados.larg_media = media_largura;
+                    editarDados.executor = Usuario();
 
                     _context.Update(editarDados);
                     await _context.SaveChangesAsync();
@@ -4247,8 +4250,8 @@ namespace Coleta_Colchao.Controllers
                         colchao_disponivel = colchao_disponivel,
                         fixada = fixada,
                         conforme_6_2 = conforme6_2,
-                        conforme_area = conforme_area
-
+                        conforme_area = conforme_area,
+                        executador = Usuario()
                     };
 
                     //salvando no banco
@@ -4453,7 +4456,8 @@ namespace Coleta_Colchao.Controllers
                     //}
                     //termino das verificações de conformidade.
 
-
+                    //quem editou a coleta.
+                    editarDados.executador = Usuario();
                     //recebendo valor depois do calculo.
                     editarDados.area_etiqueta_media = calc_media;
 

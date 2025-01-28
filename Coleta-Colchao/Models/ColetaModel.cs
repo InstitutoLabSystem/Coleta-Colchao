@@ -641,7 +641,7 @@ namespace Coleta_Colchao.Models
             public string? fixada { get; set; }
             public string? conforme_6_2 { get; set; }
             public string? executador { get; set; }
-            public string? auxiliar { get; set; }
+            public string? editarUsuario { get; set; }
             public string? conforme_area { get; set; }
             //função para clonar resultados quando for gerado revisao.
             public EnsaioIdentificacaoEmbalagem Clone()
@@ -1661,6 +1661,7 @@ namespace Coleta_Colchao.Models
             public float temp_final { get; set; }
             public float temp_umidade_inicio { get; set; }
             public float temp_umidade_final { get; set; }
+            public string? executor { get; set; }
             // Método de clonagem
             public Condicionamento Clone()
             {
