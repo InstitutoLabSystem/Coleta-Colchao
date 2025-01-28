@@ -968,7 +968,7 @@ namespace Coleta_Colchao.Controllers
 
             if(dados == null)
             {
-                dados.executor = Usuario();
+                returnDados.executor = Usuario();
                 //salvando os dados
                 _context.condicionamento.Add(returnDados);
                 await _context.SaveChangesAsync();
@@ -991,6 +991,7 @@ namespace Coleta_Colchao.Controllers
                 dados.temp_umidade_inicio = returnDados.temp_umidade_inicio;
                 dados.temp_umidade_final = returnDados.temp_umidade_final;
                 dados.executor = Usuario();
+                dados.editorUsuario = Usuario();
 
                 _context.condicionamento.Update(dados);
                 await _context.SaveChangesAsync();
@@ -1464,6 +1465,7 @@ namespace Coleta_Colchao.Controllers
                     dados.pergunta_c = salvarDados.pergunta_c;
                     dados.pergunta_d = salvarDados.pergunta_d;
                     dados.executor = Usuario();
+                    dados.usuarioEdicao = Usuario();
                     int contem_molejo;
 
                     if (dados.borda_aco_molejo == "X" || dados.borda_espuma_molejo == "X")
@@ -1706,6 +1708,7 @@ namespace Coleta_Colchao.Controllers
                     editarDados.acom_enc_face_1 = acomodacao_encontrada_1;
                     editarDados.acom_enc_face_2 = acomodacao_encontrada_2;
                     editarDados.executor = Usuario();
+                    //editarDados.auxiliar = Usuario(); /*variavel auxiliar sendo usada como editor*/
 
                     _context.Update(editarDados);
                     await _context.SaveChangesAsync();
@@ -1756,8 +1759,8 @@ namespace Coleta_Colchao.Controllers
                     editarDados.data_ini = salvarDados.data_ini;
                     editarDados.data_term = salvarDados.data_term;
                     editarDados.acordo = salvarDados.acordo;
-                    editarDados.executor = Usuario();
-                    //editarDados.auxiliar = salvarDados.auxiliar;
+                    editarDados.executor = salvarDados.executor;
+                    editarDados.auxiliar = Usuario(); /*variavel auxiliar sendo usada como editor*/
 
                     await _context.SaveChangesAsync();
                     TempData["Mensagem"] = "Dados Editado Com Sucesso";
@@ -2229,6 +2232,7 @@ namespace Coleta_Colchao.Controllers
                     editarDados.com_media = media_comprimeto;
                     editarDados.larg_media = media_largura;
                     editarDados.executor = Usuario();
+                    editarDados.auxiliar = Usuario(); /*variavel auxiliar sendo usada como editor*/
 
                     _context.Update(editarDados);
                     await _context.SaveChangesAsync();
@@ -3077,8 +3081,8 @@ namespace Coleta_Colchao.Controllers
                     editarDados.reves_cm_dois = (editarDados.reves_mm_dois / 10);
 
                     //editando usuario da coleta.
+                    editarDados.executor = Usuario();
                     editarDados.editarUsuario = Usuario();
-
 
                     editarDados.reves_cm_dois = float.Parse((editarDados.reves_mm_dois / 10).ToString("N2"));
 
@@ -3183,6 +3187,7 @@ namespace Coleta_Colchao.Controllers
                         rompimentos = rompimentos,
                         conforme_gramas = conforme_gramas,
                         conforme = conforme,
+                        executor = Usuario()
                     };
 
                     _context.Add(registro);
@@ -3245,6 +3250,8 @@ namespace Coleta_Colchao.Controllers
                     //editando os valores das contas, caso precise.
                     editarDados.copos_media = media_copos;
                     editarDados.gramatura = gramatura;
+                    editarDados.executor = salvarDados.executor;
+                    editarDados.auxiliar = Usuario(); /*variavel auxiliar sendo usada como editor*/
 
                     _context.Update(editarDados);
                     await _context.SaveChangesAsync();
@@ -3320,7 +3327,8 @@ namespace Coleta_Colchao.Controllers
                         media_det = media_det,
                         temp_ens_rolagem = temp_ens_rolagem,
                         perda_porc = perda_porcentual,
-                        conforme = conforme
+                        conforme = conforme,
+                        executor = Usuario()
                     };
 
                     _context.Add(registro);
@@ -3366,6 +3374,8 @@ namespace Coleta_Colchao.Controllers
                     editarDados.media_rep = media_3;
                     editarDados.media_det = media_det;
                     editarDados.perda_porc = perda_porcentual;
+                    editarDados.executor = Usuario();
+                    editarDados.auxiliar = Usuario();
 
                     _context.Update(editarDados);
                     await _context.SaveChangesAsync();
@@ -3478,7 +3488,8 @@ namespace Coleta_Colchao.Controllers
                         calc_molas_duplicado_2 = calc_molas_duplicado_2,
                         calc_molas_duplicado_3 = calc_molas_duplicado_3,
                         resultado_calc_duplicado = resultado_calculo_duplicado,
-                        conforme = conforme
+                        conforme = conforme,
+                        executador = Usuario()
                     };
 
                     _context.Add(registro);
@@ -3540,6 +3551,7 @@ namespace Coleta_Colchao.Controllers
                         editarDados.conforme = "C";
                     }
 
+                    editarDados.executador = Usuario();
                     _context.Update(editarDados);
                     await _context.SaveChangesAsync();
                     TempData["Mensagem"] = "Dados Editado Com Sucesso";
@@ -3605,7 +3617,8 @@ namespace Coleta_Colchao.Controllers
                         temp_final = temp_final,
                         im = im,
                         responsavel_cond = responsavel_cond,
-                        face_escolhida = face_escolhida
+                        face_escolhida = face_escolhida,
+                        executador = Usuario()
                     };
 
                     _context.Add(registro);
@@ -3635,6 +3648,7 @@ namespace Coleta_Colchao.Controllers
                     editarDados.im = salvarDados.im;
                     editarDados.responsavel_cond = salvarDados.responsavel_cond;
                     editarDados.face_escolhida = salvarDados.face_escolhida;
+                    editarDados.executador = Usuario();
 
                     _context.Update(editarDados);
                     await _context.SaveChangesAsync();
@@ -3957,7 +3971,7 @@ namespace Coleta_Colchao.Controllers
                     }
 
                     //quem editou a coleta.
-                    editarDados.editarUsuario = Usuario();
+                    editarDados.executor = Usuario();
 
                     _context.Update(editarDados);
                     await _context.SaveChangesAsync();
@@ -5020,7 +5034,7 @@ namespace Coleta_Colchao.Controllers
                     editarDados.executador_quat = salvar.executador_quat;
 
                     //edtando quem editou a coleta.
-                    editarDados.editarUsuario = Usuario();
+                    editarDados.executor = Usuario();
 
                     _context.Update(editarDados);
                     await _context.SaveChangesAsync();
@@ -5119,7 +5133,7 @@ namespace Coleta_Colchao.Controllers
                     {
                         dados.conforme_c = "NC";
                     }
-
+                    dados.executor = Usuario();
                     _context.Add(dados);
                     await _context.SaveChangesAsync();
 
@@ -5196,6 +5210,8 @@ namespace Coleta_Colchao.Controllers
                     {
                         editarRegistro.conforme_c = "NC";
                     }
+
+                    editarRegistro.executor = Usuario();
                     _context.Update(editarRegistro);
                     await _context.SaveChangesAsync();
                     TempData["Mensagem"] = "Dados Editado com sucesso.";
@@ -5369,7 +5385,7 @@ namespace Coleta_Colchao.Controllers
                     }
 
                     //salvando quem editou a coleta.
-                    editarRegistro.editarUsuario = Usuario();
+                    editarRegistro.executor = Usuario();
 
                     _context.Update(editarRegistro);
                     await _context.SaveChangesAsync();
@@ -5469,7 +5485,7 @@ namespace Coleta_Colchao.Controllers
                         salvarDados.confome_ponto_b = "NC";
                     }
                     //fim dos resultados de conforme ou nao conforme..
-
+                    salvarDados.executor = Usuario();
 
                     _context.Add(salvarDados);
                     await _context.SaveChangesAsync();
@@ -5554,6 +5570,7 @@ namespace Coleta_Colchao.Controllers
                         editarRegistro.confome_ponto_b = "NC";
                     }
                     //fim dos resultados de conforme ou nao conforme..
+                    editarRegistro.executor = Usuario();
 
                     _context.Update(editarRegistro);
                     await _context.SaveChangesAsync();
@@ -5738,7 +5755,7 @@ namespace Coleta_Colchao.Controllers
                     //fim dos resultados de conforme ou nao conforme..
 
                     //salvar quem editou a coleta.
-                    editarRegistro.editarUsuario = Usuario();
+                    editarRegistro.executor = Usuario();
 
                     _context.Update(editarRegistro);
                     await _context.SaveChangesAsync();
@@ -5823,7 +5840,7 @@ namespace Coleta_Colchao.Controllers
                     }
 
                     //salvando quem editou a coleta
-                    editarRegistro.editarUsuario = Usuario();
+                    editarRegistro.executor = Usuario();
 
                     _context.Update(editarRegistro);
                     await _context.SaveChangesAsync();
@@ -5881,7 +5898,7 @@ namespace Coleta_Colchao.Controllers
                     }
 
                     //salvando quem editou a coleta.
-                    editarDados.editarUsuario = Usuario();
+                    editarDados.executor = Usuario();
 
                     _context.Update(editarDados);
                     await _context.SaveChangesAsync();
@@ -5905,6 +5922,7 @@ namespace Coleta_Colchao.Controllers
                 var editarRegistro = _context.ensaio_base_carga_estatica.Where(x => x.os == os && x.orcamento == orcamento && x.rev == rev).FirstOrDefault();
                 if (editarRegistro == null)
                 {
+                    salvarDados.executor = Usuario();
                     _context.ensaio_base_carga_estatica.Add(salvarDados);
                     await _context.SaveChangesAsync();
                     TempData["Mensagem"] = "Dados Salvo com sucesso.";
@@ -5930,6 +5948,7 @@ namespace Coleta_Colchao.Controllers
                     editarRegistro.quebra = salvarDados.quebra;
                     editarRegistro.prejudique = salvarDados.prejudique;
                     editarRegistro.conforme_pontoA = salvarDados.conforme_pontoA;
+                    editarRegistro.executor = Usuario();
 
                     _context.ensaio_base_carga_estatica.Update(editarRegistro);
                     await _context.SaveChangesAsync();
@@ -5964,43 +5983,58 @@ namespace Coleta_Colchao.Controllers
                     float media_esp_tres = ((salvarDados.esp_amostra_tres_um + salvarDados.esp_amostra_tres_dois + salvarDados.esp_amostra_tres_tres + salvarDados.esp_amostra_tres_quat + salvarDados.esp_amostra_tres_cinco + salvarDados.esp_amostra_tres_seis + salvarDados.esp_amostra_tres_sete + salvarDados.esp_amostra_tres_oito) / 8);
                     salvarDados.esp_media_tres = float.Parse(media_esp_tres.ToString("N2"));
 
+                    float media_larg_um = ((salvarDados.larg_amostra_um_um + salvarDados.larg_amostra_um_dois + salvarDados.larg_amostra_um_tres + salvarDados.larg_amostra_um_quat + salvarDados.larg_amostra_um_cinco + salvarDados.larg_amostra_um_seis + salvarDados.larg_amostra_um_sete + salvarDados.larg_amostra_um_oito) / 8);
+                    salvarDados.media_larg_um = float.Parse(media_larg_um.ToString("N2"));
+
+                    float media_larg_dois = ((salvarDados.larg_amostra_dois_um + salvarDados.larg_amostra_dois_dois + salvarDados.larg_amostra_dois_tres + salvarDados.larg_amostra_dois_quat + salvarDados.larg_amostra_dois_cinco + salvarDados.larg_amostra_dois_seis + salvarDados.larg_amostra_dois_sete + salvarDados.larg_amostra_dois_oito) / 8);
+                    salvarDados.media_larg_dois = float.Parse(media_larg_dois.ToString("N2"));
+
+                    float media_larg_tres = ((salvarDados.larg_amostra_tres_um + salvarDados.larg_amostra_tres_dois + salvarDados.larg_amostra_tres_tres + salvarDados.larg_amostra_tres_quat + salvarDados.larg_amostra_tres_cinco + salvarDados.larg_amostra_tres_seis + salvarDados.larg_amostra_tres_sete + salvarDados.larg_amostra_tres_oito) / 8);
+                    salvarDados.media_larg_tres = float.Parse(media_larg_tres.ToString("N2"));
+
+                    float media_comp_um = ((salvarDados.comp_amostra_um_um + salvarDados.comp_amostra_um_dois + salvarDados.comp_amostra_um_tres + salvarDados.comp_amostra_um_quat + salvarDados.comp_amostra_um_cinco + salvarDados.comp_amostra_um_seis + salvarDados.comp_amostra_um_sete + salvarDados.comp_amostra_um_oito) / 8);
+                    salvarDados.media_comp_um = float.Parse(media_comp_um.ToString("N2"));
+
+                    float media_comp_dois = ((salvarDados.comp_amostra_dois_um + salvarDados.comp_amostra_dois_dois + salvarDados.comp_amostra_dois_tres + salvarDados.comp_amostra_dois_quat + salvarDados.comp_amostra_dois_cinco + salvarDados.comp_amostra_dois_seis + salvarDados.comp_amostra_dois_sete + salvarDados.comp_amostra_dois_oito) / 8);
+                    salvarDados.media_comp_dois = float.Parse(media_comp_dois.ToString("N2"));
+
+                    float media_comp_tres = ((salvarDados.comp_amostra_tres_um + salvarDados.comp_amostra_tres_dois + salvarDados.comp_amostra_tres_tres + salvarDados.comp_amostra_tres_quat + salvarDados.comp_amostra_tres_cinco + salvarDados.comp_amostra_tres_seis + salvarDados.comp_amostra_tres_sete + salvarDados.comp_amostra_tres_oito) / 8);
+                    salvarDados.media_comp_tres = float.Parse(media_comp_tres.ToString("N2"));
                     // final do calculo da medias de largura, comprimento, e espessura.
 
                     //inicio calculo total..
 
-                    float calc_amostra_um = ((media_esp_um) / 1000);
-                    float calc_amostra_dois = ((media_esp_dois) / 1000);
-                    float calc_amostra_tres = ((media_esp_tres) / 1000);
-                    float vol_calc_amostra_um = (float)Math.Round((calc_amostra_um * 10000), 2);
-                    float vol_calc_amostra_dois = (float)Math.Round((calc_amostra_dois * 10000), 2);
-                    float vol_calc_amostra_tres = (float)Math.Round((calc_amostra_tres * 10000), 2);
-                    salvarDados.calc_amostra_um = vol_calc_amostra_um;
-                    salvarDados.calc_amostra_dois = vol_calc_amostra_dois;
-                    salvarDados.calc_amostra_tres = vol_calc_amostra_tres;
+                    float calc_amostra_um = float.Parse(((media_esp_um * media_larg_um * media_comp_um)).ToString("N1"));
+                    float calc_amostra_dois = float.Parse(((media_esp_dois * media_larg_dois * media_comp_dois)).ToString("N1"));
+                    float calc_amostra_tres = float.Parse(((media_esp_tres * media_larg_tres * media_comp_tres)).ToString("N1"));
+                    
+                    salvarDados.calc_amostra_um = calc_amostra_um;
+                    salvarDados.calc_amostra_dois = calc_amostra_dois;
+                    salvarDados.calc_amostra_tres = calc_amostra_tres;
                     //final do calculo..
 
                     //inicio calculo dr..            
                     salvarDados.dr_um_um = salvarDados.massa_um;
-                    salvarDados.dr_um_dois = vol_calc_amostra_um;
+                    salvarDados.dr_um_dois = calc_amostra_um;
 
                     salvarDados.dr_resul_um = (float)Math.Round((((salvarDados.dr_um_um / salvarDados.dr_um_dois) * 1000) / 1000), 1);
 
                     salvarDados.dr_dois_um = salvarDados.massa_dois;
-                    salvarDados.dr_dois_dois = vol_calc_amostra_dois;
+                    salvarDados.dr_dois_dois = calc_amostra_dois;
                     salvarDados.dr_resul_dois = (float)Math.Round((((salvarDados.dr_dois_um / salvarDados.dr_dois_dois) * 1000) / 1000), 1);
 
                     salvarDados.dr_tres_um = salvarDados.massa_tres;
-                    salvarDados.dr_tres_dois = vol_calc_amostra_tres;
+                    salvarDados.dr_tres_dois = calc_amostra_tres;
                     salvarDados.dr_resul_tres = (float)Math.Round((((salvarDados.dr_tres_um / salvarDados.dr_tres_dois) * 1000) / 1000), 1);
 
                     salvarDados.dr_resul_um = float.Parse((((salvarDados.dr_um_um / salvarDados.dr_um_dois)) * 1000).ToString("N2"));
 
                     salvarDados.dr_dois_um = salvarDados.massa_dois;
-                    salvarDados.dr_dois_dois = vol_calc_amostra_dois;
+                    salvarDados.dr_dois_dois = calc_amostra_dois;
                     salvarDados.dr_resul_dois = float.Parse(((salvarDados.dr_dois_um / salvarDados.dr_dois_dois) * 1000).ToString("N2"));
 
                     salvarDados.dr_tres_um = salvarDados.massa_tres;
-                    salvarDados.dr_tres_dois = vol_calc_amostra_tres;
+                    salvarDados.dr_tres_dois = calc_amostra_tres;
                     salvarDados.dr_resul_tres = float.Parse(((salvarDados.dr_tres_um / salvarDados.dr_tres_dois) * 1000).ToString("N2"));
 
 
@@ -6034,7 +6068,7 @@ namespace Coleta_Colchao.Controllers
                     salvarDados.maxima_densidade = densidade_resultado;
                     salvarDados.minima_densidade = densidade_resultado_dois;
 
-                    
+                    salvarDados.executador = Usuario();
 
                     _context.lamina_determinacao_densidade.Add(salvarDados);
                     await _context.SaveChangesAsync();
@@ -6095,8 +6129,26 @@ namespace Coleta_Colchao.Controllers
                     float media_esp_dois = ((editarDados.esp_amostra_dois_um + editarDados.esp_amostra_dois_dois + editarDados.esp_amostra_dois_tres + editarDados.esp_amostra_dois_quat + editarDados.esp_amostra_dois_cinco + editarDados.esp_amostra_dois_seis + editarDados.esp_amostra_dois_sete + editarDados.esp_amostra_dois_oito) / 8);
                     editarDados.esp_media_dois = float.Parse(media_esp_dois.ToString("N2"));
 
-                    float media_esp_tres = ((editarDados.esp_amostra_tres_um + editarDados.esp_amostra_tres_dois + editarDados.esp_amostra_tres_tres + editarDados.esp_amostra_tres_quat + editarDados.esp_amostra_tres_cinco + salvarDados.esp_amostra_tres_seis + editarDados.esp_amostra_tres_sete + editarDados.esp_amostra_tres_oito) / 8);
+                    float media_esp_tres = ((editarDados.esp_amostra_tres_um + editarDados.esp_amostra_tres_dois + editarDados.esp_amostra_tres_tres + editarDados.esp_amostra_tres_quat + editarDados.esp_amostra_tres_cinco + editarDados.esp_amostra_tres_seis + editarDados.esp_amostra_tres_sete + editarDados.esp_amostra_tres_oito) / 8);
                     editarDados.esp_media_tres = float.Parse(media_esp_tres.ToString("N2"));
+
+                    float media_larg_um = ((editarDados.larg_amostra_um_um + editarDados.larg_amostra_um_dois + editarDados.larg_amostra_um_tres + editarDados.larg_amostra_um_quat + editarDados.larg_amostra_um_cinco + editarDados.larg_amostra_um_seis + editarDados.larg_amostra_um_sete + editarDados.larg_amostra_um_oito) / 8);
+                    salvarDados.media_larg_um = float.Parse(media_larg_um.ToString("N2"));
+
+                    float media_larg_dois = ((editarDados.larg_amostra_dois_um + editarDados.larg_amostra_dois_dois + editarDados.larg_amostra_dois_tres + editarDados.larg_amostra_dois_quat + editarDados.larg_amostra_dois_cinco + editarDados.larg_amostra_dois_seis + editarDados.larg_amostra_dois_sete + editarDados.larg_amostra_dois_oito) / 8);
+                    salvarDados.media_larg_dois = float.Parse(media_larg_dois.ToString("N2"));
+
+                    float media_larg_tres = ((editarDados.larg_amostra_tres_um + editarDados.larg_amostra_tres_dois + editarDados.larg_amostra_tres_tres + editarDados.larg_amostra_tres_quat + editarDados.larg_amostra_tres_cinco + editarDados.larg_amostra_tres_seis + editarDados.larg_amostra_tres_sete + editarDados.larg_amostra_tres_oito) / 8);
+                    salvarDados.media_larg_tres = float.Parse(media_larg_tres.ToString("N2"));
+
+                    float media_comp_um = ((editarDados.comp_amostra_um_um + editarDados.comp_amostra_um_dois + editarDados.comp_amostra_um_tres + editarDados.comp_amostra_um_quat + editarDados.comp_amostra_um_cinco + editarDados.comp_amostra_um_seis + editarDados.comp_amostra_um_sete + editarDados.comp_amostra_um_oito) / 8);
+                    salvarDados.media_comp_um = float.Parse(media_comp_um.ToString("N2"));
+
+                    float media_comp_dois = ((editarDados.comp_amostra_dois_um + editarDados.comp_amostra_dois_dois + editarDados.comp_amostra_dois_tres + editarDados.comp_amostra_dois_quat + editarDados.comp_amostra_dois_cinco + editarDados.comp_amostra_dois_seis + editarDados.comp_amostra_dois_sete + editarDados.comp_amostra_dois_oito) / 8);
+                    salvarDados.media_comp_dois = float.Parse(media_comp_dois.ToString("N2"));
+
+                    float media_comp_tres = ((editarDados.comp_amostra_tres_um + editarDados.comp_amostra_tres_dois + editarDados.comp_amostra_tres_tres + editarDados.comp_amostra_tres_quat + editarDados.comp_amostra_tres_cinco + editarDados.comp_amostra_tres_seis + editarDados.comp_amostra_tres_sete + editarDados.comp_amostra_tres_oito) / 8);
+                    salvarDados.media_comp_tres = float.Parse(media_comp_tres.ToString("N2"));
 
                     //campo de massa.
                     editarDados.massa_um = salvarDados.massa_um;
@@ -6105,15 +6157,13 @@ namespace Coleta_Colchao.Controllers
 
                     //inicio calculo total..
 
-                    float calc_amostra_um = ((media_esp_um) / 1000);
-                    float calc_amostra_dois = ((media_esp_dois) / 1000);
-                    float calc_amostra_tres = ((media_esp_tres) / 1000);
-                    float vol_calc_amostra_um = (float)Math.Round((calc_amostra_um * 10000), 2);
-                    float vol_calc_amostra_dois = (float)Math.Round((calc_amostra_dois * 10000), 2);
-                    float vol_calc_amostra_tres = (float)Math.Round((calc_amostra_tres * 10000), 2);
-                    editarDados.calc_amostra_um = vol_calc_amostra_um;
-                    editarDados.calc_amostra_dois = vol_calc_amostra_dois;
-                    editarDados.calc_amostra_tres = vol_calc_amostra_tres;
+                    float calc_amostra_um = float.Parse(((media_esp_um * media_larg_um * media_comp_um)).ToString("N1"));
+                    float calc_amostra_dois = float.Parse(((media_esp_dois * media_larg_dois * media_comp_dois)).ToString("N1"));
+                    float calc_amostra_tres = float.Parse(((media_esp_tres * media_larg_tres * media_comp_tres)).ToString("N1"));
+                    
+                    editarDados.calc_amostra_um = calc_amostra_um;
+                    editarDados.calc_amostra_dois = calc_amostra_dois;
+                    editarDados.calc_amostra_tres = calc_amostra_tres;
                     //final do calculo..
 
                     //inicio DR
@@ -6176,6 +6226,7 @@ namespace Coleta_Colchao.Controllers
                     editarDados.maxima_densidade = densidade_resultado;
                     editarDados.minima_densidade = densidade_resultado_dois;
 
+                    editarDados.executador = salvarDados.executador;
                     editarDados.editorUsuario = Usuario();
 
                     _context.lamina_determinacao_densidade.Update(editarDados);
@@ -6202,19 +6253,19 @@ namespace Coleta_Colchao.Controllers
                 if (editarDados == null)
                 {
                     //realizando calculos necessarios, convertendo direto para 2 casas decimais dps da virgula... convertendo para string e float a mesmo tempo.
-                    salvarDados.media_res_um = (int)((salvarDados.resil_amostra_um_um + salvarDados.resil_amostra_um_dois + salvarDados.resil_amostra_um_tres) / 3.0);
+                    salvarDados.media_res_um = float.Parse(((salvarDados.resil_amostra_um_um + salvarDados.resil_amostra_um_dois + salvarDados.resil_amostra_um_tres) / 3.0).ToString("N2"));
                     salvarDados.varia_amostra_um_um = float.Parse((((salvarDados.resil_amostra_um_dois - salvarDados.media_res_um) / salvarDados.resil_amostra_um_um) * 100).ToString("N2"));
                     salvarDados.varia_amostra_um_dois = float.Parse(((((salvarDados.resil_amostra_um_tres - salvarDados.media_res_um) / salvarDados.resil_amostra_um_um) * 100)).ToString("N2"));
 
-                    salvarDados.media_res_dois = (int)((salvarDados.resil_amostra_dois_um + salvarDados.resil_amostra_dois_dois + salvarDados.resil_amostra_dois_tres) / 3.0);
+                    salvarDados.media_res_dois = float.Parse(((salvarDados.resil_amostra_dois_um + salvarDados.resil_amostra_dois_dois + salvarDados.resil_amostra_dois_tres) / 3.0).ToString("N2"));
                     salvarDados.varia_amostra_dois_um = float.Parse(((((salvarDados.resil_amostra_dois_dois - salvarDados.media_res_dois) / salvarDados.resil_amostra_dois_um) * 100) * -1).ToString("N2"));
                     salvarDados.varia_amostra_dois_dois = float.Parse(((((salvarDados.resil_amostra_dois_tres - salvarDados.media_res_dois) / salvarDados.resil_amostra_dois_um) * 100) * -1).ToString("N2"));
 
-                    salvarDados.media_res_tres = (int)((salvarDados.resil_amostra_tres_um + salvarDados.resil_amostra_tres_dois + salvarDados.resil_amostra_tres_tres) / 3.0);
+                    salvarDados.media_res_tres = float.Parse(((salvarDados.resil_amostra_tres_um + salvarDados.resil_amostra_tres_dois + salvarDados.resil_amostra_tres_tres) / 3.0).ToString("N2"));
                     salvarDados.varia_amostra_tres_um = float.Parse((((salvarDados.resil_amostra_tres_dois - salvarDados.media_res_tres) / salvarDados.resil_amostra_tres_um) * 100).ToString("N2"));
                     salvarDados.varia_amostra_tres_dois = float.Parse((((salvarDados.resil_amostra_tres_tres - salvarDados.media_res_tres) / salvarDados.resil_amostra_tres_um) * 100).ToString("N2"));
                     
-                    salvarDados.resiliencia_enc = (int)((salvarDados.media_res_um + salvarDados.media_res_dois + salvarDados.media_res_tres) / 3.0) + 1;
+                    salvarDados.resiliencia_enc = float.Parse(((salvarDados.media_res_um + salvarDados.media_res_dois + salvarDados.media_res_tres) / 3.0).ToString("N2"));
 
                     //conformes
                     if (salvarDados.tipo_espuma == "Convencional")
@@ -6371,6 +6422,8 @@ namespace Coleta_Colchao.Controllers
                         salvarDados.conforme = "C";
                     }
 
+                    salvarDados.executor = Usuario();
+
                     _context.lamina_resiliencia.Add(salvarDados);
                     await _context.SaveChangesAsync();
                     TempData["Mensagem"] = "Dados gravado com sucesso.";
@@ -6406,20 +6459,20 @@ namespace Coleta_Colchao.Controllers
                     editarDados.resiliencia_esp = salvarDados.resiliencia_esp;
 
                     //realizando calculos necessarios, convertendo direto para 2 casas decimais dps da virgula... convertendo para string e float a mesmo tempo.
-                    editarDados.media_res_um = (int)((editarDados.resil_amostra_um_um + editarDados.resil_amostra_um_dois + editarDados.resil_amostra_um_tres) / 3.0);
+                    editarDados.media_res_um = float.Parse(((editarDados.resil_amostra_um_um + editarDados.resil_amostra_um_dois + editarDados.resil_amostra_um_tres) / 3.0).ToString("N2"));
                     editarDados.varia_amostra_um_um = float.Parse((((editarDados.resil_amostra_um_dois - editarDados.media_res_um) / editarDados.resil_amostra_um_um) * 100).ToString("N2"));
                     editarDados.varia_amostra_um_dois = float.Parse(((((editarDados.resil_amostra_um_tres - editarDados.media_res_um) / editarDados.resil_amostra_um_um) * 100)).ToString("N2"));
 
-                    editarDados.media_res_dois = (int)((editarDados.resil_amostra_dois_um + editarDados.resil_amostra_dois_dois + editarDados.resil_amostra_dois_tres) / 3.0);
+                    editarDados.media_res_dois = float.Parse(((editarDados.resil_amostra_dois_um + editarDados.resil_amostra_dois_dois + editarDados.resil_amostra_dois_tres) / 3.0).ToString("N2"));
                     editarDados.varia_amostra_dois_um = float.Parse(((((editarDados.resil_amostra_dois_dois - editarDados.media_res_dois) / editarDados.resil_amostra_dois_um) * 100)).ToString("N2"));
                     editarDados.varia_amostra_dois_dois = float.Parse(((((editarDados.resil_amostra_dois_tres - editarDados.media_res_dois) / editarDados.resil_amostra_dois_um) * 100)).ToString("N2"));
 
-                    editarDados.media_res_tres = (int)((editarDados.resil_amostra_tres_um + editarDados.resil_amostra_tres_dois + editarDados.resil_amostra_tres_tres) / 3.0);
+                    editarDados.media_res_tres = float.Parse(((editarDados.resil_amostra_tres_um + editarDados.resil_amostra_tres_dois + editarDados.resil_amostra_tres_tres) / 3.0).ToString("N2"));
                     editarDados.varia_amostra_tres_um = float.Parse((((editarDados.resil_amostra_tres_dois - editarDados.media_res_tres) / editarDados.resil_amostra_tres_um) * 100).ToString("N2"));
                     editarDados.varia_amostra_tres_dois = float.Parse((((editarDados.resil_amostra_tres_tres - editarDados.media_res_tres) / editarDados.resil_amostra_tres_um) * 100).ToString("N2"));
                     
                     editarDados.resiliencia_esp = salvarDados.resiliencia_esp;
-                    editarDados.resiliencia_enc = (int)((editarDados.media_res_um + editarDados.media_res_dois + editarDados.media_res_tres) / 3.0) + 1;
+                    editarDados.resiliencia_enc = float.Parse(((editarDados.media_res_um + editarDados.media_res_dois + editarDados.media_res_tres) / 3.0).ToString("N2"));
                     editarDados.min_max = salvarDados.min_max;
 
                     //conformes
@@ -6578,6 +6631,7 @@ namespace Coleta_Colchao.Controllers
                     }
 
                     //pegando usuario que deletou a coleta.
+                    editarDados.executor = Usuario();
                     editarDados.editorUsuario = Usuario();
 
                     _context.lamina_resiliencia.Update(editarDados);
@@ -7189,8 +7243,8 @@ namespace Coleta_Colchao.Controllers
                     }
 
                     //salvando quem editou a coleta.
+                    editarDados.executor = Usuario();
                     editarDados.editorUsuario = Usuario();
-
                     _context.lamina_dpc.Update(editarDados);
                     await _context.SaveChangesAsync();
                     TempData["Mensagem"] = "Dados Editado com sucesso.";
@@ -8099,7 +8153,7 @@ namespace Coleta_Colchao.Controllers
                     }
 
                     //salvar quem editou a coleta.
-                    editarDados.editorUsuario = Usuario();
+                    editarDados.executor = salvarDados.executor;
 
                     _context.lamina_fi.Update(editarDados);
                     await _context.SaveChangesAsync();
@@ -8472,7 +8526,7 @@ namespace Coleta_Colchao.Controllers
                     }
 
                     //salvando quem editou a coleta
-                    editarDados.editarUsuario = Usuario();
+                    editarDados.executor = Usuario();
 
                     _context.lamina_fadiga_dinamica.Update(editarDados);
                     await _context.SaveChangesAsync();
@@ -8976,7 +9030,7 @@ namespace Coleta_Colchao.Controllers
                     }
 
                     //quem editou a coleta.
-                    editarDados.editarUsuario = Usuario();
+                    editarDados.executor = Usuario();
 
                     _context.lamina_pfi.Update(editarDados);
                     await _context.SaveChangesAsync();

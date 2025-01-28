@@ -60,11 +60,12 @@
                         <td>Termino:</td>
                         <td><input class="form-control" type="text" asp-for="data_term" /></td>
                     </tr>
+                    <tr>
+                        <td>Responsável pelo ensaio:</td>
+                        <td colspan="3"><input class="form-control" type="text" asp-for="executor" /></td>  
+                    </tr>
                 }
-                <tr>
-                    <td>Responsável pelo ensaio:</td>
-                    <td colspan="3"><input class="form-control" type="text" asp-for="executor" /></td> @* criar responsavel depois *@
-                </tr>
+                
             </thead>
         </table>
         <table class="tables table-bordered border-secondary  table-sm">

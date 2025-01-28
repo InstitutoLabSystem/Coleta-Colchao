@@ -991,6 +991,7 @@ namespace Coleta_Colchao.Models
             public string? quebra { get; set; }
             public string? prejudique { get; set; }
             public string? conforme_pontoA { get; set; }
+            public string? executor { get; set; }
             //função para clonar resultados quando for gerado revisao.
             public CargasEstatica Clone()
             {
@@ -1099,6 +1100,60 @@ namespace Coleta_Colchao.Models
             public string? executador { get; set; }
             public string? editorUsuario { get; set; }
             public string? conforme { get; set; }
+            public float larg_amostra_um_um { get; set; }
+            public float larg_amostra_um_dois { get; set; }
+            public float larg_amostra_um_tres { get; set; }
+            public float larg_amostra_um_quat { get; set; }
+            public float larg_amostra_um_cinco { get; set; }
+            public float larg_amostra_um_seis { get; set; }
+            public float larg_amostra_um_sete { get; set; }
+            public float larg_amostra_um_oito { get; set; }
+            public float larg_amostra_dois_um { get; set; }
+            public float larg_amostra_dois_dois { get; set; }
+            public float larg_amostra_dois_tres { get; set; }
+            public float larg_amostra_dois_quat { get; set; }
+            public float larg_amostra_dois_cinco { get; set; }
+            public float larg_amostra_dois_seis { get; set; }
+            public float larg_amostra_dois_sete { get; set; }
+            public float larg_amostra_dois_oito { get; set; }
+            public float larg_amostra_tres_um { get; set; }
+            public float larg_amostra_tres_dois { get; set; }
+            public float larg_amostra_tres_tres { get; set; }
+            public float larg_amostra_tres_quat { get; set; }
+            public float larg_amostra_tres_cinco { get; set; }
+            public float larg_amostra_tres_seis { get; set; }
+            public float larg_amostra_tres_sete { get; set; }
+            public float larg_amostra_tres_oito { get; set; }
+            public float media_larg_um { get; set; }
+            public float media_larg_dois { get; set; }
+            public float media_larg_tres { get; set; }
+            public float comp_amostra_um_um { get; set; }
+            public float comp_amostra_um_dois { get; set; }
+            public float comp_amostra_um_tres { get; set; }
+            public float comp_amostra_um_quat { get; set; }
+            public float comp_amostra_um_cinco { get; set; }
+            public float comp_amostra_um_seis { get; set; }
+            public float comp_amostra_um_sete { get; set; }
+            public float comp_amostra_um_oito { get; set; }
+            public float comp_amostra_dois_um { get; set; }
+            public float comp_amostra_dois_dois { get; set; }
+            public float comp_amostra_dois_tres { get; set; }
+            public float comp_amostra_dois_quat { get; set; }
+            public float comp_amostra_dois_cinco { get; set; }
+            public float comp_amostra_dois_seis { get; set; }
+            public float comp_amostra_dois_sete { get; set; }
+            public float comp_amostra_dois_oito { get; set; }
+            public float comp_amostra_tres_um { get; set; }
+            public float comp_amostra_tres_dois { get; set; }
+            public float comp_amostra_tres_tres { get; set; }
+            public float comp_amostra_tres_quat { get; set; }
+            public float comp_amostra_tres_cinco { get; set; }
+            public float comp_amostra_tres_seis { get; set; }
+            public float comp_amostra_tres_sete { get; set; }
+            public float comp_amostra_tres_oito { get; set; }
+            public float media_comp_um { get; set; }
+            public float media_comp_dois { get; set; }
+            public float media_comp_tres { get; set; }
 
             //função para clonar resultados quando for gerado revisao.
             public SalvarLaminaDeterminacaoDensidade Clone()
@@ -1662,6 +1717,7 @@ namespace Coleta_Colchao.Models
             public float temp_umidade_inicio { get; set; }
             public float temp_umidade_final { get; set; }
             public string? executor { get; set; }
+            public string? editorUsuario { get; set; }
             // Método de clonagem
             public Condicionamento Clone()
             {
