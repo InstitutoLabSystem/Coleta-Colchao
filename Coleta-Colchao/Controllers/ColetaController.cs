@@ -6016,16 +6016,15 @@ namespace Coleta_Colchao.Controllers
                     //inicio calculo dr..            
                     salvarDados.dr_um_um = salvarDados.massa_um;
                     salvarDados.dr_um_dois = calc_amostra_um;
-
-                    salvarDados.dr_resul_um = (float)Math.Round((((salvarDados.dr_um_um / salvarDados.dr_um_dois) ) / 1000), 1);
+                    salvarDados.dr_resul_um = (float)Math.Round((((salvarDados.dr_um_um / salvarDados.dr_um_dois) * 1000)), 1);
 
                     salvarDados.dr_dois_um = salvarDados.massa_dois;
                     salvarDados.dr_dois_dois = calc_amostra_dois;
-                    salvarDados.dr_resul_dois = (float)Math.Round((((salvarDados.dr_dois_um / salvarDados.dr_dois_dois) ) / 1000), 1);
+                    salvarDados.dr_resul_dois = (float)Math.Round((((salvarDados.dr_dois_um / salvarDados.dr_dois_dois) * 1000) ), 1);
 
                     salvarDados.dr_tres_um = salvarDados.massa_tres;
                     salvarDados.dr_tres_dois = calc_amostra_tres;
-                    salvarDados.dr_resul_tres = (float)Math.Round((((salvarDados.dr_tres_um / salvarDados.dr_tres_dois) ) / 1000), 1);
+                    salvarDados.dr_resul_tres = (float)Math.Round((((salvarDados.dr_tres_um / salvarDados.dr_tres_dois) * 1000) ), 1);
 
                     salvarDados.dr_resul_um = float.Parse((((salvarDados.dr_um_um / salvarDados.dr_um_dois)) * 1000).ToString("N2"));
 
@@ -6036,7 +6035,6 @@ namespace Coleta_Colchao.Controllers
                     salvarDados.dr_tres_um = salvarDados.massa_tres;
                     salvarDados.dr_tres_dois = calc_amostra_tres;
                     salvarDados.dr_resul_tres = float.Parse(((salvarDados.dr_tres_um / salvarDados.dr_tres_dois) * 1000).ToString("N2"));
-
 
                     salvarDados.dr_media = float.Parse(Math.Round(((salvarDados.dr_resul_um + salvarDados.dr_resul_dois + salvarDados.dr_resul_tres) / 3), 1).ToString("N2"));
 
