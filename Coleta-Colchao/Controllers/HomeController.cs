@@ -48,8 +48,6 @@ namespace Coleta_Colchao.Controllers
             return View();
         }
 
-
-
         [Route("Home/Index")]
         public async Task<IActionResult> BuscarOrcamento(string os)
         {
