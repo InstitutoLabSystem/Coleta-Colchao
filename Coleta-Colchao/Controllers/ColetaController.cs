@@ -710,61 +710,149 @@ namespace Coleta_Colchao.Controllers
         }
         public IActionResult LaminaDPC(string os, string orcamento, int rev)
         {
+            // Verifica se essa OS tem registro 
             var inicial = _context.regtro_colchao_lamina.Where(x => x.os == os && x.orcamento == orcamento && x.rev == rev).FirstOrDefault();
+
+            // Verifica se essa OS foi salva na tabela do ensaio de Densidade
             var DadosDensidade = _context.lamina_determinacao_densidade.Where(x => x.os == os && x.orcamento == orcamento && x.rev == rev).FirstOrDefault();
+            
+            // Crio uma variavel para verificar se essa OS possui ensaio de Densidade 
+            var existeEnsaioDensidade = "";
 
-            if (DadosDensidade == null)
+            // Busco os dados da OS novamente no banco
+            var dados = (from p in _bancoContext.programacao_lab_ensaios
+                         join c in _bancoContext.ordemservicocotacaoitem_hc_copylab
+                         on new { Orcamento = p.Orcamento, Item = p.Item } equals new { Orcamento = c.orcamento, Item = c.Item.ToString() }
+                         join hc in _bancoContext.Wmoddetprod
+                         on c.CodigoEnsaio equals hc.codmaster
+                         where p.OS == os
+                         orderby hc.descricao
+                         select new HomeModel.Resposta
+                         {
+                             orcamento = p.Orcamento,
+                             OS = p.OS,
+                             codmaster = hc.codmaster,
+                             codigo = hc.codigo,
+                             descricao = hc.descricao,
+                             ProdEnsaiado = c.ProdEnsaiado,
+
+                         }).ToList();
+
+            // Realizo uma verificação para saber se possui ensaio de Densidade
+            for(int i = 0; i < dados.Count; i++)
             {
-                TempData["Mensagem"] = "ATENÇÃO!! REALIZE O ENSAIO DE DETERMINAÇÃO DE DENSIDADE PARA REALIZAR ESTE ENSAIO.";
-                return RedirectToAction(nameof(LaminaDeterminacaoDensidade), "Coleta", new { os, orcamento, rev });
+                // Verifica se a descrição é igual a "5.1 I DETERMINAÇÃO DA DENSIDADE"
+                if (dados[i].descricao == "5.1 I DETERMINAÇÃO DA DENSIDADE")
+                {
+                    existeEnsaioDensidade = "Existe";
+                    break;  // Sai do loop assim que encontrar a descrição correspondente
+                }
             }
+            // Verifico se tem essa OS na tabela de DPC
+            var dadosLaminasDPC = _context.lamina_dpc.Where(x => x.os == os && x.orcamento == orcamento && x.rev == rev).FirstOrDefault();
 
-            var dados = _context.lamina_dpc.Where(x => x.os == os && x.orcamento == orcamento && x.rev == rev).FirstOrDefault();
-            if (dados == null)
+            // Verifico se existe Densidade existe
+            if (existeEnsaioDensidade == "Existe")
             {
-                //recebendo os valores da determinacao de densidade quando nao existir o ensaio.
-                ViewBag.esp_amostra_um_um = DadosDensidade.esp_amostra_um_um;
-                ViewBag.esp_amostra_um_dois = DadosDensidade.esp_amostra_um_dois;
-                ViewBag.esp_amostra_um_tres = DadosDensidade.esp_amostra_um_tres;
-                ViewBag.esp_amostra_um_quat = DadosDensidade.esp_amostra_um_quat;
-                ViewBag.esp_amostra_um_cinco = DadosDensidade.esp_amostra_um_cinco;
-                ViewBag.esp_amostra_um_seis = DadosDensidade.esp_amostra_um_seis;
-                ViewBag.esp_amostra_um_sete = DadosDensidade.esp_amostra_um_sete;
-                ViewBag.esp_amostra_um_oito = DadosDensidade.esp_amostra_um_oito;
-                ViewBag.esp_amostra_dois_um = DadosDensidade.esp_amostra_dois_um;
-                ViewBag.esp_amostra_dois_dois = DadosDensidade.esp_amostra_dois_dois;
-                ViewBag.esp_amostra_dois_tres = DadosDensidade.esp_amostra_dois_tres;
-                ViewBag.esp_amostra_dois_quat = DadosDensidade.esp_amostra_dois_quat;
-                ViewBag.esp_amostra_dois_cinco = DadosDensidade.esp_amostra_dois_cinco;
-                ViewBag.esp_amostra_dois_seis = DadosDensidade.esp_amostra_dois_seis;
-                ViewBag.esp_amostra_dois_sete = DadosDensidade.esp_amostra_dois_sete;
-                ViewBag.esp_amostra_dois_oito = DadosDensidade.esp_amostra_dois_oito;
-                ViewBag.esp_amostra_tres_um = DadosDensidade.esp_amostra_tres_um;
-                ViewBag.esp_amostra_tres_dois = DadosDensidade.esp_amostra_tres_dois;
-                ViewBag.esp_amostra_tres_tres = DadosDensidade.esp_amostra_tres_tres;
-                ViewBag.esp_amostra_tres_quat = DadosDensidade.esp_amostra_tres_quat;
-                ViewBag.esp_amostra_tres_cinco = DadosDensidade.esp_amostra_tres_cinco;
-                ViewBag.esp_amostra_tres_seis = DadosDensidade.esp_amostra_tres_seis;
-                ViewBag.esp_amostra_tres_sete = DadosDensidade.esp_amostra_tres_sete;
-                ViewBag.esp_amostra_tres_oito = DadosDensidade.esp_amostra_tres_oito;
-                ViewBag.esp_media_um = DadosDensidade.esp_media_um;
-                ViewBag.esp_media_dois = DadosDensidade.esp_media_dois;
-                ViewBag.esp_media_tres = DadosDensidade.esp_media_tres;
+                if (DadosDensidade == null)
+                {
+                    TempData["Mensagem"] = "ATENÇÃO!! REALIZE O ENSAIO DE DETERMINAÇÃO DE DENSIDADE PARA REALIZAR ESTE ENSAIO.";
+                    return RedirectToAction(nameof(LaminaDeterminacaoDensidade), "Coleta", new { os, orcamento, rev });
+                }
+                // Só entra nessa condição se for feito o ensaio da densidade.
+                if (dadosLaminasDPC == null)
+                {
+                    //recebendo os valores da determinacao de densidade quando nao existir o ensaio.
+                    ViewBag.esp_amostra_um_um = DadosDensidade.esp_amostra_um_um;
+                    ViewBag.esp_amostra_um_dois = DadosDensidade.esp_amostra_um_dois;
+                    ViewBag.esp_amostra_um_tres = DadosDensidade.esp_amostra_um_tres;
+                    ViewBag.esp_amostra_um_quat = DadosDensidade.esp_amostra_um_quat;
+                    ViewBag.esp_amostra_um_cinco = DadosDensidade.esp_amostra_um_cinco;
+                    ViewBag.esp_amostra_um_seis = DadosDensidade.esp_amostra_um_seis;
+                    ViewBag.esp_amostra_um_sete = DadosDensidade.esp_amostra_um_sete;
+                    ViewBag.esp_amostra_um_oito = DadosDensidade.esp_amostra_um_oito;
+                    ViewBag.esp_amostra_dois_um = DadosDensidade.esp_amostra_dois_um;
+                    ViewBag.esp_amostra_dois_dois = DadosDensidade.esp_amostra_dois_dois;
+                    ViewBag.esp_amostra_dois_tres = DadosDensidade.esp_amostra_dois_tres;
+                    ViewBag.esp_amostra_dois_quat = DadosDensidade.esp_amostra_dois_quat;
+                    ViewBag.esp_amostra_dois_cinco = DadosDensidade.esp_amostra_dois_cinco;
+                    ViewBag.esp_amostra_dois_seis = DadosDensidade.esp_amostra_dois_seis;
+                    ViewBag.esp_amostra_dois_sete = DadosDensidade.esp_amostra_dois_sete;
+                    ViewBag.esp_amostra_dois_oito = DadosDensidade.esp_amostra_dois_oito;
+                    ViewBag.esp_amostra_tres_um = DadosDensidade.esp_amostra_tres_um;
+                    ViewBag.esp_amostra_tres_dois = DadosDensidade.esp_amostra_tres_dois;
+                    ViewBag.esp_amostra_tres_tres = DadosDensidade.esp_amostra_tres_tres;
+                    ViewBag.esp_amostra_tres_quat = DadosDensidade.esp_amostra_tres_quat;
+                    ViewBag.esp_amostra_tres_cinco = DadosDensidade.esp_amostra_tres_cinco;
+                    ViewBag.esp_amostra_tres_seis = DadosDensidade.esp_amostra_tres_seis;
+                    ViewBag.esp_amostra_tres_sete = DadosDensidade.esp_amostra_tres_sete;
+                    ViewBag.esp_amostra_tres_oito = DadosDensidade.esp_amostra_tres_oito;
+                    ViewBag.esp_media_um = DadosDensidade.esp_media_um;
+                    ViewBag.esp_media_dois = DadosDensidade.esp_media_dois;
+                    ViewBag.esp_media_tres = DadosDensidade.esp_media_tres;
 
-
-
-                ViewBag.os = os;
-                ViewBag.orcamento = orcamento;
-                ViewBag.rev = rev;
-                return View("Laminas/LaminaDPC");
+                    ViewBag.os = os;
+                    ViewBag.orcamento = orcamento;
+                    ViewBag.rev = rev;
+                    return View("Laminas/LaminaDPC");
+                }
+                else
+                {
+                    // Mostra o ensaio com os dados preenchidos
+                    ViewBag.os = os;
+                    ViewBag.orcamento = orcamento;
+                    ViewBag.rev = rev;
+                    ViewBag.bloqueada = inicial.Bloqueada;
+                    return View("Laminas/LaminaDPC", dadosLaminasDPC);
+                }
             }
             else
             {
-                ViewBag.os = os;
-                ViewBag.orcamento = orcamento;
-                ViewBag.rev = rev;
-                ViewBag.bloqueada = inicial.Bloqueada;
-                return View("Laminas/LaminaDPC", dados);
+                if(dadosLaminasDPC == null)
+                {
+                    //recebendo os valores da determinacao de densidade quando nao existir o ensaio.
+                    ViewBag.esp_amostra_um_um = 0;
+                    ViewBag.esp_amostra_um_dois = 0;
+                    ViewBag.esp_amostra_um_tres = 0;
+                    ViewBag.esp_amostra_um_quat = 0;
+                    ViewBag.esp_amostra_um_cinco = 0;
+                    ViewBag.esp_amostra_um_seis = 0;
+                    ViewBag.esp_amostra_um_sete = 0;
+                    ViewBag.esp_amostra_um_oito = 0;
+                    ViewBag.esp_amostra_dois_um = 0;
+                    ViewBag.esp_amostra_dois_dois = 0;
+                    ViewBag.esp_amostra_dois_tres = 0;
+                    ViewBag.esp_amostra_dois_quat = 0;
+                    ViewBag.esp_amostra_dois_cinco = 0;
+                    ViewBag.esp_amostra_dois_seis = 0;
+                    ViewBag.esp_amostra_dois_sete = 0;
+                    ViewBag.esp_amostra_dois_oito = 0;
+                    ViewBag.esp_amostra_tres_um = 0;
+                    ViewBag.esp_amostra_tres_dois = 0;
+                    ViewBag.esp_amostra_tres_tres = 0;
+                    ViewBag.esp_amostra_tres_quat = 0;
+                    ViewBag.esp_amostra_tres_cinco = 0;
+                    ViewBag.esp_amostra_tres_seis = 0;
+                    ViewBag.esp_amostra_tres_sete = 0;
+                    ViewBag.esp_amostra_tres_oito = 0;
+                    ViewBag.esp_media_um = 0;
+                    ViewBag.esp_media_dois = 0;
+                    ViewBag.esp_media_tres = 0;
+
+                    ViewBag.os = os;
+                    ViewBag.orcamento = orcamento;
+                    ViewBag.rev = rev;
+                    return View("Laminas/LaminaDPC");
+                }
+                else
+                {
+                    // Mostra o ensaio com os dados preenchidos
+                    ViewBag.os = os;
+                    ViewBag.orcamento = orcamento;
+                    ViewBag.rev = rev;
+                    ViewBag.bloqueada = inicial.Bloqueada;
+                    return View("Laminas/LaminaDPC", dadosLaminasDPC);
+                }
             }
         }
 

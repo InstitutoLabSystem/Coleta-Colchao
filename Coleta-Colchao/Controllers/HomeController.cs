@@ -145,6 +145,7 @@ namespace Coleta_Colchao.Controllers
                         ViewBag.ensaio = "Laminas";
                         ViewBag.bloqueada = buscarLamina.Bloqueada;
                         ViewBag.status = "andamento";
+
                         //codigos dos ensaios do colchao, para trazer todas os referente ao ensaio de colchao.
                         var codigosLaminas = new List<string> { "DNSCCH002000001", "DPCCCH002000001", "FDGCCH002000001", "FTCCCH002000001", "IDTCCH001000001", "QUICCH002000001", "RSLCCH002000001" };
 
