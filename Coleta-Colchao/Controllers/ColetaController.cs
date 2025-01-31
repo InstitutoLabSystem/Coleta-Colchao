@@ -6692,80 +6692,50 @@ namespace Coleta_Colchao.Controllers
                 {
                     //realizando os calculos de media de largura, compri, e espessura inicial.              
 
-                    float esp_ini_media_um = ((salvarDados.esp_ini_amostra_um_um + salvarDados.esp_ini_amostra_um_dois + salvarDados.esp_ini_amostra_um_tres + salvarDados.esp_ini_amostra_um_quatro + salvarDados.esp_ini_amostra_um_cinco + salvarDados.esp_ini_amostra_um_seis + salvarDados.esp_ini_amostra_um_sete + salvarDados.esp_ini_amostra_um_oito) / 8);
-                    salvarDados.esp_media_um = float.Parse(esp_ini_media_um.ToString("N2"));
-
-                    float esp_ini_media_dois = ((salvarDados.esp_ini_amostra_dois_um + salvarDados.esp_ini_amostra_dois_dois + salvarDados.esp_ini_amostra_dois_tres + salvarDados.esp_ini_amostra_dois_quatro + salvarDados.esp_ini_amostra_dois_cinco + salvarDados.esp_ini_amostra_dois_seis + salvarDados.esp_ini_amostra_dois_sete + salvarDados.esp_ini_amostra_dois_oito) / 8);
-                    salvarDados.esp_media_dois = float.Parse(esp_ini_media_dois.ToString("N2"));
-
-                    float esp_ini_media_tres = ((salvarDados.esp_ini_amostra_tres_um + salvarDados.esp_ini_amostra_tres_dois + salvarDados.esp_ini_amostra_tres_tres + salvarDados.esp_ini_amostra_tres_quatro + salvarDados.esp_ini_amostra_tres_cinco + salvarDados.esp_ini_amostra_tres_seis + salvarDados.esp_ini_amostra_tres_sete + salvarDados.esp_ini_amostra_tres_oito) / 8);
-                    salvarDados.esp_media_tres = float.Parse(esp_ini_media_tres.ToString("N2"));
+                    salvarDados.esp_media_um = float.Parse(((salvarDados.esp_ini_amostra_um_um + salvarDados.esp_ini_amostra_um_dois + salvarDados.esp_ini_amostra_um_tres + salvarDados.esp_ini_amostra_um_quatro + salvarDados.esp_ini_amostra_um_cinco + salvarDados.esp_ini_amostra_um_seis + salvarDados.esp_ini_amostra_um_sete + salvarDados.esp_ini_amostra_um_oito) / 8).ToString("N2"));
+                    salvarDados.esp_media_dois = float.Parse(((salvarDados.esp_ini_amostra_dois_um + salvarDados.esp_ini_amostra_dois_dois + salvarDados.esp_ini_amostra_dois_tres + salvarDados.esp_ini_amostra_dois_quatro + salvarDados.esp_ini_amostra_dois_cinco + salvarDados.esp_ini_amostra_dois_seis + salvarDados.esp_ini_amostra_dois_sete + salvarDados.esp_ini_amostra_dois_oito) / 8).ToString("N2"));
+                    salvarDados.esp_media_tres = float.Parse(((salvarDados.esp_ini_amostra_tres_um + salvarDados.esp_ini_amostra_tres_dois + salvarDados.esp_ini_amostra_tres_tres + salvarDados.esp_ini_amostra_tres_quatro + salvarDados.esp_ini_amostra_tres_cinco + salvarDados.esp_ini_amostra_tres_seis + salvarDados.esp_ini_amostra_tres_sete + salvarDados.esp_ini_amostra_tres_oito) / 8).ToString("N2"));
 
                     //media de espessura.
-                    float espessura_um = esp_ini_media_um;
-                    salvarDados.media_esp_amostra_um = float.Parse(espessura_um.ToString("N2"));
-
-                    float espessura_dois = esp_ini_media_dois;
-                    salvarDados.media_esp_amostra_dois = float.Parse(espessura_dois.ToString("N2"));
-
-                    float espessura_tres = esp_ini_media_tres;
-                    salvarDados.media_esp_amostra_tres = float.Parse(espessura_tres.ToString("N2"));
-
-                    float media_espessura_total = ((espessura_um + espessura_dois + espessura_tres) / 3);
-                    salvarDados.media_esp_total = float.Parse(media_espessura_total.ToString("N2"));
-
+                    salvarDados.media_esp_amostra_um = salvarDados.esp_media_um;
+                    salvarDados.media_esp_amostra_dois = salvarDados.esp_media_dois;
+                    salvarDados.media_esp_amostra_tres = salvarDados.esp_media_tres;
+                    salvarDados.media_esp_total = float.Parse(((salvarDados.media_esp_amostra_um + salvarDados.media_esp_amostra_dois + salvarDados.media_esp_amostra_tres) / 3).ToString("N2"));
+                    
+                    // Realizando cálculo de redução 
                     float reducao = float.Parse(salvarDados.reducao_porc.ToString("N2"));
-                    float reducao_mm = ((media_espessura_total * reducao) / 100);
-                    salvarDados.reducao_mm = float.Parse(reducao_mm.ToString("N2"));
+                    salvarDados.reducao_mm = float.Parse(((salvarDados.media_esp_total * salvarDados.reducao_porc) / 100).ToString("N2"));
 
-                    float media_esp_final_um = ((salvarDados.esp_fin_amostra_um_um + salvarDados.esp_fin_amostra_um_dois + salvarDados.esp_fin_amostra_um_tres + salvarDados.esp_fin_amostra_um_quatro + salvarDados.esp_fin_amostra_um_cinco + salvarDados.esp_fin_amostra_um_seis + salvarDados.esp_fin_amostra_um_sete + salvarDados.esp_fin_amostra_um_oito) / 8);
-                    salvarDados.media_esp_fin_um = float.Parse(media_esp_final_um.ToString("N2"));
+                    // Salvando as médias das espessuras finais
+                    salvarDados.media_esp_fin_um = float.Parse(((salvarDados.esp_fin_amostra_um_um + salvarDados.esp_fin_amostra_um_dois + salvarDados.esp_fin_amostra_um_tres + salvarDados.esp_fin_amostra_um_quatro + salvarDados.esp_fin_amostra_um_cinco + salvarDados.esp_fin_amostra_um_seis + salvarDados.esp_fin_amostra_um_sete + salvarDados.esp_fin_amostra_um_oito) / 8).ToString("N2"));
+                    salvarDados.media_esp_fin_dois = float.Parse(((salvarDados.esp_fin_amostra_dois_um + salvarDados.esp_fin_amostra_dois_dois + salvarDados.esp_fin_amostra_dois_tres + salvarDados.esp_fin_amostra_dois_quatro + salvarDados.esp_fin_amostra_dois_cinco + salvarDados.esp_fin_amostra_um_seis + salvarDados.esp_fin_amostra_dois_sete + salvarDados.esp_fin_amostra_dois_oito) / 8).ToString("N2"));
+                    salvarDados.media_esp_fin_tres = float.Parse(((salvarDados.esp_fin_amostra_tres_um + salvarDados.esp_fin_amostra_tres_dois + salvarDados.esp_fin_amostra_tres_tres + salvarDados.esp_fin_amostra_tres_quatro + salvarDados.esp_fin_amostra_tres_cinco + salvarDados.esp_fin_amostra_um_seis + salvarDados.esp_fin_amostra_tres_sete + salvarDados.esp_fin_amostra_tres_oito) / 8).ToString("N2"));
 
-                    float media_esp_final_dois = ((salvarDados.esp_fin_amostra_dois_um + salvarDados.esp_fin_amostra_dois_dois + salvarDados.esp_fin_amostra_dois_tres + salvarDados.esp_fin_amostra_dois_quatro + salvarDados.esp_fin_amostra_dois_cinco + salvarDados.esp_fin_amostra_um_seis + salvarDados.esp_fin_amostra_dois_sete + salvarDados.esp_fin_amostra_dois_oito) / 8);
-                    salvarDados.media_esp_fin_dois = float.Parse(media_esp_final_dois.ToString("N2"));
+                    // Realizando calculo de Amostra DPC 1
+                    salvarDados.dpc_amostra_um_um = salvarDados.media_esp_amostra_um;
+                    salvarDados.dpc_amostra_um_dois = salvarDados.media_esp_fin_um;
+                    salvarDados.dpc_amostra_um_tres = salvarDados.media_esp_amostra_um;
+                    salvarDados.med_dpc_amostra_um = float.Parse((((salvarDados.dpc_amostra_um_um - salvarDados.dpc_amostra_um_dois) / salvarDados.dpc_amostra_um_tres) * 100).ToString("N2"));
 
-                    float media_esp_final_tres = ((salvarDados.esp_fin_amostra_tres_um + salvarDados.esp_fin_amostra_tres_dois + salvarDados.esp_fin_amostra_tres_tres + salvarDados.esp_fin_amostra_tres_quatro + salvarDados.esp_fin_amostra_tres_cinco + salvarDados.esp_fin_amostra_um_seis + salvarDados.esp_fin_amostra_tres_sete + salvarDados.esp_fin_amostra_tres_oito) / 8);
-                    salvarDados.media_esp_fin_tres = float.Parse(media_esp_final_tres.ToString("N2"));
-
-                    //inciial da conta de dpc 1
-                    float dcp_amostra_um_um = float.Parse(espessura_um.ToString("N2"));
-                    salvarDados.dpc_amostra_um_um = float.Parse(espessura_um.ToString("N2"));
-                    float dpc_amostra_um_dois = float.Parse(media_esp_final_um.ToString("N2"));
-                    salvarDados.dpc_amostra_um_dois = float.Parse(dpc_amostra_um_dois.ToString("N2"));
-                    float dpc_amostra_um_tres = float.Parse(espessura_um.ToString("N2"));
-                    salvarDados.dpc_amostra_um_tres = float.Parse(dpc_amostra_um_tres.ToString("N2"));
-                    float media_dpc_um = (((dcp_amostra_um_um - dpc_amostra_um_dois) / dpc_amostra_um_tres) * 100);
-                    salvarDados.med_dpc_amostra_um = float.Parse(media_dpc_um.ToString("N2"));
 
                     //inicial da conta de dpc 2..
-                    float dpc_amostra_dois_um = float.Parse(espessura_dois.ToString("N2"));
-                    salvarDados.dpc_amostra_dois_um = float.Parse(dpc_amostra_dois_um.ToString("N2"));
-                    float dpc_amostra_dois_dois = float.Parse(media_esp_final_dois.ToString("N2"));
-                    salvarDados.dpc_amostra_dois_dois = float.Parse(dpc_amostra_dois_dois.ToString("N2"));
-                    float dpc_amostra_dois_tres = float.Parse(espessura_dois.ToString("N2"));
-                    salvarDados.dpc_amostra_dois_tres = float.Parse(dpc_amostra_dois_tres.ToString("N2"));
-                    float media_dpc_dois = (((dpc_amostra_dois_um - dpc_amostra_dois_dois) / dpc_amostra_dois_tres) * 100);
-                    salvarDados.med_dpc_amostra_dois = float.Parse(media_dpc_dois.ToString("N2"));
+                    salvarDados.dpc_amostra_dois_um = salvarDados.media_esp_amostra_dois;
+                    salvarDados.dpc_amostra_dois_dois = salvarDados.media_esp_fin_dois;
+                    salvarDados.dpc_amostra_dois_tres = salvarDados.media_esp_amostra_dois;
+                    salvarDados.med_dpc_amostra_dois = float.Parse((((salvarDados.dpc_amostra_dois_um - salvarDados.dpc_amostra_dois_dois) / salvarDados.dpc_amostra_dois_tres) * 100).ToString("N2"));
 
                     //inicial da conta de dpc 3..
-                    float dpc_amostra_tres_um = float.Parse(espessura_tres.ToString("N2"));
-                    salvarDados.dpc_amostra_tres_um = float.Parse(dpc_amostra_tres_um.ToString("N2"));
-                    float dpc_amostra_tres_dois = float.Parse(media_esp_final_tres.ToString("N2"));
-                    salvarDados.dpc_amostra_tres_dois = float.Parse(dpc_amostra_tres_dois.ToString("N2"));
-                    float dpc_amostra_tres_tres = float.Parse(espessura_tres.ToString("N2"));
-                    salvarDados.dpc_amostra_tres_tres = float.Parse(dpc_amostra_tres_tres.ToString("N2"));
-                    float media_dpc_tres = (((dpc_amostra_tres_um - dpc_amostra_tres_dois) / dpc_amostra_tres_tres) * 100);
-                    salvarDados.med_dpc_amostra_tres = float.Parse(media_dpc_tres.ToString("N2"));
+                    salvarDados.dpc_amostra_tres_um = salvarDados.media_esp_amostra_tres;
+                    salvarDados.dpc_amostra_tres_dois = salvarDados.media_esp_fin_tres;
+                    salvarDados.dpc_amostra_tres_tres = salvarDados.media_esp_amostra_tres;
+                    salvarDados.med_dpc_amostra_tres = float.Parse((((salvarDados.dpc_amostra_tres_um - salvarDados.dpc_amostra_tres_dois) / salvarDados.dpc_amostra_tres_tres) * 100).ToString("N2"));
 
                     //inico de variacao...
-                    float variacao_dois = (((media_dpc_dois - media_dpc_um) / media_dpc_um) * 100);
-                    salvarDados.vari_amsotra_dois = variacao_dois;
+                    salvarDados.vari_amsotra_dois = (((salvarDados.med_dpc_amostra_dois - salvarDados.med_dpc_amostra_um) / salvarDados.med_dpc_amostra_um) * 100);
+                    salvarDados.vari_amsotra_tres = (((salvarDados.vari_amsotra_tres - salvarDados.med_dpc_amostra_um) / salvarDados.med_dpc_amostra_um) * 100);
 
-                    float variacao_tres = (((media_dpc_tres - media_dpc_um) / media_dpc_um) * 100);
-                    salvarDados.vari_amsotra_tres = variacao_tres;
-
-                    float dpc_encntrado = ((media_dpc_um + media_dpc_tres + media_dpc_tres) / 3);
-                    salvarDados.encontrada = float.Parse(dpc_encntrado.ToString("N2"));
+                    // Salvando o encontrado
+                    salvarDados.encontrada = float.Parse(((salvarDados.med_dpc_amostra_um + salvarDados.med_dpc_amostra_dois + salvarDados.med_dpc_amostra_tres) / 3).ToString("N2"));
 
                     //conformidade.
                     //conformes
@@ -6999,35 +6969,23 @@ namespace Coleta_Colchao.Controllers
                     editarDados.esp_ini_amostra_tres_sete = salvarDados.esp_ini_amostra_tres_sete;
                     editarDados.esp_ini_amostra_tres_oito = salvarDados.esp_ini_amostra_tres_oito;
 
-
-                    float esp_ini_media_um = ((editarDados.esp_ini_amostra_um_um + editarDados.esp_ini_amostra_um_dois + editarDados.esp_ini_amostra_um_tres + editarDados.esp_ini_amostra_um_quatro + editarDados.esp_ini_amostra_um_cinco + editarDados.esp_ini_amostra_um_seis + editarDados.esp_ini_amostra_um_sete + editarDados.esp_ini_amostra_um_oito) / 8);
-                    editarDados.esp_media_um = float.Parse(esp_ini_media_um.ToString("N2"));
-
-                    float esp_ini_media_dois = ((editarDados.esp_ini_amostra_dois_um + editarDados.esp_ini_amostra_dois_dois + editarDados.esp_ini_amostra_dois_tres + editarDados.esp_ini_amostra_dois_quatro + editarDados.esp_ini_amostra_dois_cinco + editarDados.esp_ini_amostra_dois_seis + editarDados.esp_ini_amostra_dois_sete + editarDados.esp_ini_amostra_dois_oito) / 8);
-                    editarDados.esp_media_dois = float.Parse(esp_ini_media_dois.ToString("N2"));
-
-                    float esp_ini_media_tres = ((editarDados.esp_ini_amostra_tres_um + editarDados.esp_ini_amostra_tres_dois + editarDados.esp_ini_amostra_tres_tres + editarDados.esp_ini_amostra_tres_quatro + editarDados.esp_ini_amostra_tres_cinco + editarDados.esp_ini_amostra_tres_seis + editarDados.esp_ini_amostra_tres_sete + editarDados.esp_ini_amostra_tres_oito) / 8);
-                    editarDados.esp_media_tres = float.Parse(esp_ini_media_tres.ToString("N2"));
-
+                    // Realizando as médias das espessuras
+                    editarDados.esp_media_um = float.Parse(((editarDados.esp_ini_amostra_um_um + editarDados.esp_ini_amostra_um_dois + editarDados.esp_ini_amostra_um_tres + editarDados.esp_ini_amostra_um_quatro + editarDados.esp_ini_amostra_um_cinco + editarDados.esp_ini_amostra_um_seis + editarDados.esp_ini_amostra_um_sete + editarDados.esp_ini_amostra_um_oito) / 8).ToString("N2"));
+                    editarDados.esp_media_dois = float.Parse(((editarDados.esp_ini_amostra_dois_um + editarDados.esp_ini_amostra_dois_dois + editarDados.esp_ini_amostra_dois_tres + editarDados.esp_ini_amostra_dois_quatro + editarDados.esp_ini_amostra_dois_cinco + editarDados.esp_ini_amostra_dois_seis + editarDados.esp_ini_amostra_dois_sete + editarDados.esp_ini_amostra_dois_oito) / 8).ToString("N2"));
+                    editarDados.esp_media_tres = float.Parse(((editarDados.esp_ini_amostra_tres_um + editarDados.esp_ini_amostra_tres_dois + editarDados.esp_ini_amostra_tres_tres + editarDados.esp_ini_amostra_tres_quatro + editarDados.esp_ini_amostra_tres_cinco + editarDados.esp_ini_amostra_tres_seis + editarDados.esp_ini_amostra_tres_sete + editarDados.esp_ini_amostra_tres_oito) / 8).ToString("N2"));
+                     
                     //calculo de espessura.
-                    float espessura_um = float.Parse(esp_ini_media_um.ToString("N2"));
-                    editarDados.media_esp_amostra_um = float.Parse(espessura_um.ToString("N2"));
+                    editarDados.media_esp_amostra_um = editarDados.esp_media_um;
+                    editarDados.media_esp_amostra_dois = editarDados.esp_media_dois;
+                    editarDados.media_esp_amostra_tres = editarDados.esp_media_tres;
 
-                    float espessura_dois = float.Parse(esp_ini_media_dois.ToString("N2"));
-                    editarDados.media_esp_amostra_dois = float.Parse(espessura_dois.ToString("N2"));
-
-                    float espessura_tres = float.Parse(esp_ini_media_tres.ToString("N2"));
-                    editarDados.media_esp_amostra_tres = float.Parse(espessura_tres.ToString("N2"));
-
-                    float media_espessura_total = ((espessura_um + espessura_dois + espessura_tres) / 3);
-                    editarDados.media_esp_total = float.Parse(media_espessura_total.ToString("N2"));
-
-                    //calculo de reducao
-                    float reducao = editarDados.reducao_porc;
-                    float reducao_mm = ((media_espessura_total * reducao) / 100);
-                    editarDados.reducao_mm = float.Parse(reducao_mm.ToString("N2"));
-                    editarDados.reducao_porc = reducao;
-
+                    // Média final das espessuras
+                    editarDados.media_esp_total = float.Parse(((editarDados.media_esp_amostra_um + editarDados.media_esp_amostra_dois + editarDados.media_esp_amostra_tres) / 3).ToString("N2"));
+                    
+                    // Realizando calculo de reducão
+                    editarDados.reducao_porc = salvarDados.reducao_porc;
+                    editarDados.reducao_mm = float.Parse(((editarDados.media_esp_total * editarDados.reducao_porc) / 100).ToString("N2"));
+                    
                     //recebendo os dados de esp final..
                     editarDados.esp_fin_amostra_um_um = salvarDados.esp_fin_amostra_um_um;
                     editarDados.esp_fin_amostra_um_dois = salvarDados.esp_fin_amostra_um_dois;
@@ -7057,57 +7015,36 @@ namespace Coleta_Colchao.Controllers
                     editarDados.esp_fin_amostra_tres_sete = salvarDados.esp_fin_amostra_tres_sete;
                     editarDados.esp_fin_amostra_tres_oito = salvarDados.esp_fin_amostra_tres_oito;
 
-                    //realizando calculo de media da esp final.
-                    float media_esp_final_um = ((editarDados.esp_fin_amostra_um_um + editarDados.esp_fin_amostra_um_dois + editarDados.esp_fin_amostra_um_tres + editarDados.esp_fin_amostra_um_quatro + editarDados.esp_fin_amostra_um_cinco + editarDados.esp_fin_amostra_um_seis + editarDados.esp_fin_amostra_um_sete + editarDados.esp_fin_amostra_um_oito) / 8);
-                    editarDados.media_esp_fin_um = float.Parse(media_esp_final_um.ToString("N2"));
+                    // Realizando calculo de media da esp final.
+                    editarDados.media_esp_fin_um = float.Parse(((editarDados.esp_fin_amostra_um_um + editarDados.esp_fin_amostra_um_dois + editarDados.esp_fin_amostra_um_tres + editarDados.esp_fin_amostra_um_quatro + editarDados.esp_fin_amostra_um_cinco + editarDados.esp_fin_amostra_um_seis + editarDados.esp_fin_amostra_um_sete + editarDados.esp_fin_amostra_um_oito) / 8).ToString("N2"));
+                    editarDados.media_esp_fin_dois = float.Parse(((editarDados.esp_fin_amostra_dois_um + editarDados.esp_fin_amostra_dois_dois + editarDados.esp_fin_amostra_dois_tres + editarDados.esp_fin_amostra_dois_quatro + editarDados.esp_fin_amostra_dois_cinco + editarDados.esp_fin_amostra_dois_seis + editarDados.esp_fin_amostra_dois_sete + editarDados.esp_fin_amostra_dois_oito) / 8).ToString("N2"));
+                    editarDados.media_esp_fin_tres = float.Parse(((editarDados.esp_fin_amostra_tres_um + editarDados.esp_fin_amostra_tres_dois + editarDados.esp_fin_amostra_tres_tres + editarDados.esp_fin_amostra_tres_quatro + editarDados.esp_fin_amostra_tres_cinco + editarDados.esp_fin_amostra_tres_seis + editarDados.esp_fin_amostra_tres_sete + editarDados.esp_fin_amostra_tres_oito) / 8).ToString("N2"));
 
-                    float media_esp_final_dois = ((editarDados.esp_fin_amostra_dois_um + editarDados.esp_fin_amostra_dois_dois + editarDados.esp_fin_amostra_dois_tres + editarDados.esp_fin_amostra_dois_quatro + editarDados.esp_fin_amostra_dois_cinco + editarDados.esp_fin_amostra_dois_seis + editarDados.esp_fin_amostra_dois_sete + editarDados.esp_fin_amostra_dois_oito) / 8);
-                    editarDados.media_esp_fin_dois = float.Parse(media_esp_final_dois.ToString("N2"));
-
-                    float media_esp_final_tres = ((editarDados.esp_fin_amostra_tres_um + editarDados.esp_fin_amostra_tres_dois + editarDados.esp_fin_amostra_tres_tres + editarDados.esp_fin_amostra_tres_quatro + editarDados.esp_fin_amostra_tres_cinco + editarDados.esp_fin_amostra_tres_seis + editarDados.esp_fin_amostra_tres_sete + editarDados.esp_fin_amostra_tres_oito) / 8);
-                    editarDados.media_esp_fin_tres = float.Parse(media_esp_final_tres.ToString("N2"));
-
-                    //inciial da conta de dpc 1
-                    float dcp_amostra_um_um = float.Parse(espessura_um.ToString("N2"));
-                    editarDados.dpc_amostra_um_um = float.Parse(espessura_um.ToString("N2"));
-                    float dpc_amostra_um_dois = float.Parse(media_esp_final_um.ToString("N2"));
-                    editarDados.dpc_amostra_um_dois = float.Parse(dpc_amostra_um_dois.ToString("N2"));
-                    float dpc_amostra_um_tres = float.Parse(espessura_um.ToString("N2"));
-                    editarDados.dpc_amostra_um_tres = float.Parse(dpc_amostra_um_tres.ToString("N2"));
-                    float media_dpc_um = (((dcp_amostra_um_um - dpc_amostra_um_dois) / dpc_amostra_um_tres) * 100);
-                    editarDados.med_dpc_amostra_um = float.Parse(media_dpc_um.ToString("N2"));
+                    // Editando calculo Amostra DPC 1
+                    editarDados.dpc_amostra_um_um = editarDados.media_esp_amostra_um;
+                    editarDados.dpc_amostra_um_dois = editarDados.media_esp_fin_um;
+                    editarDados.dpc_amostra_um_tres = editarDados.media_esp_amostra_um;
+                    editarDados.med_dpc_amostra_um = float.Parse((((editarDados.dpc_amostra_um_um - editarDados.dpc_amostra_um_dois) / editarDados.dpc_amostra_um_tres) * 100).ToString("N2"));
 
                     //inicial da conta de dpc 2..
-                    float dpc_amostra_dois_um = float.Parse(espessura_dois.ToString("N2"));
-                    editarDados.dpc_amostra_dois_um = float.Parse(dpc_amostra_dois_um.ToString("N2"));
-                    float dpc_amostra_dois_dois = float.Parse(media_esp_final_dois.ToString("N2"));
-                    editarDados.dpc_amostra_dois_dois = float.Parse(dpc_amostra_dois_dois.ToString("N2"));
-                    float dpc_amostra_dois_tres = float.Parse(espessura_dois.ToString("N2"));
-                    editarDados.dpc_amostra_dois_tres = float.Parse(dpc_amostra_dois_tres.ToString("N2"));
-                    float media_dpc_dois = (((dpc_amostra_dois_um - dpc_amostra_dois_dois) / dpc_amostra_dois_tres) * 100);
-                    editarDados.med_dpc_amostra_dois = float.Parse(media_dpc_dois.ToString("N2"));
+                    editarDados.dpc_amostra_dois_um = editarDados.media_esp_amostra_dois;
+                    editarDados.dpc_amostra_dois_dois = editarDados.media_esp_fin_dois;
+                    editarDados.dpc_amostra_dois_tres = editarDados.media_esp_amostra_dois;
+                    editarDados.med_dpc_amostra_dois = float.Parse((((editarDados.dpc_amostra_dois_um - editarDados.dpc_amostra_dois_dois) / editarDados.dpc_amostra_dois_tres) * 100).ToString("N2"));
 
                     //inicial da conta de dpc 3..
-                    float dpc_amostra_tres_um = float.Parse(espessura_tres.ToString("N2"));
-                    editarDados.dpc_amostra_tres_um = float.Parse(dpc_amostra_tres_um.ToString("N2"));
-                    float dpc_amostra_tres_dois = float.Parse(media_esp_final_tres.ToString("N2"));
-                    editarDados.dpc_amostra_tres_dois = float.Parse(dpc_amostra_tres_dois.ToString("N2"));
-                    float dpc_amostra_tres_tres = float.Parse(espessura_tres.ToString("N2"));
-                    editarDados.dpc_amostra_tres_tres = float.Parse(dpc_amostra_tres_tres.ToString("N2"));
-                    float media_dpc_tres = (((dpc_amostra_tres_um - dpc_amostra_tres_dois) / dpc_amostra_tres_tres) * 100);
-                    editarDados.med_dpc_amostra_tres = float.Parse(media_dpc_tres.ToString("N2"));
+                    editarDados.dpc_amostra_tres_um = editarDados.media_esp_amostra_tres;
+                    editarDados.dpc_amostra_tres_dois = editarDados.media_esp_fin_tres;
+                    editarDados.dpc_amostra_tres_tres = editarDados.media_esp_amostra_tres;
+                    editarDados.med_dpc_amostra_tres = float.Parse((((editarDados.dpc_amostra_tres_um - editarDados.dpc_amostra_tres_dois) / editarDados.dpc_amostra_tres_tres) * 100).ToString("N2"));
 
                     //inico de variacao...
-                    float variacao_dois = (((media_dpc_dois - media_dpc_um) / media_dpc_um) * 100);
-                    editarDados.vari_amsotra_dois = variacao_dois;
+                    editarDados.vari_amsotra_dois = (((editarDados.med_dpc_amostra_dois - editarDados.med_dpc_amostra_um) / editarDados.med_dpc_amostra_um) * 100);
+                    editarDados.vari_amsotra_tres = (((editarDados.med_dpc_amostra_tres - editarDados.med_dpc_amostra_um) / editarDados.med_dpc_amostra_um) * 100);
 
-                    float variacao_tres = (((media_dpc_tres - media_dpc_um) / media_dpc_um) * 100);
-                    editarDados.vari_amsotra_tres = variacao_tres;
-
-                    //float dpc_encntrado = ((media_dpc_um + media_dpc_tres + media_dpc_tres) / 3);
-                    //editarDados.encontrada = dpc_encntrado;
-                    editarDados.encontrada = float.Parse(((media_dpc_um + media_dpc_dois + media_dpc_tres) / 3).ToString("N2"));
-                    editarDados.especificada = float.Parse(salvarDados.especificada.ToString("N2"));
+                    // Realizando média do encontrado
+                    editarDados.encontrada = float.Parse(((editarDados.med_dpc_amostra_um + editarDados.med_dpc_amostra_dois + editarDados.med_dpc_amostra_tres) / 3).ToString("N2"));
+                    editarDados.especificada = salvarDados.especificada;
 
                     //conformes
                     if (editarDados.tipo_espuma == "Convencional")
