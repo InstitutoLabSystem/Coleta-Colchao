@@ -4083,6 +4083,9 @@ namespace Coleta_Colchao.Controllers
                 if (editarDados == null)
                 {
                     // realizando calculo necessario.
+                    salvarDados.os = os;
+                    salvarDados.orcamento = orcamento;
+                    salvarDados.rev = rev;
                     salvarDados.area_etiqueta_media = salvarDados.area_etiqueta_1 * salvarDados.area_etiqueta_2;
 
                     if (salvarDados.area_etiqueta_media <= 150)
@@ -4270,6 +4273,9 @@ namespace Coleta_Colchao.Controllers
                 else
                 {
                     //editando os valores no html..
+                    editarDados.os = os;
+                    editarDados.rev = rev;
+                    editarDados.orcamento = orcamento;
                     editarDados.data_ini = salvarDados.data_ini;
                     editarDados.data_term = salvarDados.data_term;
                     editarDados.lingua_portuguesa = salvarDados.lingua_portuguesa;
@@ -4490,6 +4496,9 @@ namespace Coleta_Colchao.Controllers
                 if (editarDados == null)
                 {
                     //realizando calculo.
+                    salvar.os = os;
+                    salvar.orcamento = orcamento;
+                    salvar.rev = rev;
                     salvar.conforme_area_um = ((double.Parse(salvar.area_um) * double.Parse(salvar.area_dois)) >= 150) ? "C" : "NC";
 
                     if (salvar.etiquieta_um == "Sim" && salvar.fixacao == "Sim" && salvar.material == "Sim" && salvar.visualizacao == "Sim" && salvar.lingua_portuguesa == "Sim")
@@ -4616,6 +4625,9 @@ namespace Coleta_Colchao.Controllers
                 }
                 else
                 {
+                    editarDados.os = os;
+                    editarDados.orcamento = orcamento;
+                    editarDados.rev = rev;
                     editarDados.data_ini = salvar.data_ini;
                     editarDados.data_term = salvar.data_term;
                     editarDados.etiquieta_um = salvar.etiquieta_um;
