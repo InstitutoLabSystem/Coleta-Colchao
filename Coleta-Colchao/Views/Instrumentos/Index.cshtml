@@ -102,11 +102,12 @@
             </form>
         }
     </div>
+    
     @if (TempData.ContainsKey("Mensagem"))
     {
-            <script>
-                alert('@Html.Raw(TempData["Mensagem"])');
-            </script>
+        <script>
+            alert('@Html.Raw(TempData["Mensagem"])');
+        </script>
     }
 </body>
 </html>

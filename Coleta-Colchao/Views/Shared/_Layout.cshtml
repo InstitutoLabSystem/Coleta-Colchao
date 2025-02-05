@@ -60,34 +60,10 @@
             @RenderBody()
         </main>
     </div>
-    
-    <footer class="d-flex justify-content-between align-items-center py-3 my-4 fixed-bottom" style="width: 200px; left: 0; position: fixed;">
-        <div class="d-flex align-items-center">
-            <a asp-controller="Home" asp-action="Index" class="mb-3 me-2 mb-md-0 text-body-secondary text-decoration-none lh-1">
-                <img src="https://www.labsystem-nuvem.com.br/imagens_arq/imagens/img/LabSystem.png" class="bi" width="25" height="24" />
-            </a>
-            <span class="mb-4 mb-md-0 text-body-secondary" style="font-size: 10px;">&copy; Coleta Colchao - CD-SI 001/MVS - 05/09/2024 - Rev 0</span>
-        </div>
-    </footer>
-    
-
-
-
-
-    
-    @* <footer class="border-top footer text-muted">
-        <div class="container">
-            &copy; 2023 - Coleta Colchao - CD-SI 001/MVS  <a asp-controller="Home" asp-action="Index"></a> 
-        </div>
-    </footer>   *@   
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
     @await RenderSectionAsync("Scripts", required: false)
-    @* <footer class="border-top footer text-muted">
-        <div id="id-footer">
-            &copy; @DateTime.Now.Year - Coleta Colchao - CD-SI 001/MVS - 05/09/2024 - Rev 0
-        </div>
-    </footer> *@
+
 </body>
 </html>
