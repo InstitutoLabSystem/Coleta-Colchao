@@ -18,139 +18,98 @@
 <body>
     <br />
     <form method="post" asp-controller="Coleta" class="meuFormulario" id="form1" asp-action="SalvarEspuma4_4" asp-route-os="@ViewBag.os" asp-route-orcamento="@ViewBag.orcamento" asp-route-rev="@ViewBag.rev">
-        @if (Model == null)
-        {
-
-            <table class="tables table-bordered border-secondary  table-sm">
-                <thead>
-                    <tr>
-                        <td><img src="https://www.labsystem-nuvem.com.br/imagens_arq/imagens/img/LabSystem.png" class="imagem" /></td>
-                        <td colspan="3" class="fundo-tabela">Coleta De Dados Cascas</td>
-                        <td class="fundo-tabela">N Os:</td>
-                    </tr>
-                    <tr>
-                        <td colspan="4">Ensaios de Colchão de Espuma (Portaria Inmetro 35)</td>
-                        <td rowspan="2"> @ViewBag.os </td>
-                    </tr>
+        <table class="tables table-bordered border-secondary  table-sm">
+            <thead>
+                <tr>
+                    <td><img src="https://www.labsystem-nuvem.com.br/imagens_arq/imagens/img/LabSystem.png" class="imagem" /></td>
+                    <td colspan="3" class="fundo-tabela">Coleta De Dados Cascas</td>
+                    <td class="fundo-tabela">N Os:</td>
+                </tr>
+                <tr>
+                    <td colspan="4">Ensaios de Colchão de Espuma (Portaria Inmetro 35)</td>
+                    <td rowspan="2"> @ViewBag.os </td>
+                </tr>
+                @if(Model == null)
+                {
                     <tr>
                         <td>Inicio:</td>
                         <td><input class="form-control" type="date" asp-for="data_ini" /></td>
                         <td>Termino:</td>
                         <td><input class="form-control" type="date" asp-for="data_term" /></td>
                     </tr>
-                </thead>
-            </table>
-            <br />
-
-            <table class="tables table-bordered border-secondary  table-sm">
-                <tr class="fundo-tabela">
-                    <td>Item</td>
-                    <td>Descrição</td>
-                    <td>Resultado</td>
-                </tr>
-                <tr>
-                    <td rowspan="4"> 4.3</td>
-                    <td>
-                        Não é permitido utilizar cascas superiores e/ou inferiores no sentido horizontal do colchão.
-                    </td>
+                }
+                else 
+                {
+                    <tr>
+                        <td>Inicio:</td>
+                        <td><input class="form-control" type="text" asp-for="data_ini" /></td>
+                        <td>Termino:</td>
+                        <td><input class="form-control" type="text" asp-for="data_term" /></td>
+                    </tr>
+                }
+            </thead>
+        </table>
+        <br />
+        <table class="tables table-bordered border-secondary  table-sm">
+            <tr class="fundo-tabela">
+                <td>Item</td>
+                <td>Descrição</td>
+                <td>Resultado</td>
+            </tr>
+            <tr>
+                <td rowspan="4"> 4.3</td>
+                <td>
+                    Não é permitido utilizar cascas superiores e/ou inferiores no sentido horizontal do colchão.
+                </td>
+                @if(Model == null)
+                {
                     <td rowspan="4">  </td>
-                </tr>
-                <tr>
-                    <td>
-                        Utilizam cascas superiores no sentido da horizontal do colchão?
-                        <select class="controlador" asp-for="superior_horizontal">
-                            <option>---</option>
-                            <option value="Sim">Sim</option>
-                            <option value="Não">Não</option>
-                        </select>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        Utilizam cascas inferiores no sentido da horizontal do colchão?
-                        <select class="controlador" asp-for="inferior_horizontal">
-                            <option>---</option>
-                            <option value="Sim">Sim</option>
-                            <option value="Não">Não</option>
-                        </select>
-                    </td>
-                </tr>
-
-            </table>
+                }
+                else
+                {
+                    <td rowspan="4">@Model.conforme</td>
+                }
+            </tr>
+            <tr>
+                <td>
+                    Utilizam cascas superiores no sentido da horizontal do colchão?
+                    <select class="controlador" asp-for="superior_horizontal">
+                        <option>---</option>
+                        <option value="Sim">Sim</option>
+                        <option value="Não">Não</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Utilizam cascas inferiores no sentido da horizontal do colchão?
+                    <select class="controlador" asp-for="inferior_horizontal">
+                        <option>---</option>
+                        <option value="Sim">Sim</option>
+                        <option value="Não">Não</option>
+                    </select>
+                </td>
+            </tr>
+        </table>
+        @if(Model == null)
+        {
             <div class="d-grid gap-2 d-flex justify-content-center">
                 <button type="submit" class="btn btn-success btn btn-primary btn-md">Salvar</button>
             </div>
         }
+        @if (ViewBag.bloqueada != "Sim")
+        {
+            <div class="d-grid gap-2 d-flex justify-content-center">
+                <button type="submit" class="btn btn-success btn btn-primary btn-md">Editar</button>
+            </div>
+        }
         else
         {
-            <table class="tables table-bordered border-secondary  table-sm">
-                <thead>
-                    <tr>
-                        <td><img src="https://www.labsystem-nuvem.com.br/imagens_arq/imagens/img/LabSystem.png" class="imagem" /></td>
-                        <td colspan="3" class="fundo-tabela">Coleta De Dados Cascas</td>
-                        <td class="fundo-tabela">N Os:</td>
-                    </tr>
-                    <tr>
-                        <td colspan="4">Ensaios de Colchão de Espuma (Portaria Inmetro 35)</td>
-                        <td rowspan="2"> @ViewBag.os </td>
-                    </tr>
-                    <tr>
-                        <td>Inicio:</td>
-                        <td><input class="form-control" type="text" asp-for="data_ini" value="@Model.data_ini" /></td>
-                        <td>Termino:</td>
-                        <td><input class="form-control" type="text" asp-for="data_term" value="@Model.data_term" /></td>
-                    </tr>
-                </thead>
-            </table>
-
-            <table class="tables table-bordered border-secondary  table-sm">
-                <tr class="fundo-tabela">
-                    <td>Item</td>
-                    <td>Descrição</td>
-                    <td>Resultado</td>
-                </tr>
-                <tr>
-                    <td rowspan="4"> 4.3</td>
-                    <td>
-                        Não é permitido utilizar cascas superiores e/ou inferiores no sentido horizontal do colchão.
-                    </td>
-                    <td rowspan="4">@Model.conforme</td>
-                </tr>
-                <tr>
-                    <td>
-                        Utilizam cascas superiores no sentido da horizontal do colchão?
-                        <select class="controlador" asp-for="superior_horizontal">
-                            <option>@Model.superior_horizontal</option>
-                            <option value="Sim">Sim</option>
-                            <option value="Não">Não</option>
-                        </select>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        Utilizam cascas inferiores no sentido da horizontal do colchão?
-                        <select class="controlador" asp-for="inferior_horizontal">
-                            <option>@Model.inferior_horizontal</option>
-                            <option value="Sim">Sim</option>
-                            <option value="Não">Não</option>
-                        </select>
-                    </td>
-                </tr>
-            </table>
-            @if (ViewBag.bloqueada != "Sim")
-            {
-                <div class="d-grid gap-2 d-flex justify-content-center">
-                    <button type="submit" class="btn btn-success btn btn-primary btn-md">Editar</button>
+            <div class="d-flex justify-content-center">
+                <div class="alert alert-danger w-50 p-3 m-3 text-center" role="alert">
+                    Coleta Bloqueada!
                 </div>
-            }
-            else
-            {
-                <div class="d-flex justify-content-center">
-                    <div class="alert alert-danger w-50 p-3 m-3 text-center" role="alert">
-                        Coleta Bloqueada!
-                    </div>
-                </div>
-            }
+            </div>
         }
     </form>
 
@@ -158,15 +117,12 @@
     {
         <script>
             alert('@Html.Raw(TempData["Mensagem"])');
-
         </script>
     }
     <script>
         document.addEventListener("keydown", function (e) {
             if (e.keyCode === 13) {
-
                 e.preventDefault();
-
             }
         });
     </script>
