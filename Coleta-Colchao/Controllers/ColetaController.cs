@@ -2346,12 +2346,9 @@ namespace Coleta_Colchao.Controllers
         {
             try
             {
-
                 var editarDados = _context.ensaio_espuma4_1.Where(x => x.os == os && x.orcamento == orcamento && x.rev == rev).FirstOrDefault();
-
                 if (editarDados == null)
                 {
-
                     //recebendo os valores do html.
                     DateOnly data_ini = salvar.data_ini;
                     DateOnly data_term = salvar.data_term;
@@ -3751,189 +3748,21 @@ namespace Coleta_Colchao.Controllers
             }
         }
 
-
         [HttpPost]
-        public async Task<IActionResult> SalvarEspuma4_3(string os, string orcamento, int rev, [Bind("data_ini,data_term,temp_ini,temp_fim,tem_ensaio,lamina_central,quant_colagens,colagens_densidade,espessura_nominal,espessura_central,porcentagem_enc,lamina_menor_esp,quant_colagens_dois," +
-            "distancia_um,distancia_dois,colagens_comp,espuma,esp_lamina_um,esp_lamina_dois,esp_lamina_tres,esp_lamina_quat,esp_lamina_cinco,esp_lamina_seis,esp_lamina_sete,esp_lamina_oito,quant_colagens_tres,distancia_tres,distancia_quat,colchao_casal,colagem_comp,espuma_conv,espuma_densidade," +
-            "colagem_largura,quant_colagens_quat,localidade,quant_colagens_cinco,espessura_lamina,adesivo,conforme,tipo_ensaio")] ColetaModel.Espuma4_3 salvar)
+        public async Task<IActionResult> SalvarEspuma4_3(string os, string orcamento, int rev, ColetaModel.Espuma4_3 salvar)
         {
             try
             {
                 var editarDados = _context.ensaio_espuma4_3.Where(x => x.os == os && x.orcamento == orcamento && x.rev == rev).FirstOrDefault();
                 if (editarDados == null)
                 {
-                    //recebendo os valores recebidos do html..
-                    DateOnly data_ini = salvar.data_ini;
-                    DateOnly data_term = salvar.data_term;
-                    var lamina_central = salvar.lamina_central;
-                    var tem_ensaio = salvar.tem_ensaio;
-                    var quant_colagens = salvar.quant_colagens;
-                    var colagens_densidade = salvar.colagens_densidade;
-                    var espessura_nominal = salvar.espessura_nominal;
-                    var espessura_central = salvar.espessura_central;
-                    var porcentagem_enc = salvar.porcentagem_enc;
-                    var lamina_menor_esp = salvar.lamina_menor_esp;
-                    var quant_colagens_dois = salvar.quant_colagens_dois;
-                    var distancia_um = salvar.distancia_um;
-                    var colagens_comp = salvar.colagens_comp;
-                    var espuma = salvar.espuma;
-                    var esp_lamina_um = salvar.esp_lamina_um;
-                    var esp_lamina_dois = salvar.esp_lamina_dois;
-                    var esp_lamina_tres = salvar.esp_lamina_tres;
-                    var esp_lamina_quat = salvar.esp_lamina_quat;
-                    var esp_lamina_cinco = salvar.esp_lamina_cinco;
-                    var esp_lamina_seis = salvar.esp_lamina_seis;
-                    var esp_lamina_sete = salvar.esp_lamina_sete;
-                    var esp_lamina_oito = salvar.esp_lamina_oito;
-                    var quant_colagens_tres = salvar.quant_colagens_tres;
-                    var distancia_tres = salvar.distancia_tres;
-                    var colchao_casal = salvar.colchao_casal;
-                    var colagem_comp = salvar.colagem_comp;
-                    var espuma_conv = salvar.espuma_conv;
-                    var espuma_densidade = salvar.espuma_densidade;
-                    var colagem_largura = salvar.colagem_largura;
-                    var quant_colagens_quat = salvar.quant_colagens_quat;
-                    var localidade = salvar.localidade;
-                    var quant_colagens_cinco = salvar.quant_colagens_cinco;
-                    var espessura_lamina = salvar.espessura_lamina;
-                    var adesivo = salvar.adesivo;
-                    string tipo_ensaio = salvar.tipo_ensaio;
-
-                    //trabalhando com a logica para o conforme.
-                    if (tipo_ensaio == "Colagem horizontal com peça inteira")
-                    {
-                        //realizando calculo de porcetagem quando tem  Colagem horizontal com peça inteira
-                        porcentagem_enc = (espessura_central * 100) / espessura_nominal;
-
-                        if (Double.IsNaN(porcentagem_enc))
-                        {
-                            porcentagem_enc = 0;
-                        }
-
-                        if (quant_colagens == "3" || quant_colagens == "4" || colagens_densidade == "Não" || porcentagem_enc <= 50 || lamina_menor_esp <= 3)
-                        {
-                            salvar.conforme = "NC";
-                        }
-                        else
-                        {
-                            salvar.conforme = "C";
-                        }
-                    }
-                    else if (tipo_ensaio == "Colagem vertical na largura")
-                    {
-                        if (distancia_um > 40 || quant_colagens_dois != "1" || colagens_comp == "Sim")
-                        {
-                            salvar.conforme = "NC";
-                        }
-                        else
-                        {
-                            salvar.conforme = "C";
-                        }
-                    }
-                    else if (tipo_ensaio == "Colagem no comprimento")
-                    {
-                        if (colchao_casal == "Não" || colagem_comp == "Não" || espuma_conv == "Não" || espuma_densidade == "Não" || colagem_largura == "Sim" || quant_colagens_quat != "1" || localidade == "Não")
-                        {
-                            salvar.conforme = "NC";
-                        }
-                        else
-                        {
-                            salvar.conforme = "C";
-                        }
-                    }
-                    else if (tipo_ensaio == "Colagem na largura")
-                    {
-                        if (distancia_tres > 40)
-                        {
-                            salvar.conforme = "NC";
-                        }
-                        else
-                        {
-                            salvar.conforme = "C";
-                        }
-                    }
-                    else if (tipo_ensaio == "Colchonete")
-                    {
-                        if (quant_colagens_cinco != "1" || espessura_lamina < 3)
-                        {
-                            salvar.conforme = "NC";
-                        }
-                        else
-                        {
-                            salvar.conforme = "C";
-                        }
-                    }
-                    else if (tipo_ensaio == "Colchão tipo composto")
-                    {
-                        if ((esp_lamina_um < 3) || (esp_lamina_dois != 0 && esp_lamina_dois < 3) || (esp_lamina_tres != 0 && esp_lamina_tres < 3) || (esp_lamina_quat != 0 && esp_lamina_quat < 3) || (esp_lamina_cinco != 0 && esp_lamina_cinco < 3) || (esp_lamina_seis != 0 && esp_lamina_seis < 3) || (esp_lamina_sete != 0 && esp_lamina_sete < 3) || (esp_lamina_oito != 0 && esp_lamina_oito < 3))
-                        {
-                            salvar.conforme = "NC";
-                        }
-                        else
-                        {
-                            salvar.conforme = "C";
-                        }
-                    }
-                    else if (tipo_ensaio == "Colchão tipo simples")
-                    {
-                        if (lamina_central == "Sim")
-                        {
-                            salvar.conforme = "C";
-                        }
-                        else
-                        {
-                            salvar.conforme = "NC";
-                        }
-                    }
-
-                    var salvardados = new ColetaModel.Espuma4_3
-                    {
-                        os = os,
-                        orcamento = orcamento,
-                        data_ini = data_ini,
-                        data_term = data_term,
-                        tem_ensaio = tem_ensaio,
-                        lamina_central = lamina_central,
-                        quant_colagens = quant_colagens,
-                        colagens_densidade = colagens_densidade,
-                        espessura_nominal = espessura_nominal,
-                        espessura_central = espessura_central,
-                        porcentagem_enc = porcentagem_enc,
-                        lamina_menor_esp = lamina_menor_esp,
-                        quant_colagens_dois = quant_colagens_dois,
-                        distancia_um = distancia_um,
-                        colagens_comp = colagens_comp,
-                        espuma = espuma,
-                        esp_lamina_um = esp_lamina_um,
-                        esp_lamina_dois = esp_lamina_dois,
-                        esp_lamina_tres = esp_lamina_tres,
-                        esp_lamina_quat = esp_lamina_quat,
-                        esp_lamina_cinco = esp_lamina_cinco,
-                        esp_lamina_seis = esp_lamina_seis,
-                        esp_lamina_sete = esp_lamina_sete,
-                        esp_lamina_oito = esp_lamina_oito,
-                        quant_colagens_tres = quant_colagens_tres,
-                        distancia_tres = distancia_tres,
-                        colchao_casal = colchao_casal,
-                        colagem_comp = colagem_comp,
-                        espuma_conv = espuma_conv,
-                        espuma_densidade = espuma_densidade,
-                        colagem_largura = colagem_largura,
-                        quant_colagens_quat = quant_colagens_quat,
-                        localidade = localidade,
-                        quant_colagens_cinco = quant_colagens_cinco,
-                        espessura_lamina = espessura_lamina,
-                        adesivo = adesivo,
-                        conforme = salvar.conforme,
-                        tipo_ensaio = tipo_ensaio,
-                        executor = Usuario()
-                    };
-                    _context.Add(salvardados);
+                    salvar.executor = Usuario();
+                    _context.Add(salvar);
                     await _context.SaveChangesAsync();
                     TempData["Mensagem"] = "Dados Salvo Com Sucesso";
                     return RedirectToAction(nameof(EnsaioEspuma4_3), "Coleta", new { os, orcamento, rev });
                 }
-                else
+                else 
                 {
                     editarDados.data_ini = salvar.data_ini;
                     editarDados.data_term = salvar.data_term;
@@ -3969,7 +3798,6 @@ namespace Coleta_Colchao.Controllers
                     editarDados.espessura_lamina = salvar.espessura_lamina;
                     editarDados.adesivo = salvar.adesivo;
                     editarDados.tipo_ensaio = salvar.tipo_ensaio;
-
                     //trabalhando com a logica para o conforme.
                     if (editarDados.tipo_ensaio == "Colagem horizontal com peça inteira")
                     {
@@ -3981,7 +3809,7 @@ namespace Coleta_Colchao.Controllers
                             editarDados.porcentagem_enc = 0;
                         }
 
-                        if (editarDados.quant_colagens == "3" || editarDados.quant_colagens == "4" || editarDados.colagens_densidade == "Não" || editarDados.porcentagem_enc < 50 || editarDados.lamina_menor_esp < 3)
+                        if (editarDados.quant_colagens == "3" || editarDados.quant_colagens == "4" || editarDados.colagens_densidade == "Não" || salvar.porcentagem_enc < 50 || editarDados.lamina_menor_esp < 3)
                         {
                             editarDados.conforme = "NC";
                         }
@@ -4003,7 +3831,7 @@ namespace Coleta_Colchao.Controllers
                     }
                     else if (editarDados.tipo_ensaio == "Colagem no comprimento")
                     {
-                        if (editarDados.colchao_casal == "Não" || editarDados.colagem_comp == "Não" || editarDados.espuma_conv == "Não" || editarDados.espuma_densidade == "Não" || editarDados.colagem_largura == "Sim" || editarDados.quant_colagens_quat != "1" || editarDados.localidade == "Não")
+                        if (editarDados.colchao_casal == "Não" || editarDados.colagem_comp == "Não" || editarDados.espuma_conv == "Não" || editarDados.espuma_densidade == "Não" || editarDados.colagem_largura == "Sim" || salvar.quant_colagens_quat != "1" || editarDados.localidade == "Não")
                         {
                             editarDados.conforme = "NC";
                         }
