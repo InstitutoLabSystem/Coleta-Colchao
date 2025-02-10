@@ -4311,69 +4311,78 @@ namespace Coleta_Colchao.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> EspumaIdentificacaoEmbalagem(string os, string orcamento, int rev, [Bind("data_ini,data_term,temp_ini,temp_fim,etiquieta_um,etiquieta_um,fixacao,material,area_um,area_dois,area_result,conforme_area_um,etiquieta_dois,marca,dimensoes,info_altura,medidas,colchoes,tipo_colchao," +
-            "letras,altura_letra_um,negrito_um,caixa_alta_um,coloracao_um,classificacao,uso,composicao,tipo_espuma,densidade_nominal,espessura_mad,comp_revestimento,data_fabricacao,pais_fabricacao,cuidados,aviso_um,altura_letra_dois,negrito_dois,caixa_alta_dois,coloracao_dois,esclarecimento_um," +
-            "altura_letra_tres,negrito_tres,caixa_alta_tres,coloracao_eti,esclarecimento_dois,altura_letra_quat,negrito_quat,caixa_alta_quat,coloracao_quat,colchao_infantil,embalagem_colchao,aviso_embalagem_um,altura_letra_cinco,negrito_cinco,caixa_alta_cinco,coloracao_cinco,aviso_odor,aviso_embalagem_dois,altura_letra_seis,negrito_seis," +
-            "caixa_alta_seis,coloracao_seis,dec_voluntaria,texto_negrito,identificacao,identificacao_dois,desc_lamina,latex,embalagem_uni,embalagem_protecao,observacao,visualizacao,lingua_portuguesa,executador_um,executador_dois,executador_tres,executador_quat,conforme_3_2_1")] ColetaModel.Espuma_identificacao_embalagem salvar)
+        public async Task<IActionResult> EspumaIdentificacaoEmbalagem(string os, string orcamento, int rev, ColetaModel.Espuma_identificacao_embalagem salvar)
         {
             try
             {
                 var editarDados = _context.espuma_identificacao_embalagem.Where(x => x.os == os && x.orcamento == orcamento && x.rev == rev).FirstOrDefault();
-                //realizando calculo.
-                //salvar.os = os;
-                //salvar.orcamento = orcamento;
-                //salvar.rev = rev;
-                salvar.area_result = ((double.Parse(salvar.area_um) * double.Parse(salvar.area_dois)).ToString());
-                salvar.conforme_area_um = ((double.Parse(salvar.area_um) * double.Parse(salvar.area_dois)) >= 150) ? "C" : "NC";
-
-                if (salvar.etiquieta_um == "Sim" && salvar.fixacao == "Sim" && salvar.material == "Sim" && salvar.visualizacao == "Sim" && salvar.lingua_portuguesa == "Sim")
+                if(editarDados == null)
                 {
-                    salvar.conforme_inicial = ((double.Parse(salvar.area_um) * double.Parse(salvar.area_dois)) >= 150) ? "C" : "NC";
-                }
-                else
-                {
-                    salvar.conforme_inicial = "NC";
-                }
-
-                //conformidade das perguntas de A ate G
-                if (salvar.etiquieta_dois == "Sim" && salvar.marca == "Sim" && salvar.dimensoes == "Sim" && salvar.medidas == "Sim" && salvar.colchoes == "Sim" && salvar.tipo_colchao == "Sim" && salvar.letras == "Sim" && salvar.negrito_um == "Sim" && salvar.caixa_alta_um == "Sim" && salvar.coloracao_um == "Sim" && salvar.classificacao == "Sim" && salvar.uso == "Sim" && salvar.composicao == "Sim" && salvar.info_altura == null || salvar.info_altura == "Sim" && salvar.colchoes == "Sim" || salvar.colchoes == null)
-                {
-                    salvar.conforme_letras = "C";
-                }
-                else
-                {
-                    salvar.conforme_letras = "NC";
-                }
-
-                //conformidade dos restante das perguntas..
-                if (salvar.tipo_espuma == "Sim" && salvar.densidade_nominal == "Sim" && salvar.comp_revestimento == "Sim" && salvar.data_fabricacao == "Sim" && salvar.pais_fabricacao == "Sim" && salvar.cuidados == "Sim" && salvar.negrito_dois == "Sim" && salvar.caixa_alta_dois == "Sim" && salvar.negrito_tres == "Sim" && salvar.caixa_alta_tres == "Sim" && salvar.coloracao_eti == "Sim" && salvar.negrito_quat == "Sim" && salvar.caixa_alta_quat == "Sim" && salvar.coloracao_quat == "Sim" && salvar.espessura_mad == "Sim" || salvar.espessura_mad == null && salvar.aviso_um == "Sim" || salvar.aviso_um == null && salvar.negrito_dois == "Sim" || salvar.negrito_dois == null && salvar.caixa_alta_dois == "Sim" || salvar.caixa_alta_dois == null && salvar.esclarecimento_um == "Sim" || salvar.esclarecimento_um == null && salvar.negrito_tres == "Sim" || salvar.negrito_tres == null && salvar.caixa_alta_tres == "Sim" || salvar.caixa_alta_tres == null && salvar.coloracao_eti == "Sim" || salvar.coloracao_eti == null && salvar.esclarecimento_dois == "Sim" || salvar.esclarecimento_dois == null)
-                {
-                    if (salvar.altura_letra_dois >= 3 && salvar.altura_letra_tres >= 3 && salvar.altura_letra_quat >= 3)
+                    if (salvar.area_um == null && salvar.area_dois == null)
                     {
-                        if (salvar.altura_letra_tres >= 3 && salvar.altura_letra_quat >= 3)
+                        salvar.area_um = "0";
+                        salvar.area_dois = "0";
+                        salvar.area_result = "0";
+                    }
+                    else
+                    {
+                        salvar.area_result = (double.Parse(salvar.area_um) * double.Parse(salvar.area_dois)).ToString();
+                        salvar.conforme_area_um = ((double.Parse(salvar.area_um) * double.Parse(salvar.area_dois)) >= 150) ? "C" : "NC";
+                    }
 
+                    if (salvar.etiquieta_um == "Sim" && salvar.fixacao == "Sim" && salvar.material == "Sim" && salvar.visualizacao == "Sim" && salvar.lingua_portuguesa == "Sim")
+                    {
+                        salvar.conforme_inicial = ((double.Parse(salvar.area_um) * double.Parse(salvar.area_dois)) >= 150) ? "C" : "NC";
+                    }
+                    else
+                    {
+                        salvar.conforme_inicial = "NC";
+                    }
+
+                    //conformidade das perguntas de A ate G
+                    if (salvar.etiquieta_dois == "Sim" && salvar.marca == "Sim" && salvar.dimensoes == "Sim" && salvar.medidas == "Sim" && salvar.colchoes == "Sim" && salvar.tipo_colchao == "Sim" && salvar.letras == "Sim" && salvar.negrito_um == "Sim" && salvar.caixa_alta_um == "Sim" && salvar.coloracao_um == "Sim" && salvar.classificacao == "Sim" && salvar.uso == "Sim" && salvar.composicao == "Sim" && salvar.info_altura == null || salvar.info_altura == "Sim" && salvar.colchoes == "Sim" || salvar.colchoes == null)
+                    {
+                        salvar.conforme_letras = "C";
+                    }
+                    else
+                    {
+                        salvar.conforme_letras = "NC";
+                    }
+
+                    //conformidade dos restante das perguntas..
+                    if (salvar.tipo_espuma == "Sim" && salvar.densidade_nominal == "Sim" && salvar.comp_revestimento == "Sim" && salvar.data_fabricacao == "Sim" && salvar.pais_fabricacao == "Sim" && salvar.cuidados == "Sim" && salvar.negrito_dois == "Sim" && salvar.caixa_alta_dois == "Sim" && salvar.negrito_tres == "Sim" && salvar.caixa_alta_tres == "Sim" && salvar.coloracao_eti == "Sim" && salvar.negrito_quat == "Sim" && salvar.caixa_alta_quat == "Sim" && salvar.coloracao_quat == "Sim" && salvar.espessura_mad == "Sim" || salvar.espessura_mad == null && salvar.aviso_um == "Sim" || salvar.aviso_um == null && salvar.negrito_dois == "Sim" || salvar.negrito_dois == null && salvar.caixa_alta_dois == "Sim" || salvar.caixa_alta_dois == null && salvar.esclarecimento_um == "Sim" || salvar.esclarecimento_um == null && salvar.negrito_tres == "Sim" || salvar.negrito_tres == null && salvar.caixa_alta_tres == "Sim" || salvar.caixa_alta_tres == null && salvar.coloracao_eti == "Sim" || salvar.coloracao_eti == null && salvar.esclarecimento_dois == "Sim" || salvar.esclarecimento_dois == null)
+                    {
+                        if (salvar.altura_letra_dois >= 3 && salvar.altura_letra_tres >= 3 && salvar.altura_letra_quat >= 3)
                         {
-                            salvar.conforme_letras_dois = "C";
-                        }
-                        else
-                        {
-                            salvar.conforme_letras_dois = "NC";
+                            if (salvar.altura_letra_tres >= 3 && salvar.altura_letra_quat >= 3)
+
+                            {
+                                salvar.conforme_letras_dois = "C";
+                            }
+                            else
+                            {
+                                salvar.conforme_letras_dois = "NC";
+                            }
                         }
                     }
-                }
-                else
-                {
-                    salvar.conforme_letras_dois = "NC";
-                }
-
-                //conformidade colchao infantil.
-                if (ViewBag.tipLamina == "Colchão infantil")
-                {
-                    if (salvar.colchao_infantil == "Sim" && salvar.embalagem_colchao == "Sim" && salvar.aviso_embalagem_um == "Sim" && salvar.negrito_cinco == "Sim" && salvar.caixa_alta_cinco == "Sim" && salvar.coloracao_cinco == "Sim" && salvar.aviso_embalagem_dois == "Sim" && salvar.negrito_seis == "Sim" && salvar.caixa_alta_seis == "Sim" && salvar.coloracao_seis == "Sim" && salvar.dec_voluntaria == "Sim" && salvar.texto_negrito == "Sim" && salvar.identificacao == "Sim" && salvar.identificacao_dois == "Sim")
+                    else
                     {
-                        if (salvar.altura_letra_cinco >= 3 && salvar.altura_letra_seis >= 3)
+                        salvar.conforme_letras_dois = "NC";
+                    }
+
+                    //conformidade colchao infantil.
+                    if (ViewBag.tipLamina == "Colchão infantil")
+                    {
+                        if (salvar.colchao_infantil == "Sim" && salvar.embalagem_colchao == "Sim" && salvar.aviso_embalagem_um == "Sim" && salvar.negrito_cinco == "Sim" && salvar.caixa_alta_cinco == "Sim" && salvar.coloracao_cinco == "Sim" && salvar.aviso_embalagem_dois == "Sim" && salvar.negrito_seis == "Sim" && salvar.caixa_alta_seis == "Sim" && salvar.coloracao_seis == "Sim" && salvar.dec_voluntaria == "Sim" && salvar.texto_negrito == "Sim" && salvar.identificacao == "Sim" && salvar.identificacao_dois == "Sim")
                         {
-                            salvar.conforme_infantil = "C";
+                            if (salvar.altura_letra_cinco >= 3 && salvar.altura_letra_seis >= 3)
+                            {
+                                salvar.conforme_infantil = "C";
+                            }
+                            else
+                            {
+                                salvar.conforme_infantil = "NC";
+                            }
                         }
                         else
                         {
@@ -4382,61 +4391,54 @@ namespace Coleta_Colchao.Controllers
                     }
                     else
                     {
-                        salvar.conforme_infantil = "NC";
+                        salvar.conforme_infantil = null;
                     }
-                }
-                else
-                {
-                    salvar.conforme_infantil = null;
-                }
 
-                //conformidade  item 2.14.2 
-                if (ViewBag.tipLamina == "Colchão misto" || ViewBag.tipLamina == "Composto")
-                {
-                    if (salvar.desc_lamina == "Sim")
+                    //conformidade  item 2.14.2 
+                    if (ViewBag.tipLamina == "Colchão misto" || ViewBag.tipLamina == "Composto")
                     {
-                        salvar.conforme_2_14_2 = "C";
+                        if (salvar.desc_lamina == "Sim")
+                        {
+                            salvar.conforme_2_14_2 = "C";
+                        }
+                        else
+                        {
+                            salvar.conforme_2_14_2 = "NC";
+                        }
                     }
                     else
                     {
-                        salvar.conforme_2_14_2 = "NC";
+                        salvar.conforme_2_14_2 = null;
                     }
-                }
-                else
-                {
-                    salvar.conforme_2_14_2 = null;
-                }
 
-                //confome item 2_14_3
-                if (ViewBag.outrosMateriais == "Lâmina  Latex")
-                {
-                    if (salvar.latex == "Sim")
+                    //confome item 2_14_3
+                    if (ViewBag.outrosMateriais == "Lâmina  Latex")
                     {
-                        salvar.conforme_2_14_3 = "C";
+                        if (salvar.latex == "Sim")
+                        {
+                            salvar.conforme_2_14_3 = "C";
+                        }
+                        else
+                        {
+                            salvar.conforme_2_14_3 = "NC";
+                        }
                     }
                     else
                     {
-                        salvar.conforme_2_14_3 = "NC";
+                        salvar.conforme_2_14_3 = null;
                     }
-                }
-                else
-                {
-                    salvar.conforme_2_14_3 = null;
-                }
 
-                //conforme item 6.2              
-                if (salvar.embalagem_uni == "Sim" && salvar.embalagem_protecao == "Sim")
-                {
-                    salvar.conforme6_2 = "C";
-                }
-                else
-                {
-                    salvar.conforme6_2 = "NC";
-                }
-                salvar.executor = Usuario();
+                    //conforme item 6.2              
+                    if (salvar.embalagem_uni == "Sim" && salvar.embalagem_protecao == "Sim")
+                    {
+                        salvar.conforme6_2 = "C";
+                    }
+                    else
+                    {
+                        salvar.conforme6_2 = "NC";
+                    }
+                    salvar.executor = Usuario();
 
-                if(editarDados == null) 
-                {
                     _context.Add(salvar);
                     await _context.SaveChangesAsync();
                     TempData["Mensagem"] = "Dados Salvo Com Sucesso";
@@ -4444,7 +4446,209 @@ namespace Coleta_Colchao.Controllers
                 }
                 else
                 {
-                    _context.Update(salvar);
+                    if (salvar.area_um == null && salvar.area_dois == null)
+                    {
+                        salvar.area_um = "0";
+                        salvar.area_dois = "0";
+                        salvar.area_result = "0";
+                    }
+                    else
+                    {
+                        salvar.area_result = (double.Parse(salvar.area_um) * double.Parse(salvar.area_dois)).ToString();
+                        salvar.conforme_area_um = ((double.Parse(salvar.area_um) * double.Parse(salvar.area_dois)) >= 150) ? "C" : "NC";
+                    }
+
+                    if (salvar.etiquieta_um == "Sim" && salvar.fixacao == "Sim" && salvar.material == "Sim" && salvar.visualizacao == "Sim" && salvar.lingua_portuguesa == "Sim")
+                    {
+                        salvar.conforme_inicial = ((double.Parse(salvar.area_um) * double.Parse(salvar.area_dois)) >= 150) ? "C" : "NC";
+                    }
+                    else
+                    {
+                        salvar.conforme_inicial = "NC";
+                    }
+
+                    //conformidade das perguntas de A ate G
+                    if (salvar.etiquieta_dois == "Sim" && salvar.marca == "Sim" && salvar.dimensoes == "Sim" && salvar.medidas == "Sim" && salvar.colchoes == "Sim" && salvar.tipo_colchao == "Sim" && salvar.letras == "Sim" && salvar.negrito_um == "Sim" && salvar.caixa_alta_um == "Sim" && salvar.coloracao_um == "Sim" && salvar.classificacao == "Sim" && salvar.uso == "Sim" && salvar.composicao == "Sim" && salvar.info_altura == null || salvar.info_altura == "Sim" && salvar.colchoes == "Sim" || salvar.colchoes == null)
+                    {
+                        salvar.conforme_letras = "C";
+                    }
+                    else
+                    {
+                        salvar.conforme_letras = "NC";
+                    }
+
+                    //conformidade dos restante das perguntas..
+                    if (salvar.tipo_espuma == "Sim" && salvar.densidade_nominal == "Sim" && salvar.comp_revestimento == "Sim" && salvar.data_fabricacao == "Sim" && salvar.pais_fabricacao == "Sim" && salvar.cuidados == "Sim" && salvar.negrito_dois == "Sim" && salvar.caixa_alta_dois == "Sim" && salvar.negrito_tres == "Sim" && salvar.caixa_alta_tres == "Sim" && salvar.coloracao_eti == "Sim" && salvar.negrito_quat == "Sim" && salvar.caixa_alta_quat == "Sim" && salvar.coloracao_quat == "Sim" && salvar.espessura_mad == "Sim" || salvar.espessura_mad == null && salvar.aviso_um == "Sim" || salvar.aviso_um == null && salvar.negrito_dois == "Sim" || salvar.negrito_dois == null && salvar.caixa_alta_dois == "Sim" || salvar.caixa_alta_dois == null && salvar.esclarecimento_um == "Sim" || salvar.esclarecimento_um == null && salvar.negrito_tres == "Sim" || salvar.negrito_tres == null && salvar.caixa_alta_tres == "Sim" || salvar.caixa_alta_tres == null && salvar.coloracao_eti == "Sim" || salvar.coloracao_eti == null && salvar.esclarecimento_dois == "Sim" || salvar.esclarecimento_dois == null)
+                    {
+                        if (salvar.altura_letra_dois >= 3 && salvar.altura_letra_tres >= 3 && salvar.altura_letra_quat >= 3)
+                        {
+                            if (salvar.altura_letra_tres >= 3 && salvar.altura_letra_quat >= 3)
+
+                            {
+                                salvar.conforme_letras_dois = "C";
+                            }
+                            else
+                            {
+                                salvar.conforme_letras_dois = "NC";
+                            }
+                        }
+                    }
+                    else
+                    {
+                        salvar.conforme_letras_dois = "NC";
+                    }
+
+                    //conformidade colchao infantil.
+                    if (ViewBag.tipLamina == "Colchão infantil")
+                    {
+                        if (salvar.colchao_infantil == "Sim" && salvar.embalagem_colchao == "Sim" && salvar.aviso_embalagem_um == "Sim" && salvar.negrito_cinco == "Sim" && salvar.caixa_alta_cinco == "Sim" && salvar.coloracao_cinco == "Sim" && salvar.aviso_embalagem_dois == "Sim" && salvar.negrito_seis == "Sim" && salvar.caixa_alta_seis == "Sim" && salvar.coloracao_seis == "Sim" && salvar.dec_voluntaria == "Sim" && salvar.texto_negrito == "Sim" && salvar.identificacao == "Sim" && salvar.identificacao_dois == "Sim")
+                        {
+                            if (salvar.altura_letra_cinco >= 3 && salvar.altura_letra_seis >= 3)
+                            {
+                                salvar.conforme_infantil = "C";
+                            }
+                            else
+                            {
+                                salvar.conforme_infantil = "NC";
+                            }
+                        }
+                        else
+                        {
+                            salvar.conforme_infantil = "NC";
+                        }
+                    }
+                    else
+                    {
+                        salvar.conforme_infantil = null;
+                    }
+
+                    //conformidade  item 2.14.2 
+                    if (ViewBag.tipLamina == "Colchão misto" || ViewBag.tipLamina == "Composto")
+                    {
+                        if (salvar.desc_lamina == "Sim")
+                        {
+                            salvar.conforme_2_14_2 = "C";
+                        }
+                        else
+                        {
+                            salvar.conforme_2_14_2 = "NC";
+                        }
+                    }
+                    else
+                    {
+                        salvar.conforme_2_14_2 = null;
+                    }
+
+                    //confome item 2_14_3
+                    if (ViewBag.outrosMateriais == "Lâmina  Latex")
+                    {
+                        if (salvar.latex == "Sim")
+                        {
+                            salvar.conforme_2_14_3 = "C";
+                        }
+                        else
+                        {
+                            salvar.conforme_2_14_3 = "NC";
+                        }
+                    }
+                    else
+                    {
+                        salvar.conforme_2_14_3 = null;
+                    }
+
+                    //conforme item 6.2              
+                    if (salvar.embalagem_uni == "Sim" && salvar.embalagem_protecao == "Sim")
+                    {
+                        salvar.conforme6_2 = "C";
+                    }
+                    else
+                    {
+                        salvar.conforme6_2 = "NC";
+                    }
+                    editarDados.data_ini = salvar.data_ini;
+                    editarDados.data_term = salvar.data_term;
+                    editarDados.etiquieta_um = salvar.etiquieta_um;
+                    editarDados.fixacao = salvar.fixacao;
+                    editarDados.material = salvar.material;
+                    editarDados.area_um = salvar.area_um;
+                    editarDados.area_dois = salvar.area_dois;
+                    editarDados.area_result = salvar.area_result;
+                    editarDados.etiquieta_dois = salvar.etiquieta_dois;
+                    editarDados.marca = salvar.marca;
+                    editarDados.dimensoes = salvar.dimensoes;
+                    editarDados.info_altura = salvar.info_altura;
+                    editarDados.medidas = salvar.medidas;
+                    editarDados.colchoes = salvar.colchoes;
+                    editarDados.tipo_colchao = salvar.tipo_colchao;
+                    editarDados.letras = salvar.letras;
+                    editarDados.altura_letra_um = salvar.altura_letra_um;
+                    editarDados.negrito_um = salvar.negrito_um;
+                    editarDados.caixa_alta_um = salvar.caixa_alta_um;
+                    editarDados.coloracao_um = salvar.coloracao_um;
+                    editarDados.classificacao = salvar.classificacao;
+                    editarDados.uso = salvar.uso;
+                    editarDados.composicao = salvar.composicao;
+                    editarDados.tipo_espuma = salvar.tipo_espuma;
+                    editarDados.densidade_nominal = salvar.densidade_nominal;
+                    editarDados.espessura_mad = salvar.espessura_mad;
+                    editarDados.comp_revestimento = salvar.comp_revestimento;
+                    editarDados.data_fabricacao = salvar.data_fabricacao;
+                    editarDados.pais_fabricacao = salvar.pais_fabricacao;
+                    editarDados.cuidados = salvar.cuidados;
+                    editarDados.aviso_um = salvar.aviso_um;
+                    editarDados.altura_letra_dois = salvar.altura_letra_dois;
+                    editarDados.negrito_dois = salvar.negrito_dois;
+                    editarDados.caixa_alta_dois = salvar.caixa_alta_dois;
+                    editarDados.coloracao_dois = salvar.coloracao_dois;
+                    editarDados.esclarecimento_um = salvar.esclarecimento_um;
+                    editarDados.altura_letra_tres = salvar.altura_letra_tres;
+                    editarDados.negrito_tres = salvar.negrito_tres;
+                    editarDados.caixa_alta_tres = salvar.caixa_alta_tres;
+                    editarDados.coloracao_eti = salvar.coloracao_eti;
+                    editarDados.esclarecimento_dois = salvar.esclarecimento_dois;
+                    editarDados.altura_letra_quat = salvar.altura_letra_quat;
+                    editarDados.negrito_quat = salvar.negrito_quat;
+                    editarDados.caixa_alta_quat = salvar.caixa_alta_quat;
+                    editarDados.coloracao_quat = salvar.coloracao_quat;
+                    editarDados.colchao_infantil = salvar.colchao_infantil;
+                    editarDados.embalagem_colchao = salvar.embalagem_colchao;
+                    editarDados.aviso_embalagem_um = salvar.aviso_embalagem_um;
+                    editarDados.altura_letra_cinco = salvar.altura_letra_cinco;
+                    editarDados.negrito_cinco = salvar.negrito_cinco;
+                    editarDados.caixa_alta_cinco = salvar.caixa_alta_cinco;
+                    editarDados.coloracao_cinco = salvar.coloracao_cinco;
+                    editarDados.aviso_odor = salvar.aviso_odor;
+                    editarDados.aviso_embalagem_dois = salvar.aviso_embalagem_dois;
+                    editarDados.altura_letra_seis = salvar.altura_letra_seis;
+                    editarDados.negrito_seis = salvar.negrito_seis;
+                    editarDados.caixa_alta_seis = salvar.caixa_alta_seis;
+                    editarDados.coloracao_seis = salvar.coloracao_seis;
+                    editarDados.dec_voluntaria = salvar.dec_voluntaria;
+                    editarDados.texto_negrito = salvar.texto_negrito;
+                    editarDados.identificacao = salvar.identificacao;
+                    editarDados.identificacao_dois = salvar.identificacao_dois;
+                    editarDados.desc_lamina = salvar.desc_lamina;
+                    editarDados.latex = salvar.latex;
+                    editarDados.embalagem_uni = salvar.embalagem_uni;
+                    editarDados.embalagem_protecao = salvar.embalagem_protecao;
+                    editarDados.observacao = salvar.observacao;
+                    editarDados.visualizacao = salvar.visualizacao;
+                    editarDados.lingua_portuguesa = salvar.lingua_portuguesa;
+                    editarDados.executador_um = salvar.executador_um;
+                    editarDados.conforme_inicial = salvar.conforme_inicial;
+                    editarDados.conforme_letras = salvar.conforme_letras;
+                    editarDados.conforme_letras_dois = salvar.conforme_letras_dois;
+                    editarDados.conforme_infantil = salvar.conforme_infantil;
+                    editarDados.conforme_2_14_2 = salvar.conforme_2_14_2;
+                    editarDados.conforme_2_14_3 = salvar.conforme_2_14_3;
+                    editarDados.conforme6_2 = salvar.conforme6_2;
+                    editarDados.executador_dois = salvar.executador_dois;
+                    editarDados.executador_tres = salvar.executador_tres;
+                    editarDados.executador_quat = salvar.executador_quat;
+                    editarDados.executor = Usuario();
+                    editarDados.editarUsuario = Usuario();
+
+                    _context.Update(editarDados);
                     await _context.SaveChangesAsync();
                     TempData["Mensagem"] = "Dados Editado Com Sucesso";
                     return RedirectToAction(nameof(IdentificacaoEmbalagem), "Coleta", new { os, orcamento, rev });

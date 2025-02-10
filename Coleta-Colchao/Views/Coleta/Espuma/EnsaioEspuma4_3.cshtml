@@ -83,6 +83,7 @@
                         {
                             <option>@Model.tipo_ensaio</option>
                         }
+                        <option>---</option>
                         <option>Colagem horizontal com peça inteira</option>
                         <option>Colchão tipo simples</option>
                         <option>Colagem vertical na largura</option>
@@ -103,7 +104,7 @@
                         A lâmina colada sobre a lâmina central deve ser composta de uma única peça. <br />
                         A lâmina central é composta por um única peça?
                         <select class="form-control" asp-for="lamina_central">
-                            @if(Model != null)
+                            @if(Model.lamina_central != null)
                             {
                                 <option>@Model.lamina_central</option>
                             }
@@ -124,7 +125,7 @@
                         Pode haver no máximo duas colagens na horizontal, de mesma densidade. <br /> <br />
                         Quantidades de colagens
                         <select class="form-control w-100" asp-for="quant_colagens">
-                            @if(Model != null)
+                            @if(Model.quant_colagens != null)
                             {
                                 <option>@Model.quant_colagens</option>
                             }
@@ -135,7 +136,7 @@
                         </select> <br /> <br />
                         As colagens são de mesmas densidades
                         <select class="form-control w-100" asp-for="colagens_densidade">
-                            @if(Model != null)
+                            @if(Model.colagens_densidade != null)
                             {
                                 <option>@Model.colagens_densidade</option>
                             }
@@ -170,7 +171,10 @@
                         Pode haver somente uma colagem no sentido da largura, com distância máxima de 40 cm da extremidade do colchão. <br /> <br />
                         Quantidades de colagens
                         <select class="form-control w-100" asp-for="quant_colagens_dois">
-                            
+                            @if(Model.quant_colagens_dois != null)
+                            {
+                                <option>@Model.quant_colagens_dois</option>
+                            }
                             <option value="1">1</option>
                             <option value="2">2</option>
                             <option value="3">3</option>
@@ -182,6 +186,10 @@
                         Não é permitido utilizar colagens no sentido do comprimento. <br /> <br />
                         Possui colagens do sentido do comprimento?
                         <select class="form-control" asp-for="colagens_comp">
+                            @if(Model.colagens_comp != null)
+                            {
+                                <option>@Model.colagens_comp</option>
+                            }
                             <option> Sim </option>
                             <option> Não </option>
                             <option>---</option>
@@ -196,7 +204,10 @@
                 <tr class="colcao_composto">
                     <td rowspan="12"> 4.3</td>
                     <td class="fundo-tabela"> Colchão tipo composto </td>
-                    <td rowspan="12"> @Model.conforme </td>
+                    @if(Model.conforme != null)
+                    {
+                        <td rowspan="12"> @Model.conforme </td>
+                    }
                 </tr>
                 <tr class="colcao_composto">
                     <td>
@@ -204,6 +215,10 @@
                         As colagens horizontais devem ocorrer entre as espumas de características diferentes, porém com espessura mínima de 3 cm.<br /> <br />
                         Ocorrem entre as espumas de características diferente?
                         <select class="form-control" asp-for="espuma">
+                            @if(Model.espuma != null)
+                            {
+                                <option>@Model.espuma</option>
+                            }
                             <option> Sim </option>
                             <option> Não </option>
                             <option>---</option>
@@ -389,12 +404,19 @@
                         <strong> Colagem na largura </strong>
                     </td>
                 </tr>
-                <td rowspan="2">@Model.conforme</td>
+                @if(Model.conforme != null)
+                {
+                    <td rowspan="2">@Model.conforme</td>
+                }
                 <tr class="colagem_largura">
                     <td>
                         Pode haver somente uma colagem no sentido da largura, com distância máxima de 40 cm da extremidade do colchão. <br /> <br />
                         Quantidades de colagens
                         <select class="form-control w-100" asp-for="quant_colagens_tres">
+                            @if(Model.quant_colagens_tres != null)
+                            {
+                                <option>@Model.quant_colagens_tres</option>
+                            }
                             <option value="1">1</option>
                             <option value="2">2</option>
                             <option value="3">3</option>
@@ -412,7 +434,12 @@
                     </td>
                 </tr>
                 <tr>
-                    <td rowspan="2">@Model.conforme</td>
+                    <td rowspan="2">
+                        @if(Model.conforme != null)
+                        {
+                            @Model.conforme
+                        }
+                    </td>
                 </tr>
                 <tr class="colchao_comprimento">
                     <td>
@@ -421,36 +448,60 @@
                         Esta colagem deve ser localizada no centro do colchão. <br /> <br />
                         O colchão é de casal
                         <select class="form-control" asp-for="colchao_casal">
+                            @if(Model.colchao_casal != null)
+                            {
+                                <option>@Model.colchao_casal</option>
+                            }
+                            <option>---</option>
                             <option> Sim </option>
                             <option> Não </option>
-                            <option>---</option>
                         </select> <br /> <br />
                         Possuí colagem no sentido do comprimento?
                         <select class="form-control" asp-for="colagem_comp">
+                            @if(Model.colagem_comp != null)
+                            {
+                                <option>@Model.colagem_comp</option>
+                            }
+                            <option>---</option>
                             <option> Sim </option>
                             <option> Não </option>
-                            <option>---</option>
                         </select> <br /> <br />
                         A espuma é convencional
                         <select class="form-control" asp-for="espuma_conv">
+                            @if(Model.espuma_conv != null)
+                            {
+                                <option>@Model.espuma_conv</option>
+                            }
                             <option> Sim </option>
                             <option> Não </option>
                             <option>---</option>
                         </select> <br /> <br />
                         As espumas possuem densidades distintas
                         <select class="form-control" asp-for="espuma_densidade">
+                            @if(Model.espuma_densidade != null)
+                            {
+                                <option>@Model.espuma_densidade</option>
+                            }
                             <option> Sim </option>
                             <option> Não </option>
                             <option>---</option>
                         </select> <br /> <br />
                         Possui colagem na largura
                         <select class="form-control" asp-for="colagem_largura">
+                            @if(Model.colagem_largura != null)
+                            {
+                                <option>@Model.colagem_largura</option>
+                            }
                             <option> Sim </option>
                             <option> Não </option>
                             <option>---</option>
                         </select> <br /> <br />
                         Quantidades de colagens
                         <select class="form-control w-100" asp-for="quant_colagens_quat">
+                            @if(Model.quant_colagens_quat != null)
+                            {
+                                <option>@Model.quant_colagens_quat</option>
+                            }
                             <option value="1">1</option>
                             <option value="2">2</option>
                             <option value="3">3</option>
@@ -458,6 +509,10 @@
                         </select> <br /> <br />
                         A colagem está localizada no centro do colchão?
                         <select class="form-control" asp-for="localidade">
+                            @if(Model.localidade != null)
+                            {
+                                <option>@Model.localidade</option>
+                            }
                             <option> Sim </option>
                             <option> Não </option>
                             <option>---</option>
@@ -478,12 +533,15 @@
                         <td rowspan="2">@Model.conforme</td>
                     }
                 </tr>
-
                 <tr>
                     <td>
                         Somente é permitada uma colagem na horizontal com espessura mínima de 3 cm. <br /> <br />
                         Quantidades de colagens
                         <select class="form-control w-100" asp-for="quant_colagens_cinco">
+                            @if(Model != null)
+                            {
+                                <option>@Model.quant_colagens_cinco</option>
+                            }
                             <option value="1">1</option>
                             <option value="2">2</option>
                             <option value="3">3</option>
@@ -509,6 +567,10 @@
                         Não é permitido o uso de adesviso à base de solventes aromáticos em colchão infantil. <br /> <br />
                         Possui adesivos à base de solventes aromáticos?
                         <select class="form-control" asp-for="adesivo">
+                            @if(Model != null)
+                            {
+                                <option>@Model.adesivo</option>
+                            }
                             <option> Sim </option>
                             <option> Não </option>
                             <option>---</option>
