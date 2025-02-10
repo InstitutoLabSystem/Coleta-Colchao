@@ -4499,6 +4499,7 @@ namespace Coleta_Colchao.Controllers
                     salvar.os = os;
                     salvar.orcamento = orcamento;
                     salvar.rev = rev;
+                    salvar.area_result = ((double.Parse(salvar.area_um) * double.Parse(salvar.area_dois)).ToString());
                     salvar.conforme_area_um = ((double.Parse(salvar.area_um) * double.Parse(salvar.area_dois)) >= 150) ? "C" : "NC";
 
                     if (salvar.etiquieta_um == "Sim" && salvar.fixacao == "Sim" && salvar.material == "Sim" && salvar.visualizacao == "Sim" && salvar.lingua_portuguesa == "Sim")
@@ -4709,11 +4710,12 @@ namespace Coleta_Colchao.Controllers
                     editarDados.executador_dois = salvar.executador_dois;
                     editarDados.executador_tres = salvar.executador_tres;
                     editarDados.executador_quat = salvar.executador_quat;
+                    editarDados.area_result = ((double.Parse(salvar.area_um) * double.Parse(salvar.area_dois)).ToString());
 
                     //editando os valores par conforme e nao conforme.
                     if (editarDados.etiquieta_um == "Sim" && editarDados.fixacao == "Sim" && editarDados.material == "Sim" && editarDados.visualizacao == "Sim" && editarDados.lingua_portuguesa == "Sim")
                     {
-                        if (float.Parse(editarDados.area_result) > 150)
+                        if ((double.Parse(salvar.area_um) * double.Parse(salvar.area_dois) >= 150))
                         {
                             editarDados.conforme_inicial = "C";
                             editarDados.conforme_area_um = "C";
