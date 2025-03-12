@@ -3313,7 +3313,7 @@ namespace Coleta_Colchao.Controllers
                     string conv_media_copos = media_copos.ToString("N3");
                     media_copos = float.Parse(conv_media_copos);
 
-                    float resultado = ((media_copos / (editarDados.area_corpo_1 * editarDados.area_corpo_2 / 100) * 10000));
+                    float resultado = ((media_copos / ((editarDados.area_corpo_1 * editarDados.area_corpo_2) / 100) * 10000));
                     float gramatura = resultado;
 
                     //verificando conformidade dos ensaios.
