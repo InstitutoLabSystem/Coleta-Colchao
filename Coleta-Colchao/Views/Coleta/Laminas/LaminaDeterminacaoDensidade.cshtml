@@ -391,30 +391,37 @@
             </tr>
         </table>
         <br />
-        @if (Model == null)
-        {
-            <div class="d-grid gap-2 d-flex justify-content-center">
-                <button type="submit" class="btn btn-success btn btn-primary btn-md">Salvar Dados</button>
-            </div>
-        }
-        else
-        {
-            @if (ViewBag.bloqueada != "Sim")
-            {
+
+
+
+            @if (Model == null){
                 <div class="d-grid gap-2 d-flex justify-content-center">
-                    <button type="submit" class="btn btn-success btn btn-primary btn-md">Editar Dados</button>
+                    <button type="submit" class="btn btn-success btn btn-primary btn-md">Salvar Dados</button>
                 </div>
-            }else
-            {
-                <div class="d-flex justify-content-center">
-                    <div class="alert alert-danger w-50 p-3 m-3 text-center" role="alert">
-                        Coleta Bloqueada!
+            }else{
+                @if (ViewBag.bloqueada != "Sim")
+                {
+                    <div class="d-grid gap-2 d-flex justify-content-center">
+                        <button type="submit" class="btn btn-success btn btn-primary btn-md">Editar Dados</button>
                     </div>
-                </div>
+                }else
+                {
+                    <div class="d-flex justify-content-center">
+                        <div class="alert alert-danger w-50 p-3 m-3 text-center" role="alert">
+                            Coleta Bloqueada!
+                        </div>
+                    </div>
+                }
             }
-        }
+            <div class="d-flex align-items-center">
+                <a asp-controller="Home" asp-action="Index" class="mb-3 me-2 mb-md-0 text-body-secondary text-decoration-none lh-1">
+                <img src="https://www.labsystem-nuvem.com.br/imagens_arq/imagens/img/LabSystem.png" class="bi" width="25" height="24" />
+                </a>
+                <span class="mb-4 mb-md-0 text-body-secondary" style="font-size: 14px;">&copy; Coleta Colchao - CD-SI 001/MVS - 10/02/2025 - Rev 1</span>
+            </div>
 
     </form>
+   
     @if (TempData.ContainsKey("Mensagem"))
     {
         <script>
@@ -432,4 +439,5 @@
         });
     </script>
 </body>
+
 </html>
