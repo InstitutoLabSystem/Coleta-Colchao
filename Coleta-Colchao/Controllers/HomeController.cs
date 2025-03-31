@@ -34,6 +34,16 @@ namespace Coleta_Colchao.Controllers
             return user;
         }
 
+        public string buscarSetor(string user)
+        {
+            var setor = _bancoContext.usuario
+                .Where(u => u.Nome_Usuario == user)
+                .Select(u => u.setor) // Aqui estamos selecionando apenas o campo 'setor'
+                .FirstOrDefault();
+            return setor;
+        }
+
+
         public async Task<IActionResult> LogOutAsync()
         {
             await HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
@@ -113,6 +123,7 @@ namespace Coleta_Colchao.Controllers
                         ViewBag.orcamento = dados.First().orcamento;
                         ViewBag.estrutura = buscarOs.estrutura;
                         ViewBag.user = Usuario();
+                        ViewBag.setor = buscarSetor(ViewBag.user);
                         ViewBag.rev = buscarOs.rev;
                         ViewBag.PercorrerRegstro = _context.regtro_colchao.Where(x => x.os == os).OrderByDescending(x => x.Id).ToList();
                         ViewBag.ensaio = "Molas";
@@ -128,6 +139,7 @@ namespace Coleta_Colchao.Controllers
                         ViewBag.rev = buscarEspumaOs.rev;
                         ViewBag.PercorrerRegstro = _context.regtro_colchao_espuma.Where(x => x.os == os).OrderByDescending(x => x.Id).ToList();
                         ViewBag.user = Usuario();
+                        ViewBag.setor = buscarSetor(ViewBag.user);
                         ViewBag.ensaio = "Espuma";
                         ViewBag.bloqueada = buscarEspumaOs.Bloqueada;
                         return View("Index", dados);
@@ -140,6 +152,7 @@ namespace Coleta_Colchao.Controllers
                         ViewBag.rev = buscarLamina.rev;
                         ViewBag.PercorrerRegstro = _context.regtro_colchao_lamina.Where(x => x.os == os).OrderByDescending(x => x.Id).ToList();
                         ViewBag.user = Usuario();
+                        ViewBag.setor = buscarSetor(ViewBag.user);
                         ViewBag.ensaio = "Laminas";
                         ViewBag.bloqueada = buscarLamina.Bloqueada;
                         ViewBag.status = "andamento";
