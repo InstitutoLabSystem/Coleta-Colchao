@@ -4599,6 +4599,13 @@ namespace Coleta_Colchao.Controllers
                         salvar.conforme_2_14_3 = null;
                     }
 
+
+                    //confome item 3_2_1
+
+                    //salvar.conforme_3_2_1;
+
+
+
                     //conforme item 6.2              
                     if (salvar.embalagem_uni == "Sim" && salvar.embalagem_protecao == "Sim")
                     {
@@ -4807,6 +4814,9 @@ namespace Coleta_Colchao.Controllers
                     editarDados.executador_dois = salvar.executador_dois;
                     editarDados.executador_tres = salvar.executador_tres;
                     editarDados.executador_quat = salvar.executador_quat;
+                    editarDados.conforme_3_2_1 = salvar.conforme_3_2_1;
+
+
                     editarDados.conforme_area_um = salvar.conforme_area_um;
                     editarDados.area_result = ((double.Parse(salvar.area_um) * double.Parse(salvar.area_dois)).ToString());
                     editarDados.executor = Usuario();
