@@ -715,7 +715,7 @@ namespace Coleta_Colchao.Controllers
 
             // Verifica se essa OS foi salva na tabela do ensaio de Densidade
             var DadosDensidade = _context.lamina_determinacao_densidade.Where(x => x.os == os && x.orcamento == orcamento && x.rev == rev).FirstOrDefault();
-            
+
             // Crio uma variavel para verificar se essa OS possui ensaio de Densidade 
             var existeEnsaioDensidade = "";
 
@@ -739,7 +739,7 @@ namespace Coleta_Colchao.Controllers
                          }).ToList();
 
             // Realizo uma verificação para saber se possui ensaio de Densidade
-            for(int i = 0; i < dados.Count; i++)
+            for (int i = 0; i < dados.Count; i++)
             {
                 // Verifica se a descrição é igual a "5.1 I DETERMINAÇÃO DA DENSIDADE"
                 if (dados[i].descricao == "5.1 I DETERMINAÇÃO DA DENSIDADE")
@@ -808,7 +808,7 @@ namespace Coleta_Colchao.Controllers
             }
             else
             {
-                if(dadosLaminasDPC == null)
+                if (dadosLaminasDPC == null)
                 {
                     //recebendo os valores da determinacao de densidade quando nao existir o ensaio.
                     ViewBag.esp_amostra_um_um = 0;
@@ -1054,7 +1054,7 @@ namespace Coleta_Colchao.Controllers
                         .Where(x => x.os == os && x.orcamento == orcamento && x.rev == rev)
                         .FirstOrDefault();
 
-            if(dados == null)
+            if (dados == null)
             {
                 returnDados.executor = Usuario();
                 //salvando os dados
@@ -1825,7 +1825,7 @@ namespace Coleta_Colchao.Controllers
                     DateOnly data_term = salvarDados.data_term;
 
                     string acordo = salvarDados.acordo;
-                    
+
 
                     var registro = new ColetaModel.Ensaio7_1
                     {
@@ -5618,9 +5618,9 @@ namespace Coleta_Colchao.Controllers
                     // final do calculo da medias de largura, comprimento, e espessura.
 
                     //inicio calculo total..
-                    salvarDados.calc_amostra_um = (float)Math.Round((((salvarDados.esp_media_um * salvarDados.media_larg_um * salvarDados.media_comp_um) / 1000)),1);
-                    salvarDados.calc_amostra_dois = (float)Math.Round((((salvarDados.esp_media_dois * salvarDados.media_larg_dois * salvarDados.media_comp_dois) / 1000)),1);
-                    salvarDados.calc_amostra_tres = (float)Math.Round((((salvarDados.esp_media_tres * salvarDados.media_larg_tres * salvarDados.media_comp_tres) / 1000)),1);
+                    salvarDados.calc_amostra_um = (float)Math.Round((((salvarDados.esp_media_um * salvarDados.media_larg_um * salvarDados.media_comp_um) / 1000)), 1);
+                    salvarDados.calc_amostra_dois = (float)Math.Round((((salvarDados.esp_media_dois * salvarDados.media_larg_dois * salvarDados.media_comp_dois) / 1000)), 1);
+                    salvarDados.calc_amostra_tres = (float)Math.Round((((salvarDados.esp_media_tres * salvarDados.media_larg_tres * salvarDados.media_comp_tres) / 1000)), 1);
                     //final do calculo..
 
                     //inicio calculo dr..            
@@ -5630,11 +5630,11 @@ namespace Coleta_Colchao.Controllers
 
                     salvarDados.dr_dois_um = salvarDados.massa_dois;
                     salvarDados.dr_dois_dois = salvarDados.calc_amostra_dois;
-                    salvarDados.dr_resul_dois = (float)Math.Round((((salvarDados.dr_dois_um / salvarDados.dr_dois_dois) * 1000) ), 1);
+                    salvarDados.dr_resul_dois = (float)Math.Round((((salvarDados.dr_dois_um / salvarDados.dr_dois_dois) * 1000)), 1);
 
                     salvarDados.dr_tres_um = salvarDados.massa_tres;
                     salvarDados.dr_tres_dois = salvarDados.calc_amostra_tres;
-                    salvarDados.dr_resul_tres = (float)Math.Round((((salvarDados.dr_tres_um / salvarDados.dr_tres_dois) * 1000) ), 1);
+                    salvarDados.dr_resul_tres = (float)Math.Round((((salvarDados.dr_tres_um / salvarDados.dr_tres_dois) * 1000)), 1);
 
                     salvarDados.dr_media = float.Parse(Math.Round(((salvarDados.dr_resul_um + salvarDados.dr_resul_dois + salvarDados.dr_resul_tres) / 3), 1).ToString("N2"));
 
@@ -5658,7 +5658,7 @@ namespace Coleta_Colchao.Controllers
                     {
                         salvarDados.conforme = "NC";
                     }
-                    
+
                     salvarDados.executador = Usuario();
 
                     _context.lamina_determinacao_densidade.Add(salvarDados);
@@ -5761,23 +5761,23 @@ namespace Coleta_Colchao.Controllers
                     editarDados.massa_tres = salvarDados.massa_tres;
 
                     // Editando e atribuindo nos calculos das amostras os valores da multiplicação da espessura, largura e comprimento.. ARREDONDAR CALCULOS DAS AMOSTRAS MAIOIR QUE 5 ARREDONDAR
-                    editarDados.calc_amostra_um = (float)Math.Round((((editarDados.esp_media_um * editarDados.media_larg_um * editarDados.media_comp_um) / 1000)),1);
-                    editarDados.calc_amostra_dois = (float)Math.Round((((editarDados.esp_media_dois * editarDados.media_larg_dois * editarDados.media_comp_dois) / 1000)),1);
-                    editarDados.calc_amostra_tres = (float)Math.Round((((editarDados.esp_media_tres * editarDados.media_larg_tres * editarDados.media_comp_tres) / 1000)),1);
+                    editarDados.calc_amostra_um = (float)Math.Round((((editarDados.esp_media_um * editarDados.media_larg_um * editarDados.media_comp_um) / 1000)), 1);
+                    editarDados.calc_amostra_dois = (float)Math.Round((((editarDados.esp_media_dois * editarDados.media_larg_dois * editarDados.media_comp_dois) / 1000)), 1);
+                    editarDados.calc_amostra_tres = (float)Math.Round((((editarDados.esp_media_tres * editarDados.media_larg_tres * editarDados.media_comp_tres) / 1000)), 1);
                     //final do calculo..
 
                     //inicio DR
                     editarDados.dr_um_um = editarDados.massa_um;
                     editarDados.dr_um_dois = editarDados.calc_amostra_um;
-                    editarDados.dr_resul_um = (float)Math.Round((((editarDados.dr_um_um / editarDados.dr_um_dois) * 1000) ), 1);
+                    editarDados.dr_resul_um = (float)Math.Round((((editarDados.dr_um_um / editarDados.dr_um_dois) * 1000)), 1);
 
                     editarDados.dr_dois_um = editarDados.massa_dois;
                     editarDados.dr_dois_dois = editarDados.calc_amostra_dois;
-                    editarDados.dr_resul_dois = (float)Math.Round((((editarDados.dr_dois_um / editarDados.dr_dois_dois) * 1000) ), 1);
+                    editarDados.dr_resul_dois = (float)Math.Round((((editarDados.dr_dois_um / editarDados.dr_dois_dois) * 1000)), 1);
 
                     editarDados.dr_tres_um = editarDados.massa_tres;
                     editarDados.dr_tres_dois = editarDados.calc_amostra_tres;
-                    editarDados.dr_resul_tres = (float)Math.Round((((editarDados.dr_tres_um / editarDados.dr_tres_dois) * 1000) ), 1);
+                    editarDados.dr_resul_tres = (float)Math.Round((((editarDados.dr_tres_um / editarDados.dr_tres_dois) * 1000)), 1);
 
                     editarDados.dr_media = (float)Math.Round(((editarDados.dr_resul_um + editarDados.dr_resul_dois + editarDados.dr_resul_tres) / 3), 1);
 
@@ -5840,7 +5840,7 @@ namespace Coleta_Colchao.Controllers
                     salvarDados.media_res_tres = float.Parse(((salvarDados.resil_amostra_tres_um + salvarDados.resil_amostra_tres_dois + salvarDados.resil_amostra_tres_tres) / 3.0).ToString("N2"));
                     salvarDados.varia_amostra_tres_um = float.Parse((((salvarDados.resil_amostra_tres_dois - salvarDados.media_res_tres) / salvarDados.resil_amostra_tres_um) * 100).ToString("N2"));
                     salvarDados.varia_amostra_tres_dois = float.Parse((((salvarDados.resil_amostra_tres_tres - salvarDados.media_res_tres) / salvarDados.resil_amostra_tres_um) * 100).ToString("N2"));
-                    
+
                     salvarDados.resiliencia_enc = float.Parse(((salvarDados.media_res_um + salvarDados.media_res_dois + salvarDados.media_res_tres) / 3.0).ToString("N2"));
 
                     //conformes
@@ -6046,7 +6046,7 @@ namespace Coleta_Colchao.Controllers
                     editarDados.media_res_tres = float.Parse(((editarDados.resil_amostra_tres_um + editarDados.resil_amostra_tres_dois + editarDados.resil_amostra_tres_tres) / 3.0).ToString("N2"));
                     editarDados.varia_amostra_tres_um = float.Parse((((editarDados.resil_amostra_tres_dois - editarDados.media_res_tres) / editarDados.resil_amostra_tres_um) * 100).ToString("N2"));
                     editarDados.varia_amostra_tres_dois = float.Parse((((editarDados.resil_amostra_tres_tres - editarDados.media_res_tres) / editarDados.resil_amostra_tres_um) * 100).ToString("N2"));
-                    
+
                     editarDados.resiliencia_esp = salvarDados.resiliencia_esp;
                     editarDados.resiliencia_enc = float.Parse(((editarDados.media_res_um + editarDados.media_res_dois + editarDados.media_res_tres) / 3.0).ToString("N2"));
                     editarDados.min_max = salvarDados.min_max;
@@ -6242,7 +6242,7 @@ namespace Coleta_Colchao.Controllers
                     salvarDados.media_esp_amostra_dois = salvarDados.esp_media_dois;
                     salvarDados.media_esp_amostra_tres = salvarDados.esp_media_tres;
                     salvarDados.media_esp_total = float.Parse(((salvarDados.media_esp_amostra_um + salvarDados.media_esp_amostra_dois + salvarDados.media_esp_amostra_tres) / 3).ToString("N2"));
-                    
+
                     // Realizando cálculo de redução 
                     salvarDados.reducao_mm = float.Parse(((salvarDados.media_esp_total * salvarDados.reducao_porc) / 100).ToString("N2"));
 
@@ -6511,7 +6511,7 @@ namespace Coleta_Colchao.Controllers
                     editarDados.esp_media_um = float.Parse(((editarDados.esp_ini_amostra_um_um + editarDados.esp_ini_amostra_um_dois + editarDados.esp_ini_amostra_um_tres + editarDados.esp_ini_amostra_um_quatro + editarDados.esp_ini_amostra_um_cinco + editarDados.esp_ini_amostra_um_seis + editarDados.esp_ini_amostra_um_sete + editarDados.esp_ini_amostra_um_oito) / 8).ToString("N2"));
                     editarDados.esp_media_dois = float.Parse(((editarDados.esp_ini_amostra_dois_um + editarDados.esp_ini_amostra_dois_dois + editarDados.esp_ini_amostra_dois_tres + editarDados.esp_ini_amostra_dois_quatro + editarDados.esp_ini_amostra_dois_cinco + editarDados.esp_ini_amostra_dois_seis + editarDados.esp_ini_amostra_dois_sete + editarDados.esp_ini_amostra_dois_oito) / 8).ToString("N2"));
                     editarDados.esp_media_tres = float.Parse(((editarDados.esp_ini_amostra_tres_um + editarDados.esp_ini_amostra_tres_dois + editarDados.esp_ini_amostra_tres_tres + editarDados.esp_ini_amostra_tres_quatro + editarDados.esp_ini_amostra_tres_cinco + editarDados.esp_ini_amostra_tres_seis + editarDados.esp_ini_amostra_tres_sete + editarDados.esp_ini_amostra_tres_oito) / 8).ToString("N2"));
-                     
+
                     //calculo de espessura.
                     editarDados.media_esp_amostra_um = editarDados.esp_media_um;
                     editarDados.media_esp_amostra_dois = editarDados.esp_media_dois;
@@ -6519,11 +6519,11 @@ namespace Coleta_Colchao.Controllers
 
                     // Média final das espessuras
                     editarDados.media_esp_total = float.Parse(((editarDados.media_esp_amostra_um + editarDados.media_esp_amostra_dois + editarDados.media_esp_amostra_tres) / 3).ToString("N2"));
-                    
+
                     // Realizando calculo de reducão
                     editarDados.reducao_porc = salvarDados.reducao_porc;
                     editarDados.reducao_mm = float.Parse(((editarDados.media_esp_total * editarDados.reducao_porc) / 100).ToString("N2"));
-                    
+
                     //recebendo os dados de esp final..
                     editarDados.esp_fin_amostra_um_um = salvarDados.esp_fin_amostra_um_um;
                     editarDados.esp_fin_amostra_um_dois = salvarDados.esp_fin_amostra_um_dois;
@@ -7668,7 +7668,7 @@ namespace Coleta_Colchao.Controllers
                     salvarDados.media_esp_fin_um = float.Parse(((salvarDados.esp_final_amostra_um_um + salvarDados.esp_final_amostra_um_dois + salvarDados.esp_final_amostra_um_tres + salvarDados.esp_final_amostra_um_quatro + salvarDados.esp_final_amostra_um_cinco + salvarDados.esp_final_amostra_um_seis + salvarDados.esp_final_amostra_um_sete + salvarDados.esp_final_amostra_um_oito) / 8).ToString("N2"));
                     salvarDados.media_esp_fin_dois = float.Parse(((salvarDados.esp_final_amostra_dois_um + salvarDados.esp_final_amostra_dois_dois + salvarDados.esp_final_amostra_dois_tres + salvarDados.esp_final_amostra_dois_quatro + salvarDados.esp_final_amostra_dois_cinco + salvarDados.esp_final_amostra_dois_seis + salvarDados.esp_final_amostra_dois_sete + salvarDados.esp_final_amostra_dois_oito) / 8).ToString("N2"));
                     salvarDados.media_esp_fin_tres = float.Parse(((salvarDados.esp_final_amostra_tres_um + salvarDados.esp_final_amostra_tres_dois + salvarDados.esp_final_amostra_tres_tres + salvarDados.esp_final_amostra_tres_quatro + salvarDados.esp_final_amostra_tres_cinco + salvarDados.esp_final_amostra_tres_seis + salvarDados.esp_final_amostra_tres_sete + salvarDados.esp_final_amostra_tres_oito) / 8).ToString("N2"));
-                    
+
                     //CALCULO DE PERDA DE ESPESSURA.
                     salvarDados.pe_um_um = salvarDados.media_espessura_um;
                     salvarDados.pe_um_dois = salvarDados.media_esp_fin_um;
@@ -8022,7 +8022,7 @@ namespace Coleta_Colchao.Controllers
                     salvarDados.esp_media_um = float.Parse(((salvarDados.esp_ini_amostra_um_um + salvarDados.esp_ini_amostra_um_dois + salvarDados.esp_ini_amostra_um_tres + salvarDados.esp_ini_amostra_um_quatro + salvarDados.esp_ini_amostra_um_cinco + salvarDados.esp_ini_amostra_um_seis + salvarDados.esp_ini_amostra_um_sete + salvarDados.esp_ini_amostra_um_oito) / 8).ToString("N2"));
                     salvarDados.esp_media_dois = float.Parse(((salvarDados.esp_ini_amostra_dois_um + salvarDados.esp_ini_amostra_dois_dois + salvarDados.esp_ini_amostra_dois_tres + salvarDados.esp_ini_amostra_dois_quatro + salvarDados.esp_ini_amostra_dois_cinco + salvarDados.esp_ini_amostra_dois_seis + salvarDados.esp_ini_amostra_dois_sete + salvarDados.esp_ini_amostra_dois_oito) / 8).ToString("N2"));
                     salvarDados.esp_media_tres = float.Parse(((salvarDados.esp_ini_amostra_tres_um + salvarDados.esp_ini_amostra_tres_dois + salvarDados.esp_ini_amostra_tres_tres + salvarDados.esp_ini_amostra_tres_quatro + salvarDados.esp_ini_amostra_tres_cinco + salvarDados.esp_ini_amostra_tres_seis + salvarDados.esp_ini_amostra_tres_sete + salvarDados.esp_ini_amostra_tres_oito) / 8).ToString("N2"));
-                
+
                     //media da espessura..
                     salvarDados.media_espessura_um = salvarDados.esp_media_um;
                     salvarDados.media_espessura_dois = salvarDados.esp_media_dois;
@@ -8069,7 +8069,7 @@ namespace Coleta_Colchao.Controllers
                     salvarDados.pfi_40_dois = salvarDados.forca_ind_enc_40;
                     salvarDados.pfi_40_tres = salvarDados.pfi_40_um;
                     salvarDados.pfi_40_encontrada = float.Parse((((salvarDados.pfi_40_um - salvarDados.pfi_40_dois) / salvarDados.pfi_40_tres) * 100).ToString("N2"));
-                     
+
                     //pfi de 65%..
                     salvarDados.pfi_65_um = buscarFi.fator_ind_65;
                     salvarDados.pfi_65_dois = salvarDados.forca_ind_enc_65;
@@ -8481,27 +8481,6 @@ namespace Coleta_Colchao.Controllers
         {
             try
             {
-                //deletar arquivo do ftp caso usuario subir novas fotos.
-                var buscarOs = _context.colchao_anexos.Where(x => x.rae == Int32.Parse(os) && x.orcamento == orcamento).ToList();
-                if (buscarOs.Count != 0)
-                {
-                    for (int i = 0; i < buscarOs.Count; i++)
-                    {
-                        string newUrl = "ftp://labsystem-nuvem.com.br/imagens_arq/imagens/relatorios/colchao/" + os + '-' + i + buscarOs[i].imageID;
-
-                        FtpWebRequest request = (FtpWebRequest)WebRequest.Create(newUrl);
-                        request.Credentials = new NetworkCredential("u838556479.admin", "@7847Awse");
-                        request.Method = WebRequestMethods.Ftp.DeleteFile;
-
-
-                        FtpWebResponse responseFileDelete = (FtpWebResponse)request.GetResponse();
-
-                        _context.colchao_anexos.Remove(buscarOs[i]);
-                    }
-                    await _context.SaveChangesAsync();
-                }
-                //fim de deletar imagem no ftp e no banco de dados.
-
                 for (int i = 0; i < arquivo.Count; i++)
                 {
                     //pegando os dados do arquivo para salvar.
@@ -8535,6 +8514,7 @@ namespace Coleta_Colchao.Controllers
                     _context.colchao_anexos.Add(dados);
                 }
                 await _context.SaveChangesAsync();
+
                 //return Json(new { success = true, message = "Dados salvos com sucesso." });
                 return RedirectToAction(nameof(EnviarFotos), "Coleta", new { os, orcamento });
             }
@@ -8543,7 +8523,60 @@ namespace Coleta_Colchao.Controllers
                 _logger.LogError(ex, "Error", ex.Message);
                 throw;
             }
-
         }
+
+        [HttpPost]
+        public async Task<IActionResult> ExcluirImagem(string os, string orcamento)
+        {
+            try
+            {
+                // Buscar as imagens associadas a essa OS e Orçamento
+                var buscarOs = _context.colchao_anexos.Where(x => x.rae == Int32.Parse(os) && x.orcamento == orcamento).ToList();
+                if (buscarOs.Count != 0)
+                {
+                    for (int i = 0; i < buscarOs.Count; i++)
+                    {
+                        string newUrl = "ftp://labsystem-nuvem.com.br/imagens_arq/imagens/relatorios/colchao/" + os + '-' + i + buscarOs[i].imageID;
+
+                        FtpWebRequest request = (FtpWebRequest)WebRequest.Create(newUrl);
+                        request.Credentials = new NetworkCredential("u838556479.admin", "@7847Awse");
+                        request.Method = WebRequestMethods.Ftp.DeleteFile;
+
+                        FtpWebResponse responseFileDelete = (FtpWebResponse)request.GetResponse();
+
+                        _context.colchao_anexos.Remove(buscarOs[i]);
+                    }
+                    await _context.SaveChangesAsync();
+                }
+                return RedirectToAction(nameof(EnviarFotos), "Coleta", new { os, orcamento });
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "Erro ao excluir imagens", ex.Message);
+                throw ;
+            }
+        }
+
+        [HttpGet]
+        public IActionResult ObterImagens(string os, string orcamento)
+        {
+            try
+            {
+                // Buscar todas as imagens associadas ao os e orcamento
+                var imagens = _context.colchao_anexos
+                    .Where(x => x.rae == Int32.Parse(os) && x.orcamento == orcamento)
+                    .Select(x => new { x.img, x.imageID })  // Selecionando a URL da imagem e o ID
+                    .ToList();
+
+                return Json(new { success = true, imagens });
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "Erro ao obter as imagens");
+                return Json(new { success = false, message = "Erro ao obter as imagens: " + ex.Message });
+            }
+        }
+
+
     }
 }

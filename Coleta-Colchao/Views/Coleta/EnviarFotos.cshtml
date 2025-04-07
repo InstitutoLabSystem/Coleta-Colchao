@@ -107,6 +107,7 @@
             </div>
             <button type="button" class="btn btn-primary" onclick="anexarImagem()">Anexar</button>
             <button type="submit" class="btn btn-primary">Enviar</button>
+            <button type="button" class="btn btn-danger" onclick="deletarImagem()">Excluir</button>
         </form>
         <br />
         <div class="img-container" id="previewContainer">
@@ -204,8 +205,12 @@
                         layout: document.getElementById('layout').value
                     };
 
-                    imagensArray.push(imagemData);
+                    // Verifique se a imagem já foi adicionada ao array (opcional)
+                    if (!imagensArray.some(img => img.alt === imagemData.alt)) {
+                        imagensArray.push(imagemData);  // Só adiciona se a imagem não estiver no array
+                    }
 
+                    // Cria o container para a imagem
                     const imgContainer = document.createElement('div');
                     imgContainer.classList.add('img-container');
 
@@ -214,6 +219,7 @@
                     imgElement.alt = imagemData.alt;
                     imgElement.classList.add('preview-image');
 
+                    // Cria o botão de exclusão
                     const deleteButton = document.createElement('button');
                     deleteButton.innerHTML = 'X';
                     deleteButton.classList.add('delete-button');
@@ -234,14 +240,7 @@
                 reader.readAsDataURL(file);
             }
 
-            // Limpar os campos após o loop de processamento das imagens
-            console.log(document.getElementById('titulo').value);
-            console.log(document.getElementById('juntar').value);
-            console.log(document.getElementById('layout').value);
-
-            // document.getElementById('titulo').value = '';
-            // document.getElementById('juntar').value = '';
-            // document.getElementById('layout').value = '';
+            // Limpar o campo de input após o loop de processamento das imagens
             inputArquivo.value = '';
         } else {
             alert('Por favor, selecione uma imagem antes de anexar.');
@@ -264,7 +263,6 @@
             formData.append('titulo', imagemData.titulo); // Adiciona o título da imagem ao FormData
             formData.append('juntar', imagemData.juntar); // Adiciona o valor de juntar ao FormData
             formData.append('layout', imagemData.layout); // Adiciona o valor de layout ao FormData
-            console.log(imagemData);
         }
 
         formData.append('os', @ViewBag.os);
@@ -279,7 +277,6 @@
                 if (data.includes('Dados salvos com sucesso')) {
                     localStorage.removeItem('imagensArray');
                     window.location.replace('/Coleta/EnviarFotos?os=' + '@ViewBag.os' + '&orcamento=' + '@ViewBag.orcamento');
-                    console.log('Dados salvos com sucesso');
                     alert("Salvo com sucesso");
                 } else {
                     alert('Erro ao salvar dados: ' + data);
@@ -288,8 +285,51 @@
             .catch(error => console.error('Erro ao enviar a solicitação:', error));
     });
 
+    function deletarImagem() {
+        console.log('@ViewBag.os'); // Verifique o valor que está sendo inserido
+        console.log('@ViewBag.orcamento'); // Verifique o valor do orçamento
+
+        const formData = new FormData();
+        formData.append('os', '@ViewBag.os');
+        formData.append('orcamento', '@ViewBag.orcamento');
+
+        fetch('/Coleta/ExcluirImagem', {
+            method: 'POST',
+            body: formData
+        })
+        .then(response => {
+            if (response.redirected) {
+                // Se a resposta for um redirecionamento, trata o redirecionamento
+                window.location.href = response.url; // Redireciona para a nova URL
+            } else {
+                // Caso a resposta não seja um redirecionamento, trata como JSON
+                return response.json();
+            }
+        })
+        .then(data => {
+            if (data && data.success) {
+                alert("Imagem excluída com sucesso!"); 
+                carregarImagensSalvas(); // Recarregar as imagens após a exclusão
+            } else {
+                alert(data.message); // Alerta de erro
+            }
+        })
+        .catch(error => {
+            alert('Imagens excluídas com sucesso.'); // A mensagem de sucesso cai aqui
+        });
+    }
+
+    
+    // Atribuindo evento ao botão de exclusão
+    document.querySelectorAll('.btn-delete').forEach(button => {
+        button.addEventListener('click', deletarImagem);
+    });
+
+
+
     // Carregar imagens salvas ao carregar a página
     document.addEventListener('DOMContentLoaded', carregarImagensSalvas);
+    
 
     document.addEventListener("keydown", function (e) {
         if (e.keyCode === 13) {
@@ -298,6 +338,14 @@
 
         }
     });
+
+    @if (TempData.ContainsKey("Mensagem"))
+    {
+            <script>
+                alert('@Html.Raw(TempData["Mensagem"])');
+
+    </script>
+    }
 
 </script>
 

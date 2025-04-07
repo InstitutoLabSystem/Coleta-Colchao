@@ -8,6 +8,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.Build.Framework;
 using System.Security.Claims;
 using System.Linq;
+using MoreLinq;
 using Microsoft.VisualStudio.Web.CodeGenerators.Mvc.View;
 using static Coleta_Colchao.Models.ColetaModel;
 
@@ -65,9 +66,11 @@ namespace Coleta_Colchao.Controllers
             {
                 var dados = (from p in _bancoContext.programacao_lab_ensaios
                              join c in _bancoContext.ordemservicocotacaoitem_hc_copylab
-                             on new { Orcamento = p.Orcamento, Item = p.Item } equals new { Orcamento = c.orcamento, Item = c.Item.ToString() }
+                             on new { Orcamento = p.Orcamento, Item = p.Item } equals new { Orcamento = c.orcamento, Item = c.Item.ToString() } into joinC
+                             from c in joinC.DefaultIfEmpty()  // LEFT JOIN aqui
                              join hc in _bancoContext.Wmoddetprod
-                             on c.CodigoEnsaio equals hc.codmaster
+                             on c.CodigoEnsaio equals hc.codmaster into joinHc
+                             from hc in joinHc.DefaultIfEmpty()  // LEFT JOIN aqui
                              where p.OS == os
                              orderby hc.descricao
                              select new HomeModel.Resposta
@@ -78,8 +81,12 @@ namespace Coleta_Colchao.Controllers
                                  codigo = hc.codigo,
                                  descricao = hc.descricao,
                                  ProdEnsaiado = c.ProdEnsaiado,
+                             })
+                     .GroupBy(r => r.codigo)  // Agrupa pelos valores de codigo (para garantir que o codigo seja único)
+                     .Select(g => g.First())  // Seleciona o primeiro item de cada grupo, garantindo que o codigo seja único
+                     .ToList();
 
-                             }).ToList();
+
 
                 var buscarOs = _context.regtro_colchao.Where(x => x.os == os).OrderByDescending(x => x.Id).FirstOrDefault();
                 var buscarEspumaOs = _context.regtro_colchao_espuma.Where(x => x.os == os).OrderByDescending(x => x.Id).FirstOrDefault();

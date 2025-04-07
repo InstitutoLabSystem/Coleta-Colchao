@@ -2024,6 +2024,19 @@
           "lib/netstandard2.0/Mono.TextTemplating.dll": {}
         }
       },
+      "morelinq/4.4.0": {
+        "type": "package",
+        "compile": {
+          "lib/net6.0/MoreLinq.dll": {
+            "related": ".pdb;.xml"
+          }
+        },
+        "runtime": {
+          "lib/net6.0/MoreLinq.dll": {
+            "related": ".pdb;.xml"
+          }
+        }
+      },
       "MySqlConnector/2.2.5": {
         "type": "package",
         "compile": {
@@ -7184,6 +7197,34 @@
         "mono.texttemplating.nuspec"
       ]
     },
+    "morelinq/4.4.0": {
+      "sha512": "QX3bsK9oFeUXk8tFsc9NkI6NnCr8Ar/ex027p+ZZ/jdLCdX2RlryDtxUqZW5j45NVwn4E4Z4hzupsoMQd6Yxtg==",
+      "type": "package",
+      "path": "morelinq/4.4.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "COPYING.txt",
+        "README.md",
+        "lib/net6.0/MoreLinq.dll",
+        "lib/net6.0/MoreLinq.pdb",
+        "lib/net6.0/MoreLinq.xml",
+        "lib/net8.0/MoreLinq.dll",
+        "lib/net8.0/MoreLinq.pdb",
+        "lib/net8.0/MoreLinq.xml",
+        "lib/net9.0/MoreLinq.dll",
+        "lib/net9.0/MoreLinq.pdb",
+        "lib/net9.0/MoreLinq.xml",
+        "lib/netstandard2.0/MoreLinq.dll",
+        "lib/netstandard2.0/MoreLinq.pdb",
+        "lib/netstandard2.0/MoreLinq.xml",
+        "lib/netstandard2.1/MoreLinq.dll",
+        "lib/netstandard2.1/MoreLinq.pdb",
+        "lib/netstandard2.1/MoreLinq.xml",
+        "morelinq.4.4.0.nupkg.sha512",
+        "morelinq.nuspec"
+      ]
+    },
     "MySqlConnector/2.2.5": {
       "sha512": "6sinY78RvryhHwpup3awdjYO7d5hhWahb5p/1VDODJhSxJggV/sBbYuKK5IQF9TuzXABiddqUbmRfM884tqA3Q==",
       "type": "package",
@@ -11832,27 +11873,28 @@
       "Microsoft.EntityFrameworkCore.SqlServer >= 7.0.12",
       "Microsoft.EntityFrameworkCore.Tools >= 7.0.12",
       "Microsoft.VisualStudio.Web.CodeGeneration.Design >= 7.0.10",
-      "Pomelo.EntityFrameworkCore.MySql >= 7.0.0"
+      "Pomelo.EntityFrameworkCore.MySql >= 7.0.0",
+      "morelinq >= 4.4.0"
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Gerson\\.nuget\\packages\\": {},
+    "C:\\Users\\Molina\\.nuget\\packages\\": {},
     "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\source\\repos\\InstitutoLabSystem\\Coleta-Colchao\\Coleta-Colchao\\Coleta-Colchao.csproj",
+      "projectUniqueName": "C:\\Users\\Molina\\source\\repos\\InstitutoLabSystem\\Coleta-Colchao\\Coleta-Colchao\\Coleta-Colchao.csproj",
       "projectName": "Coleta-Colchao",
-      "projectPath": "D:\\source\\repos\\InstitutoLabSystem\\Coleta-Colchao\\Coleta-Colchao\\Coleta-Colchao.csproj",
-      "packagesPath": "C:\\Users\\Gerson\\.nuget\\packages\\",
-      "outputPath": "D:\\source\\repos\\InstitutoLabSystem\\Coleta-Colchao\\Coleta-Colchao\\obj\\",
+      "projectPath": "C:\\Users\\Molina\\source\\repos\\InstitutoLabSystem\\Coleta-Colchao\\Coleta-Colchao\\Coleta-Colchao.csproj",
+      "packagesPath": "C:\\Users\\Molina\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\Molina\\source\\repos\\InstitutoLabSystem\\Coleta-Colchao\\Coleta-Colchao\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
       ],
       "configFilePaths": [
-        "C:\\Users\\Gerson\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\Molina\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
@@ -11921,6 +11963,10 @@
           "Pomelo.EntityFrameworkCore.MySql": {
             "target": "Package",
             "version": "[7.0.0, )"
+          },
+          "morelinq": {
+            "target": "Package",
+            "version": "[4.4.0, )"
           }
         },
         "imports": [
@@ -11942,7 +11988,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.201\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.200\\RuntimeIdentifierGraph.json"
       }
     }
   }

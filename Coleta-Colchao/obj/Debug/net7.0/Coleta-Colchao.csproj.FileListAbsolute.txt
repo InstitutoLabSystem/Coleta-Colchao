@@ -1695,3 +1695,4 @@ D:\source\repos\InstitutoLabSystem\Coleta-Colchao\Coleta-Colchao\obj\Debug\net7.
 D:\source\repos\InstitutoLabSystem\Coleta-Colchao\Coleta-Colchao\obj\Debug\net7.0\Coleta-Colchao.pdb
 D:\source\repos\InstitutoLabSystem\Coleta-Colchao\Coleta-Colchao\obj\Debug\net7.0\Coleta-Colchao.genruntimeconfig.cache
 D:\source\repos\InstitutoLabSystem\Coleta-Colchao\Coleta-Colchao\obj\Debug\net7.0\ref\Coleta-Colchao.dll
+C:\Users\Molina\source\repos\InstitutoLabSystem\Coleta-Colchao\Coleta-Colchao\bin\Debug\net7.0\MoreLinq.dll
