@@ -8483,23 +8483,34 @@ namespace Coleta_Colchao.Controllers
             {
                 for (int i = 0; i < arquivo.Count; i++)
                 {
-                    //pegando os dados do arquivo para salvar.
+                    // Dados do arquivo
                     string newFileName = arquivo[i].FileName;
                     string tipoArquivo = Path.GetExtension(newFileName);
 
-                    ////salvando no ftp
-                    string url = "ftp://labsystem-nuvem.com.br/imagens_arq/imagens/relatorios/colchao/" + os + '-' + i + tipoArquivo;
+                    // Caminho FTP
+                    string url = $"ftp://labsystem-nuvem.com.br/imagens_arq/imagens/relatorios/colchao/{os}-{i}{tipoArquivo}";
+
+                    // FTP Upload
                     FtpWebRequest request = (FtpWebRequest)WebRequest.Create(url);
                     request.Credentials = new NetworkCredential("u838556479.admin", "@7847Awse");
                     request.Method = WebRequestMethods.Ftp.UploadFile;
 
-                    using (Stream ftpStream = request.GetRequestStream())
+                    using (var fileStream = arquivo[i].OpenReadStream())
+                    using (var ftpStream = request.GetRequestStream())
                     {
-                        arquivo[i].CopyTo(ftpStream);
+                        await fileStream.CopyToAsync(ftpStream);
                     }
 
-                    string newUrl = "https://labsystem-nuvem.com.br/imagens_arq/imagens/relatorios/colchao/" + os + '-' + i + tipoArquivo;
-                    //salvando no banco de dados.
+                    // Requisição final para garantir que foi concluído com sucesso
+                    using (var response = (FtpWebResponse)request.GetResponse())
+                    {
+                        _logger.LogInformation($"Upload status: {response.StatusDescription}");
+                    }
+
+                    // URL da imagem salva
+                    string newUrl = $"https://labsystem-nuvem.com.br/imagens_arq/imagens/relatorios/colchao/{os}-{i}{tipoArquivo}";
+
+                    // Salvar no banco
                     var dados = new Arquivos.Imagens
                     {
                         rae = int.Parse(os),
@@ -8513,15 +8524,15 @@ namespace Coleta_Colchao.Controllers
                     };
                     _context.colchao_anexos.Add(dados);
                 }
+
                 await _context.SaveChangesAsync();
 
-                //return Json(new { success = true, message = "Dados salvos com sucesso." });
                 return RedirectToAction(nameof(EnviarFotos), "Coleta", new { os, orcamento });
             }
             catch (Exception ex)
             {
-                _logger.LogError(ex, "Error", ex.Message);
-                throw;
+                _logger.LogError(ex, "Erro ao anexar arquivo: {Message}", ex.Message);
+                return BadRequest("Erro ao anexar arquivos: " + ex.Message);
             }
         }
 
@@ -8530,32 +8541,92 @@ namespace Coleta_Colchao.Controllers
         {
             try
             {
-                // Buscar as imagens associadas a essa OS e Orçamento
-                var buscarOs = _context.colchao_anexos.Where(x => x.rae == Int32.Parse(os) && x.orcamento == orcamento).ToList();
-                if (buscarOs.Count != 0)
+                var buscarOs = _context.colchao_anexos
+                    .Where(x => x.rae == int.Parse(os) && x.orcamento == orcamento)
+                    .ToList();
+
+                if (buscarOs.Count > 0)
                 {
+                    // Lista todos os arquivos no FTP
+                    List<string> arquivosFtp = ListarArquivosFtp("ftp://labsystem-nuvem.com.br/imagens_arq/imagens/relatorios/colchao/");
+
                     for (int i = 0; i < buscarOs.Count; i++)
                     {
-                        string newUrl = "ftp://labsystem-nuvem.com.br/imagens_arq/imagens/relatorios/colchao/" + os + '-' + i + buscarOs[i].imageID;
+                        string prefixoArquivo = $"{os}-{i}";
+                        string nomeArquivoCompleto = arquivosFtp.FirstOrDefault(nome => nome.StartsWith(prefixoArquivo));
 
-                        FtpWebRequest request = (FtpWebRequest)WebRequest.Create(newUrl);
-                        request.Credentials = new NetworkCredential("u838556479.admin", "@7847Awse");
-                        request.Method = WebRequestMethods.Ftp.DeleteFile;
+                        if (!string.IsNullOrEmpty(nomeArquivoCompleto))
+                        {
+                            string ftpPath = $"ftp://labsystem-nuvem.com.br/imagens_arq/imagens/relatorios/colchao/{nomeArquivoCompleto}";
 
-                        FtpWebResponse responseFileDelete = (FtpWebResponse)request.GetResponse();
+                            try
+                            {
+                                FtpWebRequest deleteRequest = (FtpWebRequest)WebRequest.Create(ftpPath);
+                                deleteRequest.Credentials = new NetworkCredential("u838556479.admin", "@7847Awse");
+                                deleteRequest.Method = WebRequestMethods.Ftp.DeleteFile;
 
+                                using (FtpWebResponse response = (FtpWebResponse)deleteRequest.GetResponse())
+                                {
+                                    _logger.LogInformation($"Arquivo deletado: {ftpPath} | Status: {response.StatusDescription}");
+                                }
+                            }
+                            catch (Exception ex)
+                            {
+                                _logger.LogWarning(ex, "Erro ao deletar arquivo FTP: {Path}", ftpPath);
+                            }
+                        }
+                        else
+                        {
+                            _logger.LogWarning("Arquivo com prefixo {Prefixo} não encontrado no FTP.", prefixoArquivo);
+                        }
+
+                        // Remove do banco sempre
                         _context.colchao_anexos.Remove(buscarOs[i]);
                     }
+
                     await _context.SaveChangesAsync();
                 }
+
                 return RedirectToAction(nameof(EnviarFotos), "Coleta", new { os, orcamento });
             }
             catch (Exception ex)
             {
                 _logger.LogError(ex, "Erro ao excluir imagens", ex.Message);
-                throw ;
+                return BadRequest("Erro ao excluir imagens: " + ex.Message);
             }
         }
+
+        private List<string> ListarArquivosFtp(string ftpDirectoryUrl)
+        {
+            var arquivos = new List<string>();
+
+            try
+            {
+                FtpWebRequest request = (FtpWebRequest)WebRequest.Create(ftpDirectoryUrl);
+                request.Credentials = new NetworkCredential("u838556479.admin", "@7847Awse");
+                request.Method = WebRequestMethods.Ftp.ListDirectory;
+
+                using (FtpWebResponse response = (FtpWebResponse)request.GetResponse())
+                using (Stream responseStream = response.GetResponseStream())
+                using (StreamReader reader = new StreamReader(responseStream))
+                {
+                    while (!reader.EndOfStream)
+                    {
+                        string line = reader.ReadLine();
+                        if (!string.IsNullOrEmpty(line))
+                            arquivos.Add(line);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "Erro ao listar arquivos do FTP");
+            }
+
+            return arquivos;
+        }
+
+
 
         [HttpGet]
         public IActionResult ObterImagens(string os, string orcamento)
