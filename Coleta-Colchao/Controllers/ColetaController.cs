@@ -1387,7 +1387,7 @@ namespace Coleta_Colchao.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> EditarRegistroMolas(string os, string orcamento, int rev, [Bind("lacre,realizacao_ensaios,quant_recebida,quant_ensaiada,data_realizacao_ini,data_realizacao_term,num_proc,cod_ref,tipo_cert,modelo_cert,tipo_proc,produto,estrutura,tipo_molejo,tipo_molejo2,quant_molejo,fornecedor_um,fornecedor_dois,nome_molejo_um,nome_molejo_dois,quant_media_um,quant_media_dois,bitola_arame_um,bitola_arame_dois,borda_peri,qtd_face,comprimento,largura,altura,metalasse,isolante,latex,napa_cou_plas,manual,marca_modelo,densidade,densidade_2,densidade_3,densidade_4,densidade_5,tipo_espuma,tipo_espuma_2,tipo_espuma_3,tipo_espuma_4,tipo_espuma_5,quant_laminas")] ColetaModel.Registro EditarRegistros)
+        public async Task<IActionResult> EditarRegistroMolas(string os, string orcamento, int rev, [Bind("lacre,realizacao_ensaios,quant_recebida,quant_ensaiada,data_realizacao_ini,data_realizacao_term,num_proc,cod_ref,tipo_cert,modelo_cert,tipo_proc,produto,estrutura,tipo_molejo,tipo_molejo2,quant_molejo,fornecedor_um,fornecedor_dois,nome_molejo_um,nome_molejo_dois,quant_media_um,quant_media_dois,bitola_arame_um,bitola_arame_dois,borda_peri,qtd_face,comprimento,largura,altura,metalasse,isolante,latex,napa_cou_plas,manual,marca_modelo,densidade,densidade_2,densidade_3,densidade_4,densidade_5,densidade_6,densidade_7,densidade_8,densidade_9,densidade_10,tipo_espuma,tipo_espuma_2,tipo_espuma_3,tipo_espuma_4,tipo_espuma_5,tipo_espuma_6,tipo_espuma_7,tipo_espuma_8,tipo_espuma_9,tipo_espuma_10,quant_laminas")] ColetaModel.Registro EditarRegistros)
         {
             var editarValores = _context.regtro_colchao.Where(x => x.os == os && x.orcamento == orcamento && x.rev == rev).FirstOrDefault();
             try
@@ -1412,11 +1412,21 @@ namespace Coleta_Colchao.Controllers
                     editarValores.densidade_3 = EditarRegistros.densidade_3;
                     editarValores.densidade_4 = EditarRegistros.densidade_4;
                     editarValores.densidade_5 = EditarRegistros.densidade_5;
+                    editarValores.densidade_6 = EditarRegistros.densidade_6;
+                    editarValores.densidade_7 = EditarRegistros.densidade_7;
+                    editarValores.densidade_8 = EditarRegistros.densidade_8;
+                    editarValores.densidade_9 = EditarRegistros.densidade_9;
+                    editarValores.densidade_10 = EditarRegistros.densidade_10;
                     editarValores.tipo_espuma = EditarRegistros.tipo_espuma;
                     editarValores.tipo_espuma_2 = EditarRegistros.tipo_espuma_2;
                     editarValores.tipo_espuma_3 = EditarRegistros.tipo_espuma_3;
                     editarValores.tipo_espuma_4 = EditarRegistros.tipo_espuma_4;
                     editarValores.tipo_espuma_5 = EditarRegistros.tipo_espuma_5;
+                    editarValores.tipo_espuma_5 = EditarRegistros.tipo_espuma_6;
+                    editarValores.tipo_espuma_5 = EditarRegistros.tipo_espuma_7;
+                    editarValores.tipo_espuma_5 = EditarRegistros.tipo_espuma_8;
+                    editarValores.tipo_espuma_5 = EditarRegistros.tipo_espuma_9;
+                    editarValores.tipo_espuma_5 = EditarRegistros.tipo_espuma_10;
                     editarValores.produto = EditarRegistros.produto;
                     editarValores.estrutura = EditarRegistros.estrutura;
                     editarValores.tipo_molejo = EditarRegistros.tipo_molejo;
