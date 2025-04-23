@@ -110,6 +110,22 @@
             </tr>
             <tr>
                 <td>
+                    Está em um local destinto da face inferior do produto:
+                </td>
+                <td>
+                    <select class="form-control" asp-for="fixacao">
+                        @if (Model != null)
+                        {
+                            <option selected>@Model.produto</option>
+                        }
+                        <option> --- </option>
+                        <option> Sim </option>
+                        <option> Não </option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td>
                     A etiqueta é confeccionada de material durável e indelével
                 </td>
                 <td>
@@ -760,7 +776,7 @@
                 <td>---</td>
                 <td>---</td>
             </tr>
-            @if (ViewBag.tipLamina == "Colchão infantil")
+            @if (ViewBag.tipoColchao == "Colchão Infantil")
             {
                 <tr>
                     <td>

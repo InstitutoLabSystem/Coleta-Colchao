@@ -1422,11 +1422,11 @@ namespace Coleta_Colchao.Controllers
                     editarValores.tipo_espuma_3 = EditarRegistros.tipo_espuma_3;
                     editarValores.tipo_espuma_4 = EditarRegistros.tipo_espuma_4;
                     editarValores.tipo_espuma_5 = EditarRegistros.tipo_espuma_5;
-                    editarValores.tipo_espuma_5 = EditarRegistros.tipo_espuma_6;
-                    editarValores.tipo_espuma_5 = EditarRegistros.tipo_espuma_7;
-                    editarValores.tipo_espuma_5 = EditarRegistros.tipo_espuma_8;
-                    editarValores.tipo_espuma_5 = EditarRegistros.tipo_espuma_9;
-                    editarValores.tipo_espuma_5 = EditarRegistros.tipo_espuma_10;
+                    editarValores.tipo_espuma_6 = EditarRegistros.tipo_espuma_6;
+                    editarValores.tipo_espuma_7 = EditarRegistros.tipo_espuma_7;
+                    editarValores.tipo_espuma_8 = EditarRegistros.tipo_espuma_8;
+                    editarValores.tipo_espuma_9 = EditarRegistros.tipo_espuma_9;
+                    editarValores.tipo_espuma_10 = EditarRegistros.tipo_espuma_10;
                     editarValores.produto = EditarRegistros.produto;
                     editarValores.estrutura = EditarRegistros.estrutura;
                     editarValores.tipo_molejo = EditarRegistros.tipo_molejo;
@@ -1873,7 +1873,7 @@ namespace Coleta_Colchao.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> SalvarEnsaio7_2(string os, string orcamento, int rev, [Bind("data_ini,data_term,temp_ini,temp_term,comp_med_1,comp_med_2,comp_med_3,comp_espe,larg_med_1,larg_med_2,larg_med_3,larg_espe,alt_med_1,alt_med_2,alt_med_3,alt_espe,tipo_espuma_1,tipo_espuma_2,tipo_espuma_3,tipo_espuma_4,tipo_espuma_5,tipo_espuma_6,tipo_espuma_7,tipo_espuma_8,tipo_espuma_9,tipo_espuma_10,esp_tipo_esp_1,esp_tipo_esp_2,esp_tipo_esp_3,esp_tipo_esp_4,esp_tipo_esp_5,esp_tipo_esp_6,esp_tipo_esp_7,esp_tipo_esp_8,esp_tipo_esp_9,esp_tipo_esp_10,tem_metalasse,total_metalasse,mate_tipo_espuma_1,mata_esp_tipo_esp_1,mate_tipo_espuma_2,mata_esp_tipo_esp_2,executor,auxiliar,qtd_espuma,enc_estofamento_1,enc_estofamento_2,enc_estofamento_3,enc_estofamento_4,enc_estofamento_5,enc_estofamento_6,enc_estofamento_7,enc_estofamento_8,enc_estofamento_9,enc_estofamento_10,conformidade_2,conformidade_3,conformidade_4,conformidade_5,declaracao_espuma1,declaracao_espuma2,densidade1,densidade2")] ColetaModel.Ensaio7_2 salvarDados)
+        public async Task<IActionResult> SalvarEnsaio7_2(string os, string orcamento, int rev, [Bind("data_ini,data_term,temp_ini,temp_term,comp_med_1,comp_med_2,comp_med_3,comp_espe,larg_med_1,larg_med_2,larg_med_3,larg_espe,alt_med_1,alt_med_2,alt_med_3,alt_espe,tipo_espuma_1,tipo_espuma_2,tipo_espuma_3,tipo_espuma_4,tipo_espuma_5,tipo_espuma_6,tipo_espuma_7,tipo_espuma_8,tipo_espuma_9,tipo_espuma_10,esp_tipo_esp_1,esp_tipo_esp_2,esp_tipo_esp_3,esp_tipo_esp_4,esp_tipo_esp_5,esp_tipo_esp_6,esp_tipo_esp_7,esp_tipo_esp_8,esp_tipo_esp_9,esp_tipo_esp_10,tem_metalasse,total_metalasse,mate_tipo_espuma_1,mata_esp_tipo_esp_1,mate_tipo_espuma_2,mata_esp_tipo_esp_2,executor,auxiliar,qtd_espuma,enc_estofamento_1,enc_estofamento_2,enc_estofamento_3,enc_estofamento_4,enc_estofamento_5,enc_estofamento_6,enc_estofamento_7,enc_estofamento_8,enc_estofamento_9,enc_estofamento_10,conformidade_2,conformidade_3,conformidade_4,conformidade_5,conformidade_6, conformidade_7, conformidade_8, conformidade_9, conformidade_10, declaracao_espuma1,declaracao_espuma2,densidade1,densidade2")] ColetaModel.Ensaio7_2 salvarDados)
         {
             try
             {
@@ -1931,6 +1931,11 @@ namespace Coleta_Colchao.Controllers
                     string conformidade_3 = string.Empty;
                     string conformidade_4 = string.Empty;
                     string conformidade_5 = string.Empty;
+                    string conformidade_6 = string.Empty;
+                    string conformidade_7 = string.Empty;
+                    string conformidade_8 = string.Empty;
+                    string conformidade_9 = string.Empty;
+                    string conformidade_10 = string.Empty;
                     string conformidade_mat = string.Empty;
                     float qtd_espuma = salvarDados.qtd_espuma;
                     float enc_estofamento_1 = salvarDados.enc_estofamento_1;
@@ -2002,8 +2007,7 @@ namespace Coleta_Colchao.Controllers
                     }
 
                     //conforme ou nao conform,estofamento.
-
-                    if (enc_estofamento_1 != 0 && enc_estofamento_1 <= 19)
+                    if(enc_estofamento_1 != 0 && enc_estofamento_1 <= 19)
                     {
                         conformidade = "NC";
                     }
@@ -2011,7 +2015,7 @@ namespace Coleta_Colchao.Controllers
                     {
                         conformidade = "C";
                     }
-                    if (enc_estofamento_2 != 0 && enc_estofamento_2 <= 19)
+                    if(enc_estofamento_2 != 0 && enc_estofamento_2 <= 19)
                     {
                         conformidade_2 = "NC";
                     }
@@ -2043,6 +2047,47 @@ namespace Coleta_Colchao.Controllers
                     {
                         conformidade_5 = "C";
                     }
+                    if (enc_estofamento_6 != 0 && enc_estofamento_6 <= 19)
+                    {
+                        conformidade_6 = "NC";
+                    }
+                    else
+                    {
+                        conformidade_6 = "C";
+                    }
+                    if (enc_estofamento_7 != 0 && enc_estofamento_7 <= 19)
+                    {
+                        conformidade_7 = "NC";
+                    }
+                    else
+                    {
+                        conformidade_7 = "C";
+                    }
+                    if (enc_estofamento_8 != 0 && enc_estofamento_8 <= 19)
+                    {
+                        conformidade_8 = "NC";
+                    }
+                    else
+                    {
+                        conformidade_8 = "C";
+                    }
+                    if (enc_estofamento_9 != 0 && enc_estofamento_9 <= 19)
+                    {
+                        conformidade_9 = "NC";
+                    }
+                    else
+                    {
+                        conformidade_9 = "C";
+                    }
+                    if (enc_estofamento_10 != 0 && enc_estofamento_10 <= 19)
+                    {
+                        conformidade_10 = "NC";
+                    }
+                    else
+                    {
+                        conformidade_10 = "C";
+                    }
+
                     //conforme ou nao conform,metalasse.
                     if (mata_esp_tipo_esp_1 != 0 && mata_esp_tipo_esp_1 > 9 || mata_esp_tipo_esp_2 != 0 && mata_esp_tipo_esp_2 > 9)
                     {
@@ -2122,6 +2167,11 @@ namespace Coleta_Colchao.Controllers
                         conformidade_3 = conformidade_3,
                         conformidade_4 = conformidade_4,
                         conformidade_5 = conformidade_5,
+                        conformidade_6 = conformidade_6,
+                        conformidade_7 = conformidade_7,
+                        conformidade_8 = conformidade_8,
+                        conformidade_9 = conformidade_9,
+                        conformidade_10 = conformidade_10,
                         densidade1 = densidade1,
                         densidade2 = densidade2,
                         declaracao_espuma1 = declaracao_espuma1,
@@ -2285,7 +2335,6 @@ namespace Coleta_Colchao.Controllers
                             editarDados.conformidade_3 = "C";
                         }
                     }
-
                     if (!string.IsNullOrEmpty(editarDados.tipo_espuma_4))
                     {
                         if (editarDados.enc_estofamento_4 != 0 && editarDados.enc_estofamento_4 <= 19)
@@ -2297,7 +2346,6 @@ namespace Coleta_Colchao.Controllers
                             editarDados.conformidade_4 = "C";
                         }
                     }
-
                     if (!string.IsNullOrEmpty(editarDados.tipo_espuma_5))
                     {
                         if (editarDados.enc_estofamento_5 != 0 && editarDados.enc_estofamento_5 <= 19)
@@ -2307,6 +2355,62 @@ namespace Coleta_Colchao.Controllers
                         else
                         {
                             editarDados.conformidade_5 = "C";
+                        }
+                    }
+                    if (!string.IsNullOrEmpty(editarDados.tipo_espuma_6))
+                    {
+                        if (editarDados.enc_estofamento_6 != 0 && editarDados.enc_estofamento_6 <= 19)
+                        {
+                            editarDados.conformidade_6 = "NC";
+                        }
+                        else
+                        {
+                            editarDados.conformidade_6 = "C";
+                        }
+                    }
+
+                    if (!string.IsNullOrEmpty(editarDados.tipo_espuma_7))
+                    {
+                        if (editarDados.enc_estofamento_7 != 0 && editarDados.enc_estofamento_7 <= 19)
+                        {
+                            editarDados.conformidade_7 = "NC";
+                        }
+                        else
+                        {
+                            editarDados.conformidade_7 = "C";
+                        }
+                    }
+                    if (!string.IsNullOrEmpty(editarDados.tipo_espuma_8))
+                    {
+                        if (editarDados.enc_estofamento_8 != 0 && editarDados.enc_estofamento_8 <= 19)
+                        {
+                            editarDados.conformidade_8 = "NC";
+                        }
+                        else
+                        {
+                            editarDados.conformidade_8 = "C";
+                        }
+                    }
+                    if (!string.IsNullOrEmpty(editarDados.tipo_espuma_9))
+                    {
+                        if (editarDados.enc_estofamento_9 != 0 && editarDados.enc_estofamento_9 <= 19)
+                        {
+                            editarDados.conformidade_9 = "NC";
+                        }
+                        else
+                        {
+                            editarDados.conformidade_9 = "C";
+                        }
+                    }
+                    if (!string.IsNullOrEmpty(editarDados.tipo_espuma_10))
+                    {
+                        if (editarDados.enc_estofamento_10 != 0 && editarDados.enc_estofamento_10 <= 19)
+                        {
+                            editarDados.conformidade_10 = "NC";
+                        }
+                        else
+                        {
+                            editarDados.conformidade_10 = "C";
                         }
                     }
                     //conforme ou nao conform,metalasse.

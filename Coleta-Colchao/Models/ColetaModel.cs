@@ -416,6 +416,11 @@ namespace Coleta_Colchao.Models
             public string? conformidade_3 { get; set; }
             public string? conformidade_4 { get; set; }
             public string? conformidade_5 { get; set; }
+            public string? conformidade_6 { get; set; }
+            public string? conformidade_7 { get; set; }
+            public string? conformidade_8 { get; set; }
+            public string? conformidade_9 { get; set; }
+            public string? conformidade_10 { get; set; }
             public string? conformidade_mat { get; set; }
             public string? executor { get; set; }
             public string? auxiliar { get; set; }
@@ -725,6 +730,7 @@ namespace Coleta_Colchao.Models
 
             public string? etiquieta_um { get; set; }
             public string? fixacao { get; set; }
+            public string? produto { get; set; }
             public string? material { get; set; }
             public string? area_um { get; set; }
             public string? area_dois { get; set; }
