@@ -4859,6 +4859,7 @@ namespace Coleta_Colchao.Controllers
                     editarDados.data_term = salvar.data_term;
                     editarDados.etiquieta_um = salvar.etiquieta_um;
                     editarDados.fixacao = salvar.fixacao;
+                    editarDados.produto = salvar.produto;
                     editarDados.material = salvar.material;
                     editarDados.area_um = salvar.area_um;
                     editarDados.area_dois = salvar.area_dois;
