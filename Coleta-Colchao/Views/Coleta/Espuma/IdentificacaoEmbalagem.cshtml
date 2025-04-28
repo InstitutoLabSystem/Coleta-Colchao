@@ -1075,11 +1075,12 @@
                         <select class="form-control" asp-for="desc_lamina">
                             @if(Model != null && Model.desc_lamina != null)
                             {
-                                <option selected> @Model.desc_lamina </option>
+                            <option selected> @Model.desc_lamina </option>
                             }
                             <option> --- </option>
                             <option> Sim </option>
                             <option> Não </option>
+                            <option> NA </option>
                         </select>
                     </td>
                 </tr>
