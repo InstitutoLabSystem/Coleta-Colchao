@@ -176,6 +176,54 @@
                                     </select>
                                 </td>
                             </tr>
+                            <tr class="linha-extra1"> @* Borda extra 1 *@
+                                <td>
+                                    <select class="form-control" name="borda_extra1">
+                                        <option>---</option>
+                                        <option>X</option>
+                                    </select>
+                                </td>
+                                <td>
+                                    <input class="form-control" name="especificado_extra1"/>
+                                </td>
+                                <td>
+                                    ≤ 120 mm
+                                </td>
+                                <td>
+                                    <input class="form-control" name="valor_enc_extra1" />
+                                </td>
+                                <td>
+                                    <select name="man_parale_extra1" class="form-control">
+                                        <option value="NA">---</option>
+                                        <option value="C">C</option>
+                                        <option value="NC">NC</option>
+                                    </select>
+                                </td>
+                            </tr>
+                            <tr class="linha-extra2"> @* Borda extra 2 *@
+                                <td>
+                                    <select class="form-control" name="borda_extra2">
+                                        <option>---</option>
+                                        <option>X</option>
+                                    </select>
+                                </td>
+                                <td>
+                                    <input class="form-control" name="especificado_extra2"/>
+                                </td>
+                                <td>
+                                    ≤ 120 mm
+                                </td>
+                                <td>
+                                    <input class="form-control" name="valor_enc_extra2" />
+                                </td>
+                                <td>
+                                    <select name="man_parale_extra2" class="form-control">
+                                        <option value="NA">---</option>
+                                        <option value="C">C</option>
+                                        <option value="NC">NC</option>
+                                    </select>
+                                </td>
+                            </tr>
                         </table>
                     </td>
                 </tr>
@@ -234,7 +282,6 @@
             <input type="hidden" id="condicaoEspecifica" value="else" />
             <table class="tables table-bordered border-secondary  table-sm">
                 <thead>
-
                     <tr>
                         <td><img src="https://www.labsystem-nuvem.com.br/imagens_arq/imagens/img/LabSystem.png" class="imagem" /></td>
                         <td colspan="3" class="fundo-tabela">Coleta De Dados</td>
@@ -284,7 +331,6 @@
 
                                 @if (Model.borda_aco == "X")
                                 {
-
                                     <tr class="linha-aco">
                                         <td>
                                             <select class="form-control" name="borda_aco" style="width:100px;">
@@ -334,7 +380,6 @@
                                         </td>
                                     </tr>
                                 }
-
                             </table>
 
                         </td>
@@ -454,6 +499,64 @@
                                         </td>
                                     </tr>
                                 }
+                                @if (Model.borda_extra1 == "X")
+                                {
+                                    <tr class="linha-extra1"> @* Borda extra 1 *@
+                                        <td>
+                                            <select class="form-control" name="borda_extra1">
+                                                <option selected>@Model.borda_extra1</option>
+                                                <option>---</option>
+                                                <option>X</option>
+                                            </select>
+                                        </td>
+                                        <td>
+                                            <input class="form-control" name="especificado_extra1" value="@Model.especificado_extra1"/>
+                                        </td>
+                                        <td>
+                                            ≤ 120 mm
+                                        </td>
+                                        <td>
+                                            <input class="form-control" name="valor_enc_extra1" value="@Model.valor_enc_extra1" />
+                                        </td>
+                                        <td>
+                                            <select name="man_parale_extra1" class="form-control">
+                                                <option selected>@Model.man_parale_extra1</option>
+                                                <option value="NA">---</option>
+                                                <option value="C">C</option>
+                                                <option value="NC">NC</option>
+                                            </select>
+                                        </td>
+                                    </tr>
+                                }
+                                @if (Model.borda_extra2 == "X")
+                                {
+                                    <tr class="linha-extra2"> @* Borda extra 2 *@
+                                        <td>
+                                            <select class="form-control" name="borda_extra2">
+                                                <option>@Model.borda_extra2</option>
+                                                <option>---</option>
+                                                <option>X</option>
+                                            </select>
+                                        </td>
+                                        <td>
+                                            <input class="form-control" name="especificado_extra2" value="@Model.especificado_extra2"/>
+                                        </td>
+                                        <td>
+                                            ≤ 120 mm
+                                        </td>
+                                        <td>
+                                            <input class="form-control" name="valor_enc_extra2" value="@Model.valor_enc_extra2"/>
+                                        </td>
+                                        <td>
+                                            <select name="man_parale_extra2" class="form-control">
+                                                <option>@Model.man_parale_extra2</option>
+                                                <option value="NA">---</option>
+                                                <option value="C">C</option>
+                                                <option value="NC">NC</option>
+                                            </select>
+                                        </td>
+                                    </tr>
+                                }
                             </table>
                         </td>
                     </tr>
@@ -556,22 +659,26 @@
             var linhasEspuma = document.getElementsByClassName("linha-espuma");
             var linhasAcoMolejo = document.getElementsByClassName("borda_molejo");
             var linhasEspumaMolejo = document.getElementsByClassName("espuma_molejo");
+            var linhaExtra1 = document.getElementsByClassName("linha-extra1");
+            var linhaExtra2 = document.getElementsByClassName("linha-extra2");
 
             for (var i = 0; i < linhasAco.length; i++) {
                 linhasAco[i].style.display = 'table-row';
-
             }
             for (var i = 0; i < linhasEspuma.length; i++) {
                 linhasEspuma[i].style.display = 'none';
-
             }
             for (var i = 0; i < linhasAcoMolejo.length; i++) {
                 linhasAcoMolejo[i].style.display = 'none';
-
             }
             for (var i = 0; i < linhasEspumaMolejo.length; i++) {
                 linhasEspumaMolejo[i].style.display = 'none';
-
+            }
+            for(var i = 0; i < linhaExtra1.length; i++) {
+                linhaExtra1[i].style.display = 'none';
+            }
+            for(var i = 0; i < linhaExtra2.length; i++) {
+                linhaExtra2[i].style.display = 'none';
             }
         }
         function mostrarLinhaEspuma() {
@@ -586,26 +693,29 @@
             var linhasEspuma = document.getElementsByClassName("linha-espuma");
             var linhasAcoMolejo = document.getElementsByClassName("borda_molejo");
             var linhasEspumaMolejo = document.getElementsByClassName("espuma_molejo");
+            var linhaExtra1 = document.getElementsByClassName("linha-extra1");
+            var linhaExtra2 = document.getElementsByClassName("linha-extra2");
 
             for (var i = 0; i < borda.length; i++) {
                 borda[i].style.display = 'table-row';
-
             }
             for (var i = 0; i < linhasAco.length; i++) {
                 linhasAco[i].style.display = 'none';
-
             }
             for (var i = 0; i < linhasEspuma.length; i++) {
                 linhasEspuma[i].style.display = 'table-row';
-
             }
             for (var i = 0; i < linhasAcoMolejo.length; i++) {
                 linhasAcoMolejo[i].style.display = 'none';
-
             }
             for (var i = 0; i < linhasEspumaMolejo.length; i++) {
                 linhasEspumaMolejo[i].style.display = 'none';
-
+            }
+            for(var i = 0; i < linhaExtra1.length; i++) {
+                linhaExtra1[i].style.display = 'none';
+            }
+            for(var i = 0; i < linhaExtra2.length; i++) {
+                linhaExtra2[i].style.display = 'none';
             }
         }
         function mostrarTabelaMolejo() {
@@ -620,26 +730,29 @@
             var linhasEspuma = document.getElementsByClassName("linha-espuma");
             var linhasAcoMolejo = document.getElementsByClassName("borda_molejo");
             var linhasEspumaMolejo = document.getElementsByClassName("espuma_molejo");
+            var linhaExtra1 = document.getElementsByClassName("linha-extra1");
+            var linhaExtra2 = document.getElementsByClassName("linha-extra2");
 
             for (var i = 0; i < borda.length; i++) {
                 borda[i].style.display = 'table-row';
-
             }
             for (var i = 0; i < linhasAco.length; i++) {
                 linhasAco[i].style.display = 'table-row';
-
             }
             for (var i = 0; i < linhasEspuma.length; i++) {
                 linhasEspuma[i].style.display = 'table-row';
-
             }
             for (var i = 0; i < linhasAcoMolejo.length; i++) {
                 linhasAcoMolejo[i].style.display = 'table-row';
-
             }
             for (var i = 0; i < linhasEspumaMolejo.length; i++) {
                 linhasEspumaMolejo[i].style.display = 'table-row';
-
+            }
+            for(var i = 0; i < linhaExtra1.length; i++) {
+                linhaExtra1[i].style.display = 'table-row';
+            }
+            for(var i = 0; i < linhaExtra2.length; i++) {
+                linhaExtra2[i].style.display = 'table-row';
             }
         }
         document.addEventListener("keydown", function (e) {

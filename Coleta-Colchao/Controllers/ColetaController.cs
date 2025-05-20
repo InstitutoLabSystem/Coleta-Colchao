@@ -1472,7 +1472,7 @@ namespace Coleta_Colchao.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> SalvarEnsaio4_3(string os, string orcamento, int rev, [Bind("borda_aco,borda_espuma,borda_aco_molejo,borda_espuma_molejo,data_ini,data_term,valor_enc_aco,valor_enc_espuma,valor_enc_aco_molejo,valor_enc_espuma_molejo,man_parale_aco,man_parale_espuma,man_parale_aco_molejo,man_parale_espuma_molejo,pergunta_a,pergunta_b,largura_encontrada,pergunta_c,pergunta_d")] ColetaModel.Ensaio4_3 salvarDados)
+        public async Task<IActionResult> SalvarEnsaio4_3(string os, string orcamento, int rev, [Bind("borda_aco,borda_espuma,borda_aco_molejo,borda_espuma_molejo,borda_extra1,borda_extra2,especificado_extra1,especificado_extra2,data_ini,data_term,valor_enc_aco,valor_enc_espuma,valor_enc_aco_molejo,valor_enc_espuma_molejo,valor_enc_extra1,valor_enc_extra2,man_parale_aco,man_parale_espuma,man_parale_aco_molejo,man_parale_espuma_molejo,man_parale_extra1,man_parale_extra2,pergunta_a,pergunta_b,largura_encontrada,pergunta_c,pergunta_d")] ColetaModel.Ensaio4_3 salvarDados)
         {
             try
             {
@@ -1484,15 +1484,24 @@ namespace Coleta_Colchao.Controllers
                     string borda_aco_molejo = salvarDados.borda_aco_molejo;
                     string borda_espuma = salvarDados.borda_espuma;
                     string borda_espuma_molejo = salvarDados.borda_espuma_molejo;
+                    string borda_extra1 = salvarDados.borda_extra1;
+                    string borda_extra2 = salvarDados.borda_extra2;
+                    string especificado_extra1 = salvarDados.especificado_extra1;
+                    string especificado_extra2 = salvarDados.especificado_extra2;
                     DateOnly data_ini = salvarDados.data_ini;
                     DateOnly data_term = salvarDados.data_term;
                     float valor_enc_aco = salvarDados.valor_enc_aco;
                     float valor_enc_aco_molejo = salvarDados.valor_enc_aco_molejo;
                     float valor_enc_espuma = salvarDados.valor_enc_espuma;
                     float valor_enc_espuma_molejo = salvarDados.valor_enc_espuma_molejo;
+                    float valor_enc_extra1 = salvarDados.valor_enc_extra1;
+                    float valor_enc_extra2 = salvarDados.valor_enc_extra2;
                     string man_parale_aco = salvarDados.man_parale_aco;
                     string man_parale_aco_molejo = salvarDados.man_parale_aco_molejo;
-                    string man_parale_espuma = salvarDados.man_parale_espuma; string man_parale_espuma_molejo = salvarDados.man_parale_espuma_molejo;
+                    string man_parale_espuma = salvarDados.man_parale_espuma; 
+                    string man_parale_espuma_molejo = salvarDados.man_parale_espuma_molejo;
+                    string man_parale_extra1 = salvarDados.man_parale_extra1;
+                    string man_parale_extra2 = salvarDados.man_parale_extra2;
 
                     int contem_molejo;
                     string pergunta_a = salvarDados.pergunta_a;
@@ -1501,7 +1510,7 @@ namespace Coleta_Colchao.Controllers
                     string pergunta_c = salvarDados.pergunta_c;
                     string pergunta_d = salvarDados.pergunta_d;
 
-                    if (borda_aco_molejo == "X" || borda_espuma_molejo == "X")
+                    if (borda_aco_molejo == "X" || borda_espuma_molejo == "X" || borda_extra1 != null || borda_extra2 != null)
                     {
                         contem_molejo = 1;
                     }
@@ -1517,16 +1526,24 @@ namespace Coleta_Colchao.Controllers
                         borda_aco_molejo = borda_aco_molejo,
                         borda_espuma = borda_espuma,
                         borda_espuma_molejo = borda_espuma_molejo,
+                        borda_extra1 = borda_extra1,
+                        borda_extra2 = borda_extra2,
+                        especificado_extra1 = especificado_extra1,
+                        especificado_extra2 = especificado_extra2,
                         data_ini = data_ini,
                         data_term = data_term,
                         valor_enc_aco = valor_enc_aco,
                         valor_enc_aco_molejo = valor_enc_aco_molejo,
                         valor_enc_espuma = valor_enc_espuma,
                         valor_enc_espuma_molejo = valor_enc_espuma_molejo,
+                        valor_enc_extra1 = valor_enc_extra1,
+                        valor_enc_extra2 = valor_enc_extra2,
                         man_parale_aco = man_parale_aco,
                         man_parale_aco_molejo = man_parale_aco_molejo,
                         man_parale_espuma_molejo = man_parale_espuma_molejo,
                         man_parale_espuma = man_parale_espuma,
+                        man_parale_extra1 = man_parale_extra1,
+                        man_parale_extra2 = man_parale_extra2,
                         contem_molejo = contem_molejo,
                         pergunta_a = pergunta_a,
                         pergunta_b = pergunta_b,
