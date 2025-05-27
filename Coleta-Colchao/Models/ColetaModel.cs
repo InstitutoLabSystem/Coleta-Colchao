@@ -275,24 +275,16 @@ namespace Coleta_Colchao.Models
             public string? borda_espuma { get; set; }
             public string? borda_aco_molejo { get; set; }
             public string? borda_espuma_molejo { get; set; }
-            public string? borda_extra1 { get; set; }
-            public string? borda_extra2 { get; set; }
-            public string? especificado_extra1 { get; set; }
-            public string? especificado_extra2 { get; set; }
             public DateOnly data_ini { get; set; }
             public DateOnly data_term { get; set; }
             public float valor_enc_aco { get; set; }
             public float valor_enc_espuma { get; set; }
             public float valor_enc_aco_molejo { get; set; }
             public float valor_enc_espuma_molejo { get; set; }
-            public float valor_enc_extra1 { get; set; }
-            public float valor_enc_extra2 { get; set; }
             public string? man_parale_aco { get; set; }
             public string? man_parale_aco_molejo { get; set; }
             public string? man_parale_espuma { get; set; }
             public string? man_parale_espuma_molejo { get; set; }
-            public string? man_parale_extra1 { get; set; }
-            public string? man_parale_extra2 { get; set; }
             public string? executor { get; set; }
             public string? usuarioEdicao { get; set; }
             public int contem_molejo { get; set; }
