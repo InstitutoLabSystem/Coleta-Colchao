@@ -1,16 +1,18 @@
-﻿using Coleta_Colchao.Models;
-using Microsoft.AspNetCore.Authentication.Cookies;
+﻿using Coleta_Colchao.Data;
+using Coleta_Colchao.Models;
 using Microsoft.AspNetCore.Authentication;
-using Microsoft.AspNetCore.Mvc;
-using System.Diagnostics;
-using Coleta_Colchao.Data;
+using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.Build.Framework;
-using System.Security.Claims;
-using System.Linq;
-using MoreLinq;
 using Microsoft.VisualStudio.Web.CodeGenerators.Mvc.View;
+using MoreLinq;
+using System.Data.Entity;
+using System.Diagnostics;
+using System.Linq;
+using System.Security.Claims;
 using static Coleta_Colchao.Models.ColetaModel;
+using static Coleta_Colchao.Models.HomeModel;
 
 namespace Coleta_Colchao.Controllers
 {
@@ -64,28 +66,42 @@ namespace Coleta_Colchao.Controllers
         {
             try
             {
-                var dados = (from p in _bancoContext.programacao_lab_ensaios
-                             join c in _bancoContext.ordemservicocotacaoitem_hc_copylab
-                             on new { Orcamento = p.Orcamento, Item = p.Item } equals new { Orcamento = c.orcamento, Item = c.Item.ToString() } into joinC
-                             from c in joinC.DefaultIfEmpty()  // LEFT JOIN aqui
-                             join hc in _bancoContext.Wmoddetprod
-                             on c.CodigoEnsaio equals hc.codmaster into joinHc
-                             from hc in joinHc.DefaultIfEmpty()  // LEFT JOIN aqui
-                             where p.OS == os
-                             orderby hc.descricao
-                             select new HomeModel.Resposta
-                             {
-                                 orcamento = p.Orcamento,
-                                 OS = p.OS,
-                                 codmaster = hc.codmaster,
-                                 codigo = hc.codigo,
-                                 descricao = hc.descricao,
-                                 ProdEnsaiado = c.ProdEnsaiado,
-                             })
-                     .GroupBy(r => r.codigo)  // Agrupa pelos valores de codigo (para garantir que o codigo seja único)
-                     .Select(g => g.First())  // Seleciona o primeiro item de cada grupo, garantindo que o codigo seja único
-                     .ToList();
+                // Supondo que 'os' seja a string com o valor da OS a ser buscada
+                var dados = (
+                    from o in _bancoContext.ordemservico_copylab
 
+                    // JOIN 1: INNER com ordemservicocotacaoitem_hc_copylab
+                    join ite in _bancoContext.ordemservicocotacaoitem_hc_copylab
+                        on new { Numero = o.seqorc, Mes = o.mesorc, Ano = o.anoorc, Item = o.item.ToString() } // Item também convertido para segurança
+                        equals new { Numero = ite.Numero.ToString(), Mes = ite.Mes, Ano = ite.Ano.ToString(), Item = ite.Item.ToString() } // Conversão de Numero, Ano e Item
+
+                    // JOIN 2: INNER com ordemservicocotacao_hc_copylab
+                    join orc in _bancoContext.ordemservicocotacao_hc_copylab
+                        on new { Codigo = o.seqorc, Mes = o.mesorc, Ano = o.anoorc }
+                        equals new { Codigo = orc.codigo.ToString(), Mes = orc.mes, Ano = orc.ano } 
+
+                    // JOIN 3: LEFT com Wmoddetprod
+                    join w in _bancoContext.Wmoddetprod
+                        on ite.CodigoEnsaio equals w.codmaster into joinW
+                    from w in joinW.DefaultIfEmpty()
+
+                    // JOIN 4: LEFT com ordemservicocotacao_itemsup
+                    join e in _bancoContext.ordemservicocotacao_itemsup
+                        on new { Seq = o.seqorc, Mes = o.mesorc, Ano = o.anoorc, Item = o.item }
+                        equals new { Seq = e.sequencial, Mes = e.mes, Ano = e.ano, Item = e.item } into joinE
+                    from e in joinE.DefaultIfEmpty()
+
+                    where os == (o.codigo + o.mes + o.ano)
+
+                    select new HomeModel.Resposta
+                    {
+                        orcamento = o.orcamento,
+                        OS = o.codigo + o.mes + o.ano,
+                        codmaster = orc.Tipo == 1 ? w.codmaster : e.cod_hipercusto,
+                        codigo = orc.Tipo == 1 ? w.codigo : e.cod_hipercusto,
+                        descricao = orc.Tipo == 1 ? w.descricao : e.descrEnsaio,
+                        ProdEnsaiado = ite.ProdEnsaiado
+                    }).AsNoTracking().ToList();
 
 
                 var buscarOs = _context.regtro_colchao.Where(x => x.os == os).OrderByDescending(x => x.Id).FirstOrDefault();
@@ -172,8 +188,8 @@ namespace Coleta_Colchao.Controllers
                                             on new { Orcamento = p.Orcamento, Item = p.Item } equals new { Orcamento = c.orcamento, Item = c.Item.ToString() }
                                             join hc in _bancoContext.Wmoddetprod
                                             on c.CodigoEnsaio equals hc.codmaster
-                                            join lb in _bancoContext.ordemservico_laboratorio
-                                            on new { Numero = c.Numero.ToString(), Mes = c.Mes, Ano = c.Ano } equals new { Numero = lb.seqorc, Mes = lb.mesorc, Ano = lb.anoorc }
+                                            join lb in _bancoContext.ordemservico_laboratorio // erro aqui no join
+                                            on new { Numero = c.Numero.ToString(), Mes = c.Mes, Ano = c.Ano.ToString() } equals new { Numero = lb.seqorc, Mes = lb.mesorc, Ano = lb.anoorc }
                                             where lb.orcamento == dados.First().orcamento && codigosLaminas.Contains(hc.codigo) && lb.Andamento != "ENVIADO"
                                             orderby lb.OS
                                             select new
