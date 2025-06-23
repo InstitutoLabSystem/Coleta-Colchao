@@ -91,7 +91,13 @@ namespace Coleta_Colchao.Controllers
                         equals new { Seq = e.sequencial, Mes = e.mes, Ano = e.ano, Item = e.item } into joinE
                     from e in joinE.DefaultIfEmpty()
 
-                    where os == (o.codigo + o.mes + o.ano)
+                    // JOIN 5: LEFT com tb_normasitens
+                    join th in _bancoContext.tb_normasitens
+                        on new { Codigo = ite.CodigoEnsaio, descrEnsaio = e.descrEnsaio, valorEnsaio = e.valorEnsaio } 
+                        equals new { Codigo = th.codigo.ToString(), descrEnsaio = th.descricao, valorEnsaio = th.preco } into joinTh
+                    from th in _bancoContext.tb_normasitens.DefaultIfEmpty()
+
+                    where (o.codigo + o.mes + o.ano) == os 
 
                     select new HomeModel.Resposta
                     {

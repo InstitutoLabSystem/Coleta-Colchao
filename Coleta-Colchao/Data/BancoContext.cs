@@ -16,6 +16,7 @@ namespace Coleta_Colchao.Data
         public DbSet<HomeModel.OrdemServicoLaboratorio> ordemservico_laboratorio { get; set; }
         public DbSet<HomeModel.OrdemSericoCopyLab> ordemservico_copylab { get; set; }
         public DbSet<HomeModel.OrdemServicoCotacaoItemSup> ordemservicocotacao_itemsup { get; set; }
+        public DbSet<HomeModel.NormasItens> tb_normasitens { get; set; }
         public DbSet<Cad_Instr> cad_instr { get; set; }
         public DbSet<Cad_instr_comp> cad_instr_comp { get; set; }
     }

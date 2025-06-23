@@ -23,6 +23,7 @@ namespace Coleta_Colchao.Models
             public int Ano { get; set; }
             public string orcamento { get; set; }
             public string CodigoEnsaio { get; set; }
+            public string CodNorma { get; set; }
             public int Item { get; set; }
 
             [MaxLength(60)]
@@ -45,6 +46,7 @@ namespace Coleta_Colchao.Models
             public string mes { get; set; }
             public string ano { get; set; }
             public int item { get; set; }
+            public double? valorEnsaio { get; set; }
         }
         public class OrdemServico
         {
@@ -56,8 +58,15 @@ namespace Coleta_Colchao.Models
             public string Solicitante { get; set; }
             public int Tipo { get; set; }
         }
+        public class NormasItens
+        {
+            [Key]
+            public int codigo { get; set; }
+            public string? descricao { get; set; }
+            public double? preco { get; set; }
+        }
 
-        [Keyless]
+            [Keyless]
         public class OrdemServicoLaboratorio
         {
             public string OS { get; set; }
