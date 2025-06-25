@@ -107,7 +107,7 @@ namespace Coleta_Colchao.Controllers
                         codigo = orc.Tipo == 1 ? w.codigo : e.cod_hipercusto,
                         descricao = orc.Tipo == 1 ? w.descricao : e.descrEnsaio,
                         ProdEnsaiado = ite.ProdEnsaiado
-                    }).AsNoTracking().ToList();
+                    }).AsNoTracking().Distinct().ToList();
 
 
                 var buscarOs = _context.regtro_colchao.Where(x => x.os == os).OrderByDescending(x => x.Id).FirstOrDefault();

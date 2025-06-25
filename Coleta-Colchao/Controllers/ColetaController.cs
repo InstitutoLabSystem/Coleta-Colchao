@@ -458,6 +458,7 @@ namespace Coleta_Colchao.Controllers
                 ViewBag.comprimento = inicial.comprimento;
                 ViewBag.largura = inicial.largura;
                 ViewBag.metalasse = inicial.metalasse;
+                ViewBag.bloqueada = inicial.Bloqueada;
             }
 
             var dados = _context.ensaio_molas_item7_2.Where(x => x.os == os && x.orcamento == orcamento && x.rev == rev).FirstOrDefault();
@@ -608,6 +609,7 @@ namespace Coleta_Colchao.Controllers
                 ViewBag.orcamento = orcamento;
                 ViewBag.rev = rev;
                 ViewBag.ExisteBorda = ExisteBorda.borda_peri;
+                ViewBag.bloqueada = ExisteBorda.Bloqueada;
                 return View("Molas/EnsaioMolas4_3");
             }
             else

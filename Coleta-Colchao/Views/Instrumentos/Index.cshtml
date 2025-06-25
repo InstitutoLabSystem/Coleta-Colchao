@@ -14,21 +14,32 @@
 </head>
 <body>
     <div class="container">
-        <form method="post" class="form-inline" asp-controller="Instrumentos" asp-action="Index" asp-route-os="@ViewBag.os" asp-route-orcamento="@ViewBag.orcamento">
-            <div class="container mt-2" style="text-align:center; align-items:center;">
-                <div class="row">
-                    <div class="input-group ">
-                        <label class="mr-2">Buscar codigo</label>
-                        <input name="os" type="hidden" value="@ViewBag.os" />
-                        <input name="orcamento" readonly type="hidden" value="@ViewBag.orcamento" />
-                        <input class="form-control col-md-8 " asp-for="@Model.oInstrumentos.codigo" />
-                        <div class="input-group-append  col-md-1">
-                            <button class="btn btn-primary  " type="submit" id="botao-pesquisar"> Pesquisar </button>
+        @if(ViewBag.Bloqueada != "Sim")
+        {
+            <form method="post" class="form-inline" asp-controller="Instrumentos" asp-action="Index" asp-route-os="@ViewBag.os" asp-route-orcamento="@ViewBag.orcamento">
+                <div class="container mt-2" style="text-align:center; align-items:center;">
+                    <div class="row">
+                        <div class="input-group ">
+                            <label class="mr-2">Buscar codigo</label>
+                            <input name="os" type="hidden" value="@ViewBag.os" />
+                            <input name="orcamento" readonly type="hidden" value="@ViewBag.orcamento" />
+                            <input class="form-control col-md-8 " asp-for="@Model.oInstrumentos.codigo" />
+                            <div class="input-group-append  col-md-1">
+                                <button class="btn btn-primary  " type="submit" id="botao-pesquisar"> Pesquisar </button>
+                            </div>
                         </div>
                     </div>
                 </div>
+            </form>
+        }
+        else
+        {
+            <div class="d-flex justify-content-center">
+                <div class="alert alert-danger w-50 p-3 m-3 text-center" role="alert">
+                    Coleta Bloqueada!
+                </div>
             </div>
-        </form>
+        }
 
         @* quando o instrumento for null significa que nao foi realizado pesquisa ainda, se for realizado pesqusa instrumento é null*@
         @if (Model.oInstrumentos == null)
@@ -47,7 +58,14 @@
                                 <th scope="col">Descrição</th>
                                 <th scope="col">Certificado</th>
                                 <th scope="col">Validade</th>
-                                <th scope="col">Adicionar</th>
+                                @if(ViewBag.Bloqueada == null)
+                                {
+                                    <th scope="col">Adicionar</th>
+                                } 
+                                else
+                                {
+                                    <th scope="col">Bloqueado</th>
+                                }
                             </tr>
                         </thead>
                         <tbody>
@@ -58,7 +76,14 @@
                                 <td><input class="form-control" asp-for="@Model.oInstrumentosColchao.descricao" readonly /></td>
                                 <td><input class="form-control" asp-for="@Model.oInstrumentosColchao.certificado" readonly /></td>
                                 <td><input class="form-control" asp-for="@Model.oInstrumentosColchao.validade" readonly /></td>
-                                <td><button type="submit" class="btn btn-primary">SALVAR</button></td>
+                                @if(ViewBag.Bloqueada == null)
+                                {
+                                    <td><button type="submit" class="btn btn-primary">SALVAR</button></td>
+                                }
+                                else
+                                {
+                                    <td>BLOQUEADO</td>
+                                }
                             </tr>
                         </tbody>
                     </table>
@@ -80,7 +105,14 @@
                                 <th scope="col">Descrição</th>
                                 <th scope="col">Certificado</th>
                                 <th scope="col">Validade</th>
-                                <th scope="col">Excluir</th>
+                                @if(ViewBag.Bloqueada == null)
+                                {
+                                    <th scope="col">Excluir</th>
+                                }
+                                else
+                                {
+                                    <th scope="col">Bloqueado</th>
+                                }
                             </tr>
                         </thead>
                         <tbody>
@@ -93,7 +125,14 @@
                                     <td>@Model.oInstrumentosColchaoSalvos[i].descricao</td>
                                     <td>@Model.oInstrumentosColchaoSalvos[i].certificado</td>
                                     <td>@Model.oInstrumentosColchaoSalvos[i].validade</td>
-                                    <td><button type="submit" class="btn btn-danger" name="id" value="@Model.oInstrumentosColchaoSalvos[i].Id">EXCLUIR</button></td>
+                                    @if(ViewBag.Bloqueada == null)
+                                    {
+                                        <td><button type="submit" class="btn btn-danger" name="id" value="@Model.oInstrumentosColchaoSalvos[i].Id">EXCLUIR</button></td>
+                                    }
+                                    else
+                                    {
+                                        <td>BLOQUEADA</td>
+                                    }
                                 </tr>
                             }
                         </tbody>

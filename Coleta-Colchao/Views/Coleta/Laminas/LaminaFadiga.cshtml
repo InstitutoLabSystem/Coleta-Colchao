@@ -498,7 +498,6 @@
                 <td> P.E encontrada % <input type="text" class="controlador" disabled asp-for="pe_encontrado" /></td>
             </tr>
         </table>
-        <br />
 
         @if (Model == null)
         {
@@ -524,6 +523,18 @@
             }
         }
     </form>
+    <br />
+    <br />
+    <br />
+    <br />
+    <footer class="d-flex justify-content-center align-items-center border-top bg-white py-3 fixed-bottom" style="margin: auto; width: 100%; bottom: 0; position: fixed;">
+        <div class="d-flex align-items-center">
+            <a asp-controller="Home" asp-action="Index" class="mb-3 me-2 mb-md-0 text-body-secondary text-decoration-none lh-1">
+                <img src="https://www.labsystem-nuvem.com.br/imagens_arq/imagens/img/LabSystem.png" class="bi" width="25" height="24" />
+            </a>
+            <span class="mb-4 mb-md-0 text-body-secondary" style="font-size: 14px;">&copy; Coleta Colchao - CD-SI 001/MVS - 10/02/2025 - Rev 1</span>
+        </div>
+    </footer>
     @if (TempData.ContainsKey("Mensagem"))
     {
         <script>

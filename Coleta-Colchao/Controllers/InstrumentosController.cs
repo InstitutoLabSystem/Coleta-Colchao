@@ -19,6 +19,22 @@ namespace Coleta_Colchao.Controllers
         {
             ViewBag.os = os;
             ViewBag.orcamento = orcamento;
+            var verificarMolas = _colchaoContext.regtro_colchao.Where(x => x.os == os && x.orcamento == orcamento).FirstOrDefault();
+            var verificarEspuma = _colchaoContext.regtro_colchao_espuma.Where(x => x.os == os && x.orcamento == orcamento).FirstOrDefault();
+            var verificarLaminas = _colchaoContext.regtro_colchao_lamina.Where(x => x.os == os && x.orcamento == orcamento).FirstOrDefault();
+            if(verificarMolas != null)
+            {
+                ViewBag.Bloqueada = verificarMolas.Bloqueada;
+            }
+            else if (verificarLaminas != null)
+            {
+                ViewBag.Bloqueada = verificarLaminas.Bloqueada;
+            }
+            else
+            {
+                ViewBag.Bloqueada = verificarEspuma.Bloqueada;
+            }
+
             var model = new InstrumentosViewModel();
             model.oInstrumentos = new Instrumentos();
             model.oInstrumentosColchao = new InstrumentosColchao();
@@ -36,6 +52,7 @@ namespace Coleta_Colchao.Controllers
         [HttpPost]
         public async Task<IActionResult> Index(InstrumentosViewModel retornarDados, string os, string orcamento)
         {
+            
             //busca para trazer o codigo.
             var dados = (from c in _bancoContext.cad_instr
                          join x in _bancoContext.cad_instr_comp
@@ -58,6 +75,7 @@ namespace Coleta_Colchao.Controllers
             //retornar para a tela caso nao encontrar o codigo.
             if (dados == null)
             {
+                
                 TempData["Mensagem"] = "Codigo não encontrado.";
                 return RedirectToAction("Index", "Instrumentos", new { os, orcamento });
             }
