@@ -8135,7 +8135,8 @@ namespace Coleta_Colchao.Controllers
                 if (editarDados == null)
                 {
                     //realizando media de largura, comprimento, e espessura.
-                    //espessura.. 
+                    //espessura..  
+
                     salvarDados.esp_media_um = float.Parse(((salvarDados.esp_ini_amostra_um_um + salvarDados.esp_ini_amostra_um_dois + salvarDados.esp_ini_amostra_um_tres + salvarDados.esp_ini_amostra_um_quatro + salvarDados.esp_ini_amostra_um_cinco + salvarDados.esp_ini_amostra_um_seis + salvarDados.esp_ini_amostra_um_sete + salvarDados.esp_ini_amostra_um_oito) / 8).ToString("N2"));
                     salvarDados.esp_media_dois = float.Parse(((salvarDados.esp_ini_amostra_dois_um + salvarDados.esp_ini_amostra_dois_dois + salvarDados.esp_ini_amostra_dois_tres + salvarDados.esp_ini_amostra_dois_quatro + salvarDados.esp_ini_amostra_dois_cinco + salvarDados.esp_ini_amostra_dois_seis + salvarDados.esp_ini_amostra_dois_sete + salvarDados.esp_ini_amostra_dois_oito) / 8).ToString("N2"));
                     salvarDados.esp_media_tres = float.Parse(((salvarDados.esp_ini_amostra_tres_um + salvarDados.esp_ini_amostra_tres_dois + salvarDados.esp_ini_amostra_tres_tres + salvarDados.esp_ini_amostra_tres_quatro + salvarDados.esp_ini_amostra_tres_cinco + salvarDados.esp_ini_amostra_tres_seis + salvarDados.esp_ini_amostra_tres_sete + salvarDados.esp_ini_amostra_tres_oito) / 8).ToString("N2"));
@@ -8317,6 +8318,7 @@ namespace Coleta_Colchao.Controllers
                 else
                 {
                     //editando os dados recebidos do html..
+                    editarDados.densidade = salvarDados.densidade;
                     editarDados.data_ini = salvarDados.data_ini;
                     editarDados.acond_inicio = salvarDados.acond_inicio;
                     editarDados.data_term = salvarDados.data_term;
