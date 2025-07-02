@@ -128,7 +128,7 @@ namespace Coleta_Colchao.Controllers
                         {
                             return RedirectToAction("IndexEspuma", "Coleta", new { os, ViewBag.orcamento });
                         }
-                        else if (dados.Any(x => x.codigo == "FTCCCH002000001") || dados.Any(x => x.codigo == "DNSCCH002000001") || dados.Any(x => x.codigo == "IDTCCH001000001"))
+                        else if (dados.Any(x => x.codigo == "FTCCCH002000001") || dados.Any(x => x.codigo == "DNSCCH002000001") || dados.Any(x => x.codigo == "IDTCCH001000001") || dados.Any(x => x.codigo == "QUICCH002000001"))
                         {
                             return RedirectToAction("IndexLamina", "Coleta", new { os, ViewBag.orcamento });
                         }
