@@ -7748,7 +7748,7 @@ namespace Coleta_Colchao.Controllers
                     }
 
                     //salvar quem editou a coleta.
-                    editarDados.executor = salvarDados.executor;
+                    editarDados.executor = Usuario();
 
                     _context.lamina_fi.Update(editarDados);
                     await _context.SaveChangesAsync();
