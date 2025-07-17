@@ -76,7 +76,7 @@
                                 <td><input class="form-control" asp-for="@Model.oInstrumentosColchao.descricao" readonly /></td>
                                 <td><input class="form-control" asp-for="@Model.oInstrumentosColchao.certificado" readonly /></td>
                                 <td><input class="form-control" asp-for="@Model.oInstrumentosColchao.validade" readonly /></td>
-                                @if(ViewBag.Bloqueada == null)
+                                @if(ViewBag.Bloqueada == null || ViewBag.Bloqueada == "Não")
                                 {
                                     <td><button type="submit" class="btn btn-primary">SALVAR</button></td>
                                 }
@@ -105,7 +105,7 @@
                                 <th scope="col">Descrição</th>
                                 <th scope="col">Certificado</th>
                                 <th scope="col">Validade</th>
-                                @if(ViewBag.Bloqueada == null)
+                                @if (ViewBag.Bloqueada == null || ViewBag.Bloqueada == "Não")
                                 {
                                     <th scope="col">Excluir</th>
                                 }
@@ -125,7 +125,7 @@
                                     <td>@Model.oInstrumentosColchaoSalvos[i].descricao</td>
                                     <td>@Model.oInstrumentosColchaoSalvos[i].certificado</td>
                                     <td>@Model.oInstrumentosColchaoSalvos[i].validade</td>
-                                    @if(ViewBag.Bloqueada == null)
+                                    @if (ViewBag.Bloqueada == null || ViewBag.Bloqueada == "Não")
                                     {
                                         <td><button type="submit" class="btn btn-danger" name="id" value="@Model.oInstrumentosColchaoSalvos[i].Id">EXCLUIR</button></td>
                                     }
