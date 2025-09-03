@@ -2605,7 +2605,7 @@ namespace Coleta_Colchao.Controllers
           "lamina_min_dois,lamina_max_dois,lamina_resul_dois,lamina_tres,lamina_comp_sete,lamina_esp_tres,lamina_comp_oito,lamina_comp_nove,lamina_media_tres,lamina_tipo_tres,lamina_min_tres,lamina_max_tres,lamina_resul_tres,lamina_quat,lamina_comp_dez,lamina_esp_quat," +
           "lamina_comp_onze,lamina_comp_doze,lamina_media_quat,lamina_tipo_quat,lamina_min_quat,lamina_max_quat,lamina_resul_quat,lamina_cinco,lamina_comp_treze,lamina_esp_cinco,lamina_comp_quatorze,lamina_comp_quinze,lamina_media_cinco,lamina_tipo_cinco," +
           "lamina_min_cinco,lamina_max_cinco,lamina_resul_cinco,tipo_total,min_soma_total,max_soma_total,esp_tipo_um,esp_mm_um,esp_cm_um,esp_tipo_dois,esp_mm_dois,esp_cm_dois,col_tipo_um,col_especificado_um,col_encontrado_um,col_resul_um," +
-          "col_tipo_dois,col_lamina_dois,col_especificado_dois,col_resul_dois,reves_tipo_um,reves_lamina_um,reves_especificado_um,reves_mm_um,reves_cm_um,reves_tipo_dois,reves_lamina_dois,reves_especificado_dois,reves_mm_dois,reves_cm_dois,temp_repouso,lamina_media_um")] ColetaModel.EspumaUm salvar)
+          "col_tipo_dois,col_lamina_dois,col_especificado_dois,col_resul_dois,reves_tipo_um,reves_lamina_um,reves_especificado_um,reves_mm_um,reves_cm_um,reves_tipo_dois,reves_lamina_dois,reves_especificado_dois,reves_mm_dois,reves_cm_dois,temp_repouso,lamina_media_um,executor,editarUsuario")] ColetaModel.EspumaUm salvar)
         {
             try
             {
@@ -4058,7 +4058,7 @@ namespace Coleta_Colchao.Controllers
         [HttpPost]
         public async Task<IActionResult> SalvarEspuma4_3(string os, string orcamento, int rev, [Bind("data_ini,data_term,temp_ini,temp_fim,tem_ensaio,lamina_central,quant_colagens,colagens_densidade,espessura_nominal,espessura_central,porcentagem_enc,lamina_menor_esp,quant_colagens_dois," +
             "distancia_um,distancia_dois,colagens_comp,espuma,esp_lamina_um,esp_lamina_dois,esp_lamina_tres,esp_lamina_quat,esp_lamina_cinco,esp_lamina_seis,esp_lamina_sete,esp_lamina_oito,quant_colagens_tres,distancia_tres,distancia_quat,colchao_casal,colagem_comp,espuma_conv,espuma_densidade," +
-            "colagem_largura,quant_colagens_quat,localidade,quant_colagens_cinco,espessura_lamina,adesivo,conforme,tipo_ensaio")] ColetaModel.Espuma4_3 salvar)
+            "colagem_largura,quant_colagens_quat,localidade,quant_colagens_cinco,espessura_lamina,adesivo,conforme,tipo_ensaio,executor,editarUsuario")] ColetaModel.Espuma4_3 salvar)
         {
             try
             {
@@ -5802,9 +5802,7 @@ namespace Coleta_Colchao.Controllers
                     {
                         salvarDados.conforme = "NC";
                     }
-
-                    //salvando quem fez a coleta
-                    salvarDados.executor = Usuario();
+                    
                     _context.Add(salvarDados);
                     await _context.SaveChangesAsync();
                     TempData["Mensagem"] = "Dados Salvo com sucesso.";
