@@ -32,14 +32,65 @@
                 </div>
             </form>
         }
+
+        @if (Model.oInstrumentosColchaoSalvos.Count > 0)
+        {
+            <form method="post" asp-controller="Instrumentos" asp-action="excluirInstrumentos">
+                <div style="padding-top:100px">
+                    <h1>Instrumentos salvos</h1>
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th scope="col">Os</th>
+                                <th scope="col">Orçamento</th>
+                                <th scope="col">Codigo</th>
+                                <th scope="col">Descrição</th>
+                                <th scope="col">Certificado</th>
+                                <th scope="col">Validade</th>
+                                @if (ViewBag.Bloqueada == null || ViewBag.Bloqueada == "Não" || ViewBag.Bloqueada == "")
+                                {
+                                    <th scope="col">Excluir</th>
+                                }
+                                else
+                                {
+                                    <th scope="col">Bloqueado</th>
+                                }
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @for (int i = 0; i < Model.oInstrumentosColchaoSalvos.Count; i++)
+                            {
+                                <tr>
+                                    <td>@Model.oInstrumentosColchaoSalvos[i].os</td>
+                                    <td>@Model.oInstrumentosColchaoSalvos[i].orcamento</td>
+                                    <td>@Model.oInstrumentosColchaoSalvos[i].codigo</td>
+                                    <td>@Model.oInstrumentosColchaoSalvos[i].descricao</td>
+                                    <td>@Model.oInstrumentosColchaoSalvos[i].certificado</td>
+                                    <td>@Model.oInstrumentosColchaoSalvos[i].validade</td>
+                                    @if (ViewBag.Bloqueada == null || ViewBag.Bloqueada == "Não" || ViewBag.Bloqueada == "")
+                                    {
+                                        <td><button type="submit" class="btn btn-danger" name="id" value="@Model.oInstrumentosColchaoSalvos[i].Id">EXCLUIR</button></td>
+                                    }
+                                    else
+                                    {
+                                        <td>BLOQUEADA</td>
+                                    }
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </form>
+        }
         else
         {
             <div class="d-flex justify-content-center">
                 <div class="alert alert-danger w-50 p-3 m-3 text-center" role="alert">
-                    Coleta Bloqueada!
+                    Nenhum instrumento cadastrado
                 </div>
             </div>
         }
+        
 
         @* quando o instrumento for null significa que nao foi realizado pesquisa ainda, se for realizado pesqusa instrumento é null*@
         @if (Model.oInstrumentos == null)
@@ -76,7 +127,7 @@
                                 <td><input class="form-control" asp-for="@Model.oInstrumentosColchao.descricao" readonly /></td>
                                 <td><input class="form-control" asp-for="@Model.oInstrumentosColchao.certificado" readonly /></td>
                                 <td><input class="form-control" asp-for="@Model.oInstrumentosColchao.validade" readonly /></td>
-                                @if(ViewBag.Bloqueada == null || ViewBag.Bloqueada == "Não")
+                                @if(ViewBag.Bloqueada == null || ViewBag.Bloqueada == "Não" || ViewBag.Bloqueado == "")
                                 {
                                     <td><button type="submit" class="btn btn-primary">SALVAR</button></td>
                                 }
@@ -91,55 +142,7 @@
             </form>
         }
 
-        @if (Model.oInstrumentosColchaoSalvos.Count > 0)
-        {
-            <form method="post" asp-controller="Instrumentos" asp-action="excluirInstrumentos">
-                <div style="padding-top:100px">
-                    <h1>Instrumentos salvos</h1>
-                    <table class="table table-striped">
-                        <thead>
-                            <tr>
-                                <th scope="col">Os</th>
-                                <th scope="col">Orçamento</th>
-                                <th scope="col">Codigo</th>
-                                <th scope="col">Descrição</th>
-                                <th scope="col">Certificado</th>
-                                <th scope="col">Validade</th>
-                                @if (ViewBag.Bloqueada == null || ViewBag.Bloqueada == "Não")
-                                {
-                                    <th scope="col">Excluir</th>
-                                }
-                                else
-                                {
-                                    <th scope="col">Bloqueado</th>
-                                }
-                            </tr>
-                        </thead>
-                        <tbody>
-                            @for (int i = 0; i < Model.oInstrumentosColchaoSalvos.Count; i++)
-                            {
-                                <tr>
-                                    <td>@Model.oInstrumentosColchaoSalvos[i].os</td>
-                                    <td>@Model.oInstrumentosColchaoSalvos[i].orcamento</td>
-                                    <td>@Model.oInstrumentosColchaoSalvos[i].codigo</td>
-                                    <td>@Model.oInstrumentosColchaoSalvos[i].descricao</td>
-                                    <td>@Model.oInstrumentosColchaoSalvos[i].certificado</td>
-                                    <td>@Model.oInstrumentosColchaoSalvos[i].validade</td>
-                                    @if (ViewBag.Bloqueada == null || ViewBag.Bloqueada == "Não")
-                                    {
-                                        <td><button type="submit" class="btn btn-danger" name="id" value="@Model.oInstrumentosColchaoSalvos[i].Id">EXCLUIR</button></td>
-                                    }
-                                    else
-                                    {
-                                        <td>BLOQUEADA</td>
-                                    }
-                                </tr>
-                            }
-                        </tbody>
-                    </table>
-                </div>
-            </form>
-        }
+        
     </div>
     <br /><br /><br />
     <footer class="d-flex justify-content-center align-items-center border-top bg-white py-3 fixed-bottom" style="margin: auto; width: 100%; bottom: 0; position: fixed;">

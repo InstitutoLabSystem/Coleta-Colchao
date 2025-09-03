@@ -32,13 +32,22 @@
                     </tr>
                     <tr>
                         <td colspan="4">Ensaio Em Bases</td>
-                        <td rowspan="2"> @ViewBag.os</td>
+                        <td rowspan="3"> @ViewBag.os</td>
                     </tr>
                     <tr>
                         <td>Inicio:</td>
                         <td><input class="form-control" type="date" asp-for="data_ini" /></td>
                         <td>Termino:</td>
                         <td><input class="form-control" type="date" asp-for="data_term" /></td>
+                    </tr>
+                    <tr>
+                        <td>Executor do ensaio:</td>
+                        <td><input class="form-control" asp-for="executor" /></td>
+                        <td>Responsável pela conferência:</td>
+                        <td>
+                            <select class="form-control" asp-for="auxiliar" asp-items="(List<SelectListItem>)@ViewBag.listaResponsaveis">
+                            </select>
+                        </td>
                     </tr>
                 </thead>
             </table>
@@ -199,13 +208,22 @@
                     </tr>
                     <tr>
                         <td colspan="4">Ensaio Em Bases</td>
-                        <td rowspan="2"> @ViewBag.os</td>
+                        <td rowspan="3"> @ViewBag.os</td>
                     </tr>
                     <tr>
                         <td>Inicio:</td>
                         <td><input class="form-control" type="text" asp-for="data_ini" value="@Model.data_ini" /></td>
                         <td>Termino:</td>
                         <td><input class="form-control" type="text" asp-for="data_term" value="@Model.data_term" /></td>
+                    </tr>
+                    <tr>
+                        <td>Executor do ensaio:</td>
+                        <td><input class="form-control" asp-for="executor" /></td>
+                        <td>Responsável pela conferência:</td>
+                        <td>
+                            <select class="form-control" asp-for="auxiliar" asp-items="(List<SelectListItem>)@ViewBag.listaResponsaveis">
+                            </select>
+                        </td>
                     </tr>
                 </thead>
             </table>

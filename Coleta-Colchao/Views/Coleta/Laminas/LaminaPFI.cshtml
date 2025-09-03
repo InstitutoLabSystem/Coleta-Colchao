@@ -40,7 +40,7 @@
                 </tr>
                 <tr>
                     <td colspan="4">Ensaios de Colchão de Espuma (Portaria Inmetro 35)</td>
-                    <td rowspan="2"> @ViewBag.os</td>
+                    <td rowspan="3"> @ViewBag.os</td>
                 </tr>
                 @if (Model == null)
                 {
@@ -60,6 +60,15 @@
                         <td><input class="form-control" type="text" asp-for="data_term" /></td>
                     </tr>
                 }
+                <tr>
+                    <td>Executor do ensaio:</td>
+                    <td><input class="form-control" asp-for="executor" /></td>
+                    <td>Responsável pela conferência:</td>
+                    <td>
+                        <select class="form-control" asp-for="editarUsuario" asp-items="(List<SelectListItem>)@ViewBag.listaResponsaveis">
+                        </select>
+                    </td>
+                </tr>
             </thead>
         </table>
         <br />

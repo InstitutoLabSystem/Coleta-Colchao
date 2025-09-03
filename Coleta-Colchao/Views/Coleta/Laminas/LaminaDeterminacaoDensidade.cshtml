@@ -60,6 +60,16 @@
                         <td><input class="form-control" type="text" asp-for="data_term" /></td>
                     </tr> 
                 }
+
+                <tr>
+                    <td>Executor do ensaio:</td>
+                    <td><input class="form-control" asp-for="executador"/></td>
+                    <td>Responsável pela Conferência:</td>
+                    <td>
+                        <select class="form-control" asp-for="editorUsuario" asp-items="(List<SelectListItem>)@ViewBag.listaResponsaveis">
+                        </select>
+                    </td>
+                </tr>
             </thead>
         </table>
         <table class="tables table-bordered border-secondary  table-sm">

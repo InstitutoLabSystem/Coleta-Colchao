@@ -29,7 +29,6 @@
     <form method="post" asp-controller="coleta" asp-action="salvarBaseDurabilidadeEspuma" asp-route-os="@ViewBag.os" asp-route-orcamento="@ViewBag.orcamento" asp-route-rev="@ViewBag.rev">
         @if (Model == null)
         {
-
             <table class="tables table-bordered border-secondary  table-sm">
                 <thead>
                     <tr>
@@ -39,9 +38,8 @@
                     </tr>
                     <tr>
                         <td colspan="4"> Ensaio em Bases</td>
-                        <td rowspan="2"> @ViewBag.os</td>
+                        <td rowspan="3"> @ViewBag.os</td>
                     </tr>
-
                     <tr>
                         <td>Inicio:</td>
                         <td><input class="form-control" type="date" asp-for="data_inicio" /></td>
@@ -49,7 +47,15 @@
                         <td>Termino:</td>
                         <td><input class="form-control" type="date" asp-for="data_termi" /></td>
                         <span asp-validation-for="data_termi" class="text-danger"></span>
-
+                    </tr>
+                    <tr>
+                        <td>Executor do ensaio:</td>
+                        <td><input class="form-control" asp-for="executor" /></td>
+                        <td>Responsável pela conferência:</td>
+                        <td>
+                            <select class="form-control" asp-for="editarUsuario" asp-items="(List<SelectListItem>)@ViewBag.listaResponsaveis">
+                            </select>
+                        </td>
                     </tr>
                 </thead>
             </table>
@@ -427,9 +433,8 @@
                     </tr>
                     <tr>
                         <td colspan="4"> Ensaio em Bases</td>
-                        <td rowspan="2"> @ViewBag.os</td>
+                        <td rowspan="3"> @ViewBag.os</td>
                     </tr>
-
                     <tr>
                         <td>Inicio:</td>
                         <td><input class="form-control" type="text" asp-for="data_inicio" /></td>
@@ -437,7 +442,15 @@
                         <td>Termino:</td>
                         <td><input class="form-control" type="text" asp-for="data_termi" /></td>
                         <span asp-validation-for="data_termi" class="text-danger"></span>
-
+                    </tr>
+                    <tr>
+                        <td>Executor do ensaio:</td>
+                        <td><input class="form-control" asp-for="executor" /></td>
+                        <td>Responsável pela conferência:</td>
+                        <td>
+                            <select class="form-control" asp-for="editarUsuario" asp-items="(List<SelectListItem>)@ViewBag.listaResponsaveis">
+                            </select>
+                        </td>
                     </tr>
                 </thead>
             </table>

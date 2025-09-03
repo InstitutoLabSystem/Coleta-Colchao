@@ -47,13 +47,22 @@
                     </tr>
                     <tr>
                         <td colspan="4">Colchão De Molas (Portaria Inmetro 75)</td>
-                        <td rowspan="2"> @ViewBag.os</td>
+                        <td rowspan="3"> @ViewBag.os</td>
                     </tr>
                     <tr>
                         <td>Inicio:</td>
                         <td><input class="form-control" type="date" name="data_ini" /></td>
                         <td>Termino:</td>
                         <td><input class="form-control" type="date" name="data_term" /></td>
+                    </tr>
+                    <tr>
+                        <td>Executor do ensaio:</td>
+                        <td><input class="form-control" asp-for="executor" /></td>
+                        <td>Responsável pela conferência:</td>
+                        <td>
+                            <select class="form-control" asp-for="usuarioEdicao" asp-items="(List<SelectListItem>)@ViewBag.listaResponsaveis">
+                            </select>
+                        </td>
                     </tr>
                 </thead>
             </table>
@@ -242,13 +251,22 @@
                     </tr>
                     <tr>
                         <td colspan="4">Colchão De Molas (Portaria Inmetro 75)</td>
-                        <td rowspan="2"> @ViewBag.os</td>
+                        <td rowspan="3"> @ViewBag.os</td>
                     </tr>
                     <tr>
                         <td>Inicio:</td>
                         <td><input class="form-control" type="text" name="data_ini" value="@Model.data_ini" /></td>
                         <td>Termino:</td>
                         <td><input class="form-control" type="text" name="data_term" value="@Model.data_term" /></td>
+                    </tr>
+                    <tr>
+                        <td>Executor do ensaio:</td>
+                        <td><input class="form-control" asp-for="executor" /></td>
+                        <td>Responsável pela conferência:</td>
+                        <td>
+                            <select class="form-control" asp-for="usuarioEdicao" asp-items="(List<SelectListItem>)@ViewBag.listaResponsaveis">
+                            </select>
+                        </td>
                     </tr>
                 </thead>
             </table>
@@ -502,11 +520,20 @@
                     </td>
                 </tr>
             </table>
-            @if (ViewBag.bloqueada != "Sim")
+            @if (ViewBag.Bloqueada == null || ViewBag.Bloqueada == "Não" || ViewBag.Bloqueada == "")
             {
-                <div class="d-grid gap-2 d-flex justify-content-center">
-                    <button type="submit" class="btn btn-success btn btn-primary btn-md">Editar Dados</button>
-                </div>
+                @if (Model != null)
+                {
+                    <div class="d-grid gap-2 d-flex justify-content-center">
+                        <button type="submit" class="btn btn-success btn btn-primary btn-md">Editar</button>
+                    </div>
+                }
+                else
+                {
+                    <div class="d-grid gap-2 d-flex justify-content-center">
+                        <button type="submit" class="btn btn-success btn btn-primary btn-md">Salvar</button>
+                    </div>
+                }
             }
             else
             {

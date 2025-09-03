@@ -109,10 +109,10 @@ namespace Coleta_Colchao.Controllers
                         ProdEnsaiado = ite.ProdEnsaiado
                     }).AsNoTracking().Distinct().ToList();
 
-
                 var buscarOs = _context.regtro_colchao.Where(x => x.os == os).OrderByDescending(x => x.Id).FirstOrDefault();
                 var buscarEspumaOs = _context.regtro_colchao_espuma.Where(x => x.os == os).OrderByDescending(x => x.Id).FirstOrDefault();
                 var buscarLamina = _context.regtro_colchao_lamina.Where(x => x.os == os).OrderByDescending(x => x.Id).FirstOrDefault();
+
                 if (buscarOs == null && buscarEspumaOs == null && buscarLamina == null)
                 {
                     if (dados.Count != 0)
@@ -558,6 +558,14 @@ namespace Coleta_Colchao.Controllers
         {
             try
             {
+                var instrumentosCadastrados = _context.instrumentos_colchao.Where(x => x.os == os && x.orcamento == orcamento).ToList();
+
+                if (instrumentosCadastrados == null)
+                {
+                    TempData["Mensagem"] = "É obrigatório cadastrar Instrumentos antes de Bloquear a OS.";
+                    return RedirectToAction(nameof(BuscarOrcamento), new { os });
+                }
+
                 // verificando qual tipo de ensaio é para poder editar na tabela para bloquar coleta.
                 if (ensaio == "Espuma")
                 {

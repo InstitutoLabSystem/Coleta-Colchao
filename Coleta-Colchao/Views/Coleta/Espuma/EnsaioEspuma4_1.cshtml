@@ -45,7 +45,7 @@
                     </tr>
                     <tr>
                         <td colspan="4">Ensaios de Colchão de Espuma (Portaria Inmetro 35)</td>
-                        <td rowspan="2"> @ViewBag.os </td>
+                        <td rowspan="3"> @ViewBag.os </td>
                     </tr>
                     <tr>
                         <td>Inicio:</td>
@@ -53,12 +53,18 @@
                         <td>Termino:</td>
                         <td><input class="form-control" type="date" name="data_term" /></td>
                     </tr>
+                    <tr>
+                        <td>Executor do ensaio:</td>
+                        <td><input class="form-control" asp-for="executor" /></td>
+                        <td>Responsável pela conferência:</td>
+                        <td>
+                            <select class="form-control" asp-for="editarUsuario" asp-items="(List<SelectListItem>)@ViewBag.listaResponsaveis">
+                            </select>
+                        </td>
+                    </tr>
                 </thead>
             </table>
-
-
-            <br />
-
+            <br>
             <table class="tables table-bordered border-secondary  table-sm">
                 <tr class="fundo-tabela">
                     <td>Item</td>
@@ -1772,13 +1778,22 @@
                     </tr>
                     <tr>
                         <td colspan="4">Ensaios de Colchão de Espuma (Portaria Inmetro 35)</td>
-                        <td rowspan="2"> @ViewBag.os </td>
+                        <td rowspan="3"> @ViewBag.os </td>
                     </tr>
                     <tr>
                         <td>Inicio:</td>
                         <td><input class="form-control" type="text" name="data_ini" value="@Model.data_ini" /></td>
                         <td>Termino:</td>
                         <td><input class="form-control" type="text" name="data_term" value="@Model.data_term" /></td>
+                    </tr>
+                    <tr>
+                        <td>Executor do ensaio:</td>
+                        <td><input class="form-control" asp-for="executor" /></td>
+                        <td>Responsável pela conferência:</td>
+                        <td>
+                            <select class="form-control" asp-for="editarUsuario" asp-items="(List<SelectListItem>)@ViewBag.listaResponsaveis">
+                            </select>
+                        </td>
                     </tr>
                 </thead>
             </table>

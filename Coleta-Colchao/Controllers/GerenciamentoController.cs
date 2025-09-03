@@ -33,7 +33,7 @@ namespace Coleta_Colchao.Controllers
                              Id = molas.Id,
                              os = molas.os,
                              orcamento = molas.orcamento,
-                             andamento = molas.andamento,
+                             andamento = molas.andamento
                          }).ToList();
 
             return View(dados);
@@ -49,7 +49,7 @@ namespace Coleta_Colchao.Controllers
                              Id = espuma.Id,
                              os = espuma.os,
                              orcamento = espuma.orcamento,
-                             andamento = espuma.andamento,
+                             andamento = espuma.andamento
                          }).ToList();
 
             return View(dados);
@@ -63,7 +63,7 @@ namespace Coleta_Colchao.Controllers
                              Id = espuma.Id,
                              os = espuma.os,
                              orcamento = espuma.orcamento,
-                             andamento = espuma.andamento,
+                             andamento = espuma.andamento
                          }).ToList();
 
             return View(dados);

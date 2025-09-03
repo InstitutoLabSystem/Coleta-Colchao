@@ -11,7 +11,11 @@ namespace Coleta_Colchao.Models
 {
     public class ColetaModel
     {
-
+        public class ResponsaveisPelaConferencia
+        {
+            public const string Encarregado = "Weslley Esmeraldo Nunes";
+            public const string Chefe = "Flávio Gonçalves Machado";
+        }
         public class Registro
         {
             [Key]
@@ -1008,6 +1012,7 @@ namespace Coleta_Colchao.Models
             public string? prejudique { get; set; }
             public string? conforme_pontoA { get; set; }
             public string? executor { get; set; }
+            public string? auxiliar { get; set; } // Usado para armazenar o nome do responsavel pela conferencia.
             //função para clonar resultados quando for gerado revisao.
             public CargasEstatica Clone()
             {
@@ -1732,7 +1737,11 @@ namespace Coleta_Colchao.Models
             public float temp_final { get; set; }
             public float temp_umidade_inicio { get; set; }
             public float temp_umidade_final { get; set; }
+            [Required(ErrorMessage = "O campo 'Executor do ensaio' é obrigatório.")]
+            [Display(Name = "Executor do ensaio")]
             public string? executor { get; set; }
+            [Required]
+            [RegularExpression($"^({ResponsaveisPelaConferencia.Encarregado}|{ResponsaveisPelaConferencia.Chefe})$", ErrorMessage = "O tipo de responsável é inválido.")]
             public string? editorUsuario { get; set; }
             // Método de clonagem
             public Condicionamento Clone()

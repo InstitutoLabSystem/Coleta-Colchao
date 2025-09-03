@@ -3,6 +3,7 @@ using Coleta_Colchao.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.CodeAnalysis;
 using Microsoft.CodeAnalysis.CSharp.Syntax;
 using Microsoft.CodeAnalysis.Elfie.Serialization;
@@ -56,7 +57,9 @@ namespace Coleta_Colchao.Controllers
         public string Usuario()
         {
             var user = User.FindFirstValue(ClaimTypes.Name);
-            return user;
+            var nomeCompleto = _bancoContext.usuario.Where(x => x.Nome_Usuario == user).FirstOrDefault();
+
+            return nomeCompleto.nomecompleto;
         }
 
 
@@ -114,6 +117,36 @@ namespace Coleta_Colchao.Controllers
                 return View();
             }
         }
+        private List<SelectListItem> buscarResponsaveisPelaConferencia (string responsavel)
+        {
+            string valorSalvo = responsavel;
+
+            // Criamos a lista de opções
+            var listaParaDropdown = new List<SelectListItem>
+            {
+                new SelectListItem
+                {
+                    Value = ResponsaveisPelaConferencia.Encarregado,
+                    Text = ResponsaveisPelaConferencia.Encarregado,
+                    // Definimos 'Selected' se o valor for igual ao salvo no banco
+                    Selected = ResponsaveisPelaConferencia.Encarregado == valorSalvo
+                },
+                new SelectListItem
+                {
+                    Value = ResponsaveisPelaConferencia.Chefe,
+                    Text = ResponsaveisPelaConferencia.Chefe,
+                    Selected = ResponsaveisPelaConferencia.Chefe == valorSalvo
+                }
+            };
+
+            // Não adicione o "Selecione..." se um valor já estiver selecionado, para evitar confusão.
+            if (string.IsNullOrEmpty(valorSalvo))
+            {
+                listaParaDropdown.Insert(0, new SelectListItem { Value = "", Text = "Selecione um responsável..." });
+            }
+
+            return listaParaDropdown;
+        }
 
         public IActionResult Condicionamento(string os, string orcamento, int rev)
         {
@@ -121,12 +154,32 @@ namespace Coleta_Colchao.Controllers
                         .Where(x => x.os == os && x.orcamento == orcamento && x.rev == rev)
                         .FirstOrDefault();
 
+            var registroMolas = _context.regtro_colchao.Where(x => x.os == os && x.orcamento == orcamento).FirstOrDefault();
+            var registroLaminas = _context.regtro_colchao_lamina.Where(x => x.os == os && x.orcamento == orcamento).FirstOrDefault();
+            var registroEspuma = _context.regtro_colchao_espuma.Where(x => x.os == os && x.orcamento == orcamento).FirstOrDefault();
+
+            ViewBag.listaResponsaveis = buscarResponsaveisPelaConferencia(dados?.editorUsuario);
+
             if (dados != null)
             {
                 ViewBag.os = os;
                 ViewBag.orcamento = orcamento;
                 ViewBag.rev = rev;
 
+                if(registroMolas != null && registroMolas.Bloqueada == "Sim")
+                {
+                    ViewBag.Bloqueada = registroMolas.Bloqueada;
+                }
+
+                if (registroLaminas != null && registroLaminas.Bloqueada == "Sim")
+                {
+                    ViewBag.Bloqueada = registroLaminas.Bloqueada;
+                }
+
+                if (registroEspuma != null && registroEspuma.Bloqueada == "Sim")
+                {
+                    ViewBag.Bloqueada = registroEspuma.Bloqueada;
+                }
                 return View(dados);
             }
             else
@@ -142,6 +195,8 @@ namespace Coleta_Colchao.Controllers
         public IActionResult EnsaioEspuma4_1(string os, string orcamento, int rev)
         {
             var dados = _context.ensaio_espuma4_1.Where(x => x.os == os && x.orcamento == orcamento && x.rev == rev).FirstOrDefault();
+
+            ViewBag.listaResponsaveis = buscarResponsaveisPelaConferencia(dados?.editarUsuario);
             var RegistroEspuma = _context.regtro_colchao_espuma.Where(x => x.os == os && x.orcamento == orcamento && x.rev == rev).FirstOrDefault();
             //verificando largura,altura e comprimento do index.
             ViewBag.comprimento = RegistroEspuma.comprimento;
@@ -175,6 +230,9 @@ namespace Coleta_Colchao.Controllers
         {
             var inicial = _context.regtro_colchao_espuma.Where(x => x.os == os && x.orcamento == orcamento && x.rev == rev).FirstOrDefault();
             var dados = _context.ensaio_espuma_item_4_4.Where(x => x.os == os && x.orcamento == orcamento && x.rev == rev).FirstOrDefault();
+
+            ViewBag.listaResponsaveis = buscarResponsaveisPelaConferencia(dados?.editarUsuario);
+
             if (dados == null)
             {
                 ViewBag.os = os;
@@ -198,6 +256,8 @@ namespace Coleta_Colchao.Controllers
         {
             var Inicial = _context.regtro_colchao_espuma.Where(x => x.os == os && x.orcamento == orcamento && x.rev == rev).FirstOrDefault();
             var dados = _context.ensaio_espuma4_3.Where(x => x.os == os && x.orcamento == orcamento && x.rev == rev).FirstOrDefault();
+
+            ViewBag.listaResponsaveis = buscarResponsaveisPelaConferencia(dados?.editarUsuario);
 
             if (dados != null)
             {
@@ -233,6 +293,8 @@ namespace Coleta_Colchao.Controllers
             }
 
             var dados = _context.espuma_identificacao_embalagem.Where(x => x.os == os && x.orcamento == orcamento && x.rev == rev).FirstOrDefault();
+
+            ViewBag.listaResponsaveis = buscarResponsaveisPelaConferencia(dados?.editarUsuario);
             if (dados != null)
             {
                 ViewBag.os = os;
@@ -260,6 +322,8 @@ namespace Coleta_Colchao.Controllers
         public IActionResult EnsaioBaseCargaEstatica(string os, string orcamento, int rev)
         {
             var dados = _context.ensaio_base_carga_estatica.Where(x => x.os == os && x.orcamento == orcamento && x.rev == rev).FirstOrDefault();
+
+            ViewBag.listaResponsaveis = buscarResponsaveisPelaConferencia(dados?.auxiliar);
             if (dados == null)
             {
                 ViewBag.os = os;
@@ -280,6 +344,8 @@ namespace Coleta_Colchao.Controllers
         {
 
             var dados = _context.ensaio_base_durabilidade_estrutural.Where(x => x.os == os && x.orcamento == orcamento && x.rev == rev).FirstOrDefault();
+
+            ViewBag.listaResponsaveis = buscarResponsaveisPelaConferencia(dados?.editarUsuario);
             if (dados != null)
             {
                 ViewBag.os = os;
@@ -300,6 +366,9 @@ namespace Coleta_Colchao.Controllers
         {
             var inicio = _context.regtro_colchao.Where(x => x.os == os && x.orcamento == orcamento && x.rev == rev).FirstOrDefault();
             var dados = _context.ensaio_base_durabilidade.Where(x => x.os == os && x.orcamento == orcamento && x.rev == rev).FirstOrDefault();
+
+            ViewBag.listaResponsaveis = buscarResponsaveisPelaConferencia(dados?.editarUsuario);
+
             var trazerEnsaio7_2 = _context.ensaio_molas_item7_2.Where(x => x.os == os && x.orcamento == orcamento && x.rev == rev).FirstOrDefault();
 
             if (trazerEnsaio7_2 == null)
@@ -341,6 +410,8 @@ namespace Coleta_Colchao.Controllers
         {
             var inicial = _context.regtro_colchao_espuma.Where(x => x.os == os && x.orcamento == orcamento && x.rev == rev).FirstOrDefault();
             var dados = _context.ensaio_base_durabilidade.Where(x => x.os == os && x.orcamento == orcamento && x.rev == rev).FirstOrDefault();
+
+            ViewBag.listaResponsaveis = buscarResponsaveisPelaConferencia(dados?.editarUsuario);
             var buscarInformacao = _context.ensaio_espuma4_1.Where(x => x.os == os && x.orcamento == orcamento && x.rev == rev).FirstOrDefault();
 
             if (dados != null)
@@ -368,6 +439,8 @@ namespace Coleta_Colchao.Controllers
         {
 
             var dados = _context.ensaio_base_impacto_vertical.Where(x => x.os == os && x.orcamento == orcamento && x.rev == rev).FirstOrDefault();
+
+            ViewBag.listaResponsaveis = buscarResponsaveisPelaConferencia(dados?.editarUsuario);
             var inicial = _context.regtro_colchao.Where(x => x.os == os && x.orcamento == orcamento && x.rev == rev).FirstOrDefault();
 
             //buscar valor preenchido no ensaio.
@@ -394,6 +467,8 @@ namespace Coleta_Colchao.Controllers
         {
             var inicial = _context.regtro_colchao_espuma.Where(x => x.os == os && x.orcamento == orcamento && x.rev == rev).FirstOrDefault();
             var dados = _context.ensaio_base_impacto_vertical.Where(x => x.os == os && x.orcamento == orcamento && x.rev == rev).FirstOrDefault();
+
+            ViewBag.listaResponsaveis = buscarResponsaveisPelaConferencia(dados?.editarUsuario);
             var buscarInformacao = _context.ensaio_espuma4_1.Where(x => x.os == os && x.orcamento == orcamento && x.rev == rev).FirstOrDefault();
 
             if (dados == null)
@@ -430,6 +505,9 @@ namespace Coleta_Colchao.Controllers
 
 
             var dados = _context.ensaio_molas_item7_1.Where(x => x.os == os && x.orcamento == orcamento && x.rev == rev).FirstOrDefault();
+
+            ViewBag.listaResponsaveis = buscarResponsaveisPelaConferencia(dados?.auxiliar);
+
             if (dados == null)
             {
                 ViewBag.os = os;
@@ -462,6 +540,9 @@ namespace Coleta_Colchao.Controllers
             }
 
             var dados = _context.ensaio_molas_item7_2.Where(x => x.os == os && x.orcamento == orcamento && x.rev == rev).FirstOrDefault();
+
+            ViewBag.listaResponsaveis = buscarResponsaveisPelaConferencia(dados?.auxiliar);
+
             if (dados == null)
             {
                 ViewBag.os = os;
@@ -484,6 +565,9 @@ namespace Coleta_Colchao.Controllers
             var inicial = _context.regtro_colchao.Where(x => x.os == os && x.orcamento == orcamento && x.rev == rev).FirstOrDefault();
             var trazerAltura = _context.ensaio_molas_item7_2.Where(x => x.os == os && x.orcamento == orcamento && x.rev == rev).FirstOrDefault();
             var dados = _context.ensaio_molas_item7_6.Where(x => x.os == os && x.orcamento == orcamento && x.rev == rev).FirstOrDefault();
+
+            ViewBag.listaResponsaveis = buscarResponsaveisPelaConferencia(dados?.auxiliar);
+
             if (dados == null)
             {
                 ViewBag.os = os;
@@ -515,6 +599,9 @@ namespace Coleta_Colchao.Controllers
             }
 
             var dados = _context.ensaio_molas_item7_3.Where(x => x.os == os && x.orcamento == orcamento && x.rev == rev).FirstOrDefault();
+
+            ViewBag.listaResponsaveis = buscarResponsaveisPelaConferencia(dados?.auxiliar);
+
             if (dados == null)
             {
                 ViewBag.os = os;
@@ -534,6 +621,9 @@ namespace Coleta_Colchao.Controllers
         public IActionResult EnsaioMolas7_7(string os, string orcamento, int rev)
         {
             var dados = _context.ensaio_molas_item7_7.Where(x => x.os == os && x.orcamento == orcamento && x.rev == rev).FirstOrDefault();
+
+            ViewBag.listaResponsaveis = buscarResponsaveisPelaConferencia(dados?.auxiliar);
+
             if (dados == null)
             {
                 //pegando o valor que o usuario  colocou no ensaio, para manipular da tela do usuario.
@@ -563,6 +653,9 @@ namespace Coleta_Colchao.Controllers
         {
             var inicial = _context.regtro_colchao.Where(x => x.os == os && x.orcamento == orcamento && x.rev == rev).FirstOrDefault();
             var dados = _context.ensaio_molas_item7_5.Where(x => x.os == os && x.orcamento == orcamento && x.rev == rev).FirstOrDefault();
+
+            ViewBag.listaResponsaveis = buscarResponsaveisPelaConferencia(dados?.auxiliar);
+
             if (dados == null)
             {
                 ViewBag.os = os;
@@ -583,6 +676,9 @@ namespace Coleta_Colchao.Controllers
         {
             var inicial = _context.regtro_colchao.Where(x => x.os == os && x.orcamento == orcamento && x.rev == rev).FirstOrDefault();
             var dados = _context.ensaio_molas_item7_8.Where(x => x.os == os && x.orcamento == orcamento && x.rev == rev).FirstOrDefault();
+
+            ViewBag.listaResponsaveis = buscarResponsaveisPelaConferencia(dados?.auxiliar);
+
             if (dados == null)
             {
                 ViewBag.os = os;
@@ -602,6 +698,9 @@ namespace Coleta_Colchao.Controllers
         public IActionResult EnsaioMolas4_3(string os, string orcamento, int rev)
         {
             var dados = _context.ensaio_molas_item4_3.Where(x => x.os == os && x.orcamento == orcamento && x.rev == rev).FirstOrDefault();
+
+            ViewBag.listaResponsaveis = buscarResponsaveisPelaConferencia(dados?.usuarioEdicao);
+
             var ExisteBorda = _context.regtro_colchao.Where(x => x.os == os && x.orcamento == orcamento && x.rev == rev).FirstOrDefault();
             if (dados == null)
             {
@@ -630,6 +729,8 @@ namespace Coleta_Colchao.Controllers
         public IActionResult IdentificacaoEmbalagemMolas(string os, string orcamento, int rev)
         {
             var dados = _context.ensaio_identificacao_embalagem.Where(x => x.os == os && x.orcamento == orcamento && x.rev == rev).FirstOrDefault();
+
+            ViewBag.listaResponsaveis = buscarResponsaveisPelaConferencia(dados?.editarUsuario);
 
             //trazendo os dados para manipular no ensaio realizado.
             var trazerDadosSalvos = _context.regtro_colchao.Where(x => x.os == os && x.orcamento == orcamento && x.rev == rev).FirstOrDefault();
@@ -667,6 +768,9 @@ namespace Coleta_Colchao.Controllers
         {
             var inicial = _context.regtro_colchao_lamina.Where(x => x.os == os && x.orcamento == orcamento && x.rev == rev).FirstOrDefault();
             var dados = _context.lamina_determinacao_densidade.Where(x => x.os == os && x.orcamento == orcamento && x.rev == rev).FirstOrDefault();
+
+            ViewBag.listaResponsaveis = buscarResponsaveisPelaConferencia(dados?.editorUsuario);
+
             if (dados == null)
             {
                 ViewBag.os = os;
@@ -690,6 +794,8 @@ namespace Coleta_Colchao.Controllers
             var inicial = _context.regtro_colchao_lamina.Where(x => x.os == os && x.orcamento == orcamento && x.rev == rev).FirstOrDefault();
             var dados = _context.lamina_resiliencia.Where(x => x.os == os && x.orcamento == orcamento && x.rev == rev).FirstOrDefault();
             var Regstro_lamina = _context.regtro_colchao_lamina.Where(x => x.os == os && x.orcamento == orcamento && x.rev == rev).FirstOrDefault();
+
+            ViewBag.listaResponsaveis = buscarResponsaveisPelaConferencia(dados?.editorUsuario);
 
             if (dados == null)
             {
@@ -717,6 +823,8 @@ namespace Coleta_Colchao.Controllers
 
             // Verifica se essa OS foi salva na tabela do ensaio de Densidade
             var DadosDensidade = _context.lamina_determinacao_densidade.Where(x => x.os == os && x.orcamento == orcamento && x.rev == rev).FirstOrDefault();
+
+            ViewBag.listaResponsaveis = buscarResponsaveisPelaConferencia(DadosDensidade?.editorUsuario);
 
             // Crio uma variavel para verificar se essa OS possui ensaio de Densidade 
             var existeEnsaioDensidade = "";
@@ -863,6 +971,8 @@ namespace Coleta_Colchao.Controllers
             var inicial = _context.regtro_colchao_lamina.Where(x => x.os == os && x.orcamento == orcamento && x.rev == rev).FirstOrDefault();
             var dados = _context.lamina_fadiga_dinamica.Where(x => x.os == os && x.orcamento == orcamento && x.rev == rev).FirstOrDefault();
 
+            ViewBag.listaResponsaveis = buscarResponsaveisPelaConferencia(dados?.editarUsuario);
+
             //buscar resultados para inserir na tabela do ensaio atraves da view bag.
             var buscarFI = _context.lamina_fi.Where(x => x.os == os && x.orcamento == orcamento && x.rev == rev).FirstOrDefault();
 
@@ -942,6 +1052,9 @@ namespace Coleta_Colchao.Controllers
             var inicial = _context.regtro_colchao_lamina.Where(x => x.os == os && x.orcamento == orcamento).FirstOrDefault();
             var buscarFi = _context.lamina_fi.Where(x => x.os == os && x.orcamento == orcamento).FirstOrDefault();
             var buscarFadiga = _context.lamina_fadiga_dinamica.Where(x => x.os == os && x.orcamento == orcamento).FirstOrDefault();
+
+            ViewBag.listaResponsaveis = buscarResponsaveisPelaConferencia(buscarFi?.editorUsuario);
+
             if (buscarFi == null)
             {
                 TempData["Mensagem"] = "ATENÇÃO!! REALIZE O ENSAIO DE F.I PRIMEIRO PARA REALIZAR O ENSAIO DE FADIGA, ESTAMOS TE REDIRICIONANDO PARA A PAGINA.";
@@ -1010,6 +1123,9 @@ namespace Coleta_Colchao.Controllers
         {
             var inicial = _context.regtro_colchao_lamina.Where(x => x.os == os && x.orcamento == orcamento && x.rev == rev).FirstOrDefault();
             var dados = _context.lamina_fi.Where(x => x.os == os && x.orcamento == orcamento && x.rev == rev).FirstOrDefault();
+
+            ViewBag.listaResponsaveis = buscarResponsaveisPelaConferencia(dados?.editorUsuario);
+
             if (dados == null)
             {
                 ViewBag.os = os;
@@ -1056,9 +1172,14 @@ namespace Coleta_Colchao.Controllers
                         .Where(x => x.os == os && x.orcamento == orcamento && x.rev == rev)
                         .FirstOrDefault();
 
+            if(returnDados.executor == null || returnDados.executor == "")
+            {
+                TempData["Mensagem"] = "É necessário preencher o nome do executor do ensaio";
+                return RedirectToAction("Condicionamento", new { os, orcamento, rev });
+            }
+
             if (dados == null)
             {
-                returnDados.executor = Usuario();
                 //salvando os dados
                 _context.condicionamento.Add(returnDados);
                 await _context.SaveChangesAsync();
@@ -1068,7 +1189,6 @@ namespace Coleta_Colchao.Controllers
             }
             else
             {
-
                 //editando os valores.
                 dados.data_ini = returnDados.data_ini;
                 dados.data_term = returnDados.data_term;
@@ -1080,8 +1200,8 @@ namespace Coleta_Colchao.Controllers
                 dados.temp_final = returnDados.temp_final;
                 dados.temp_umidade_inicio = returnDados.temp_umidade_inicio;
                 dados.temp_umidade_final = returnDados.temp_umidade_final;
-                dados.executor = Usuario();
-                dados.editorUsuario = Usuario();
+                dados.executor = returnDados.executor;
+                dados.editorUsuario = returnDados.editorUsuario;
 
                 _context.condicionamento.Update(dados);
                 await _context.SaveChangesAsync();
@@ -1090,8 +1210,6 @@ namespace Coleta_Colchao.Controllers
                 return RedirectToAction("Condicionamento", new { os, orcamento, rev });
             }
         }
-
-
 
         [HttpPost]
         public async Task<IActionResult> SalvarRegistroMolas(string os, string orcamento, [Bind("lacre,realizacao_ensaios,quant_recebida,quant_ensaiada,data_realizacao_ini,data_realizacao_term,num_proc,cod_ref,tipo_cert,modelo_cert,tipo_proc,produto,estrutura,tipo_molejo,tipo_molejo2,quant_molejo,fornecedor_um,fornecedor_dois,nome_molejo_um,nome_molejo_dois,quant_media_um,quant_media_dois,bitola_arame_um,bitola_arame_dois,borda_peri,metalasse,qtd_face,comprimento,largura,altura,isolante,latex,napa_cou_plas,manual,marca_modelo,densidade,densidade_2,densidade_3,densidade_4,densidade_5,tipo_espuma,tipo_espuma_2,tipo_espuma_3,tipo_espuma_4,tipo_espuma_5,quant_laminas")] ColetaModel.Registro registro)
@@ -1453,7 +1571,6 @@ namespace Coleta_Colchao.Controllers
                     editarValores.napa_cou_plas = EditarRegistros.napa_cou_plas;
                     editarValores.manual = EditarRegistros.manual;
 
-
                     _context.Update(editarValores);
                     await _context.SaveChangesAsync();
                     TempData["Mensagem"] = "Dados Editado Com Sucesso";
@@ -1478,6 +1595,12 @@ namespace Coleta_Colchao.Controllers
         {
             try
             {
+                if (salvarDados.executor == "" || salvarDados.executor == null)
+                {
+                    TempData["Mensagem"] = "É necessário preencher o campo executor do ensaio antes de salvar.";
+                    return RedirectToAction(nameof(EnsaioMolas4_3), "coleta", new { os, orcamento, rev });  
+                }
+
                 var dados = _context.ensaio_molas_item4_3.Where(x => x.os == os && x.orcamento == orcamento && x.rev == rev).FirstOrDefault();
 
                 if (dados == null)
@@ -1535,7 +1658,8 @@ namespace Coleta_Colchao.Controllers
                         largura_encontrada = largura_encontrada,
                         pergunta_c = pergunta_c,
                         pergunta_d = pergunta_d,
-                        executor = Usuario()
+                        executor = salvarDados.executor,
+                        usuarioEdicao = salvarDados.usuarioEdicao
                     };
 
                     _context.Add(registro);
@@ -1564,8 +1688,8 @@ namespace Coleta_Colchao.Controllers
                     dados.largura_encontrada = salvarDados.largura_encontrada;
                     dados.pergunta_c = salvarDados.pergunta_c;
                     dados.pergunta_d = salvarDados.pergunta_d;
-                    dados.executor = Usuario();
-                    dados.usuarioEdicao = Usuario();
+                    dados.executor = salvarDados.executor;
+                    dados.usuarioEdicao = salvarDados.usuarioEdicao;
                     int contem_molejo;
 
                     if (dados.borda_aco_molejo == "X" || dados.borda_espuma_molejo == "X")
@@ -1596,6 +1720,12 @@ namespace Coleta_Colchao.Controllers
         {
             try
             {
+                if (salvarDados.executor == "" || salvarDados.executor == null)
+                {
+                    TempData["Mensagem"] = "É necessário preencher o campo de executor do ensaio antes de tentar salvar.";
+                    return RedirectToAction(nameof(EnsaioMolas7_5), "Coleta", new { os, orcamento, rev });
+                }
+
                 var editarDados = _context.ensaio_molas_item7_5.Where(x => x.os == os && x.orcamento == orcamento && x.rev == rev).FirstOrDefault();
                 //verificando se foi realizado o ensaio 7.2
                 var ensaio7_2 = _context.ensaio_molas_item7_2.Where(x => x.os == os && x.orcamento == orcamento && x.rev == rev).FirstOrDefault();
@@ -1710,7 +1840,8 @@ namespace Coleta_Colchao.Controllers
                         acom_esp_face_2 = acom_esp_face_2,
                         acom_enc_face_2 = acomodacao_encontrada_2,
                         conforme = conforme,
-                        executor = Usuario()
+                        executor = salvarDados.executor,
+                        auxiliar = salvarDados.auxiliar
                     };
 
                     _context.Add(registro);
@@ -1807,7 +1938,8 @@ namespace Coleta_Colchao.Controllers
 
                     editarDados.acom_enc_face_1 = acomodacao_encontrada_1;
                     editarDados.acom_enc_face_2 = acomodacao_encontrada_2;
-                    editarDados.executor = Usuario();
+                    editarDados.executor = salvarDados.executor;
+                    editarDados.auxiliar = salvarDados.auxiliar;
                     //editarDados.auxiliar = Usuario(); /*variavel auxiliar sendo usada como editor*/
 
                     _context.Update(editarDados);
@@ -1829,6 +1961,12 @@ namespace Coleta_Colchao.Controllers
         {
             try
             {
+                if (salvarDados.executor == "" || salvarDados.executor == null)
+                {
+                    TempData["Mensagem"] = "É necessário preencher o campo de executor do ensaio antes de tentar salvar.";
+                    return RedirectToAction(nameof(EnsaioMolas7_1), "Coleta", new { os, orcamento, rev });
+                }
+
                 var editarDados = _context.ensaio_molas_item7_1.Where(x => x.os == os && x.orcamento == orcamento && x.rev == rev).FirstOrDefault();
 
                 if (editarDados == null)
@@ -1846,7 +1984,8 @@ namespace Coleta_Colchao.Controllers
                         data_ini = data_ini,
                         data_term = data_term,
                         acordo = acordo,
-                        executor = Usuario()
+                        executor = salvarDados.executor,
+                        auxiliar = salvarDados.auxiliar
                         //auxiliar = Usu,
                     };
                     _context.Add(registro);
@@ -1860,7 +1999,7 @@ namespace Coleta_Colchao.Controllers
                     editarDados.data_term = salvarDados.data_term;
                     editarDados.acordo = salvarDados.acordo;
                     editarDados.executor = salvarDados.executor;
-                    editarDados.auxiliar = Usuario(); /*variavel auxiliar sendo usada como editor*/
+                    editarDados.auxiliar = salvarDados.auxiliar; /*variavel auxiliar sendo usada como editor*/
 
                     await _context.SaveChangesAsync();
                     TempData["Mensagem"] = "Dados Editado Com Sucesso";
@@ -1880,6 +2019,13 @@ namespace Coleta_Colchao.Controllers
             try
             {
                 var editarDados = _context.ensaio_molas_item7_2.Where(x => x.os == os && x.orcamento == orcamento).FirstOrDefault();
+
+                if (salvarDados.executor == null || salvarDados.executor == "")
+                {
+                    TempData["Mensagem"] = "É necessário preencher o campo de executor do ensaio antes de tentar salvar.";
+                    return RedirectToAction(nameof(EnsaioMolas7_2), "Coleta", new { os, orcamento, rev });
+                }
+
                 if (editarDados == null)
                 {
                     //recebendo os valores e armazenando nas variaveis.
@@ -2178,7 +2324,8 @@ namespace Coleta_Colchao.Controllers
                         densidade2 = densidade2,
                         declaracao_espuma1 = declaracao_espuma1,
                         declaracao_espuma2 = declaracao_espuma2,
-                        executor = Usuario()
+                        executor = salvarDados.executor,
+                        auxiliar = salvarDados.auxiliar
                     };
 
                     _context.Add(registro);
@@ -2435,8 +2582,8 @@ namespace Coleta_Colchao.Controllers
                     editarDados.alt_media = media_altura;
                     editarDados.com_media = media_comprimeto;
                     editarDados.larg_media = media_largura;
-                    editarDados.executor = Usuario();
-                    editarDados.auxiliar = Usuario(); /*variavel auxiliar sendo usada como editor*/
+                    editarDados.executor = salvarDados.executor;
+                    editarDados.auxiliar = salvarDados.auxiliar; /*variavel auxiliar sendo usada como editor*/
 
                     _context.Update(editarDados);
                     await _context.SaveChangesAsync();
@@ -2464,6 +2611,13 @@ namespace Coleta_Colchao.Controllers
             {
 
                 var editarDados = _context.ensaio_espuma4_1.Where(x => x.os == os && x.orcamento == orcamento && x.rev == rev).FirstOrDefault();
+
+                if (salvar.executor == "" || salvar.executor == null)
+                {
+                    TempData["Mensagem"] = "É necessário preencher o campo de executor do ensaio antes de tentar salvar.";
+                    return RedirectToAction(nameof(EnsaioMolas7_2), "Coleta", new { os, orcamento, rev });
+                }
+
 
                 if (editarDados == null)
                 {
@@ -2929,7 +3083,8 @@ namespace Coleta_Colchao.Controllers
                         min_soma_total = min_soma_total,
                         max_soma_total = max_soma_total,
                         conforme_total = salvar.conforme_total,
-                        executor = Usuario()
+                        executor = salvar.executor,
+                        editarUsuario = salvar.editarUsuario
                     };
 
                     _context.Add(salvarEspuma);
@@ -3285,8 +3440,8 @@ namespace Coleta_Colchao.Controllers
                     editarDados.reves_cm_dois = (editarDados.reves_mm_dois / 10);
 
                     //editando usuario da coleta.
-                    editarDados.executor = Usuario();
-                    editarDados.editarUsuario = Usuario();
+                    editarDados.executor = salvar.executor;
+                    editarDados.editarUsuario = salvar.editarUsuario;
 
                     editarDados.reves_cm_dois = float.Parse((editarDados.reves_mm_dois / 10).ToString("N2"));
 
@@ -3311,6 +3466,12 @@ namespace Coleta_Colchao.Controllers
             try
             {
                 var editarDados = _context.ensaio_molas_item7_8.Where(x => x.os == os && x.orcamento == orcamento).FirstOrDefault();
+
+                if (salvarDados.executor == null || salvarDados.executor == "")
+                {
+                    TempData["MensagemErro"] = "É necessário preencher o campo executor do ensaio antes de tentar salvar.";
+                    return RedirectToAction(nameof(EnsaioMolas7_8), "Coleta", new { os, orcamento });
+                }   
 
                 if (editarDados == null)
                 {
@@ -3391,7 +3552,8 @@ namespace Coleta_Colchao.Controllers
                         rompimentos = rompimentos,
                         conforme_gramas = conforme_gramas,
                         conforme = conforme,
-                        executor = Usuario()
+                        executor = salvarDados.executor,
+                        auxiliar = salvarDados.auxiliar
                     };
 
                     _context.Add(registro);
@@ -3455,7 +3617,7 @@ namespace Coleta_Colchao.Controllers
                     editarDados.copos_media = media_copos;
                     editarDados.gramatura = gramatura;
                     editarDados.executor = salvarDados.executor;
-                    editarDados.auxiliar = Usuario(); /*variavel auxiliar sendo usada como editor*/
+                    editarDados.auxiliar = salvarDados.auxiliar;
 
                     _context.Update(editarDados);
                     await _context.SaveChangesAsync();
@@ -3476,6 +3638,13 @@ namespace Coleta_Colchao.Controllers
             try
             {
                 var editarDados = _context.ensaio_molas_item7_6.Where(x => x.os == os && x.orcamento == orcamento && x.rev == rev).FirstOrDefault();
+
+                if (salvarDados.executor == "" || salvarDados.executor == null)
+                {
+                    TempData["Mensagem"] = "É necessário preencher o campo do executor do ensaio antes de salvar.";
+                    return RedirectToAction(nameof(EnsaioMolas7_6), "Coleta", new { os, orcamento, rev });
+                }
+
                 if (editarDados == null)
                 {
                     //recebendo valores do html.
@@ -3532,7 +3701,8 @@ namespace Coleta_Colchao.Controllers
                         temp_ens_rolagem = temp_ens_rolagem,
                         perda_porc = perda_porcentual,
                         conforme = conforme,
-                        executor = Usuario()
+                        executor = salvarDados.executor,
+                        auxiliar = salvarDados.auxiliar
                     };
 
                     _context.Add(registro);
@@ -3578,8 +3748,8 @@ namespace Coleta_Colchao.Controllers
                     editarDados.media_rep = media_3;
                     editarDados.media_det = media_det;
                     editarDados.perda_porc = perda_porcentual;
-                    editarDados.executor = Usuario();
-                    editarDados.auxiliar = Usuario();
+                    editarDados.executor = salvarDados.executor;
+                    editarDados.auxiliar = salvarDados.auxiliar;
 
                     _context.Update(editarDados);
                     await _context.SaveChangesAsync();
@@ -3600,6 +3770,13 @@ namespace Coleta_Colchao.Controllers
             try
             {
                 var editarDados = _context.ensaio_molas_item7_7.Where(x => x.os == os && x.orcamento == orcamento).FirstOrDefault();
+
+                if (salvarDados.executador == "" || salvarDados.executador == null)
+                {
+                    TempData["Mensagem"] = "É necessário preencher o campo de executor do ensaio antes de salvar.";
+                    return RedirectToAction(nameof(EnsaioMolas7_7), "Coleta", new { os, orcamento, rev });
+                }
+
                 if (editarDados == null)
                 {
                     //recebendo os valores de html.
@@ -3693,7 +3870,8 @@ namespace Coleta_Colchao.Controllers
                         calc_molas_duplicado_3 = calc_molas_duplicado_3,
                         resultado_calc_duplicado = resultado_calculo_duplicado,
                         conforme = conforme,
-                        executador = Usuario()
+                        executador = salvarDados.executador,
+                        auxiliar = salvarDados.auxiliar /*variavel auxiliar sendo usada como editor*/
                     };
 
                     _context.Add(registro);
@@ -3733,7 +3911,6 @@ namespace Coleta_Colchao.Controllers
                     editarDados.calc_molas_duplicado_2 = salvarDados.calc_molas_duplicado_2;
                     editarDados.calc_molas_duplicado_3 = salvarDados.calc_molas_duplicado_3;
 
-
                     //calculando resultado necassario.
                     editarDados.resultado_calc = (editarDados.calc_molas_1 / (editarDados.calc_molas_2 * editarDados.calc_molas_3) * 10000);
                     string conv_resultado_calc = editarDados.resultado_calc.ToString("N2");
@@ -3755,7 +3932,9 @@ namespace Coleta_Colchao.Controllers
                         editarDados.conforme = "C";
                     }
 
-                    editarDados.executador = Usuario();
+                    editarDados.executador = salvarDados.executador;
+                    editarDados.auxiliar = salvarDados.auxiliar; /*variavel auxiliar sendo usada como editor*/
+
                     _context.Update(editarDados);
                     await _context.SaveChangesAsync();
                     TempData["Mensagem"] = "Dados Editado Com Sucesso";
@@ -3775,6 +3954,13 @@ namespace Coleta_Colchao.Controllers
             try
             {
                 var editarDados = _context.ensaio_molas_item7_3.Where(x => x.os == os && x.orcamento == orcamento && x.rev == rev).FirstOrDefault();
+
+                if (salvarDados.executador == "" || salvarDados.executador == null)
+                {
+                    TempData["Mensagem"] = "É necessário preencher o campo de executor do ensaio antes de salvar.";
+                    return RedirectToAction(nameof(EnsaioMolas7_3), "Coleta", new { os, orcamento, rev });
+                }
+
                 if (editarDados == null)
                 {
                     //recebendo os valores recebidos do html..
@@ -3822,7 +4008,8 @@ namespace Coleta_Colchao.Controllers
                         im = im,
                         responsavel_cond = responsavel_cond,
                         face_escolhida = face_escolhida,
-                        executador = Usuario()
+                        executador = salvarDados.executador,
+                        auxiliar = salvarDados.auxiliar /*variavel auxiliar sendo usada como editor*/
                     };
 
                     _context.Add(registro);
@@ -3852,7 +4039,8 @@ namespace Coleta_Colchao.Controllers
                     editarDados.im = salvarDados.im;
                     editarDados.responsavel_cond = salvarDados.responsavel_cond;
                     editarDados.face_escolhida = salvarDados.face_escolhida;
-                    editarDados.executador = Usuario();
+                    editarDados.executador = salvarDados.executador;
+                    editarDados.auxiliar = salvarDados.auxiliar; /*variavel auxiliar sendo usada como editor*/
 
                     _context.Update(editarDados);
                     await _context.SaveChangesAsync();
@@ -3875,6 +4063,13 @@ namespace Coleta_Colchao.Controllers
             try
             {
                 var editarDados = _context.ensaio_espuma4_3.Where(x => x.os == os && x.orcamento == orcamento && x.rev == rev).FirstOrDefault();
+
+                if (salvar.executor == "" || salvar.executor == null)
+                {
+                    TempData["Mensagem"] = "É necessário preencher o campo executor do ensaio antes de salvar.";
+                    return RedirectToAction(nameof(EnsaioEspuma4_3), "Coleta", new { os, orcamento, rev });
+                }
+
                 if (editarDados == null)
                 {
                     //recebendo os valores recebidos do html..
@@ -4173,7 +4368,8 @@ namespace Coleta_Colchao.Controllers
                     }
 
                     //quem editou a coleta.
-                    editarDados.executor = Usuario();
+                    editarDados.executor = salvar.executor;
+                    editarDados.editarUsuario = salvar.editarUsuario;
 
                     _context.Update(editarDados);
                     await _context.SaveChangesAsync();
@@ -4194,6 +4390,13 @@ namespace Coleta_Colchao.Controllers
             try
             {
                 var editarDados = _context.ensaio_identificacao_embalagem.Where(x => x.os == os && x.orcamento == orcamento && x.rev == rev).FirstOrDefault();
+
+                if (salvarDados.executador == "" || salvarDados.executador == null)
+                {
+                    TempData["Mensagem"] = "É necessário preencher o campo executor do ensaio antes de salvar.";
+                    return RedirectToAction(nameof(IdentificacaoEmbalagemMolas), "Coleta", new { os, orcamento, rev });
+                }
+
                 if (editarDados == null)
                 {
                     // realizando calculo necessario.
@@ -4377,7 +4580,6 @@ namespace Coleta_Colchao.Controllers
                     //}
                     //termino das verificações de conformidade.
 
-                    salvarDados.executador = Usuario();
                     //salvando no banco
                     _context.Add(salvarDados);
                     await _context.SaveChangesAsync();
@@ -4583,7 +4785,8 @@ namespace Coleta_Colchao.Controllers
                     //termino das verificações de conformidade.
 
                     //quem editou a coleta.
-                    editarDados.executador = Usuario();
+                    editarDados.executador = salvarDados.executador;
+                    editarDados.editarUsuario = salvarDados.executador;
 
                     _context.Update(editarDados);
                     await _context.SaveChangesAsync();
@@ -4604,6 +4807,13 @@ namespace Coleta_Colchao.Controllers
             try
             {
                 var editarDados = _context.espuma_identificacao_embalagem.Where(x => x.os == os && x.orcamento == orcamento && x.rev == rev).FirstOrDefault();
+
+                if (salvar.executor == "" || salvar.executor == null)
+                {
+                    TempData["Mensagem"] = "É necessário preencher o campo executor antes de salvar.";
+                    return RedirectToAction(nameof(IdentificacaoEmbalagem), "Coleta", new { os, orcamento, rev });
+                }
+
                 if (editarDados == null)
                 {
                     if (salvar.area_um == null && salvar.area_dois == null)
@@ -4933,10 +5143,10 @@ namespace Coleta_Colchao.Controllers
                     editarDados.executador_quat = salvar.executador_quat;
                     editarDados.conforme_3_2_1 = salvar.conforme_3_2_1;
 
-
                     editarDados.conforme_area_um = salvar.conforme_area_um;
                     editarDados.area_result = ((double.Parse(salvar.area_um) * double.Parse(salvar.area_dois)).ToString());
-                    editarDados.executor = Usuario();
+                    editarDados.executor = salvar.executor;
+                    editarDados.editarUsuario = salvar.editarUsuario;
 
                     _context.Update(editarDados);
                     await _context.SaveChangesAsync();
@@ -4957,6 +5167,13 @@ namespace Coleta_Colchao.Controllers
             try
             {
                 var editarRegistro = _context.ensaio_base_durabilidade.Where(x => x.os == os && x.orcamento == orcamento && x.rev == rev).FirstOrDefault();
+
+                if (dados.executor == "" || dados.executor == null)
+                {
+                    TempData["Mensagem"] = "É necessário preencher o campo do executor do ensaio antes de salvar.";
+                    return RedirectToAction("EnsaioDurabilidade", new { os, orcamento, rev });  
+                }
+
                 if (editarRegistro == null)
                 {
                     //realizando se esta conforme ou nao conforme
@@ -5000,7 +5217,6 @@ namespace Coleta_Colchao.Controllers
                     {
                         dados.conforme_c = "NC";
                     }
-                    dados.executor = Usuario();
                     _context.Add(dados);
                     await _context.SaveChangesAsync();
                     TempData["Mensagem"] = "Dados salvo com sucesso.";
@@ -5077,7 +5293,9 @@ namespace Coleta_Colchao.Controllers
                         editarRegistro.conforme_c = "NC";
                     }
 
-                    editarRegistro.executor = Usuario();
+                    editarRegistro.executor = dados.executor;
+                    editarRegistro.editarUsuario = dados.editarUsuario;
+
                     _context.Update(editarRegistro);
                     await _context.SaveChangesAsync();
                     TempData["Mensagem"] = "Dados Editado com sucesso.";
@@ -5097,6 +5315,13 @@ namespace Coleta_Colchao.Controllers
             try
             {
                 var editarRegistro = _context.ensaio_base_durabilidade.Where(x => x.os == os && x.orcamento == orcamento && x.rev == rev).FirstOrDefault();
+
+                if (dados.executor == "" || dados.executor == null)
+                {
+                    TempData["Mensagem"] = "É necessário preencher o campo do executor do ensaio antes de tentar salvar.";
+                    return RedirectToAction("EnsaioDurabilidadeEspuma", new { os, orcamento, rev });
+                }
+
                 if (editarRegistro == null)
                 {
                     //realizando se esta conforme ou nao conforme
@@ -5218,7 +5443,9 @@ namespace Coleta_Colchao.Controllers
                     }
 
                     //salvando quem editou a coleta.
-                    editarRegistro.executor = Usuario();
+                    editarRegistro.executor = dados.executor;
+                    editarRegistro.editarUsuario = dados.editarUsuario;
+
                     _context.Update(editarRegistro);
                     await _context.SaveChangesAsync();
                     TempData["Mensagem"] = "Dados Editado com sucesso.";
@@ -5238,6 +5465,13 @@ namespace Coleta_Colchao.Controllers
             try
             {
                 var editarRegistro = _context.ensaio_base_impacto_vertical.Where(x => x.os == os && x.orcamento == orcamento).FirstOrDefault();
+
+                if (salvarDados.executor == "" || salvarDados.executor == null)
+                {
+                    TempData["Mensagem"] = "É necessário preencher o campo do executor do ensaio antes de tentar salvar.";
+                    return RedirectToAction("EnsaioImpacto", new { os, orcamento });
+                }
+
                 if (editarRegistro == null)
                 {
                     //realizando conforme e nao conforme
@@ -5360,7 +5594,9 @@ namespace Coleta_Colchao.Controllers
                         editarRegistro.confome_ponto_b = "NC";
                     }
                     //fim dos resultados de conforme ou nao conforme..
-                    editarRegistro.executor = Usuario();
+                    editarRegistro.executor = salvarDados.executor;
+                    editarRegistro.editarUsuario = salvarDados.editarUsuario;
+
                     _context.Update(editarRegistro);
                     await _context.SaveChangesAsync();
                     TempData["Mensagem"] = "Dados Editado com sucesso.";
@@ -5380,6 +5616,13 @@ namespace Coleta_Colchao.Controllers
             try
             {
                 var editarRegistro = _context.ensaio_base_impacto_vertical.Where(x => x.os == os && x.orcamento == orcamento && x.rev == rev).FirstOrDefault();
+
+                if (salvarDados.executor == "" || salvarDados.executor == null)
+                {
+                    TempData["Mensagem"] = "É necessário preencher o campo do executor do ensaio antes de salvar.";
+                    return RedirectToAction("EnsaioImpactoEspuma", new { os, orcamento, rev });
+                }
+
                 if (editarRegistro == null)
                 {
                     //realizando conforme e nao conforme
@@ -5420,9 +5663,7 @@ namespace Coleta_Colchao.Controllers
                     }
 
                     //fim dos resultados de conforme ou nao conforme..
-
-                    //salvar quem fez a coleta.
-                    salvarDados.executor = Usuario();
+                    
                     _context.Add(salvarDados);
                     await _context.SaveChangesAsync();
                     TempData["Mensagem"] = "Dados Salvo com sucesso.";
@@ -5505,7 +5746,9 @@ namespace Coleta_Colchao.Controllers
                     //fim dos resultados de conforme ou nao conforme..
 
                     //salvar quem editou a coleta.
-                    editarRegistro.executor = Usuario();
+                    editarRegistro.executor = salvarDados.executor;
+                    editarRegistro.editarUsuario = salvarDados.editarUsuario;
+
                     _context.Update(editarRegistro);
                     await _context.SaveChangesAsync();
                     TempData["Mensagem"] = "Dados Editado com sucesso.";
@@ -5525,6 +5768,13 @@ namespace Coleta_Colchao.Controllers
             try
             {
                 var editarRegistro = _context.ensaio_base_durabilidade_estrutural.Where(x => x.os == os && x.orcamento == orcamento && x.rev == rev).FirstOrDefault();
+
+                if (salvarDados.executor == "" || salvarDados.executor == null)
+                {
+                    TempData["Mensagem"] = "É necessário preencher o nome do executor do ensaio antes de salvar.";
+                    return RedirectToAction("EnsaioBaseEstruturaDurabi", new { os, orcamento, rev });
+                }
+
                 if (editarRegistro == null)
                 {
                     //recebendo os valores do html.
@@ -5587,8 +5837,9 @@ namespace Coleta_Colchao.Controllers
                         editarRegistro.conforme = "NC";
                     }
 
-                    //salvando quem editou a coleta
-                    editarRegistro.executor = Usuario();
+                    editarRegistro.executor = salvarDados.executor;
+                    editarRegistro.editarUsuario = salvarDados.editarUsuario;
+
                     _context.Update(editarRegistro);
                     await _context.SaveChangesAsync();
                     TempData["Mensagem"] = "Dados Editado com sucesso.";
@@ -5609,6 +5860,13 @@ namespace Coleta_Colchao.Controllers
             try
             {
                 var editarDados = _context.ensaio_espuma_item_4_4.Where(x => x.os == os && x.orcamento == orcamento && x.rev == rev).FirstOrDefault();
+
+                if (salvarDados.executor == "" || salvarDados.executor == null)
+                {
+                    TempData["Mensagem"] = "É necessário preencher o nome do executor do ensaio antes de salvar.";
+                    return RedirectToAction(nameof(Espuma4_4), "Coleta", new { os, orcamento, rev });
+                }
+
                 if (editarDados == null)
                 {
                     if (salvarDados.superior_horizontal == "Não" && salvarDados.inferior_horizontal == "Não")
@@ -5620,8 +5878,6 @@ namespace Coleta_Colchao.Controllers
                         salvarDados.conforme = "NC";
                     }
 
-                    //salvando quem fez a coleta.
-                    salvarDados.executor = Usuario();
                     _context.ensaio_espuma_item_4_4.Add(salvarDados);
                     await _context.SaveChangesAsync();
                     TempData["Mensagem"] = "Dados Salvo com sucesso.";
@@ -5643,8 +5899,9 @@ namespace Coleta_Colchao.Controllers
                         editarDados.conforme = "NC";
                     }
 
-                    //salvando quem editou a coleta.
-                    editarDados.executor = Usuario();
+                    editarDados.executor = salvarDados.executor;
+                    editarDados.editarUsuario = salvarDados.editarUsuario;
+
                     _context.Update(editarDados);
                     await _context.SaveChangesAsync();
                     TempData["Mensagem"] = "Dados Editado com sucesso.";
@@ -5665,6 +5922,13 @@ namespace Coleta_Colchao.Controllers
             try
             {
                 var editarRegistro = _context.ensaio_base_carga_estatica.Where(x => x.os == os && x.orcamento == orcamento && x.rev == rev).FirstOrDefault();
+
+                if (salvarDados.executor == "" || salvarDados.executor == null)
+                {
+                    TempData["Mensagem"] = "É necessário preencher o nome do executor do ensaio antes de salvar.";
+                    return RedirectToAction("EnsaioBaseCargaEstatica", new { os, orcamento, rev });
+                }
+
                 if (editarRegistro == null)
                 {
                     salvarDados.executor = Usuario();
@@ -5693,7 +5957,8 @@ namespace Coleta_Colchao.Controllers
                     editarRegistro.quebra = salvarDados.quebra;
                     editarRegistro.prejudique = salvarDados.prejudique;
                     editarRegistro.conforme_pontoA = salvarDados.conforme_pontoA;
-                    editarRegistro.executor = Usuario();
+                    editarRegistro.executor = salvarDados.executor;
+                    editarRegistro.auxiliar = salvarDados.auxiliar;
 
                     _context.ensaio_base_carga_estatica.Update(editarRegistro);
                     await _context.SaveChangesAsync();
@@ -5715,6 +5980,13 @@ namespace Coleta_Colchao.Controllers
             {
                 // Verifica se a OS esta salva no banco.
                 var editarDados = _context.lamina_determinacao_densidade.Where(x => x.os == os && x.orcamento == orcamento && x.rev == rev).FirstOrDefault();
+
+                if (salvarDados.executador == "" || salvarDados.executador == null)
+                {
+                    TempData["Mensagem"] = "É necessário preencher o nome do executor do ensaio.";
+                    return RedirectToAction("LaminaDeterminacaoDensidade", new { os, orcamento, rev });
+                }
+
                 if (editarDados == null)
                 {
                     // Salvando a média das espessuras
@@ -5775,8 +6047,6 @@ namespace Coleta_Colchao.Controllers
                     {
                         salvarDados.conforme = "NC";
                     }
-
-                    salvarDados.executador = Usuario();
 
                     _context.lamina_determinacao_densidade.Add(salvarDados);
                     await _context.SaveChangesAsync();
@@ -5919,8 +6189,8 @@ namespace Coleta_Colchao.Controllers
                         editarDados.conforme = "NC";
                     }
                     editarDados.tem_maior_igual = salvarDados.tem_maior_igual;
-                    editarDados.executador = Usuario();
-                    editarDados.editorUsuario = Usuario();
+                    editarDados.executador = salvarDados.executador;
+                    editarDados.editorUsuario = salvarDados.editorUsuario;
 
                     _context.lamina_determinacao_densidade.Update(editarDados);
                     await _context.SaveChangesAsync();
@@ -5942,6 +6212,12 @@ namespace Coleta_Colchao.Controllers
             try
             {
                 var editarDados = _context.lamina_resiliencia.Where(x => x.os == os && x.orcamento == orcamento && x.rev == rev).FirstOrDefault();
+
+                if (salvarDados.executor == "" || salvarDados.executor == null)
+                {
+                    TempData["Mensagem"] = "É necessário preencher o nome do executor do ensaio.";
+                    return RedirectToAction("LaminaResiliencia", new { os, orcamento, rev });
+                }
 
                 if (editarDados == null)
                 {
@@ -6115,8 +6391,6 @@ namespace Coleta_Colchao.Controllers
                         salvarDados.conforme = "C";
                     }
 
-                    salvarDados.executor = Usuario();
-
                     _context.lamina_resiliencia.Add(salvarDados);
                     await _context.SaveChangesAsync();
                     TempData["Mensagem"] = "Dados gravado com sucesso.";
@@ -6137,7 +6411,6 @@ namespace Coleta_Colchao.Controllers
                     editarDados.umidade_min = salvarDados.umidade_min;
                     editarDados.umidade_max = salvarDados.umidade_max;
                     editarDados.responsavel_cond = salvarDados.responsavel_cond;
-                    editarDados.executor = salvarDados.executor;
                     editarDados.densidade = salvarDados.densidade;
                     editarDados.tipo_espuma = salvarDados.tipo_espuma;
                     editarDados.resil_amostra_um_dois = salvarDados.resil_amostra_um_dois;
@@ -6324,8 +6597,8 @@ namespace Coleta_Colchao.Controllers
                     }
 
                     //pegando usuario que deletou a coleta.
-                    editarDados.executor = Usuario();
-                    editarDados.editorUsuario = Usuario();
+                    editarDados.executor = salvarDados.executor;
+                    editarDados.editorUsuario = salvarDados.editorUsuario;
 
                     _context.lamina_resiliencia.Update(editarDados);
                     await _context.SaveChangesAsync();
@@ -6346,6 +6619,13 @@ namespace Coleta_Colchao.Controllers
             try
             {
                 var editarDados = _context.lamina_dpc.Where(x => x.os == os && x.orcamento == orcamento && x.rev == rev).FirstOrDefault();
+
+                if(salvarDados.executor == "" || salvarDados.executor == null)
+                {
+                    TempData["Mensagem"] = "É necessário preencher o campo do executor antes de salvar o ensaio.";
+                    return RedirectToAction("LaminaDPC", new { os, orcamento, rev });
+                }
+
                 if (editarDados == null)
                 {
                     //realizando os calculos de media de largura, compri, e espessura inicial.              
@@ -6560,9 +6840,6 @@ namespace Coleta_Colchao.Controllers
                     {
                         salvarDados.conforme = "C";
                     }
-
-                    //salvando quem fez a coleta.
-                    salvarDados.executor = Usuario();
 
                     _context.lamina_dpc.Add(salvarDados);
                     await _context.SaveChangesAsync();
@@ -6870,8 +7147,8 @@ namespace Coleta_Colchao.Controllers
                     }
 
                     //salvando quem editou a coleta.
-                    editarDados.executor = Usuario();
-                    editarDados.editorUsuario = Usuario();
+                    editarDados.executor = salvarDados.executor;
+                    editarDados.editorUsuario = salvarDados.editorUsuario;
                     _context.lamina_dpc.Update(editarDados);
                     await _context.SaveChangesAsync();
                     TempData["Mensagem"] = "Dados Editado com sucesso.";
@@ -6892,6 +7169,13 @@ namespace Coleta_Colchao.Controllers
             try
             {
                 var editarDados = _context.lamina_fi.Where(x => x.os == os && x.orcamento == orcamento && x.rev == rev).FirstOrDefault();
+
+                if (salvarDados.executor == "" || salvarDados.executor == null)
+                {
+                    TempData["MensagemErro"] = "É necessário preencher o campo do executor do ensaio antes de salvar.";
+                    return RedirectToAction("LaminaF_I", "Coleta", new { os, orcamento, rev });
+                }
+
                 if (editarDados == null)
                 {
                     //realizando os calculos de media de largura, comp, e espessura...
@@ -7266,9 +7550,6 @@ namespace Coleta_Colchao.Controllers
                     {
                         salvarDados.conforme_conforto = "C";
                     }
-
-                    //salvar quem fez a coleta.
-                    salvarDados.executor = Usuario();
 
                     _context.lamina_fi.Add(salvarDados);
                     await _context.SaveChangesAsync();
@@ -7748,7 +8029,8 @@ namespace Coleta_Colchao.Controllers
                     }
 
                     //salvar quem editou a coleta.
-                    editarDados.executor = Usuario();
+                    editarDados.executor = salvarDados.executor;
+                    editarDados.editorUsuario = salvarDados.editorUsuario;
 
                     _context.lamina_fi.Update(editarDados);
                     await _context.SaveChangesAsync();
@@ -7769,6 +8051,13 @@ namespace Coleta_Colchao.Controllers
             try
             {
                 var editarDados = _context.lamina_fadiga_dinamica.Where(x => x.os == os && x.orcamento == orcamento && x.rev == rev).FirstOrDefault();
+
+                if (salvarDados.executor == "" || salvarDados.executor == null)
+                {
+                    TempData["Mensagem"] = "É necessário preencher o campo executor do ensaio antes de salvar.";
+                    return RedirectToAction("LaminaFadiga", "Coleta", new { os, orcamento, rev });
+                }
+
                 if (editarDados == null)
                 {
                     salvarDados.esp_ini_media_um = float.Parse(((salvarDados.esp_ini_amostra_um_um + salvarDados.esp_ini_amostra_um_dois + salvarDados.esp_ini_amostra_um_tres + salvarDados.esp_ini_amostra_um_quatro + salvarDados.esp_ini_amostra_um_cinco + salvarDados.esp_ini_amostra_um_seis + salvarDados.esp_ini_amostra_um_sete + salvarDados.esp_ini_amostra_um_oito) / 8).ToString("N2"));
@@ -7895,9 +8184,6 @@ namespace Coleta_Colchao.Controllers
                             salvarDados.conforme = "C";
                         }
                     }
-
-                    //salvando quem fez a coleta
-                    salvarDados.executor = Usuario();
 
                     _context.lamina_fadiga_dinamica.Add(salvarDados);
                     await _context.SaveChangesAsync();
@@ -8111,7 +8397,8 @@ namespace Coleta_Colchao.Controllers
                     }
 
                     //salvando quem editou a coleta
-                    editarDados.executor = Usuario();
+                    editarDados.executor = salvarDados.executor;
+                    editarDados.editarUsuario = salvarDados.editarUsuario;
 
                     _context.lamina_fadiga_dinamica.Update(editarDados);
                     await _context.SaveChangesAsync();
@@ -8132,6 +8419,13 @@ namespace Coleta_Colchao.Controllers
             try
             {
                 var editarDados = _context.lamina_pfi.Where(x => x.os == os && x.orcamento == orcamento && x.rev == rev).FirstOrDefault();
+
+                if (salvarDados.executor == "" || salvarDados.executor == null)
+                {
+                    TempData["Mensagem"] = "É necessário preencher o campo executor do ensaio antes de salvar.";
+                    return RedirectToAction("LaminaPFI", "Coleta", new { os, orcamento, rev });
+                }
+
                 if (editarDados == null)
                 {
                     //realizando media de largura, comprimento, e espessura.
@@ -8306,8 +8600,6 @@ namespace Coleta_Colchao.Controllers
                     {
                         salvarDados.conforme = "C";
                     }
-                    //quem fez a coleta.
-                    salvarDados.executor = Usuario();
 
                     _context.lamina_pfi.Add(salvarDados);
                     await _context.SaveChangesAsync();
@@ -8579,8 +8871,8 @@ namespace Coleta_Colchao.Controllers
                         editarDados.conforme = "C";
                     }
 
-                    //quem editou a coleta.
-                    editarDados.executor = Usuario();
+                    editarDados.executor = salvarDados.executor;
+                    editarDados.editarUsuario = salvarDados.editarUsuario;
 
                     _context.lamina_pfi.Update(editarDados);
                     await _context.SaveChangesAsync();
