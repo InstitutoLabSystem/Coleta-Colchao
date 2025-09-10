@@ -1052,72 +1052,150 @@ namespace Coleta_Colchao.Controllers
             var inicial = _context.regtro_colchao_lamina.Where(x => x.os == os && x.orcamento == orcamento).FirstOrDefault();
             var buscarFi = _context.lamina_fi.Where(x => x.os == os && x.orcamento == orcamento).FirstOrDefault();
             var buscarFadiga = _context.lamina_fadiga_dinamica.Where(x => x.os == os && x.orcamento == orcamento).FirstOrDefault();
+            var dadosEnsaio = _context.lamina_pfi.Where(x => x.os == os && x.orcamento == orcamento).FirstOrDefault();
 
             ViewBag.listaResponsaveis = buscarResponsaveisPelaConferencia(buscarFi?.editorUsuario);
 
-            if (buscarFi == null)
+            var existeEnsaioDeFIouFadiga = "";
+
+            // Busco os dados da OS novamente no banco
+            var dados = (from p in _bancoContext.programacao_lab_ensaios
+                         join c in _bancoContext.ordemservicocotacaoitem_hc_copylab
+                         on new { Orcamento = p.Orcamento, Item = p.Item } equals new { Orcamento = c.orcamento, Item = c.Item.ToString() }
+                         join hc in _bancoContext.Wmoddetprod
+                         on c.CodigoEnsaio equals hc.codmaster
+                         where p.OS == os
+                         orderby hc.descricao
+                         select new HomeModel.Resposta
+                         {
+                             orcamento = p.Orcamento,
+                             OS = p.OS,
+                             codmaster = hc.codmaster,
+                             codigo = hc.codigo,
+                             descricao = hc.descricao,
+                             ProdEnsaiado = c.ProdEnsaiado,
+
+                         }).ToList();
+
+            // Realizo uma verificação para saber se possui ensaio de Densidade
+            for (int i = 0; i < dados.Count; i++)
             {
-                TempData["Mensagem"] = "ATENÇÃO!! REALIZE O ENSAIO DE F.I PRIMEIRO PARA REALIZAR O ENSAIO DE FADIGA, ESTAMOS TE REDIRICIONANDO PARA A PAGINA.";
-                return RedirectToAction(nameof(LaminaF_I), "Coleta", new { os, orcamento });
+                // Verifica se a descrição é igual a "5.1 I DETERMINAÇÃO DA DENSIDADE"
+                if (dados[i].codigo == "IDTCCH001000001" ||
+                    dados[i].codigo == "FDGCCH002000001")
+                {
+                    existeEnsaioDeFIouFadiga = "Existe";
+                    break;  // Sai do loop assim que encontrar a descrição correspondente
+                }
             }
 
-            if (buscarFadiga == null)
+            if (existeEnsaioDeFIouFadiga == "Existe")
             {
-                TempData["Mensagem"] = "ATENÇÃO!! REALIZE O ENSAIO DE FADIGA PRIMEIRO PARA REALIZAR O ENSAIO DE FADIGA, ESTAMOS TE REDIRICIONANDO PARA A PAGINA.";
-                return RedirectToAction(nameof(LaminaFadiga), "Coleta", new { os, orcamento });
-            }
+                if (buscarFi == null)
+                {
+                    TempData["Mensagem"] = "ATENÇÃO!! REALIZE O ENSAIO DE F.I PRIMEIRO PARA REALIZAR O ENSAIO DE P.F.I, ESTAMOS TE REDIRICIONANDO PARA A PAGINA.";
+                    return RedirectToAction(nameof(LaminaF_I), "Coleta", new { os, orcamento });
+                }
 
-            var dados = _context.lamina_pfi.Where(x => x.os == os && x.orcamento == orcamento).FirstOrDefault();
-            if (dados == null)
-            {
-                //recebendo os valores para mostrar na tela quando for nullo, 
+                if (buscarFadiga == null)
+                {
+                    TempData["Mensagem"] = "ATENÇÃO!! REALIZE O ENSAIO DE FADIGA PRIMEIRO PARA REALIZAR O ENSAIO DE P.F.I, ESTAMOS TE REDIRICIONANDO PARA A PAGINA.";
+                    return RedirectToAction(nameof(LaminaFadiga), "Coleta", new { os, orcamento });
+                }
 
-                //espessura final para jogar na tabela.
-                ViewBag.esp_final_amostra_um_um = buscarFadiga.esp_final_amostra_um_um;
-                ViewBag.esp_final_amostra_um_dois = buscarFadiga.esp_final_amostra_um_dois;
-                ViewBag.esp_final_amostra_um_tres = buscarFadiga.esp_final_amostra_um_tres;
-                ViewBag.esp_final_amostra_um_quatro = buscarFadiga.esp_final_amostra_um_quatro;
-                ViewBag.esp_final_amostra_um_cinco = buscarFadiga.esp_final_amostra_um_cinco;
-                ViewBag.esp_final_amostra_um_seis = buscarFadiga.esp_final_amostra_um_seis;
-                ViewBag.esp_final_amostra_um_sete = buscarFadiga.esp_final_amostra_um_sete;
-                ViewBag.esp_final_amostra_um_oito = buscarFadiga.esp_final_amostra_um_oito;
+                if (dadosEnsaio == null)
+                {
+                    //espessura final para jogar na tabela.
+                    ViewBag.esp_final_amostra_um_um = buscarFadiga.esp_final_amostra_um_um;
+                    ViewBag.esp_final_amostra_um_dois = buscarFadiga.esp_final_amostra_um_dois;
+                    ViewBag.esp_final_amostra_um_tres = buscarFadiga.esp_final_amostra_um_tres;
+                    ViewBag.esp_final_amostra_um_quatro = buscarFadiga.esp_final_amostra_um_quatro;
+                    ViewBag.esp_final_amostra_um_cinco = buscarFadiga.esp_final_amostra_um_cinco;
+                    ViewBag.esp_final_amostra_um_seis = buscarFadiga.esp_final_amostra_um_seis;
+                    ViewBag.esp_final_amostra_um_sete = buscarFadiga.esp_final_amostra_um_sete;
+                    ViewBag.esp_final_amostra_um_oito = buscarFadiga.esp_final_amostra_um_oito;
 
-                ViewBag.esp_final_amostra_dois_um = buscarFadiga.esp_final_amostra_dois_um;
-                ViewBag.esp_final_amostra_dois_dois = buscarFadiga.esp_final_amostra_dois_dois;
-                ViewBag.esp_final_amostra_dois_tres = buscarFadiga.esp_final_amostra_dois_tres;
-                ViewBag.esp_final_amostra_dois_quatro = buscarFadiga.esp_final_amostra_dois_quatro;
-                ViewBag.esp_final_amostra_dois_cinco = buscarFadiga.esp_final_amostra_dois_cinco;
-                ViewBag.esp_final_amostra_dois_seis = buscarFadiga.esp_final_amostra_dois_seis;
-                ViewBag.esp_final_amostra_dois_sete = buscarFadiga.esp_final_amostra_dois_sete;
-                ViewBag.esp_final_amostra_dois_oito = buscarFadiga.esp_final_amostra_dois_oito;
+                    ViewBag.esp_final_amostra_dois_um = buscarFadiga.esp_final_amostra_dois_um;
+                    ViewBag.esp_final_amostra_dois_dois = buscarFadiga.esp_final_amostra_dois_dois;
+                    ViewBag.esp_final_amostra_dois_tres = buscarFadiga.esp_final_amostra_dois_tres;
+                    ViewBag.esp_final_amostra_dois_quatro = buscarFadiga.esp_final_amostra_dois_quatro;
+                    ViewBag.esp_final_amostra_dois_cinco = buscarFadiga.esp_final_amostra_dois_cinco;
+                    ViewBag.esp_final_amostra_dois_seis = buscarFadiga.esp_final_amostra_dois_seis;
+                    ViewBag.esp_final_amostra_dois_sete = buscarFadiga.esp_final_amostra_dois_sete;
+                    ViewBag.esp_final_amostra_dois_oito = buscarFadiga.esp_final_amostra_dois_oito;
 
-                ViewBag.esp_final_amostra_tres_um = buscarFadiga.esp_final_amostra_tres_um;
-                ViewBag.esp_final_amostra_tres_dois = buscarFadiga.esp_final_amostra_tres_dois;
-                ViewBag.esp_final_amostra_tres_tres = buscarFadiga.esp_final_amostra_tres_tres;
-                ViewBag.esp_final_amostra_tres_quatro = buscarFadiga.esp_final_amostra_tres_quatro;
-                ViewBag.esp_final_amostra_tres_cinco = buscarFadiga.esp_final_amostra_tres_cinco;
-                ViewBag.esp_final_amostra_tres_seis = buscarFadiga.esp_final_amostra_tres_seis;
-                ViewBag.esp_final_amostra_tres_sete = buscarFadiga.esp_final_amostra_tres_sete;
-                ViewBag.esp_final_amostra_tres_oito = buscarFadiga.esp_final_amostra_tres_oito;
+                    ViewBag.esp_final_amostra_tres_um = buscarFadiga.esp_final_amostra_tres_um;
+                    ViewBag.esp_final_amostra_tres_dois = buscarFadiga.esp_final_amostra_tres_dois;
+                    ViewBag.esp_final_amostra_tres_tres = buscarFadiga.esp_final_amostra_tres_tres;
+                    ViewBag.esp_final_amostra_tres_quatro = buscarFadiga.esp_final_amostra_tres_quatro;
+                    ViewBag.esp_final_amostra_tres_cinco = buscarFadiga.esp_final_amostra_tres_cinco;
+                    ViewBag.esp_final_amostra_tres_seis = buscarFadiga.esp_final_amostra_tres_seis;
+                    ViewBag.esp_final_amostra_tres_sete = buscarFadiga.esp_final_amostra_tres_sete;
+                    ViewBag.esp_final_amostra_tres_oito = buscarFadiga.esp_final_amostra_tres_oito;
 
-                ViewBag.media_esp_fin_um = buscarFadiga.media_esp_fin_um;
-                ViewBag.media_esp_fin_dois = buscarFadiga.media_esp_fin_dois;
-                ViewBag.media_esp_fin_tres = buscarFadiga.media_esp_fin_tres;
+                    ViewBag.media_esp_fin_um = buscarFadiga.media_esp_fin_um;
+                    ViewBag.media_esp_fin_dois = buscarFadiga.media_esp_fin_dois;
+                    ViewBag.media_esp_fin_tres = buscarFadiga.media_esp_fin_tres;
 
-
-
-                ViewBag.os = os;
-                ViewBag.orcamento = orcamento;
-                return View("Laminas/LaminaPFI");
+                    ViewBag.os = os;
+                    ViewBag.orcamento = orcamento;
+                    return View("Laminas/LaminaPFI");
+                }
+                else
+                {
+                    ViewBag.os = os;
+                    ViewBag.orcamento = orcamento;
+                    ViewBag.bloqueada = inicial.Bloqueada;
+                    return View("Laminas/LaminaPFI", dados);
+                }
             }
             else
             {
-                ViewBag.os = os;
-                ViewBag.orcamento = orcamento;
-                ViewBag.bloqueada = inicial.Bloqueada;
-                return View("Laminas/LaminaPFI", dados);
-            }
+                if (dadosEnsaio == null)
+                {
+                    ViewBag.esp_final_amostra_um_um = 0;
+                    ViewBag.esp_final_amostra_um_dois = 0;
+                    ViewBag.esp_final_amostra_um_tres = 0;
+                    ViewBag.esp_final_amostra_um_quatro = 0;
+                    ViewBag.esp_final_amostra_um_cinco = 0;
+                    ViewBag.esp_final_amostra_um_seis = 0;
+                    ViewBag.esp_final_amostra_um_sete = 0;
+                    ViewBag.esp_final_amostra_um_oito = 0;
 
+                    ViewBag.esp_final_amostra_dois_um = 0;
+                    ViewBag.esp_final_amostra_dois_dois = 0;
+                    ViewBag.esp_final_amostra_dois_tres = 0;
+                    ViewBag.esp_final_amostra_dois_quatro = 0;
+                    ViewBag.esp_final_amostra_dois_cinco = 0;
+                    ViewBag.esp_final_amostra_dois_seis = 0;
+                    ViewBag.esp_final_amostra_dois_sete = 0;
+                    ViewBag.esp_final_amostra_dois_oito = 0;
+
+                    ViewBag.esp_final_amostra_tres_um = 0;
+                    ViewBag.esp_final_amostra_tres_dois = 0;
+                    ViewBag.esp_final_amostra_tres_tres = 0;
+                    ViewBag.esp_final_amostra_tres_quatro = 0;
+                    ViewBag.esp_final_amostra_tres_cinco = 0;
+                    ViewBag.esp_final_amostra_tres_seis = 0;
+                    ViewBag.esp_final_amostra_tres_sete = 0;
+                    ViewBag.esp_final_amostra_tres_oito = 0;
+
+                    ViewBag.media_esp_fin_um = 0;
+                    ViewBag.media_esp_fin_dois = 0;
+                    ViewBag.media_esp_fin_tres = 0;
+
+                    ViewBag.os = os;
+                    ViewBag.orcamento = orcamento;
+                    return View("Laminas/LaminaPFI");
+                }
+                else
+                {
+                    ViewBag.os = os;
+                    ViewBag.orcamento = orcamento;
+                    ViewBag.bloqueada = inicial.Bloqueada;
+                    return View("Laminas/LaminaPFI", dados);
+                }
+            }
         }
         public IActionResult LaminaF_I(string os, string orcamento, int rev)
         {
