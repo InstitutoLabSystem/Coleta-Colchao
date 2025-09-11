@@ -157,7 +157,6 @@ namespace Coleta_Colchao.Controllers
                         ViewBag.PercorrerRegstro = _context.regtro_colchao.Where(x => x.os == os).OrderByDescending(x => x.Id).ToList();
                         ViewBag.ensaio = "Molas";
                         ViewBag.bloqueada = buscarOs.Bloqueada;
-
                         return View("Index", dados);
                     }
 

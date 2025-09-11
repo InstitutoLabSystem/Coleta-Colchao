@@ -1104,8 +1104,6 @@ namespace Coleta_Colchao.Controllers
                 ViewBag.media_esp_fin_dois = buscarFadiga.media_esp_fin_dois;
                 ViewBag.media_esp_fin_tres = buscarFadiga.media_esp_fin_tres;
 
-
-
                 ViewBag.os = os;
                 ViewBag.orcamento = orcamento;
                 return View("Laminas/LaminaPFI");
