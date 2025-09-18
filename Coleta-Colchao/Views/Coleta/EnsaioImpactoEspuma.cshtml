@@ -399,6 +399,23 @@
                                         </select>
                                     </td>
                                 </tr>
+                                @if (ViewBag.tipoColchao == "Colchão Misto")
+                                {
+                                    <tr>
+                                        <td class="fundo-tabela"> Ponto E </td>
+                                        <td> <input class="form-control" type="text" id="comp_ponto_e_dois" readonly /> </td>
+                                        <td> X </td>
+                                        <td> <input class="form-control" type="text" id="larg_ponto_e_dois" readonly />  </td>
+                                        <td> Suportou o impacto </td>
+                                        <td>
+                                            <select class="form-control" asp-for="impac_dois_e">
+                                                <option value="---">---</option>
+                                                <option value="Sim">Sim</option>
+                                                <option value="Não">Não</option>
+                                            </select>
+                                        </td>
+                                    </tr>
+                                }
                                 <tr>
                                     <td class="fundo-tabela"> Ponto G </td>
                                     <td> <input class="form-control" type="text" id="comp_ponto_g_dois" readonly /> </td>
@@ -877,6 +894,23 @@
                                         </select>
                                     </td>
                                 </tr>
+                                @if (ViewBag.tipoColchao == "Colchão Misto")
+                                {
+                                    <tr>
+                                        <td class="fundo-tabela"> Ponto E </td>
+                                        <td> <input class="form-control" type="text" id="comp_ponto_e_dois" readonly /> </td>
+                                        <td> X </td>
+                                        <td> <input class="form-control" type="text" id="larg_ponto_e_dois" readonly />  </td>
+                                        <td> Suportou o impacto </td>
+                                        <td>
+                                            <select class="form-control" asp-for="impac_dois_e">
+                                                <option value="---">---</option>
+                                                <option value="Sim">Sim</option>
+                                                <option value="Não">Não</option>
+                                            </select>
+                                        </td>
+                                    </tr>
+                                }
                                 <tr>
                                     <td class="fundo-tabela"> Ponto G </td>
                                     <td> <input class="form-control" type="text" id="comp_ponto_g_dois" readonly /> </td>
@@ -1162,6 +1196,9 @@
                 var ponto_d_dois = document.getElementById("comp_ponto_d_dois");
                 ponto_d_dois.value = ponto_b_dois.value;
 
+                var ponto_e_dois = document.getElementById("comp_ponto_e_dois");
+                ponto_e_dois.value = ponto_c_dois.value;
+
                 var ponto_g_dois = document.getElementById("comp_ponto_g_dois");
                 ponto_g_dois.value = ponto_b_dois.value - 150;
 
@@ -1178,12 +1215,14 @@
                 var larg_ponto_b_dois = document.getElementById("larg_ponto_b_dois");
                 larg_ponto_b_dois.value = larg_ponto_a_dois.value;
 
-
                 var larg_ponto_d_dois = document.getElementById("larg_ponto_d_dois");
                 larg_ponto_d_dois.value = larg_ponto_a_dois.value - 150;
 
                 var larg_ponto_c_dois = document.getElementById("larg_ponto_c_dois");
                 larg_ponto_c_dois.value = larg_ponto_d_dois.value;
+
+                var larg_ponto_e_dois = document.getElementById("larg_ponto_e_dois");
+                larg_ponto_e_dois.value = larg_ponto_d_dois.value;
 
                 var larg_ponto_g_dois = document.getElementById("larg_ponto_g_dois");
                 larg_ponto_g_dois.value = larg_ponto_b_dois.value;

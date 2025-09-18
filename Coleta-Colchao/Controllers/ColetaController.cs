@@ -478,7 +478,7 @@ namespace Coleta_Colchao.Controllers
                 ViewBag.rev = rev;
                 ViewBag.comprimento = buscarInformacao.comprimento_esp * 10;
                 ViewBag.largura = buscarInformacao.largura_esp * 10;
-
+                ViewBag.tipoColchao = inicial.tipo_colchao;
                 return View();
             }
             else
@@ -487,6 +487,7 @@ namespace Coleta_Colchao.Controllers
                 ViewBag.orcamento = orcamento;
                 ViewBag.rev = rev;
                 ViewBag.bloqueada = inicial.Bloqueada;
+                ViewBag.tipoColchao = inicial.tipo_colchao;
                 return View(dados);
             }
         }
