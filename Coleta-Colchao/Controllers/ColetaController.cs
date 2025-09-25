@@ -831,23 +831,47 @@ namespace Coleta_Colchao.Controllers
             var existeEnsaioDensidade = "";
 
             // Busco os dados da OS novamente no banco
-            var dados = (from p in _bancoContext.programacao_lab_ensaios
-                         join c in _bancoContext.ordemservicocotacaoitem_hc_copylab
-                         on new { Orcamento = p.Orcamento, Item = p.Item } equals new { Orcamento = c.orcamento, Item = c.Item.ToString() }
-                         join hc in _bancoContext.Wmoddetprod
-                         on c.CodigoEnsaio equals hc.codmaster
-                         where p.OS == os
-                         orderby hc.descricao
-                         select new HomeModel.Resposta
-                         {
-                             orcamento = p.Orcamento,
-                             OS = p.OS,
-                             codmaster = hc.codmaster,
-                             codigo = hc.codigo,
-                             descricao = hc.descricao,
-                             ProdEnsaiado = c.ProdEnsaiado,
+            var dados = (
+                    from o in _bancoContext.ordemservico_copylab
 
-                         }).ToList();
+                        // JOIN 1: INNER com ordemservicocotacaoitem_hc_copylab
+                    join ite in _bancoContext.ordemservicocotacaoitem_hc_copylab
+                        on new { Numero = o.seqorc, Mes = o.mesorc, Ano = o.anoorc, Item = o.item.ToString() } // Item também convertido para segurança
+                        equals new { Numero = ite.Numero.ToString(), Mes = ite.Mes, Ano = ite.Ano.ToString(), Item = ite.Item.ToString() } // Conversão de Numero, Ano e Item
+
+                        // JOIN 2: INNER com ordemservicocotacao_hc_copylab
+                    join orc in _bancoContext.ordemservicocotacao_hc_copylab
+                        on new { Codigo = o.seqorc, Mes = o.mesorc, Ano = o.anoorc }
+                        equals new { Codigo = orc.codigo.ToString(), Mes = orc.mes, Ano = orc.ano }
+
+                        // JOIN 3: LEFT com Wmoddetprod
+                    join w in _bancoContext.Wmoddetprod
+                        on ite.CodigoEnsaio equals w.codmaster into joinW
+                    from w in joinW.DefaultIfEmpty()
+
+                        // JOIN 4: LEFT com ordemservicocotacao_itemsup
+                    join e in _bancoContext.ordemservicocotacao_itemsup
+                        on new { Seq = o.seqorc, Mes = o.mesorc, Ano = o.anoorc, Item = o.item }
+                        equals new { Seq = e.sequencial, Mes = e.mes, Ano = e.ano, Item = e.item } into joinE
+                    from e in joinE.DefaultIfEmpty()
+
+                        // JOIN 5: LEFT com tb_normasitens
+                    join th in _bancoContext.tb_normasitens
+                        on new { Codigo = ite.CodigoEnsaio, descrEnsaio = e.descrEnsaio, valorEnsaio = e.valorEnsaio }
+                        equals new { Codigo = th.codigo.ToString(), descrEnsaio = th.descricao, valorEnsaio = th.preco } into joinTh
+                    from th in _bancoContext.tb_normasitens.DefaultIfEmpty()
+
+                    where (o.codigo + o.mes + o.ano) == os
+
+                    select new HomeModel.Resposta
+                    {
+                        orcamento = o.orcamento,
+                        OS = o.codigo + o.mes + o.ano,
+                        codmaster = orc.Tipo == 1 ? w.codmaster : e.cod_hipercusto,
+                        codigo = orc.Tipo == 1 ? w.codigo : e.cod_hipercusto,
+                        descricao = orc.Tipo == 1 ? w.descricao : e.descrEnsaio,
+                        ProdEnsaiado = ite.ProdEnsaiado
+                    }).Distinct().ToList();
 
             // Realizo uma verificação para saber se possui ensaio de Densidade
             for (int i = 0; i < dados.Count; i++)
