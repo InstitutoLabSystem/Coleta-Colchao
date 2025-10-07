@@ -11,8 +11,9 @@ namespace Coleta_Colchao.Models
             public int pk { get; set; }
             public string Orcamento { get; set; }
             public string OS { get; set; }
+            public string Ensaio { get; set; }
             public string CodigoEnsaio { get; set; }
-            public string Item { get; set; }
+            public string item_ens { get; set; }
         }
 
         public class OrdemServicoCopyLabItem
@@ -103,6 +104,7 @@ namespace Coleta_Colchao.Models
             public string descricao { get; set; }
             public string codmaster { get; set; }
             public string ProdEnsaiado { get; set; } 
+            public string item_ens { get; set; }
         }
     }
 }

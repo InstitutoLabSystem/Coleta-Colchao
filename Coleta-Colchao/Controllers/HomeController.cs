@@ -66,8 +66,7 @@ namespace Coleta_Colchao.Controllers
         {
             try
             {
-                // Supondo que 'os' seja a string com o valor da OS a ser buscada
-                var dados = (
+                var codigoMaster = (
                     from o in _bancoContext.ordemservico_copylab
 
                     // JOIN 1: INNER com ordemservicocotacaoitem_hc_copylab
@@ -78,7 +77,7 @@ namespace Coleta_Colchao.Controllers
                     // JOIN 2: INNER com ordemservicocotacao_hc_copylab
                     join orc in _bancoContext.ordemservicocotacao_hc_copylab
                         on new { Codigo = o.seqorc, Mes = o.mesorc, Ano = o.anoorc }
-                        equals new { Codigo = orc.codigo.ToString(), Mes = orc.mes, Ano = orc.ano } 
+                        equals new { Codigo = orc.codigo.ToString(), Mes = orc.mes, Ano = orc.ano }
 
                     // JOIN 3: LEFT com Wmoddetprod
                     join w in _bancoContext.Wmoddetprod
@@ -93,21 +92,44 @@ namespace Coleta_Colchao.Controllers
 
                     // JOIN 5: LEFT com tb_normasitens
                     join th in _bancoContext.tb_normasitens
-                        on new { Codigo = ite.CodigoEnsaio, descrEnsaio = e.descrEnsaio, valorEnsaio = e.valorEnsaio } 
+                        on new { Codigo = ite.CodigoEnsaio, descrEnsaio = e.descrEnsaio, valorEnsaio = e.valorEnsaio }
                         equals new { Codigo = th.codigo.ToString(), descrEnsaio = th.descricao, valorEnsaio = th.preco } into joinTh
                     from th in _bancoContext.tb_normasitens.DefaultIfEmpty()
 
-                    where (o.codigo + o.mes + o.ano) == os 
+                    where (o.codigo + o.mes + o.ano) == os
 
                     select new HomeModel.Resposta
                     {
-                        orcamento = o.orcamento,
-                        OS = o.codigo + o.mes + o.ano,
                         codmaster = orc.Tipo == 1 ? w.codmaster : e.cod_hipercusto,
                         codigo = orc.Tipo == 1 ? w.codigo : e.cod_hipercusto,
-                        descricao = orc.Tipo == 1 ? w.descricao : e.descrEnsaio,
                         ProdEnsaiado = ite.ProdEnsaiado
                     }).AsNoTracking().Distinct().ToList();
+
+                if (codigoMaster == null)
+                {
+                    TempData["Mensagem"] = "Erro ao tentar encontrar o código do ensaio.";
+                    return RedirectToAction("Index");
+                }
+
+                var listaDeCodigosFilho = _bancoContext.Wmoddetprod.Where(x => x.codmaster == codigoMaster[0].codmaster).Select(x => x.codigo).ToList();
+
+                var dados = (
+                    from p in _bancoContext.programacao_lab_ensaios
+                    where p.OS == os
+                    select new HomeModel.Resposta
+                    {
+                        OS = p.OS,
+                        orcamento = p.Orcamento,
+                        descricao = p.Ensaio,
+                        item_ens = p.item_ens,
+                        codmaster = codigoMaster[0].codmaster,
+                        ProdEnsaiado = codigoMaster[0].ProdEnsaiado
+                    }).AsNoTracking().Distinct().ToList();
+
+                for (int i = 0; i < dados.Count; i++)
+                {
+                    dados[i].codigo = listaDeCodigosFilho[i];
+                }
 
                 var buscarOs = _context.regtro_colchao.Where(x => x.os == os).OrderByDescending(x => x.Id).FirstOrDefault();
                 var buscarEspumaOs = _context.regtro_colchao_espuma.Where(x => x.os == os).OrderByDescending(x => x.Id).FirstOrDefault();
@@ -120,15 +142,15 @@ namespace Coleta_Colchao.Controllers
                         ViewBag.os = os;
                         ViewBag.orcamento = dados.First().orcamento;
 
-                        if (dados.Any(x => x.codigo == "PRLCCH001000001"))
+                        if (listaDeCodigosFilho.Any(x => x == "PRLCCH001000001"))
                         {
                             return RedirectToAction("IndexMolas", "Coleta", new { os, ViewBag.orcamento });
                         }
-                        else if (dados.Any(x => x.codigo == "DIMCCH001000001"))
+                        else if (listaDeCodigosFilho.Any(x => x == "DIMCCH001000001"))
                         {
                             return RedirectToAction("IndexEspuma", "Coleta", new { os, ViewBag.orcamento });
                         }
-                        else if (dados.Any(x => x.codigo == "FTCCCH002000001") || dados.Any(x => x.codigo == "DNSCCH002000001") || dados.Any(x => x.codigo == "IDTCCH001000001") || dados.Any(x => x.codigo == "QUICCH002000001"))
+                        else if (listaDeCodigosFilho.Any(x => x == "FTCCCH002000001") || listaDeCodigosFilho.Any(x => x == "DNSCCH002000001") || listaDeCodigosFilho.Any(x => x == "IDTCCH001000001") || listaDeCodigosFilho.Any(x => x == "QUICCH002000001"))
                         {
                             return RedirectToAction("IndexLamina", "Coleta", new { os, ViewBag.orcamento });
                         }
@@ -149,7 +171,7 @@ namespace Coleta_Colchao.Controllers
                     if (buscarOs != null)
                     {
                         ViewBag.os = os;
-                        ViewBag.orcamento = dados.First().orcamento;
+                        ViewBag.orcamento = dados[0].orcamento;
                         ViewBag.estrutura = buscarOs.estrutura;
                         ViewBag.user = Usuario();
                         ViewBag.setor = buscarSetor(ViewBag.user);
@@ -190,7 +212,7 @@ namespace Coleta_Colchao.Controllers
 
                         ViewBag.ContemOs = (from p in _bancoContext.programacao_lab_ensaios
                                             join c in _bancoContext.ordemservicocotacaoitem_hc_copylab
-                                            on new { Orcamento = p.Orcamento, Item = p.Item } equals new { Orcamento = c.orcamento, Item = c.Item.ToString() }
+                                            on new { Orcamento = p.Orcamento, Item = p.item_ens } equals new { Orcamento = c.orcamento, Item = c.Item.ToString() }
                                             join hc in _bancoContext.Wmoddetprod
                                             on c.CodigoEnsaio equals hc.codmaster
                                             join lb in _bancoContext.ordemservico_laboratorio // erro aqui no join
