@@ -111,6 +111,15 @@ namespace Coleta_Colchao.Controllers
                     return RedirectToAction("Index");
                 }
 
+                int qtdCodigo = 0;
+                for (int i = 0; i < codigoMaster.Count; i++)
+                {
+                    if (codigoMaster[i].codigo != null)
+                    {
+                        qtdCodigo += 1;
+                    }
+                }
+
                 var listaDeCodigosFilho = _bancoContext.Wmoddetprod.Where(x => x.codmaster == codigoMaster[0].codmaster).Select(x => x.codigo).ToList();
 
                 var dados = (
@@ -126,9 +135,17 @@ namespace Coleta_Colchao.Controllers
                         ProdEnsaiado = codigoMaster[0].ProdEnsaiado
                     }).AsNoTracking().Distinct().ToList();
 
+
                 for (int i = 0; i < dados.Count; i++)
                 {
-                    dados[i].codigo = listaDeCodigosFilho[i];
+                    if (listaDeCodigosFilho.Count == 0 && qtdCodigo > 0)
+                    {
+                        dados[i].codigo = codigoMaster[i].codigo;
+                    }
+                    else
+                    {
+                        dados[i].codigo = listaDeCodigosFilho[i];
+                    }
                 }
 
                 var buscarOs = _context.regtro_colchao.Where(x => x.os == os).OrderByDescending(x => x.Id).FirstOrDefault();
@@ -142,9 +159,20 @@ namespace Coleta_Colchao.Controllers
                         ViewBag.os = os;
                         ViewBag.orcamento = dados.First().orcamento;
 
-                        if (listaDeCodigosFilho.Any(x => x == "PRLCCH001000001"))
+                        // CONDIÇÕES PARA REDIRECIONAR PARA MOLAS, ESPUMA OU LAMINAS. 
+                        // Código RLGCCH001000001 tem tanto em Molas quanto em Laminas, por isso é necessário verificar a descrição do ensaio
+                        if (listaDeCodigosFilho.Any(x => x == "PRLCCH001000001") || dados.Any(x => x.codigo == "RLGCCH001000001")) 
                         {
-                            return RedirectToAction("IndexMolas", "Coleta", new { os, ViewBag.orcamento });
+                            if (dados.Any(x => x.descricao == "ENSAIO DE ROLAGEM") || dados.Any(x => x.descricao == "DETERMINAÇÃO DA INDENTAÇÃO") || dados.Any(x => x.descricao == "DETERMINAÇÃO DE INDENTAÇÃO"))
+                            {
+                                return RedirectToAction("IndexMolas", "Coleta", new { os, ViewBag.orcamento });
+                            }
+                            else if (dados.Any(x => x.codigo == "RLGCCH001000001") || dados.Any(x => x.codigo == "FTCCCH002000001") || dados.Any(x => x.codigo == "DNSCCH002000001") || dados.Any(x => x.codigo == "IDTCCH001000001") || dados.Any(x => x.codigo == "QUICCH002000001"))
+                            {
+                                return RedirectToAction("IndexLamina", "Coleta", new { os, ViewBag.orcamento });
+                            }
+                            TempData["Mensagem"] = "Nenhum codigo encontrado.";
+                            return RedirectToAction("Index", "Home");
                         }
                         else if (listaDeCodigosFilho.Any(x => x == "DIMCCH001000001"))
                         {
