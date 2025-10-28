@@ -46,7 +46,6 @@ namespace Coleta_Colchao.Controllers
             return setor;
         }
 
-
         public async Task<IActionResult> LogOutAsync()
         {
             await HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
