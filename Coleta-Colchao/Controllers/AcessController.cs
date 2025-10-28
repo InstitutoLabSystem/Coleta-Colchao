@@ -63,7 +63,7 @@ namespace Coleta_Colchao.Controllers
                     {
                         if (pegarValores.Nome_Usuario == Nome_Usuario && pegarValores.Senha_Usuario.ToUpper() == Senha_Usuario)
                         {
-                            if (pegarValores.setor == "TI" || pegarValores.setor == "Qualidade" || pegarValores.setor == "Colchão" || pegarValores.Nome_Usuario == "WESLLEY NUNES" || pegarValores.setor == "EAP" || pegarValores.setor == "EPI" || pegarValores.setor == "Pneu/Roda" || pegarValores.setor == "Elétrico" || pegarValores.setor == "Panela")
+                            if (pegarValores.setor == "TI" || pegarValores.setor == "Qualidade" || pegarValores.setor == "Colchão" || pegarValores.Nome_Usuario == "WESLLEY NUNES" || pegarValores.setor == "EAP" || pegarValores.setor == "EPI" || pegarValores.setor == "Pneu/Roda" || pegarValores.setor == "Elétrico" || pegarValores.setor == "Panela" || pegarValores.setor == "Especial")
                             {
                                 List<Claim> claims = new List<Claim>()
                                 {
