@@ -101,7 +101,14 @@
                     </td>
                 </tr>
                 <tr>
-                    <td>Altura Queda (Cm): <input class="controlador" type="text" name="alterar_queda" value="@ViewBag.Altura" /></td>
+                    @if (ViewBag.Altura != null)
+                    {
+                        <td>Altura Queda (Cm): <input class="controlador" type="text" name="alterar_queda" value="@ViewBag.Altura" /></td>
+                    }
+                    else
+                    {
+                        <td>Altura Queda (Cm): <input class="controlador" type="text" name="alterar_queda" /></td>
+                    }
                 </tr>
                 <tr>
                     <td>

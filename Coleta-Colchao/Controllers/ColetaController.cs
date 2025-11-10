@@ -574,7 +574,10 @@ namespace Coleta_Colchao.Controllers
                 ViewBag.os = os;
                 ViewBag.orcamento = orcamento;
                 ViewBag.rev = rev;
-                ViewBag.Altura = trazerAltura.alt_espe;
+                if (trazerAltura != null)
+                {
+                    ViewBag.Altura = trazerAltura.alt_espe;
+                }
                 return View("Molas/EnsaioMolas7_6");
             }
             else
