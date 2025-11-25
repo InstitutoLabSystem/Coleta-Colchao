@@ -8676,7 +8676,6 @@ namespace Coleta_Colchao.Controllers
                     editarDados.esp_ini_amostra_tres_oito = salvarDados.esp_ini_amostra_tres_oito;
 
                     //realizar calculos de media da tabela...
-
                     //media espessura.
                     editarDados.esp_media_um = float.Parse(((editarDados.esp_ini_amostra_um_um + editarDados.esp_ini_amostra_um_dois + editarDados.esp_ini_amostra_um_tres + editarDados.esp_ini_amostra_um_quatro + editarDados.esp_ini_amostra_um_cinco + editarDados.esp_ini_amostra_um_seis + editarDados.esp_ini_amostra_um_sete + editarDados.esp_ini_amostra_um_oito) / 8).ToString("N2"));
                     editarDados.esp_media_dois = float.Parse(((editarDados.esp_ini_amostra_dois_um + editarDados.esp_ini_amostra_dois_dois + editarDados.esp_ini_amostra_dois_tres + editarDados.esp_ini_amostra_dois_quatro + editarDados.esp_ini_amostra_dois_cinco + editarDados.esp_ini_amostra_dois_seis + editarDados.esp_ini_amostra_dois_sete + editarDados.esp_ini_amostra_dois_oito) / 8).ToString("N2"));
