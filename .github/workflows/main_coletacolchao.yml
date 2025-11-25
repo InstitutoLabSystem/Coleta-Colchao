@@ -29,9 +29,10 @@ jobs:
 
       - name: Deploy to Azure Web App
         id: deploy-to-webapp
-        uses: azure/webapps-deploy@v4
+        uses: azure/webapps-deploy@v3
         with:
           app-name: 'ColetaColchao'
           slot-name: 'Production'
           package: publish
           publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_FD9E1BE239A246C69F3A2146A5301BC4 }}
+
