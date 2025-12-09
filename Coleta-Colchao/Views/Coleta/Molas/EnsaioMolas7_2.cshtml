@@ -142,7 +142,7 @@
                             </tr>
                             <tr>
                                 <td>Media:</td>
-                                <td colspan="3"><input class="form-control" readonly /></td>
+                                <td colspan="3"><input class="form-control" readonly /> U = 0,03cm</td>
                             </tr>
                         </table>
                         <p> Nota: São adimitadas tolerâncias de ± 1,5 cm.</p>
@@ -214,7 +214,7 @@
                             </tr>
                             <tr>
                                 <td>Media:</td>
-                                <td colspan="3"><input class="form-control" readonly /></td>
+                                <td colspan="3"><input class="form-control" readonly /> U = 0,03cm</td>
                             </tr>
                         </table>
                         <p> Nota: São adimitadas tolerâncias de ± 1,5 cm.</p>
@@ -285,7 +285,7 @@
                             </tr>
                             <tr>
                                 <td>Media:</td>
-                                <td colspan="3"><input class="form-control" readonly /></td>
+                                <td colspan="3"><input class="form-control" readonly /> U = 0,03cm</td>
                             </tr>
 
                         </table>
@@ -384,6 +384,7 @@
                             <tr class="fundo-tabela">
                                 <td>Tipo de espuma</td>
                                 <td>Encontrado</td>
+                                <td>U</td>
                                 <td>Espessura mínima especificada (mm)</td>
                             </tr>
                             <tr id="tipo_empuma_1">
@@ -402,6 +403,7 @@
                                     </select>
                                 </td>
                                 <td><input class="form-control" type="text" name="enc_estofamento_1" /></td>
+                                <td><input class="form-control" value="0,04mm" /></td>
                                 <td><input id="esp_min1" class="form-control" type="text" name="esp_tipo_esp_1" /></td>
                             </tr>
                             <tr id="tipo_empuma_2">
@@ -420,6 +422,7 @@
                                     </select>
                                 </td>
                                 <td><input class="form-control" type="text" name="enc_estofamento_2" /></td>
+                                <td><input class="form-control" value="0,04mm" /></td>
                                 <td><input id="esp_min2" class="form-control" type="text" name="esp_tipo_esp_2" /></td>
                             </tr>
                             <tr id="tipo_empuma_3">
@@ -438,6 +441,7 @@
                                     </select>
                                 </td>
                                 <td><input class="form-control" type="text" name="enc_estofamento_3" /></td>
+                                <td><input class="form-control" value="0,04mm" /></td>
                                 <td><input id="esp_min3" class="form-control" type="text" name="esp_tipo_esp_3" /></td>
                             </tr>
                             <tr id="tipo_empuma_4">
@@ -456,6 +460,7 @@
                                     </select>
                                 </td>
                                 <td><input class="form-control" type="text" name="enc_estofamento_4" /></td>
+                                <td><input class="form-control" value="0,04mm" /></td>
                                 <td><input id="esp_min4" class="form-control" type="text" name="esp_tipo_esp_4" /></td>
                             </tr>
                             <tr id="tipo_empuma_5">
@@ -474,6 +479,7 @@
                                     </select>
                                 </td>
                                 <td><input class="form-control" type="text" name="enc_estofamento_5" /></td>
+                                <td><input class="form-control" value="0,04mm" /></td>
                                 <td><input id="esp_min5" class="form-control" type="text" name="esp_tipo_esp_5" /></td>
                             </tr>
                             <tr id="tipo_empuma_6">
@@ -492,6 +498,7 @@
                                     </select>
                                 </td>
                                 <td><input class="form-control" type="text" name="enc_estofamento_6" /></td>
+                                <td><input class="form-control" value="0,04mm" /></td>
                                 <td><input id="esp_min6" class="form-control" type="text" name="esp_tipo_esp_6" /></td>
                             </tr>
                             <tr id="tipo_empuma_7">
@@ -510,6 +517,7 @@
                                     </select>
                                 </td>
                                 <td><input class="form-control" type="text" name="enc_estofamento_7" /></td>
+                                <td><input class="form-control" value="0,04mm" /></td>
                                 <td><input id="esp_min7" class="form-control" type="text" name="esp_tipo_esp_7" /></td>
                             </tr>
                             <tr id="tipo_empuma_8">
@@ -528,6 +536,7 @@
                                     </select>
                                 </td>
                                 <td><input class="form-control" type="text" name="enc_estofamento_8" /></td>
+                                <td><input class="form-control" value="0,04mm" /></td>
                                 <td><input id="esp_min8" class="form-control" type="text" name="esp_tipo_esp_8" /></td>
                             </tr>
                             <tr id="tipo_empuma_9">
@@ -546,6 +555,7 @@
                                     </select>
                                 </td>
                                 <td><input class="form-control" type="text" name="enc_estofamento_9" /></td>
+                                <td><input class="form-control" value="0,04mm" /></td>
                                 <td><input id="esp_min9" class="form-control" type="text" name="esp_tipo_esp_9" /></td>
                             </tr>
                             <tr id="tipo_empuma_10">
@@ -564,6 +574,7 @@
                                     </select>
                                 </td>
                                 <td><input class="form-control" type="text" name="enc_estofamento_10" /></td>
+                                <td><input class="form-control" value="0,04mm" /></td>
                                 <td><input id="esp_min10" class="form-control" type="text" name="esp_tipo_esp_10" /></td>
                             </tr>
                         </table>
@@ -576,7 +587,7 @@
         }
         else
         {
-            <input id="editandoMolas" hidden=true />
+            <input id="editandoMolas" hidden="true" />
             <table class="tables table-bordered border-secondary  table-sm">
                 <thead>
                     <tr>
@@ -680,7 +691,7 @@
                             </tr>
                             <tr>
                                 <td>Media:</td>
-                                <td colspan="3"><input class="form-control" readonly value="@Model.com_media" /></td>
+                                <td colspan="3"><input class="form-control" readonly value="@Model.com_media" /> U = 0,03cm</td>
                             </tr>
                         </table>
                         <p> Nota: São adimitadas tolerâncias de ± 1,5 cm.</p>
@@ -752,7 +763,7 @@
                             </tr>
                             <tr>
                                 <td>Media:</td>
-                                <td colspan="3"><input class="form-control" readonly value="@Model.larg_media" /></td>
+                                <td colspan="3"><input class="form-control" readonly value="@Model.larg_media" /> U = 0,03cm</td>
                             </tr>
                         </table>
                         <p> Nota: São adimitadas tolerâncias de ± 1,5 cm.</p>
@@ -823,7 +834,7 @@
                             </tr>
                             <tr>
                                 <td>Media:</td>
-                                <td colspan="3"><input class="form-control" readonly value="@Model.alt_media" /></td>
+                                <td colspan="3"><input class="form-control" readonly value="@Model.alt_media" /> U = 0,03cm</td>
                             </tr>
 
                         </table>
@@ -922,6 +933,7 @@
                             <tr class="fundo-tabela">
                                 <td>Tipo de espuma</td>
                                 <td>Encontrado</td>
+                                <td>U</td>
                                 <td>Espessura mínima especificada (mm)</td>
                                 <td>Resultado</td>
                             </tr>
@@ -941,6 +953,7 @@
                                     </select>
                                 </td>
                                 <td><input class="form-control" type="text" name="enc_estofamento_1" value="@Model.enc_estofamento_1" /></td>
+                                <td><input class="form-control" value="0,04mm" readonly /></td>
                                 <td><input id="esp_min1" class="form-control" type="text" name="esp_tipo_esp_1" value="@Model.esp_tipo_esp_1" readonly /></td>
                                 <td>@Model.conformidade</td>
                             </tr>
@@ -960,6 +973,7 @@
                                     </select>
                                 </td>
                                 <td><input class="form-control" type="text" name="enc_estofamento_2" value="@Model.enc_estofamento_2" /></td>
+                                <td><input class="form-control" value="0,04mm" readonly /></td>
                                 <td><input id="esp_min2" class="form-control" type="text" name="esp_tipo_esp_2" value="@Model.esp_tipo_esp_2" readonly /></td>
                                 <td>@Model.conformidade_2</td>
                             </tr>
@@ -979,6 +993,7 @@
                                     </select>
                                 </td>
                                 <td><input class="form-control" type="text" name="enc_estofamento_3" value="@Model.enc_estofamento_3" /></td>
+                                <td><input class="form-control" value="0,04mm" readonly /></td>
                                 <td><input id="esp_min3" class="form-control" type="text" name="esp_tipo_esp_3" value="@Model.esp_tipo_esp_3" readonly /></td>
                                 <td>@Model.conformidade_3</td>
                             </tr>
@@ -998,6 +1013,7 @@
                                     </select>
                                 </td>
                                 <td><input class="form-control" type="text" name="enc_estofamento_4" value="@Model.enc_estofamento_4" /></td>
+                                <td><input class="form-control" value="0,04mm" readonly /></td>
                                 <td><input id="esp_min4" class="form-control" type="text" name="esp_tipo_esp_4" value="@Model.esp_tipo_esp_4" readonly /></td>
                                 <td>@Model.conformidade_4</td>
                             </tr>
@@ -1018,6 +1034,7 @@
                                     </select>
                                 </td>
                                 <td><input class="form-control" type="text" name="enc_estofamento_5" value="@Model.enc_estofamento_5" /></td>
+                                <td><input class="form-control" value="0,04mm" readonly /></td>
                                 <td><input id="esp_min5" class="form-control" type="text" name="esp_tipo_esp_5" value="@Model.esp_tipo_esp_5" readonly /></td>
                                 <td>@Model.conformidade_5</td>
                             </tr>
@@ -1040,6 +1057,7 @@
                                     </select>
                                 </td>
                                 <td><input class="form-control" type="text" name="enc_estofamento_6" value="@Model.enc_estofamento_6" /></td>
+                                <td><input class="form-control" value="0,04mm" readonly /></td>
                                 <td><input id="esp_min6" class="form-control" type="text" name="esp_tipo_esp_6" value="@Model.esp_tipo_esp_6" readonly /></td>
                                 <td>@Model.conformidade_6</td>
                             </tr>
@@ -1060,6 +1078,7 @@
                                     </select>
                                 </td>
                                 <td><input class="form-control" type="text" name="enc_estofamento_7" value="@Model.enc_estofamento_7" /></td>
+                                <td><input class="form-control" value="0,04mm" readonly /></td>
                                 <td><input id="esp_min7" class="form-control" type="text" name="esp_tipo_esp_7" value="@Model.esp_tipo_esp_7" readonly /></td>
                                 <td>@Model.conformidade_7</td>
                             </tr>
@@ -1080,6 +1099,7 @@
                                     </select>
                                 </td>
                                 <td><input class="form-control" type="text" name="enc_estofamento_8" value="@Model.enc_estofamento_8" /></td>
+                                <td><input class="form-control" value="0,04mm" readonly /></td>
                                 <td><input id="esp_min8" class="form-control" type="text" name="esp_tipo_esp_8" value="@Model.esp_tipo_esp_8" readonly /></td>
                                 <td>@Model.conformidade_8</td>
                             </tr>
@@ -1100,6 +1120,7 @@
                                     </select>
                                 </td>
                                 <td><input class="form-control" type="text" name="enc_estofamento_9" value="@Model.enc_estofamento_9" /></td>
+                                <td><input class="form-control" value="0,04mm" readonly /></td>
                                 <td><input id="esp_min9" class="form-control" type="text" name="esp_tipo_esp_9" value="@Model.esp_tipo_esp_9" readonly /></td>
                                 <td>@Model.conformidade_9</td>
                             </tr>
@@ -1120,6 +1141,7 @@
                                     </select>
                                 </td>
                                 <td><input class="form-control" type="text" name="enc_estofamento_10" value="@Model.enc_estofamento_10" /></td>
+                                <td><input class="form-control" value="0,04mm" readonly /></td>
                                 <td><input id="esp_min10" class="form-control" type="text" name="esp_tipo_esp_10" value="@Model.esp_tipo_esp_10" readonly /></td>
                                 <td>@Model.conformidade_10</td>
                             </tr>
