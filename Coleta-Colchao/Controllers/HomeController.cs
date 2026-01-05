@@ -173,11 +173,12 @@ namespace Coleta_Colchao.Controllers
                             TempData["Mensagem"] = "Nenhum codigo encontrado.";
                             return RedirectToAction("Index", "Home");
                         }
-                        else if (listaDeCodigosFilho.Any(x => x == "DIMCCH001000001"))
+                        else if (listaDeCodigosFilho.Any(x => x == "DIMCCH001000001") || dados.Any(x => x.codigo == "DIMCCH001000001"))
                         {
                             return RedirectToAction("IndexEspuma", "Coleta", new { os, ViewBag.orcamento });
                         }
-                        else if (listaDeCodigosFilho.Any(x => x == "FTCCCH002000001") || listaDeCodigosFilho.Any(x => x == "DNSCCH002000001") || listaDeCodigosFilho.Any(x => x == "IDTCCH001000001") || listaDeCodigosFilho.Any(x => x == "QUICCH002000001"))
+                        else if ((listaDeCodigosFilho.Any(x => x == "FTCCCH002000001") || listaDeCodigosFilho.Any(x => x == "DNSCCH002000001") || listaDeCodigosFilho.Any(x => x == "IDTCCH001000001") || listaDeCodigosFilho.Any(x => x == "QUICCH002000001"))
+                            || dados.Any(x => x.codigo == "FTCCCH002000001") || dados.Any(x => x.codigo == "DNSCCH002000001") || dados.Any(x => x.codigo == "IDTCCH001000001") || dados.Any(x => x.codigo == "QUICCH002000001"))
                         {
                             return RedirectToAction("IndexLamina", "Coleta", new { os, ViewBag.orcamento });
                         }
