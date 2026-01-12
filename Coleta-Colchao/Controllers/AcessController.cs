@@ -68,7 +68,8 @@ namespace Coleta_Colchao.Controllers
                                 pegarValores.setor == "EAP" || pegarValores.setor == "EPI" || 
                                 pegarValores.setor == "Pneu/Roda" || pegarValores.setor == "Elétrico" || 
                                 pegarValores.setor == "Panela" || pegarValores.setor == "Especial" || 
-                                pegarValores.setor == "Materiais Plástico - Filial" || pegarValores.setor == "Materiais Plástico")
+                                pegarValores.setor == "Materiais Plástico - Filial" || pegarValores.setor == "Materiais Plástico" ||
+                                pegarValores.setor == "Móveis")
                             {
                                 List<Claim> claims = new List<Claim>()
                                 {
