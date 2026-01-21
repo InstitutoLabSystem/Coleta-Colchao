@@ -1603,7 +1603,7 @@ namespace Coleta_Colchao.Models
             public int densidade { get; set; }
             public float esp_ini_amostra_um_um { get; set; }
             public float esp_ini_amostra_um_dois { get; set; }
-            public float esp_ini_amostra_um_tres { get; set; }
+            public float esp_ini_amostra_um_tres { get; set; } 
             public float esp_ini_amostra_um_quatro { get; set; }
             public float esp_ini_amostra_um_cinco { get; set; }
             public float esp_ini_amostra_um_seis { get; set; }
