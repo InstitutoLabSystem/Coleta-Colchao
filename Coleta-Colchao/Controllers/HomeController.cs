@@ -166,7 +166,7 @@ namespace Coleta_Colchao.Controllers
                             {
                                 return RedirectToAction("IndexMolas", "Coleta", new { os, ViewBag.orcamento });
                             }
-                            else if (dados.Any(x => x.codigo == "RLGCCH001000001") || dados.Any(x => x.codigo == "FTCCCH002000001") || dados.Any(x => x.codigo == "DNSCCH002000001") || dados.Any(x => x.codigo == "IDTCCH001000001") || dados.Any(x => x.codigo == "QUICCH002000001"))
+                            else if (dados.Any(x => x.codigo == "RLGCCH001000001") || dados.Any(x => x.codigo == "FTCCCH002000001") || dados.Any(x => x.codigo == "DNSCCH002000001") || dados.Any(x => x.codigo == "RSLCCH002000001") || dados.Any(x => x.codigo == "IDTCCH001000001") || dados.Any(x => x.codigo == "QUICCH002000001") || dados.Any(x => x.codigo == "FDGCCH002000001"))
                             {
                                 return RedirectToAction("IndexLamina", "Coleta", new { os, ViewBag.orcamento });
                             }
@@ -177,8 +177,8 @@ namespace Coleta_Colchao.Controllers
                         {
                             return RedirectToAction("IndexEspuma", "Coleta", new { os, ViewBag.orcamento });
                         }
-                        else if ((listaDeCodigosFilho.Any(x => x == "FTCCCH002000001") || listaDeCodigosFilho.Any(x => x == "DNSCCH002000001") || listaDeCodigosFilho.Any(x => x == "IDTCCH001000001") || listaDeCodigosFilho.Any(x => x == "QUICCH002000001"))
-                            || dados.Any(x => x.codigo == "FTCCCH002000001") || dados.Any(x => x.codigo == "DNSCCH002000001") || dados.Any(x => x.codigo == "IDTCCH001000001") || dados.Any(x => x.codigo == "QUICCH002000001"))
+                        else if ((listaDeCodigosFilho.Any(x => x == "FTCCCH002000001") || listaDeCodigosFilho.Any(x => x == "DNSCCH002000001") || listaDeCodigosFilho.Any(x => x == "RSLCCH002000001") || listaDeCodigosFilho.Any(x => x == "IDTCCH001000001") || listaDeCodigosFilho.Any(x => x == "QUICCH002000001") || listaDeCodigosFilho.Any(x => x == "FDGCCH002000001") || listaDeCodigosFilho.Any(x => x == "DPCCCH002000001"))
+                            || dados.Any(x => x.codigo == "FTCCCH002000001") || dados.Any(x => x.codigo == "DNSCCH002000001") || dados.Any(x => x.codigo == "RSLCCH002000001") || dados.Any(x => x.codigo == "DPCCCH002000001") || dados.Any(x => x.codigo == "IDTCCH001000001") || dados.Any(x => x.codigo == "QUICCH002000001") || dados.Any(x => x.codigo == "FDGCCH002000001"))
                         {
                             return RedirectToAction("IndexLamina", "Coleta", new { os, ViewBag.orcamento });
                         }
