@@ -1006,8 +1006,56 @@ namespace Coleta_Colchao.Controllers
 
             if (buscarFI == null)
             {
+                ViewBag.esp_ini_amostra_um_um = 0;
+                ViewBag.esp_ini_amostra_um_dois = 0;
+                ViewBag.esp_ini_amostra_um_tres = 0;
+                ViewBag.esp_ini_amostra_um_quatro = 0;
+                ViewBag.esp_ini_amostra_um_cinco = 0;
+                ViewBag.esp_ini_amostra_um_seis = 0;
+                ViewBag.esp_ini_amostra_um_sete = 0;
+                ViewBag.esp_ini_amostra_um_oito = 0;
+
+                ViewBag.esp_ini_amostra_dois_um = 0;
+                ViewBag.esp_ini_amostra_dois_dois = 0;
+                ViewBag.esp_ini_amostra_dois_tres = 0;
+                ViewBag.esp_ini_amostra_dois_quatro = 0;
+                ViewBag.esp_ini_amostra_dois_cinco = 0;
+                ViewBag.esp_ini_amostra_dois_seis = 0;
+                ViewBag.esp_ini_amostra_dois_sete = 0;
+                ViewBag.esp_ini_amostra_dois_oito = 0;
+
+                ViewBag.esp_ini_amostra_dois_um = 0;
+                ViewBag.esp_ini_amostra_dois_dois = 0;
+                ViewBag.esp_ini_amostra_dois_tres = 0;
+                ViewBag.esp_ini_amostra_dois_quatro = 0;
+                ViewBag.esp_ini_amostra_dois_cinco = 0;
+                ViewBag.esp_ini_amostra_dois_seis = 0;
+                ViewBag.esp_ini_amostra_dois_sete = 0;
+                ViewBag.esp_ini_amostra_dois_oito = 0;
+
+                ViewBag.esp_ini_amostra_tres_um = 0;
+                ViewBag.esp_ini_amostra_tres_dois = 0;
+                ViewBag.esp_ini_amostra_tres_tres = 0;
+                ViewBag.esp_ini_amostra_tres_quatro = 0;
+                ViewBag.esp_ini_amostra_tres_cinco = 0;
+                ViewBag.esp_ini_amostra_tres_seis = 0;
+                ViewBag.esp_ini_amostra_tres_sete = 0;
+                ViewBag.esp_ini_amostra_tres_oito = 0;
+
+                ViewBag.esp_media_um = 0;
+                ViewBag.esp_media_dois = 0;
+                ViewBag.esp_media_tres = 0;
+                //media espessura
+                ViewBag.media_espessura_um = 0;
+                ViewBag.media_espessura_dois = 0;
+                ViewBag.media_espessura_tres = 0;
+
+                ViewBag.os = os;
+                ViewBag.orcamento = orcamento;
+                ViewBag.rev = rev;
+
                 TempData["Mensagem"] = "ATENÇÃO!! REALIZE O ENSAIO DE F.I PRIMEIRO PARA REALIZAR O ENSAIO DE FADIGA, ESTAMOS TE REDIRICIONANDO PARA A PAGINA.";
-                return RedirectToAction(nameof(LaminaF_I), "Coleta", new { os, orcamento, rev });
+                return View("Laminas/LaminaFadiga");
             }
 
             if (dados == null)
@@ -1073,8 +1121,8 @@ namespace Coleta_Colchao.Controllers
                 ViewBag.bloqueada = inicial.Bloqueada;
                 return View("Laminas/LaminaFadiga", dados);
             }
-
         }
+
         public IActionResult LaminaPFI(string os, string orcamento)
         {
             var inicial = _context.regtro_colchao_lamina.Where(x => x.os == os && x.orcamento == orcamento).FirstOrDefault();
