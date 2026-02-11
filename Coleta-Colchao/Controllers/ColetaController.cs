@@ -1004,7 +1004,7 @@ namespace Coleta_Colchao.Controllers
             //buscar resultados para inserir na tabela do ensaio atraves da view bag.
             var buscarFI = _context.lamina_fi.Where(x => x.os == os && x.orcamento == orcamento && x.rev == rev).FirstOrDefault();
 
-            if (buscarFI == null)
+            if (buscarFI == null && dados == null)
             {
                 ViewBag.esp_ini_amostra_um_um = 0;
                 ViewBag.esp_ini_amostra_um_dois = 0;
@@ -1058,7 +1058,7 @@ namespace Coleta_Colchao.Controllers
                 return View("Laminas/LaminaFadiga");
             }
 
-            if (dados == null)
+            if (dados == null && buscarFI != null)
             {
                 //viewbags para buscar os dados da tabela.
 
@@ -1106,7 +1106,6 @@ namespace Coleta_Colchao.Controllers
                 ViewBag.media_espessura_um = buscarFI.media_espessura_um;
                 ViewBag.media_espessura_dois = buscarFI.media_espessura_dois;
                 ViewBag.media_espessura_tres = buscarFI.media_espessura_tres;
-
 
                 ViewBag.os = os;
                 ViewBag.orcamento = orcamento;
